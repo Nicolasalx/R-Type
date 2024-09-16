@@ -1,0 +1,32 @@
+Checks:
+  -*,
+  clang-analyzer-*,
+  modernize-*,
+  readability-*,
+  performance-*,
+  cppcoreguidelines-init-variables,
+  cppcoreguidelines-avoid-goto,
+  cppcoreguidelines-prefer-member-initializer,
+  -performance-enum-size,
+  -performance-move-constructor-init,
+  -performance-no-int-to-ptr,
+  -modernize-use-trailing-return-type,
+  -modernize-redundant-void-arg,
+  -modernize-macro-to-enum,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-else-after-return,
+  -readability-uppercase-literal-suffix,
+  -readability-identifier-naming,
+  -readability-implicit-bool-conversion,
+  -modernize-use-nodiscard,
+  -readability-suspicious-call-argument
+  -readability-named-parameter
+  -modernize-return-braced-init-list
+  -cppcoreguidelines-prefer-member-initializer
+
+CheckOptions:
+  - key: readability-function-size.StatementThreshold
+    value: 25
+  - key: readability-function-size.NestingThreshold
+    value: 4
