@@ -72,10 +72,10 @@ class UDPServer : public server::AsioServer {
     };
 
     /**
-     * @brief Send a message specified in param vect to the endpoint variable member.
+     * @brief Send a message specified in @param vect to the endpoint variable member.
      * @param vect Vector of string with the message to send.
      */
-    void handle_send(const std::vector<char> &vect);
+    void handle_send(const char *data, std::size_t size);
 
     private:
     /**

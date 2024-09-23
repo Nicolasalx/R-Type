@@ -11,9 +11,8 @@
 #include <functional>
 
 namespace server {
-constexpr size_t BUFF_SIZE = 4096;
-
-class IServer {
+    constexpr std::size_t BUFF_SIZE = 4096;
+    class IServer {
     public:
     IServer() = default;
     virtual ~IServer() = default;
