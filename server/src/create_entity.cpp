@@ -52,8 +52,9 @@ void rts::createMissile(ecs::Registry &reg, const rt::UDPPacket &msg)
     const auto &pos = msg.body.shareMovement.pos;
     const auto &vel = msg.body.shareMovement.vel;
 
-    reg.addComponent(missile, ecs::component::Position{pos.x, pos.y});
+    reg.addComponent(missile, ecs::component::Position{pos.x + 55, pos.y + 8});
     reg.addComponent(missile, ecs::component::Velocity{vel.vx, vel.vy});
+    reg.addComponent(missile, ecs::component::Hitbox{16.0, 16.0});
 
     ecs::component::Drawable playerDrawable;
     playerDrawable.shape.setSize(sf::Vector2f(20.f, 20.f));

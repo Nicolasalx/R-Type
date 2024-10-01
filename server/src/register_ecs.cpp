@@ -14,6 +14,7 @@
 #include "components/missile.hpp"
 #include "components/position.hpp"
 #include "components/sprite.hpp"
+#include "components/tag.hpp"
 #include "components/velocity.hpp"
 #include "core/Registry.hpp"
 #include "systems/collision.hpp"
@@ -37,6 +38,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::SharedEntity>();
     reg.registerComponent<ecs::component::Missile>();
     reg.registerComponent<ecs::component::AiActor>();
+    reg.registerComponent<ecs::component::Tag<size_t>>();
 }
 
 void rts::registerSystems(ecs::Registry &reg, sf::RenderWindow &window, float &dt)

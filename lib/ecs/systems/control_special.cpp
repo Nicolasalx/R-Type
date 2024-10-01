@@ -9,6 +9,7 @@
 #include "RTypeUDPProtol.hpp"
 #include "components/animation.hpp"
 #include "components/controllable.hpp"
+#include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/position.hpp"
 #include "components/sprite.hpp"
@@ -30,8 +31,9 @@ static void spawnMissile(
 {
     auto missile = reg.spawnSharedEntity(ecs::generateSharedEntityId());
 
-    reg.addComponent(missile, ecs::component::Position{playerPos.x + 10, playerPos.y + 10});
+    reg.addComponent(missile, ecs::component::Position{playerPos.x + 55, playerPos.y + 8});
     reg.addComponent(missile, ecs::component::Velocity{50.f, 0});
+    reg.addComponent(missile, ecs::component::Hitbox{16.0, 16.0});
 
     ecs::component::Sprite sprite;
     sprite.textureId = "assets/typesheets/r-typesheet1.gif";
