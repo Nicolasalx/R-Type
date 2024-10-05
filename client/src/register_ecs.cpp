@@ -5,7 +5,6 @@
 ** register_ecs
 */
 
-#include <list>
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "TickRateManager.hpp"
@@ -52,8 +51,7 @@ void rtc::registerSystems(
     ntw::UDPClient &udpClient,
     ecs::InputManager &input,
     ntw::TickRateManager &tickRateManager,
-    ecs::SpriteManager &spriteManager,
-    std::list<std::function<void()>> &_networkCallbacks
+    ecs::SpriteManager &spriteManager
 )
 {
     tickRateManager.addTickRate(rt::MOVEMENT_TICK_RATE);
@@ -82,13 +80,5 @@ void rtc::registerSystems(
         window.clear();
         ecs::systems::draw(reg, window);
         window.display();
-    });
-    reg.addSystem([&_networkCallbacks, &tickRateManager, &dt]() {
-        if (tickRateManager.needUpdate(rt::CALL_NETWORK_CALLBACKS_TICK_RATE, dt)) {
-            while (!_networkCallbacks.empty()) {
-                _networkCallbacks.front()();
-                _networkCallbacks.pop_front();
-            }
-        }
     });
 }

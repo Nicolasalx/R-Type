@@ -35,7 +35,7 @@ void rtc::GameManager::_launchGame()
     ecs::SpriteManager spriteManager;
 
     rtc::registerComponents(reg);
-    rtc::registerSystems(reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks);
+    rtc::registerSystems(reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager);
 
     _setupUdpConnection(reg, spriteManager, udpClient);
     rtc::createPlayer(reg, udpClient, spriteManager);

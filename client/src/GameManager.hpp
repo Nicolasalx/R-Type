@@ -8,9 +8,7 @@
 #pragma once
 
 #include <functional>
-#include <list>
 #include <memory>
-#include "RTypeTCPProtol.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "ResponseHandler.hpp"
 #include "RoomManager.hpp"
@@ -30,6 +28,7 @@ class GameManager {
     std::string _ip;
     std::string _playerName;
 
+    std::mutex _mut;
     ntw::TCPClient _tcpClient;
     bool _inLobby = true;
     std::size_t _userId = 0;
@@ -38,7 +37,6 @@ class GameManager {
     rt::TCPResponseHandler _tcpResponseHandler;
     ntw::ResponseHandler<rt::UDPCommand, rt::UDPServerPacket> _udpResponseHandler;
 
-    std::list<std::function<void()>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;
 
     void _registerTcpResponse();

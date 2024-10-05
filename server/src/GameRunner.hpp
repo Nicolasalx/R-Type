@@ -8,8 +8,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <functional>
 #include <list>
+#include <mutex>
 #include <thread>
 #include "RTypeUDPProtol.hpp"
 #include "ResponseHandler.hpp"
@@ -24,6 +24,7 @@ class GameRunner {
     int _port = 0;
     ntw::UDPServer _udpServer;
     std::thread _receiveThread;
+    std::mutex _mut;
     ntw::ResponseHandler<rt::UDPCommand, rt::UDPClientPacket> _responseHandler;
 
     ecs::Registry _reg;
@@ -32,7 +33,6 @@ class GameRunner {
     ntw::TickRateManager _tickRateManager;
 
     std::list<rt::UDPServerPacket> _datasToSend;
-    std::list<std::function<void()>> _networkCallbacks;
 
     sf::RenderWindow _window;
 

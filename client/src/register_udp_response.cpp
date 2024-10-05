@@ -14,24 +14,24 @@ void rtc::GameManager::_registerUdpResponse(ecs::Registry &reg, ecs::SpriteManag
     _udpResponseHandler.registerHandler(
         rt::UDPCommand::NEW_ENTITY,
         [&spriteManager, &reg, this](const rt::UDPServerPacket &packet) {
+            std::scoped_lock<std::mutex> lk(_mut);
+
             if (packet.body.b.newEntityData.type == 1) {
                 auto &[pos, _] = packet.body.b.newEntityData.moveData;
                 auto sharedEntityId = packet.body.sharedEntityId;
 
-                _networkCallbacks.push_back([sharedEntityId, pos, &reg, &spriteManager]() {
-                    rtc::createMissile(reg, spriteManager, sharedEntityId, pos.x, pos.y);
-                });
+                rtc::createMissile(reg, spriteManager, sharedEntityId, pos.x, pos.y);
             }
             if (packet.body.b.newEntityData.type == 0) {
                 auto &[pos, _] = packet.body.b.newEntityData.moveData;
 
-                _networkCallbacks.push_back([pos, &reg, &spriteManager]() {
-                    rtc::createStatic(reg, spriteManager, pos.x, pos.y);
-                });
+                rtc::createStatic(reg, spriteManager, pos.x, pos.y);
             }
         }
     );
-    _udpResponseHandler.registerHandler(rt::UDPCommand::MOVE_ENTITY, [&reg](const rt::UDPServerPacket &packet) {
+    _udpResponseHandler.registerHandler(rt::UDPCommand::MOVE_ENTITY, [&reg, this](const rt::UDPServerPacket &packet) {
+        std::scoped_lock<std::mutex> lk(_mut);
+
         auto &sharedEntityId = packet.body.sharedEntityId;
 
         try {

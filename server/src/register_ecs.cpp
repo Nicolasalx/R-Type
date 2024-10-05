@@ -6,7 +6,6 @@
 */
 
 #include <SFML/Graphics.hpp>
-#include <functional>
 #include "RTypeConst.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
@@ -78,26 +77,32 @@ void rts::registerSystems(
     ntw::TickRateManager &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<rt::UDPServerPacket> &datasToSend,
-    std::list<std::function<void()>> &networkCallbacks
+    std::mutex &mut
 )
 {
     tickRateManager.addTickRate(rt::SEND_PACKETS_TICK_RATE);
 
-    reg.addSystem([&networkCallbacks]() {
-        while (!networkCallbacks.empty()) {
-            networkCallbacks.front()();
-            networkCallbacks.pop_front();
-        }
+    reg.addSystem([&reg, &dt, &mut]() {
+        std::scoped_lock<std::mutex> lk(mut);
+        ecs::systems::position(reg, dt);
     });
-    reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg]() { ecs::systems::collision(reg); });
-    reg.addSystem([&reg, &window]() { // ! for debug
+    reg.addSystem([&reg, &mut]() {
+        std::scoped_lock<std::mutex> lk(mut);
+
+        ecs::systems::collision(reg);
+    });
+    reg.addSystem([&reg, &window, &mut]() { // ! for debug
+        std::scoped_lock<std::mutex> lk(mut);
         window.clear();
         ecs::systems::draw(reg, window);
         window.display();
     });
-    reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
-    reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt, &reg]() {
+    reg.addSystem([&reg, &mut]() {
+        std::scoped_lock<std::mutex> lk(mut);
+        ecs::systems::missilesStop(reg);
+    });
+    reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt, &reg, &mut]() {
+        std::scoped_lock<std::mutex> lk(mut);
         if (tickRateManager.needUpdate(rt::SEND_PACKETS_TICK_RATE, dt)) {
             share_server_movements(reg, datasToSend);
             while (!datasToSend.empty()) {
