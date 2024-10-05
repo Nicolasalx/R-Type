@@ -7,13 +7,14 @@
 
 #include <SFML/Window/VideoMode.hpp>
 #include <memory>
+#include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
+#include "InputManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "Registry.hpp"
+#include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
-#include "core/InputManager.hpp"
-#include "core/Registry.hpp"
-#include "core/SpriteManager.hpp"
 #include "udp/UDPClient.hpp"
 
 void rtc::GameManager::_launchGame()
@@ -23,9 +24,10 @@ void rtc::GameManager::_launchGame()
 
     runGui(_window, _roomManager, _inLobby);
 
-    if (_inLobby) { // if lobby is true we are outsie of lobby the window has been closed
+    if (_inLobby) {
         return;
     }
+
     ntw::UDPClient udpClient(_ip, _gamePort);
 
     ecs::Registry reg;
@@ -37,8 +39,10 @@ void rtc::GameManager::_launchGame()
     rtc::registerComponents(reg);
     rtc::registerSystems(reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks);
 
+    // ecs::ClientEntityFactory entityFactory(spriteManager, udpClient);
     _setupUdpConnection(reg, spriteManager, udpClient);
-    rtc::createPlayer(reg, udpClient, spriteManager);
+
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, udpClient, "assets/player.json");
 
     run(reg, _window, dt, inputManager);
 }

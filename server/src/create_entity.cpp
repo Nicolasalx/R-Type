@@ -6,14 +6,15 @@
 */
 
 #include "RTypeUDPProtol.hpp"
+#include "Registry.hpp"
 #include "components/drawable.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
-#include "core/Registry.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Color.hpp>
 #include <cstring>
 #include "RTypeServer.hpp"
 
@@ -26,11 +27,11 @@ void rts::createPlayer(ecs::Registry &reg, shared_entity_t sharedEntityId)
 
     reg.addComponent(player, ecs::component::Velocity{0.f, 0.f});
     ecs::component::Drawable playerDrawable;
-    playerDrawable.shape.setSize(sf::Vector2f(50.f, 50.f));
+    playerDrawable.shape.setSize(sf::Vector2f(32.f, 16.f));
     playerDrawable.shape.setFillColor(sf::Color::Blue);
     reg.addComponent(player, std::move(playerDrawable));
 
-    reg.addComponent(player, ecs::component::Hitbox{50.f, 50.f});
+    reg.addComponent(player, ecs::component::Hitbox{32.f, 16.f});
 }
 
 void rts::createStatic(ecs::Registry &reg, float x, float y)
@@ -39,11 +40,11 @@ void rts::createStatic(ecs::Registry &reg, float x, float y)
     reg.addComponent(entity, ecs::component::Position{x, y});
 
     ecs::component::Drawable entityDrawable;
-    entityDrawable.shape.setSize(sf::Vector2f(50.f, 50.f));
+    entityDrawable.shape.setSize(sf::Vector2f(16.f, 16.f));
     entityDrawable.shape.setFillColor(sf::Color::Red);
     reg.addComponent(entity, std::move(entityDrawable));
 
-    reg.addComponent(entity, ecs::component::Hitbox{50.f, 50.f});
+    reg.addComponent(entity, ecs::component::Hitbox{16.f, 16.f});
 }
 
 void rts::createMissile(ecs::Registry &reg, const rt::UDPClientPacket &msg)
@@ -53,7 +54,7 @@ void rts::createMissile(ecs::Registry &reg, const rt::UDPClientPacket &msg)
     const auto &pos = msg.body.b.newEntityData.moveData.pos;
     const auto &vel = msg.body.b.newEntityData.moveData.vel;
 
-    reg.addComponent(missile, ecs::component::Position{pos.x + 55, pos.y + 8});
+    reg.addComponent(missile, ecs::component::Position{pos.x + 10, pos.y + 20});
     reg.addComponent(missile, ecs::component::Velocity{vel.vx, vel.vy});
     reg.addComponent(missile, ecs::component::Hitbox{16.0, 16.0});
 

@@ -8,13 +8,16 @@
 #include "GameRunner.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
+#include "ServerEntityFactory.hpp"
+#include "SpriteManager.hpp"
 
 rts::GameRunner::GameRunner(int port)
     : _port(port), _udpServer(port),
       _responseHandler([](const rt::UDPClientPacket &packet) { return packet.header.cmd; }),
-      _window(sf::VideoMode(1000, 700), "R-Type") // ! for debug
+      _window(sf::VideoMode(720, 480), "R-Type") // ! for debug
 {
-    rts::registerUdpResponse(_reg, _responseHandler, _datasToSend, _networkCallbacks);
+    ecs::SpriteManager spriteManager;
+    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks);
     _udpServer.registerCommand([this](char *data, std::size_t size) {
         this->_responseHandler.handleResponse(data, size);
     });
@@ -30,7 +33,7 @@ rts::GameRunner::GameRunner(int port)
             {.header = {.cmd = rt::UDPCommand::NEW_ENTITY},
              .body = {.sharedEntityId = 0, .b = {.newEntityData = {0, {{100.f * i, 100.f * i}, {0}}}}}}
         ));
-        rts::createStatic(_reg, 100.f * i, 100.f * i);
+        ecs::ServerEntityFactory::createServerEntityFromJSON(_reg, "assets/static.json", 100.f * i, 100.f * i);
     }
 }
 

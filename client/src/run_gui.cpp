@@ -8,8 +8,8 @@
 #include <SFML/System/Vector2.hpp>
 #include "RTypeClient.hpp"
 #include "imgui.h"
-#include "core/shared_entity.hpp"
 #include "imgui-SFML.h"
+#include "shared_entity.hpp"
 
 static void renderInsideRoom(const std::string &name, rtc::RoomManager &roomManager, const sf::Vector2u &windowSize)
 {

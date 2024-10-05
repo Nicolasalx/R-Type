@@ -8,6 +8,7 @@
 #include <list>
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
 #include "components/controllable.hpp"
@@ -17,7 +18,6 @@
 #include "components/position.hpp"
 #include "components/sprite.hpp"
 #include "components/velocity.hpp"
-#include "core/SpriteManager.hpp"
 #include "systems/collision.hpp"
 #include "systems/draw.hpp"
 #include "systems/position.hpp"
@@ -53,7 +53,7 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void()>> &_networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &_networkCallbacks
 )
 {
     tickRateManager.addTickRate(rt::MOVEMENT_TICK_RATE);
@@ -83,10 +83,10 @@ void rtc::registerSystems(
         ecs::systems::draw(reg, window);
         window.display();
     });
-    reg.addSystem([&_networkCallbacks, &tickRateManager, &dt]() {
+    reg.addSystem([&_networkCallbacks, &tickRateManager, &dt, &reg]() {
         if (tickRateManager.needUpdate(rt::CALL_NETWORK_CALLBACKS_TICK_RATE, dt)) {
             while (!_networkCallbacks.empty()) {
-                _networkCallbacks.front()();
+                _networkCallbacks.front()(reg);
                 _networkCallbacks.pop_front();
             }
         }

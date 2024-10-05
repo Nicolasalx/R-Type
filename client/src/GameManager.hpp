@@ -10,16 +10,15 @@
 #include <functional>
 #include <list>
 #include <memory>
-#include "RTypeTCPProtol.hpp"
 #include "RTypeUDPProtol.hpp"
+#include "Registry.hpp"
 #include "ResponseHandler.hpp"
 #include "RoomManager.hpp"
+#include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
-#include "core/Registry.hpp"
-#include "core/SpriteManager.hpp"
 #include "tcp/TCPClient.hpp"
 #include "udp/UDPClient.hpp"
-#include "core/shared_entity.hpp"
+#include "shared_entity.hpp"
 
 #include <imgui-SFML.h>
 
@@ -38,11 +37,11 @@ class GameManager {
     rt::TCPResponseHandler _tcpResponseHandler;
     ntw::ResponseHandler<rt::UDPCommand, rt::UDPServerPacket> _udpResponseHandler;
 
-    std::list<std::function<void()>> _networkCallbacks;
+    std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;
 
     void _registerTcpResponse();
-    void _registerUdpResponse(ecs::Registry &reg, ecs::SpriteManager &spriteManager);
+    void _registerUdpResponse(ecs::Registry &reg, ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
 
     void _setupTcpConnection();
     void _setupUdpConnection(ecs::Registry &reg, ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);

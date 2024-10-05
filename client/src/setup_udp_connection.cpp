@@ -6,6 +6,7 @@
 */
 
 #include "GameManager.hpp"
+#include "SpriteManager.hpp"
 
 void rtc::GameManager::_setupUdpConnection(
     ecs::Registry &reg,
@@ -13,7 +14,7 @@ void rtc::GameManager::_setupUdpConnection(
     ntw::UDPClient &udpClient
 )
 {
-    _registerUdpResponse(reg, spriteManager);
+    _registerUdpResponse(reg, spriteManager, udpClient);
     udpClient.registerHandler([this](const char *data, std::size_t size) {
         _udpResponseHandler.handleResponse(data, size);
     });

@@ -11,8 +11,11 @@
 #include <asio/ip/tcp.hpp>
 #include <cstddef>
 #include <functional>
-#include <mutex>
+#include <list>
 #include "../AsioServer.hpp"
+#include "../BuffSize.hpp"
+
+#include <mutex>
 #include <unordered_map>
 
 using asio::ip::tcp;

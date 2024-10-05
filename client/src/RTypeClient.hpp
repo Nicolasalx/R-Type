@@ -9,11 +9,11 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <list>
+#include "InputManager.hpp"
+#include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
-#include "core/InputManager.hpp"
-#include "core/Registry.hpp"
-#include "core/SpriteManager.hpp"
 #include "udp/UDPClient.hpp"
 
 namespace rtc {
@@ -27,18 +27,7 @@ void registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void()>> &_networkCallbacks
-);
-
-void createPlayer(ecs::Registry &reg, ntw::UDPClient &udpClient, ecs::SpriteManager &spriteManager);
-void createStatic(ecs::Registry &reg, ecs::SpriteManager &spriteManager, float x, float y);
-void createAi(ecs::Registry &reg, ecs::SpriteManager &spriteManager, float x, float y);
-void createMissile(
-    ecs::Registry &reg,
-    ecs::SpriteManager &spriteManager,
-    shared_entity_t sharedEntityId,
-    float x,
-    float y
+    std::list<std::function<void(ecs::Registry &reg)>> &_networkCallbacks
 );
 
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);

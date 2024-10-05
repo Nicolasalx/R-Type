@@ -10,7 +10,9 @@
 #include "RTypeConst.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
+#include "Registry.hpp"
 #include "TickRateManager.hpp"
+#include "Zipper.hpp"
 #include "components/animation.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
@@ -20,8 +22,6 @@
 #include "components/sprite.hpp"
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
-#include "core/Registry.hpp"
-#include "core/Zipper.hpp"
 #include "systems/collision.hpp"
 #include "systems/draw.hpp"
 #include "systems/position.hpp"
@@ -78,14 +78,14 @@ void rts::registerSystems(
     ntw::TickRateManager &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<rt::UDPServerPacket> &datasToSend,
-    std::list<std::function<void()>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
 )
 {
     tickRateManager.addTickRate(rt::SEND_PACKETS_TICK_RATE);
 
-    reg.addSystem([&networkCallbacks]() {
+    reg.addSystem([&networkCallbacks, &reg]() {
         while (!networkCallbacks.empty()) {
-            networkCallbacks.front()();
+            networkCallbacks.front()(reg);
             networkCallbacks.pop_front();
         }
     });

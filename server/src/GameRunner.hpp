@@ -12,9 +12,9 @@
 #include <list>
 #include <thread>
 #include "RTypeUDPProtol.hpp"
+#include "Registry.hpp"
 #include "ResponseHandler.hpp"
 #include "TickRateManager.hpp"
-#include "core/Registry.hpp"
 #include "udp/UDPServer.hpp"
 
 namespace rts {
@@ -32,7 +32,7 @@ class GameRunner {
     ntw::TickRateManager _tickRateManager;
 
     std::list<rt::UDPServerPacket> _datasToSend;
-    std::list<std::function<void()>> _networkCallbacks;
+    std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
 
     sf::RenderWindow _window;
 
