@@ -6,8 +6,6 @@
 */
 
 #include <SFML/System/Vector2.hpp>
-#include <iostream>
-#include <vector>
 #include "RTypeClient.hpp"
 #include "imgui.h"
 #include "core/shared_entity.hpp"
@@ -27,14 +25,18 @@ static void renderInsideRoom(const std::string &name, rtc::RoomManager &roomMana
     ImGui::TableSetupColumn("Name");
     ImGui::TableSetupColumn("Status");
     ImGui::TableHeadersRow();
+    ImU32 selfRowColor = ImGui::GetColorU32(ImVec4(0.5, 1, 0.5, 0.25));
 
     // ! Action with table
-    for (const auto &current : roomManager.getCurrentRoomPlayer()) {
+    for (const auto &[id, player] : roomManager.getCurrentRoomPlayer()) {
         ImGui::TableNextRow();
+        if (id == roomManager.getSelfId()) {
+            ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, selfRowColor);
+        }
         ImGui::TableSetColumnIndex(0);
-        ImGui::Text("%s", current.first.c_str());
+        ImGui::Text("%s", player.name.c_str());
         ImGui::TableSetColumnIndex(1);
-        ImGui::Text("%s", std::to_string(current.second).c_str());
+        ImGui::Text("%s", player.ready ? "ready" : "not ready");
     }
     ImGui::EndTable();
 
@@ -77,13 +79,14 @@ static void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u 
     ImGui::TableSetupColumn("Number of players");
     ImGui::TableSetupColumn("Actions");
     ImGui::TableHeadersRow();
+    ImU32 inGameRowColor = ImGui::GetColorU32(ImVec4(1, 0, 0, 0.25));
 
     // ! Action with table
     for (const auto &[room_name, room_data] : roomManager.getRooms()) {
-        if (!room_data.joinable) {
-            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(255, 0, 0, 255));
-        }
         ImGui::TableNextRow();
+        if (!room_data.joinable) {
+            ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, inGameRowColor);
+        }
         ImGui::TableSetColumnIndex(0);
         if (ImGui::Button(room_name.c_str()) && room_data.joinable) {
             // ! send join room
@@ -96,9 +99,6 @@ static void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u 
             room_data.player.empty()) {
             // !send delete
             roomManager.askToDeleteRoom(room_name);
-        }
-        if (!room_data.joinable) {
-            ImGui::PopStyleColor();
         }
     }
     ImGui::EndTable();
