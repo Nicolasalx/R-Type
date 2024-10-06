@@ -6,18 +6,22 @@
 */
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Window/Event.hpp>
+#include <cstring>
 #include "RTypeClient.hpp"
+#include "RTypeConst.hpp"
 #include "imgui.h"
 #include "imgui-SFML.h"
-#include "shared_entity.hpp"
 
-static void renderInsideRoom(const std::string &name, rtc::RoomManager &roomManager, const sf::Vector2u &windowSize)
+static void renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize)
 {
     // ! Window
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::Begin(
-        name.c_str(), nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove
+        roomManager.getCurrentRoom().c_str(),
+        nullptr,
+        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove
     );
 
     // ! Table
@@ -78,53 +82,16 @@ static void renderInsideRoom(const std::string &name, rtc::RoomManager &roomMana
     ImGui::End();
 }
 
-static void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize)
+static void unsupportedWindowSize(const sf::Vector2u &windowSize)
 {
-    // ! Window
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::Begin("Lobby", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
-
-    // ! Table
-    ImGui::BeginTable("table", 3);
-    ImGui::TableSetupColumn("Name");
-    ImGui::TableSetupColumn("Number of players");
-    ImGui::TableSetupColumn("Actions");
-    ImGui::TableHeadersRow();
-    ImU32 inGameRowColor = ImGui::GetColorU32(ImVec4(1, 0, 0, 0.25));
-
-    // ! Action with table
-    for (const auto &[room_name, room_data] : roomManager.getRooms()) {
-        ImGui::TableNextRow();
-        if (!room_data.joinable) {
-            ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, inGameRowColor);
-        }
-        ImGui::TableSetColumnIndex(0);
-        if (ImGui::Button(room_name.c_str()) && room_data.joinable) {
-            // ! send join room
-            roomManager.askToJoinRoom(room_name);
-        }
-        ImGui::TableSetColumnIndex(1);
-        ImGui::Text("%zu / 4", room_data.player.size());
-        ImGui::TableSetColumnIndex(2);
-        if (ImGui::Button((std::string("Delete##") + room_name).c_str()) && room_data.joinable &&
-            room_data.player.empty()) {
-            // !send delete
-            roomManager.askToDeleteRoom(room_name);
-        }
-    }
-    ImGui::EndTable();
-    // ! Create room
-    ImVec2 buttonSize(200, 50);
-    ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
-    ImVec2 buttonPos =
-        ImVec2(windowContentRegionMax.x - buttonSize.x - 20, windowContentRegionMax.y - buttonSize.y - 20);
-    ImGui::SetCursorPos(buttonPos);
-    if (ImGui::Button("Create", buttonSize)) {
-        // ! send create room
-        roomManager.askToCreateRoom("Room " + std::to_string(ecs::generateSharedEntityId()));
-    }
-
+    ImGui::Begin(
+        "Window to small",
+        nullptr,
+        ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove
+    );
+    ImGui::Text("Window size not supported !");
     ImGui::End();
 }
 
@@ -134,6 +101,7 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
         throw std::runtime_error("IMGUI Window init failed");
     }
     sf::Clock dt;
+    sf::Vector2u windowSize;
 
     while (window->isOpen() && inLobby) {
         sf::Event event;
@@ -146,10 +114,13 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
         ImGui::SFML::Update(*window, dt.restart());
         window->clear();
 
-        if (roomManager.getCurrentRoom().empty()) {
-            renderLobbyWindow(roomManager, window->getSize());
+        windowSize = window->getSize();
+        if (windowSize.x < rt::MIN_SCREEN_WIDTH || windowSize.y < rt::MIN_SCREEN_HEIGHT) {
+            unsupportedWindowSize(windowSize);
+        } else if (roomManager.getCurrentRoom().empty()) {
+            rtc::renderLobbyWindow(roomManager, windowSize);
         } else {
-            renderInsideRoom(roomManager.getCurrentRoom(), roomManager, window->getSize());
+            renderInsideRoom(roomManager, windowSize);
         }
 
         ImGui::SFML::Render(*window);
