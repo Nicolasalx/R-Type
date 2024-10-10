@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="AsioClient is a abstract class client that handle network with asio." alt="" coords="74,79,193,104"/>
 <area shape="rect" id="node3" href="$d2/d10/classntw_1_1TCPClient.html" title=" " alt="" coords="5,152,120,177"/>
 <area shape="rect" id="node4" href="$d6/d90/classntw_1_1UDPClient.html" title="UDPClient is a class that connects to a udp server, and handle asynchronous operations (read,..." alt="" coords="145,152,263,177"/>
-<area shape="rect" id="node2" href="$de/dcb/classntw_1_1IClient.html" title=" " alt="" coords="86,5,181,31"/>
+<area shape="rect" id="node2" href="$de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations." alt="" coords="86,5,181,31"/>
 </map>

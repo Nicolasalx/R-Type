@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -80,26 +80,38 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a single command-line argument.  
+ <a href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../db/df2/ArgParser_8hpp_source.html">ArgParser.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa8b30b5e04d8f21bf3371f8525ca78dc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#aa8b30b5e04d8f21bf3371f8525ca78dc">long_name</a></td></tr>
+<tr class="memdesc:aa8b30b5e04d8f21bf3371f8525ca78dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The long name of the argument (e.g., "--help").  <br /></td></tr>
 <tr class="separator:aa8b30b5e04d8f21bf3371f8525ca78dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a333f611e2d7958cc1ad26be0ed188727"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a333f611e2d7958cc1ad26be0ed188727">short_name</a></td></tr>
+<tr class="memdesc:a333f611e2d7958cc1ad26be0ed188727"><td class="mdescLeft">&#160;</td><td class="mdescRight">The optional short name of the argument (e.g., "-h").  <br /></td></tr>
 <tr class="separator:a333f611e2d7958cc1ad26be0ed188727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21b86282bfa22e4b6a573df2b6504029"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">ArgType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a21b86282bfa22e4b6a573df2b6504029">type</a></td></tr>
+<tr class="memdesc:a21b86282bfa22e4b6a573df2b6504029"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the argument.  <br /></td></tr>
 <tr class="separator:a21b86282bfa22e4b6a573df2b6504029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f65963af85302dbc0876dee97590fd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a5f65963af85302dbc0876dee97590fd2">required</a></td></tr>
+<tr class="memdesc:a5f65963af85302dbc0876dee97590fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the argument is required.  <br /></td></tr>
 <tr class="separator:a5f65963af85302dbc0876dee97590fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5c5599d1a82ccfa95da1dda5943dadf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#af5c5599d1a82ccfa95da1dda5943dadf">description</a></td></tr>
+<tr class="memdesc:af5c5599d1a82ccfa95da1dda5943dadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A description of the argument for help messages.  <br /></td></tr>
 <tr class="separator:af5c5599d1a82ccfa95da1dda5943dadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05dc9222d0c1e5565dbe011d7d0f23f3"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::function&lt; bool(const std::string &amp;)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a05dc9222d0c1e5565dbe011d7d0f23f3">validator</a></td></tr>
+<tr class="memdesc:a05dc9222d0c1e5565dbe011d7d0f23f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional custom validation function.  <br /></td></tr>
 <tr class="separator:a05dc9222d0c1e5565dbe011d7d0f23f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18fb429243f4fdce8ec9e1f9f9c64c41"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a18fb429243f4fdce8ec9e1f9f9c64c41">value</a></td></tr>
+<tr class="memdesc:a18fb429243f4fdce8ec9e1f9f9c64c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parsed value of the argument, if provided.  <br /></td></tr>
 <tr class="separator:a18fb429243f4fdce8ec9e1f9f9c64c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a single command-line argument. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="af5c5599d1a82ccfa95da1dda5943dadf" name="af5c5599d1a82ccfa95da1dda5943dadf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5c5599d1a82ccfa95da1dda5943dadf">&#9670;&#160;</a></span>description</h2>
 
@@ -111,6 +123,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>A description of the argument for help messages. </p>
 
 </div>
 </div>
@@ -126,6 +140,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The long name of the argument (e.g., "--help"). </p>
+
 </div>
 </div>
 <a id="a5f65963af85302dbc0876dee97590fd2" name="a5f65963af85302dbc0876dee97590fd2"></a>
@@ -139,6 +155,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Indicates whether the argument is required. </p>
 
 </div>
 </div>
@@ -154,6 +172,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The optional short name of the argument (e.g., "-h"). </p>
+
 </div>
 </div>
 <a id="a21b86282bfa22e4b6a573df2b6504029" name="a21b86282bfa22e4b6a573df2b6504029"></a>
@@ -167,6 +187,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The type of the argument. </p>
 
 </div>
 </div>
@@ -182,6 +204,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Optional custom validation function. </p>
+
 </div>
 </div>
 <a id="a18fb429243f4fdce8ec9e1f9f9c64c41" name="a18fb429243f4fdce8ec9e1f9f9c64c41"></a>
@@ -195,6 +219,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The parsed value of the argument, if provided. </p>
 
 </div>
 </div>

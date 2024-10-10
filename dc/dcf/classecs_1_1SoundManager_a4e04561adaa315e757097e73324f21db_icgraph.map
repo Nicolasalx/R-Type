@@ -1,4 +1,4 @@
 <map id="ecs::SoundManager::stopAllSoundEffects" name="ecs::SoundManager::stopAllSoundEffects">
-<area shape="rect" id="node1" title=" " alt="" coords="211,5,368,45"/>
-<area shape="rect" id="node2" href="$dc/dcf/classecs_1_1SoundManager.html#ab154fe80f3a49ac7cbe8422c4b794d2b" title=" " alt="" coords="5,5,163,45"/>
+<area shape="rect" id="node1" title="Stops all currently playing sound effects." alt="" coords="211,5,368,45"/>
+<area shape="rect" id="node2" href="$dc/dcf/classecs_1_1SoundManager.html#ab154fe80f3a49ac7cbe8422c4b794d2b" title="Destroys the SoundManager object." alt="" coords="5,5,163,45"/>
 </map>

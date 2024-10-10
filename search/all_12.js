@@ -45,7 +45,7 @@ var searchData=
   ['sparsearray_42',['SparseArray',['../d8/d2e/classecs_1_1SparseArray.html',1,'ecs::SparseArray&lt; Component &gt;'],['../d8/d2e/classecs_1_1SparseArray.html#a4c4c9d861d2fb42f4a13e910805810f1',1,'ecs::SparseArray::SparseArray()=default'],['../d8/d2e/classecs_1_1SparseArray.html#ae24d0d83e4a6573e69a453d2a884e36a',1,'ecs::SparseArray::SparseArray(const SparseArray &amp;)=default'],['../d8/d2e/classecs_1_1SparseArray.html#aa419859f4ceb8af8015ddb864bed1e75',1,'ecs::SparseArray::SparseArray(SparseArray &amp;&amp;other) noexcept=default']]],
   ['sparsearray_2ehpp_43',['SparseArray.hpp',['../d9/db8/SparseArray_8hpp.html',1,'']]],
   ['spawnentity_44',['spawnEntity',['../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125',1,'ecs::Registry']]],
-  ['spawnnextwave_45',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#aca6243dfce3b39f71ff2cb15b2cbccec',1,'ecs::WaveManager']]],
+  ['spawnnextwave_45',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf',1,'ecs::WaveManager']]],
   ['spawnsharedentity_46',['spawnSharedEntity',['../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7',1,'ecs::Registry']]],
   ['sprite_47',['Sprite',['../d9/d4b/structecs_1_1component_1_1Sprite.html',1,'ecs::component']]],
   ['sprite_2ehpp_48',['sprite.hpp',['../d1/dd4/sprite_8hpp.html',1,'']]],

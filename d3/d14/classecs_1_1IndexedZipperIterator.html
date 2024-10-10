@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -81,31 +81,50 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>An iterator that zips multiple component iterators and provides an index for each element.  
+ <a href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/ddc/IndexedZipperIterator_8hpp_source.html">IndexedZipperIterator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:afad3b860e4ac74b30272c9b433bd3490"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#afad3b860e4ac74b30272c9b433bd3490">base_iterator_t</a> = <a class="el" href="../../da/d2a/classecs_1_1ZipperIterator.html">ZipperIterator</a>&lt; Components... &gt;</td></tr>
-<tr class="separator:afad3b860e4ac74b30272c9b433bd3490"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adae583aa42dd21f8fabd0dcb8446bec5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#adae583aa42dd21f8fabd0dcb8446bec5">value_type_t</a> = std::tuple&lt; size_t, Components &amp;... &gt;</td></tr>
-<tr class="separator:adae583aa42dd21f8fabd0dcb8446bec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d15bcbf82ce6175f46552d606ec3c64"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0d15bcbf82ce6175f46552d606ec3c64">reference_t</a> = <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#adae583aa42dd21f8fabd0dcb8446bec5">value_type_t</a></td></tr>
-<tr class="separator:a0d15bcbf82ce6175f46552d606ec3c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a2e1d9029d1847d57ac108a4287fa7a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0a2e1d9029d1847d57ac108a4287fa7a">base_iterator_t</a> = <a class="el" href="../../da/d2a/classecs_1_1ZipperIterator.html">ZipperIterator</a>&lt; Components... &gt;</td></tr>
+<tr class="memdesc:a0a2e1d9029d1847d57ac108a4287fa7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The base iterator type, which is a <a class="el" href="../../da/d2a/classecs_1_1ZipperIterator.html" title="An iterator that traverses entities possessing all specified components.">ZipperIterator</a> over the specified components.  <br /></td></tr>
+<tr class="separator:a0a2e1d9029d1847d57ac108a4287fa7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030984e2dea025144146cdfd85065e62"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a030984e2dea025144146cdfd85065e62">value_type_t</a> = std::tuple&lt; size_t, Components &amp;... &gt;</td></tr>
+<tr class="memdesc:a030984e2dea025144146cdfd85065e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the value returned by the iterator, which is a tuple containing an index and references to the components.  <br /></td></tr>
+<tr class="separator:a030984e2dea025144146cdfd85065e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26278f732aeafc313cbc6a4e88a0469e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a26278f732aeafc313cbc6a4e88a0469e">reference_t</a> = <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a030984e2dea025144146cdfd85065e62">value_type_t</a></td></tr>
+<tr class="memdesc:a26278f732aeafc313cbc6a4e88a0469e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference type, which is the same as value_type_t.  <br /></td></tr>
+<tr class="separator:a26278f732aeafc313cbc6a4e88a0469e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aae8f3f6989783d740acc6b7a88f6fe7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#aae8f3f6989783d740acc6b7a88f6fe7b">IndexedZipperIterator</a> (<a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#afad3b860e4ac74b30272c9b433bd3490">base_iterator_t</a> baseIt)</td></tr>
+<tr class="memitem:aae8f3f6989783d740acc6b7a88f6fe7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#aae8f3f6989783d740acc6b7a88f6fe7b">IndexedZipperIterator</a> (<a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0a2e1d9029d1847d57ac108a4287fa7a">base_iterator_t</a> baseIt)</td></tr>
+<tr class="memdesc:aae8f3f6989783d740acc6b7a88f6fe7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html" title="An iterator that zips multiple component iterators and provides an index for each element.">IndexedZipperIterator</a> with a base iterator.  <br /></td></tr>
 <tr class="separator:aae8f3f6989783d740acc6b7a88f6fe7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4164fc51c0c16593f081f52314f7275c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">IndexedZipperIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a4164fc51c0c16593f081f52314f7275c">operator++</a> ()</td></tr>
+<tr class="memdesc:a4164fc51c0c16593f081f52314f7275c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances the iterator to the next element.  <br /></td></tr>
 <tr class="separator:a4164fc51c0c16593f081f52314f7275c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40036bc6f3d2f5620ddfbd1b8a8011dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a40036bc6f3d2f5620ddfbd1b8a8011dd">operator!=</a> (const <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">IndexedZipperIterator</a> &amp;other) const</td></tr>
+<tr class="memdesc:a40036bc6f3d2f5620ddfbd1b8a8011dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html" title="An iterator that zips multiple component iterators and provides an index for each element.">IndexedZipperIterator</a> objects for inequality.  <br /></td></tr>
 <tr class="separator:a40036bc6f3d2f5620ddfbd1b8a8011dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9204950361e105c1364259f0bffcd713"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0d15bcbf82ce6175f46552d606ec3c64">reference_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a9204950361e105c1364259f0bffcd713">operator*</a> ()</td></tr>
+<tr class="memitem:a9204950361e105c1364259f0bffcd713"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a26278f732aeafc313cbc6a4e88a0469e">reference_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a9204950361e105c1364259f0bffcd713">operator*</a> ()</td></tr>
+<tr class="memdesc:a9204950361e105c1364259f0bffcd713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereferences the iterator to access the current element.  <br /></td></tr>
 <tr class="separator:a9204950361e105c1364259f0bffcd713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="afad3b860e4ac74b30272c9b433bd3490" name="afad3b860e4ac74b30272c9b433bd3490"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afad3b860e4ac74b30272c9b433bd3490">&#9670;&#160;</a></span>base_iterator_t</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename... Components&gt;<br />
+class ecs::IndexedZipperIterator&lt; Components &gt;</div><p>An iterator that zips multiple component iterators and provides an index for each element. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Components</td><td>The types of the components to be iterated over. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a0a2e1d9029d1847d57ac108a4287fa7a" name="a0a2e1d9029d1847d57ac108a4287fa7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2e1d9029d1847d57ac108a4287fa7a">&#9670;&#160;</a></span>base_iterator_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -113,15 +132,17 @@ Public Member Functions</h2></td></tr>
 template&lt;typename... Components&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::base_iterator_t =  <a class="el" href="../../da/d2a/classecs_1_1ZipperIterator.html">ZipperIterator</a>&lt;Components...&gt;</td>
+          <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::base_iterator_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>The base iterator type, which is a <a class="el" href="../../da/d2a/classecs_1_1ZipperIterator.html" title="An iterator that traverses entities possessing all specified components.">ZipperIterator</a> over the specified components. </p>
+
 </div>
 </div>
-<a id="a0d15bcbf82ce6175f46552d606ec3c64" name="a0d15bcbf82ce6175f46552d606ec3c64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d15bcbf82ce6175f46552d606ec3c64">&#9670;&#160;</a></span>reference_t</h2>
+<a id="a26278f732aeafc313cbc6a4e88a0469e" name="a26278f732aeafc313cbc6a4e88a0469e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26278f732aeafc313cbc6a4e88a0469e">&#9670;&#160;</a></span>reference_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,15 +150,17 @@ template&lt;typename... Components&gt; </div>
 template&lt;typename... Components&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::reference_t =  <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#adae583aa42dd21f8fabd0dcb8446bec5">value_type_t</a></td>
+          <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::reference_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>The reference type, which is the same as value_type_t. </p>
+
 </div>
 </div>
-<a id="adae583aa42dd21f8fabd0dcb8446bec5" name="adae583aa42dd21f8fabd0dcb8446bec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adae583aa42dd21f8fabd0dcb8446bec5">&#9670;&#160;</a></span>value_type_t</h2>
+<a id="a030984e2dea025144146cdfd85065e62" name="a030984e2dea025144146cdfd85065e62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a030984e2dea025144146cdfd85065e62">&#9670;&#160;</a></span>value_type_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,10 +168,12 @@ template&lt;typename... Components&gt; </div>
 template&lt;typename... Components&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::value_type_t =  std::tuple&lt;size_t, Components &amp;...&gt;</td>
+          <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::value_type_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The type of the value returned by the iterator, which is a tuple containing an index and references to the components. </p>
 
 </div>
 </div>
@@ -167,7 +192,7 @@ template&lt;typename... Components&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::IndexedZipperIterator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#afad3b860e4ac74b30272c9b433bd3490">base_iterator_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0a2e1d9029d1847d57ac108a4287fa7a">base_iterator_t</a>&#160;</td>
           <td class="paramname"><em>baseIt</em></td><td>)</td>
           <td></td>
         </tr>
@@ -178,6 +203,14 @@ template&lt;typename... Components&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs an <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html" title="An iterator that zips multiple component iterators and provides an index for each element.">IndexedZipperIterator</a> with a base iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseIt</td><td>The base iterator to be wrapped. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -208,6 +241,15 @@ template&lt;typename... Components&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Compares two <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html" title="An iterator that zips multiple component iterators and provides an index for each element.">IndexedZipperIterator</a> objects for inequality. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other iterator to compare with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the iterators are not equal, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="a9204950361e105c1364259f0bffcd713" name="a9204950361e105c1364259f0bffcd713"></a>
@@ -222,7 +264,7 @@ template&lt;typename... Components&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a0d15bcbf82ce6175f46552d606ec3c64">reference_t</a> <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::operator* </td>
+          <td class="memname"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#a26278f732aeafc313cbc6a4e88a0469e">reference_t</a> <a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">ecs::IndexedZipperIterator</a>&lt; Components &gt;::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -234,12 +276,15 @@ template&lt;typename... Components&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Dereferences the iterator to access the current element. </p>
+<dl class="section return"><dt>Returns</dt><dd>A tuple containing the index and references to the components of the current element. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d14/classecs_1_1IndexedZipperIterator_a9204950361e105c1364259f0bffcd713_cgraph.png" border="0" usemap="#ad3/d14/classecs_1_1IndexedZipperIterator_a9204950361e105c1364259f0bffcd713_cgraph" alt=""/></div>
 <map name="ad3/d14/classecs_1_1IndexedZipperIterator_a9204950361e105c1364259f0bffcd713_cgraph" id="ad3/d14/classecs_1_1IndexedZipperIterator_a9204950361e105c1364259f0bffcd713_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,199,45"/>
+<area shape="rect" title="Dereferences the iterator to access the current element." alt="" coords="5,5,199,45"/>
 <area shape="rect" href="../../da/d2a/classecs_1_1ZipperIterator.html#a847ade442ec655dfff0c41b51e5fdae6" title="Retrieves the current index of the iterator." alt="" coords="247,5,389,45"/>
 </map>
 </div>
@@ -270,6 +315,9 @@ template&lt;typename... Components&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Advances the iterator to the next element. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the incremented iterator. </dd></dl>
 
 </div>
 </div>

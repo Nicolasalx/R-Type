@@ -1,6 +1,6 @@
 <map id="eng::logInfo" name="eng::logInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="245,55,344,80"/>
+<area shape="rect" id="node1" title="Logs an informational message with source location." alt="" coords="245,55,344,80"/>
 <area shape="rect" id="node2" href="$d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="29,5,173,31"/>
-<area shape="rect" id="node3" href="$d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195" title=" " alt="" coords="24,55,179,80"/>
-<area shape="rect" id="node4" href="$d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4" title=" " alt="" coords="5,104,197,129"/>
+<area shape="rect" id="node3" href="$d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195" title="Sends data to the server." alt="" coords="24,55,179,80"/>
+<area shape="rect" id="node4" href="$d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4" title="Sends data to a specific client socket." alt="" coords="5,104,197,129"/>
 </map>

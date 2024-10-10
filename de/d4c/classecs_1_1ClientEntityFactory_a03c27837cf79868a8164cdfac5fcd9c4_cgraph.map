@@ -1,6 +1,6 @@
 <map id="ecs::ClientEntityFactory::addComponents" name="ecs::ClientEntityFactory::addComponents">
-<area shape="rect" id="node1" title=" " alt="" coords="5,63,180,103"/>
-<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042" title=" " alt="" coords="228,5,423,45"/>
+<area shape="rect" id="node1" title="Adds components to an entity." alt="" coords="5,63,180,103"/>
+<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042" title="Adds common components to an entity." alt="" coords="228,5,423,45"/>
 <area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="471,42,683,67"/>
 <area shape="rect" id="node4" href="$d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="252,120,399,160"/>
 </map>

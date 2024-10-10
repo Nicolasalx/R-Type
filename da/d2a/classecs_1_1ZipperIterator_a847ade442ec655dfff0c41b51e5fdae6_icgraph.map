@@ -1,4 +1,4 @@
 <map id="ecs::ZipperIterator::index" name="ecs::ZipperIterator::index">
 <area shape="rect" id="node1" title="Retrieves the current index of the iterator." alt="" coords="247,5,389,45"/>
-<area shape="rect" id="node2" href="$d3/d14/classecs_1_1IndexedZipperIterator.html#a9204950361e105c1364259f0bffcd713" title=" " alt="" coords="5,5,199,45"/>
+<area shape="rect" id="node2" href="$d3/d14/classecs_1_1IndexedZipperIterator.html#a9204950361e105c1364259f0bffcd713" title="Dereferences the iterator to access the current element." alt="" coords="5,5,199,45"/>
 </map>

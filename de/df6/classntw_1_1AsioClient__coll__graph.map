@@ -1,4 +1,4 @@
 <map id="ntw::AsioClient" name="ntw::AsioClient">
 <area shape="rect" id="node1" title="AsioClient is a abstract class client that handle network with asio." alt="" coords="5,79,124,104"/>
-<area shape="rect" id="node2" href="$de/dcb/classntw_1_1IClient.html" title=" " alt="" coords="17,5,112,31"/>
+<area shape="rect" id="node2" href="$de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations." alt="" coords="17,5,112,31"/>
 </map>

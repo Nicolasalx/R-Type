@@ -1,5 +1,5 @@
 <map id="ntw::TCPClient::send" name="ntw::TCPClient::send">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,160,56"/>
-<area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#ab2dc4fc9a09ce4b297290df403bbfe47" title=" " alt="" coords="222,5,321,31"/>
-<area shape="rect" id="node3" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title=" " alt="" coords="208,55,335,80"/>
+<area shape="rect" id="node1" title="Sends data to the server." alt="" coords="5,31,160,56"/>
+<area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#ab2dc4fc9a09ce4b297290df403bbfe47" title="Logs an informational message with source location." alt="" coords="222,5,321,31"/>
+<area shape="rect" id="node3" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="208,55,335,80"/>
 </map>

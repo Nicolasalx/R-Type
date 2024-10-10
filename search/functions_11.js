@@ -16,7 +16,7 @@ var searchData=
   ['soundmanager_13',['SoundManager',['../dc/dcf/classecs_1_1SoundManager.html#add7b6119be009b7e284d6f84bad3ed8d',1,'ecs::SoundManager']]],
   ['sparsearray_14',['SparseArray',['../d8/d2e/classecs_1_1SparseArray.html#a4c4c9d861d2fb42f4a13e910805810f1',1,'ecs::SparseArray::SparseArray()=default'],['../d8/d2e/classecs_1_1SparseArray.html#ae24d0d83e4a6573e69a453d2a884e36a',1,'ecs::SparseArray::SparseArray(const SparseArray &amp;)=default'],['../d8/d2e/classecs_1_1SparseArray.html#aa419859f4ceb8af8015ddb864bed1e75',1,'ecs::SparseArray::SparseArray(SparseArray &amp;&amp;other) noexcept=default']]],
   ['spawnentity_15',['spawnEntity',['../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125',1,'ecs::Registry']]],
-  ['spawnnextwave_16',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#aca6243dfce3b39f71ff2cb15b2cbccec',1,'ecs::WaveManager']]],
+  ['spawnnextwave_16',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf',1,'ecs::WaveManager']]],
   ['spawnsharedentity_17',['spawnSharedEntity',['../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7',1,'ecs::Registry']]],
   ['spritesystem_18',['spriteSystem',['../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c',1,'ecs::systems']]],
   ['stopallsoundeffects_19',['stopAllSoundEffects',['../dc/dcf/classecs_1_1SoundManager.html#a4e04561adaa315e757097e73324f21db',1,'ecs::SoundManager']]],

@@ -1,4 +1,4 @@
 <map id="ecs::EntityFactory::addCommonComponents" name="ecs::EntityFactory::addCommonComponents">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" id="node1" title="Adds common components to an entity." alt="" coords="5,5,200,45"/>
 <area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="248,13,460,38"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="ecs::Zipper::end" name="ecs::Zipper::end">
 <area shape="rect" id="node1" title="Returns an iterator to the end of the zipper." alt="" coords="231,5,357,31"/>
-<area shape="rect" id="node2" href="$d1/de8/classecs_1_1IndexedZipper.html#a88c4a7bf726414c74d5d93e67e8fecc4" title=" " alt="" coords="5,5,183,31"/>
+<area shape="rect" id="node2" href="$d1/de8/classecs_1_1IndexedZipper.html#a88c4a7bf726414c74d5d93e67e8fecc4" title="Returns an iterator to the end of the zipped components." alt="" coords="5,5,183,31"/>
 </map>

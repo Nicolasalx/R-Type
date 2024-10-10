@@ -1,5 +1,5 @@
 <map id="ecs::systems::MusicSystem" name="ecs::systems::MusicSystem">
 <area shape="rect" id="node1" title="System to manage background music playback." alt="" coords="5,35,208,60"/>
 <area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="256,5,472,31"/>
-<area shape="rect" id="node3" href="$dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title=" " alt="" coords="285,55,443,95"/>
+<area shape="rect" id="node3" href="$dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title="Plays music." alt="" coords="285,55,443,95"/>
 </map>

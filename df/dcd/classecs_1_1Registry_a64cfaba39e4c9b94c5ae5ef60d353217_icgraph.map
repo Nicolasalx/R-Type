@@ -1,5 +1,5 @@
 <map id="ecs::Registry::getComponent" name="ecs::Registry::getComponent">
 <area shape="rect" id="node1" title=" " alt="" coords="488,13,697,38"/>
-<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a3a4c4accbf1fa286a2dd8bea5f299502" title=" " alt="" coords="265,5,440,45"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title=" " alt="" coords="5,5,217,45"/>
+<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#ada941753b495b3858948669040b6b722" title="Handles network synchronization for an entity." alt="" coords="265,5,440,45"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="5,5,217,45"/>
 </map>

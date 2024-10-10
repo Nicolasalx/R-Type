@@ -1,4 +1,4 @@
 <map id="ecs::InputManager::update" name="ecs::InputManager::update">
-<area shape="rect" id="node1" title=" " alt="" coords="121,5,272,45"/>
+<area shape="rect" id="node1" title="Updates the state of the keys based on the received event." alt="" coords="121,5,272,45"/>
 <area shape="rect" id="node2" href="$d9/d77/namespacertc.html#aaf16b852c2152ce537cabad01a256b23" title=" " alt="" coords="5,13,73,38"/>
 </map>

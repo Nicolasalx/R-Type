@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -76,12 +76,16 @@ $(function() {
   <div class="headertitle"><div class="title">ecs Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages waves of entities in the ECS (Entity Component System).  
+<a href="../../da/dc8/namespaceecs.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d8/dba/namespaceecs_1_1component"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dba/namespaceecs_1_1component.html">component</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:db/d9a/namespaceecs_1_1systems"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html">systems</a></td></tr>
+<tr class="memdesc:db/d9a/namespaceecs_1_1systems"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform health checks on entities within the registry. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -89,19 +93,24 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d4c/classecs_1_1ClientEntityFactory.html">ClientEntityFactory</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html">EntityFactory</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory class for creating entities from JSON files.  <a href="../../df/d28/classecs_1_1EntityFactory.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d29/classecs_1_1EntityManager.html">EntityManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages the creation and destruction of entities.  <a href="../../df/d29/classecs_1_1EntityManager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de8/classecs_1_1IndexedZipper.html">IndexedZipper</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class template that provides indexed iteration over multiple <a class="el" href="../../d8/d2e/classecs_1_1SparseArray.html" title="A sparse array implementation for managing components in an ECS framework.">SparseArray</a> components.  <a href="../../d1/de8/classecs_1_1IndexedZipper.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d14/classecs_1_1IndexedZipperIterator.html">IndexedZipperIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An iterator that zips multiple component iterators and provides an index for each element.  <a href="../../d3/d14/classecs_1_1IndexedZipperIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/da3/classecs_1_1InputManager.html">InputManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages input events and tracks the state of keyboard keys.  <a href="../../d0/da3/classecs_1_1InputManager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de3/classecs_1_1ServerEntityFactory.html">ServerEntityFactory</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A factory class for creating and managing server-side entities.  <a href="../../de/de3/classecs_1_1ServerEntityFactory.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dcf/classecs_1_1SoundManager.html">SoundManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages sound buffers and music playback.  <a href="../../dc/dcf/classecs_1_1SoundManager.html#details">More...</a><br /></td></tr>
@@ -126,7 +135,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a763cedb70bb118e785adfa3ec3dafefb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc5/shared__entity_8hpp.html#a0cc2c6dd78eb754a763a3ae66802fd56">shared_entity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb">generateSharedEntityId</a> ()</td></tr>
 <tr class="separator:a763cedb70bb118e785adfa3ec3dafefb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages waves of entities in the ECS (Entity Component System). </p>
+<p>The <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">WaveManager</a> class is responsible for managing waves of entities, including adding new waves, adding mobs to waves, checking if an entity is a mob, removing entities, and spawning the next wave. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a763cedb70bb118e785adfa3ec3dafefb" name="a763cedb70bb118e785adfa3ec3dafefb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a763cedb70bb118e785adfa3ec3dafefb">&#9670;&#160;</a></span>generateSharedEntityId()</h2>
 
@@ -147,8 +159,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../da/dc8/namespaceecs_a763cedb70bb118e785adfa3ec3dafefb_icgraph.png" border="0" usemap="#ada/dc8/namespaceecs_a763cedb70bb118e785adfa3ec3dafefb_icgraph" alt=""/></div>
 <map name="ada/dc8/namespaceecs_a763cedb70bb118e785adfa3ec3dafefb_icgraph" id="ada/dc8/namespaceecs_a763cedb70bb118e785adfa3ec3dafefb_icgraph">
 <area shape="rect" title=" " alt="" coords="435,45,640,70"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title=" " alt="" coords="173,5,385,45"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title=" " alt="" coords="171,69,387,109"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="173,5,385,45"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="171,69,387,109"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="5,77,123,102"/>
 </map>
 </div>

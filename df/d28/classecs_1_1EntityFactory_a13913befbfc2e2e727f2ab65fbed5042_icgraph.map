@@ -1,8 +1,8 @@
 <map id="ecs::EntityFactory::addCommonComponents" name="ecs::EntityFactory::addCommonComponents">
-<area shape="rect" id="node1" title=" " alt="" coords="661,37,856,77"/>
-<area shape="rect" id="node2" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title=" " alt="" coords="435,5,613,45"/>
-<area shape="rect" id="node5" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a142cf5291d346e19738ccb19ad9921f4" title=" " alt="" coords="437,69,611,109"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title=" " alt="" coords="171,5,387,45"/>
+<area shape="rect" id="node1" title="Adds common components to an entity." alt="" coords="661,37,856,77"/>
+<area shape="rect" id="node2" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="435,5,613,45"/>
+<area shape="rect" id="node5" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a03c27837cf79868a8164cdfac5fcd9c4" title="Adds components to an entity." alt="" coords="437,69,611,109"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="171,5,387,45"/>
 <area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="5,13,123,38"/>
-<area shape="rect" id="node6" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title=" " alt="" coords="173,69,385,109"/>
+<area shape="rect" id="node6" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="173,69,385,109"/>
 </map>

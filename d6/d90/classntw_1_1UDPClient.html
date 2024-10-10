@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -91,7 +91,7 @@ Inheritance diagram for ntw::UDPClient:</div>
 <map name="antw_1_1UDPClient_inherit__map" id="antw_1_1UDPClient_inherit__map">
 <area shape="rect" title="UDPClient is a class that connects to a udp server, and handle asynchronous operations (read,..." alt="" coords="5,152,124,177"/>
 <area shape="rect" href="../../de/d37/classntw_1_1AsioClient.html" title="AsioClient is a abstract class client that handle network with asio." alt="" coords="5,79,124,104"/>
-<area shape="rect" href="../../de/dcb/classntw_1_1IClient.html" title=" " alt="" coords="17,5,112,31"/>
+<area shape="rect" href="../../de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations." alt="" coords="17,5,112,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -101,7 +101,7 @@ Collaboration diagram for ntw::UDPClient:</div>
 <map name="antw_1_1UDPClient_coll__map" id="antw_1_1UDPClient_coll__map">
 <area shape="rect" title="UDPClient is a class that connects to a udp server, and handle asynchronous operations (read,..." alt="" coords="5,152,124,177"/>
 <area shape="rect" href="../../de/d37/classntw_1_1AsioClient.html" title="AsioClient is a abstract class client that handle network with asio." alt="" coords="5,79,124,104"/>
-<area shape="rect" href="../../de/dcb/classntw_1_1IClient.html" title=" " alt="" coords="17,5,112,31"/>
+<area shape="rect" href="../../de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations." alt="" coords="17,5,112,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -128,12 +128,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a61f0f88ac134524f2803c030dc3f2b7a inherit pub_methods_classntw_1_1AsioClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classntw_1_1IClient"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classntw_1_1IClient')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../de/dcb/classntw_1_1IClient.html">ntw::IClient</a></td></tr>
 <tr class="memitem:a630a25faeb77f324c9f1852a14ffd120 inherit pub_methods_classntw_1_1IClient"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dcb/classntw_1_1IClient.html#a630a25faeb77f324c9f1852a14ffd120">IClient</a> ()=default</td></tr>
+<tr class="memdesc:a630a25faeb77f324c9f1852a14ffd120 inherit pub_methods_classntw_1_1IClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="../../de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations.">IClient</a> object.  <br /></td></tr>
 <tr class="separator:a630a25faeb77f324c9f1852a14ffd120 inherit pub_methods_classntw_1_1IClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a632c8c0684b103d9708343979a31f04c inherit pub_methods_classntw_1_1IClient"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dcb/classntw_1_1IClient.html#a632c8c0684b103d9708343979a31f04c">~IClient</a> ()=default</td></tr>
+<tr class="memdesc:a632c8c0684b103d9708343979a31f04c inherit pub_methods_classntw_1_1IClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="../../de/dcb/classntw_1_1IClient.html" title="An abstract interface for client implementations.">IClient</a> object.  <br /></td></tr>
 <tr class="separator:a632c8c0684b103d9708343979a31f04c inherit pub_methods_classntw_1_1IClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2021ea036d10a954f835e6b469249d74 inherit pub_methods_classntw_1_1IClient"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dcb/classntw_1_1IClient.html#a2021ea036d10a954f835e6b469249d74">run</a> ()=0</td></tr>
+<tr class="memdesc:a2021ea036d10a954f835e6b469249d74 inherit pub_methods_classntw_1_1IClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the client's execution.  <br /></td></tr>
 <tr class="separator:a2021ea036d10a954f835e6b469249d74 inherit pub_methods_classntw_1_1IClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61d308041cc204f2bc00217e963df28e inherit pub_methods_classntw_1_1IClient"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dcb/classntw_1_1IClient.html#a61d308041cc204f2bc00217e963df28e">send</a> (const char *data, std::size_t size)=0</td></tr>
+<tr class="memdesc:a61d308041cc204f2bc00217e963df28e inherit pub_methods_classntw_1_1IClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the server.  <br /></td></tr>
 <tr class="separator:a61d308041cc204f2bc00217e963df28e inherit pub_methods_classntw_1_1IClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -317,9 +321,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../d6/d90/classntw_1_1UDPClient_aa84d7e1d450f2d11dd3c90cd6b10da85_icgraph.png" border="0" usemap="#ad6/d90/classntw_1_1UDPClient_aa84d7e1d450f2d11dd3c90cd6b10da85_icgraph" alt=""/></div>
 <map name="ad6/d90/classntw_1_1UDPClient_aa84d7e1d450f2d11dd3c90cd6b10da85_icgraph" id="ad6/d90/classntw_1_1UDPClient_aa84d7e1d450f2d11dd3c90cd6b10da85_icgraph">
 <area shape="rect" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="535,42,693,67"/>
-<area shape="rect" href="../../de/d4c/classecs_1_1ClientEntityFactory.html#a3a4c4accbf1fa286a2dd8bea5f299502" title=" " alt="" coords="289,5,463,45"/>
+<area shape="rect" href="../../de/d4c/classecs_1_1ClientEntityFactory.html#ada941753b495b3858948669040b6b722" title="Handles network synchronization for an entity." alt="" coords="289,5,463,45"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c" title="Updates the position of all entities based on their velocity." alt="" coords="265,70,487,95"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title=" " alt="" coords="5,5,217,45"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="5,5,217,45"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="35,70,188,95"/>
 </map>
 </div>

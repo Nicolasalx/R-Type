@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -82,11 +82,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A command-line argument parser for handling and validating various types of arguments.  
+ <a href="../../dc/de1/classeng_1_1ArgParser.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../db/df2/ArgParser_8hpp_source.html">ArgParser.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html">Argument</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single command-line argument.  <a href="../../d1/df7/structeng_1_1ArgParser_1_1Argument.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -100,24 +104,33 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">STRING</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a23ea5547a52245a961fd5ed6349a1c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of supported argument types.  <a href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">More...</a><br /></td></tr>
 <tr class="separator:a23ea5547a52245a961fd5ed6349a1c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a61d5d0f1fa781b5eb974f888d144ba40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a61d5d0f1fa781b5eb974f888d144ba40">addArgument</a> (const std::string &amp;longName, std::optional&lt; std::string &gt; shortName=std::nullopt, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">ArgType</a> type=<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">ArgType::STRING</a>, bool required=true, const std::string &amp;description=&quot;&quot;, std::optional&lt; std::function&lt; bool(const std::string &amp;)&gt; &gt; validator=std::nullopt)</td></tr>
+<tr class="memdesc:a61d5d0f1fa781b5eb974f888d144ba40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new argument to the parser.  <br /></td></tr>
 <tr class="separator:a61d5d0f1fa781b5eb974f888d144ba40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c4c75333e2f893344961f263955fbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a55c4c75333e2f893344961f263955fbe">parse</a> (int argc, const char **argv)</td></tr>
+<tr class="memdesc:a55c4c75333e2f893344961f263955fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the command-line arguments.  <br /></td></tr>
 <tr class="separator:a55c4c75333e2f893344961f263955fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a6f3f5f519e7a7ba9ac1b0150f8f6ae"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8a6f3f5f519e7a7ba9ac1b0150f8f6ae"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a8a6f3f5f519e7a7ba9ac1b0150f8f6ae">getValue</a> (const std::string &amp;longName) const</td></tr>
+<tr class="memdesc:a8a6f3f5f519e7a7ba9ac1b0150f8f6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value of a parsed argument.  <br /></td></tr>
 <tr class="separator:a8a6f3f5f519e7a7ba9ac1b0150f8f6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b2a0229dbd418f211289d2ca56c0ee7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7">printHelp</a> () const</td></tr>
+<tr class="memdesc:a1b2a0229dbd418f211289d2ca56c0ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the help message listing all available arguments.  <br /></td></tr>
 <tr class="separator:a1b2a0229dbd418f211289d2ca56c0ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dc60406ffb1ed5305b6d80d305f59f2"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:a6dc60406ffb1ed5305b6d80d305f59f2"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a6dc60406ffb1ed5305b6d80d305f59f2">getValue</a> (const std::string &amp;longName) const</td></tr>
+<tr class="memdesc:a6dc60406ffb1ed5305b6d80d305f59f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialized retrieval for boolean arguments.  <br /></td></tr>
 <tr class="separator:a6dc60406ffb1ed5305b6d80d305f59f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A command-line argument parser for handling and validating various types of arguments. </p>
+<p>The <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html" title="A command-line argument parser for handling and validating various types of arguments.">ArgParser</a></code> class allows you to define expected command-line arguments, parse them from the input, retrieve their values in the desired type, and generate help messages. It supports different argument types, validation functions, and both long and short argument names. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a23ea5547a52245a961fd5ed6349a1c69" name="a23ea5547a52245a961fd5ed6349a1c69"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23ea5547a52245a961fd5ed6349a1c69">&#9670;&#160;</a></span>ArgType</h2>
 
@@ -137,12 +150,19 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Enumeration of supported argument types. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5" name="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92" name="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92"></a>INT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5" name="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5"></a>UNSIGNED_INT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229" name="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229"></a>DOUBLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949" name="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5" name="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"><p>Boolean values (<code>true</code>, <code>false</code>, <code>1</code>, <code>0</code>). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92" name="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92"></a>INT&#160;</td><td class="fielddoc"><p>Signed integer values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5" name="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5"></a>UNSIGNED_INT&#160;</td><td class="fielddoc"><p>Unsigned integer values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229" name="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229"></a>DOUBLE&#160;</td><td class="fielddoc"><p>Floating-point numbers. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949" name="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"><p>String values. </p>
+</td></tr>
 </table>
 
 </div>
@@ -197,12 +217,31 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds a new argument to the parser. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">longName</td><td>The long name of the argument (e.g., "help" for "--help"). </td></tr>
+    <tr><td class="paramname">shortName</td><td>The optional short name of the argument (e.g., "h" for "-h"). Defaults to <code>std::nullopt</code>. </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the argument. Defaults to <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">ArgType::STRING</a></code>. </td></tr>
+    <tr><td class="paramname">required</td><td>Whether the argument is required. Defaults to <code>true</code>. </td></tr>
+    <tr><td class="paramname">description</td><td>A description of the argument for help messages. Defaults to an empty string. </td></tr>
+    <tr><td class="paramname">validator</td><td>An optional custom validation function that takes the argument's string value and returns <code>true</code> if valid. Defaults to <code>std::nullopt</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If an argument with the same long or short name already exists. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/de1/classeng_1_1ArgParser_a61d5d0f1fa781b5eb974f888d144ba40_icgraph.png" border="0" usemap="#adc/de1/classeng_1_1ArgParser_a61d5d0f1fa781b5eb974f888d144ba40_icgraph" alt=""/></div>
 <map name="adc/de1/classeng_1_1ArgParser_a61d5d0f1fa781b5eb974f888d144ba40_icgraph" id="adc/de1/classeng_1_1ArgParser_a61d5d0f1fa781b5eb974f888d144ba40_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,320,31"/>
+<area shape="rect" title="Adds a new argument to the parser." alt="" coords="108,5,320,31"/>
 <area shape="rect" href="../../d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -216,6 +255,9 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T eng::ArgParser::getValue </td>
@@ -225,13 +267,40 @@ template&lt;typename T &gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Retrieves the value of a parsed argument. </p>
+<p>This is a template function that converts the argument's string value to the desired type. It throws an exception if the conversion fails or if the argument is not defined.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type to convert the argument's value to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">longName</td><td>The long name of the argument to retrieve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the argument converted to type <code>T</code>.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If the argument is not defined, has no value, or conversion fails. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/de1/classeng_1_1ArgParser_a8a6f3f5f519e7a7ba9ac1b0150f8f6ae_icgraph.png" border="0" usemap="#adc/de1/classeng_1_1ArgParser_a8a6f3f5f519e7a7ba9ac1b0150f8f6ae_icgraph" alt=""/></div>
 <map name="adc/de1/classeng_1_1ArgParser_a8a6f3f5f519e7a7ba9ac1b0150f8f6ae_icgraph" id="adc/de1/classeng_1_1ArgParser_a8a6f3f5f519e7a7ba9ac1b0150f8f6ae_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,289,31"/>
+<area shape="rect" title="Retrieves the value of a parsed argument." alt="" coords="108,5,289,31"/>
 <area shape="rect" href="../../d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -264,6 +333,22 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Specialized retrieval for boolean arguments. </p>
+<p>This specialization handles the conversion of string values to boolean. It accepts "true", "false", "1", and "0" (case-insensitive).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">longName</td><td>The long name of the boolean argument to retrieve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The boolean value of the argument.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If the argument is not defined, has no value, or contains an invalid boolean string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a55c4c75333e2f893344961f263955fbe" name="a55c4c75333e2f893344961f263955fbe"></a>
@@ -291,12 +376,29 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Parses the command-line arguments. </p>
+<p>This function processes the input arguments, validates them, and stores their values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of command-line arguments. </td></tr>
+    <tr><td class="paramname">argv</td><td>The array of command-line argument strings.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if parsing is successful; <code>false</code> otherwise.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If a required argument is missing or if validation fails. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/de1/classeng_1_1ArgParser_a55c4c75333e2f893344961f263955fbe_icgraph.png" border="0" usemap="#adc/de1/classeng_1_1ArgParser_a55c4c75333e2f893344961f263955fbe_icgraph" alt=""/></div>
 <map name="adc/de1/classeng_1_1ArgParser_a55c4c75333e2f893344961f263955fbe_icgraph" id="adc/de1/classeng_1_1ArgParser_a55c4c75333e2f893344961f263955fbe_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,268,31"/>
+<area shape="rect" title="Parses the command&#45;line arguments." alt="" coords="108,5,268,31"/>
 <area shape="rect" href="../../d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -317,12 +419,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prints the help message listing all available arguments. </p>
+<p>This function outputs the descriptions of all defined arguments, including their long and short names, whether they are required, and their descriptions. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/de1/classeng_1_1ArgParser_a1b2a0229dbd418f211289d2ca56c0ee7_icgraph.png" border="0" usemap="#adc/de1/classeng_1_1ArgParser_a1b2a0229dbd418f211289d2ca56c0ee7_icgraph" alt=""/></div>
 <map name="adc/de1/classeng_1_1ArgParser_a1b2a0229dbd418f211289d2ca56c0ee7_icgraph" id="adc/de1/classeng_1_1ArgParser_a1b2a0229dbd418f211289d2ca56c0ee7_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,292,31"/>
+<area shape="rect" title="Prints the help message listing all available arguments." alt="" coords="108,5,292,31"/>
 <area shape="rect" href="../../d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>

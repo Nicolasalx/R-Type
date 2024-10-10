@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -85,16 +85,20 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d5/d0a/classntw_1_1AsioServer.html" title="AsioServer is a abstract class server that handle network with asio.">AsioServer</a> is a abstract class server that handle network with asio.  <a href="../../d5/d0a/classntw_1_1AsioServer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dcb/classntw_1_1IClient.html">IClient</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract interface for client implementations.  <a href="../../de/dcb/classntw_1_1IClient.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3d/classntw_1_1IServer.html">IServer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract interface for server implementations.  <a href="../../d7/d3d/classntw_1_1IServer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html">ResponseHandler</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d60/classntw_1_1Session.html">Session</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages individual client connections.  <a href="../../d6/d60/classntw_1_1Session.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d10/classntw_1_1TCPClient.html">TCPClient</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classntw_1_1TCPServer.html">TCPServer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a TCP server using Asio for asynchronous networking.  <a href="../../d7/d65/classntw_1_1TCPServer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">TickRateManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +112,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a7981dd3b4c4fba787126d4e0473508b2"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/da6/namespacentw.html#a7981dd3b4c4fba787126d4e0473508b2">BUFF_SIZE</a> = 4096</td></tr>
+<tr class="memdesc:a7981dd3b4c4fba787126d4e0473508b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the buffer used for network operations.  <br /></td></tr>
 <tr class="separator:a7981dd3b4c4fba787126d4e0473508b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -130,6 +135,10 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The size of the buffer used for network operations. </p>
+<p>This constant defines the size of the buffer in bytes used when reading from or writing to TCP sockets. A buffer size of 4096 bytes is chosen as it provides a balance between memory usage and the ability to handle reasonably sized messages efficiently.</p>
+<dl class="section note"><dt>Note</dt><dd>Adjusting this value may impact the performance and memory footprint of the networking components. Ensure that the buffer size aligns with the expected message sizes and system capabilities. </dd></dl>
 
 </div>
 </div>

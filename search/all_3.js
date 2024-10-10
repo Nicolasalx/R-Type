@@ -4,7 +4,7 @@ var searchData=
   ['cbegin_1',['cbegin',['../d8/d2e/classecs_1_1SparseArray.html#ac64f2abf62be0b6cdf98f3b54c5a1c6b',1,'ecs::SparseArray']]],
   ['cend_2',['cend',['../d8/d2e/classecs_1_1SparseArray.html#aca19f9547b1f082fe9525e578d8243ee',1,'ecs::SparseArray']]],
   ['client_5ftickrate_3',['CLIENT_TICKRATE',['../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c',1,'rtc']]],
-  ['cliententityfactory_4',['ClientEntityFactory',['../de/d4c/classecs_1_1ClientEntityFactory.html',1,'ecs']]],
+  ['cliententityfactory_4',['ClientEntityFactory',['../d0/d7d/classClientEntityFactory.html',1,'ClientEntityFactory'],['../de/d4c/classecs_1_1ClientEntityFactory.html',1,'ecs::ClientEntityFactory']]],
   ['cliententityfactory_2ecpp_5',['ClientEntityFactory.cpp',['../d0/dd6/ClientEntityFactory_8cpp.html',1,'']]],
   ['cliententityfactory_2ehpp_6',['ClientEntityFactory.hpp',['../d7/da1/ClientEntityFactory_8hpp.html',1,'']]],
   ['clienttickrate_2ehpp_7',['ClientTickRate.hpp',['../d8/d5e/ClientTickRate_8hpp.html',1,'']]],

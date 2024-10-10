@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -80,15 +80,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>An abstract interface for server implementations.  
+ <a href="../../d7/d3d/classntw_1_1IServer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d2/de5/IServer_8hpp_source.html">IServer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ntw::IServer:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d7b/classntw_1_1IServer__inherit__graph.png" border="0" usemap="#antw_1_1IServer_inherit__map" alt="Inheritance graph"/></div>
 <map name="antw_1_1IServer_inherit__map" id="antw_1_1IServer_inherit__map">
-<area shape="rect" title=" " alt="" coords="87,5,186,31"/>
+<area shape="rect" title="An abstract interface for server implementations." alt="" coords="87,5,186,31"/>
 <area shape="rect" href="../../d5/d0a/classntw_1_1AsioServer.html" title="AsioServer is a abstract class server that handle network with asio." alt="" coords="75,79,198,104"/>
-<area shape="rect" href="../../d7/d65/classntw_1_1TCPServer.html" title=" " alt="" coords="5,152,124,177"/>
+<area shape="rect" href="../../d7/d65/classntw_1_1TCPServer.html" title="Implements a TCP server using Asio for asynchronous networking." alt="" coords="5,152,124,177"/>
 <area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html" title="UDPServer is a server that handle udp network connections from remote clients." alt="" coords="149,152,271,177"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
@@ -96,13 +99,19 @@ Inheritance diagram for ntw::IServer:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a060a3b546109ef261bd0015dfcf73267"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3d/classntw_1_1IServer.html#a060a3b546109ef261bd0015dfcf73267">IServer</a> ()=default</td></tr>
+<tr class="memdesc:a060a3b546109ef261bd0015dfcf73267"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a> object.  <br /></td></tr>
 <tr class="separator:a060a3b546109ef261bd0015dfcf73267"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a978a74cee7695a5ffc1e4a5b500f5ae9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3d/classntw_1_1IServer.html#a978a74cee7695a5ffc1e4a5b500f5ae9">~IServer</a> ()=default</td></tr>
+<tr class="memdesc:a978a74cee7695a5ffc1e4a5b500f5ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a> object.  <br /></td></tr>
 <tr class="separator:a978a74cee7695a5ffc1e4a5b500f5ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a650a83e3a1879ee6feeafd2304722bfc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3d/classntw_1_1IServer.html#a650a83e3a1879ee6feeafd2304722bfc">run</a> ()=0</td></tr>
+<tr class="memdesc:a650a83e3a1879ee6feeafd2304722bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server's execution.  <br /></td></tr>
 <tr class="separator:a650a83e3a1879ee6feeafd2304722bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An abstract interface for server implementations. </p>
+<p>The <code><a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a></code> class defines the essential functionalities that any server should implement within the networking module. It serves as a contract ensuring that all derived server classes provide implementations for running the server. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a060a3b546109ef261bd0015dfcf73267" name="a060a3b546109ef261bd0015dfcf73267"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a060a3b546109ef261bd0015dfcf73267">&#9670;&#160;</a></span>IServer()</h2>
 
@@ -125,6 +134,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a> object. </p>
+<p>Default constructor. Since <code><a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a></code> is an interface, this constructor is intended to be called by derived classes. </p>
 
 </div>
 </div>
@@ -151,6 +163,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Destroys the <a class="el" href="../../d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations.">IServer</a> object. </p>
+<p>Virtual destructor to ensure proper cleanup of derived classes. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -176,6 +191,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Starts the server's execution. </p>
+<p>This pure virtual function must be overridden by derived classes to define the server's runtime behavior, such as initiating connections, handling client requests, and managing the server's lifecycle.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If the server fails to start correctly. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="../../d7/d65/classntw_1_1TCPServer.html#a96e3d670fba7547cb443383cf05c07fe">ntw::TCPServer</a>, and <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103">ntw::UDPServer</a>.</p>
 

@@ -1,5 +1,5 @@
 <map id="ntw::TCPServer::sendToAllUser" name="ntw::TCPServer::sendToAllUser">
-<area shape="rect" id="node1" title=" " alt="" coords="615,129,833,155"/>
+<area shape="rect" id="node1" title="Sends data to all connected users." alt="" coords="615,129,833,155"/>
 <area shape="rect" id="node2" href="$d1/d36/classrts_1_1RoomManager.html#a27678b57dc5b8d5f69e08e4fde351259" title=" " alt="" coords="337,5,567,31"/>
 <area shape="rect" id="node5" href="$d1/d36/classrts_1_1RoomManager.html#a6dd4271d081a4a13274b26a0accd4c1e" title=" " alt="" coords="337,55,567,80"/>
 <area shape="rect" id="node6" href="$d1/d36/classrts_1_1RoomManager.html#a72a2f0de6593c9da5340372513e619be" title=" " alt="" coords="346,104,558,129"/>

@@ -1,5 +1,5 @@
 <map id="ecs::EntityFactory" name="ecs::EntityFactory">
-<area shape="rect" id="node1" title=" " alt="" coords="124,5,261,31"/>
+<area shape="rect" id="node1" title="A factory class for creating entities from JSON files." alt="" coords="124,5,261,31"/>
 <area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html" title=" " alt="" coords="5,79,180,104"/>
-<area shape="rect" id="node3" href="$de/de3/classecs_1_1ServerEntityFactory.html" title=" " alt="" coords="205,79,383,104"/>
+<area shape="rect" id="node3" href="$de/de3/classecs_1_1ServerEntityFactory.html" title="A factory class for creating and managing server&#45;side entities." alt="" coords="205,79,383,104"/>
 </map>

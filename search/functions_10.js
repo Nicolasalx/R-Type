@@ -10,7 +10,7 @@ var searchData=
   ['registerudpresponse_7',['registerUdpResponse',['../d9/dbb/namespacerts.html#a16241b5a0f41dfd903ad570dab17ddad',1,'rts']]],
   ['registry_8',['Registry',['../df/dcd/classecs_1_1Registry.html#a367b9a55f66a581b41c72dc676bb2748',1,'ecs::Registry']]],
   ['removecomponent_9',['removeComponent',['../df/dcd/classecs_1_1Registry.html#a17f754ebcd023208146c9c383406ce16',1,'ecs::Registry']]],
-  ['removeentity_10',['removeEntity',['../d5/d35/classecs_1_1WaveManager.html#ad346f87b15b2103296052289e7750bd9',1,'ecs::WaveManager']]],
+  ['removeentity_10',['removeEntity',['../d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c',1,'ecs::WaveManager']]],
   ['removetickrate_11',['removeTickRate',['../d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033',1,'ntw::TickRateManager']]],
   ['removeuser_12',['removeUser',['../d7/d65/classntw_1_1TCPServer.html#a40a54c54c715cedf01c11c47b4614590',1,'ntw::TCPServer']]],
   ['renderlobbywindow_13',['renderLobbyWindow',['../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced',1,'rtc']]],

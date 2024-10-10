@@ -1,5 +1,5 @@
 <map id="ntw::UDPServer" name="ntw::UDPServer">
 <area shape="rect" id="node1" title="UDPServer is a server that handle udp network connections from remote clients." alt="" coords="5,152,128,177"/>
 <area shape="rect" id="node2" href="$d5/d0a/classntw_1_1AsioServer.html" title="AsioServer is a abstract class server that handle network with asio." alt="" coords="5,79,128,104"/>
-<area shape="rect" id="node3" href="$d7/d3d/classntw_1_1IServer.html" title=" " alt="" coords="17,5,116,31"/>
+<area shape="rect" id="node3" href="$d7/d3d/classntw_1_1IServer.html" title="An abstract interface for server implementations." alt="" coords="17,5,116,31"/>
 </map>

@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -78,6 +78,9 @@ $(function() {
   <div class="headertitle"><div class="title">ecs::systems Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Perform health checks on entities within the registry.  
+<a href="../../db/d9a/namespaceecs_1_1systems.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -120,7 +123,41 @@ Functions</h2></td></tr>
 <tr class="memdesc:a8b0e40cd549e6d1f7faac8ac3fa2324c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates sprite animations and synchronizes sprite positions.  <br /></td></tr>
 <tr class="separator:a8b0e40cd549e6d1f7faac8ac3fa2324c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Perform health checks on entities within the registry. </p>
+<p>Updates the parallax effect in the ECS registry.</p>
+<p>Stops the missiles in the ECS registry.</p>
+<p>Checks the health of mobs and updates the wave manager accordingly.</p>
+<p>This function iterates through the entities in the provided registry and performs necessary health checks.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the registry containing the entities to be checked.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function iterates through the entities in the registry, checks their health status, and performs necessary actions such as removing dead mobs and updating the wave manager.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the registry containing the entities. </td></tr>
+    <tr><td class="paramname">waveManager</td><td>Reference to the wave manager responsible for handling waves of mobs.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function is responsible for stopping the missiles that are currently active in the ECS registry. It processes the entities and components related to missiles and kill the missiles entities when needed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the ECS registry containing the entities and components.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function is responsible for updating the parallax effect within the given registry. It processes all relevant entities and components to achieve the desired parallax scrolling effect.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the ECS registry. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1264603701180e9a20a9588f3f086455" name="a1264603701180e9a20a9588f3f086455"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1264603701180e9a20a9588f3f086455">&#9670;&#160;</a></span>aiAct()</h2>
 
@@ -253,7 +290,7 @@ Here is the call graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a282c1c508bd0632676bf16e1f82d1118_cgraph" id="adb/d9a/namespaceecs_1_1systems_a282c1c508bd0632676bf16e1f82d1118_cgraph">
 <area shape="rect" title="Handles entity control movement." alt="" coords="5,35,201,60"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="249,5,465,31"/>
-<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title=" " alt="" coords="282,55,433,95"/>
+<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="282,55,433,95"/>
 </map>
 </div>
 <div class="dynheader">
@@ -330,7 +367,7 @@ Here is the call graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a3b5f6cd1549435fb54174bf11485ebed_cgraph" id="adb/d9a/namespaceecs_1_1systems_a3b5f6cd1549435fb54174bf11485ebed_cgraph">
 <area shape="rect" title="Handles entity control and input processing." alt="" coords="5,35,212,60"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="260,5,476,31"/>
-<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title=" " alt="" coords="293,55,443,95"/>
+<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="293,55,443,95"/>
 </map>
 </div>
 <div class="dynheader">
@@ -473,8 +510,8 @@ Here is the call graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_acfd36d86458348922ccf72f0170eee66_cgraph" id="adb/d9a/namespaceecs_1_1systems_acfd36d86458348922ccf72f0170eee66_cgraph">
 <area shape="rect" title=" " alt="" coords="5,55,229,80"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="277,5,493,31"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a96897e54c17c3c08803e78b58b50e6e4" title=" " alt="" coords="289,55,481,80"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#ad346f87b15b2103296052289e7750bd9" title=" " alt="" coords="284,105,487,145"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="289,55,481,80"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="284,105,487,145"/>
 </map>
 </div>
 <div class="dynheader">
@@ -576,7 +613,7 @@ Here is the call graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_afa11c9046efd2f68b0389658c273ddc0_cgraph" id="adb/d9a/namespaceecs_1_1systems_afa11c9046efd2f68b0389658c273ddc0_cgraph">
 <area shape="rect" title="System to manage background music playback." alt="" coords="5,35,208,60"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="256,5,472,31"/>
-<area shape="rect" href="../../dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title=" " alt="" coords="285,55,443,95"/>
+<area shape="rect" href="../../dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title="Plays music." alt="" coords="285,55,443,95"/>
 </map>
 </div>
 

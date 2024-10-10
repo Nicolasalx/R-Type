@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">R-TYPE<span id="projectnumber">&#160;1.0</span>
+   <div id="projectname">R-TYPE<span id="projectnumber">&#160;0.0.1</span>
    </div>
   </td>
  </tr>
@@ -80,14 +80,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A factory class for creating and managing server-side entities.  
+ <a href="../../de/de3/classecs_1_1ServerEntityFactory.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/d7b/ServerEntityFactory_8hpp_source.html">ServerEntityFactory.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ecs::ServerEntityFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d02/classecs_1_1ServerEntityFactory__inherit__graph.png" border="0" usemap="#aecs_1_1ServerEntityFactory_inherit__map" alt="Inheritance graph"/></div>
 <map name="aecs_1_1ServerEntityFactory_inherit__map" id="aecs_1_1ServerEntityFactory_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,79,184,104"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title=" " alt="" coords="26,5,163,31"/>
+<area shape="rect" title="A factory class for creating and managing server&#45;side entities." alt="" coords="5,79,184,104"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files." alt="" coords="26,5,163,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -95,26 +98,33 @@ Collaboration diagram for ecs::ServerEntityFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/dbe/classecs_1_1ServerEntityFactory__coll__graph.png" border="0" usemap="#aecs_1_1ServerEntityFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aecs_1_1ServerEntityFactory_coll__map" id="aecs_1_1ServerEntityFactory_coll__map">
-<area shape="rect" title=" " alt="" coords="5,79,184,104"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title=" " alt="" coords="26,5,163,31"/>
+<area shape="rect" title="A factory class for creating and managing server&#45;side entities." alt="" coords="5,79,184,104"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files." alt="" coords="26,5,163,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a64e86dd87fa4133453506f567072b259"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259">addComponents</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> entity, const nlohmann::json &amp;componentsJson, bool isShared, int x, int y, float vx, float vy)</td></tr>
+<tr class="memdesc:a64e86dd87fa4133453506f567072b259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds components to an entity in the registry.  <br /></td></tr>
 <tr class="separator:a64e86dd87fa4133453506f567072b259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91824da7b3e7c3bd6b24f17c69d46383"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383">handleNetworkSync</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> entity, const nlohmann::json &amp;entityJson, bool isShared)</td></tr>
+<tr class="memdesc:a91824da7b3e7c3bd6b24f17c69d46383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the synchronization of an entity's state with the network.  <br /></td></tr>
 <tr class="separator:a91824da7b3e7c3bd6b24f17c69d46383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classecs_1_1EntityFactory"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classecs_1_1EntityFactory')"><img src="../../closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="../../df/d28/classecs_1_1EntityFactory.html">ecs::EntityFactory</a></td></tr>
 <tr class="memitem:ac9d9aa6eccc2af49059c70154f84ed90 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90">createClientEntityFromJSON</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d5/d93/classecs_1_1SpriteManager.html">SpriteManager</a> &amp;spriteManager, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient, const std::string &amp;jsonFilePath, int x=std::numeric_limits&lt; int &gt;::max(), int y=std::numeric_limits&lt; int &gt;::max(), <a class="el" href="../../df/dc5/shared__entity_8hpp.html#a0cc2c6dd78eb754a763a3ae66802fd56">shared_entity_t</a> sharedEntity=std::numeric_limits&lt; size_t &gt;::max(), float vx=std::numeric_limits&lt; float &gt;::max(), float vy=std::numeric_limits&lt; float &gt;::max())</td></tr>
+<tr class="memdesc:ac9d9aa6eccc2af49059c70154f84ed90 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a client entity from a JSON file.  <br /></td></tr>
 <tr class="separator:ac9d9aa6eccc2af49059c70154f84ed90 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1339d426bb071332defd2cf9c7b1384 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384">createServerEntityFromJSON</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, const std::string &amp;jsonFilePath, int x=std::numeric_limits&lt; int &gt;::max(), int y=std::numeric_limits&lt; int &gt;::max(), <a class="el" href="../../df/dc5/shared__entity_8hpp.html#a0cc2c6dd78eb754a763a3ae66802fd56">shared_entity_t</a> sharedEntity=std::numeric_limits&lt; size_t &gt;::max(), float vx=std::numeric_limits&lt; float &gt;::max(), float vy=std::numeric_limits&lt; float &gt;::max())</td></tr>
+<tr class="memdesc:ab1339d426bb071332defd2cf9c7b1384 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a server entity from a JSON file.  <br /></td></tr>
 <tr class="separator:ab1339d426bb071332defd2cf9c7b1384 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13913befbfc2e2e727f2ab65fbed5042 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042">addCommonComponents</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> entity, const nlohmann::json &amp;componentsJson, int x, int y, float vx, float vy)</td></tr>
+<tr class="memdesc:a13913befbfc2e2e727f2ab65fbed5042 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds common components to an entity.  <br /></td></tr>
 <tr class="separator:a13913befbfc2e2e727f2ab65fbed5042 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A factory class for creating and managing server-side entities. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a64e86dd87fa4133453506f567072b259" name="a64e86dd87fa4133453506f567072b259"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64e86dd87fa4133453506f567072b259">&#9670;&#160;</a></span>addComponents()</h2>
 
@@ -184,13 +194,28 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Adds components to an entity in the registry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>The registry where the entity and its components are stored. </td></tr>
+    <tr><td class="paramname">entity</td><td>The entity to which components will be added. </td></tr>
+    <tr><td class="paramname">componentsJson</td><td>A JSON object containing the components to be added. </td></tr>
+    <tr><td class="paramname">isShared</td><td>A boolean indicating whether the entity is shared across the network. </td></tr>
+    <tr><td class="paramname">x</td><td>The x-coordinate position of the entity. </td></tr>
+    <tr><td class="paramname">y</td><td>The y-coordinate position of the entity. </td></tr>
+    <tr><td class="paramname">vx</td><td>The velocity of the entity along the x-axis. </td></tr>
+    <tr><td class="paramname">vy</td><td>The velocity of the entity along the y-axis. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_cgraph.png" border="0" usemap="#ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_cgraph" alt=""/></div>
 <map name="ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_cgraph" id="ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,184,75"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042" title=" " alt="" coords="232,5,427,45"/>
+<area shape="rect" title="Adds components to an entity in the registry." alt="" coords="5,35,184,75"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042" title="Adds common components to an entity." alt="" coords="232,5,427,45"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="475,42,687,67"/>
 </map>
 </div>
@@ -199,8 +224,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_icgraph.png" border="0" usemap="#ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_icgraph" alt=""/></div>
 <map name="ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_icgraph" id="ade/de3/classecs_1_1ServerEntityFactory_a64e86dd87fa4133453506f567072b259_icgraph">
-<area shape="rect" title=" " alt="" coords="435,5,613,45"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title=" " alt="" coords="171,5,387,45"/>
+<area shape="rect" title="Adds components to an entity in the registry." alt="" coords="435,5,613,45"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="171,5,387,45"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="5,13,123,38"/>
 </map>
 </div>
@@ -252,13 +277,24 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Handles the synchronization of an entity's state with the network. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>The registry where the entity is stored. </td></tr>
+    <tr><td class="paramname">entity</td><td>The entity to be synchronized. </td></tr>
+    <tr><td class="paramname">entityJson</td><td>A JSON object containing the entity's state information. </td></tr>
+    <tr><td class="paramname">isShared</td><td>A boolean indicating whether the entity is shared across the network. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/de3/classecs_1_1ServerEntityFactory_a91824da7b3e7c3bd6b24f17c69d46383_icgraph.png" border="0" usemap="#ade/de3/classecs_1_1ServerEntityFactory_a91824da7b3e7c3bd6b24f17c69d46383_icgraph" alt=""/></div>
 <map name="ade/de3/classecs_1_1ServerEntityFactory_a91824da7b3e7c3bd6b24f17c69d46383_icgraph" id="ade/de3/classecs_1_1ServerEntityFactory_a91824da7b3e7c3bd6b24f17c69d46383_icgraph">
-<area shape="rect" title=" " alt="" coords="435,5,613,45"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title=" " alt="" coords="171,5,387,45"/>
+<area shape="rect" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="435,5,613,45"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="171,5,387,45"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="5,13,123,38"/>
 </map>
 </div>
