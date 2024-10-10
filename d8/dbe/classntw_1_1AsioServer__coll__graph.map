@@ -1,0 +1,4 @@
+<map id="ntw::AsioServer" name="ntw::AsioServer">
+<area shape="rect" id="node1" title="AsioServer is a abstract class server that handle network with asio." alt="" coords="5,79,128,104"/>
+<area shape="rect" id="node2" href="$d7/d3d/classntw_1_1IServer.html" title=" " alt="" coords="17,5,116,31"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ecs::systems::controlMove" name="ecs::systems::controlMove">
+<area shape="rect" id="node1" title="Handles entity control movement." alt="" coords="5,35,201,60"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="249,5,465,31"/>
+<area shape="rect" id="node3" href="$d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title=" " alt="" coords="282,55,433,95"/>
+</map>

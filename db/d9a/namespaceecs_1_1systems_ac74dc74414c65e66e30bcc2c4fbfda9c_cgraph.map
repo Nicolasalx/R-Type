@@ -1,0 +1,5 @@
+<map id="ecs::systems::shareMovement" name="ecs::systems::shareMovement">
+<area shape="rect" id="node1" title="Updates the position of all entities based on their velocity." alt="" coords="5,31,227,56"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="275,5,491,31"/>
+<area shape="rect" id="node3" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="303,55,462,80"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ecs::systems::draw" name="ecs::systems::draw">
+<area shape="rect" id="node1" title="Renders all drawable entities to the provided window." alt="" coords="5,31,152,56"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="200,5,416,31"/>
+<area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="203,55,413,80"/>
+</map>

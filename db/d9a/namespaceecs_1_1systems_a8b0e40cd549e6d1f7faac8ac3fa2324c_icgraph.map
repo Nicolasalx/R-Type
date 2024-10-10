@@ -1,0 +1,4 @@
+<map id="ecs::systems::spriteSystem" name="ecs::systems::spriteSystem">
+<area shape="rect" id="node1" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="207,5,408,31"/>
+<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
+</map>

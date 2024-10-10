@@ -1,0 +1,4 @@
+<map id="ecs::Registry::spawnSharedEntity" name="ecs::Registry::spawnSharedEntity">
+<area shape="rect" id="node1" title="Spawns a new shared_entity within the registry." alt="" coords="5,5,205,45"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="253,13,465,38"/>
+</map>
