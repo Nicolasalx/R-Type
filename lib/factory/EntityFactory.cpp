@@ -13,6 +13,7 @@
 #include "ServerEntityFactory.hpp"
 #include "SpriteManager.hpp"
 #include "components/controllable.hpp"
+#include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/position.hpp"
@@ -154,6 +155,13 @@ void EntityFactory::addCommonComponents(
 
     if (componentsJson.contains("missile")) {
         reg.addComponent(entity, ecs::component::Missile{});
+    }
+
+    if (componentsJson.contains("health")) {
+        auto healthJson = componentsJson["health"];
+        reg.addComponent(
+            entity, ecs::component::Health{healthJson["maxHp"].get<int>(), healthJson["currHp"].get<int>()}
+        );
     }
 }
 
