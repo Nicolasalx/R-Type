@@ -1,4 +1,6 @@
 <map id="rts::registerUdpResponse" name="rts::registerUdpResponse">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,192,38"/>
-<area shape="rect" id="node2" href="$d4/d19/classntw_1_1ResponseHandler.html#a651f7879eddc39e68dfdbe4e837f7e18" title=" " alt="" coords="240,5,407,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,192,80"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="240,5,449,31"/>
+<area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="241,55,448,80"/>
+<area shape="rect" id="node4" href="$d4/d19/classntw_1_1ResponseHandler.html#a651f7879eddc39e68dfdbe4e837f7e18" title=" " alt="" coords="261,105,428,145"/>
 </map>

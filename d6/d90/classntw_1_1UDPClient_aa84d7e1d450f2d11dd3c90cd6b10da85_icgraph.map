@@ -1,7 +1,5 @@
 <map id="ntw::UDPClient::send" name="ntw::UDPClient::send">
-<area shape="rect" id="node1" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="535,42,693,67"/>
-<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#ada941753b495b3858948669040b6b722" title="Handles network synchronization for an entity." alt="" coords="289,5,463,45"/>
-<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c" title="Updates the position of all entities based on their velocity." alt="" coords="265,70,487,95"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="5,5,217,45"/>
-<area shape="rect" id="node5" href="$d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="35,70,188,95"/>
+<area shape="rect" id="node1" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="476,5,635,31"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c" title="Updates the position of all entities based on their velocity." alt="" coords="207,5,428,31"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
 </map>

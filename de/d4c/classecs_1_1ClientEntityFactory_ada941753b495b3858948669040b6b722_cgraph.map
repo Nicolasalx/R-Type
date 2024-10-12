@@ -1,5 +1,0 @@
-<map id="ecs::ClientEntityFactory::handleNetworkSync" name="ecs::ClientEntityFactory::handleNetworkSync">
-<area shape="rect" id="node1" title="Handles network synchronization for an entity." alt="" coords="5,23,180,63"/>
-<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="228,5,437,31"/>
-<area shape="rect" id="node3" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="253,55,412,80"/>
-</map>
