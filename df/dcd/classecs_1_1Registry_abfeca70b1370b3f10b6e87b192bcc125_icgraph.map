@@ -1,6 +1,7 @@
 <map id="ecs::Registry::spawnEntity" name="ecs::Registry::spawnEntity">
-<area shape="rect" id="node1" title="Spawns a new entity within the registry." alt="" coords="435,45,628,70"/>
-<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="173,5,385,45"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="171,69,387,109"/>
-<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="5,77,123,102"/>
+<area shape="rect" id="node1" title="Spawns a new entity within the registry." alt="" coords="525,45,719,70"/>
+<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="263,5,475,45"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="261,69,477,109"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#af9239b8eee7a7356ce08bb34367781ac" title=" " alt="" coords="5,51,213,77"/>
+<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="51,101,168,126"/>
 </map>

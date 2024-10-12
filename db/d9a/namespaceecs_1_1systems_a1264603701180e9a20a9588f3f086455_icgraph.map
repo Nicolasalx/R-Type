@@ -1,4 +1,0 @@
-<map id="ecs::systems::aiAct" name="ecs::systems::aiAct">
-<area shape="rect" id="node1" title="Make ai act with respect with their ai_actor component and his callback act." alt="" coords="207,5,355,31"/>
-<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
-</map>

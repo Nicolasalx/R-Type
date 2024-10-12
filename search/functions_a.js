@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['killentity_0',['killEntity',['../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf',1,'ecs::Registry']]]
+  ['joinroom_0',['joinRoom',['../d1/d36/classrts_1_1RoomManager.html#a72a2f0de6593c9da5340372513e619be',1,'rts::RoomManager']]]
 ];

@@ -1,5 +1,8 @@
 <map id="ecs::Registry::getComponent" name="ecs::Registry::getComponent">
-<area shape="rect" id="node1" title=" " alt="" coords="488,13,697,38"/>
-<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#ada941753b495b3858948669040b6b722" title="Handles network synchronization for an entity." alt="" coords="265,5,440,45"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="5,5,217,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="521,92,731,117"/>
+<area shape="rect" id="node2" href="$da/d18/namespacerts_1_1ais.html#af9239b8eee7a7356ce08bb34367781ac" title=" " alt="" coords="265,5,473,31"/>
+<area shape="rect" id="node3" href="$de/d4c/classecs_1_1ClientEntityFactory.html#ada941753b495b3858948669040b6b722" title="Handles network synchronization for an entity." alt="" coords="282,55,457,95"/>
+<area shape="rect" id="node5" href="$da/d18/namespacerts_1_1ais.html#addb066d275a51c4abae991938b3a1097" title=" " alt="" coords="275,120,463,145"/>
+<area shape="rect" id="node6" href="$da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3" title=" " alt="" coords="280,169,459,195"/>
+<area shape="rect" id="node4" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="5,55,217,95"/>
 </map>

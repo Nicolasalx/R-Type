@@ -1,6 +1,7 @@
 <map id="lib/factory/components/ai_actor.hpp" name="lib/factory/components/ai_actor.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="152,5,324,45"/>
-<area shape="rect" id="node2" href="$d6/db9/client_2src_2register__ecs_8cpp.html" title=" " alt="" coords="5,93,140,133"/>
-<area shape="rect" id="node3" href="$d5/d3c/ai__act_8cpp.html" title=" " alt="" coords="165,93,311,133"/>
-<area shape="rect" id="node4" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="336,93,476,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="284,5,456,45"/>
+<area shape="rect" id="node2" href="$d4/dd0/ServerEntityFactory_8cpp.html" title=" " alt="" coords="5,93,177,133"/>
+<area shape="rect" id="node3" href="$d5/d3c/ai__act_8cpp.html" title=" " alt="" coords="202,93,349,133"/>
+<area shape="rect" id="node4" href="$d9/dc1/init__waves_8cpp.html" title=" " alt="" coords="373,101,559,126"/>
+<area shape="rect" id="node5" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="584,93,724,133"/>
 </map>
