@@ -7,11 +7,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <cstddef>
+#include <cstdio>
 #include <functional>
-#include <iostream>
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
+#include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
 #include "Zipper.hpp"
 #include "components/animation.hpp"
@@ -32,25 +33,22 @@
 #include "components/ai_actor.hpp"
 #include "components/share_movement.hpp"
 #include "components/shared_entity.hpp"
+#include "systems/ai_act.hpp"
 #include "systems/health_check.hpp"
 #include "systems/health_mob_check.hpp"
 #include "systems/missiles_stop.hpp"
 
 static void share_server_movements(ecs::Registry &reg, std::list<rt::UDPServerPacket> &datasToSend)
 {
-    auto &sharedMov = reg.getComponents<ecs::component::ShareMovement>();
     auto &positions = reg.getComponents<ecs::component::Position>();
     auto &velocities = reg.getComponents<ecs::component::Velocity>();
     auto &sharedEntity = reg.getComponents<ecs::component::SharedEntity>();
 
-    ecs::Zipper<
-        ecs::component::ShareMovement,
-        ecs::component::Position,
-        ecs::component::Velocity,
-        ecs::component::SharedEntity>
-        zip(sharedMov, positions, velocities, sharedEntity);
+    ecs::Zipper<ecs::component::Position, ecs::component::Velocity, ecs::component::SharedEntity> zip(
+        positions, velocities, sharedEntity
+    );
 
-    for (auto [_, pos, vel, shared_entity] : zip) {
+    for (auto [pos, vel, shared_entity] : zip) {
         rt::UDPBody body = {
             .sharedEntityId = shared_entity.sharedEntityId, .b = {.shareMovement = {.pos = pos, .vel = vel}}
         };
@@ -76,6 +74,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::AiActor>();
     reg.registerComponent<ecs::component::Tag<size_t>>();
     reg.registerComponent<ecs::component::Health>();
+    reg.registerComponent<ecs::component::AiActor>();
 }
 
 void rts::registerSystems(
@@ -90,11 +89,17 @@ void rts::registerSystems(
 )
 {
     tickRateManager.addTickRate(rts::TickRate::SEND_PACKETS, rts::SERVER_TICKRATE.at(rts::TickRate::SEND_PACKETS));
+    tickRateManager.addTickRate(rts::TickRate::AI_ACTING, rts::SERVER_TICKRATE.at(rts::TickRate::AI_ACTING));
 
     reg.addSystem([&networkCallbacks, &reg]() {
         while (!networkCallbacks.empty()) {
             networkCallbacks.front()(reg);
             networkCallbacks.pop_front();
+        }
+    });
+    reg.addSystem([&reg, &dt, &tickRateManager]() {
+        if (tickRateManager.needUpdate(rts::TickRate::AI_ACTING, dt)) {
+            ecs::systems::aiAct(reg);
         }
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
@@ -105,7 +110,6 @@ void rts::registerSystems(
     });
     reg.addSystem([&reg, &waveManager]() {
         if (!waveManager.hasEntity() && !waveManager.isEnd()) {
-            std::cout << "New wave !" << std::endl;
             waveManager.spawnNextWave(reg);
         }
     });

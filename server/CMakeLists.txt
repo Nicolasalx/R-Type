@@ -6,6 +6,9 @@ add_executable(r-type_server
     src/register_udp_response.cpp
     src/RoomManager.cpp
     src/init_waves.cpp
+    src/ais/waveAi.cpp
+    src/ais/fireRandomMissileAi.cpp
+    src/ais/horizontalMoveAi.cpp
 )
 
 target_compile_options(r-type_server PRIVATE -Wall -Wextra)
