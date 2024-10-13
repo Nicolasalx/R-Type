@@ -74,7 +74,9 @@ void rts::GameRunner::runGame(bool &stopGame)
             }
         }
         // ! for debug
+        _window.clear();
         _reg.runSystems();
+        _window.display();
     }
     if (_window.isOpen()) {
         _window.close();
