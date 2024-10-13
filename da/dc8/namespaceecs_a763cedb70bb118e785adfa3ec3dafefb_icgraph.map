@@ -1,7 +1,8 @@
 <map id="ecs::generateSharedEntityId" name="ecs::generateSharedEntityId">
-<area shape="rect" id="node1" title=" " alt="" coords="525,70,731,95"/>
-<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="263,5,475,45"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="261,120,477,160"/>
-<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#af9239b8eee7a7356ce08bb34367781ac" title=" " alt="" coords="5,74,213,99"/>
-<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="51,127,168,153"/>
+<area shape="rect" id="node1" title=" " alt="" coords="799,70,1004,95"/>
+<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="537,5,749,45"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="535,120,751,160"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a2f8dbd54f0a8a99a7c8a58f493b68174" title=" " alt="" coords="279,74,487,99"/>
+<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a3c8930b4f4ddd77a3880c1225ebdb14d" title=" " alt="" coords="324,127,441,153"/>
+<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177" title=" " alt="" coords="5,127,231,153"/>
 </map>

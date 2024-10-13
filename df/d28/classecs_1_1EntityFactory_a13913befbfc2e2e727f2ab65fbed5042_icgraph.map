@@ -1,9 +1,10 @@
 <map id="ecs::EntityFactory::addCommonComponents" name="ecs::EntityFactory::addCommonComponents">
-<area shape="rect" id="node1" title="Adds common components to an entity." alt="" coords="752,54,947,94"/>
-<area shape="rect" id="node2" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="525,22,704,62"/>
-<area shape="rect" id="node6" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a03c27837cf79868a8164cdfac5fcd9c4" title="Adds components to an entity." alt="" coords="527,86,702,126"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="261,22,477,62"/>
-<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#af9239b8eee7a7356ce08bb34367781ac" title=" " alt="" coords="5,5,213,31"/>
-<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a6fd450a1095ad778c0932fa5c414f66b" title=" " alt="" coords="51,55,168,80"/>
-<area shape="rect" id="node7" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="263,86,475,126"/>
+<area shape="rect" id="node1" title="Adds common components to an entity." alt="" coords="1025,54,1220,94"/>
+<area shape="rect" id="node2" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="799,22,977,62"/>
+<area shape="rect" id="node7" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a03c27837cf79868a8164cdfac5fcd9c4" title="Adds components to an entity." alt="" coords="801,86,975,126"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="535,22,751,62"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a2f8dbd54f0a8a99a7c8a58f493b68174" title=" " alt="" coords="279,5,487,31"/>
+<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a3c8930b4f4ddd77a3880c1225ebdb14d" title=" " alt="" coords="324,55,441,80"/>
+<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177" title=" " alt="" coords="5,55,231,80"/>
+<area shape="rect" id="node8" href="$df/d28/classecs_1_1EntityFactory.html#ac9d9aa6eccc2af49059c70154f84ed90" title="Creates a client entity from a JSON file." alt="" coords="537,86,749,126"/>
 </map>

@@ -1,0 +1,41 @@
+<map id="rts::GameRunner::GameRunner" name="rts::GameRunner::GameRunner">
+<area shape="rect" id="node1" title=" " alt="" coords="5,367,231,392"/>
+<area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#a3c8930b4f4ddd77a3880c1225ebdb14d" title=" " alt="" coords="313,149,431,175"/>
+<area shape="rect" id="node14" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="309,309,435,335"/>
+<area shape="rect" id="node15" href="$da/dbf/classntw_1_1UDPServer.html#a8a21aba551f1acedea105d1e1fd2f8eb" title="Register a command that is handled by the server." alt="" coords="281,359,463,399"/>
+<area shape="rect" id="node16" href="$d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="283,424,461,449"/>
+<area shape="rect" id="node19" href="$d9/dbb/namespacerts.html#a6eed7d6aae9124b8a7f0cd56e558cd65" title=" " alt="" coords="295,655,449,680"/>
+<area shape="rect" id="node37" href="$d9/dbb/namespacerts.html#aa209bd6618ce10ec82019f5ee00f43d1" title=" " alt="" coords="279,260,465,285"/>
+<area shape="rect" id="node39" href="$da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="296,704,448,729"/>
+<area shape="rect" id="node3" href="$d5/d35/classecs_1_1WaveManager.html#a0adcc427a7955fa65a62b776a83cf048" title="Adds a new mob spawner to a specific wave." alt="" coords="527,71,762,96"/>
+<area shape="rect" id="node4" href="$d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01" title="Adds a new wave to the WaveManager." alt="" coords="523,120,766,145"/>
+<area shape="rect" id="node5" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="537,170,753,210"/>
+<area shape="rect" id="node6" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="843,170,1021,210"/>
+<area shape="rect" id="node9" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="829,5,1035,31"/>
+<area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="829,285,1035,311"/>
+<area shape="rect" id="node11" href="$de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="843,55,1021,95"/>
+<area shape="rect" id="node12" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="835,120,1029,145"/>
+<area shape="rect" id="node13" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="1088,227,1288,267"/>
+<area shape="rect" id="node7" href="$df/d28/classecs_1_1EntityFactory.html#a13913befbfc2e2e727f2ab65fbed5042" title="Adds common components to an entity." alt="" coords="1091,113,1285,153"/>
+<area shape="rect" id="node8" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="1336,177,1548,203"/>
+<area shape="rect" id="node17" href="$df/dcd/classecs_1_1Registry.html#a8ae60d5b07b673167b3bdcf4dd36c627" title="Registers a new component type." alt="" coords="525,392,764,417"/>
+<area shape="rect" id="node18" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="824,753,1040,779"/>
+<area shape="rect" id="node20" href="$df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2" title="Adds a system to the registry." alt="" coords="551,975,738,1000"/>
+<area shape="rect" id="node21" href="$d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="561,1025,728,1065"/>
+<area shape="rect" id="node22" href="$db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="560,704,729,729"/>
+<area shape="rect" id="node23" href="$db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="571,925,718,951"/>
+<area shape="rect" id="node25" href="$d5/d35/classecs_1_1WaveManager.html#a2372648db2144b83bcfff629bde32807" title="Checks if there are any entities currently managed by the WaveManager." alt="" coords="537,441,752,467"/>
+<area shape="rect" id="node26" href="$db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="547,852,743,877"/>
+<area shape="rect" id="node28" href="$db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="533,343,757,368"/>
+<area shape="rect" id="node31" href="$d5/d35/classecs_1_1WaveManager.html#ab25a402f706e819dfcda4e3aeda0e091" title="Checks if all waves have been spawned." alt="" coords="551,491,739,516"/>
+<area shape="rect" id="node32" href="$db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="545,803,744,828"/>
+<area shape="rect" id="node33" href="$d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="561,541,728,581"/>
+<area shape="rect" id="node34" href="$db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="561,753,728,779"/>
+<area shape="rect" id="node35" href="$da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9" title="Send a message specified in." alt="" coords="555,605,734,631"/>
+<area shape="rect" id="node36" href="$d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf" title="Spawns the next wave of entities in the ECS registry." alt="" coords="513,655,776,680"/>
+<area shape="rect" id="node24" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="827,925,1037,951"/>
+<area shape="rect" id="node27" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="847,828,1017,853"/>
+<area shape="rect" id="node29" href="$d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="836,400,1028,425"/>
+<area shape="rect" id="node30" href="$d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="831,335,1033,375"/>
+<area shape="rect" id="node38" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="540,235,749,260"/>
+</map>
