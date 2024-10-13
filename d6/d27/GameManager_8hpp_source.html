@@ -93,55 +93,57 @@ $(function() {
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../d2/dbe/SpriteManager_8hpp.html">SpriteManager.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;TCPResponseHandler.hpp&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;UDPResponseHandler.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d72/TCPClient_8hpp.html">tcp/TCPClient.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d33/UDPClient_8hpp.html">udp/UDPClient.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;shared_entity.hpp&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;imgui-SFML.h&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d9/d77/namespacertc.html">rtc</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/dfd/classrtc_1_1GameManager.html">GameManager</a> {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::string _ip;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::string _playerName;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="../../d2/d10/classntw_1_1TCPClient.html">ntw::TCPClient</a> _tcpClient;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> _inLobby = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::size_t _userId = 0;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">int</span> _gamePort = 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> _roomManager;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    rt::TCPResponseHandler _tcpResponseHandler;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    rt::UDPResponseHandler _udpResponseHandler;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::list&lt;std::function&lt;void(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt;&gt; _networkCallbacks;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::shared_ptr&lt;sf::RenderWindow&gt; _window;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> _registerTcpResponse();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> _registerUdpResponse(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="code hl_class" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> _setupTcpConnection();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> _setupUdpConnection(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="code hl_class" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> _launchGame();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">   49</a></span>    <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">GameManager</a>(<span class="keyword">const</span> std::string &amp;ip, <span class="keywordtype">int</span> port, <span class="keyword">const</span> std::string &amp;playerName)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(<a class="code hl_namespace" href="../../da/dc8/namespaceecs.html">ecs</a>::generateSharedEntityId()),</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>          _roomManager(_tcpClient, _userId, playerName)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">   55</a></span>    <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">~GameManager</a>()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        ImGui::SFML::Shutdown();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">runGame</a>()</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        _setupTcpConnection();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        _launchGame();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace rtc</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;imgui.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d72/TCPClient_8hpp.html">tcp/TCPClient.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d33/UDPClient_8hpp.html">udp/UDPClient.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;shared_entity.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;imgui-SFML.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d9/d77/namespacertc.html">rtc</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/dfd/classrtc_1_1GameManager.html">GameManager</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::string _ip;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::string _playerName;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="../../d2/d10/classntw_1_1TCPClient.html">ntw::TCPClient</a> _tcpClient;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span> _inLobby = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::size_t _userId = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">int</span> _gamePort = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> _roomManager;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    rt::TCPResponseHandler _tcpResponseHandler;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    rt::UDPResponseHandler _udpResponseHandler;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::list&lt;std::function&lt;void(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt;&gt; _networkCallbacks;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::shared_ptr&lt;sf::RenderWindow&gt; _window;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::shared_ptr&lt;ImFont&gt; _font;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> _registerTcpResponse();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> _registerUdpResponse(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="code hl_class" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> _setupTcpConnection();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> _setupUdpConnection(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="code hl_class" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> _launchGame();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">   51</a></span>    <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">GameManager</a>(<span class="keyword">const</span> std::string &amp;ip, <span class="keywordtype">int</span> port, <span class="keyword">const</span> std::string &amp;playerName)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(<a class="code hl_namespace" href="../../da/dc8/namespaceecs.html">ecs</a>::generateSharedEntityId()),</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>          _roomManager(_tcpClient, _userId, playerName)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">   57</a></span>    <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">~GameManager</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        ImGui::SFML::Shutdown();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">runGame</a>()</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        _setupTcpConnection();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        _launchGame();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace rtc</span></div>
 <div class="ttc" id="aRegistry_8hpp_html"><div class="ttname"><a href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a></div></div>
 <div class="ttc" id="aSpriteManager_8hpp_html"><div class="ttname"><a href="../../d2/dbe/SpriteManager_8hpp.html">SpriteManager.hpp</a></div></div>
 <div class="ttc" id="aTCPClient_8hpp_html"><div class="ttname"><a href="../../d4/d72/TCPClient_8hpp.html">TCPClient.hpp</a></div></div>
@@ -150,10 +152,10 @@ $(function() {
 <div class="ttc" id="aclassecs_1_1SpriteManager_html"><div class="ttname"><a href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a></div><div class="ttdoc">Manages loading and caching of textures to prevent duplication.</div><div class="ttdef"><b>Definition:</b> SpriteManager.hpp:24</div></div>
 <div class="ttc" id="aclassntw_1_1TCPClient_html"><div class="ttname"><a href="../../d2/d10/classntw_1_1TCPClient.html">ntw::TCPClient</a></div><div class="ttdef"><b>Definition:</b> TCPClient.hpp:22</div></div>
 <div class="ttc" id="aclassntw_1_1UDPClient_html"><div class="ttname"><a href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a></div><div class="ttdoc">UDPClient is a class that connects to a udp server, and handle asynchronous operations (read,...</div><div class="ttdef"><b>Definition:</b> UDPClient.hpp:27</div></div>
-<div class="ttc" id="aclassrtc_1_1GameManager_html"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html">rtc::GameManager</a></div><div class="ttdef"><b>Definition:</b> GameManager.hpp:25</div></div>
-<div class="ttc" id="aclassrtc_1_1GameManager_html_a11da8f3f913a8b2d9f7c46cb26843f26"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">rtc::GameManager::GameManager</a></div><div class="ttdeci">GameManager(const std::string &amp;ip, int port, const std::string &amp;playerName)</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:49</div></div>
-<div class="ttc" id="aclassrtc_1_1GameManager_html_a7f23f452be61dff2e50cefa7004afa32"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">rtc::GameManager::~GameManager</a></div><div class="ttdeci">~GameManager()</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:55</div></div>
-<div class="ttc" id="aclassrtc_1_1GameManager_html_ab5a031da91210ef12df7d574d092ff37"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">rtc::GameManager::runGame</a></div><div class="ttdeci">void runGame()</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:60</div></div>
+<div class="ttc" id="aclassrtc_1_1GameManager_html"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html">rtc::GameManager</a></div><div class="ttdef"><b>Definition:</b> GameManager.hpp:26</div></div>
+<div class="ttc" id="aclassrtc_1_1GameManager_html_a11da8f3f913a8b2d9f7c46cb26843f26"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#a11da8f3f913a8b2d9f7c46cb26843f26">rtc::GameManager::GameManager</a></div><div class="ttdeci">GameManager(const std::string &amp;ip, int port, const std::string &amp;playerName)</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:51</div></div>
+<div class="ttc" id="aclassrtc_1_1GameManager_html_a7f23f452be61dff2e50cefa7004afa32"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#a7f23f452be61dff2e50cefa7004afa32">rtc::GameManager::~GameManager</a></div><div class="ttdeci">~GameManager()</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:57</div></div>
+<div class="ttc" id="aclassrtc_1_1GameManager_html_ab5a031da91210ef12df7d574d092ff37"><div class="ttname"><a href="../../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37">rtc::GameManager::runGame</a></div><div class="ttdeci">void runGame()</div><div class="ttdef"><b>Definition:</b> GameManager.hpp:62</div></div>
 <div class="ttc" id="aclassrtc_1_1RoomManager_html"><div class="ttname"><a href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a></div><div class="ttdef"><b>Definition:</b> RoomManager.hpp:17</div></div>
 <div class="ttc" id="anamespaceecs_html"><div class="ttname"><a href="../../da/dc8/namespaceecs.html">ecs</a></div><div class="ttdoc">Manages waves of entities in the ECS (Entity Component System).</div><div class="ttdef"><b>Definition:</b> position.hpp:10</div></div>
 <div class="ttc" id="anamespacertc_html"><div class="ttname"><a href="../../d9/d77/namespacertc.html">rtc</a></div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:12</div></div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gamemanager_0',['GameManager',['../de/dfd/classrtc_1_1GameManager.html',1,'rtc']]],
-  ['gamerunner_1',['GameRunner',['../d7/d18/classrts_1_1GameRunner.html',1,'rts']]]
+  ['entityfactory_0',['EntityFactory',['../df/d28/classecs_1_1EntityFactory.html',1,'ecs']]],
+  ['entitymanager_1',['EntityManager',['../df/d29/classecs_1_1EntityManager.html',1,'ecs']]]
 ];

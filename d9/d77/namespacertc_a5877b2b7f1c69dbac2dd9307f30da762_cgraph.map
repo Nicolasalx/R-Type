@@ -1,22 +1,26 @@
 <map id="rtc::registerSystems" name="rtc::registerSystems">
-<area shape="rect" id="node1" title=" " alt="" coords="5,341,159,367"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,448,159,473"/>
 <area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2" title="Adds a system to the registry." alt="" coords="224,5,411,31"/>
 <area shape="rect" id="node3" href="$d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="234,55,401,95"/>
-<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="233,292,402,317"/>
+<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="233,391,402,416"/>
 <area shape="rect" id="node6" href="$db/d9a/namespaceecs_1_1systems.html#a282c1c508bd0632676bf16e1f82d1118" title="Handles entity control movement." alt="" coords="219,169,415,195"/>
 <area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a3b5f6cd1549435fb54174bf11485ebed" title="Handles entity control and input processing." alt="" coords="214,120,421,145"/>
 <area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="244,243,391,268"/>
-<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="219,555,415,580"/>
-<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="218,505,417,531"/>
-<area shape="rect" id="node14" href="$d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="234,441,401,481"/>
-<area shape="rect" id="node15" href="$db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="233,341,401,367"/>
-<area shape="rect" id="node16" href="$db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="234,391,401,416"/>
-<area shape="rect" id="node17" href="$db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c" title="Updates the position of all entities based on their velocity." alt="" coords="207,604,428,629"/>
-<area shape="rect" id="node19" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="217,653,418,679"/>
-<area shape="rect" id="node5" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="476,367,692,392"/>
+<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44" title=" " alt="" coords="223,441,411,481"/>
+<area shape="rect" id="node12" href="$db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5" title=" " alt="" coords="223,505,411,545"/>
+<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#a1d91d2c679533842b24d697c370a62f9" title=" " alt="" coords="226,569,409,595"/>
+<area shape="rect" id="node14" href="$db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4" title=" " alt="" coords="211,619,424,644"/>
+<area shape="rect" id="node15" href="$db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="219,717,415,743"/>
+<area shape="rect" id="node17" href="$db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="218,668,417,693"/>
+<area shape="rect" id="node18" href="$d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="234,866,401,906"/>
+<area shape="rect" id="node19" href="$db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="233,292,401,317"/>
+<area shape="rect" id="node20" href="$db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="234,341,401,367"/>
+<area shape="rect" id="node21" href="$db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c" title="Updates the position of all entities based on their velocity." alt="" coords="207,767,428,792"/>
+<area shape="rect" id="node23" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="217,816,418,841"/>
+<area shape="rect" id="node5" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="476,480,692,505"/>
 <area shape="rect" id="node7" href="$d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="509,138,659,178"/>
 <area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="479,243,689,268"/>
-<area shape="rect" id="node12" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="499,528,669,553"/>
-<area shape="rect" id="node18" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="505,600,663,625"/>
-<area shape="rect" id="node20" href="$d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="511,650,657,690"/>
+<area shape="rect" id="node16" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="499,691,669,716"/>
+<area shape="rect" id="node22" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="505,763,663,788"/>
+<area shape="rect" id="node24" href="$d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="511,813,657,853"/>
 </map>

@@ -99,6 +99,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a27b0a8a4531bb33a7af2d783560c1aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef">draw</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, sf::RenderWindow &amp;window)</td></tr>
 <tr class="memdesc:a27b0a8a4531bb33a7af2d783560c1aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders all drawable entities to the provided window.  <br /></td></tr>
 <tr class="separator:a27b0a8a4531bb33a7af2d783560c1aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5b9bb84ebf60ba51f7ec0e139297a44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44">drawPlayerBeamBar</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, const sf::Vector2u &amp;windowSize)</td></tr>
+<tr class="separator:ae5b9bb84ebf60ba51f7ec0e139297a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c4edd0c2aae53a7eb3235d952187af5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5">drawPlayerHealthBar</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, const sf::Vector2u &amp;windowSize)</td></tr>
+<tr class="separator:a5c4edd0c2aae53a7eb3235d952187af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d91d2c679533842b24d697c370a62f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a1d91d2c679533842b24d697c370a62f9">drawScore</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, sf::RenderWindow &amp;window, const sf::Vector2u &amp;windowSize)</td></tr>
+<tr class="separator:a1d91d2c679533842b24d697c370a62f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f020e44b56be4d7393d7ae0233b94d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4">drawTeamData</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, const sf::Vector2u &amp;windowSize)</td></tr>
+<tr class="separator:a3f020e44b56be4d7393d7ae0233b94d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad025bf9154726fe33b7fc7d1952eb634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634">healthCheck</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg)</td></tr>
 <tr class="separator:ad025bf9154726fe33b7fc7d1952eb634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfd36d86458348922ccf72f0170eee66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66">healthMobCheck</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">WaveManager</a> &amp;waveManager)</td></tr>
@@ -428,6 +436,196 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a6eed7d6aae9124b8a7f0cd56e558cd65" title=" " alt="" coords="279,5,432,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="279,55,432,80"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177" title=" " alt="" coords="5,5,231,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae5b9bb84ebf60ba51f7ec0e139297a44" name="ae5b9bb84ebf60ba51f7ec0e139297a44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b9bb84ebf60ba51f7ec0e139297a44">&#9670;&#160;</a></span>drawPlayerBeamBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::drawPlayerBeamBar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const sf::Vector2u &amp;&#160;</td>
+          <td class="paramname"><em>windowSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_cgraph" id="adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,193,45"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,13,457,38"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_icgraph" id="adb/d9a/namespaceecs_1_1systems_ae5b9bb84ebf60ba51f7ec0e139297a44_icgraph">
+<area shape="rect" title=" " alt="" coords="207,5,395,45"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,13,159,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5c4edd0c2aae53a7eb3235d952187af5" name="a5c4edd0c2aae53a7eb3235d952187af5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c4edd0c2aae53a7eb3235d952187af5">&#9670;&#160;</a></span>drawPlayerHealthBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::drawPlayerHealthBar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const sf::Vector2u &amp;&#160;</td>
+          <td class="paramname"><em>windowSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_cgraph" id="adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,193,45"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,13,457,38"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_icgraph" id="adb/d9a/namespaceecs_1_1systems_a5c4edd0c2aae53a7eb3235d952187af5_icgraph">
+<area shape="rect" title=" " alt="" coords="207,5,395,45"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,13,159,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1d91d2c679533842b24d697c370a62f9" name="a1d91d2c679533842b24d697c370a62f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d91d2c679533842b24d697c370a62f9">&#9670;&#160;</a></span>drawScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::drawScore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const sf::Vector2u &amp;&#160;</td>
+          <td class="paramname"><em>windowSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_cgraph" id="adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,188,31"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="236,5,452,31"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_icgraph" id="adb/d9a/namespaceecs_1_1systems_a1d91d2c679533842b24d697c370a62f9_icgraph">
+<area shape="rect" title=" " alt="" coords="207,5,389,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f020e44b56be4d7393d7ae0233b94d4" name="a3f020e44b56be4d7393d7ae0233b94d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f020e44b56be4d7393d7ae0233b94d4">&#9670;&#160;</a></span>drawTeamData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::drawTeamData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const sf::Vector2u &amp;&#160;</td>
+          <td class="paramname"><em>windowSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_cgraph" id="adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,219,31"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="267,5,483,31"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_icgraph" id="adb/d9a/namespaceecs_1_1systems_a3f020e44b56be4d7393d7ae0233b94d4_icgraph">
+<area shape="rect" title=" " alt="" coords="207,5,420,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
 </map>
 </div>
 
