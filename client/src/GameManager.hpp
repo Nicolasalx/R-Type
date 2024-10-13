@@ -35,6 +35,7 @@ class GameManager {
     rtc::RoomManager _roomManager;
     rt::TCPResponseHandler _tcpResponseHandler;
     rt::UDPResponseHandler _udpResponseHandler;
+    std::promise<bool> _allUDPClientReady{};
 
     std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;

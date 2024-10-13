@@ -22,22 +22,6 @@
 #include "components/share_movement.hpp"
 #include <imgui-SFML.h>
 
-static void handleStaticCreation(
-    ecs::SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient,
-    std::list<std::function<void(ecs::Registry &)>> &_networkCallbacks,
-    const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet
-)
-{
-    auto &[pos, _] = packet.body.moveData;
-
-    _networkCallbacks.push_back([pos, &spriteManager, &udpClient](ecs::Registry &reg) {
-        ecs::ClientEntityFactory::createClientEntityFromJSON(
-            reg, spriteManager, udpClient, "assets/static.json", pos.x, pos.y
-        );
-    });
-}
-
 static void handlePlayerCreation(
     std::size_t userId,
     ecs::SpriteManager &spriteManager,
@@ -100,7 +84,9 @@ void rtc::GameManager::_registerUdpResponse(
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
         rt::UDPCommand::NEW_ENTITY_STATIC,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
-            handleStaticCreation(spriteManager, udpClient, this->_networkCallbacks, packet);
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_STATIC>(
+                "assets/static.json", spriteManager, udpClient, this->_networkCallbacks, packet
+            );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
