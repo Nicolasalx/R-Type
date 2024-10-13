@@ -1,5 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files." alt="" coords="5,31,143,56"/>
-<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html" title=" " alt="" coords="193,5,367,31"/>
-<area shape="rect" id="node3" href="$de/de3/classecs_1_1ServerEntityFactory.html" title="A factory class for creating and managing server&#45;side entities." alt="" coords="191,55,369,80"/>
+<area shape="rect" id="node1" href="$d1/d4c/structecs_1_1component_1_1Velocity.html" title="Represents a velocity component for an entity." alt="" coords="5,5,191,31"/>
 </map>
