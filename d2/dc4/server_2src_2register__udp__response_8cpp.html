@@ -85,6 +85,7 @@ $(function() {
 <code>#include &quot;RTypeUDPProtol.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dd1/Registry_8hpp_source.html">Registry.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d7b/ServerEntityFactory_8hpp_source.html">ServerEntityFactory.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d85/player_8hpp_source.html">components/player.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d55/ecs_2components_2position_8hpp_source.html">components/position.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dc/d8a/velocity_8hpp_source.html">components/velocity.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -92,56 +93,56 @@ Include dependency graph for register_udp_response.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d86/server_2src_2register__udp__response_8cpp__incl.png" border="0" usemap="#aserver_2src_2register__udp__response_8cpp" alt=""/></div>
 <map name="aserver_2src_2register__udp__response_8cpp" id="aserver_2src_2register__udp__response_8cpp">
-<area shape="rect" title=" " alt="" coords="661,5,808,45"/>
-<area shape="rect" title=" " alt="" coords="814,460,885,485"/>
-<area shape="rect" title=" " alt="" coords="973,93,1059,119"/>
-<area shape="rect" title=" " alt="" coords="43,240,101,265"/>
-<area shape="rect" title=" " alt="" coords="887,313,945,339"/>
-<area shape="rect" title=" " alt="" coords="1021,240,1081,265"/>
-<area shape="rect" href="../../db/d94/RTypeServer_8hpp.html" title=" " alt="" coords="819,93,949,119"/>
-<area shape="rect" href="../../db/dd1/Registry_8hpp.html" title=" " alt="" coords="489,240,591,265"/>
-<area shape="rect" title=" " alt="" coords="1084,93,1239,119"/>
-<area shape="rect" href="../../d3/d7b/ServerEntityFactory_8hpp.html" title=" " alt="" coords="202,93,377,119"/>
-<area shape="rect" href="../../d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="1263,93,1449,119"/>
-<area shape="rect" href="../../dc/d8a/velocity_8hpp.html" title=" " alt="" coords="1473,93,1657,119"/>
-<area shape="rect" title=" " alt="" coords="1707,167,1954,192"/>
-<area shape="rect" title=" " alt="" coords="772,167,815,192"/>
-<area shape="rect" title=" " alt="" coords="951,387,1014,412"/>
-<area shape="rect" href="../../d3/da3/server_2src_2RoomManager_8hpp.html" title=" " alt="" coords="1316,167,1460,192"/>
-<area shape="rect" href="../../dd/d9b/ServerTickRate_8hpp.html" title=" " alt="" coords="1484,167,1633,192"/>
-<area shape="rect" title=" " alt="" coords="839,167,1025,192"/>
-<area shape="rect" href="../../da/dcb/TickRateManager_8hpp.html" title=" " alt="" coords="1979,167,2141,192"/>
-<area shape="rect" title=" " alt="" coords="1050,167,1241,192"/>
-<area shape="rect" href="../../de/d0e/WaveManager_8hpp.html" title=" " alt="" coords="554,167,697,192"/>
-<area shape="rect" href="../../d6/de9/UDPServer_8hpp.html" title=" " alt="" coords="1777,240,1924,265"/>
-<area shape="rect" href="../../d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="451,313,578,339"/>
-<area shape="rect" title=" " alt="" coords="669,387,755,412"/>
-<area shape="rect" href="../../db/de2/entity_8hpp.html" title=" " alt="" coords="43,313,130,339"/>
-<area shape="rect" href="../../db/d29/components_2shared__entity_8hpp.html" title=" " alt="" coords="155,313,376,339"/>
-<area shape="rect" href="../../df/dc5/shared__entity_8hpp.html" title=" " alt="" coords="196,387,345,412"/>
-<area shape="rect" title=" " alt="" coords="654,313,701,339"/>
-<area shape="rect" title=" " alt="" coords="1149,313,1235,339"/>
-<area shape="rect" title=" " alt="" coords="725,313,811,339"/>
-<area shape="rect" title=" " alt="" coords="1362,313,1486,339"/>
-<area shape="rect" title=" " alt="" coords="369,387,455,412"/>
-<area shape="rect" title=" " alt="" coords="479,387,545,412"/>
-<area shape="rect" title=" " alt="" coords="569,387,644,412"/>
-<area shape="rect" title=" " alt="" coords="55,387,118,412"/>
-<area shape="rect" title=" " alt="" coords="1804,313,1860,339"/>
-<area shape="rect" title=" " alt="" coords="1207,240,1257,265"/>
-<area shape="rect" href="../../d0/d59/TCPServer_8hpp.html" title=" " alt="" coords="1332,240,1471,265"/>
-<area shape="rect" href="../../d3/deb/AsioServer_8hpp.html" title=" " alt="" coords="1511,313,1641,339"/>
-<area shape="rect" href="../../df/d93/BuffSize_8hpp.html" title=" " alt="" coords="1665,313,1780,339"/>
-<area shape="rect" title=" " alt="" coords="1969,240,2151,265"/>
-<area shape="rect" title=" " alt="" coords="2390,313,2511,339"/>
-<area shape="rect" title=" " alt="" coords="2536,313,2603,339"/>
-<area shape="rect" title=" " alt="" coords="2627,313,2691,339"/>
-<area shape="rect" title=" " alt="" coords="1885,313,2035,339"/>
-<area shape="rect" title=" " alt="" coords="2060,313,2231,339"/>
-<area shape="rect" title=" " alt="" coords="2255,313,2366,339"/>
-<area shape="rect" href="../../db/deb/EntityFactory_8hpp.html" title=" " alt="" coords="193,167,327,192"/>
-<area shape="rect" title=" " alt="" coords="176,240,243,265"/>
-<area shape="rect" title=" " alt="" coords="267,240,413,265"/>
+<area shape="rect" title=" " alt="" coords="2296,5,2443,45"/>
+<area shape="rect" title=" " alt="" coords="1571,607,1642,632"/>
+<area shape="rect" title=" " alt="" coords="397,93,483,119"/>
+<area shape="rect" title=" " alt="" coords="2417,387,2476,412"/>
+<area shape="rect" title=" " alt="" coords="2645,460,2704,485"/>
+<area shape="rect" title=" " alt="" coords="1197,240,1257,265"/>
+<area shape="rect" href="../../db/d94/RTypeServer_8hpp.html" title=" " alt="" coords="1337,93,1466,119"/>
+<area shape="rect" href="../../db/dd1/Registry_8hpp.html" title=" " alt="" coords="2087,387,2190,412"/>
+<area shape="rect" title=" " alt="" coords="2432,93,2587,119"/>
+<area shape="rect" href="../../d3/d7b/ServerEntityFactory_8hpp.html" title=" " alt="" coords="2215,240,2390,265"/>
+<area shape="rect" href="../../d9/d85/player_8hpp.html" title=" " alt="" coords="2462,167,2637,192"/>
+<area shape="rect" href="../../d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="2712,93,2899,119"/>
+<area shape="rect" href="../../dc/d8a/velocity_8hpp.html" title=" " alt="" coords="2923,93,3107,119"/>
+<area shape="rect" title=" " alt="" coords="2010,167,2257,192"/>
+<area shape="rect" title=" " alt="" coords="1279,313,1321,339"/>
+<area shape="rect" title=" " alt="" coords="1575,533,1638,559"/>
+<area shape="rect" href="../../d3/da3/server_2src_2RoomManager_8hpp.html" title=" " alt="" coords="1465,167,1609,192"/>
+<area shape="rect" href="../../dd/d9b/ServerTickRate_8hpp.html" title=" " alt="" coords="652,313,801,339"/>
+<area shape="rect" href="../../da/dcb/TickRateManager_8hpp.html" title=" " alt="" coords="825,313,988,339"/>
+<area shape="rect" title=" " alt="" coords="1063,313,1254,339"/>
+<area shape="rect" href="../../de/d0e/WaveManager_8hpp.html" title=" " alt="" coords="1751,313,1894,339"/>
+<area shape="rect" href="../../d6/de9/UDPServer_8hpp.html" title=" " alt="" coords="936,387,1083,412"/>
+<area shape="rect" title=" " alt="" coords="1799,167,1985,192"/>
+<area shape="rect" href="../../d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="2098,460,2225,485"/>
+<area shape="rect" title=" " alt="" coords="2270,533,2357,559"/>
+<area shape="rect" href="../../db/de2/entity_8hpp.html" title=" " alt="" coords="2534,460,2621,485"/>
+<area shape="rect" href="../../db/d29/components_2shared__entity_8hpp.html" title=" " alt="" coords="1801,460,2023,485"/>
+<area shape="rect" href="../../df/dc5/shared__entity_8hpp.html" title=" " alt="" coords="1797,533,1947,559"/>
+<area shape="rect" title=" " alt="" coords="2301,460,2347,485"/>
+<area shape="rect" title=" " alt="" coords="1589,460,1675,485"/>
+<area shape="rect" title=" " alt="" coords="2371,460,2458,485"/>
+<area shape="rect" title=" " alt="" coords="94,460,218,485"/>
+<area shape="rect" title=" " alt="" coords="2160,533,2245,559"/>
+<area shape="rect" title=" " alt="" coords="1971,533,2037,559"/>
+<area shape="rect" title=" " alt="" coords="2061,533,2136,559"/>
+<area shape="rect" title=" " alt="" coords="2585,533,2647,559"/>
+<area shape="rect" title=" " alt="" coords="1073,460,1129,485"/>
+<area shape="rect" title=" " alt="" coords="1543,240,1593,265"/>
+<area shape="rect" href="../../d7/d74/GameRunner_8hpp.html" title=" " alt="" coords="1333,240,1467,265"/>
+<area shape="rect" href="../../d0/d59/TCPServer_8hpp.html" title=" " alt="" coords="1304,387,1443,412"/>
+<area shape="rect" title=" " alt="" coords="729,387,911,412"/>
+<area shape="rect" href="../../df/d93/BuffSize_8hpp.html" title=" " alt="" coords="1153,460,1268,485"/>
+<area shape="rect" href="../../d3/deb/AsioServer_8hpp.html" title=" " alt="" coords="1293,460,1411,485"/>
+<area shape="rect" title=" " alt="" coords="242,460,363,485"/>
+<area shape="rect" title=" " alt="" coords="388,460,455,485"/>
+<area shape="rect" title=" " alt="" coords="479,460,543,485"/>
+<area shape="rect" title=" " alt="" coords="567,460,718,485"/>
+<area shape="rect" title=" " alt="" coords="743,460,913,485"/>
+<area shape="rect" title=" " alt="" coords="938,460,1049,485"/>
+<area shape="rect" href="../../db/deb/EntityFactory_8hpp.html" title=" " alt="" coords="2257,313,2391,339"/>
 </map>
 </div>
 </div></div><!-- contents -->

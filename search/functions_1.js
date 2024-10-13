@@ -9,13 +9,14 @@ var searchData=
   ['addsystem_6',['addSystem',['../df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2',1,'ecs::Registry']]],
   ['addtickrate_7',['addTickRate',['../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32',1,'ntw::TickRateManager']]],
   ['adduser_8',['addUser',['../d7/d65/classntw_1_1TCPServer.html#a9ad8e055ca6ebc9cc925a11a4a9b7889',1,'ntw::TCPServer']]],
-  ['aiact_9',['aiAct',['../db/d9a/namespaceecs_1_1systems.html#a1264603701180e9a20a9588f3f086455',1,'ecs::systems']]],
-  ['asioclient_10',['AsioClient',['../de/d37/classntw_1_1AsioClient.html#a6758b9634c094acc25dc5c6cca805bb4',1,'ntw::AsioClient']]],
-  ['asioserver_11',['AsioServer',['../d5/d0a/classntw_1_1AsioServer.html#aa0c7fcf715d0c17e0c50ec8f4ef4bd16',1,'ntw::AsioServer']]],
-  ['asktobenotready_12',['askToBeNotReady',['../d0/d42/classrtc_1_1RoomManager.html#a60c1d666d6301beafbf4ada9b19df6c3',1,'rtc::RoomManager']]],
-  ['asktobeready_13',['askToBeReady',['../d0/d42/classrtc_1_1RoomManager.html#a6597619dd30a0b9dd3a8ff985791db7a',1,'rtc::RoomManager']]],
-  ['asktocreateroom_14',['askToCreateRoom',['../d0/d42/classrtc_1_1RoomManager.html#aea5fbb2b22ce8dbee9d5d3b06a30c1a9',1,'rtc::RoomManager']]],
-  ['asktodeleteroom_15',['askToDeleteRoom',['../d0/d42/classrtc_1_1RoomManager.html#ae4843f167621eb29db2322c8e1fdcb5f',1,'rtc::RoomManager']]],
-  ['asktojoinroom_16',['askToJoinRoom',['../d0/d42/classrtc_1_1RoomManager.html#a149eadc0e5d9cd933a95ec7dc8beae27',1,'rtc::RoomManager']]],
-  ['asktoleaveroom_17',['askToLeaveRoom',['../d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42',1,'rtc::RoomManager']]]
+  ['addwindow_9',['addWindow',['../d7/d18/classrts_1_1GameRunner.html#a5b954122794854c80ae7b1f4fb106db8',1,'rts::GameRunner']]],
+  ['aiact_10',['aiAct',['../db/d9a/namespaceecs_1_1systems.html#a1264603701180e9a20a9588f3f086455',1,'ecs::systems']]],
+  ['asioclient_11',['AsioClient',['../de/d37/classntw_1_1AsioClient.html#a6758b9634c094acc25dc5c6cca805bb4',1,'ntw::AsioClient']]],
+  ['asioserver_12',['AsioServer',['../d5/d0a/classntw_1_1AsioServer.html#aa0c7fcf715d0c17e0c50ec8f4ef4bd16',1,'ntw::AsioServer']]],
+  ['asktobenotready_13',['askToBeNotReady',['../d0/d42/classrtc_1_1RoomManager.html#a60c1d666d6301beafbf4ada9b19df6c3',1,'rtc::RoomManager']]],
+  ['asktobeready_14',['askToBeReady',['../d0/d42/classrtc_1_1RoomManager.html#a6597619dd30a0b9dd3a8ff985791db7a',1,'rtc::RoomManager']]],
+  ['asktocreateroom_15',['askToCreateRoom',['../d0/d42/classrtc_1_1RoomManager.html#aea5fbb2b22ce8dbee9d5d3b06a30c1a9',1,'rtc::RoomManager']]],
+  ['asktodeleteroom_16',['askToDeleteRoom',['../d0/d42/classrtc_1_1RoomManager.html#ae4843f167621eb29db2322c8e1fdcb5f',1,'rtc::RoomManager']]],
+  ['asktojoinroom_17',['askToJoinRoom',['../d0/d42/classrtc_1_1RoomManager.html#a149eadc0e5d9cd933a95ec7dc8beae27',1,'rtc::RoomManager']]],
+  ['asktoleaveroom_18',['askToLeaveRoom',['../d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42',1,'rtc::RoomManager']]]
 ];

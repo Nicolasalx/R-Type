@@ -86,6 +86,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a716c462017e7540f5849838e6b5c4177"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177">GameRunner</a> (int port, std::size_t stage)</td></tr>
 <tr class="separator:a716c462017e7540f5849838e6b5c4177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad807bdebe5c44941dd54cb0169c05106"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106">killPlayer</a> (size_t playerId)</td></tr>
+<tr class="separator:ad807bdebe5c44941dd54cb0169c05106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b954122794854c80ae7b1f4fb106db8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#a5b954122794854c80ae7b1f4fb106db8">addWindow</a> (sf::VideoMode &amp;&amp;videomode, const std::string &amp;title)</td></tr>
+<tr class="separator:a5b954122794854c80ae7b1f4fb106db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a26110b801f9f72868ed6b1c3450ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#ae5a26110b801f9f72868ed6b1c3450ee">runGame</a> (bool &amp;stopGame)</td></tr>
 <tr class="separator:ae5a26110b801f9f72868ed6b1c3450ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -165,6 +169,62 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5b954122794854c80ae7b1f4fb106db8" name="a5b954122794854c80ae7b1f4fb106db8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b954122794854c80ae7b1f4fb106db8">&#9670;&#160;</a></span>addWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rts::GameRunner::addWindow </td>
+          <td>(</td>
+          <td class="paramtype">sf::VideoMode &amp;&amp;&#160;</td>
+          <td class="paramname"><em>videomode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>title</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad807bdebe5c44941dd54cb0169c05106" name="ad807bdebe5c44941dd54cb0169c05106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad807bdebe5c44941dd54cb0169c05106">&#9670;&#160;</a></span>killPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rts::GameRunner::killPlayer </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>playerId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_ad807bdebe5c44941dd54cb0169c05106_cgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_ad807bdebe5c44941dd54cb0169c05106_cgraph" alt=""/></div>
+<map name="ad7/d18/classrts_1_1GameRunner_ad807bdebe5c44941dd54cb0169c05106_cgraph" id="ad7/d18/classrts_1_1GameRunner_ad807bdebe5c44941dd54cb0169c05106_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,207,56"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="255,5,471,31"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="277,55,448,80"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ae5a26110b801f9f72868ed6b1c3450ee" name="ae5a26110b801f9f72868ed6b1c3450ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5a26110b801f9f72868ed6b1c3450ee">&#9670;&#160;</a></span>runGame()</h2>
 
@@ -180,17 +240,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_icgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_icgraph" alt=""/></div>
-<map name="ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_icgraph" id="ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_icgraph">
-<area shape="rect" title=" " alt="" coords="576,13,776,38"/>
-<area shape="rect" href="../../d1/d36/classrts_1_1RoomManager.html#a92af520ae561a311d80a1f9167fef2a9" title=" " alt="" coords="337,5,528,45"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#ace888220f569c127503b3767aa092a98" title=" " alt="" coords="108,13,289,38"/>
-<area shape="rect" href="../../da/d6a/server_2src_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,38"/>
-</map>
-</div>
 
 </div>
 </div>

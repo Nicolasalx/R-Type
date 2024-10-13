@@ -2,7 +2,7 @@ var searchData=
 [
   ['iclient_0',['IClient',['../de/dcb/classntw_1_1IClient.html#a630a25faeb77f324c9f1852a14ffd120',1,'ntw::IClient::IClient()'],['../de/dcb/classntw_1_1IClient.html',1,'ntw::IClient']]],
   ['iclient_2ehpp_1',['IClient.hpp',['../d3/d69/IClient_8hpp.html',1,'']]],
-  ['id_2',['id',['../d6/d60/classntw_1_1Session.html#ad655a25ebda672b0619187c73b69fae4',1,'ntw::Session']]],
+  ['id_2',['id',['../d6/d60/classntw_1_1Session.html#ad655a25ebda672b0619187c73b69fae4',1,'ntw::Session::id()'],['../dd/d3f/structecs_1_1component_1_1Player.html#ac935629e369ed1d2f62ae9ca75a7eb40',1,'ecs::component::Player::id()']]],
   ['index_3',['index',['../da/d2a/classecs_1_1ZipperIterator.html#a847ade442ec655dfff0c41b51e5fdae6',1,'ecs::ZipperIterator']]],
   ['indexedzipper_4',['IndexedZipper',['../d1/de8/classecs_1_1IndexedZipper.html',1,'ecs::IndexedZipper&lt; Components &gt;'],['../d1/de8/classecs_1_1IndexedZipper.html#a75d42fd55484c14ecf33a0d275d4202c',1,'ecs::IndexedZipper::IndexedZipper()']]],
   ['indexedzipper_2ehpp_5',['IndexedZipper.hpp',['../d4/d3c/IndexedZipper_8hpp.html',1,'']]],
