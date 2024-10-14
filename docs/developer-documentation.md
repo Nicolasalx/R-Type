@@ -38,6 +38,7 @@ graph TD
 
 - **Subsystem Diagrams**:
 ```mermaid
+graph TD
  %% Component Registration (Shared)
   ClientComponents[Client Components] --> Position
   ClientComponents --> Velocity
