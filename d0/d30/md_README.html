@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-TYPE: R-Type</title>
+<title>R-TYPE: R-Type Multiplayer Game Engine (ECS-based)</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -69,10 +69,84 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">R-Type </div></div>
+  <div class="headertitle"><div class="title">R-Type Multiplayer Game Engine (ECS-based) </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p><a href="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml/badge.svg" alt="Linux/Windows" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/></a> <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" style="pointer-events: none;" class="inline"/></a></p>
+<p><img src="../../docs/main.png" alt="" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Table of Contents</h1>
+<ul>
+<li>Project Purpose</li>
+<li>Requirements / Supported Platforms<ul>
+<li>Requirements</li>
+<li>Supported Platforms</li>
+</ul>
+</li>
+<li>Usage Instructions<ul>
+<li>Download the Latest Release</li>
+<li>Unzip the Downloaded File</li>
+<li>Run the Binaries</li>
+</ul>
+</li>
+<li>License</li>
+<li>Authors / Contacts</li>
+<li>Useful Links / Quick-Start Information</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Project Purpose</h1>
+<p>This project is a game engine built using an Entity-Component-System (ECS) architecture, offering scalability and flexibility for managing game objects and systems. Included around this engine is an existing implementation of the classic R-Type arcade game with a focus on multiplayer gameplay.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Requirements / Supported Platforms</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Requirements:</h2>
+<p>There are no dependencies required for users as all necessary components are included in the release.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Supported Platforms:</h2>
+<ul>
+<li>Linux</li>
+<li>Windows</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Usage Instructions</h1>
+<p>To use the game engine and play the R-Type implementation, follow these steps:</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Download the Latest Release:</h2>
+<p>Visit the <a href="https://github.com/ManuelR-T/R-Type/releases">Releases page</a> of this repository. Download the appropriate zip file for your operating system (e.g., R-Type_Client_Windows.zip or R-Type_Server_Linux.zip).</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Unzip the Downloaded File:</h2>
+<ul>
+<li>Windows: Right-click the downloaded .zip file and select "Extract All..."</li>
+<li>Linux: <div class="fragment"><div class="line">unzip R-Type_Server_Linux.zip -d R-Type_Server</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Run the Binaries:</h2>
+<ul>
+<li>Client: <div class="fragment"><div class="line">./r-type_client -i &lt;server_ip&gt; -p &lt;server_port&gt; -pn &lt;player_name&gt;</div>
+</div><!-- fragment --><ul>
+<li>Example: ```bash ./r-type_client -i 127.0.0.1 -p 8080 -pn Player1 ```</li>
+<li>All arguments accepted: ``` Available arguments: -i, &ndash;ip (string) [required] : Server IP address -p, &ndash;port (int) [required] : Server port -pn, &ndash;player_name (string) [required] : Player name -h, &ndash;help (bool) [optional] : Print this help message ```</li>
+</ul>
+</li>
+<li>Server: <div class="fragment"><div class="line">./build/r-type_server</div>
+</div><!-- fragment --></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
+License</h1>
+<p>This project is licensed under the MIT License. </p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Authors / Contacts</h1>
+<ul>
+<li><a href="https://github.com/thibaudcathala">Thibaud Cathala</a></li>
+<li><a href="https://github.com/ManuelR-T">Manuel Tomé</a></li>
+<li><a href="https://github.com/RahulCHANDER25">Rahul Chander</a></li>
+<li><a href="https://github.com/Nicolasalx">Nicolas Alexandre</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Useful Links / Quick-Start Information</h1>
+<p>Entity-Component-System (ECS) explanation: <a href="https://en.wikipedia.org/wiki/Entity_component_system">https://en.wikipedia.org/wiki/Entity_component_system</a> </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
