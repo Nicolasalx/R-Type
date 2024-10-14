@@ -72,66 +72,104 @@ $(function() {
   <div class="headertitle"><div class="title">Developer Documentation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md14"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
 Introduction</h1>
 <p>This document provides an overview of the project to help new developers get acquainted with its structure and functionality. The focus is on practical information to understand the project broadly, rather than delving into the minutiae of the code. This documentation aims to provide a clear understanding of the project's architecture, main systems, and development guidelines.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Architectural Overview</h1>
+<p>This project is built around an Entity-Component-System (ECS) architecture, which separates concerns into entities (game objects), components (data associated with entities), and systems (logic that processes entities with specific components). This provides flexibility and scalability, particularly important for managing the complexity of multiplayer game logic.</p>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Architectural Diagrams</h1>
 <ul>
-<li><b>Overview Diagram</b>:<ul>
-<li></li>
+<li><b>Overview Diagram</b>: <div class="fragment"><div class="line">graph TD</div>
+<div class="line">  A[Client Subsystem] --&gt; |Uses| FACTORY</div>
+<div class="line">  A --&gt; |Uses| NETWORK</div>
+<div class="line">  A --&gt; |Uses| UTILS</div>
+<div class="line">  A --&gt; |Uses| ImGui-SFML</div>
+<div class="line">  B[Server Subsystem] --&gt; |Uses| FACTORY</div>
+<div class="line">  B --&gt; |Uses| NETWORK</div>
+<div class="line">  B --&gt; |Uses| UTILS</div>
+<div class="line"> </div>
+<div class="line">  FACTORY --&gt; |Depends on| ECS</div>
+<div class="line">  FACTORY --&gt; |Depends on| NETWORK</div>
+<div class="line">  FACTORY --&gt; |Uses| SFML</div>
+<div class="line">  NETWORK --&gt; |Uses| Asio</div>
+<div class="line">  UTILS --&gt; |Provides| Logger</div>
+<div class="line">  UTILS --&gt; |Provides| ArgParser</div>
+<div class="line">  UTILS --&gt; |Provides| TrackedException</div>
+<div class="line"> </div>
+<div class="line">  Assets[Shared Assets] --&gt; |Shared by| A</div>
+<div class="line">  Assets --&gt; |Shared by| B</div>
+<div class="line">  Include[Shared Include Directory] --&gt; |Shared by| A</div>
+<div class="line">  Include --&gt; |Shared by| B</div>
+</div><!-- fragment --></li>
+<li><b>Subsystem Diagrams</b>:</li>
 </ul>
-</li>
-<li><b>Subsystem Diagrams</b>:<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md16"></a>
-Main Systems Overview</h1>
-<ul>
-<li><b>System 1</b>:<ul>
-<li><b>Description</b>:<ul>
-<li></li>
-</ul>
-</li>
-<li><b>Code Mapping</b>:<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
-Tutorials and How-To’s</h1>
-<ul>
-<li><b>Getting Started</b>:<ul>
-<li></li>
-</ul>
-</li>
-<li><b>Common Tasks</b>:<ul>
-<li></li>
-</ul>
-</li>
-<li><b>Troubleshooting</b>:<ul>
-<li></li>
-</ul>
-</li>
-</ul>
+<p><img src="../../subSystems.png" alt="subsystems Diamgram" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md18"></a>
-Contribution Guidelines</h1>
+Deep Dive</h1>
+<p>Don't hesitate to check the <a href="https://manuelr-t.github.io/R-Type/">doxygen documentation</a> for more information.</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Tutorials and How-To’s</h1>
+<h2><a class="anchor" id="autotoc_md20"></a>
+Build the engine</h2>
+<h3><a class="anchor" id="autotoc_md21"></a>
+Dependencies:</h3>
+<p>To install the required dependencies on <b>Ubuntu</b> or any Debian-based system, run the following commands:</p>
+<div class="fragment"><div class="line">sudo apt update</div>
+<div class="line">sudo apt-get install -y \</div>
+<div class="line">  flex \</div>
+<div class="line">  bison \</div>
+<div class="line">  javacc \</div>
+<div class="line">  libflac-dev \</div>
+<div class="line">  libx11-dev \</div>
+<div class="line">  libxext-dev \</div>
+<div class="line">  libgl1-mesa-dev \</div>
+<div class="line">  libudev-dev \</div>
+<div class="line">  libopenal-dev \</div>
+<div class="line">  libvorbis-dev \</div>
+<div class="line">  libxcursor-dev \</div>
+<div class="line">  libxrandr-dev \</div>
+<div class="line">  libfreetype6-dev</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
+Requirement</h3>
 <ul>
-<li><b>Code Contributions</b>:<ul>
-<li></li>
+<li>C++20 or higher compiler</li>
+<li>CMake for build configuration (3.1 or higher)</li>
+<li>Network connectivity for multiplayer mode</li>
 </ul>
+<h3><a class="anchor" id="autotoc_md23"></a>
+Build</h3>
+<ul>
+<li>Clone the repo <div class="fragment"><div class="line">git clone git@github.com:ManuelR-T/R-Type.git</div>
+<div class="line">cd R-Type</div>
+</div><!-- fragment --></li>
+<li>Generate build files using CMake: <div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake ..</div>
+</div><!-- fragment --></li>
+<li><p class="startli">Build the project: </p><div class="fragment"><div class="line">make</div>
+</div><!-- fragment --><p> Alternatively, you can build with:</p>
+<div class="fragment"><div class="line">cmake --build .</div>
+</div><!-- fragment --></li>
+</ul>
+<p>And from now on you can follow the <a href="../../../README.md#run-the-binaries">Readme tutorial</a> on how to use the binaries</p>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Mod the engine</h2>
+<ul>
+<li><p class="startli">How to Add a New Entity</p>
+<p class="startli">Define the entity JSON: Add a new JSON file in the assets/ directory describing the entity's components, such as position, velocity, sprite, and more.</p>
+<p class="startli">Register the entity: Use the EntityFactory to register and create this entity in your game. For example:</p>
+<div class="fragment"><div class="line">entityFactory.createEntityFromJson(<span class="stringliteral">&quot;assets/new_entity.json&quot;</span>);</div>
+</div><!-- fragment --></li>
+<li><p class="startli">How to Modify Game Systems</p>
+<p class="startli">To modify or create a new system, follow these steps:</p><ol type="1">
+<li>Create a new system file in lib/factory/systems/.</li>
+<li><p class="startli">Define the system logic by processing entities with specific components. For example, in <a class="el" href="../../d3/d67/control__move_8cpp.html">control_move.cpp</a>:</p>
+<p class="startli">```cpp for (auto [entity, position, velocity] : registry.view&lt;Position, Velocity&gt;()) { position.x += velocity.vx * delta_time; position.y += velocity.vy * delta_time; } ```</p>
 </li>
-<li><b>Coding Conventions</b>:<ul>
-<li></li>
-</ul>
-</li>
-<li><b>Team Processes</b>:<ul>
-<li></li>
-</ul>
+<li>Register the system so that it gets processed. </li>
+</ol>
 </li>
 </ul>
 </div></div><!-- contents -->

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['ais_0',['ais',['../da/d18/namespacerts_1_1ais.html',1,'rts']]],
-  ['r_2dtype_20multiplayer_20game_20engine_20_28ecs_2dbased_29_1',['R-Type Multiplayer Game Engine (ECS-based)',['../d0/d30/md_README.html',1,'']]],
+  ['r_2dtype_20multiplayer_20game_20engine_20_28ecs_2dbased_29_1',['R-Type Multiplayer Game Engine (ECS-based)',['../index.html',1,'']]],
   ['readme_2emd_2',['README.md',['../da/ddd/README_8md.html',1,'']]],
   ['ready_3',['ready',['../d7/dfe/structrtc_1_1RoomManager_1_1Player.html#ab9b25ebcc571e9642f285e7a01d9dead',1,'rtc::RoomManager::Player']]],
   ['reference_5ft_4',['reference_t',['../d3/d14/classecs_1_1IndexedZipperIterator.html#a26278f732aeafc313cbc6a4e88a0469e',1,'ecs::IndexedZipperIterator::reference_t()'],['../da/d2a/classecs_1_1ZipperIterator.html#aab9e5b2d8615f6a9c9e2dff35d9b8c57',1,'ecs::ZipperIterator::reference_t()']]],
