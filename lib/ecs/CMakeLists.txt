@@ -1,5 +1,6 @@
 add_library(ECS STATIC
     shared_entity.cpp
+    DLLoader.cpp
 )
 
 target_include_directories(ECS PUBLIC
