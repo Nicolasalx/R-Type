@@ -15,6 +15,7 @@
   - [Download the Latest Release](#download-the-latest-release)
   - [Unzip the Downloaded File](#unzip-the-downloaded-file)
   - [Run the Binaries](#run-the-binaries)
+  - [Commands](#commands)
 - [License](#license)
 - [Authors / Contacts](#authors--contacts)
 - [Useful Links / Quick-Start Information](#useful-links--quick-start-information)
@@ -28,23 +29,24 @@ This project is a game engine built using an Entity-Component-System (ECS) archi
 There are no dependencies required for users as all necessary components are included in the release.
 
 ### Supported Platforms:
-- Linux
-- Windows
+- **Linux**
+- **Windows**
 
 ## Usage Instructions
 To use the game engine and play the R-Type implementation, follow these steps:
 
 ### Download the Latest Release:
 Visit the [Releases page](https://github.com/ManuelR-T/R-Type/releases) of this repository.
-Download the appropriate zip file for your operating system (e.g., R-Type_Client_Windows.zip or R-Type_Server_Linux.zip).
+Download the appropriate zip file for your operating system (e.g., `Rtype-windows.zip` or `Rtype-linux.zip`).
 
 ### Unzip the Downloaded File:
 - Windows:
-    Right-click the downloaded .zip file and select "Extract All..."
+    Right-click the downloaded `.zip` file and select `Extract All...`
 - Linux:
     ```bash
-    unzip R-Type_Server_Linux.zip -d R-Type_Server
+    unzip Rtype-linux.zip -d R-Type_Server
     ```
+**Note**: If you are a developer, you may want to build the project yourself, you find the tutorial on the [developer documentation](docs/developer-documentation.md#build-the-engine).
 
 ### Run the Binaries:
 
@@ -71,9 +73,15 @@ Download the appropriate zip file for your operating system (e.g., R-Type_Client
     ./build/r-type_server
     ```
 
+### Commands
+
+Use the `arrow keys` to **move**
+
+and the `space bar` to **shoot missiles**
+
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 ## Authors / Contacts
 
 - [Thibaud Cathala](https://github.com/thibaudcathala)
