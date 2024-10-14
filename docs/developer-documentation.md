@@ -39,61 +39,86 @@ graph TD
 - **Subsystem Diagrams**:
 ```mermaid
 graph TD
- %% Component Registration (Shared)
-  ClientComponents[Client Components] --> Position
-  ClientComponents --> Velocity
-  ClientComponents --> Drawable
-  ClientComponents --> Sprite
-  ClientComponents --> Animation
-  ClientComponents --> Controllable
-  ClientComponents --> Hitbox
-  ClientComponents --> ShareMovement
-  ClientComponents --> SharedEntity
-  ClientComponents --> Missile
-  ClientComponents --> Parallax
-  ClientComponents --> Health
-  ClientComponents --> SoundEmitter
-  ClientComponents --> MusicComponent
-  ClientComponents --> Player
+  %% Client Subsystem
+  A[Client Subsystem] --> |Registers| ClientComponents
+  A --> |Registers| ClientSystems
 
-  ServerComponents[Server Components] --> Position
-  ServerComponents --> Velocity
-  ServerComponents --> Drawable
-  ServerComponents --> Sprite
-  ServerComponents --> Animation
-  ServerComponents --> Parallax
-  ServerComponents --> Controllable
-  ServerComponents --> Hitbox
-  ServerComponents --> ShareMovement
-  ServerComponents --> SharedEntity
-  ServerComponents --> Missile
-  ServerComponents --> AiActor
-  ServerComponents --> Tag
-  ServerComponents --> Health
-  ServerComponents --> Player
+  %% Server Subsystem
+  B[Server Subsystem] --> |Registers| ServerComponents
+  B --> |Registers| ServerSystems
 
-  %% System Registration (Client)
-  ClientSystems[Client Systems] --> ControlMove
-  ClientSystems --> ControlSpecial
-  ClientSystems --> PositionSystem
-  ClientSystems --> CollisionSystem
-  ClientSystems --> ShareMovement
-  ClientSystems --> MissilesStop
-  ClientSystems --> HealthCheck
-  ClientSystems --> ParallaxSystem
-  ClientSystems --> SpriteSystem
-  ClientSystems --> DrawSystem
-  ClientSystems --> NetworkCallbacks
+  %% Component Registration (Grouped)
+  ClientComponents[Client Components]
+  ClientComponents --> CoreClientComponents[Core Components]
+  ClientComponents --> ControlClientComponents[Control Components]
+  ClientComponents --> MovementClientComponents[Movement Components]
+  ClientComponents --> VisualClientComponents[Visual Components]
 
-  %% System Registration (Server)
-  ServerSystems[Server Systems] --> AIActing
-  ServerSystems --> PositionSystem
-  ServerSystems --> CollisionSystem
-  ServerSystems --> HealthMobCheck
-  ServerSystems --> MissilesStop
-  ServerSystems --> DrawSystem
+  CoreClientComponents --> Position
+  CoreClientComponents --> SharedEntity
+  ControlClientComponents --> Controllable
+  ControlClientComponents --> Hitbox
+  MovementClientComponents --> Velocity
+  MovementClientComponents --> ShareMovement
+  VisualClientComponents --> Drawable
+  VisualClientComponents --> Sprite
+  VisualClientComponents --> Parallax
+  VisualClientComponents --> Animation
+  VisualClientComponents --> Health
+  VisualClientComponents --> Player
+  VisualClientComponents --> Missile
+  VisualClientComponents --> SoundEmitter
+  VisualClientComponents --> MusicComponent
+
+  ServerComponents[Server Components]
+  ServerComponents --> CoreServerComponents[Core Components]
+  ServerComponents --> ControlServerComponents[Control Components]
+  ServerComponents --> MovementServerComponents[Movement Components]
+  ServerComponents --> VisualServerComponents[Visual Components]
+
+  CoreServerComponents --> Position
+  CoreServerComponents --> SharedEntity
+  ControlServerComponents --> Controllable
+  ControlServerComponents --> Hitbox
+  MovementServerComponents --> Velocity
+  MovementServerComponents --> ShareMovement
+  VisualServerComponents --> Drawable
+  VisualServerComponents --> Sprite
+  VisualServerComponents --> Parallax
+  VisualServerComponents --> Animation
+  VisualServerComponents --> Health
+  VisualServerComponents --> Player
+  VisualServerComponents --> Missile
+  VisualServerComponents --> AiActor
+  VisualServerComponents --> Tag
+
+  %% System Registration (Grouped)
+  ClientSystems[Client Systems]
+  ClientSystems --> MovementSystems[Movement Systems]
+  ClientSystems --> ControlSystems[Control Systems]
+  ClientSystems --> RenderSystems[Render Systems]
+  ClientSystems --> NetworkSystems[Network Systems]
+
+  MovementSystems --> ControlMove
+  MovementSystems --> PositionSystem
+  MovementSystems --> ShareMovement
+  ControlSystems --> ControlSpecial
+  RenderSystems --> DrawSystem
+  RenderSystems --> SpriteSystem
+  NetworkSystems --> NetworkCallbacks
+
+  ServerSystems[Server Systems]
+  ServerSystems --> AISystems[AI Systems]
+  ServerSystems --> MovementSystemsServer[Movement Systems]
+  ServerSystems --> HealthSystems[Health Systems]
+  ServerSystems --> NetworkSystemsServer[Network Systems]
+
+  AISystems --> AIActing
+  MovementSystemsServer --> PositionSystem
+  MovementSystemsServer --> CollisionSystem
+  HealthSystems --> HealthMobCheck
+  NetworkSystemsServer --> SendPackets
   ServerSystems --> WaveSpawning
-  ServerSystems --> SendPackets
 ```
 ## Deep Dive
 
