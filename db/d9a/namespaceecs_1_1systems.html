@@ -87,6 +87,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1264603701180e9a20a9588f3f086455"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a1264603701180e9a20a9588f3f086455">aiAct</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg)</td></tr>
 <tr class="memdesc:a1264603701180e9a20a9588f3f086455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make ai act with respect with their <code><a class="el" href="../../d5/d0a/structai__actor.html" title="Component that define ai behaviour.">ai_actor</a></code> component and his callback <code>act</code>.  <br /></td></tr>
 <tr class="separator:a1264603701180e9a20a9588f3f086455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f93cb40f29394b24241504162db7237"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237">clientShareMovement</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient)</td></tr>
+<tr class="memdesc:a5f93cb40f29394b24241504162db7237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of all entities based on their velocity.  <br /></td></tr>
+<tr class="separator:a5f93cb40f29394b24241504162db7237"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fac7c9239b8b9a50b2e5efa3fe0335d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d">collision</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg)</td></tr>
 <tr class="memdesc:a5fac7c9239b8b9a50b2e5efa3fe0335d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
 <tr class="separator:a5fac7c9239b8b9a50b2e5efa3fe0335d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,9 +124,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a26eec6630c84111b72cc904780913b1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a">position</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, float dt)</td></tr>
 <tr class="memdesc:a26eec6630c84111b72cc904780913b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of all entities based on their velocity.  <br /></td></tr>
 <tr class="separator:a26eec6630c84111b72cc904780913b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac74dc74414c65e66e30bcc2c4fbfda9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#ac74dc74414c65e66e30bcc2c4fbfda9c">shareMovement</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient)</td></tr>
-<tr class="memdesc:ac74dc74414c65e66e30bcc2c4fbfda9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of all entities based on their velocity.  <br /></td></tr>
-<tr class="separator:ac74dc74414c65e66e30bcc2c4fbfda9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66aadbaaa057cb4a72a87b0c8f2bb5d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a66aadbaaa057cb4a72a87b0c8f2bb5d1">serverShareMovement</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</td></tr>
+<tr class="memdesc:a66aadbaaa057cb4a72a87b0c8f2bb5d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position of all entities based on their velocity.  <br /></td></tr>
+<tr class="separator:a66aadbaaa057cb4a72a87b0c8f2bb5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8595754fadb3db4d383ae638a2e0dbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#aa8595754fadb3db4d383ae638a2e0dbe">SoundEmitterSystem</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../dc/dcf/classecs_1_1SoundManager.html">ecs::SoundManager</a> &amp;soundManager)</td></tr>
 <tr class="memdesc:aa8595754fadb3db4d383ae638a2e0dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">System to handle sound effects emitted by entities.  <br /></td></tr>
 <tr class="separator:aa8595754fadb3db4d383ae638a2e0dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +199,63 @@ Here is the call graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a1264603701180e9a20a9588f3f086455_cgraph" id="adb/d9a/namespaceecs_1_1systems_a1264603701180e9a20a9588f3f086455_cgraph">
 <area shape="rect" title="Make ai act with respect with their ai_actor component and his callback act." alt="" coords="5,5,153,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="201,5,417,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5f93cb40f29394b24241504162db7237" name="a5f93cb40f29394b24241504162db7237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f93cb40f29394b24241504162db7237">&#9670;&#160;</a></span>clientShareMovement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::clientShareMovement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;&#160;</td>
+          <td class="paramname"><em>udpClient</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the position of all entities based on their velocity. </p>
+<p>The <code>position</code> function iterates through all entities with both <code>position</code> and <code>velocity</code> components, updating their positions based on their velocities and the elapsed time <code>dt</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the registry managing entities and their components. </td></tr>
+    <tr><td class="paramname">dt</td><td>The delta time since the last update, used to scale velocity. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_cgraph" id="adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_cgraph">
+<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="5,23,193,63"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,5,457,31"/>
+<area shape="rect" href="../../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="270,55,429,80"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_icgraph" id="adb/d9a/namespaceecs_1_1systems_a5f93cb40f29394b24241504162db7237_icgraph">
+<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="207,5,395,45"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,13,159,38"/>
 </map>
 </div>
 
@@ -907,14 +967,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac74dc74414c65e66e30bcc2c4fbfda9c" name="ac74dc74414c65e66e30bcc2c4fbfda9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac74dc74414c65e66e30bcc2c4fbfda9c">&#9670;&#160;</a></span>shareMovement()</h2>
+<a id="a66aadbaaa057cb4a72a87b0c8f2bb5d1" name="a66aadbaaa057cb4a72a87b0c8f2bb5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66aadbaaa057cb4a72a87b0c8f2bb5d1">&#9670;&#160;</a></span>serverShareMovement()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ecs::systems::shareMovement </td>
+          <td class="memname">void ecs::systems::serverShareMovement </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
           <td class="paramname"><em>reg</em>, </td>
@@ -922,8 +982,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;&#160;</td>
-          <td class="paramname"><em>udpClient</em>&#160;</td>
+          <td class="paramtype">std::list&lt; std::vector&lt; char &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>datasToSend</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -945,20 +1005,20 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_cgraph" alt=""/></div>
-<map name="adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_cgraph" id="adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_cgraph">
-<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="5,31,227,56"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="275,5,491,31"/>
-<area shape="rect" href="../../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="303,55,462,80"/>
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_cgraph" id="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_cgraph">
+<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="5,5,199,45"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="247,13,463,38"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_icgraph" alt=""/></div>
-<map name="adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_icgraph" id="adb/d9a/namespaceecs_1_1systems_ac74dc74414c65e66e30bcc2c4fbfda9c_icgraph">
-<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="207,5,428,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a5877b2b7f1c69dbac2dd9307f30da762" title=" " alt="" coords="5,5,159,31"/>
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph" id="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph">
+<area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="480,5,673,45"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#a6eed7d6aae9124b8a7f0cd56e558cd65" title=" " alt="" coords="279,13,432,38"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177" title=" " alt="" coords="5,13,231,38"/>
 </map>
 </div>
 
