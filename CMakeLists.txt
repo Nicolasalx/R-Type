@@ -15,6 +15,30 @@ add_subdirectory(lib)
 add_subdirectory(client)
 add_subdirectory(server)
 
-if (DOC AND DOC STREQUAL "ON")
-    add_subdirectory(docs)
+set(CPACK_PACKAGE_NAME "RType")
+set(CPACK_PACKAGE_VENDOR "UnrealEngine")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "RType Game engine")
+set(CPACK_PACKAGE_VERSION "0.1.0")
+set(CPACK_PACKAGE_VERSION_MAJOR "0")
+set(CPACK_PACKAGE_VERSION_MINOR "1")
+set(CPACK_PACKAGE_VERSION_PATCH "0")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "RType")
+
+set(CPACK_GENERATOR "TGZ;ZIP")
+
+
+if(CMAKE_CROSSCOMPILING)
+    set(CPACK_SYSTEM_NAME "Windows")
+    set(CPACK_GENERATOR "ZIP")
+else()
+    set(CPACK_SYSTEM_NAME "Linux")
+    set(CPACK_GENERATOR "TGZ")
 endif()
+
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_SYSTEM_NAME}")
+
+include(CPack)
+
+install(DIRECTORY assets DESTINATION .)
+
+install(TARGETS r-type_client r-type_server RUNTIME DESTINATION ./)
