@@ -35,6 +35,7 @@ class RoomManager {
 
     std::map<std::string, Room> _rooms;
     int _nextPort = 8081;
+    bool _displayDebugWindow = false;
 
     public:
     RoomManager() = default;
@@ -48,6 +49,7 @@ class RoomManager {
         }
     }
 
+    void detectDebugMode(int argc, const char **argv);
     void createRoom(const std::string &name, std::size_t stage, ntw::TCPServer &tcpServer);
     void deleteRoom(const std::string &name, ntw::TCPServer &tcpServer);
     void joinRoom(

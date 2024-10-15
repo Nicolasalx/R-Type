@@ -96,13 +96,15 @@ void rts::RoomManager::playerReady(const std::string &roomName, std::size_t play
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
     _rooms.at(roomName).gameRunner = std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage);
     _rooms.at(roomName).game = std::make_unique<std::thread>(
-        [gameRunner = _rooms.at(roomName).gameRunner](
-            bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient
-        ) {
+        [gameRunner = _rooms.at(roomName).gameRunner,
+         displayDebugWindow =
+             this->_displayDebugWindow](bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient) {
             serverReady.set_value(true);
             udpClient.wait();
-            gameRunner->addWindow(sf::VideoMode(720, 480), "R-Type");
-            gameRunner->runGame(stopGame);
+            if (displayDebugWindow) {
+                gameRunner->addWindow(sf::VideoMode(720, 480), "R-Type");
+                gameRunner->runGame(stopGame);
+            }
         },
         std::ref(_rooms.at(roomName).stopGame),
         std::move(serverReady),
@@ -197,5 +199,12 @@ void rts::RoomManager::udpPlayerReady(const std::string &roomName, std::size_t p
             tcpServer.sendToUser(id, reinterpret_cast<const char *>(&packet), sizeof(packet));
         }
         _rooms.at(roomName).clientReady.set_value(true);
+    }
+}
+
+void rts::RoomManager::detectDebugMode(int argc, const char **argv)
+{
+    if (argc == 2 && std::string(argv[1]) == "--graphical") {
+        _displayDebugWindow = true;
     }
 }

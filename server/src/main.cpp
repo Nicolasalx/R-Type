@@ -15,12 +15,13 @@
 #include "TCPResponseHandler.hpp"
 #include "tcp/TCPServer.hpp"
 
-int main()
+int main(int argc, const char *argv[])
 {
     ntw::TCPServer tcpServer(8080);
     rts::RoomManager roomManager;
     rt::TCPResponseHandler responseHandler;
 
+    roomManager.detectDebugMode(argc, argv);
     rts::registerTcpResponse(roomManager, tcpServer, responseHandler);
     tcpServer.registerCommand([&responseHandler](tcp::socket &sock, char *data, std::size_t size) {
         responseHandler.handleResponse(data, size, {std::ref(sock)});
