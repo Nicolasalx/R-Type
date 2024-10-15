@@ -29,7 +29,15 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool displayDebugWindow
 
     rts::registerComponents(_reg);
     rts::registerSystems(
-        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, displayDebugWindow
+        _reg,
+        _window,
+        _dt,
+        _tickRateManager,
+        _udpServer,
+        _datasToSend,
+        _networkCallbacks,
+        _waveManager,
+        displayDebugWindow
     );
     rts::init_waves(_waveManager, _datasToSend);
 }

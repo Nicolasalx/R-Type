@@ -96,10 +96,13 @@ void rts::RoomManager::playerReady(const std::string &roomName, std::size_t play
     std::promise<bool> serverReady;
     std::future<bool> server = serverReady.get_future();
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
-    _rooms.at(roomName).gameRunner = std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage, this->_displayDebugWindow);
+    _rooms.at(roomName).gameRunner =
+        std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage, this->_displayDebugWindow);
 
     _rooms.at(roomName).game = std::make_unique<std::thread>(
-        [gameRunner = _rooms.at(roomName).gameRunner](bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient) {
+        [gameRunner = _rooms.at(roomName).gameRunner](
+            bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient
+        ) {
             serverReady.set_value(true);
             udpClient.wait();
             gameRunner->addWindow(sf::VideoMode(720, 480), "R-Type");
