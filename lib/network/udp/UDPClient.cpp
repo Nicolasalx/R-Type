@@ -26,7 +26,7 @@ void ntw::UDPClient::_handleRecv(asio::error_code ec, std::size_t bytes)
 {
     if (ec) {
         std::cerr << "Receive error: " << ec.message() << std::endl;
-        //return; //! BUG when player received on windows
+        // return; //! BUG when player received on windows
     }
     _recvHandler(_buff.data(), bytes);
     _asioRun();
