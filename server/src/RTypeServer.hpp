@@ -29,7 +29,8 @@ void registerSystems(
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    ecs::WaveManager &waveManager
+    ecs::WaveManager &waveManager,
+    bool displayDebugWindow
 );
 void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,

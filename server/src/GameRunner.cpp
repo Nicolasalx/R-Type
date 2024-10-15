@@ -16,7 +16,7 @@
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
 
-rts::GameRunner::GameRunner(int port, std::size_t stage) // ! Use the stage argument
+rts::GameRunner::GameRunner(int port, std::size_t stage, bool displayDebugWindow) // ! Use the stage argument
     : _udpServer(port)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
@@ -29,7 +29,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage) // ! Use the stage argu
 
     rts::registerComponents(_reg);
     rts::registerSystems(
-        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager
+        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, displayDebugWindow
     );
     rts::init_waves(_waveManager, _datasToSend);
 }

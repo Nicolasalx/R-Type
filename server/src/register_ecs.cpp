@@ -73,7 +73,8 @@ void rts::registerSystems(
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    ecs::WaveManager &waveManager
+    ecs::WaveManager &waveManager,
+    bool displayDebugWindow
 )
 {
     tickRateManager.addTickRate(rts::TickRate::SEND_PACKETS, rts::SERVER_TICKRATE.at(rts::TickRate::SEND_PACKETS));
@@ -105,11 +106,13 @@ void rts::registerSystems(
         }
     });
     reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
-    reg.addSystem([&reg, &window]() { // ! for debug
-        window.clear();
-        ecs::systems::draw(reg, window);
-        window.display();
-    });
+    if (displayDebugWindow) {
+        reg.addSystem([&reg, &window]() {
+            window.clear();
+            ecs::systems::draw(reg, window);
+            window.display();
+        });
+    }
     reg.addSystem([&datasToSend, &tickRateManager, &dt, &reg]() {
         if (tickRateManager.needUpdate(rts::TickRate::ENTITY_MOVEMENT, dt)) {
             ecs::systems::serverShareMovement(reg, datasToSend);
