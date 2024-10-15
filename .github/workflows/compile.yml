@@ -69,7 +69,7 @@ jobs:
     - name: Build OpenAL Soft for Windows
       if: matrix.os == 'windows'
       run: |
-        cd openal-soft
+        cd -p openal-soft
         mkdir build
         cd build
         cmake .. -DCMAKE_TOOLCHAIN_FILE=../../cmake/mingw32-toolchain.cmake \
