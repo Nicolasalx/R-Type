@@ -8,12 +8,15 @@
 #pragma once
 
 #include <dlfcn.h>
+#include <stdexcept>
 #include <string>
 
 namespace ecs {
 class DLLoader {
     public:
     DLLoader(const std::string &libPath);
+    DLLoader();
+
     ~DLLoader();
 
     template <typename T>
@@ -23,7 +26,7 @@ class DLLoader {
         void *function = dlsym(_handle, functionName.c_str());
         const char *error = dlerror();
         if (error != nullptr) {
-            // throw FuncLoadException(error);
+            throw std::runtime_error(error);
         }
         return reinterpret_cast<T>(function);
     }
@@ -33,8 +36,13 @@ class DLLoader {
         return _libPath;
     }
 
+    void close();
+
+    void open(const std::string &filepath);
+
     protected:
     void *_handle = nullptr;
     std::string _libPath;
 };
+
 } // namespace ecs
