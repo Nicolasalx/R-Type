@@ -10,7 +10,8 @@ var searchData=
   ['roommanager_2ecpp_7',['RoomManager.cpp',['../d8/df3/client_2src_2RoomManager_8cpp.html',1,'(Global Namespace)'],['../db/d78/server_2src_2RoomManager_8cpp.html',1,'(Global Namespace)']]],
   ['roommanager_2ehpp_8',['RoomManager.hpp',['../d3/d6b/client_2src_2RoomManager_8hpp.html',1,'(Global Namespace)'],['../d3/da3/server_2src_2RoomManager_8hpp.html',1,'(Global Namespace)']]],
   ['rtype_2dtcp_2dprotocol_2drfc_2emd_9',['rtype-tcp-protocol-rfc.md',['../df/d72/rtype-tcp-protocol-rfc_8md.html',1,'']]],
-  ['rtypeclient_2ehpp_10',['RTypeClient.hpp',['../da/d70/RTypeClient_8hpp.html',1,'']]],
-  ['rtypeserver_2ehpp_11',['RTypeServer.hpp',['../db/d94/RTypeServer_8hpp.html',1,'']]],
-  ['run_5fgui_2ecpp_12',['run_gui.cpp',['../d3/db3/run__gui_8cpp.html',1,'']]]
+  ['rtype_2dudp_2dprotocol_2drfc_2emd_10',['rtype-udp-protocol-rfc.md',['../df/dea/rtype-udp-protocol-rfc_8md.html',1,'']]],
+  ['rtypeclient_2ehpp_11',['RTypeClient.hpp',['../da/d70/RTypeClient_8hpp.html',1,'']]],
+  ['rtypeserver_2ehpp_12',['RTypeServer.hpp',['../db/d94/RTypeServer_8hpp.html',1,'']]],
+  ['run_5fgui_2ecpp_13',['run_gui.cpp',['../d3/db3/run__gui_8cpp.html',1,'']]]
 ];
