@@ -67,10 +67,20 @@ void rts::GameRunner::addWindow(sf::VideoMode &&videomode, const std::string &ti
     _window.setFramerateLimit(60); // ! for debug
 }
 
-void rts::GameRunner::runGame(bool &stopGame)
+#include <iostream>
+
+void rts::GameRunner::runGame(bool &stopGame, const bool &displayDebugWindow)
 {
     sf::Clock clock;
 
+    if (!displayDebugWindow) {
+        _window.close();
+        while (!stopGame) {
+            _dt = clock.restart().asSeconds();
+            _reg.runSystems();
+        }
+        return;
+    }
     while (_window.isOpen() && !stopGame) {
         _dt = clock.restart().asSeconds();
 

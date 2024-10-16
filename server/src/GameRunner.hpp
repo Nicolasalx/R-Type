@@ -42,6 +42,6 @@ class GameRunner {
 
     void killPlayer(size_t playerId);
     void addWindow(sf::VideoMode &&videomode, const std::string &title);
-    void runGame(bool &stopGame);
+    void runGame(bool &stopGame, const bool &displayDebugWindow);
 };
 } // namespace rts
