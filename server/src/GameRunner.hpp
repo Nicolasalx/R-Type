@@ -37,8 +37,12 @@ class GameRunner {
 
     sf::RenderWindow _window;
 
+    bool _debugMode = false;
+
+    void _runGameDebug(bool &stopGame);
+
     public:
-    GameRunner(int port, std::size_t stage);
+    GameRunner(int port, std::size_t stage, bool debugMode);
 
     void killPlayer(size_t playerId);
     void addWindow(sf::VideoMode &&videomode, const std::string &title);

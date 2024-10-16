@@ -14,7 +14,12 @@ namespace rt {
 /**
  * @brief The maximum frames per second limit for the game.
  */
-constexpr unsigned int FPS_LIMIT = 60;
+constexpr unsigned int CLIENT_FPS_LIMIT = 60;
+
+/**
+ * @brief The targeted frames per second for the server simulation.
+ */
+constexpr double SERVER_ENGINE_TARGET_FPS = 60;
 
 /**
  * @brief The default screen width for the game window.

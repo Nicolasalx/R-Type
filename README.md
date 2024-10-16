@@ -73,6 +73,11 @@ Download the appropriate zip file for your operating system (e.g., `Rtype-window
     ./build/r-type_server
     ```
 
+- Server in debug mode:
+    ```bash
+    ./build/r-type_server --debug
+    ```
+
 ### Commands
 
 Use the `arrow keys` to **move**

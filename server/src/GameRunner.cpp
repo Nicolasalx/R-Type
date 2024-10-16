@@ -8,16 +8,18 @@
 #include "GameRunner.hpp"
 #include <cstddef>
 #include <string>
+#include "FrameRateManager.hpp"
 #include "IndexedZipper.hpp"
 #include "Logger.hpp"
+#include "RTypeConst.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
 
-rts::GameRunner::GameRunner(int port, std::size_t stage) // ! Use the stage argument
-    : _udpServer(port)
+rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Use the stage argument
+    : _udpServer(port), _debugMode(debugMode)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
@@ -29,7 +31,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage) // ! Use the stage argu
 
     rts::registerComponents(_reg);
     rts::registerSystems(
-        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager
+        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, debugMode
     );
     rts::init_waves(_waveManager, _datasToSend);
 }
@@ -55,30 +57,48 @@ void rts::GameRunner::killPlayer(size_t playerId)
 
 void rts::GameRunner::addWindow(sf::VideoMode &&videomode, const std::string &title)
 {
+    if (!_debugMode) {
+        return;
+    }
     _window.create(videomode, title);
-    _window.setFramerateLimit(60); // ! for debug
+    _window.setFramerateLimit(rt::SERVER_ENGINE_TARGET_FPS);
 }
 
-void rts::GameRunner::runGame(bool &stopGame)
+void rts::GameRunner::_runGameDebug(bool &stopGame)
 {
     sf::Clock clock;
 
     while (_window.isOpen() && !stopGame) {
         _dt = clock.restart().asSeconds();
 
-        // ! for debug
         sf::Event event;
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 _window.close();
             }
         }
-        // ! for debug
         _window.clear();
         _reg.runSystems();
         _window.display();
     }
     if (_window.isOpen()) {
         _window.close();
+    }
+}
+
+void rts::GameRunner::runGame(bool &stopGame)
+{
+    eng::FramerateManager frameRate(rt::SERVER_ENGINE_TARGET_FPS);
+    sf::Clock clock;
+
+    if (_debugMode) {
+        _runGameDebug(stopGame);
+        return;
+    }
+    while (!stopGame) {
+        frameRate.start();
+        _dt = clock.restart().asSeconds();
+        _reg.runSystems();
+        frameRate.end();
     }
 }

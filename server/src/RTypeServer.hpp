@@ -20,6 +20,8 @@
 #include "udp/UDPServer.hpp"
 
 namespace rts {
+
+int parseArg(int argc, const char **argv, rts::RoomManager &roomManager);
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
     ecs::Registry &reg,
@@ -29,7 +31,8 @@ void registerSystems(
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    ecs::WaveManager &waveManager
+    ecs::WaveManager &waveManager,
+    bool displayDebugWindow
 );
 void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,

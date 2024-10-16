@@ -11,10 +11,10 @@
 #include <cstdint>
 #include <cstring>
 #include <vector>
+#include "../lib/ecs/components/position.hpp"
+#include "../lib/ecs/components/velocity.hpp"
 #include "RTypeConst.hpp"
-#include "components/position.hpp"
-#include "components/velocity.hpp"
-#include "shared_entity.hpp"
+#include "../lib/ecs/shared_entity.hpp"
 
 namespace rt {
 enum class UDPCommand : std::uint8_t {
@@ -34,6 +34,7 @@ enum class UDPCommand : std::uint8_t {
     DEL_ENTITY
 };
 
+// NOLINT
 namespace UDPBody {
 
 struct MOVE_ENTITY {
