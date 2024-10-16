@@ -15,10 +15,18 @@
 #include "TCPResponseHandler.hpp"
 #include "tcp/TCPServer.hpp"
 
-int main()
+int main(int argc, const char *argv[])
 {
-    ntw::TCPServer tcpServer(8080);
     rts::RoomManager roomManager;
+    int argValidity = rts::parseArg(argc, argv, roomManager);
+
+    if (argValidity == 84) {
+        return 84;
+    } else if (argValidity) {
+        return 0;
+    }
+
+    ntw::TCPServer tcpServer(8080);
     rt::TCPResponseHandler responseHandler;
 
     rts::registerTcpResponse(roomManager, tcpServer, responseHandler);

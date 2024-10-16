@@ -25,16 +25,17 @@ class RoomManager {
     };
 
     struct Room {
-        std::map<std::size_t, PlayerLobby> player{};
+        std::map<std::size_t, PlayerLobby> player;
         std::size_t stage = 1;
-        std::unique_ptr<std::thread> game{};
+        std::unique_ptr<std::thread> game;
         std::shared_ptr<GameRunner> gameRunner = nullptr;
-        std::promise<bool> clientReady{};
+        std::promise<bool> clientReady;
         bool stopGame = false;
     };
 
     std::map<std::string, Room> _rooms;
     int _nextPort = 8081;
+    bool _debugMode = false;
 
     public:
     RoomManager() = default;
@@ -48,6 +49,7 @@ class RoomManager {
         }
     }
 
+    void enableDebugMode();
     void createRoom(const std::string &name, std::size_t stage, ntw::TCPServer &tcpServer);
     void deleteRoom(const std::string &name, ntw::TCPServer &tcpServer);
     void joinRoom(

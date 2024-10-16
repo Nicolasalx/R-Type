@@ -26,12 +26,12 @@ static void handlePlayerCreation(
     std::size_t userId,
     ecs::SpriteManager &spriteManager,
     ntw::UDPClient &udpClient,
-    std::list<std::function<void(ecs::Registry &)>> &_networkCallbacks,
+    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet,
-    std::shared_ptr<ImFont> font
+    const std::shared_ptr<ImFont> &font
 )
 {
-    _networkCallbacks.push_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
@@ -61,14 +61,14 @@ static void handleSharedCreation(
     const std::string &jsonFilePath,
     ecs::SpriteManager &spriteManager,
     ntw::UDPClient &udpClient,
-    std::list<std::function<void(ecs::Registry &)>> &_networkCallbacks,
+    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<T> &packet
 )
 {
     auto &[pos, _] = packet.body.moveData;
     auto sharedEntityId = packet.sharedEntityId;
 
-    _networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, &udpClient, jsonFilePath](ecs::Registry &reg) {
+    networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, &udpClient, jsonFilePath](ecs::Registry &reg) {
         ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg, spriteManager, udpClient, jsonFilePath, pos.x, pos.y, sharedEntityId
         );

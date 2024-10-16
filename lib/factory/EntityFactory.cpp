@@ -8,6 +8,7 @@
 #include "EntityFactory.hpp"
 #include <fstream>
 #include <stdexcept>
+#include <utility>
 #include "ClientEntityFactory.hpp"
 #include "Registry.hpp"
 #include "ServerEntityFactory.hpp"
@@ -68,7 +69,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
     }
 
     ClientEntityFactory::addComponents(
-        reg, spriteManager, entity, entityJson["components"], isShared, x, y, vx, vy, font
+        reg, spriteManager, entity, entityJson["components"], isShared, x, y, vx, vy, std::move(font)
     );
 
     return entity;
@@ -171,7 +172,7 @@ void EntityFactory::addCommonComponents(
     if (componentsJson.contains("score")) {
         float scoreValue = componentsJson["score"].get<float>();
         ecs::component::Score score;
-        score.font = font;
+        score.font = std::move(font);
         score.text = std::to_string(scoreValue);
         reg.addComponent(entity, ecs::component::Score{score});
     }

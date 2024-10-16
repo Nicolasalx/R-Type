@@ -22,7 +22,7 @@ class RoomManager {
     };
 
     struct RoomContent {
-        std::map<std::size_t, Player> player = {};
+        std::map<std::size_t, Player> player;
         bool joinable = true;
         std::size_t stage = 1;
     };
@@ -56,7 +56,7 @@ class RoomManager {
     void askToLeaveRoom();
     void askToBeReady();
     void askToBeNotReady();
-    void UDPConnectionReady();
+    void udpConnectionReady();
 };
 
 } // namespace rtc

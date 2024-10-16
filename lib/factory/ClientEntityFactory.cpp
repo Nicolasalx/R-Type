@@ -6,6 +6,8 @@
 */
 
 #include "ClientEntityFactory.hpp"
+
+#include <utility>
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
 #include "components/parallax.hpp"
@@ -19,7 +21,7 @@
 namespace ecs {
 
 const std::unordered_map<std::string, std::function<void(Registry &, entity_t, ecs::component::Animation &)>>
-    ClientEntityFactory::_animMap = {
+    ClientEntityFactory::ANIM_MAP = {
         {"player",
          [](ecs::Registry &reg, entity_t id, ecs::component::Animation &anim) {
              auto velOpt = reg.getComponent<ecs::component::Velocity>(id);
@@ -89,7 +91,7 @@ void ClientEntityFactory::addComponents(
     std::shared_ptr<ImFont> font
 )
 {
-    addCommonComponents(reg, entity, componentsJson, x, y, vx, vy, font);
+    addCommonComponents(reg, entity, componentsJson, x, y, vx, vy, std::move(font));
 
     if (componentsJson.contains("sprite")) {
         auto spriteJson = componentsJson["sprite"];
@@ -138,7 +140,7 @@ void ClientEntityFactory::addComponents(
         ecs::component::Animation animComp;
         animComp.frameTime = animJson["frame_time"].get<float>();
 
-        for (auto &[stateName, framesJson] : animJson["frames"].items()) {
+        for (const auto &[stateName, framesJson] : animJson["frames"].items()) {
             for (auto &frameJson : framesJson) {
                 animComp.frames[stateName].emplace_back(
                     frameJson["x"].get<int>(),
@@ -157,7 +159,7 @@ void ClientEntityFactory::addComponents(
             animComp.state = "idle";
         }
         if (animJson.contains("update_state")) {
-            animComp.updateState = _animMap.at(animJson["update_state"].get<std::string>());
+            animComp.updateState = ANIM_MAP.at(animJson["update_state"].get<std::string>());
         }
 
         reg.addComponent(entity, std::move(animComp));

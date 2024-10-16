@@ -7,16 +7,13 @@
 
 #pragma once
 
-#include "../BuffSize.hpp"
-#include "AsioServer.hpp"
-
 #include <array>
 #include <asio/ip/udp.hpp>
 #include <cstring>
 #include <functional>
-
 #include <thread>
-
+#include "../BuffSize.hpp"
+#include "AsioServer.hpp"
 #include <asio/error_code.hpp>
 #include <asio/ip/address_v6.hpp>
 #include <initializer_list>
@@ -37,7 +34,7 @@ class UDPServer : public ntw::AsioServer {
     /**
      * @brief Type that represent a client id useful to identify a specific client.
      */
-    using client_id = size_t;
+    using client_id_t = size_t;
 
     public:
     /**
@@ -45,7 +42,7 @@ class UDPServer : public ntw::AsioServer {
      *        and construct the asynchronous udp server.
      * @param port Port the server listens.
      */
-    UDPServer(int port) : _nbClients(0), _sock(_io, udp::endpoint(udp::v4(), port)) {}
+    UDPServer(int port) : _sock(_io, udp::endpoint(udp::v4(), port)) {}
 
     /**
      * @brief Destructor of the UDPServer Object
@@ -93,7 +90,7 @@ class UDPServer : public ntw::AsioServer {
      * @brief Return all the clients endpoint that have connected to the udp server.
      * @return An unordered_map with the `client_id` and the client `endpoint` as value.
      */
-    std::unordered_map<client_id, udp::endpoint> &endpoints()
+    std::unordered_map<client_id_t, udp::endpoint> &endpoints()
     {
         return _cliEndpoints;
     }
@@ -155,11 +152,11 @@ class UDPServer : public ntw::AsioServer {
     void _handleEndpoint(udp::endpoint endpoint);
 
     udp::endpoint _lastEndpoint;
-    std::unordered_map<client_id, udp::endpoint> _cliEndpoints;
-    size_t _nbClients;
+    std::unordered_map<client_id_t, udp::endpoint> _cliEndpoints;
+    size_t _nbClients = 0;
     udp::socket _sock;
 
-    std::array<char, BUFF_SIZE> _buff;
+    std::array<char, BUFF_SIZE> _buff{};
     std::function<void(char *, std::size_t)> _handler;
     std::thread _recvThread;
 };

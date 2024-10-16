@@ -46,7 +46,7 @@ class TCPResponseHandler {
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
-        const TCPPacket<void *> *header;
+        const TCPPacket<void *> *header = nullptr;
 
         while (size >= sizeof(TCPPacket<void *>)) {
             header = reinterpret_cast<const TCPPacket<void *> *>(ptr);

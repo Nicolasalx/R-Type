@@ -57,6 +57,6 @@ class ClientEntityFactory : public EntityFactory {
      * This map associates animation names with functions that apply animations to entities.
      */
     static const std::unordered_map<std::string, std::function<void(Registry &, entity_t, ecs::component::Animation &)>>
-        _animMap;
+        ANIM_MAP;
 };
 } // namespace ecs

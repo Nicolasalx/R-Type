@@ -44,7 +44,7 @@ static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::Room
 void rtc::GameManager::_launchGame()
 {
     _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(rt::SCREEN_WIDTH, rt::SCREEN_HEIGHT), "R-Type");
-    _window->setFramerateLimit(rt::FPS_LIMIT);
+    _window->setFramerateLimit(rt::CLIENT_FPS_LIMIT);
 
     if (!ImGui::SFML::Init(*_window, false)) {
         throw std::runtime_error("IMGUI Window init failed");
@@ -86,7 +86,7 @@ void rtc::GameManager::_launchGame()
     _setupUdpConnection(reg, spriteManager, udpClient);
 
     std::future<bool> otherPlayer = _allUDPClientReady.get_future();
-    _roomManager.UDPConnectionReady();
+    _roomManager.udpConnectionReady();
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);
