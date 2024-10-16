@@ -1,0 +1,14 @@
+<map id="rts::initWaves" name="rts::initWaves">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,116,105"/>
+<area shape="rect" id="node2" href="$d5/d35/classecs_1_1WaveManager.html#a165c71cf770efb59ae72970462429f39" title="Adds a new mob spawner to a specific wave." alt="" coords="168,5,403,31"/>
+<area shape="rect" id="node3" href="$d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01" title="Adds a new wave to the WaveManager." alt="" coords="164,55,407,80"/>
+<area shape="rect" id="node4" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="177,183,393,223"/>
+<area shape="rect" id="node8" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="455,76,661,101"/>
+<area shape="rect" id="node5" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="469,126,647,166"/>
+<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="455,191,661,216"/>
+<area shape="rect" id="node10" href="$de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="469,241,647,281"/>
+<area shape="rect" id="node11" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="461,305,655,331"/>
+<area shape="rect" id="node12" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="709,294,909,334"/>
+<area shape="rect" id="node6" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="712,126,907,166"/>
+<area shape="rect" id="node7" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="957,191,1169,216"/>
+</map>

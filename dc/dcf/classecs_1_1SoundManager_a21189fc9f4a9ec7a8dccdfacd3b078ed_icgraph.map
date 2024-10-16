@@ -1,4 +1,4 @@
 <map id="ecs::SoundManager::playMusic" name="ecs::SoundManager::playMusic">
 <area shape="rect" id="node1" title="Plays music." alt="" coords="256,5,413,45"/>
-<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#afa11c9046efd2f68b0389658c273ddc0" title="System to manage background music playback." alt="" coords="5,13,208,38"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="5,13,208,38"/>
 </map>

@@ -13,7 +13,7 @@ var searchData=
   ['size_10',['size',['../d8/d2e/classecs_1_1SparseArray.html#a1d52c46fea474c9e51544238fa90777a',1,'ecs::SparseArray']]],
   ['socket_11',['socket',['../da/dbf/classntw_1_1UDPServer.html#a72857ddcd26d04faf5b2fe23ffb19e2b',1,'ntw::UDPServer::socket()'],['../d6/d60/classntw_1_1Session.html#af4ed727cfcd06b2cddaf68e7b0676349',1,'ntw::Session::socket()']]],
   ['sockwrite_12',['sockWrite',['../d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4',1,'ntw::TCPServer']]],
-  ['soundemittersystem_13',['SoundEmitterSystem',['../db/d9a/namespaceecs_1_1systems.html#aa8595754fadb3db4d383ae638a2e0dbe',1,'ecs::systems']]],
+  ['soundemittersystem_13',['soundEmitterSystem',['../db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63',1,'ecs::systems']]],
   ['soundmanager_14',['SoundManager',['../dc/dcf/classecs_1_1SoundManager.html#add7b6119be009b7e284d6f84bad3ed8d',1,'ecs::SoundManager']]],
   ['sparsearray_15',['SparseArray',['../d8/d2e/classecs_1_1SparseArray.html#a4c4c9d861d2fb42f4a13e910805810f1',1,'ecs::SparseArray::SparseArray()=default'],['../d8/d2e/classecs_1_1SparseArray.html#ae24d0d83e4a6573e69a453d2a884e36a',1,'ecs::SparseArray::SparseArray(const SparseArray &amp;)=default'],['../d8/d2e/classecs_1_1SparseArray.html#aa419859f4ceb8af8015ddb864bed1e75',1,'ecs::SparseArray::SparseArray(SparseArray &amp;&amp;other) noexcept=default']]],
   ['spawnentity_16',['spawnEntity',['../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125',1,'ecs::Registry']]],

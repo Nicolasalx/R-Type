@@ -81,16 +81,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2f8dbd54f0a8a99a7c8a58f493b68174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#a2f8dbd54f0a8a99a7c8a58f493b68174">fireRandomMissileAi</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::function&lt; bool()&gt; cond=nullptr, std::array&lt; float, 2 &gt; randXRange={-1, 1}, std::array&lt; float, 2 &gt; randYRange={-1, 1})</td></tr>
-<tr class="separator:a2f8dbd54f0a8a99a7c8a58f493b68174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43cb3287b916855a3aba0c947b4acbb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#a43cb3287b916855a3aba0c947b4acbb5">fireRandomMissileAi</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, const std::function&lt; bool()&gt; &amp;cond=nullptr, std::array&lt; float, 2 &gt; randXRange={-1, 1}, std::array&lt; float, 2 &gt; randYRange={-1, 1})</td></tr>
+<tr class="separator:a43cb3287b916855a3aba0c947b4acbb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addb066d275a51c4abae991938b3a1097"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#addb066d275a51c4abae991938b3a1097">horizontalMoveAi</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, float minX, float maxX)</td></tr>
 <tr class="separator:addb066d275a51c4abae991938b3a1097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a651ed7a7c6f3513baf5389d8cf4767f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3">waveMovement</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, float defaultY)</td></tr>
 <tr class="separator:a651ed7a7c6f3513baf5389d8cf4767f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2f8dbd54f0a8a99a7c8a58f493b68174" name="a2f8dbd54f0a8a99a7c8a58f493b68174"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f8dbd54f0a8a99a7c8a58f493b68174">&#9670;&#160;</a></span>fireRandomMissileAi()</h2>
+<a id="a43cb3287b916855a3aba0c947b4acbb5" name="a43cb3287b916855a3aba0c947b4acbb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43cb3287b916855a3aba0c947b4acbb5">&#9670;&#160;</a></span>fireRandomMissileAi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -116,7 +116,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; bool()&gt;&#160;</td>
+          <td class="paramtype">const std::function&lt; bool()&gt; &amp;&#160;</td>
           <td class="paramname"><em>cond</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
@@ -141,12 +141,13 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../da/d18/namespacerts_1_1ais_a2f8dbd54f0a8a99a7c8a58f493b68174_cgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a2f8dbd54f0a8a99a7c8a58f493b68174_cgraph" alt=""/></div>
-<map name="ada/d18/namespacerts_1_1ais_a2f8dbd54f0a8a99a7c8a58f493b68174_cgraph" id="ada/d18/namespacerts_1_1ais_a2f8dbd54f0a8a99a7c8a58f493b68174_cgraph">
-<area shape="rect" title=" " alt="" coords="5,120,213,145"/>
+<div class="center"><img src="../../da/d18/namespacerts_1_1ais_a43cb3287b916855a3aba0c947b4acbb5_cgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a43cb3287b916855a3aba0c947b4acbb5_cgraph" alt=""/></div>
+<map name="ada/d18/namespacerts_1_1ais_a43cb3287b916855a3aba0c947b4acbb5_cgraph" id="ada/d18/namespacerts_1_1ais_a43cb3287b916855a3aba0c947b4acbb5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,152,213,177"/>
 <area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="261,113,477,153"/>
 <area shape="rect" href="../../da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="526,5,731,31"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="265,177,474,203"/>
+<area shape="rect" href="../../d0/d9f/classeng_1_1RandomGenerator.html#aadbbfcbabbfd2d7ea912f1887dc58f24" title=" " alt="" coords="283,177,456,217"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="265,241,474,267"/>
 <area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="539,55,718,95"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="525,120,732,145"/>
 <area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="539,170,718,210"/>

@@ -2,7 +2,7 @@ var searchData=
 [
   ['waveai_2ecpp_0',['waveAi.cpp',['../dd/d1c/waveAi_8cpp.html',1,'']]],
   ['waveai_2ehpp_1',['waveAi.hpp',['../d8/d98/waveAi_8hpp.html',1,'']]],
-  ['wavemanager_2',['WaveManager',['../d5/d35/classecs_1_1WaveManager.html',1,'ecs::WaveManager'],['../d3/d3a/classWaveManager.html',1,'WaveManager'],['../d5/d35/classecs_1_1WaveManager.html#a1c039c9a7a485f88b68a3f966ffe02c5',1,'ecs::WaveManager::WaveManager()']]],
+  ['wavemanager_2',['WaveManager',['../d5/d35/classecs_1_1WaveManager.html',1,'ecs::WaveManager'],['../d3/d3a/classWaveManager.html',1,'WaveManager'],['../d5/d35/classecs_1_1WaveManager.html#a98b9eb1b901dff6f5e5021b4f97303be',1,'ecs::WaveManager::WaveManager()']]],
   ['wavemanager_2ecpp_3',['WaveManager.cpp',['../db/de4/WaveManager_8cpp.html',1,'']]],
   ['wavemanager_2ehpp_4',['WaveManager.hpp',['../de/d0e/WaveManager_8hpp.html',1,'']]],
   ['wavemovement_5',['waveMovement',['../da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3',1,'rts::ais']]],

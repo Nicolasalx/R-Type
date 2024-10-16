@@ -5,7 +5,7 @@ var searchData=
   ['addcommoncomponents_2',['addCommonComponents',['../df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111',1,'ecs::EntityFactory']]],
   ['addcomponent_3',['addComponent',['../df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e',1,'ecs::Registry']]],
   ['addcomponents_4',['addComponents',['../de/d4c/classecs_1_1ClientEntityFactory.html#a40f8bb3d8fbd1d144163731dae67dec3',1,'ecs::ClientEntityFactory::addComponents()'],['../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259',1,'ecs::ServerEntityFactory::addComponents()']]],
-  ['addnewmob_5',['addNewMob',['../d5/d35/classecs_1_1WaveManager.html#a0adcc427a7955fa65a62b776a83cf048',1,'ecs::WaveManager']]],
+  ['addnewmob_5',['addNewMob',['../d5/d35/classecs_1_1WaveManager.html#a165c71cf770efb59ae72970462429f39',1,'ecs::WaveManager']]],
   ['addnewwave_6',['addNewWave',['../d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01',1,'ecs::WaveManager']]],
   ['addsystem_7',['addSystem',['../df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2',1,'ecs::Registry']]],
   ['addtickrate_8',['addTickRate',['../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32',1,'ntw::TickRateManager']]],

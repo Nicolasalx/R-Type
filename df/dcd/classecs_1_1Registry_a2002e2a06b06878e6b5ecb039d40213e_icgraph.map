@@ -5,8 +5,8 @@
 <area shape="rect" id="node8" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a40f8bb3d8fbd1d144163731dae67dec3" title="Adds components to an entity." alt="" coords="811,136,986,176"/>
 <area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="799,72,999,112"/>
 <area shape="rect" id="node4" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="535,40,751,80"/>
-<area shape="rect" id="node5" href="$da/d18/namespacerts_1_1ais.html#a2f8dbd54f0a8a99a7c8a58f493b68174" title=" " alt="" coords="279,23,487,48"/>
-<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#a3c8930b4f4ddd77a3880c1225ebdb14d" title=" " alt="" coords="324,72,441,98"/>
+<area shape="rect" id="node5" href="$da/d18/namespacerts_1_1ais.html#a43cb3287b916855a3aba0c947b4acbb5" title=" " alt="" coords="279,23,487,48"/>
+<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#a423eea7055496ad7c95ef1260ff5a4e7" title=" " alt="" coords="327,72,438,98"/>
 <area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,72,231,98"/>
 <area shape="rect" id="node9" href="$df/d28/classecs_1_1EntityFactory.html#a8e977e09b747ce8c33779240b839bef5" title="Creates a client entity from a JSON file." alt="" coords="537,104,749,144"/>
 </map>

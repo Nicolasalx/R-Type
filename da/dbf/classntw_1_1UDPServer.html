@@ -125,9 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa5991e788d7bc6796d888398a24bd108"><td class="memItemLeft" align="right" valign="top">udp::endpoint &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a> ()</td></tr>
 <tr class="memdesc:aa5991e788d7bc6796d888398a24bd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the udp endpoint of the last client that have connected.  <br /></td></tr>
 <tr class="separator:aa5991e788d7bc6796d888398a24bd108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ad1ee123a5c59ae02fca944b7a60701"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; client_id, udp::endpoint &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a2ad1ee123a5c59ae02fca944b7a60701">endpoints</a> ()</td></tr>
-<tr class="memdesc:a2ad1ee123a5c59ae02fca944b7a60701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all the clients endpoint that have connected to the udp server.  <br /></td></tr>
-<tr class="separator:a2ad1ee123a5c59ae02fca944b7a60701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; client_id_t, udp::endpoint &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6">endpoints</a> ()</td></tr>
+<tr class="memdesc:aa8a709a676e3fef428ba7bf5944dadf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all the clients endpoint that have connected to the udp server.  <br /></td></tr>
+<tr class="separator:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a796389b2c266315a75f6854f07b23615"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615">send</a> (udp::endpoint &amp;<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a>, const char *data, std::size_t size)</td></tr>
 <tr class="memdesc:a796389b2c266315a75f6854f07b23615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:a796389b2c266315a75f6854f07b23615"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +137,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44b60ec053d8501e25811bc04f4e6eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a44b60ec053d8501e25811bc04f4e6eb1">sendAllExcept</a> (const char *data, std::size_t size, udp::endpoint &amp;<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a>)</td></tr>
 <tr class="memdesc:a44b60ec053d8501e25811bc04f4e6eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:a44b60ec053d8501e25811bc04f4e6eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad69ac414d88f096d320954c0d22843a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#ad69ac414d88f096d320954c0d22843a3">sendAllExcept</a> (const char *data, std::size_t size, std::initializer_list&lt; udp::endpoint &gt; <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a2ad1ee123a5c59ae02fca944b7a60701">endpoints</a>)</td></tr>
+<tr class="memitem:ad69ac414d88f096d320954c0d22843a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#ad69ac414d88f096d320954c0d22843a3">sendAllExcept</a> (const char *data, std::size_t size, std::initializer_list&lt; udp::endpoint &gt; <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6">endpoints</a>)</td></tr>
 <tr class="memdesc:ad69ac414d88f096d320954c0d22843a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:ad69ac414d88f096d320954c0d22843a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classntw_1_1AsioServer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classntw_1_1AsioServer')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d5/d0a/classntw_1_1AsioServer.html">ntw::AsioServer</a></td></tr>
@@ -258,8 +258,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a2ad1ee123a5c59ae02fca944b7a60701" name="a2ad1ee123a5c59ae02fca944b7a60701"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ad1ee123a5c59ae02fca944b7a60701">&#9670;&#160;</a></span>endpoints()</h2>
+<a id="aa8a709a676e3fef428ba7bf5944dadf6" name="aa8a709a676e3fef428ba7bf5944dadf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a709a676e3fef428ba7bf5944dadf6">&#9670;&#160;</a></span>endpoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +268,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt; client_id, udp::endpoint &gt; &amp; ntw::UDPServer::endpoints </td>
+          <td class="memname">std::unordered_map&lt; client_id_t, udp::endpoint &gt; &amp; ntw::UDPServer::endpoints </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -448,7 +448,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../da/dbf/classntw_1_1UDPServer_a72bff9a6b552aa10f3b93195470730e9_icgraph.png" border="0" usemap="#ada/dbf/classntw_1_1UDPServer_a72bff9a6b552aa10f3b93195470730e9_icgraph" alt=""/></div>
 <map name="ada/dbf/classntw_1_1UDPServer_a72bff9a6b552aa10f3b93195470730e9_icgraph" id="ada/dbf/classntw_1_1UDPServer_a72bff9a6b552aa10f3b93195470730e9_icgraph">
 <area shape="rect" title="Send a message specified in." alt="" coords="480,5,659,31"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#ac69af4f3e1f1e88f6d1588983844ebb6" title=" " alt="" coords="279,5,432,31"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971" title=" " alt="" coords="279,5,432,31"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
