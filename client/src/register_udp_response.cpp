@@ -31,7 +31,7 @@ static void handlePlayerCreation(
     const std::shared_ptr<ImFont> &font
 )
 {
-    networkCallbacks.push_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
