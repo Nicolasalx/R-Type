@@ -6,8 +6,8 @@
 */
 
 #include "ArgParser.hpp"
-#include "RoomManager.hpp"
 #include "RTypeServer.hpp"
+#include "RoomManager.hpp"
 
 int rts::parse_arg(int argc, const char **argv, rts::RoomManager &roomManager)
 {
