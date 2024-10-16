@@ -12,8 +12,8 @@
 #include <cstring>
 #include <vector>
 #include "RTypeConst.hpp"
-#include "components/position.hpp"
-#include "components/velocity.hpp"
+#include "../lib/ecs/components/position.hpp"
+#include "../lib/ecs/components/velocity.hpp"
 #include "shared_entity.hpp"
 
 namespace rt {
