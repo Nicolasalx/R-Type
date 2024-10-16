@@ -144,6 +144,7 @@ struct CL_UDP_CONNECTION_READY {
 struct SER_ALL_UDP_CONNECTION_READY {};
 
 } // namespace TCPData
+
 // NOLINTEND(readability-identifier-naming)
 
 template <typename T>

@@ -15,4 +15,4 @@ class RandomGenerator {
     static int generate(int min, int max);
 };
 
-}
+} // namespace eng

@@ -28,7 +28,7 @@ static void handlePlayerCreation(
     ntw::UDPClient &udpClient,
     std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet,
-    const std::shared_ptr<ImFont>& font
+    const std::shared_ptr<ImFont> &font
 )
 {
     networkCallbacks.push_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {

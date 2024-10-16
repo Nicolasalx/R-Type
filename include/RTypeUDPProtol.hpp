@@ -72,6 +72,7 @@ struct NEW_ENTITY_ROBOT_GROUND {
 struct DEL_ENTITY {};
 
 } // namespace UDPBody
+
 // NOLINTEND(readability-identifier-naming)
 
 /**
