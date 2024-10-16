@@ -1,4 +1,5 @@
 add_executable(r-type_server
+    src/parse_arg.cpp
     src/main.cpp
     src/register_ecs.cpp
     src/GameRunner.cpp

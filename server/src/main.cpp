@@ -17,11 +17,18 @@
 
 int main(int argc, const char *argv[])
 {
-    ntw::TCPServer tcpServer(8080);
     rts::RoomManager roomManager;
+    int argValidity = rts::parse_arg(argc, argv, roomManager);
+
+    if (argValidity == 84) {
+        return 84;
+    } else if (argValidity) {
+        return 0;
+    }
+
+    ntw::TCPServer tcpServer(8080);
     rt::TCPResponseHandler responseHandler;
 
-    roomManager.detectDebugMode(argc, argv);
     rts::registerTcpResponse(roomManager, tcpServer, responseHandler);
     tcpServer.registerCommand([&responseHandler](tcp::socket &sock, char *data, std::size_t size) {
         responseHandler.handleResponse(data, size, {std::ref(sock)});

@@ -68,8 +68,6 @@ void rts::RoomManager::leaveRoom(const std::string &name, std::size_t playerId, 
     }
 }
 
-#include <iostream>
-
 void rts::RoomManager::playerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer)
 {
     {
@@ -97,16 +95,14 @@ void rts::RoomManager::playerReady(const std::string &roomName, std::size_t play
     std::future<bool> server = serverReady.get_future();
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
     _rooms.at(roomName).gameRunner =
-        std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage, this->_displayDebugWindow);
+        std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage, this->_debugMode);
 
     _rooms.at(roomName).game = std::make_unique<std::thread>(
-        [gameRunner = _rooms.at(roomName).gameRunner,
-         displayDebugWindow =
-             this->_displayDebugWindow](bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient) {
+        [gameRunner = _rooms.at(roomName).gameRunner](bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient) {
             serverReady.set_value(true);
             udpClient.wait();
             gameRunner->addWindow(sf::VideoMode(720, 480), "R-Type");
-            gameRunner->runGame(stopGame, displayDebugWindow);
+            gameRunner->runGame(stopGame);
         },
         std::ref(_rooms.at(roomName).stopGame),
         std::move(serverReady),
@@ -204,9 +200,7 @@ void rts::RoomManager::udpPlayerReady(const std::string &roomName, std::size_t p
     }
 }
 
-void rts::RoomManager::detectDebugMode(int argc, const char **argv)
+void rts::RoomManager::enableDebugMode()
 {
-    if (argc == 2 && std::string(argv[1]) == "--debug") {
-        _displayDebugWindow = true;
-    }
+    this->_debugMode = true;
 }
