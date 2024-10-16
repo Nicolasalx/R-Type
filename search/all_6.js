@@ -4,6 +4,9 @@ var searchData=
   ['firerandommissileai_2ecpp_1',['fireRandomMissileAi.cpp',['../dd/dc3/fireRandomMissileAi_8cpp.html',1,'']]],
   ['firerandommissileai_2ehpp_2',['fireRandomMissileAi.hpp',['../d1/d4c/fireRandomMissileAi_8hpp.html',1,'']]],
   ['font_3',['font',['../d6/d5c/structecs_1_1component_1_1Score.html#afb7b49f9909953e7af7c45eebbd3d573',1,'ecs::component::Score']]],
-  ['frames_4',['frames',['../df/d9e/structecs_1_1component_1_1Animation.html#a4f9377b75b75352ae88eb23a37816764',1,'ecs::component::Animation']]],
-  ['frametime_5',['frameTime',['../df/d9e/structecs_1_1component_1_1Animation.html#a629f142a0af9d8b031517d5f02b695d6',1,'ecs::component::Animation']]]
+  ['frameratemanager_4',['FramerateManager',['../d1/d80/classeng_1_1FramerateManager.html',1,'eng::FramerateManager'],['../d1/d80/classeng_1_1FramerateManager.html#a76defe4e5d4388a24b9626862b74449f',1,'eng::FramerateManager::FramerateManager()']]],
+  ['frameratemanager_2ecpp_5',['FrameRateManager.cpp',['../dd/d39/FrameRateManager_8cpp.html',1,'']]],
+  ['frameratemanager_2ehpp_6',['FrameRateManager.hpp',['../d5/d20/FrameRateManager_8hpp.html',1,'']]],
+  ['frames_7',['frames',['../df/d9e/structecs_1_1component_1_1Animation.html#a4f9377b75b75352ae88eb23a37816764',1,'ecs::component::Animation']]],
+  ['frametime_8',['frameTime',['../df/d9e/structecs_1_1component_1_1Animation.html#a629f142a0af9d8b031517d5f02b695d6',1,'ecs::component::Animation']]]
 ];

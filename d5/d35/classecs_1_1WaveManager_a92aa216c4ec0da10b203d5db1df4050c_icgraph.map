@@ -1,6 +1,6 @@
 <map id="ecs::WaveManager::removeEntity" name="ecs::WaveManager::removeEntity">
 <area shape="rect" id="node1" title="Removes an entity from the WaveManager." alt="" coords="752,5,955,45"/>
 <area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="480,13,704,38"/>
-<area shape="rect" id="node3" href="$d9/dbb/namespacerts.html#a6eed7d6aae9124b8a7f0cd56e558cd65" title=" " alt="" coords="279,13,432,38"/>
-<area shape="rect" id="node4" href="$d7/d18/classrts_1_1GameRunner.html#a716c462017e7540f5849838e6b5c4177" title=" " alt="" coords="5,13,231,38"/>
+<area shape="rect" id="node3" href="$d9/dbb/namespacerts.html#ac69af4f3e1f1e88f6d1588983844ebb6" title=" " alt="" coords="279,13,432,38"/>
+<area shape="rect" id="node4" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,13,231,38"/>
 </map>
