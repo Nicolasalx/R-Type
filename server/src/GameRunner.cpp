@@ -64,7 +64,7 @@ void rts::GameRunner::addWindow(sf::VideoMode &&videomode, const std::string &ti
     _window.setFramerateLimit(rt::SERVER_ENGINE_TARGET_FPS);
 }
 
-void rts::GameRunner::runGameDebug(bool &stopGame)
+void rts::GameRunner::_runGameDebug(bool &stopGame)
 {
     sf::Clock clock;
 
@@ -92,7 +92,7 @@ void rts::GameRunner::runGame(bool &stopGame)
     sf::Clock clock;
 
     if (_debugMode) {
-        runGameDebug(stopGame);
+        _runGameDebug(stopGame);
         return;
     }
     while (!stopGame) {

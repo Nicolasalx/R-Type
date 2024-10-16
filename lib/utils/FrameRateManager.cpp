@@ -15,7 +15,7 @@ eng::FramerateManager::FramerateManager(double targetFPS)
     if (targetFPS <= 0) {
         throw eng::TrackedException("Invalide targeted FPS: " + std::to_string(targetFPS) + ".");
     }
-    targetFrameTime = std::chrono::duration<double>(1.0 / targetFPS);
+    _targetFrameTime = std::chrono::duration<double>(1.0 / targetFPS);
 }
 
 void eng::FramerateManager::setFrameRate(double targetFPS)
@@ -23,17 +23,17 @@ void eng::FramerateManager::setFrameRate(double targetFPS)
     if (targetFPS <= 0) {
         throw eng::TrackedException("Invalide targeted FPS: " + std::to_string(targetFPS) + ".");
     }
-    targetFrameTime = std::chrono::duration<double>(1.0 / targetFPS);
+    _targetFrameTime = std::chrono::duration<double>(1.0 / targetFPS);
 }
 
 void eng::FramerateManager::start()
 {
-    startTime = std::chrono::steady_clock::now();
+    _startTime = std::chrono::steady_clock::now();
 }
 
 void eng::FramerateManager::end()
 {
-    auto remainingTime = targetFrameTime - (std::chrono::steady_clock::now() - startTime);
+    auto remainingTime = _targetFrameTime - (std::chrono::steady_clock::now() - _startTime);
 
     if (remainingTime.count() > 0) {
         std::this_thread::sleep_for(remainingTime);

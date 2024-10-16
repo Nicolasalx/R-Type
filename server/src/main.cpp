@@ -18,7 +18,7 @@
 int main(int argc, const char *argv[])
 {
     rts::RoomManager roomManager;
-    int argValidity = rts::parse_arg(argc, argv, roomManager);
+    int argValidity = rts::parseArg(argc, argv, roomManager);
 
     if (argValidity == 84) {
         return 84;

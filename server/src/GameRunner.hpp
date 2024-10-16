@@ -39,7 +39,7 @@ class GameRunner {
 
     bool _debugMode = false;
 
-    void runGameDebug(bool &stopGame);
+    void _runGameDebug(bool &stopGame);
 
     public:
     GameRunner(int port, std::size_t stage, bool debugMode);

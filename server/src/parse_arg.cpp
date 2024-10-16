@@ -9,7 +9,7 @@
 #include "RTypeServer.hpp"
 #include "RoomManager.hpp"
 
-int rts::parse_arg(int argc, const char **argv, rts::RoomManager &roomManager)
+int rts::parseArg(int argc, const char **argv, rts::RoomManager &roomManager)
 {
     eng::ArgParser argParser;
 
