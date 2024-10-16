@@ -75,7 +75,7 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &_networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
 )
 {
     tickRateManager.addTickRate(
@@ -101,11 +101,11 @@ void rtc::registerSystems(
             ecs::systems::clientShareMovement(reg, udpClient);
         }
     });
-    reg.addSystem([&_networkCallbacks, &tickRateManager, &dt, &reg]() {
+    reg.addSystem([&networkCallbacks, &tickRateManager, &dt, &reg]() {
         if (tickRateManager.needUpdate(rtc::TickRate::CALL_NETWORK_CALLBACKS, dt)) {
-            while (!_networkCallbacks.empty()) {
-                _networkCallbacks.front()(reg);
-                _networkCallbacks.pop_front();
+            while (!networkCallbacks.empty()) {
+                networkCallbacks.front()(reg);
+                networkCallbacks.pop_front();
             }
         }
     });

@@ -74,7 +74,7 @@ void rts::registerSystems(
     std::list<std::vector<char>> &datasToSend,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
-    bool displayDebugWindow
+    bool debugMode
 )
 {
     tickRateManager.addTickRate(rts::TickRate::SEND_PACKETS, rts::SERVER_TICKRATE.at(rts::TickRate::SEND_PACKETS));
@@ -106,7 +106,7 @@ void rts::registerSystems(
         }
     });
     reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
-    if (displayDebugWindow) {
+    if (debugMode) {
         reg.addSystem([&reg, &window]() {
             window.clear();
             ecs::systems::draw(reg, window);

@@ -34,7 +34,7 @@ enum class UDPCommand : std::uint8_t {
     DEL_ENTITY
 };
 
-// NOLINT
+// NOLINTBEGIN(readability-identifier-naming)
 namespace UDPBody {
 
 struct MOVE_ENTITY {
@@ -72,6 +72,7 @@ struct NEW_ENTITY_ROBOT_GROUND {
 struct DEL_ENTITY {};
 
 } // namespace UDPBody
+// NOLINTEND(readability-identifier-naming)
 
 /**
  * ! Later on we could have a timestamp member variable

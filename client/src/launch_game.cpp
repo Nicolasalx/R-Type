@@ -86,7 +86,7 @@ void rtc::GameManager::_launchGame()
     _setupUdpConnection(reg, spriteManager, udpClient);
 
     std::future<bool> otherPlayer = _allUDPClientReady.get_future();
-    _roomManager.UDPConnectionReady();
+    _roomManager.udpConnectionReady();
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);

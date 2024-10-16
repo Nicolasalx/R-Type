@@ -25,11 +25,11 @@ class RoomManager {
     };
 
     struct Room {
-        std::map<std::size_t, PlayerLobby> player{};
+        std::map<std::size_t, PlayerLobby> player;
         std::size_t stage = 1;
-        std::unique_ptr<std::thread> game{};
+        std::unique_ptr<std::thread> game;
         std::shared_ptr<GameRunner> gameRunner = nullptr;
-        std::promise<bool> clientReady{};
+        std::promise<bool> clientReady;
         bool stopGame = false;
     };
 

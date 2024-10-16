@@ -5,7 +5,7 @@ std::string eng::TrackedException::_getFuncName(const std::string &func)
 {
     std::string funcName;
 
-    for (int i = func.find_first_of('(') - 1; i >= 0 && func[i] != ' '; --i) {
+    for (int i = int(func.find_first_of('(')) - 1; i >= 0 && func[i] != ' '; --i) {
         funcName.push_back(func[i]);
     }
     std::ranges::reverse(funcName.begin(), funcName.end());

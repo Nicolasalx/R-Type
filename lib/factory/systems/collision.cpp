@@ -44,7 +44,7 @@ static void resolveCollision(
     }
 }
 
-static void resolve_tag_effect(ecs::Registry &reg, size_t entityA, size_t entityB)
+static void resolveTagEffect(ecs::Registry &reg, size_t entityA, size_t entityB)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
     auto &health = reg.getComponents<ecs::component::Health>();
@@ -105,7 +105,7 @@ void collision(Registry &reg)
                     resolveCollision(reg, posB, entityB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
-                resolve_tag_effect(reg, entityA, entityB);
+                resolveTagEffect(reg, entityA, entityB);
             }
         }
     }

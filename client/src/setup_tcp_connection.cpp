@@ -19,12 +19,12 @@ void rtc::GameManager::_setupTcpConnection()
 
     {
         rt::TCPPacket<rt::TCPData::CL_NEW_USER> packet{.cmd = rt::TCPCommand::CL_NEW_USER};
-        packet.data.user_id = _userId;
+        packet.body.userId = _userId;
         _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
     }
     {
         rt::TCPPacket<rt::TCPData::CL_ROOM_LIST> packet{.cmd = rt::TCPCommand::CL_ROOM_LIST};
-        packet.data.user_id = _userId;
+        packet.body.userId = _userId;
         _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
     }
 }
