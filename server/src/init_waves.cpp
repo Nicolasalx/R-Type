@@ -76,7 +76,7 @@ static void waveInit(ecs::WaveManager &waveManager, std::list<std::vector<char>>
     }
 }
 
-void rts::init_waves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend)
+void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend)
 {
     auto waveId = waveManager.addNewWave();
 

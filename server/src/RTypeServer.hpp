@@ -27,12 +27,12 @@ void registerSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
     float &dt,
-    ntw::TickRateManager<rts::TickRate> &tick_rate_manager,
+    ntw::TickRateManager<rts::TickRate> &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
-    bool displayDebugWindow
+    bool debugMode
 );
 void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
@@ -45,6 +45,6 @@ void registerTcpResponse(
     rt::TCPResponseHandler &responseHandler
 );
 
-void init_waves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &_datasToSend);
+void initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend);
 
 } // namespace rts

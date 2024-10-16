@@ -101,7 +101,7 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
     sf::Vector2u windowSize;
 
     while (window->isOpen() && inLobby) {
-        sf::Event event;
+        sf::Event event{};
         while (window->pollEvent(event)) {
             ImGui::SFML::ProcessEvent(*window, event);
             if (event.type == sf::Event::Closed) {

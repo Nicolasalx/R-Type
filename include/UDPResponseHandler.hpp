@@ -46,7 +46,7 @@ class UDPResponseHandler {
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
-        const rt::UDPPacket<void *> *header;
+        const rt::UDPPacket<void *> *header = nullptr;
 
         while (size >= sizeof(rt::UDPPacket<void *>)) {
             header = reinterpret_cast<const rt::UDPPacket<void *> *>(ptr);

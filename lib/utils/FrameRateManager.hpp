@@ -20,7 +20,7 @@ class FramerateManager {
     void end();
 
     private:
-    std::chrono::duration<double> _targetFrameTime;
+    std::chrono::duration<double> _targetFrameTime{};
     std::chrono::steady_clock::time_point _startTime;
 };
 

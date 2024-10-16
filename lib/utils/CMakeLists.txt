@@ -3,6 +3,7 @@ add_library(UTILS STATIC
     TrackedException.cpp
     ArgParser.cpp
     FrameRateManager.cpp
+    RandomGenerator.cpp
 )
 
 target_include_directories(UTILS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -9,15 +9,13 @@
 #include <algorithm>
 #include "entity.hpp"
 
-ecs::WaveManager::WaveManager() : _nextWave(0), _currEntities(), _waves() {}
-
 size_t ecs::WaveManager::addNewWave()
 {
     _waves.push_back({});
     return _waves.size() - 1;
 }
 
-void ecs::WaveManager::addNewMob(size_t waveId, ecs::WaveManager::MobSpawner spawner)
+void ecs::WaveManager::addNewMob(size_t waveId, const ecs::WaveManager::mob_spawner_t &spawner)
 {
     _waves[waveId].push_back(spawner);
 }

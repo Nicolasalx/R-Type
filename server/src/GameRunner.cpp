@@ -33,7 +33,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
     rts::registerSystems(
         _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, debugMode
     );
-    rts::init_waves(_waveManager, _datasToSend);
+    rts::initWaves(_waveManager, _datasToSend);
 }
 
 void rts::GameRunner::killPlayer(size_t playerId)
@@ -71,7 +71,7 @@ void rts::GameRunner::_runGameDebug(bool &stopGame)
     while (_window.isOpen() && !stopGame) {
         _dt = clock.restart().asSeconds();
 
-        sf::Event event;
+        sf::Event event{};
         while (_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 _window.close();
