@@ -23,7 +23,8 @@
   - [7.1 Creating a Player Entity](#71-creating-a-player-entity)
   - [7.2 Updating an Entities Position](#72-updating-an-entities-position)
   - [7.3 Deleting an Entity](#73-deleting-an-entity)
-- [8. Conclusion](#8-conclusion)
+- [8. Error handling](#8-error-handling)
+- [9. Conclusion](#9-conclusion)
 
 ## 1. Introduction
 
@@ -79,9 +80,10 @@ Packets contain a `cmd` field that specifies the command being sent. The availab
 ### 4.1 Command Descriptions
 
 #### 4.1.1 `NEW_ENTITY_STATIC`
-
-Creates a new static entity in the game, without movement, with the specified initial position and velocity attributes.
-
+- **Command ID**: 1
+- **Description**: Creates a new static entity without movement, with the specified initial position and velocity attributes.
+- **Data**:
+  - `moveData`: Movement data of the entity.
 ```cpp
 struct NEW_ENTITY_STATIC {
     MOVE_ENTITY moveData;
@@ -89,8 +91,13 @@ struct NEW_ENTITY_STATIC {
 ```
 
 #### 4.1.2 `NEW_ENTITY_PLAYER`
-
-Creates a player with a unique identifier, a player name, and movement data.
+- **Command ID**: 2
+- **Description**: Creates a player entity with a unique identifier, player name, and movement data.
+- **Data**:
+  - `playerId`: Unique identifier for the player.
+  - `playerIndex`: Index for the player.
+  - `playerName`: Name of the player.
+  - `moveData`: Movement data of the entity.
 
 ```cpp
 struct NEW_ENTITY_PLAYER {
@@ -102,9 +109,10 @@ struct NEW_ENTITY_PLAYER {
 ```
 
 #### 4.1.3 `NEW_ENTITY_MISSILE`
-
-Creates a new missile entity with movement data.
-
+- **Command ID**: 3
+- **Description**: Creates a missile entity with movement data.
+- **Data**:
+  - `moveData`: Movement data of the missile.
 ```cpp
 struct NEW_ENTITY_MISSILE {
     MOVE_ENTITY moveData;
@@ -112,9 +120,10 @@ struct NEW_ENTITY_MISSILE {
 ```
 
 #### 4.1.4 `NEW_ENTITY_MISSILE_BALL`
-
-Creates a new missile entity in the shape of a ball with movement data.
-
+- **Command ID**: 4
+- **Description**: Creates a missile entity in the shape of a ball with movement data.
+- **Data**:
+  - `moveData`: Movement data of the missile ball.
 ```cpp
 struct NEW_ENTITY_MISSILE_BALL {
     MOVE_ENTITY moveData;
@@ -122,9 +131,10 @@ struct NEW_ENTITY_MISSILE_BALL {
 ```
 
 #### 4.1.5 `NEW_ENTITY_BYDOS_WAVE`
-
-Creates a new Bydos wave entity with movement data.
-
+- **Command ID**: 5
+- **Description**: Creates a new Bydos wave entity with movement data.
+- **Data**:
+  - `moveData`: Movement data of the Bydos wave.
 ```cpp
 struct NEW_ENTITY_BYDOS_WAVE {
     MOVE_ENTITY moveData;
@@ -132,9 +142,10 @@ struct NEW_ENTITY_BYDOS_WAVE {
 ```
 
 #### 4.1.6 `NEW_ENTITY_ROBOT_GROUND`
-
-Creates a new ground robot entity with movement data.
-
+- **Command ID**: 6
+- **Description**: Creates a new ground robot entity with movement data.
+- **Data**:
+  - `moveData`: Movement data of the ground robot.
 ```cpp
 struct NEW_ENTITY_ROBOT_GROUND {
     MOVE_ENTITY moveData;
@@ -142,9 +153,11 @@ struct NEW_ENTITY_ROBOT_GROUND {
 ```
 
 #### 4.1.7 `MOVE_ENTITY`
-
-Updates the position and speed of an existing entity.
-
+- **Command ID**: 7
+- **Description**: Updates the position and velocity of an existing entity.
+- **Data**:
+  - `pos`: Position of the entity.
+  - `vel`: Velocity of the entity.
 ```cpp
 struct MOVE_ENTITY {
     ecs::component::Position pos;
@@ -153,10 +166,12 @@ struct MOVE_ENTITY {
 ```
 
 #### 4.1.8 `MOD_ENTITY`
-
-Modifies one or more attributes of an existing entity in the game. This command is used when an entity's characteristics need to be updated without recreating the entity.
-Modifications can include updates to position, speed, health, or other entity-specific attributes.
-
+- **Command ID**: 8
+- **Description**: Modifies one or more attributes of an existing entity, such as position, velocity, or other attributes.
+- **Data**:
+  - `sharedEntityId`: Unique ID of the entity to modify.
+  - `newPos`: (Optional) New position of the entity.
+  - `newVel`: (Optional) New velocity of the entity.
 ```cpp
 struct MOD_ENTITY {
     shared_entity_t sharedEntityId;  // Unique ID of the entity to modify
@@ -167,10 +182,13 @@ struct MOD_ENTITY {
 ```
 
 #### 4.1.9 `MOD_ENTITIES`
-
-Modifies the attributes of multiple entities in a single operation.
-This command is useful for synchronizing group updates of entities, such as simultaneously updating the positions and velocities of several moving objects in the game.
-
+- **Command ID**: 9
+- **Description**: Modifies the attributes of multiple entities in a single operation, such as positions and velocities.
+- **Data**:
+  - `entityCount`: Number of entities to modify.
+  - `entityIds`: List of IDs of entities to modify.
+  - `newPositions`: (Optional) New positions of the entities.
+  - `newVelocities`: (Optional) New velocities of the entities.
 ```cpp
 struct MOD_ENTITIES {
     std::size_t entityCount;                 // Number of entities to modify
@@ -182,11 +200,10 @@ struct MOD_ENTITIES {
 ```
 
 #### 4.1.10 `DEL_ENTITY`
-
-Deletes a specific entity from the game.
-When this command is sent, the entity identified by its unique ID is removed from the game state.
-No additional information other than the ID of the entity to be deleted is required.
-
+- **Command ID**: 10
+- **Description**: Deletes a specific entity from the game.
+- **Data**:
+  - `sharedEntityId`: Unique ID of the entity to delete.
 ```cpp
 struct DEL_ENTITY {
     shared_entity_t sharedEntityId;  // Unique ID of the entity to delete
@@ -215,6 +232,22 @@ A MOVE_ENTITY packet is sent to update the position and velocity of an entity. T
 
 The server sends a DEL_ENTITY command to indicate that an entity has been removed from the game. The client receives the packet and removes the corresponding entity from its game state.
 
-### 8. Conclusion
+### 8. Error Handling
+
+In the event of receiving an invalid packet (e.g., wrong magic number or size), the protocol must log the error and discard the packet. Additionally, the system should be able to handle exceptions when processing packets without crashing the game.
+
+Example Error Handling
+```cpp
+if (header->magic != rt::UDP_MAGIC) {
+    eng::logWarning("Invalid UDP magic received !");
+    return; // Ignore the packet
+}
+if (header->size > size) {
+    eng::logWarning("Packet of invalid size received !");
+    return; // Ignore the packet
+}
+```
+
+### 9. Conclusion
 
 This UDP protocol for multiplayer games provides an efficient, low-latency solution for synchronizing game states between multiple clients and a central server. It allows for great flexibility in managing game entities while tolerating packet loss.
