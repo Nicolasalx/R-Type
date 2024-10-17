@@ -91,6 +91,11 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748aefae58ce896e443f1b50e7354717c0ec">CALL_NETWORK_CALLBACKS</a>
  }</td></tr>
 <tr class="separator:abe11f867390b2f57ad261979585a0748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac47684a26a104eb546ab0d6aad9bca"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">WindowMode</a> : std::uint8_t { <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa3ed53fbeb1eab0443561b68ca0c0b5cf">MENU</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa164dd62adb30ca051b5289672a572f9b">OPTIONS</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2">LOBBY</a>
+ }</td></tr>
+<tr class="separator:a5ac47684a26a104eb546ab0d6aad9bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -104,6 +109,12 @@ Functions</h2></td></tr>
 <tr class="separator:a61318882c032d19c9e351131fab9dcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae882b666beee34e8fd5a971df620bced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced">renderLobbyWindow</a> (<a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &amp;roomManager, const sf::Vector2u &amp;windowSize)</td></tr>
 <tr class="separator:ae882b666beee34e8fd5a971df620bced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d229c2aba04718a18a574bbe239a556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a6d229c2aba04718a18a574bbe239a556">optionsWindow</a> (sf::RenderWindow &amp;window, sf::Vector2u windowSize, int &amp;fpsLimit, <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">WindowMode</a> &amp;windowMode)</td></tr>
+<tr class="separator:a6d229c2aba04718a18a574bbe239a556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac661009cdfb711d801c4faa298ab2282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#ac661009cdfb711d801c4faa298ab2282">menuWindow</a> (sf::RenderWindow &amp;window, ImGuiIO &amp;io, <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">WindowMode</a> &amp;windowMode)</td></tr>
+<tr class="separator:ac661009cdfb711d801c4faa298ab2282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcc6b3192929567b8c901c0227f8d0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#aadcc6b3192929567b8c901c0227f8d0b">lobbyWindow</a> (sf::Vector2u &amp;windowSize, <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &amp;roomManager)</td></tr>
+<tr class="separator:aadcc6b3192929567b8c901c0227f8d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -137,7 +148,173 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a5ac47684a26a104eb546ab0d6aad9bca" name="a5ac47684a26a104eb546ab0d6aad9bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ac47684a26a104eb546ab0d6aad9bca">&#9670;&#160;</a></span>WindowMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">rtc::WindowMode</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5ac47684a26a104eb546ab0d6aad9bcaa3ed53fbeb1eab0443561b68ca0c0b5cf" name="a5ac47684a26a104eb546ab0d6aad9bcaa3ed53fbeb1eab0443561b68ca0c0b5cf"></a>MENU&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5ac47684a26a104eb546ab0d6aad9bcaa164dd62adb30ca051b5289672a572f9b" name="a5ac47684a26a104eb546ab0d6aad9bcaa164dd62adb30ca051b5289672a572f9b"></a>OPTIONS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2" name="a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2"></a>LOBBY&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aadcc6b3192929567b8c901c0227f8d0b" name="aadcc6b3192929567b8c901c0227f8d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadcc6b3192929567b8c901c0227f8d0b">&#9670;&#160;</a></span>lobbyWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtc::lobbyWindow </td>
+          <td>(</td>
+          <td class="paramtype">sf::Vector2u &amp;&#160;</td>
+          <td class="paramname"><em>windowSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>roomManager</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_cgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_cgraph" id="ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,140,56"/>
+<area shape="rect" href="../../d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="188,5,445,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="227,55,407,80"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_icgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_icgraph" id="ad9/d77/namespacertc_aadcc6b3192929567b8c901c0227f8d0b_icgraph">
+<area shape="rect" title=" " alt="" coords="144,5,279,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac661009cdfb711d801c4faa298ab2282" name="ac661009cdfb711d801c4faa298ab2282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac661009cdfb711d801c4faa298ab2282">&#9670;&#160;</a></span>menuWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtc::menuWindow </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ImGuiIO &amp;&#160;</td>
+          <td class="paramname"><em>io</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">WindowMode</a> &amp;&#160;</td>
+          <td class="paramname"><em>windowMode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d77/namespacertc_ac661009cdfb711d801c4faa298ab2282_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_ac661009cdfb711d801c4faa298ab2282_icgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_ac661009cdfb711d801c4faa298ab2282_icgraph" id="ad9/d77/namespacertc_ac661009cdfb711d801c4faa298ab2282_icgraph">
+<area shape="rect" title=" " alt="" coords="144,5,280,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6d229c2aba04718a18a574bbe239a556" name="a6d229c2aba04718a18a574bbe239a556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d229c2aba04718a18a574bbe239a556">&#9670;&#160;</a></span>optionsWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtc::optionsWindow </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::Vector2u&#160;</td>
+          <td class="paramname"><em>windowSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>fpsLimit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca">WindowMode</a> &amp;&#160;</td>
+          <td class="paramname"><em>windowMode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph" id="ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph">
+<area shape="rect" title=" " alt="" coords="144,5,291,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a3b38969f49ab0c77c13dc28e73bfee15" name="a3b38969f49ab0c77c13dc28e73bfee15"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b38969f49ab0c77c13dc28e73bfee15">&#9670;&#160;</a></span>registerComponents()</h2>
 
@@ -291,7 +468,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d77/namespacertc_ae882b666beee34e8fd5a971df620bced_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_ae882b666beee34e8fd5a971df620bced_icgraph" alt=""/></div>
 <map name="ad9/d77/namespacertc_ae882b666beee34e8fd5a971df620bced_icgraph" id="ad9/d77/namespacertc_ae882b666beee34e8fd5a971df620bced_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,324,31"/>
+<area shape="rect" title=" " alt="" coords="327,5,507,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#aadcc6b3192929567b8c901c0227f8d0b" title=" " alt="" coords="144,5,279,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
 </map>
 </div>
@@ -384,9 +562,12 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d77/namespacertc_a61318882c032d19c9e351131fab9dcbc_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_a61318882c032d19c9e351131fab9dcbc_cgraph" alt=""/></div>
 <map name="ad9/d77/namespacertc_a61318882c032d19c9e351131fab9dcbc_cgraph" id="ad9/d77/namespacertc_a61318882c032d19c9e351131fab9dcbc_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,96,56"/>
-<area shape="rect" href="../../d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="144,5,401,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="183,55,363,80"/>
+<area shape="rect" title=" " alt="" coords="5,79,96,104"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#aadcc6b3192929567b8c901c0227f8d0b" title=" " alt="" coords="150,29,285,55"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#ac661009cdfb711d801c4faa298ab2282" title=" " alt="" coords="149,79,285,104"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a6d229c2aba04718a18a574bbe239a556" title=" " alt="" coords="144,128,291,153"/>
+<area shape="rect" href="../../d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="339,5,596,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="377,55,557,80"/>
 </map>
 </div>
 

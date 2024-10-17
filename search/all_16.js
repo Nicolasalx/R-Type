@@ -7,5 +7,6 @@ var searchData=
   ['wavemanager_2ehpp_4',['WaveManager.hpp',['../de/d0e/WaveManager_8hpp.html',1,'']]],
   ['wavemovement_5',['waveMovement',['../da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3',1,'rts::ais']]],
   ['what_6',['what',['../df/dac/classeng_1_1TrackedException.html#aff779c4cfc140845ccc2a65d98e95e98',1,'eng::TrackedException']]],
-  ['width_7',['width',['../dd/d5e/structecs_1_1component_1_1Hitbox.html#ab6f357dfebfa8a69a7ef1cdd46ff3cdc',1,'ecs::component::Hitbox']]]
+  ['width_7',['width',['../dd/d5e/structecs_1_1component_1_1Hitbox.html#ab6f357dfebfa8a69a7ef1cdd46ff3cdc',1,'ecs::component::Hitbox']]],
+  ['windowmode_8',['WindowMode',['../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bca',1,'rtc']]]
 ];
