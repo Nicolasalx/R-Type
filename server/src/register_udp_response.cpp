@@ -82,9 +82,8 @@ void rts::registerUdpResponse(
                     reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.vel;
                 } catch (const std::exception &e) {
-                    // auto currentTime = std::chrono::system_clock::now().time_since_epoch();
-                    // auto currentTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime).count();
-                    // eng::logWarning(std::to_string(currentTimeMs) + ": " + e.what());
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
                 }
             });
         }

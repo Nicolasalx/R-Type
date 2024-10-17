@@ -17,7 +17,7 @@ if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
     )
 elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
     set_target_properties(r-type_client PROPERTIES CXX_CLANG_TIDY
-        "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/client/.*\\.hpp$"
+        "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/server/.*\\.hpp$|${CMAKE_SOURCE_DIR}/include/.*\\.hpp$"
     )
 endif()
 

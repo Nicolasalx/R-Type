@@ -8,6 +8,7 @@
 #pragma once
 
 #include <algorithm>
+#include <cstdint>
 #include <functional>
 #include <list>
 #include <optional>
@@ -32,7 +33,7 @@ class ArgParser {
      * @enum ArgType
      * @brief Enumeration of supported argument types.
      */
-    enum class ArgType {
+    enum class ArgType : std::uint8_t {
         BOOL,         /**< Boolean values (`true`, `false`, `1`, `0`). */
         INT,          /**< Signed integer values. */
         UNSIGNED_INT, /**< Unsigned integer values. */

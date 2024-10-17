@@ -100,8 +100,8 @@ class Session : public std::enable_shared_from_this<Session> {
 
     tcp::socket _sock;                                    ///< The TCP socket for client communication.
     std::mutex &_serverMutex;                             ///< Reference to the server's mutex for thread safety.
-    std::array<char, BUFF_SIZE> _buff;                    ///< Buffer to store incoming data.
-    const std::function<void(std::size_t)> _closeHandler; ///< Handler function to call upon session closure.
+    std::array<char, BUFF_SIZE> _buff = {0};                    ///< Buffer to store incoming data.
+    std::function<void(std::size_t)> _closeHandler; ///< Handler function to call upon session closure.
     std::size_t _id;                                      ///< Unique identifier for the session.
 };
 
