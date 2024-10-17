@@ -9,6 +9,7 @@ add_executable(r-type_client
     src/register_udp_response.cpp
     src/run_gui.cpp
     src/menu/room_selection.cpp
+    src/menu/title_menu.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
