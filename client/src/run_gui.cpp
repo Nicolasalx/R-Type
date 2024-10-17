@@ -17,7 +17,7 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
 {
     sf::Clock dt;
     sf::Vector2u windowSize;
-    WindowMode windowMode = MENU;
+    WindowMode windowMode = rtc::WindowMode::MENU;
     int fpsLimit = rt::CLIENT_FPS_LIMIT;
 
     ImGuiIO &io = ImGui::GetIO();
@@ -38,9 +38,9 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
         window->clear();
         windowSize = window->getSize();
 
-        if (windowMode == MENU) {
+        if (windowMode == rtc::WindowMode::MENU) {
             menuWindow(*window, io, windowMode);
-        } else if (windowMode == OPTIONS) {
+        } else if (windowMode == rtc::WindowMode::OPTIONS) {
             optionsWindow(*window, windowSize, fpsLimit, windowMode);
         } else {
             lobbyWindow(windowSize, roomManager);

@@ -20,7 +20,7 @@
 
 namespace rtc {
 
-enum WindowMode {
+enum class WindowMode : std::size_t {
     MENU,
     OPTIONS,
     LOBBY

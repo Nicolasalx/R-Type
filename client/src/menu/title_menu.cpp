@@ -43,7 +43,7 @@ void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &
     ImGui::Spacing();
     ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 300) * 0.5f);
     if (ImGui::Button("Retour", ImVec2(300, 50))) {
-        windowMode = MENU;
+        windowMode = rtc::WindowMode::MENU;
     }
     ImGui::End();
 }
@@ -52,7 +52,7 @@ void rtc::menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMo
 {
     ImGui::SetNextWindowSize(ImVec2(window.getSize().x, window.getSize().y));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::Begin("Menu Titre", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+    ImGui::Begin("Menu Titre", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
     float windowWidth = ImGui::GetWindowSize().x;
     float windowHeight = ImGui::GetWindowSize().y;
     ImGui::Dummy(ImVec2(0.0f, windowHeight * 0.3f));
@@ -61,12 +61,12 @@ void rtc::menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMo
     float buttonHeight = 60.0f;
     ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2);
     if (ImGui::Button("PLAY", ImVec2(buttonWidth, buttonHeight))) {
-        windowMode = LOBBY;
+        windowMode = rtc::WindowMode::LOBBY;
     }
     ImGui::Dummy(ImVec2(0.0f, 20.0f));
     ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2);
     if (ImGui::Button("OPTIONS", ImVec2(buttonWidth, buttonHeight))) {
-        windowMode = OPTIONS;
+        windowMode = rtc::WindowMode::OPTIONS;
     }
     ImGui::Dummy(ImVec2(0.0f, 20.0f));
     ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2);
