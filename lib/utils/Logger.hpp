@@ -40,7 +40,6 @@ void logWarning(const std::string &msg);
  */
 void logError(const std::string &msg);
 
-
 /**
  * @brief Logs an informational message with source location and time.
  *

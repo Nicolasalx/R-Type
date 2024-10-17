@@ -65,7 +65,8 @@ class TCPResponseHandler {
                 _specialHandler.at(header->cmd)(ptr, arg);
             } else {
                 throw eng::TrackedException(
-                    "Response without handler: " + std::to_string(static_cast<std::underlying_type_t<rt::TCPCommand>>(header->cmd)) + '.'
+                    "Response without handler: " +
+                    std::to_string(static_cast<std::underlying_type_t<rt::TCPCommand>>(header->cmd)) + '.'
                 );
             }
             ptr += header->size;
