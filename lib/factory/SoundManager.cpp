@@ -6,7 +6,8 @@
 */
 
 #include "SoundManager.hpp"
-#include <iostream>
+#include "../utils/Logger.hpp"
+#include "../utils/TrackedException.hpp"
 
 namespace ecs {
 
@@ -24,7 +25,7 @@ bool SoundManager::loadSoundBuffer(const std::string &id, const std::string &fil
 {
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile(filepath)) {
-        std::cerr << "Failed to load sound buffer: " << filepath << std::endl;
+        eng::logError("Failed to load sound buffer: " + filepath);
         return false;
     }
     _soundBuffers.emplace(id, std::move(buffer));
@@ -37,7 +38,7 @@ const sf::SoundBuffer &SoundManager::getSoundBuffer(const std::string &id) const
     if (it != _soundBuffers.end()) {
         return it->second;
     }
-    throw std::runtime_error("SoundBuffer not found: " + id);
+    throw eng::TrackedException("SoundBuffer not found: " + id);
 }
 
 void SoundManager::playSoundEffect(const std::string &bufferId, float volume, bool loop)
@@ -46,7 +47,7 @@ void SoundManager::playSoundEffect(const std::string &bufferId, float volume, bo
     try {
         sound.setBuffer(getSoundBuffer(bufferId));
     } catch (const std::exception &e) {
-        std::cerr << "Error playing sound effect: " << e.what() << std::endl;
+        eng::logError("Error playing sound effect: " + std::string(e.what()));
         return;
     }
     sound.setVolume(volume);
@@ -76,7 +77,7 @@ bool SoundManager::loadMusic(const std::string &id, const std::string &filepath)
 {
     auto music = std::make_shared<sf::Music>();
     if (!music->openFromFile(filepath)) {
-        std::cerr << "Failed to load music: " << filepath << std::endl;
+        eng::logError("Failed to load music: " + filepath);
         return false;
     }
     _musics.emplace(id, std::move(music));
@@ -96,7 +97,7 @@ void SoundManager::playMusic(const std::string &id, float volume, bool loop)
         _currentMusic->setLoop(loop);
         _currentMusic->play();
     } else {
-        std::cerr << "Music ID not found: " << id << std::endl;
+        eng::logError("Music ID not found: " + id);
     }
 }
 

@@ -12,6 +12,16 @@ add_executable(r-type_client
     src/menu/title_menu.cpp
 )
 
+if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
+    set_target_properties(r-type_client PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color"
+    )
+elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
+    set_target_properties(r-type_client PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/server/.*\\.hpp$|${CMAKE_SOURCE_DIR}/include/.*\\.hpp$"
+    )
+endif()
+
 target_compile_options(r-type_client PRIVATE -Wall -Wextra)
 
 target_link_libraries(r-type_client PRIVATE FACTORY NETWORK UTILS ImGui-SFML::ImGui-SFML)

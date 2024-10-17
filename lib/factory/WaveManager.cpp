@@ -11,7 +11,7 @@
 
 size_t ecs::WaveManager::addNewWave()
 {
-    _waves.push_back({});
+    _waves.emplace_back();
     return _waves.size() - 1;
 }
 

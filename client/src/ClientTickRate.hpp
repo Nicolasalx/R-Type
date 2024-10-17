@@ -7,11 +7,12 @@
 
 #pragma once
 
+#include <cstdint>
 #include <unordered_map>
 
 namespace rtc {
 
-enum class TickRate : std::size_t {
+enum class TickRate : std::uint8_t {
     ENTITY_MOVEMENT,
     CALL_NETWORK_CALLBACKS
 };

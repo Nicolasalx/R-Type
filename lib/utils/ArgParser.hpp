@@ -8,12 +8,13 @@
 #pragma once
 
 #include <algorithm>
+#include <cstdint>
 #include <functional>
 #include <list>
 #include <optional>
 #include <sstream>
-#include <stdexcept>
 #include <string>
+#include "TrackedException.hpp"
 #include <unordered_map>
 
 namespace eng {
@@ -32,7 +33,7 @@ class ArgParser {
      * @enum ArgType
      * @brief Enumeration of supported argument types.
      */
-    enum class ArgType {
+    enum class ArgType : std::uint8_t {
         BOOL,         /**< Boolean values (`true`, `false`, `1`, `0`). */
         INT,          /**< Signed integer values. */
         UNSIGNED_INT, /**< Unsigned integer values. */
@@ -86,7 +87,7 @@ class ArgParser {
      *
      * @return `true` if parsing is successful; `false` otherwise.
      *
-     * @throws std::runtime_error If a required argument is missing or if validation fails.
+     * @throws eng::TrackedException If a required argument is missing or if validation fails.
      */
     bool parse(int argc, const char **argv);
 
@@ -101,7 +102,7 @@ class ArgParser {
      *
      * @return The value of the argument converted to type `T`.
      *
-     * @throws std::runtime_error If the argument is not defined, has no value, or conversion fails.
+     * @throws eng::TrackedException If the argument is not defined, has no value, or conversion fails.
      */
     template <typename T>
     T getValue(const std::string &longName) const
@@ -115,13 +116,13 @@ class ArgParser {
             std::istringstream iss(*(it->value));
             iss >> result;
             if (iss.fail() || !iss.eof()) {
-                throw std::runtime_error(
+                throw eng::TrackedException(
                     "Failed to convert argument value to the requested type for argument: " + longName
                 );
             }
             return result;
         }
-        throw std::runtime_error("Argument is not defined or has no value: " + longName);
+        throw eng::TrackedException("Argument is not defined or has no value: " + longName);
     }
 
     /**
@@ -168,7 +169,7 @@ class ArgParser {
  *
  * @return The boolean value of the argument.
  *
- * @throws std::runtime_error If the argument is not defined, has no value, or contains an invalid boolean string.
+ * @throws eng::TrackedException If the argument is not defined, has no value, or contains an invalid boolean string.
  */
 
 template <>
@@ -186,10 +187,10 @@ inline bool ArgParser::getValue<bool>(const std::string &longName) const
         } else if (val == "false" || val == "0") {
             return false;
         } else {
-            throw std::runtime_error("Invalid boolean value for argument: " + longName);
+            throw eng::TrackedException("Invalid boolean value for argument: " + longName);
         }
     }
-    throw std::runtime_error("Argument is not defined or has no value: " + longName);
+    throw eng::TrackedException("Argument is not defined or has no value: " + longName);
 }
 
 } // namespace eng

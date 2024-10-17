@@ -37,6 +37,8 @@ enum class UDPCommand : std::uint8_t {
 // NOLINTBEGIN(readability-identifier-naming)
 namespace UDPBody {
 
+struct EMPTY {}; // Used in the UDP responce handler
+
 struct MOVE_ENTITY {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
@@ -83,8 +85,8 @@ template <typename T>
 struct UDPPacket {
     std::size_t magic = rt::UDP_MAGIC;
     std::size_t size = sizeof(*this);
-    UDPCommand cmd;
-    shared_entity_t sharedEntityId;
+    UDPCommand cmd = UDPCommand::NONE;
+    shared_entity_t sharedEntityId = 0;
 
     T body{};
 

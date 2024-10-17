@@ -41,7 +41,7 @@ std::map<std::string, rtc::RoomManager::RoomContent> &rtc::RoomManager::getRooms
 
 void rtc::RoomManager::askToCreateRoom(const std::string &roomName, const std::size_t &stage)
 {
-    rt::TCPPacket<rt::TCPData::CL_CREATE_ROOM> packet{.cmd = rt::TCPCommand::CL_CREATE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_CREATE_ROOM> packet{.cmd = rt::TCPCommand::CL_CREATE_ROOM};
 
     packet.body.stage = stage;
     roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
@@ -50,7 +50,7 @@ void rtc::RoomManager::askToCreateRoom(const std::string &roomName, const std::s
 
 void rtc::RoomManager::askToDeleteRoom(const std::string &roomName)
 {
-    rt::TCPPacket<rt::TCPData::CL_DELETE_ROOM> packet{.cmd = rt::TCPCommand::CL_DELETE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_DELETE_ROOM> packet{.cmd = rt::TCPCommand::CL_DELETE_ROOM};
 
     roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
@@ -58,7 +58,7 @@ void rtc::RoomManager::askToDeleteRoom(const std::string &roomName)
 
 void rtc::RoomManager::askToJoinRoom(const std::string &roomName)
 {
-    rt::TCPPacket<rt::TCPData::CL_JOIN_ROOM> packet{.cmd = rt::TCPCommand::CL_JOIN_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_JOIN_ROOM> packet{.cmd = rt::TCPCommand::CL_JOIN_ROOM};
 
     packet.body.userId = _userId;
     roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
@@ -68,7 +68,7 @@ void rtc::RoomManager::askToJoinRoom(const std::string &roomName)
 
 void rtc::RoomManager::askToLeaveRoom()
 {
-    rt::TCPPacket<rt::TCPData::CL_LEAVE_ROOM> packet{.cmd = rt::TCPCommand::CL_LEAVE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_LEAVE_ROOM> packet{.cmd = rt::TCPCommand::CL_LEAVE_ROOM};
 
     packet.body.userId = _userId;
     _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
@@ -77,7 +77,7 @@ void rtc::RoomManager::askToLeaveRoom()
 
 void rtc::RoomManager::askToBeReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_READY> packet{.cmd = rt::TCPCommand::CL_READY};
+    rt::TCPPacket<rt::TCPBody::CL_READY> packet{.cmd = rt::TCPCommand::CL_READY};
 
     packet.body.userId = _userId;
     _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
@@ -86,7 +86,7 @@ void rtc::RoomManager::askToBeReady()
 
 void rtc::RoomManager::askToBeNotReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_NOT_READY> packet{.cmd = rt::TCPCommand::CL_NOT_READY};
+    rt::TCPPacket<rt::TCPBody::CL_NOT_READY> packet{.cmd = rt::TCPCommand::CL_NOT_READY};
 
     packet.body.userId = _userId;
     _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
@@ -95,7 +95,7 @@ void rtc::RoomManager::askToBeNotReady()
 
 void rtc::RoomManager::udpConnectionReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_UDP_CONNECTION_READY> packet{.cmd = rt::TCPCommand::CL_UDP_CONNECTION_READY};
+    rt::TCPPacket<rt::TCPBody::CL_UDP_CONNECTION_READY> packet{.cmd = rt::TCPCommand::CL_UDP_CONNECTION_READY};
 
     packet.body.userId = _userId;
     _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);

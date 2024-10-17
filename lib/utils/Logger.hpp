@@ -40,6 +40,39 @@ void logWarning(const std::string &msg);
  */
 void logError(const std::string &msg);
 
+/**
+ * @brief Logs an informational message with source location and time.
+ *
+ * This function logs a message with an "INFO" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeInfo(const std::string &msg);
+
+/**
+ * @brief Logs a warning message with source location and time.
+ *
+ * This function logs a message with a "WARNING" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeWarning(const std::string &msg);
+
+/**
+ * @brief Logs an error message with source location and time.
+ *
+ * This function logs a message with an "ERROR" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeError(const std::string &msg);
+
 } // namespace eng
 
 #else
@@ -80,6 +113,39 @@ void logWarning(const std::string &msg, std::source_location info = std::source_
  * @param info The source location information. Defaults to the location where the function is called.
  */
 void logError(const std::string &msg, std::source_location info = std::source_location::current());
+
+/**
+ * @brief Logs an informational message with source location and time.
+ *
+ * This function logs a message with an "INFO" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeInfo(const std::string &msg, std::source_location info = std::source_location::current());
+
+/**
+ * @brief Logs a warning message with source location and time.
+ *
+ * This function logs a message with a "WARNING" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeWarning(const std::string &msg, std::source_location info = std::source_location::current());
+
+/**
+ * @brief Logs an error message with source location and time.
+ *
+ * This function logs a message with an "ERROR" severity level and includes the source
+ * location from where the log function was called.
+ *
+ * @param msg The message to be logged.
+ * @param info The source location information. Defaults to the location where the function is called.
+ */
+void logTimeError(const std::string &msg, std::source_location info = std::source_location::current());
 
 } // namespace eng
 

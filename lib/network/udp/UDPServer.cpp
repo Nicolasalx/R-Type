@@ -8,14 +8,15 @@
 #include "UDPServer.hpp"
 #include <asio/placeholders.hpp>
 #include <cstddef>
-#include <iostream>
+#include <string>
 #include <utility>
+#include "../../utils/Logger.hpp"
 #include <initializer_list>
 
 void ntw::UDPServer::_handleRecv(udp::endpoint &, asio::error_code ec, std::size_t bytes)
 {
     if (ec) {
-        std::cout << ec << std::endl;
+        eng::logError(ec.message());
         return;
     }
     if (bytes) {
@@ -32,7 +33,7 @@ void ntw::UDPServer::_handleEndpoint(udp::endpoint endpoint)
             return;
         }
     }
-    std::cout << "New endpoint: " << endpoint << std::endl;
+    eng::logInfo("New endpoint: " + endpoint.address().to_string() + ':' + std::to_string(endpoint.port()));
     _cliEndpoints[_nbClients++] = std::move(endpoint);
 }
 
@@ -40,7 +41,7 @@ void ntw::UDPServer::send(udp::endpoint &to, const char *data, std::size_t size)
 {
     _sock.async_send_to(asio::buffer(data, size), to, [this](asio::error_code ec, std::size_t bytes) {
         if (ec) {
-            std::cout << ec << std::endl;
+            eng::logError(ec.message());
         } else {
         }
     });
@@ -67,7 +68,7 @@ void ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, std::init
 {
     for (auto &[_, cli_end] : _cliEndpoints) {
         bool isValidEndpoint = true;
-        for (auto banned : endpoints) {
+        for (const auto &banned : endpoints) {
             if (banned == cli_end) {
                 isValidEndpoint = false;
                 break;

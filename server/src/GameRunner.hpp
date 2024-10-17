@@ -45,7 +45,7 @@ class GameRunner {
     GameRunner(int port, std::size_t stage, bool debugMode);
 
     void killPlayer(size_t playerId);
-    void addWindow(sf::VideoMode &&videomode, const std::string &title);
+    void addWindow(const sf::VideoMode &videomode, const std::string &title);
     void runGame(bool &stopGame);
 };
 } // namespace rts

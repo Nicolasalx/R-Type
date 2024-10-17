@@ -20,6 +20,7 @@
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
+#include "TrackedException.hpp"
 #include "imgui.h"
 #include "udp/UDPClient.hpp"
 
@@ -47,7 +48,7 @@ void rtc::GameManager::_launchGame()
     _window->setFramerateLimit(rt::CLIENT_FPS_LIMIT);
 
     if (!ImGui::SFML::Init(*_window, false)) {
-        throw std::runtime_error("IMGUI Window init failed");
+        throw eng::TrackedException("IMGUI Window init failed");
     }
     ImGuiIO &io = ImGui::GetIO();
     io.Fonts->Clear();
@@ -55,7 +56,7 @@ void rtc::GameManager::_launchGame()
 
     ImFont *rawFont = io.Fonts->AddFontFromFileTTF("assets/font/DroidSansMono.ttf", 80.f);
     if (rawFont == nullptr) {
-        throw std::runtime_error("Failed to load font from assets/font/DroidSansMono.ttf");
+        throw eng::TrackedException("Failed to load font from assets/font/DroidSansMono.ttf");
     }
     _font = std::shared_ptr<ImFont>(rawFont, [](ImFont *) {});
     if (!ImGui::SFML::UpdateFontTexture()) {

@@ -8,11 +8,12 @@
 #pragma once
 
 #include <cstddef>
+#include <cstdint>
 #include "RTypeConst.hpp"
 
 namespace rt {
 
-enum class TCPCommand : std::size_t {
+enum class TCPCommand : std::uint8_t {
     NONE,
 
     CL_NEW_USER,
@@ -47,7 +48,9 @@ enum class TCPCommand : std::size_t {
 };
 
 // NOLINTBEGIN(readability-identifier-naming)
-namespace TCPData {
+namespace TCPBody {
+
+struct EMPTY {}; // Used in the TCP responce handler
 
 struct CL_NEW_USER {
     std::size_t userId = 0;
@@ -143,7 +146,7 @@ struct CL_UDP_CONNECTION_READY {
 
 struct SER_ALL_UDP_CONNECTION_READY {};
 
-} // namespace TCPData
+} // namespace TCPBody
 
 // NOLINTEND(readability-identifier-naming)
 
@@ -151,7 +154,7 @@ template <typename T>
 struct TCPPacket {
     std::size_t magic = rt::TCP_MAGIC;
     std::size_t size = sizeof(*this);
-    TCPCommand cmd;
+    TCPCommand cmd = TCPCommand::NONE;
 
     T body{};
 };

@@ -7,8 +7,8 @@
 
 #include "EntityFactory.hpp"
 #include <fstream>
-#include <stdexcept>
 #include <utility>
+#include "../utils/TrackedException.hpp"
 #include "ClientEntityFactory.hpp"
 #include "Registry.hpp"
 #include "ServerEntityFactory.hpp"
@@ -45,7 +45,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;
@@ -87,7 +87,7 @@ entity_t EntityFactory::createServerEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;
