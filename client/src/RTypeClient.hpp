@@ -16,8 +16,15 @@
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "udp/UDPClient.hpp"
+#include "imgui.h"
 
 namespace rtc {
+
+enum WindowMode {
+    MENU,
+    OPTIONS,
+    LOBBY
+};
 
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
@@ -34,4 +41,7 @@ void registerSystems(
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);
 void runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManager &roomManager, bool &inLobby);
 void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
+void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
+void menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMode);
+void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager);
 } // namespace rtc
