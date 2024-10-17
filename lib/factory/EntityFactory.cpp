@@ -7,7 +7,6 @@
 
 #include "EntityFactory.hpp"
 #include <fstream>
-#include <stdexcept>
 #include <utility>
 #include "ClientEntityFactory.hpp"
 #include "Registry.hpp"
@@ -27,6 +26,7 @@
 #include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
+#include "../utils/TrackedException.hpp"
 
 namespace ecs {
 
@@ -45,7 +45,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;
@@ -87,7 +87,7 @@ entity_t EntityFactory::createServerEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;

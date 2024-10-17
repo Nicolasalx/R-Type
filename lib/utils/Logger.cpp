@@ -12,17 +12,17 @@
 
 void eng::logInfo(const std::string &msg)
 {
-    std::cerr << "\033[96minfo: \033[0m" << msg << std::endl;
+    std::cerr << "\033[96minfo: \033[0m" << msg << '\n';
 }
 
 void eng::logWarning(const std::string &msg)
 {
-    std::cerr << "\033[95mwarning: \033[0m" << msg << std::endl;
+    std::cerr << "\033[95mwarning: \033[0m" << msg << '\n';
 }
 
 void eng::logError(const std::string &msg)
 {
-    std::cerr << "\033[91merror: \033[0m" << msg << std::endl;
+    std::cerr << "\033[91merror: \033[0m" << msg << '\n';
 }
 
 #else

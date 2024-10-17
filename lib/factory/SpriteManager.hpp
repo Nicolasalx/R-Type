@@ -8,9 +8,9 @@
 #pragma once
 
 #include <SFML/Graphics/Texture.hpp>
-#include <stdexcept>
 #include <string>
 #include <unordered_map>
+#include "../utils/TrackedException.hpp"
 
 namespace ecs {
 
@@ -31,7 +31,7 @@ class SpriteManager {
      *
      * @param texture_id The identifier or filename of the texture.
      * @return Reference to the SFML texture associated with the identifier.
-     * @throws std::runtime_error If the texture fails to load.
+     * @throws eng::TrackedException If the texture fails to load.
      */
     sf::Texture &getTexture(const std::string &textureId)
     {
@@ -41,7 +41,7 @@ class SpriteManager {
         } else {
             sf::Texture texture;
             if (!texture.loadFromFile(textureId)) {
-                throw std::runtime_error("Failed to load texture: " + textureId);
+                throw eng::TrackedException("Failed to load texture: " + textureId);
             }
             auto emplaceResult = _textures.emplace(textureId, std::move(texture));
             return emplaceResult.first->second;

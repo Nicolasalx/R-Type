@@ -38,7 +38,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
 
 void rts::GameRunner::killPlayer(size_t playerId)
 {
-    _networkCallbacks.push_back([playerId, this](ecs::Registry &reg) {
+    _networkCallbacks.emplace_back([playerId, this](ecs::Registry &reg) {
         ecs::IndexedZipper<ecs::component::Player, ecs::component::SharedEntity> zip(
             reg.getComponents<ecs::component::Player>(), reg.getComponents<ecs::component::SharedEntity>()
         );
@@ -55,7 +55,7 @@ void rts::GameRunner::killPlayer(size_t playerId)
     });
 }
 
-void rts::GameRunner::addWindow(sf::VideoMode &&videomode, const std::string &title)
+void rts::GameRunner::addWindow(const sf::VideoMode &videomode, const std::string &title)
 {
     if (!_debugMode) {
         return;

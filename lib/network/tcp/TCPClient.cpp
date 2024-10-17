@@ -7,7 +7,6 @@
 
 #include "TCPClient.hpp"
 #include <functional>
-#include <iostream>
 #include <utility>
 #include "../../utils/Logger.hpp"
 #include <asio/ip/address_v4.hpp>
@@ -64,7 +63,7 @@ void ntw::TCPClient::_asioRun()
             this->_recvHandler(_buff.data(), bytes);
             _asioRun();
         } else {
-            std::cerr << ec.message() << std::endl;
+            eng::logError(ec.message());
         }
     });
 }

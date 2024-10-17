@@ -28,7 +28,7 @@ static void handlePlayerCreation(
     std::size_t playerIndex = msg.body.playerIndex;
     const auto &pos = msg.body.moveData.pos;
 
-    networkCallbacks.push_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
         );
@@ -46,7 +46,7 @@ static void handleMissileCreation(
     const auto &pos = msg.body.moveData.pos;
     const auto &vel = msg.body.moveData.vel;
 
-    networkCallbacks.push_back([pos, vel](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([pos, vel](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/missile.json", pos.x, pos.y, std::numeric_limits<size_t>::max(), vel.vx, vel.vy
         );
@@ -75,7 +75,7 @@ void rts::registerUdpResponse(
     responseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [&networkCallbacks](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &msg) {
-            networkCallbacks.push_back([msg](ecs::Registry &reg) {
+            networkCallbacks.emplace_back([msg](ecs::Registry &reg) {
                 try {
                     reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.pos;

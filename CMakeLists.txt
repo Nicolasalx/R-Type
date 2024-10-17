@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS On)
 
+set(ENABLE_CLANG_TIDY "ON" CACHE STRING "Enable clang-tidy (OFF, ON, FULL)")
+set_property(CACHE ENABLE_CLANG_TIDY PROPERTY STRINGS OFF ON FULL)
+
 include(cmake/CPM.cmake)
 
 include(cmake/dependencies.cmake)

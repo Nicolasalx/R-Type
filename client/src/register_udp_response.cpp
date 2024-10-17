@@ -150,7 +150,7 @@ void rtc::GameManager::_registerUdpResponse(
         rt::UDPCommand::DEL_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
             try {
-                _networkCallbacks.push_back([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
+                _networkCallbacks.emplace_back([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
                     reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
                 });
             } catch (...) {

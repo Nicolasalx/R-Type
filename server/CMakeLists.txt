@@ -12,6 +12,16 @@ add_executable(r-type_server
     src/ais/horizontalMoveAi.cpp
 )
 
+if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
+    set_target_properties(r-type_server PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color"
+    )
+elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
+    set_target_properties(r-type_server PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/server/.*\\.hpp$"
+    )
+endif()
+
 target_compile_options(r-type_server PRIVATE -Wall -Wextra)
 target_link_libraries(r-type_server PRIVATE FACTORY NETWORK UTILS)
 include_directories(
