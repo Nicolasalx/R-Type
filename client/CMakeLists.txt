@@ -9,6 +9,7 @@ add_executable(r-type_client
     src/register_udp_response.cpp
     src/run_gui.cpp
     src/menu/room_selection.cpp
+    src/menu/title_menu.cpp
 )
 
 target_compile_options(r-type_client PRIVATE -Wall -Wextra)
