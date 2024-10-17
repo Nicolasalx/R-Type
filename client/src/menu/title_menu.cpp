@@ -52,7 +52,9 @@ void rtc::menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMo
 {
     ImGui::SetNextWindowSize(ImVec2(window.getSize().x, window.getSize().y));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::Begin("Menu Titre", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+    ImGui::Begin(
+        "Menu Titre", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove
+    );
     float windowWidth = ImGui::GetWindowSize().x;
     float windowHeight = ImGui::GetWindowSize().y;
     ImGui::Dummy(ImVec2(0.0f, windowHeight * 0.3f));
