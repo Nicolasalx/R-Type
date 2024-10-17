@@ -64,7 +64,7 @@ class UDPResponseHandler {
             } else if (_specialHandler.contains(header->cmd)) {
                 _specialHandler.at(header->cmd)(ptr, arg);
             } else {
-                eng::TrackedException(
+                throw eng::TrackedException(
                     "Response without handler: " + std::to_string(static_cast<std::size_t>(header->cmd)) + '.'
                 );
             }
