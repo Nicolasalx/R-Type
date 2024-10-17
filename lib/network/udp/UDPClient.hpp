@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "../BuffSize.hpp"
-#include "AsioClient.hpp"
 #include <asio/ip/udp.hpp>
 #include <thread>
 #include <utility>
+#include "../BuffSize.hpp"
+#include "AsioClient.hpp"
 
 using asio::ip::udp;
 

@@ -9,8 +9,8 @@
 
 #include <SFML/Graphics/Texture.hpp>
 #include <string>
-#include <unordered_map>
 #include "../utils/TrackedException.hpp"
+#include <unordered_map>
 
 namespace ecs {
 

@@ -10,8 +10,8 @@
 #include <cstddef>
 #include <string>
 #include <utility>
-#include <initializer_list>
 #include "../../utils/Logger.hpp"
+#include <initializer_list>
 
 void ntw::UDPServer::_handleRecv(udp::endpoint &, asio::error_code ec, std::size_t bytes)
 {

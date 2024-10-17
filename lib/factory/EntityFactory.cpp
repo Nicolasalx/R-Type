@@ -8,6 +8,7 @@
 #include "EntityFactory.hpp"
 #include <fstream>
 #include <utility>
+#include "../utils/TrackedException.hpp"
 #include "ClientEntityFactory.hpp"
 #include "Registry.hpp"
 #include "ServerEntityFactory.hpp"
@@ -26,7 +27,6 @@
 #include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
-#include "../utils/TrackedException.hpp"
 
 namespace ecs {
 

@@ -6,13 +6,13 @@
 */
 
 #include "sprite_system.hpp"
+#include "../../utils/Logger.hpp"
 #include "IndexedZipper.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
 #include "components/animation.hpp"
 #include "components/position.hpp"
 #include "components/sprite.hpp"
-#include "../../utils/Logger.hpp"
 
 namespace ecs::systems {
 
