@@ -13,7 +13,7 @@ var searchData=
   ['technical_2dand_2dcomparative_2dstudy_2emd_10',['technical-and-comparative-Study.md',['../d0/dee/technical-and-comparative-Study_8md.html',1,'']]],
   ['text_11',['text',['../d6/d5c/structecs_1_1component_1_1Score.html#a76c5ba4d2da1d57046599127a472dd74',1,'ecs::component::Score']]],
   ['textureid_12',['textureId',['../d9/d4b/structecs_1_1component_1_1Sprite.html#ab81d69ea34a23da32631c9ce52d4e13e',1,'ecs::component::Sprite']]],
-  ['tickrate_13',['TickRate',['../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748',1,'rtc::TickRate()'],['../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d',1,'rts::TickRate()']]],
+  ['tickrate_13',['TickRate',['../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354',1,'rtc::TickRate()'],['../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47',1,'rts::TickRate()']]],
   ['tickratemanager_14',['TickRateManager',['../d7/d07/classntw_1_1TickRateManager.html',1,'ntw']]],
   ['tickratemanager_2ehpp_15',['TickRateManager.hpp',['../da/dcb/TickRateManager_8hpp.html',1,'']]],
   ['tickratemanager_3c_20rts_3a_3atickrate_20_3e_16',['TickRateManager&lt; rts::TickRate &gt;',['../d7/d07/classntw_1_1TickRateManager.html',1,'ntw']]],

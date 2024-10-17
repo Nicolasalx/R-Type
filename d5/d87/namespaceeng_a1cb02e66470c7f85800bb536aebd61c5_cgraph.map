@@ -1,0 +1,4 @@
+<map id="eng::logTimeWarning" name="eng::logTimeWarning">
+<area shape="rect" id="node1" title="Logs a warning message with source location and time." alt="" coords="5,5,165,31"/>
+<area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="213,5,340,31"/>
+</map>

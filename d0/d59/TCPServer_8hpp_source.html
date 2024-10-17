@@ -127,11 +127,11 @@ $(function() {
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        std::function&lt;<span class="keywordtype">void</span>(tcp::socket &amp;, <span class="keywordtype">char</span> *, std::size_t)&gt; &amp;handler</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    );</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    tcp::socket _sock;                                    </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    std::mutex &amp;_serverMutex;                             </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::array&lt;char, BUFF_SIZE&gt; _buff;                    </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">const</span> std::function&lt;void(std::size_t)&gt; _closeHandler; </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::size_t _id;                                      </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    tcp::socket _sock;                              </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    std::mutex &amp;_serverMutex;                       </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::array&lt;char, BUFF_SIZE&gt; _buff = {0};        </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    std::function&lt;void(std::size_t)&gt; _closeHandler; </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::size_t _id;                                </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>};</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="../../d7/d65/classntw_1_1TCPServer.html">  116</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d7/d65/classntw_1_1TCPServer.html">TCPServer</a> : <span class="keyword">public</span> <a class="code hl_class" href="../../d5/d0a/classntw_1_1AsioServer.html">ntw::AsioServer</a> {</div>

@@ -1,0 +1,4 @@
+<map id="ntw::UDPClient::send" name="ntw::UDPClient::send">
+<area shape="rect" id="node1" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="5,5,164,31"/>
+<area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="212,5,317,31"/>
+</map>

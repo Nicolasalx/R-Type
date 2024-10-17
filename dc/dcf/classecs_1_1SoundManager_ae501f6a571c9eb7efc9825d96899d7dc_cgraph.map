@@ -1,4 +1,5 @@
 <map id="ecs::SoundManager::playSoundEffect" name="ecs::SoundManager::playSoundEffect">
-<area shape="rect" id="node1" title="Plays a sound effect." alt="" coords="5,5,163,45"/>
+<area shape="rect" id="node1" title="Plays a sound effect." alt="" coords="5,35,163,75"/>
 <area shape="rect" id="node2" href="$dc/dcf/classecs_1_1SoundManager.html#ad3aa2731413d1f837f2445e41dfd66ea" title="Retrieves a sound buffer by its identifier." alt="" coords="211,5,368,45"/>
+<area shape="rect" id="node3" href="$d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="237,70,342,95"/>
 </map>

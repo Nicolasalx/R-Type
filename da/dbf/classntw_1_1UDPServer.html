@@ -128,9 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; client_id_t, udp::endpoint &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6">endpoints</a> ()</td></tr>
 <tr class="memdesc:aa8a709a676e3fef428ba7bf5944dadf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all the clients endpoint that have connected to the udp server.  <br /></td></tr>
 <tr class="separator:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a796389b2c266315a75f6854f07b23615"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615">send</a> (udp::endpoint &amp;<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a>, const char *data, std::size_t size)</td></tr>
-<tr class="memdesc:a796389b2c266315a75f6854f07b23615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
-<tr class="separator:a796389b2c266315a75f6854f07b23615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795f0a92aeea85be56f9de74287925dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a795f0a92aeea85be56f9de74287925dc">send</a> (udp::endpoint &amp;to, const char *data, std::size_t size)</td></tr>
+<tr class="memdesc:a795f0a92aeea85be56f9de74287925dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
+<tr class="separator:a795f0a92aeea85be56f9de74287925dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72bff9a6b552aa10f3b93195470730e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9">sendAll</a> (const char *data, std::size_t size)</td></tr>
 <tr class="memdesc:a72bff9a6b552aa10f3b93195470730e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:a72bff9a6b552aa10f3b93195470730e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -359,8 +359,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a796389b2c266315a75f6854f07b23615" name="a796389b2c266315a75f6854f07b23615"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a796389b2c266315a75f6854f07b23615">&#9670;&#160;</a></span>send()</h2>
+<a id="a795f0a92aeea85be56f9de74287925dc" name="a795f0a92aeea85be56f9de74287925dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795f0a92aeea85be56f9de74287925dc">&#9670;&#160;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,7 +369,7 @@ Here is the caller graph for this function:</div>
           <td class="memname">void ntw::UDPServer::send </td>
           <td>(</td>
           <td class="paramtype">udp::endpoint &amp;&#160;</td>
-          <td class="paramname"><em>endpoint</em>, </td>
+          <td class="paramname"><em>to</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -403,6 +403,15 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/classntw_1_1UDPServer_a795f0a92aeea85be56f9de74287925dc_cgraph.png" border="0" usemap="#ada/dbf/classntw_1_1UDPServer_a795f0a92aeea85be56f9de74287925dc_cgraph" alt=""/></div>
+<map name="ada/dbf/classntw_1_1UDPServer_a795f0a92aeea85be56f9de74287925dc_cgraph" id="ada/dbf/classntw_1_1UDPServer_a795f0a92aeea85be56f9de74287925dc_cgraph">
+<area shape="rect" title="Send a message specified in." alt="" coords="5,5,168,31"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="216,5,321,31"/>
+</map>
+</div>
 
 </div>
 </div>

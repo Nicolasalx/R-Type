@@ -93,11 +93,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a35f0a9ed27d7c6e10e6c045d73e08a5d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">TickRate</a> : std::size_t { <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb">ENTITY_MOVEMENT</a>
-, <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20">AI_ACTING</a>
-, <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29">SEND_PACKETS</a>
+<tr class="memitem:a136a57d79c34feb8ccf69d73d41abf47"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">TickRate</a> : std::uint8_t { <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb">ENTITY_MOVEMENT</a>
+, <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20">AI_ACTING</a>
+, <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29">SEND_PACKETS</a>
  }</td></tr>
-<tr class="separator:a35f0a9ed27d7c6e10e6c045d73e08a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a136a57d79c34feb8ccf69d73d41abf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -105,7 +105,7 @@ Functions</h2></td></tr>
 <tr class="separator:a6f25eff6832e8db2cd0329e1d3a3c115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231375c5950d052c6144309475bc7bd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9">registerComponents</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)</td></tr>
 <tr class="separator:a231375c5950d052c6144309475bc7bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac72f597813a5df53ae6e6d66d7c83971"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">rts::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;waveManager, bool debugMode)</td></tr>
+<tr class="memitem:ac72f597813a5df53ae6e6d66d7c83971"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;waveManager, bool debugMode)</td></tr>
 <tr class="separator:ac72f597813a5df53ae6e6d66d7c83971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa209bd6618ce10ec82019f5ee00f43d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#aa209bd6618ce10ec82019f5ee00f43d1">registerUdpResponse</a> (rt::UDPResponseHandler &amp;responseHandler, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks)</td></tr>
 <tr class="separator:aa209bd6618ce10ec82019f5ee00f43d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,12 +116,12 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:acacb2934d801c40e161eaacb1e969aef"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">rts::TickRate</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#acacb2934d801c40e161eaacb1e969aef">SERVER_TICKRATE</a></td></tr>
+<tr class="memitem:acacb2934d801c40e161eaacb1e969aef"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#acacb2934d801c40e161eaacb1e969aef">SERVER_TICKRATE</a></td></tr>
 <tr class="separator:acacb2934d801c40e161eaacb1e969aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a35f0a9ed27d7c6e10e6c045d73e08a5d" name="a35f0a9ed27d7c6e10e6c045d73e08a5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35f0a9ed27d7c6e10e6c045d73e08a5d">&#9670;&#160;</a></span>TickRate</h2>
+<a id="a136a57d79c34feb8ccf69d73d41abf47" name="a136a57d79c34feb8ccf69d73d41abf47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136a57d79c34feb8ccf69d73d41abf47">&#9670;&#160;</a></span>TickRate</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,7 +130,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">rts::TickRate</a> : std::size_t</td>
+          <td class="memname">enum class <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a> : std::uint8_t</td>
         </tr>
       </table>
   </td>
@@ -140,9 +140,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb" name="a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb"></a>ENTITY_MOVEMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20" name="a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20"></a>AI_ACTING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29" name="a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29"></a>SEND_PACKETS&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb" name="a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb"></a>ENTITY_MOVEMENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20" name="a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20"></a>AI_ACTING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29" name="a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29"></a>SEND_PACKETS&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -324,7 +324,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">rts::TickRate</a> &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>tickRateManager</em>, </td>
         </tr>
         <tr>
@@ -504,9 +504,11 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph.png" border="0" usemap="#ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph" alt=""/></div>
 <map name="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph" id="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,192,56"/>
+<area shape="rect" title=" " alt="" coords="5,55,192,80"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="240,5,449,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="241,55,448,80"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5" title="Logs a warning message with source location and time." alt="" coords="265,104,425,129"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="497,104,624,129"/>
 </map>
 </div>
 <div class="dynheader">
@@ -529,18 +531,18 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::unordered_map&lt;<a class="el" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5d">rts::TickRate</a>, float&gt; rts::SERVER_TICKRATE</td>
+          <td class="memname">const std::unordered_map&lt;<a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a>, float&gt; rts::SERVER_TICKRATE</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb">rts::TickRate::ENTITY_MOVEMENT</a>, 60.0},</div>
-<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20">rts::TickRate::AI_ACTING</a>, 60.0},</div>
-<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29">rts::TickRate::SEND_PACKETS</a>, 60.0}, </div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb">rts::TickRate::ENTITY_MOVEMENT</a>, 60.0},</div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20">rts::TickRate::AI_ACTING</a>, 60.0},</div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29">rts::TickRate::SEND_PACKETS</a>, 60.0}, </div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacerts_html_a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da236af76d073eda3dd6844a848154c5fb">rts::TickRate::ENTITY_MOVEMENT</a></div><div class="ttdeci">@ ENTITY_MOVEMENT</div></div>
-<div class="ttc" id="anamespacerts_html_a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29">rts::TickRate::SEND_PACKETS</a></div><div class="ttdeci">@ SEND_PACKETS</div></div>
-<div class="ttc" id="anamespacerts_html_a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5dabbeae2542a4921d67840dbe26e123a20">rts::TickRate::AI_ACTING</a></div><div class="ttdeci">@ AI_ACTING</div></div>
+<div class="ttc" id="anamespacerts_html_a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a236af76d073eda3dd6844a848154c5fb">rts::TickRate::ENTITY_MOVEMENT</a></div><div class="ttdeci">@ ENTITY_MOVEMENT</div></div>
+<div class="ttc" id="anamespacerts_html_a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29">rts::TickRate::SEND_PACKETS</a></div><div class="ttdeci">@ SEND_PACKETS</div></div>
+<div class="ttc" id="anamespacerts_html_a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20"><div class="ttname"><a href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47abbeae2542a4921d67840dbe26e123a20">rts::TickRate::AI_ACTING</a></div><div class="ttdeci">@ AI_ACTING</div></div>
 </div><!-- fragment -->
 </div>
 </div>

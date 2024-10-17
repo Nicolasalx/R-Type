@@ -4,8 +4,8 @@ var searchData=
   ['score_2ehpp_1',['score.hpp',['../d5/ddb/score_8hpp.html',1,'']]],
   ['self_5fplayer_2ehpp_2',['self_player.hpp',['../d3/dfc/self__player_8hpp.html',1,'']]],
   ['selfplayer_3',['SelfPlayer',['../d4/d18/structecs_1_1component_1_1SelfPlayer.html',1,'ecs::component']]],
-  ['send_4',['send',['../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615',1,'ntw::UDPServer::send()'],['../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85',1,'ntw::UDPClient::send()'],['../d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195',1,'ntw::TCPClient::send()'],['../de/dcb/classntw_1_1IClient.html#a61d308041cc204f2bc00217e963df28e',1,'ntw::IClient::send()']]],
-  ['send_5fpackets_5',['SEND_PACKETS',['../d9/dbb/namespacerts.html#a35f0a9ed27d7c6e10e6c045d73e08a5da35472f112cf7918d04f74a60a67b1a29',1,'rts']]],
+  ['send_4',['send',['../da/dbf/classntw_1_1UDPServer.html#a795f0a92aeea85be56f9de74287925dc',1,'ntw::UDPServer::send()'],['../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85',1,'ntw::UDPClient::send()'],['../d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195',1,'ntw::TCPClient::send()'],['../de/dcb/classntw_1_1IClient.html#a61d308041cc204f2bc00217e963df28e',1,'ntw::IClient::send()']]],
+  ['send_5fpackets_5',['SEND_PACKETS',['../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47a35472f112cf7918d04f74a60a67b1a29',1,'rts']]],
   ['sendall_6',['sendAll',['../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9',1,'ntw::UDPServer']]],
   ['sendallexcept_7',['sendAllExcept',['../da/dbf/classntw_1_1UDPServer.html#a44b60ec053d8501e25811bc04f4e6eb1',1,'ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, udp::endpoint &amp;endpoint)'],['../da/dbf/classntw_1_1UDPServer.html#ad69ac414d88f096d320954c0d22843a3',1,'ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, std::initializer_list&lt; udp::endpoint &gt; endpoints)']]],
   ['sendlistroom_8',['sendListRoom',['../d1/d36/classrts_1_1RoomManager.html#a56ea3326d527e86102ece5f5fc58281d',1,'rts::RoomManager']]],
@@ -65,5 +65,5 @@ var searchData=
   ['state_62',['state',['../df/d9e/structecs_1_1component_1_1Animation.html#aed2691d8e6c9691639453eca279ce23c',1,'ecs::component::Animation']]],
   ['stopallsoundeffects_63',['stopAllSoundEffects',['../dc/dcf/classecs_1_1SoundManager.html#a4e04561adaa315e757097e73324f21db',1,'ecs::SoundManager']]],
   ['stopmusic_64',['stopMusic',['../dc/dcf/classecs_1_1SoundManager.html#a14accc54d8a46bd07bf5e0cec29e14e1',1,'ecs::SoundManager']]],
-  ['string_65',['STRING',['../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949',1,'eng::ArgParser']]]
+  ['string_65',['STRING',['../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949',1,'eng::ArgParser']]]
 ];

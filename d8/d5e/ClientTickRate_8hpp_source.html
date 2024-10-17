@@ -85,26 +85,27 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html">   12</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d9/d77/namespacertc.html">rtc</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748">   14</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748">TickRate</a> : std::size_t {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748a236af76d073eda3dd6844a848154c5fb">ENTITY_MOVEMENT</a>,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748aefae58ce896e443f1b50e7354717c0ec">CALL_NETWORK_CALLBACKS</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">   19</a></span><span class="keyword">const</span> std::unordered_map&lt;rtc::TickRate, float&gt; <a class="code hl_variable" href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">CLIENT_TICKRATE</a> = {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a>, 60.0},</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a>, 60.0}</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace rtc</span></div>
-<div class="ttc" id="anamespacertc_html"><div class="ttname"><a href="../../d9/d77/namespacertc.html">rtc</a></div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:12</div></div>
-<div class="ttc" id="anamespacertc_html_abe11f867390b2f57ad261979585a0748"><div class="ttname"><a href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748">rtc::TickRate</a></div><div class="ttdeci">TickRate</div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:14</div></div>
-<div class="ttc" id="anamespacertc_html_abe11f867390b2f57ad261979585a0748a236af76d073eda3dd6844a848154c5fb"><div class="ttname"><a href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a></div><div class="ttdeci">@ ENTITY_MOVEMENT</div></div>
-<div class="ttc" id="anamespacertc_html_abe11f867390b2f57ad261979585a0748aefae58ce896e443f1b50e7354717c0ec"><div class="ttname"><a href="../../d9/d77/namespacertc.html#abe11f867390b2f57ad261979585a0748aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a></div><div class="ttdeci">@ CALL_NETWORK_CALLBACKS</div></div>
-<div class="ttc" id="anamespacertc_html_ae48bc94be29dfed81aed58f270c3448c"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">rtc::CLIENT_TICKRATE</a></div><div class="ttdeci">const std::unordered_map&lt; rtc::TickRate, float &gt; CLIENT_TICKRATE</div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:19</div></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html">   13</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d9/d77/namespacertc.html">rtc</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">   15</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">TickRate</a> : std::uint8_t {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">ENTITY_MOVEMENT</a>,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">CALL_NETWORK_CALLBACKS</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">   20</a></span><span class="keyword">const</span> std::unordered_map&lt;rtc::TickRate, float&gt; <a class="code hl_variable" href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">CLIENT_TICKRATE</a> = {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a>, 60.0},</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a>, 60.0}</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>} <span class="comment">// namespace rtc</span></div>
+<div class="ttc" id="anamespacertc_html"><div class="ttname"><a href="../../d9/d77/namespacertc.html">rtc</a></div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:13</div></div>
+<div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">rtc::TickRate</a></div><div class="ttdeci">TickRate</div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:15</div></div>
+<div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a></div><div class="ttdeci">@ ENTITY_MOVEMENT</div></div>
+<div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a></div><div class="ttdeci">@ CALL_NETWORK_CALLBACKS</div></div>
+<div class="ttc" id="anamespacertc_html_ae48bc94be29dfed81aed58f270c3448c"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">rtc::CLIENT_TICKRATE</a></div><div class="ttdeci">const std::unordered_map&lt; rtc::TickRate, float &gt; CLIENT_TICKRATE</div><div class="ttdef"><b>Definition:</b> ClientTickRate.hpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

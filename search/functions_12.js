@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['send_0',['send',['../d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195',1,'ntw::TCPClient::send()'],['../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85',1,'ntw::UDPClient::send()'],['../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615',1,'ntw::UDPServer::send()'],['../de/dcb/classntw_1_1IClient.html#a61d308041cc204f2bc00217e963df28e',1,'ntw::IClient::send()']]],
+  ['send_0',['send',['../d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195',1,'ntw::TCPClient::send()'],['../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85',1,'ntw::UDPClient::send()'],['../da/dbf/classntw_1_1UDPServer.html#a795f0a92aeea85be56f9de74287925dc',1,'ntw::UDPServer::send()'],['../de/dcb/classntw_1_1IClient.html#a61d308041cc204f2bc00217e963df28e',1,'ntw::IClient::send()']]],
   ['sendall_1',['sendAll',['../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9',1,'ntw::UDPServer']]],
   ['sendallexcept_2',['sendAllExcept',['../da/dbf/classntw_1_1UDPServer.html#a44b60ec053d8501e25811bc04f4e6eb1',1,'ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, udp::endpoint &amp;endpoint)'],['../da/dbf/classntw_1_1UDPServer.html#ad69ac414d88f096d320954c0d22843a3',1,'ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, std::initializer_list&lt; udp::endpoint &gt; endpoints)']]],
   ['sendlistroom_3',['sendListRoom',['../d1/d36/classrts_1_1RoomManager.html#a56ea3326d527e86102ece5f5fc58281d',1,'rts::RoomManager']]],

@@ -1,0 +1,14 @@
+<map id="eng::logError" name="eng::logError">
+<area shape="rect" id="node1" title="Logs an error message with source location." alt="" coords="668,223,773,249"/>
+<area shape="rect" id="node2" href="$dc/dcf/classecs_1_1SoundManager.html#a4c7eae279e9dfd58cd2d8ca011f9fcd3" title="Loads music from a file." alt="" coords="460,5,617,45"/>
+<area shape="rect" id="node3" href="$dc/dcf/classecs_1_1SoundManager.html#a8a2444177b460f62b47e454df60223c2" title="Loads a sound buffer from a file." alt="" coords="460,69,617,109"/>
+<area shape="rect" id="node4" href="$d5/d87/namespaceeng.html#a26ee0fbfbcf0d9c69cedac998f7a1ec6" title="Logs an error message with source location and time." alt="" coords="469,134,608,159"/>
+<area shape="rect" id="node5" href="$dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title="Plays music." alt="" coords="460,184,617,224"/>
+<area shape="rect" id="node7" href="$dc/dcf/classecs_1_1SoundManager.html#ae501f6a571c9eb7efc9825d96899d7dc" title="Plays a sound effect." alt="" coords="460,248,617,288"/>
+<area shape="rect" id="node8" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="459,313,618,338"/>
+<area shape="rect" id="node11" href="$da/dbf/classntw_1_1UDPServer.html#a795f0a92aeea85be56f9de74287925dc" title="Send a message specified in." alt="" coords="457,362,620,387"/>
+<area shape="rect" id="node12" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="207,402,409,427"/>
+<area shape="rect" id="node6" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="207,191,409,217"/>
+<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="214,327,402,367"/>
+<area shape="rect" id="node10" href="$d9/d77/namespacertc.html#a7b7863ce22b3dfca7c485dbef03d7dd7" title=" " alt="" coords="5,374,159,399"/>
+</map>

@@ -2,4 +2,5 @@
 <area shape="rect" id="node1" title="Updates the position of all entities based on their velocity." alt="" coords="5,23,193,63"/>
 <area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,5,457,31"/>
 <area shape="rect" id="node3" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="270,55,429,80"/>
+<area shape="rect" id="node4" href="$d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="505,55,611,80"/>
 </map>

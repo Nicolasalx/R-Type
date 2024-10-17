@@ -95,21 +95,21 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a23ea5547a52245a961fd5ed6349a1c69"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">ArgType</a> { <br />
-&#160;&#160;<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>
-, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92">INT</a>
-, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5">UNSIGNED_INT</a>
-, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>
+<tr class="memitem:ad27600a53d05a5d4731003504338a699"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699">ArgType</a> : std::uint8_t { <br />
+&#160;&#160;<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>
+, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a53f93baa3057821107c750323892fa92">INT</a>
+, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a9ba5b3da1d35e22e1680ddbe52d36ed5">UNSIGNED_INT</a>
+, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>
 , <br />
-&#160;&#160;<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">STRING</a>
+&#160;&#160;<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949">STRING</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a23ea5547a52245a961fd5ed6349a1c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of supported argument types.  <a href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">More...</a><br /></td></tr>
-<tr class="separator:a23ea5547a52245a961fd5ed6349a1c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ad27600a53d05a5d4731003504338a699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of supported argument types.  <a href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699">More...</a><br /></td></tr>
+<tr class="separator:ad27600a53d05a5d4731003504338a699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a61d5d0f1fa781b5eb974f888d144ba40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a61d5d0f1fa781b5eb974f888d144ba40">addArgument</a> (const std::string &amp;longName, std::optional&lt; std::string &gt; shortName=std::nullopt, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">ArgType</a> type=<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">ArgType::STRING</a>, bool required=true, const std::string &amp;description=&quot;&quot;, std::optional&lt; std::function&lt; bool(const std::string &amp;)&gt; &gt; validator=std::nullopt)</td></tr>
+<tr class="memitem:a61d5d0f1fa781b5eb974f888d144ba40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a61d5d0f1fa781b5eb974f888d144ba40">addArgument</a> (const std::string &amp;longName, std::optional&lt; std::string &gt; shortName=std::nullopt, <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699">ArgType</a> type=<a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949">ArgType::STRING</a>, bool required=true, const std::string &amp;description=&quot;&quot;, std::optional&lt; std::function&lt; bool(const std::string &amp;)&gt; &gt; validator=std::nullopt)</td></tr>
 <tr class="memdesc:a61d5d0f1fa781b5eb974f888d144ba40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new argument to the parser.  <br /></td></tr>
 <tr class="separator:a61d5d0f1fa781b5eb974f888d144ba40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c4c75333e2f893344961f263955fbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a55c4c75333e2f893344961f263955fbe">parse</a> (int argc, const char **argv)</td></tr>
@@ -131,8 +131,8 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>A command-line argument parser for handling and validating various types of arguments. </p>
 <p>The <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html" title="A command-line argument parser for handling and validating various types of arguments.">ArgParser</a></code> class allows you to define expected command-line arguments, parse them from the input, retrieve their values in the desired type, and generate help messages. It supports different argument types, validation functions, and both long and short argument names. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a23ea5547a52245a961fd5ed6349a1c69" name="a23ea5547a52245a961fd5ed6349a1c69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23ea5547a52245a961fd5ed6349a1c69">&#9670;&#160;</a></span>ArgType</h2>
+<a id="ad27600a53d05a5d4731003504338a699" name="ad27600a53d05a5d4731003504338a699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27600a53d05a5d4731003504338a699">&#9670;&#160;</a></span>ArgType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +141,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">eng::ArgParser::ArgType</a></td>
+          <td class="memname">enum class <a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699">eng::ArgParser::ArgType</a> : std::uint8_t</td>
         </tr>
       </table>
   </td>
@@ -153,15 +153,15 @@ Public Member Functions</h2></td></tr>
 
 <p>Enumeration of supported argument types. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5" name="a23ea5547a52245a961fd5ed6349a1c69aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"><p>Boolean values (<code>true</code>, <code>false</code>, <code>1</code>, <code>0</code>). </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad27600a53d05a5d4731003504338a699aa97b2c144243b2b9d2c593ec268b62f5" name="ad27600a53d05a5d4731003504338a699aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"><p>Boolean values (<code>true</code>, <code>false</code>, <code>1</code>, <code>0</code>). </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92" name="a23ea5547a52245a961fd5ed6349a1c69a53f93baa3057821107c750323892fa92"></a>INT&#160;</td><td class="fielddoc"><p>Signed integer values. </p>
+<tr><td class="fieldname"><a id="ad27600a53d05a5d4731003504338a699a53f93baa3057821107c750323892fa92" name="ad27600a53d05a5d4731003504338a699a53f93baa3057821107c750323892fa92"></a>INT&#160;</td><td class="fielddoc"><p>Signed integer values. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5" name="a23ea5547a52245a961fd5ed6349a1c69a9ba5b3da1d35e22e1680ddbe52d36ed5"></a>UNSIGNED_INT&#160;</td><td class="fielddoc"><p>Unsigned integer values. </p>
+<tr><td class="fieldname"><a id="ad27600a53d05a5d4731003504338a699a9ba5b3da1d35e22e1680ddbe52d36ed5" name="ad27600a53d05a5d4731003504338a699a9ba5b3da1d35e22e1680ddbe52d36ed5"></a>UNSIGNED_INT&#160;</td><td class="fielddoc"><p>Unsigned integer values. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229" name="a23ea5547a52245a961fd5ed6349a1c69afd3e4ece78a7d422280d5ed379482229"></a>DOUBLE&#160;</td><td class="fielddoc"><p>Floating-point numbers. </p>
+<tr><td class="fieldname"><a id="ad27600a53d05a5d4731003504338a699afd3e4ece78a7d422280d5ed379482229" name="ad27600a53d05a5d4731003504338a699afd3e4ece78a7d422280d5ed379482229"></a>DOUBLE&#160;</td><td class="fielddoc"><p>Floating-point numbers. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949" name="a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"><p>String values. </p>
+<tr><td class="fieldname"><a id="ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949" name="ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"><p>String values. </p>
 </td></tr>
 </table>
 
@@ -189,8 +189,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69">ArgType</a>&#160;</td>
-          <td class="paramname"><em>type</em> = <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">ArgType::STRING</a></code>, </td>
+          <td class="paramtype"><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699">ArgType</a>&#160;</td>
+          <td class="paramname"><em>type</em> = <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949">ArgType::STRING</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -223,7 +223,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">longName</td><td>The long name of the argument (e.g., "help" for "--help"). </td></tr>
     <tr><td class="paramname">shortName</td><td>The optional short name of the argument (e.g., "h" for "-h"). Defaults to <code>std::nullopt</code>. </td></tr>
-    <tr><td class="paramname">type</td><td>The type of the argument. Defaults to <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#a23ea5547a52245a961fd5ed6349a1c69a63b588d5559f64f89a416e656880b949">ArgType::STRING</a></code>. </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the argument. Defaults to <code><a class="el" href="../../dc/de1/classeng_1_1ArgParser.html#ad27600a53d05a5d4731003504338a699a63b588d5559f64f89a416e656880b949">ArgType::STRING</a></code>. </td></tr>
     <tr><td class="paramname">required</td><td>Whether the argument is required. Defaults to <code>true</code>. </td></tr>
     <tr><td class="paramname">description</td><td>A description of the argument for help messages. Defaults to an empty string. </td></tr>
     <tr><td class="paramname">validator</td><td>An optional custom validation function that takes the argument's string value and returns <code>true</code> if valid. Defaults to <code>std::nullopt</code>.</td></tr>
@@ -293,7 +293,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The value of the argument converted to type <code>T</code>.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the argument is not defined, has no value, or conversion fails. </td></tr>
+    <tr><td class="paramname"><a class="el" href="../../df/dac/classeng_1_1TrackedException.html" title="A custom exception class that tracks additional context information.">eng::TrackedException</a></td><td>If the argument is not defined, has no value, or conversion fails. </td></tr>
   </table>
   </dd>
 </dl>
@@ -348,7 +348,7 @@ template&lt;&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The boolean value of the argument.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the argument is not defined, has no value, or contains an invalid boolean string. </td></tr>
+    <tr><td class="paramname"><a class="el" href="../../df/dac/classeng_1_1TrackedException.html" title="A custom exception class that tracks additional context information.">eng::TrackedException</a></td><td>If the argument is not defined, has no value, or contains an invalid boolean string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -393,7 +393,7 @@ template&lt;&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if parsing is successful; <code>false</code> otherwise.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If a required argument is missing or if validation fails. </td></tr>
+    <tr><td class="paramname"><a class="el" href="../../df/dac/classeng_1_1TrackedException.html" title="A custom exception class that tracks additional context information.">eng::TrackedException</a></td><td>If a required argument is missing or if validation fails. </td></tr>
   </table>
   </dd>
 </dl>

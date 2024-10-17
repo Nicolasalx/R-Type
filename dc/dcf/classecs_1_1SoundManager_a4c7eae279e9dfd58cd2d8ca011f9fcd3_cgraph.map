@@ -1,0 +1,4 @@
+<map id="ecs::SoundManager::loadMusic" name="ecs::SoundManager::loadMusic">
+<area shape="rect" id="node1" title="Loads music from a file." alt="" coords="5,5,163,45"/>
+<area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="211,13,316,38"/>
+</map>
