@@ -6,6 +6,7 @@
 */
 
 #include <cstddef>
+#include <cstdio>
 #include <exception>
 #include <string>
 #include "ClientEntityFactory.hpp"
@@ -77,7 +78,6 @@ static void handleSharedCreation(
 }
 
 void rtc::GameManager::_registerUdpResponse(
-    ecs::Registry &reg,
     ecs::SpriteManager &spriteManager,
     ntw::UDPClient &udpClient
 )
@@ -130,19 +130,21 @@ void rtc::GameManager::_registerUdpResponse(
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
-        [&reg](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
-            try {
-                if (reg.hasComponent<ecs::component::SelfPlayer>(reg.getLocalEntity().at(packet.sharedEntityId))) {
-                    return;
+        [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
+            _networkCallbacks.emplace_back([packet](ecs::Registry &reg) {
+                try {
+                    if (reg.hasComponent<ecs::component::SelfPlayer>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        return;
+                    }
+                    reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
+                        packet.body.pos;
+                    reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
+                        packet.body.vel;
+                } catch (const std::exception &e) {
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
                 }
-                reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                    packet.body.pos;
-                reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                    packet.body.vel;
-            } catch (const std::exception &e) {
-                // If entity does not exist, maybe server is late or ahead.
-                eng::logTimeWarning(e.what());
-            }
+            });
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(

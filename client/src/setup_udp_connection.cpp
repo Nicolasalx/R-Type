@@ -9,12 +9,11 @@
 #include "SpriteManager.hpp"
 
 void rtc::GameManager::_setupUdpConnection(
-    ecs::Registry &reg,
     ecs::SpriteManager &spriteManager,
     ntw::UDPClient &udpClient
 )
 {
-    _registerUdpResponse(reg, spriteManager, udpClient);
+    _registerUdpResponse(spriteManager, udpClient);
     udpClient.registerHandler([this](const char *data, std::size_t size) {
         _udpResponseHandler.handleResponse(data, size);
     });

@@ -42,10 +42,10 @@ class GameManager {
     std::shared_ptr<ImFont> _font;
 
     void _registerTcpResponse();
-    void _registerUdpResponse(ecs::Registry &reg, ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
 
     void _setupTcpConnection();
-    void _setupUdpConnection(ecs::Registry &reg, ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
     void _launchGame();
 
     public:

@@ -6,8 +6,8 @@
 */
 
 #include <cstddef>
+#include <cstdio>
 #include <exception>
-#include <limits>
 #include <string>
 #include <utility>
 #include "RTypeServer.hpp"
@@ -46,9 +46,9 @@ static void handleMissileCreation(
     const auto &pos = msg.body.moveData.pos;
     const auto &vel = msg.body.moveData.vel;
 
-    networkCallbacks.emplace_back([pos, vel](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([pos, vel, sharedEntityId = msg.sharedEntityId](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, std::numeric_limits<size_t>::max(), vel.vx, vel.vy
+            reg, "assets/missile.json", pos.x, pos.y, sharedEntityId, vel.vx, vel.vy
         );
     });
     datasToSend.push_back(std::move(msg).serialize());
