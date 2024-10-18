@@ -24,7 +24,6 @@
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
-#include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
 
@@ -33,7 +32,6 @@ namespace ecs {
 entity_t EntityFactory::createClientEntityFromJSON(
     Registry &reg,
     SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient,
     const std::string &jsonFilePath,
     int x,
     int y,

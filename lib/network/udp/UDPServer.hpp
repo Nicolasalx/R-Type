@@ -66,7 +66,7 @@ class UDPServer : public ntw::AsioServer {
      * @param func The function that handle the command that MUST have the following signature:
      *             `std::function<void (char *, std::size_t)>`
      */
-    void registerCommand(std::function<void(char *, std::size_t)> func);
+    void registerCommand(std::function<void(udp::endpoint &, char *, std::size_t)> func);
 
     /**
      * @brief Return the udp socket used for asynchronous operations.
@@ -101,7 +101,7 @@ class UDPServer : public ntw::AsioServer {
      * @param data Bytes to send.
      * @param size Number of bytes to send.
      */
-    void send(udp::endpoint &to, const char *data, std::size_t size);
+    void send(udp::endpoint &endpoint, const char *data, std::size_t size);
 
     /**
      * @brief Send a message specified in @param data of size ( @param size ) to all the clients.
@@ -157,7 +157,7 @@ class UDPServer : public ntw::AsioServer {
     udp::socket _sock;
 
     std::array<char, BUFF_SIZE> _buff{};
-    std::function<void(char *, std::size_t)> _handler;
+    std::function<void(udp::endpoint &, char *, std::size_t)> _handler;
     std::thread _recvThread;
 };
 } // namespace ntw

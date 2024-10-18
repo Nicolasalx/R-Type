@@ -9,7 +9,6 @@
 #include "InputManager.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
-#include "SpriteManager.hpp"
 #include "Zipper.hpp"
 #include "components/controllable.hpp"
 #include "components/position.hpp"
@@ -17,15 +16,11 @@
 #include "shared_entity.hpp"
 
 static void spawnMissile(
-    ecs::Registry &reg,
     ntw::UDPClient &udp,
-    ecs::component::Position playerPos,
-    ecs::SpriteManager &spriteManager
+    ecs::component::Position playerPos
 )
 {
-    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg = {
-        .cmd = rt::UDPCommand::NEW_ENTITY_MISSILE, .sharedEntityId = ecs::generateSharedEntityId()
-    };
+    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId());
     msg.body.moveData = {.pos = {playerPos.x + 36, playerPos.y}, .vel = {.vx = 250.f, .vy = 0}};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
@@ -33,8 +28,7 @@ static void spawnMissile(
 void ecs::systems::controlSpecial(
     ecs::Registry &reg,
     ecs::InputManager &input,
-    ntw::UDPClient &udp,
-    SpriteManager &spriteManager
+    ntw::UDPClient &udp
 )
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
@@ -50,7 +44,7 @@ void ecs::systems::controlSpecial(
                 continue;
             }
             lastTime = now;
-            spawnMissile(reg, udp, pos, spriteManager);
+            spawnMissile(udp, pos);
         }
     }
 }

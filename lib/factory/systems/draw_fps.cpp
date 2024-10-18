@@ -1,0 +1,66 @@
+/*
+** EPITECH PROJECT, 2024
+** R-Type
+** File description:
+** draw_fps
+*/
+
+#include "systems/draw_fps.hpp"
+#include <array>
+#include <format>
+#include "RTypeConst.hpp"
+#include "imgui.h"
+
+void ecs::systems::drawFPS(float dt, const sf::Vector2u &windowSize)
+{
+    static constexpr std::size_t MAX_HISTORY_SIZE = 100;
+    static std::array<float, MAX_HISTORY_SIZE> fpsArray = {0};
+    static std::size_t fpsIndex = 0;
+    static std::size_t fpsCount = 0;
+    float fps = 1.0f / dt;
+
+    fpsArray.at(fpsIndex) = fps;
+    fpsIndex = (fpsIndex + 1) % MAX_HISTORY_SIZE;
+
+    if (fpsCount < MAX_HISTORY_SIZE) {
+        ++fpsCount;
+    }
+
+    ImVec2 windowSizeImGui = ImVec2(windowSize.x * 0.1f, windowSize.y * 0.07f);
+    ImVec2 plotSize = ImVec2(windowSizeImGui.x - 15, windowSizeImGui.y - 15);
+
+    ImVec2 windowPos = ImVec2(
+        windowSize.x - windowSizeImGui.x - ((windowSize.x + windowSize.y) * 0.002f),
+        (windowSize.x + windowSize.y) * 0.002f
+    );
+    ImGui::SetNextWindowPos(windowPos);
+    ImGui::SetNextWindowSize(windowSizeImGui);
+
+    ImGui::Begin(
+        "FPS Monitor",
+        nullptr,
+        ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMouseInputs | ImGuiWindowFlags_NoDecoration |
+            ImGuiWindowFlags_NoBackground
+    );
+
+    ImVec4 lineColor = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+    ImVec4 bgColor = ImVec4(0.1f, 0.1f, 0.1f, 0.5f);
+
+    ImGui::PushStyleColor(ImGuiCol_PlotLines, lineColor);
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, bgColor);
+
+    ImGui::PlotLines(
+        "",
+        fpsArray.data(),
+        fpsCount,
+        fpsIndex,
+        std::format("FPS: {:.1f}", fps).c_str(),
+        0,
+        rt::CLIENT_FPS_LIMIT * 2,
+        plotSize
+    );
+
+    ImGui::PopStyleColor(2);
+    ImGui::End();
+}

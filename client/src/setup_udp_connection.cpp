@@ -14,7 +14,7 @@ void rtc::GameManager::_setupUdpConnection(
     ntw::UDPClient &udpClient
 )
 {
-    _registerUdpResponse(reg, spriteManager, udpClient);
+    _registerUdpResponse(reg, spriteManager);
     udpClient.registerHandler([this](const char *data, std::size_t size) {
         _udpResponseHandler.handleResponse(data, size);
     });

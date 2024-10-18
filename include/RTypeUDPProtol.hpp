@@ -31,7 +31,9 @@ enum class UDPCommand : std::uint8_t {
 
     MOD_ENTITY,
     MOD_ENTITES,
-    DEL_ENTITY
+    DEL_ENTITY,
+
+    PING
 };
 
 // NOLINTBEGIN(readability-identifier-naming)
@@ -73,6 +75,10 @@ struct NEW_ENTITY_ROBOT_GROUND {
 
 struct DEL_ENTITY {};
 
+struct PING {
+    long sendTime = 0;
+};
+
 } // namespace UDPBody
 
 // NOLINTEND(readability-identifier-naming)
@@ -89,6 +95,17 @@ struct UDPPacket {
     shared_entity_t sharedEntityId = 0;
 
     T body{};
+
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body)
+        : cmd(cmd), sharedEntityId(sharedEntityId), body(body)
+    {
+    }
+
+    UDPPacket(UDPCommand cmd, const T &body) : cmd(cmd), body(body) {}
+
+    UDPPacket(UDPCommand cmd) : cmd(cmd) {}
+
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId) : cmd(cmd), sharedEntityId(sharedEntityId) {}
 
     std::vector<char> serialize() const
     {

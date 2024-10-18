@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** draw_player_beam_bar
+** draw_fps
 */
 
 #pragma once
@@ -12,6 +12,6 @@
 
 namespace ecs::systems {
 
-void drawScore(Registry &reg, const sf::Vector2u &windowSize);
+void drawPing(Registry &reg, const sf::Vector2u &windowSize);
 
 } // namespace ecs::systems
