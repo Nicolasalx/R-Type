@@ -31,11 +31,11 @@ static void handlePlayerCreation(
     const std::shared_ptr<ImFont> &font
 )
 {
-    networkCallbacks.emplace_back([packet, &spriteManager,  userId, font](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([packet, &spriteManager, userId, font](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
-        
+
             "assets/player" + std::to_string(packet.body.playerIndex) + ".json",
             packet.body.moveData.pos.x,
             packet.body.moveData.pos.y,
@@ -74,10 +74,7 @@ static void handleSharedCreation(
     });
 }
 
-void rtc::GameManager::_registerUdpResponse(
-    ecs::Registry &reg,
-    ecs::SpriteManager &spriteManager
-)
+void rtc::GameManager::_registerUdpResponse(ecs::Registry &reg, ecs::SpriteManager &spriteManager)
 {
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
         rt::UDPCommand::NEW_ENTITY_STATIC,
@@ -159,8 +156,9 @@ void rtc::GameManager::_registerUdpResponse(
         rt::UDPCommand::PING,
         [&reg](const rt::UDPPacket<rt::UDPBody::PING> &packet) {
             long currentTime = std::chrono::duration_cast<std::chrono::microseconds>(
-                std::chrono::high_resolution_clock::now().time_since_epoch()
-            ).count();
+                                   std::chrono::high_resolution_clock::now().time_since_epoch()
+            )
+                                   .count();
             auto ping = reg.getComponents<ecs::component::Ping>().begin();
             if (ping->has_value()) {
                 ping->value().ping = (currentTime - packet.body.sendTime) / 1000.0;

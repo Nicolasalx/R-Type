@@ -31,10 +31,10 @@ void serverShareMovement(Registry &reg, std::list<std::vector<char>> &datasToSen
         zip(sharedMov, positions, velocities, sharedEntity);
 
     for (auto [_, pos, vel, shared_entity] : zip) {
-        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::MOVE_ENTITY>(rt::UDPCommand::MOVE_ENTITY,
-                                                                      shared_entity.sharedEntityId,
-                                                                      {.pos = pos, .vel = vel}
-        ).serialize());
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::MOVE_ENTITY>(
+                                  rt::UDPCommand::MOVE_ENTITY, shared_entity.sharedEntityId, {.pos = pos, .vel = vel}
+        )
+                                  .serialize());
     }
 }
 

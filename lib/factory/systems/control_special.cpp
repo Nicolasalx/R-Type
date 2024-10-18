@@ -15,21 +15,16 @@
 #include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 
-static void spawnMissile(
-    ntw::UDPClient &udp,
-    ecs::component::Position playerPos
-)
+static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos)
 {
-    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId());
+    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
+        rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
+    );
     msg.body.moveData = {.pos = {playerPos.x + 36, playerPos.y}, .vel = {.vx = 250.f, .vy = 0}};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(
-    ecs::Registry &reg,
-    ecs::InputManager &input,
-    ntw::UDPClient &udp
-)
+void ecs::systems::controlSpecial(ecs::Registry &reg, ecs::InputManager &input, ntw::UDPClient &udp)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();

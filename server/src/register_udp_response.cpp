@@ -92,8 +92,11 @@ void rts::registerUdpResponse(
     responseHandler.registerHandler<rt::UDPBody::PING>(
         rt::UDPCommand::PING,
         [&udpServer](const rt::UDPPacket<rt::UDPBody::PING> &msg, const std::vector<std::any> &arg) {
-            udpServer.send(std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get(),
-                reinterpret_cast<const char *>(&msg), msg.size);
+            udpServer.send(
+                std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get(),
+                reinterpret_cast<const char *>(&msg),
+                msg.size
+            );
         }
     );
 }

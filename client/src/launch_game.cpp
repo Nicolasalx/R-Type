@@ -27,9 +27,7 @@
 
 static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::RoomManager &roomManager)
 {
-    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> msg(
-        rt::UDPCommand::NEW_ENTITY_PLAYER, ecs::generateSharedEntityId()
-    );
+    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> msg(rt::UDPCommand::NEW_ENTITY_PLAYER, ecs::generateSharedEntityId());
     msg.body.playerIndex = 1;
     for (const auto &[id, player] : roomManager.getCurrentRoomPlayer()) {
         if (id == userId) {
@@ -96,25 +94,13 @@ void rtc::GameManager::_launchGame()
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/ruins.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/planetShade75.json", 500, 123
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/planet50.json", 1500, 303
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/planetShade50.json", 1500, 303
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/planetShade25.json", 1000, 288
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/planetShade25.json", 1000, 288
-    );
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planet50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, "assets/explosion.json", 300, 200
-    );
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
 
     run(reg, _window, dt, inputManager);
 }

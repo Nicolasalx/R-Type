@@ -92,9 +92,7 @@ void rtc::registerSystems(
     );
 
     reg.addSystem([&reg, &input]() { ecs::systems::controlMove(reg, input); });
-    reg.addSystem([&reg, &input, &udpClient]() {
-        ecs::systems::controlSpecial(reg, input, udpClient);
-    });
+    reg.addSystem([&reg, &input, &udpClient]() { ecs::systems::controlSpecial(reg, input, udpClient); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collision(reg); });
     reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });

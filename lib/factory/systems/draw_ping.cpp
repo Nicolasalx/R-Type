@@ -8,9 +8,9 @@
 #include "systems/draw_ping.hpp"
 #include <array>
 #include <format>
+#include "../../utils/Logger.hpp"
 #include "components/ping.hpp"
 #include "imgui.h"
-#include "../../utils/Logger.hpp"
 
 void ecs::systems::drawPing(Registry &reg, const sf::Vector2u &windowSize)
 {
@@ -58,14 +58,7 @@ void ecs::systems::drawPing(Registry &reg, const sf::Vector2u &windowSize)
     ImGui::PushStyleColor(ImGuiCol_FrameBg, bgColor);
 
     ImGui::PlotLines(
-        "",
-        pingArray.data(),
-        pingCount,
-        pingIndex,
-        std::format("Ping: {:.1f}ms", ping).c_str(),
-        0,
-        150,
-        plotSize
+        "", pingArray.data(), pingCount, pingIndex, std::format("Ping: {:.1f}ms", ping).c_str(), 0, 150, plotSize
     );
 
     ImGui::PopStyleColor(2);

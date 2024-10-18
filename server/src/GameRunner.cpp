@@ -46,8 +46,10 @@ void rts::GameRunner::killPlayer(size_t playerId)
 
         for (auto [e, player, shared] : zip) {
             if (player.id == playerId) {
-                _datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY,shared.sharedEntityId)
-                                           .serialize());
+                _datasToSend.push_back(
+                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, shared.sharedEntityId)
+                        .serialize()
+                );
                 reg.killEntity(e);
                 return;
             }
