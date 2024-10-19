@@ -124,6 +124,10 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
-    reg.addSystem([&metrics, &dt, &window]() { ecs::systems::drawFPS(metrics.at(rtc::ClientMetric::FPS), dt, window.getSize()); });
-    reg.addSystem([&metrics, &window]() { ecs::systems::drawPing(metrics.at(rtc::ClientMetric::PING), window.getSize()); });
+    reg.addSystem([&metrics, &dt, &window]() {
+        ecs::systems::drawFPS(metrics.at(rtc::ClientMetric::FPS), dt, window.getSize());
+    });
+    reg.addSystem([&metrics, &window]() {
+        ecs::systems::drawPing(metrics.at(rtc::ClientMetric::PING), window.getSize());
+    });
 }

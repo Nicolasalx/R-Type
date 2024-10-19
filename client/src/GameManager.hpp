@@ -57,10 +57,10 @@ class GameManager {
     GameManager(const std::string &ip, int port, const std::string &playerName)
         : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(ecs::generateSharedEntityId()),
           _roomManager(_tcpClient, _userId, playerName),
-          _metrics({
-              {rtc::ClientMetric::FPS, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::FPS))},
-              {rtc::ClientMetric::PING, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::PING))}
-          })
+          _metrics(
+              {{rtc::ClientMetric::FPS, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::FPS))},
+               {rtc::ClientMetric::PING, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::PING))}}
+          )
     {
     }
 
