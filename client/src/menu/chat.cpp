@@ -24,14 +24,15 @@ void rtc::renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSi
 
     ImGui::SetNextWindowPos(ImVec2(chatPosX, chatPosY));
     ImGui::SetNextWindowSize(ImVec2(chatWidth, chatHeight));
-    
-    ImGui::Begin("Chat", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize |
-                 ImGuiWindowFlags_NoCollapse);
 
-    ImGui::BeginChild("ChatMessages", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), true, ImGuiWindowFlags_HorizontalScrollbar);
+    ImGui::Begin("Chat", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+
+    ImGui::BeginChild(
+        "ChatMessages", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), true, ImGuiWindowFlags_HorizontalScrollbar
+    );
 
     for (const auto &msg : roomManager.getChatMsg()) {
-        
+
         ImGui::TextWrapped("%s", msg.c_str());
     }
 

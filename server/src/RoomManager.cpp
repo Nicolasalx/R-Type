@@ -183,9 +183,7 @@ void rts::RoomManager::playerDisconnected(std::size_t playerId, ntw::TCPServer &
 
 void rts::RoomManager::udpPlayerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer)
 {
-    rt::TCPPacket<rt::TCPBody::SER_ALL_UDP_CONNECTION_READY> packet(
-        rt::TCPCommand::SER_ALL_UDP_CONNECTION_READY
-    );
+    rt::TCPPacket<rt::TCPBody::SER_ALL_UDP_CONNECTION_READY> packet(rt::TCPCommand::SER_ALL_UDP_CONNECTION_READY);
     bool allPlayerReady = true;
 
     _rooms.at(roomName).player.at(playerId).udpReady = true;

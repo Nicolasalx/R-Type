@@ -133,12 +133,12 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
                         return;
                     }
                     if (reg.hasComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId))) {
-                        reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                            packet.body.pos;
+                        reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId))
+                            .value() = packet.body.pos;
                     }
                     if (reg.hasComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId))) {
-                        reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                            packet.body.vel;
+                        reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId))
+                            .value() = packet.body.vel;
                     }
                 } catch (const std::exception &e) {
                     // If entity does not exist, maybe server is late or ahead.

@@ -130,7 +130,12 @@ void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &w
 {
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::Begin("Lobby", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus);
+    ImGui::Begin(
+        "Lobby",
+        nullptr,
+        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
+    );
 
     ImGui::BeginChild("RoomList", ImVec2(0, windowSize.y * 0.7), true);
     renderRoomTable(roomManager);
