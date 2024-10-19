@@ -87,4 +87,10 @@ void rtc::GameManager::_registerTcpResponse()
             this->_allUDPClientReady.set_value(true);
         }
     );
+    _tcpResponseHandler.registerHandler<rt::TCPBody::SER_NEW_CHAT_MSG>(
+        rt::TCPCommand::SER_NEW_CHAT_MSG,
+        [this](const rt::TCPPacket<rt::TCPBody::SER_NEW_CHAT_MSG> &packet) {
+            _roomManager.getChatMsg().emplace_back(packet.body.msg);
+        }
+    );
 }

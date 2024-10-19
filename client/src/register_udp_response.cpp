@@ -18,6 +18,7 @@
 #include "SpriteManager.hpp"
 #include "components/controllable.hpp"
 #include "components/player.hpp"
+#include "components/velocity.hpp"
 #include "imgui.h"
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
@@ -131,10 +132,14 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
                     if (reg.hasComponent<ecs::component::SelfPlayer>(reg.getLocalEntity().at(packet.sharedEntityId))) {
                         return;
                     }
-                    reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                        packet.body.pos;
-                    reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                        packet.body.vel;
+                    if (reg.hasComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
+                            packet.body.pos;
+                    }
+                    if (reg.hasComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
+                            packet.body.vel;
+                    }
                 } catch (const std::exception &e) {
                     // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());

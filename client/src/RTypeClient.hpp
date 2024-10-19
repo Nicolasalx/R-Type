@@ -47,4 +47,5 @@ void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &window
 void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
 void menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMode);
 void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager);
+void renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable);
 } // namespace rtc

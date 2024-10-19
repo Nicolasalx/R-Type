@@ -44,7 +44,10 @@ enum class TCPCommand : std::uint8_t {
     SER_ROOM_READY,
 
     CL_UDP_CONNECTION_READY,
-    SER_ALL_UDP_CONNECTION_READY
+    SER_ALL_UDP_CONNECTION_READY,
+
+    CL_SEND_CHAT_MSG,
+    SER_NEW_CHAT_MSG
 };
 
 // NOLINTBEGIN(readability-identifier-naming)
@@ -146,6 +149,14 @@ struct CL_UDP_CONNECTION_READY {
 
 struct SER_ALL_UDP_CONNECTION_READY {};
 
+struct CL_SEND_CHAT_MSG {
+    char msg[MAX_CHAT_MSG_SIZE + 1] = {0};
+};
+
+struct SER_NEW_CHAT_MSG {
+    char msg[MAX_CHAT_MSG_SIZE + 1] = {0};
+};
+
 } // namespace TCPBody
 
 // NOLINTEND(readability-identifier-naming)
@@ -157,5 +168,9 @@ struct TCPPacket {
     TCPCommand cmd = TCPCommand::NONE;
 
     T body{};
+
+    TCPPacket(TCPCommand cmd) : cmd(cmd) {}
+
+    TCPPacket(TCPCommand cmd, const T &body) : cmd(cmd), body(body) {}
 };
 } // namespace rt

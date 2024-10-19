@@ -77,4 +77,10 @@ void rts::registerTcpResponse(
             roomManager.udpPlayerReady(packet.body.roomName, packet.body.userId, tcpServer);
         }
     );
+    responseHandler.registerHandler<rt::TCPBody::CL_SEND_CHAT_MSG>(
+        rt::TCPCommand::CL_SEND_CHAT_MSG,
+        [&roomManager, &tcpServer](const rt::TCPPacket<rt::TCPBody::CL_SEND_CHAT_MSG> &packet) {
+            roomManager.sendNewChatMsg(packet.body.msg, tcpServer);
+        }
+    );
 }
