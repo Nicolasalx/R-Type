@@ -26,7 +26,7 @@ static void handlePlayerCreation(
 {
     shared_entity_t sharedEntityId = msg.sharedEntityId;
     std::size_t playerIndex = msg.body.playerIndex;
-    const auto &pos = msg.body.moveData.pos;
+    const auto &pos = msg.body.pos;
 
     networkCallbacks.emplace_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
@@ -43,8 +43,8 @@ static void handleMissileCreation(
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
 )
 {
-    const auto &pos = msg.body.moveData.pos;
-    const auto &vel = msg.body.moveData.vel;
+    const auto &pos = msg.body.pos;
+    const auto &vel = msg.body.vel;
 
     networkCallbacks.emplace_back([pos, vel](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(

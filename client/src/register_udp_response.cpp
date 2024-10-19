@@ -37,8 +37,8 @@ static void handlePlayerCreation(
             spriteManager,
 
             "assets/player" + std::to_string(packet.body.playerIndex) + ".json",
-            packet.body.moveData.pos.x,
-            packet.body.moveData.pos.y,
+            packet.body.pos.x,
+            packet.body.pos.y,
             packet.sharedEntityId,
             0.0f,
             0.0f,
@@ -64,7 +64,7 @@ static void handleSharedCreation(
     const rt::UDPPacket<T> &packet
 )
 {
-    auto &[pos, _] = packet.body.moveData;
+    auto &pos = packet.body.pos;
     auto sharedEntityId = packet.sharedEntityId;
 
     networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, jsonFilePath](ecs::Registry &reg) {
