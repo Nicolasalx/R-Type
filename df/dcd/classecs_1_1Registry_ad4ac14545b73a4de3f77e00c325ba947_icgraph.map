@@ -1,8 +1,8 @@
 <map id="ecs::Registry::getLocalEntity" name="ecs::Registry::getLocalEntity">
 <area shape="rect" id="node1" title=" " alt="" coords="799,77,1005,102"/>
-<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#a8e977e09b747ce8c33779240b839bef5" title="Creates a client entity from a JSON file." alt="" coords="537,5,749,45"/>
+<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#a2e40628c079221593390124181093078" title="Creates a client entity from a JSON file." alt="" coords="537,5,749,45"/>
 <area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="535,69,751,109"/>
-<area shape="rect" id="node7" href="$d9/dbb/namespacerts.html#aa209bd6618ce10ec82019f5ee00f43d1" title=" " alt="" coords="289,134,476,159"/>
+<area shape="rect" id="node7" href="$d9/dbb/namespacerts.html#a438f3e67c599833b14463a896d827aa0" title=" " alt="" coords="289,134,476,159"/>
 <area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a43cb3287b916855a3aba0c947b4acbb5" title=" " alt="" coords="279,35,487,61"/>
 <area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a423eea7055496ad7c95ef1260ff5a4e7" title=" " alt="" coords="327,85,438,110"/>
 <area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,110,231,135"/>

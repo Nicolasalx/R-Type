@@ -82,12 +82,15 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dfd/classrtc_1_1GameManager.html">GameManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddf/classrtc_1_1Metric.html">Metric</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">RoomManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ae2f72f69b5704eb760313ba4e0de9354"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">TickRate</a> : std::uint8_t { <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">ENTITY_MOVEMENT</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e">PING_REFRESH</a>
 , <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">CALL_NETWORK_CALLBACKS</a>
  }</td></tr>
 <tr class="separator:ae2f72f69b5704eb760313ba4e0de9354"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -96,13 +99,17 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2">LOBBY</a>
  }</td></tr>
 <tr class="separator:a5ac47684a26a104eb546ab0d6aad9bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb7100fe83f1feff382da3a83f65fbf5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">ClientMetric</a> : std::uint8_t { <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70">FPS</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1">PING</a>
+ }</td></tr>
+<tr class="separator:aeb7100fe83f1feff382da3a83f65fbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3b38969f49ab0c77c13dc28e73bfee15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a3b38969f49ab0c77c13dc28e73bfee15">registerComponents</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)</td></tr>
 <tr class="separator:a3b38969f49ab0c77c13dc28e73bfee15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b7863ce22b3dfca7c485dbef03d7dd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a7b7863ce22b3dfca7c485dbef03d7dd7">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">rtc::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks)</td></tr>
-<tr class="separator:a7b7863ce22b3dfca7c485dbef03d7dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c76174c5584e95f1c46df33ac7e9647"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a7c76174c5584e95f1c46df33ac7e9647">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">rtc::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, std::unordered_map&lt; <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">rtc::ClientMetric</a>, <a class="el" href="../../df/ddf/classrtc_1_1Metric.html">rtc::Metric</a> &gt; &amp;metrics)</td></tr>
+<tr class="separator:a7c76174c5584e95f1c46df33ac7e9647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf16b852c2152ce537cabad01a256b23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#aaf16b852c2152ce537cabad01a256b23">run</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, float &amp;dt, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input)</td></tr>
 <tr class="separator:aaf16b852c2152ce537cabad01a256b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61318882c032d19c9e351131fab9dcbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc">runGui</a> (const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &amp;roomManager, bool &amp;inLobby)</td></tr>
@@ -120,8 +127,36 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ae48bc94be29dfed81aed58f270c3448c"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">rtc::TickRate</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#ae48bc94be29dfed81aed58f270c3448c">CLIENT_TICKRATE</a></td></tr>
 <tr class="separator:ae48bc94be29dfed81aed58f270c3448c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a2c406928787a64681caf8093ed489"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">rtc::ClientMetric</a>, std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a17a2c406928787a64681caf8093ed489">METRIC_HISTORY_SIZE</a></td></tr>
+<tr class="separator:a17a2c406928787a64681caf8093ed489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aeb7100fe83f1feff382da3a83f65fbf5" name="aeb7100fe83f1feff382da3a83f65fbf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb7100fe83f1feff382da3a83f65fbf5">&#9670;&#160;</a></span>ClientMetric</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">rtc::ClientMetric</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70" name="aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70"></a>FPS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1" name="aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1"></a>PING&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ae2f72f69b5704eb760313ba4e0de9354" name="ae2f72f69b5704eb760313ba4e0de9354"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2f72f69b5704eb760313ba4e0de9354">&#9670;&#160;</a></span>TickRate</h2>
 
@@ -143,6 +178,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb" name="ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb"></a>ENTITY_MOVEMENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e" name="ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e"></a>PING_REFRESH&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec" name="ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec"></a>CALL_NETWORK_CALLBACKS&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -343,8 +379,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7b7863ce22b3dfca7c485dbef03d7dd7" name="a7b7863ce22b3dfca7c485dbef03d7dd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b7863ce22b3dfca7c485dbef03d7dd7">&#9670;&#160;</a></span>registerSystems()</h2>
+<a id="a7c76174c5584e95f1c46df33ac7e9647" name="a7c76174c5584e95f1c46df33ac7e9647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c76174c5584e95f1c46df33ac7e9647">&#9670;&#160;</a></span>registerSystems()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,7 +431,13 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>networkCallbacks</em>&#160;</td>
+          <td class="paramname"><em>networkCallbacks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; <a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">rtc::ClientMetric</a>, <a class="el" href="../../df/ddf/classrtc_1_1Metric.html">rtc::Metric</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>metrics</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -407,33 +449,40 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a7b7863ce22b3dfca7c485dbef03d7dd7_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_a7b7863ce22b3dfca7c485dbef03d7dd7_cgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a7b7863ce22b3dfca7c485dbef03d7dd7_cgraph" id="ad9/d77/namespacertc_a7b7863ce22b3dfca7c485dbef03d7dd7_cgraph">
-<area shape="rect" title=" " alt="" coords="5,461,159,487"/>
+<div class="center"><img src="../../d9/d77/namespacertc_a7c76174c5584e95f1c46df33ac7e9647_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_a7c76174c5584e95f1c46df33ac7e9647_cgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_a7c76174c5584e95f1c46df33ac7e9647_cgraph" id="ad9/d77/namespacertc_a7c76174c5584e95f1c46df33ac7e9647_cgraph">
+<area shape="rect" title=" " alt="" coords="5,519,159,544"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2" title="Adds a system to the registry." alt="" coords="220,5,407,31"/>
 <area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="230,55,397,95"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="219,119,407,159"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="229,283,398,308"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a282c1c508bd0632676bf16e1f82d1118" title="Handles entity control movement." alt="" coords="215,184,411,209"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a3b5f6cd1549435fb54174bf11485ebed" title="Handles entity control and input processing." alt="" coords="210,233,417,259"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="240,683,387,708"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44" title=" " alt="" coords="219,333,407,373"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5" title=" " alt="" coords="219,397,407,437"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a1d91d2c679533842b24d697c370a62f9" title=" " alt="" coords="222,461,405,487"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4" title=" " alt="" coords="207,511,420,536"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="215,732,411,757"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="214,781,413,807"/>
-<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="230,881,397,921"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="229,560,397,585"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="230,609,397,635"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="213,831,414,856"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="468,487,684,512"/>
-<area shape="rect" href="../../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="497,140,655,165"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="732,480,837,505"/>
-<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="501,214,651,254"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="471,683,681,708"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="491,732,661,757"/>
-<area shape="rect" href="../../d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="503,833,649,873"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="219,767,407,807"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="229,489,398,515"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a282c1c508bd0632676bf16e1f82d1118" title="Handles entity control movement." alt="" coords="215,169,411,195"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a41e51c52dc5e4565d367a1983ff0e370" title="Handles entity control and input processing." alt="" coords="210,120,417,145"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="240,243,387,268"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ad368515a8ba494ef945886488d908337" title=" " alt="" coords="228,981,399,1007"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a6c0c57d4c50cc63fc7f9560ce22bbc17" title=" " alt="" coords="226,932,401,957"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44" title=" " alt="" coords="219,539,407,579"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5" title=" " alt="" coords="219,603,407,643"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a2ea0aa9522164295b90c3d4222b65f52" title=" " alt="" coords="222,292,405,317"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4" title=" " alt="" coords="207,341,420,367"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="215,717,411,743"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="214,668,413,693"/>
+<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="230,1031,397,1071"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="229,391,397,416"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="230,440,397,465"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a90013fbe37dd2fb55e62366fa00d5371" title=" " alt="" coords="226,832,401,857"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="213,881,414,907"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="468,465,684,491"/>
+<area shape="rect" href="../../d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="497,767,655,792"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="732,824,837,849"/>
+<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="501,138,651,178"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="471,243,681,268"/>
+<area shape="rect" href="../../df/ddf/classrtc_1_1Metric.html#ac9e92925723aa41b9a3df9e0b2359d3b" title=" " alt="" coords="483,932,669,957"/>
+<area shape="rect" href="../../df/ddf/classrtc_1_1Metric.html#aaa39f427fd5d99de0b1ff64aa4c3144d" title=" " alt="" coords="500,981,652,1007"/>
+<area shape="rect" href="../../df/ddf/classrtc_1_1Metric.html#a2e7c25f6fa86a880ec9ffa22bcc5919a" title=" " alt="" coords="499,1031,653,1056"/>
+<area shape="rect" href="../../df/ddf/classrtc_1_1Metric.html#a29e9466d0e976b4744d297c75066baee" title=" " alt="" coords="499,1080,653,1105"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="491,692,661,717"/>
+<area shape="rect" href="../../d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="503,817,649,857"/>
 </map>
 </div>
 
@@ -588,10 +637,32 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a>, 60.0},</div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e">rtc::TickRate::PING_REFRESH</a>, 5.0},</div>
 <div class="line">    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a>, 60.0}</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354a236af76d073eda3dd6844a848154c5fb">rtc::TickRate::ENTITY_MOVEMENT</a></div><div class="ttdeci">@ ENTITY_MOVEMENT</div></div>
+<div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e">rtc::TickRate::PING_REFRESH</a></div><div class="ttdeci">@ PING_REFRESH</div></div>
 <div class="ttc" id="anamespacertc_html_ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec"><div class="ttname"><a href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354aefae58ce896e443f1b50e7354717c0ec">rtc::TickRate::CALL_NETWORK_CALLBACKS</a></div><div class="ttdeci">@ CALL_NETWORK_CALLBACKS</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a17a2c406928787a64681caf8093ed489" name="a17a2c406928787a64681caf8093ed489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a2c406928787a64681caf8093ed489">&#9670;&#160;</a></span>METRIC_HISTORY_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_map&lt;<a class="el" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5">rtc::ClientMetric</a>, std::size_t&gt; rtc::METRIC_HISTORY_SIZE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70">rtc::ClientMetric::FPS</a>, 100.0},</div>
+<div class="line">    {<a class="code hl_enumvalue" href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1">rtc::ClientMetric::PING</a>, 100.0}</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacertc_html_aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70"><div class="ttname"><a href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ac123b11aa670647408778a3b81a21d70">rtc::ClientMetric::FPS</a></div><div class="ttdeci">@ FPS</div></div>
+<div class="ttc" id="anamespacertc_html_aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1"><div class="ttname"><a href="../../d9/d77/namespacertc.html#aeb7100fe83f1feff382da3a83f65fbf5ae07ff41a486c27c095a15898dcca34d1">rtc::ClientMetric::PING</a></div><div class="ttdeci">@ PING</div></div>
 </div><!-- fragment -->
 </div>
 </div>

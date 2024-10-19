@@ -1,7 +1,0 @@
-<map id="rts::registerUdpResponse" name="rts::registerUdpResponse">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,192,80"/>
-<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="240,5,449,31"/>
-<area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="241,55,448,80"/>
-<area shape="rect" id="node4" href="$d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5" title="Logs a warning message with source location and time." alt="" coords="265,104,425,129"/>
-<area shape="rect" id="node5" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="497,104,624,129"/>
-</map>

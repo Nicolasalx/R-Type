@@ -107,8 +107,8 @@ Functions</h2></td></tr>
 <tr class="separator:a231375c5950d052c6144309475bc7bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72f597813a5df53ae6e6d66d7c83971"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/dbb/namespacerts.html#a136a57d79c34feb8ccf69d73d41abf47">rts::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;waveManager, bool debugMode)</td></tr>
 <tr class="separator:ac72f597813a5df53ae6e6d66d7c83971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa209bd6618ce10ec82019f5ee00f43d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#aa209bd6618ce10ec82019f5ee00f43d1">registerUdpResponse</a> (rt::UDPResponseHandler &amp;responseHandler, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks)</td></tr>
-<tr class="separator:aa209bd6618ce10ec82019f5ee00f43d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438f3e67c599833b14463a896d827aa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#a438f3e67c599833b14463a896d827aa0">registerUdpResponse</a> (rt::UDPResponseHandler &amp;responseHandler, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer)</td></tr>
+<tr class="separator:a438f3e67c599833b14463a896d827aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace888220f569c127503b3767aa092a98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#ace888220f569c127503b3767aa092a98">registerTcpResponse</a> (<a class="el" href="../../d1/d36/classrts_1_1RoomManager.html">rts::RoomManager</a> &amp;roomManager, <a class="el" href="../../d7/d65/classntw_1_1TCPServer.html">ntw::TCPServer</a> &amp;tcpServer, rt::TCPResponseHandler &amp;responseHandler)</td></tr>
 <tr class="separator:ace888220f569c127503b3767aa092a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a423eea7055496ad7c95ef1260ff5a4e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbb/namespacerts.html#a423eea7055496ad7c95ef1260ff5a4e7">initWaves</a> (<a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;waveManager, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</td></tr>
@@ -468,8 +468,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aa209bd6618ce10ec82019f5ee00f43d1" name="aa209bd6618ce10ec82019f5ee00f43d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa209bd6618ce10ec82019f5ee00f43d1">&#9670;&#160;</a></span>registerUdpResponse()</h2>
+<a id="a438f3e67c599833b14463a896d827aa0" name="a438f3e67c599833b14463a896d827aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a438f3e67c599833b14463a896d827aa0">&#9670;&#160;</a></span>registerUdpResponse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -490,7 +490,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::list&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>networkCallbacks</em>&#160;</td>
+          <td class="paramname"><em>networkCallbacks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;&#160;</td>
+          <td class="paramname"><em>udpServer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -502,20 +508,22 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph.png" border="0" usemap="#ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph" alt=""/></div>
-<map name="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph" id="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,55,192,80"/>
+<div class="center"><img src="../../d9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_cgraph.png" border="0" usemap="#ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_cgraph" alt=""/></div>
+<map name="ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_cgraph" id="ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,80,192,105"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="240,5,449,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="241,55,448,80"/>
 <area shape="rect" href="../../d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5" title="Logs a warning message with source location and time." alt="" coords="265,104,425,129"/>
+<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615" title="Send a message specified in." alt="" coords="263,153,426,179"/>
 <area shape="rect" href="../../d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="497,104,624,129"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="508,153,613,179"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_icgraph.png" border="0" usemap="#ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_icgraph" alt=""/></div>
-<map name="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_icgraph" id="ad9/dbb/namespacerts_aa209bd6618ce10ec82019f5ee00f43d1_icgraph">
+<div class="center"><img src="../../d9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_icgraph.png" border="0" usemap="#ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_icgraph" alt=""/></div>
+<map name="ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_icgraph" id="ad9/dbb/namespacerts_a438f3e67c599833b14463a896d827aa0_icgraph">
 <area shape="rect" title=" " alt="" coords="279,5,465,31"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
 </map>
