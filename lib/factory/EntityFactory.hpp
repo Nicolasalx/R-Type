@@ -15,7 +15,6 @@
 #include "SpriteManager.hpp"
 #include "entity.hpp"
 #include "imgui.h"
-#include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
 
@@ -44,7 +43,6 @@ class EntityFactory {
     static entity_t createClientEntityFromJSON(
         Registry &reg,
         SpriteManager &spriteManager,
-        ntw::UDPClient &udpClient,
         const std::string &jsonFilePath,
         int x = std::numeric_limits<int>::max(),
         int y = std::numeric_limits<int>::max(),

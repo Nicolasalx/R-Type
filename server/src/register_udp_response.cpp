@@ -57,7 +57,8 @@ static void handleMissileCreation(
 void rts::registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    ntw::UDPServer &udpServer
 )
 {
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
@@ -86,6 +87,16 @@ void rts::registerUdpResponse(
                     eng::logTimeWarning(e.what());
                 }
             });
+        }
+    );
+    responseHandler.registerHandler<rt::UDPBody::PING>(
+        rt::UDPCommand::PING,
+        [&udpServer](const rt::UDPPacket<rt::UDPBody::PING> &msg, const std::vector<std::any> &arg) {
+            udpServer.send(
+                std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get(),
+                reinterpret_cast<const char *>(&msg),
+                msg.size
+            );
         }
     );
 }

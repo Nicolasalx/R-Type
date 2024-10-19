@@ -7,7 +7,9 @@
 
 #include <list>
 #include "ClientTickRate.hpp"
+#include "Metric.hpp"
 #include "RTypeClient.hpp"
+#include "RTypeClientConst.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -36,13 +38,17 @@
 #include "systems/client_share_movement.hpp"
 #include "systems/control_move.hpp"
 #include "systems/control_special.hpp"
+#include "systems/draw_fps.hpp"
+#include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
 #include "systems/draw_player_health_bar.hpp"
 #include "systems/draw_score.hpp"
 #include "systems/draw_team_data.hpp"
 #include "systems/health_check.hpp"
 #include "systems/missiles_stop.hpp"
+#include "systems/send_ping.hpp"
 #include "systems/sprite_system.hpp"
+#include <unordered_map>
 
 void rtc::registerComponents(ecs::Registry &reg)
 {
@@ -75,20 +81,20 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    std::unordered_map<rtc::ClientMetric, rtc::Metric> &metrics
 )
 {
     tickRateManager.addTickRate(
         rtc::TickRate::ENTITY_MOVEMENT, rtc::CLIENT_TICKRATE.at(rtc::TickRate::ENTITY_MOVEMENT)
     );
+    tickRateManager.addTickRate(rtc::TickRate::PING_REFRESH, rtc::CLIENT_TICKRATE.at(rtc::TickRate::PING_REFRESH));
     tickRateManager.addTickRate(
         rtc::TickRate::CALL_NETWORK_CALLBACKS, rtc::CLIENT_TICKRATE.at(rtc::TickRate::CALL_NETWORK_CALLBACKS)
     );
 
     reg.addSystem([&reg, &input]() { ecs::systems::controlMove(reg, input); });
-    reg.addSystem([&reg, &input, &udpClient, &spriteManager]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, spriteManager);
-    });
+    reg.addSystem([&reg, &input, &udpClient]() { ecs::systems::controlSpecial(reg, input, udpClient); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collision(reg); });
     reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
@@ -96,6 +102,11 @@ void rtc::registerSystems(
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
+    reg.addSystem([&udpClient, &tickRateManager, &dt]() {
+        if (tickRateManager.needUpdate(rtc::TickRate::PING_REFRESH, dt)) {
+            ecs::systems::sendPing(udpClient);
+        }
+    });
     reg.addSystem([&reg, &udpClient, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::ENTITY_MOVEMENT, dt)) {
             ecs::systems::clientShareMovement(reg, udpClient);
@@ -111,6 +122,12 @@ void rtc::registerSystems(
     });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window, window.getSize()); });
+    reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
+    reg.addSystem([&metrics, &dt, &window]() {
+        ecs::systems::drawFPS(metrics.at(rtc::ClientMetric::FPS), dt, window.getSize());
+    });
+    reg.addSystem([&metrics, &window]() {
+        ecs::systems::drawPing(metrics.at(rtc::ClientMetric::PING), window.getSize());
+    });
 }

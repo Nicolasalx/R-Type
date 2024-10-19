@@ -34,7 +34,7 @@ void ntw::UDPClient::_handleRecv(asio::error_code ec, std::size_t bytes)
 
 void ntw::UDPClient::send(const char *data, std::size_t size)
 {
-    _sock.async_send_to(asio::buffer(data, size), _endpoint, [](asio::error_code ec, std::size_t bytes) {
+    _sock.async_send_to(asio::buffer(data, size), _endpoint, [](asio::error_code ec, std::size_t /* bytes */) {
         if (!ec) {
         } else {
             eng::logError("Send error: " + ec.message());

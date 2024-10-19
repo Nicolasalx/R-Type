@@ -16,4 +16,6 @@ elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
     )
 endif()
 
+target_compile_options(UTILS PUBLIC -Wall -Wextra)
+
 target_include_directories(UTILS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

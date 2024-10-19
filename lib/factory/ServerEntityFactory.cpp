@@ -48,10 +48,10 @@ void ServerEntityFactory::addComponents(
 }
 
 void ServerEntityFactory::handleNetworkSync(
-    Registry &reg,
-    entity_t entity,
-    const nlohmann::json &entityJson,
-    bool isShared
+    Registry & /* reg */,
+    entity_t /* entity */,
+    const nlohmann::json & /* entityJson */,
+    bool /* isShared */
 )
 {
     // Server does not handle UDP network synchronization
