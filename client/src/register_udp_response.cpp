@@ -77,10 +77,7 @@ static void handleSharedCreation(
     });
 }
 
-void rtc::GameManager::_registerUdpResponse(
-    ecs::SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient
-)
+void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient)
 {
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
         rt::UDPCommand::NEW_ENTITY_STATIC,
