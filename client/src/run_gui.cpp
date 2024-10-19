@@ -19,6 +19,7 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
     sf::Vector2u windowSize;
     WindowMode windowMode = rtc::WindowMode::MENU;
     int fpsLimit = rt::CLIENT_FPS_LIMIT;
+    bool chatEnable = false;
 
     ImGuiIO &io = ImGui::GetIO();
     io.Fonts->AddFontFromFileTTF("assets/font/DroidSansMono.ttf", 32.0f);
@@ -33,6 +34,9 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
             if (event.type == sf::Event::Closed) {
                 window->close();
             }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::RControl) {
+                chatEnable = !chatEnable;
+            }
         }
         ImGui::SFML::Update(*window, dt.restart());
         window->clear();
@@ -45,6 +49,7 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
         } else {
             lobbyWindow(windowSize, roomManager);
         }
+        renderChat(roomManager, windowSize, chatEnable);
 
         ImGui::SFML::Render(*window);
         window->display();

@@ -15,7 +15,10 @@ void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &
     ImGui::SetNextWindowPos(ImVec2(windowSize.x / 2.0f, windowSize.y / 2.0f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
     ImGui::SetNextWindowSize(ImVec2(500, 400));
     ImGui::Begin(
-        "InvisibleWindow", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove
+        "InvisibleWindow",
+        nullptr,
+        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
     );
     ImGui::SetWindowFontScale(1.5f);
     ImGui::Text("Limite de FPS : %d", fpsLimit);
@@ -53,7 +56,10 @@ void rtc::menuWindow(sf::RenderWindow &window, ImGuiIO &io, WindowMode &windowMo
     ImGui::SetNextWindowSize(ImVec2(window.getSize().x, window.getSize().y));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::Begin(
-        "Menu Titre", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove
+        "Menu Titre",
+        nullptr,
+        ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
     );
     float windowWidth = ImGui::GetWindowSize().x;
     float windowHeight = ImGui::GetWindowSize().y;
@@ -87,7 +93,8 @@ static void renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &
     ImGui::Begin(
         roomManager.getCurrentRoom().c_str(),
         nullptr,
-        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove
+        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
     // ! Table

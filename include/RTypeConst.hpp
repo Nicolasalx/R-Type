@@ -62,6 +62,11 @@ constexpr std::size_t MAX_ROOM_NAME_SIZE = 32;
 constexpr std::size_t MAX_USER_NAME_SIZE = 32;
 
 /**
+ * @brief The maximum size for a char message.
+ */
+constexpr std::size_t MAX_CHAT_MSG_SIZE = 256;
+
+/**
  * @brief The number of stages in the game.
  */
 constexpr std::size_t NB_STAGE = 10;
