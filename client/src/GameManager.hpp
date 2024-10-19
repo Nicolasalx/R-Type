@@ -47,10 +47,10 @@ class GameManager {
     std::unordered_map<rtc::ClientMetric, rtc::Metric> _metrics;
 
     void _registerTcpResponse();
-    void _registerUdpResponse(ecs::Registry &reg, ecs::SpriteManager &spriteManager);
+    void _registerUdpResponse(ecs::SpriteManager &spriteManager);
 
     void _setupTcpConnection();
-    void _setupUdpConnection(ecs::Registry &reg, ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
     void _launchGame();
 
     public:

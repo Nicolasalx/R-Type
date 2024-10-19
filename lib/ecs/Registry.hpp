@@ -14,6 +14,7 @@
 
 #include <any>
 #include <cstddef>
+#include <cstdio>
 #include <functional>
 #include <stdexcept>
 #include <string>
@@ -209,7 +210,7 @@ class Registry {
     {
         auto &array = getComponents<Component>();
         if (!array.has(static_cast<size_t>(entity))) {
-            throw std::runtime_error("Component not found for this entity.");
+            throw std::runtime_error(std::format("Component {} not found for this entity.", typeid(Component).name()));
         }
         return array[static_cast<size_t>(entity)];
     }
@@ -219,7 +220,7 @@ class Registry {
     {
         const auto &array = getComponents<Component>();
         if (!array.has(static_cast<size_t>(entity))) {
-            throw std::runtime_error("Component not found for this entity.");
+            throw std::runtime_error(std::format("Component {} not found for this entity.", typeid(Component).name()));
         }
         return array[static_cast<size_t>(entity)];
     }
