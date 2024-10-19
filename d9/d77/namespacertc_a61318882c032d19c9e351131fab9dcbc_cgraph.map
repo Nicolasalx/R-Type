@@ -1,8 +1,12 @@
 <map id="rtc::runGui" name="rtc::runGui">
-<area shape="rect" id="node1" title=" " alt="" coords="5,79,96,104"/>
-<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#aadcc6b3192929567b8c901c0227f8d0b" title=" " alt="" coords="150,29,285,55"/>
-<area shape="rect" id="node5" href="$d9/d77/namespacertc.html#ac661009cdfb711d801c4faa298ab2282" title=" " alt="" coords="149,79,285,104"/>
-<area shape="rect" id="node6" href="$d9/d77/namespacertc.html#a6d229c2aba04718a18a574bbe239a556" title=" " alt="" coords="144,128,291,153"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,113,96,139"/>
+<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#aadcc6b3192929567b8c901c0227f8d0b" title=" " alt="" coords="150,39,285,64"/>
+<area shape="rect" id="node5" href="$d9/d77/namespacertc.html#ac661009cdfb711d801c4faa298ab2282" title=" " alt="" coords="149,88,285,113"/>
+<area shape="rect" id="node6" href="$d9/d77/namespacertc.html#a6d229c2aba04718a18a574bbe239a556" title=" " alt="" coords="144,137,291,163"/>
+<area shape="rect" id="node7" href="$d9/d77/namespacertc.html#a65f2d4076fdad3f6d85fde28a59add3f" title=" " alt="" coords="158,187,277,212"/>
 <area shape="rect" id="node3" href="$d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="339,5,596,31"/>
 <area shape="rect" id="node4" href="$d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="377,55,557,80"/>
+<area shape="rect" id="node8" href="$d0/d42/classrtc_1_1RoomManager.html#ace464a90652885b845ec926ef88222b4" title=" " alt="" coords="358,122,577,162"/>
+<area shape="rect" id="node9" href="$d0/d42/classrtc_1_1RoomManager.html#a397e27db4ac233ce29ca5a0dd219c380" title=" " alt="" coords="353,187,581,212"/>
+<area shape="rect" id="node10" href="$d0/d42/classrtc_1_1RoomManager.html#a8efd34a5953eacfbbe4de4401eaef3b7" title=" " alt="" coords="350,236,585,261"/>
 </map>

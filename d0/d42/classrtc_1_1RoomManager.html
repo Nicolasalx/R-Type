@@ -106,6 +106,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a88af2da4d7b85942288175751d092102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a655207772ca376ec76fe5e17d22de118"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="../../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html">RoomContent</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#a655207772ca376ec76fe5e17d22de118">getRooms</a> ()</td></tr>
 <tr class="separator:a655207772ca376ec76fe5e17d22de118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8efd34a5953eacfbbe4de4401eaef3b7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#a8efd34a5953eacfbbe4de4401eaef3b7">getSelfName</a> ()</td></tr>
+<tr class="separator:a8efd34a5953eacfbbe4de4401eaef3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a397e27db4ac233ce29ca5a0dd219c380"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#a397e27db4ac233ce29ca5a0dd219c380">getChatMsg</a> ()</td></tr>
+<tr class="separator:a397e27db4ac233ce29ca5a0dd219c380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ad7e7b7795c625b93a4b484425113fb"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#a6ad7e7b7795c625b93a4b484425113fb">getChatMsg</a> () const</td></tr>
+<tr class="separator:a6ad7e7b7795c625b93a4b484425113fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea5fbb2b22ce8dbee9d5d3b06a30c1a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#aea5fbb2b22ce8dbee9d5d3b06a30c1a9">askToCreateRoom</a> (const std::string &amp;roomName, const std::size_t &amp;stage)</td></tr>
 <tr class="separator:aea5fbb2b22ce8dbee9d5d3b06a30c1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4843f167621eb29db2322c8e1fdcb5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#ae4843f167621eb29db2322c8e1fdcb5f">askToDeleteRoom</a> (const std::string &amp;roomName)</td></tr>
@@ -120,6 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a60c1d666d6301beafbf4ada9b19df6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af656ad4d6f05db7f97b46a2769ed1990"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#af656ad4d6f05db7f97b46a2769ed1990">udpConnectionReady</a> ()</td></tr>
 <tr class="separator:af656ad4d6f05db7f97b46a2769ed1990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace464a90652885b845ec926ef88222b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html#ace464a90652885b845ec926ef88222b4">askToSendChatMsg</a> (const std::string &amp;msg)</td></tr>
+<tr class="separator:ace464a90652885b845ec926ef88222b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa9054d3cafaaf8920610999bd1104a53" name="aa9054d3cafaaf8920610999bd1104a53"></a>
@@ -280,6 +288,78 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ace464a90652885b845ec926ef88222b4" name="ace464a90652885b845ec926ef88222b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace464a90652885b845ec926ef88222b4">&#9670;&#160;</a></span>askToSendChatMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rtc::RoomManager::askToSendChatMsg </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d42/classrtc_1_1RoomManager_ace464a90652885b845ec926ef88222b4_icgraph.png" border="0" usemap="#ad0/d42/classrtc_1_1RoomManager_ace464a90652885b845ec926ef88222b4_icgraph" alt=""/></div>
+<map name="ad0/d42/classrtc_1_1RoomManager_ace464a90652885b845ec926ef88222b4_icgraph" id="ad0/d42/classrtc_1_1RoomManager_ace464a90652885b845ec926ef88222b4_icgraph">
+<area shape="rect" title=" " alt="" coords="311,5,529,45"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a65f2d4076fdad3f6d85fde28a59add3f" title=" " alt="" coords="144,13,263,38"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,13,96,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a397e27db4ac233ce29ca5a0dd219c380" name="a397e27db4ac233ce29ca5a0dd219c380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a397e27db4ac233ce29ca5a0dd219c380">&#9670;&#160;</a></span>getChatMsg() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; &amp; rtc::RoomManager::getChatMsg </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d42/classrtc_1_1RoomManager_a397e27db4ac233ce29ca5a0dd219c380_icgraph.png" border="0" usemap="#ad0/d42/classrtc_1_1RoomManager_a397e27db4ac233ce29ca5a0dd219c380_icgraph" alt=""/></div>
+<map name="ad0/d42/classrtc_1_1RoomManager_a397e27db4ac233ce29ca5a0dd219c380_icgraph" id="ad0/d42/classrtc_1_1RoomManager_a397e27db4ac233ce29ca5a0dd219c380_icgraph">
+<area shape="rect" title=" " alt="" coords="311,5,539,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a65f2d4076fdad3f6d85fde28a59add3f" title=" " alt="" coords="144,5,263,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6ad7e7b7795c625b93a4b484425113fb" name="a6ad7e7b7795c625b93a4b484425113fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ad7e7b7795c625b93a4b484425113fb">&#9670;&#160;</a></span>getChatMsg() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; rtc::RoomManager::getChatMsg </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac0b0d4692e2514dc98a679df14cdc171" name="ac0b0d4692e2514dc98a679df14cdc171"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0b0d4692e2514dc98a679df14cdc171">&#9670;&#160;</a></span>getCurrentRoom() <span class="overload">[1/2]</span></h2>
 
@@ -389,6 +469,33 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8efd34a5953eacfbbe4de4401eaef3b7" name="a8efd34a5953eacfbbe4de4401eaef3b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efd34a5953eacfbbe4de4401eaef3b7">&#9670;&#160;</a></span>getSelfName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; rtc::RoomManager::getSelfName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d42/classrtc_1_1RoomManager_a8efd34a5953eacfbbe4de4401eaef3b7_icgraph.png" border="0" usemap="#ad0/d42/classrtc_1_1RoomManager_a8efd34a5953eacfbbe4de4401eaef3b7_icgraph" alt=""/></div>
+<map name="ad0/d42/classrtc_1_1RoomManager_a8efd34a5953eacfbbe4de4401eaef3b7_icgraph" id="ad0/d42/classrtc_1_1RoomManager_a8efd34a5953eacfbbe4de4401eaef3b7_icgraph">
+<area shape="rect" title=" " alt="" coords="311,5,545,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a65f2d4076fdad3f6d85fde28a59add3f" title=" " alt="" coords="144,5,263,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a61318882c032d19c9e351131fab9dcbc" title=" " alt="" coords="5,5,96,31"/>
+</map>
+</div>
 
 </div>
 </div>

@@ -37,5 +37,6 @@ var searchData=
   ['asktocreateroom_34',['askToCreateRoom',['../d0/d42/classrtc_1_1RoomManager.html#aea5fbb2b22ce8dbee9d5d3b06a30c1a9',1,'rtc::RoomManager']]],
   ['asktodeleteroom_35',['askToDeleteRoom',['../d0/d42/classrtc_1_1RoomManager.html#ae4843f167621eb29db2322c8e1fdcb5f',1,'rtc::RoomManager']]],
   ['asktojoinroom_36',['askToJoinRoom',['../d0/d42/classrtc_1_1RoomManager.html#a149eadc0e5d9cd933a95ec7dc8beae27',1,'rtc::RoomManager']]],
-  ['asktoleaveroom_37',['askToLeaveRoom',['../d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42',1,'rtc::RoomManager']]]
+  ['asktoleaveroom_37',['askToLeaveRoom',['../d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42',1,'rtc::RoomManager']]],
+  ['asktosendchatmsg_38',['askToSendChatMsg',['../d0/d42/classrtc_1_1RoomManager.html#ace464a90652885b845ec926ef88222b4',1,'rtc::RoomManager']]]
 ];
