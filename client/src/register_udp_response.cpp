@@ -11,11 +11,11 @@
 #include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
 #include "Logger.hpp"
+#include "RTypeClientConst.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SpriteManager.hpp"
 #include "components/controllable.hpp"
-#include "components/ping.hpp"
 #include "components/player.hpp"
 #include "imgui.h"
 #include "components/ally_player.hpp"
@@ -154,17 +154,12 @@ void rtc::GameManager::_registerUdpResponse(ecs::Registry &reg, ecs::SpriteManag
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::PING>(
         rt::UDPCommand::PING,
-        [&reg](const rt::UDPPacket<rt::UDPBody::PING> &packet) {
+        [this](const rt::UDPPacket<rt::UDPBody::PING> &packet) {
             long currentTime = std::chrono::duration_cast<std::chrono::microseconds>(
                                    std::chrono::high_resolution_clock::now().time_since_epoch()
             )
                                    .count();
-            auto ping = reg.getComponents<ecs::component::Ping>().begin();
-            if (ping->has_value()) {
-                ping->value().ping = (currentTime - packet.body.sendTime) / 1000.0;
-            } else {
-                eng::logTimeWarning("Ping component not found.");
-            }
+            _metrics.at(rtc::ClientMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
         }
     );
 }

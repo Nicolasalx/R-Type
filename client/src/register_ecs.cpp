@@ -7,7 +7,9 @@
 
 #include <list>
 #include "ClientTickRate.hpp"
+#include "Metric.hpp"
 #include "RTypeClient.hpp"
+#include "RTypeClientConst.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -18,7 +20,6 @@
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/parallax.hpp"
-#include "components/ping.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
 #include "components/score.hpp"
@@ -47,6 +48,7 @@
 #include "systems/missiles_stop.hpp"
 #include "systems/send_ping.hpp"
 #include "systems/sprite_system.hpp"
+#include <unordered_map>
 
 void rtc::registerComponents(ecs::Registry &reg)
 {
@@ -69,7 +71,6 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::SelfPlayer>();
     reg.registerComponent<ecs::component::AllyPlayer>();
-    reg.registerComponent<ecs::component::Ping>();
 }
 
 void rtc::registerSystems(
@@ -80,7 +81,8 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    std::unordered_map<rtc::ClientMetric, rtc::Metric> &metrics
 )
 {
     tickRateManager.addTickRate(
@@ -122,6 +124,6 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
-    reg.addSystem([&dt, &window]() { ecs::systems::drawFPS(dt, window.getSize()); });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawPing(reg, window.getSize()); });
+    reg.addSystem([&metrics, &dt, &window]() { ecs::systems::drawFPS(metrics.at(rtc::ClientMetric::FPS), dt, window.getSize()); });
+    reg.addSystem([&metrics, &window]() { ecs::systems::drawPing(metrics.at(rtc::ClientMetric::PING), window.getSize()); });
 }

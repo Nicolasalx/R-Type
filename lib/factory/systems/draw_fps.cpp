@@ -6,25 +6,14 @@
 */
 
 #include "systems/draw_fps.hpp"
-#include <array>
 #include <format>
 #include "RTypeConst.hpp"
 #include "imgui.h"
 
-void ecs::systems::drawFPS(float dt, const sf::Vector2u &windowSize)
+void ecs::systems::drawFPS(rtc::Metric &metric, float dt, const sf::Vector2u &windowSize)
 {
-    static constexpr std::size_t MAX_HISTORY_SIZE = 100;
-    static std::array<float, MAX_HISTORY_SIZE> fpsArray = {0};
-    static std::size_t fpsIndex = 0;
-    static std::size_t fpsCount = 0;
-    float fps = 1.0f / dt;
-
-    fpsArray.at(fpsIndex) = fps;
-    fpsIndex = (fpsIndex + 1) % MAX_HISTORY_SIZE;
-
-    if (fpsCount < MAX_HISTORY_SIZE) {
-        ++fpsCount;
-    }
+    metric.lastComputedMetric = 1.0f / dt;
+    metric.addNewValue(metric.lastComputedMetric);
 
     ImVec2 windowSizeImGui = ImVec2(windowSize.x * 0.1f, windowSize.y * 0.07f);
     ImVec2 plotSize = ImVec2(windowSizeImGui.x - 15, windowSizeImGui.y - 15);
@@ -52,10 +41,10 @@ void ecs::systems::drawFPS(float dt, const sf::Vector2u &windowSize)
 
     ImGui::PlotLines(
         "",
-        fpsArray.data(),
-        fpsCount,
-        fpsIndex,
-        std::format("FPS: {:.1f}", fps).c_str(),
+        metric.getArray().data(),
+        metric.getCount(),
+        metric.getIndex(),
+        std::format("FPS: {:.1f}", metric.lastComputedMetric).c_str(),
         0,
         rt::CLIENT_FPS_LIMIT * 2,
         plotSize

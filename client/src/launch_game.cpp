@@ -21,7 +21,6 @@
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "TrackedException.hpp"
-#include "components/ping.hpp"
 #include "imgui.h"
 #include "udp/UDPClient.hpp"
 
@@ -81,7 +80,9 @@ void rtc::GameManager::_launchGame()
     soundManager.playMusic("battle", 5.f, true);
 
     rtc::registerComponents(reg);
-    rtc::registerSystems(reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks);
+    rtc::registerSystems(
+        reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks, _metrics
+    );
 
     _setupUdpConnection(reg, spriteManager, udpClient);
 
@@ -90,7 +91,6 @@ void rtc::GameManager::_launchGame()
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);
-    reg.addComponent(reg.spawnEntity(), ecs::component::Ping{});
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/ruins.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
