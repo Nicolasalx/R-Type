@@ -36,7 +36,7 @@ static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::Room
         ++msg.body.playerIndex;
     }
     msg.body.playerId = userId;
-    msg.body.moveData = {.pos = {.x = 100, .y = 150 + (50 * float(msg.body.playerIndex))}};
+    msg.body.pos = {.x = 100, .y = 150 + (50 * float(msg.body.playerIndex))};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 

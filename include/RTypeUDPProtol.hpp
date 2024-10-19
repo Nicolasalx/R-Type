@@ -29,8 +29,6 @@ enum class UDPCommand : std::uint8_t {
 
     MOVE_ENTITY,
 
-    MOD_ENTITY,
-    MOD_ENTITES,
     DEL_ENTITY,
 
     PING
@@ -41,36 +39,39 @@ namespace UDPBody {
 
 struct EMPTY {}; // Used in the UDP responce handler
 
-struct MOVE_ENTITY {
-    ecs::component::Position pos{};
-    ecs::component::Velocity vel{};
-};
-
 struct NEW_ENTITY_STATIC {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_PLAYER {
     std::size_t playerId = 0;
     std::size_t playerIndex = 1;
     char playerName[rt::MAX_USER_NAME_SIZE + 1] = {0};
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_MISSILE {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct NEW_ENTITY_MISSILE_BALL {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct NEW_ENTITY_BYDOS_WAVE {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_ROBOT_GROUND {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
+};
+
+struct MOVE_ENTITY {
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct DEL_ENTITY {};
