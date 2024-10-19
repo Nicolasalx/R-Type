@@ -83,7 +83,7 @@ void ClientEntityFactory::addComponents(
     SpriteManager &spriteManager,
     entity_t entity,
     const nlohmann::json &componentsJson,
-    bool isShared,
+    bool /*isShared*/,
     int x,
     int y,
     float vx,

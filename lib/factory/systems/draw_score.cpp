@@ -11,9 +11,8 @@
 #include "components/score.hpp"
 #include "imgui.h"
 #include "components/self_player.hpp"
-#include "imgui-SFML.h"
 
-void ecs::systems::drawScore(Registry &reg, sf::RenderWindow &window, const sf::Vector2u &windowSize)
+void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize)
 {
     auto &score = reg.getComponents<ecs::component::Score>();
     auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();

@@ -26,7 +26,7 @@ static void handlePlayerCreation(
 {
     shared_entity_t sharedEntityId = msg.sharedEntityId;
     std::size_t playerIndex = msg.body.playerIndex;
-    const auto &pos = msg.body.moveData.pos;
+    const auto &pos = msg.body.pos;
 
     networkCallbacks.emplace_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
@@ -43,8 +43,8 @@ static void handleMissileCreation(
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
 )
 {
-    const auto &pos = msg.body.moveData.pos;
-    const auto &vel = msg.body.moveData.vel;
+    const auto &pos = msg.body.pos;
+    const auto &vel = msg.body.vel;
 
     networkCallbacks.emplace_back([pos, vel, sharedEntityId = msg.sharedEntityId](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
@@ -57,7 +57,8 @@ static void handleMissileCreation(
 void rts::registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    ntw::UDPServer &udpServer
 )
 {
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
@@ -86,6 +87,16 @@ void rts::registerUdpResponse(
                     eng::logTimeWarning(e.what());
                 }
             });
+        }
+    );
+    responseHandler.registerHandler<rt::UDPBody::PING>(
+        rt::UDPCommand::PING,
+        [&udpServer](const rt::UDPPacket<rt::UDPBody::PING> &msg, const std::vector<std::any> &arg) {
+            udpServer.send(
+                std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get(),
+                reinterpret_cast<const char *>(&msg),
+                msg.size
+            );
         }
     );
 }

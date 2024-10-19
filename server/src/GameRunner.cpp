@@ -15,6 +15,7 @@
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
+#include "asio/ip/udp.hpp"
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
 
@@ -23,9 +24,9 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
-    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks);
-    _udpServer.registerCommand([this](char *data, std::size_t size) {
-        this->_responseHandler.handleResponse(data, size);
+    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer);
+    _udpServer.registerCommand([this](udp::endpoint &endpoint, char *data, std::size_t size) {
+        this->_responseHandler.handleResponse(data, size, {std::ref(endpoint)});
     });
     _udpServer.run();
 
@@ -45,9 +46,10 @@ void rts::GameRunner::killPlayer(size_t playerId)
 
         for (auto [e, player, shared] : zip) {
             if (player.id == playerId) {
-                _datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>({.cmd = rt::UDPCommand::DEL_ENTITY,
-                                                                               .sharedEntityId = shared.sharedEntityId})
-                                           .serialize());
+                _datasToSend.push_back(
+                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, shared.sharedEntityId)
+                        .serialize()
+                );
                 reg.killEntity(e);
                 return;
             }

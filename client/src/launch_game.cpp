@@ -26,9 +26,7 @@
 
 static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::RoomManager &roomManager)
 {
-    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> msg = {
-        .cmd = rt::UDPCommand::NEW_ENTITY_PLAYER, .sharedEntityId = ecs::generateSharedEntityId()
-    };
+    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> msg(rt::UDPCommand::NEW_ENTITY_PLAYER, ecs::generateSharedEntityId());
     msg.body.playerIndex = 1;
     for (const auto &[id, player] : roomManager.getCurrentRoomPlayer()) {
         if (id == userId) {
@@ -38,7 +36,7 @@ static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::Room
         ++msg.body.playerIndex;
     }
     msg.body.playerId = userId;
-    msg.body.moveData = {.pos = {.x = 100, .y = 150 + (50 * float(msg.body.playerIndex))}};
+    msg.body.pos = {.x = 100, .y = 150 + (50 * float(msg.body.playerIndex))};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
@@ -82,7 +80,9 @@ void rtc::GameManager::_launchGame()
     soundManager.playMusic("battle", 5.f, true);
 
     rtc::registerComponents(reg);
-    rtc::registerSystems(reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks);
+    rtc::registerSystems(
+        reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks, _metrics
+    );
 
     _setupUdpConnection(spriteManager, udpClient);
 
@@ -91,29 +91,16 @@ void rtc::GameManager::_launchGame()
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, udpClient, "assets/ruins.json");
-
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, udpClient, "assets/bg.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, udpClient, "assets/earth.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/planetShade75.json", 500, 123
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/planet50.json", 1500, 303
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/planetShade50.json", 1500, 303
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/planetShade25.json", 1000, 288
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/planetShade25.json", 1000, 288
-    );
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, udpClient, "assets/sun.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(
-        reg, spriteManager, udpClient, "assets/explosion.json", 300, 200
-    );
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/ruins.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planet50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
 
     run(reg, _window, dt, inputManager);
 }

@@ -11,6 +11,8 @@
 #include <list>
 #include "ClientTickRate.hpp"
 #include "InputManager.hpp"
+#include "Metric.hpp"
+#include "RTypeClientConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
 #include "SpriteManager.hpp"
@@ -35,7 +37,8 @@ void registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    std::unordered_map<rtc::ClientMetric, rtc::Metric> &metrics
 );
 
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);

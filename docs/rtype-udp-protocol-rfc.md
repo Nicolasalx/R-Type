@@ -14,7 +14,6 @@
     - [4.1.5 NEW_ENTITY_BYDOS_WAVE](#415-new_entity_bydos_wave)
     - [4.1.6 NEW_ENTITY_ROBOT_GROUND](#416-new_entity_robot_ground)
     - [4.1.7 MOVE_ENTITY](#417-move_entity)
-    - [4.1.8 MOD_ENTITY](#418-mod_entity)
     - [4.1.9 MOD_ENTITIES](#419-mod_entities)
     - [4.1.10 DEL_ENTITY](#4110-del_entity)
 - [5. Package Integrity](#5-package-integrity)
@@ -73,8 +72,6 @@ Packets contain a `cmd` field that specifies the command being sent. The availab
 | `NEW_ENTITY_BYDOS_WAVE`   | 0x05   | Create a Bydos wave entity.                               |
 | `NEW_ENTITY_ROBOT_GROUND` | 0x06   | Create a ground robot entity.                             |
 | `MOVE_ENTITY`             | 0x07   | Update an entity's position and velocity.                 |
-| `MOD_ENTITY`              | 0x08   | Modify an existing entity's attributes.                   |
-| `MOD_ENTITIES`            | 0x09   | Modify multiple entities in one operation.                |
 | `DEL_ENTITY`              | 0x0A   | Delete an existing entity.                                |
 
 ### 4.1 Command Descriptions
@@ -162,40 +159,6 @@ struct NEW_ENTITY_ROBOT_GROUND {
 struct MOVE_ENTITY {
     ecs::component::Position pos;
     ecs::component::Velocity vel;
-};
-```
-
-#### 4.1.8 `MOD_ENTITY`
-- **Command ID**: 8
-- **Description**: Modifies one or more attributes of an existing entity, such as position, velocity, or other attributes.
-- **Data**:
-  - `sharedEntityId`: Unique ID of the entity to modify.
-  - `newPos`: (Optional) New position of the entity.
-  - `newVel`: (Optional) New velocity of the entity.
-```cpp
-struct MOD_ENTITY {
-    shared_entity_t sharedEntityId;  // Unique ID of the entity to modify
-    ecs::component::Position newPos; // (Optional) New position of the entity
-    ecs::component::Velocity newVel; // (Optional) New velocity of the entity
-    // Other attributes to modify can be added here
-};
-```
-
-#### 4.1.9 `MOD_ENTITIES`
-- **Command ID**: 9
-- **Description**: Modifies the attributes of multiple entities in a single operation, such as positions and velocities.
-- **Data**:
-  - `entityCount`: Number of entities to modify.
-  - `entityIds`: List of IDs of entities to modify.
-  - `newPositions`: (Optional) New positions of the entities.
-  - `newVelocities`: (Optional) New velocities of the entities.
-```cpp
-struct MOD_ENTITIES {
-    std::size_t entityCount;                 // Number of entities to modify
-    std::vector<shared_entity_t> entityIds;  // List of IDs of entities to modify
-    std::vector<ecs::component::Position> newPositions;  // (Optional) New positions of the entities
-    std::vector<ecs::component::Velocity> newVelocities; // (Optional) New velocities of the entities
-    // Other specific attributes may be included here
 };
 ```
 

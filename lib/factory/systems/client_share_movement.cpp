@@ -31,9 +31,7 @@ void clientShareMovement(Registry &reg, ntw::UDPClient &udpClient)
         zip(sharedMov, positions, velocitys, sharedEntity);
 
     for (auto [_, pos, vel, shared_entity] : zip) {
-        rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> msg = {
-            .cmd = rt::UDPCommand::MOVE_ENTITY, .sharedEntityId = shared_entity.sharedEntityId
-        };
+        rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> msg(rt::UDPCommand::MOVE_ENTITY, shared_entity.sharedEntityId);
         msg.body = {.pos = {pos.x, pos.y}, .vel = {.vx = vel.vx, .vy = vel.vy}};
         udpClient.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
     }

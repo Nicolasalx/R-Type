@@ -13,14 +13,14 @@
 #include "../../utils/Logger.hpp"
 #include <initializer_list>
 
-void ntw::UDPServer::_handleRecv(udp::endpoint &, asio::error_code ec, std::size_t bytes)
+void ntw::UDPServer::_handleRecv(udp::endpoint &endpoint, asio::error_code ec, std::size_t bytes)
 {
     if (ec) {
         eng::logError(ec.message());
         return;
     }
     if (bytes) {
-        _handler(_buff.data(), bytes);
+        _handler(endpoint, _buff.data(), bytes);
     }
 
     _asioRun();
@@ -37,9 +37,9 @@ void ntw::UDPServer::_handleEndpoint(udp::endpoint endpoint)
     _cliEndpoints[_nbClients++] = std::move(endpoint);
 }
 
-void ntw::UDPServer::send(udp::endpoint &to, const char *data, std::size_t size)
+void ntw::UDPServer::send(udp::endpoint &endpoint, const char *data, std::size_t size)
 {
-    _sock.async_send_to(asio::buffer(data, size), to, [this](asio::error_code ec, std::size_t bytes) {
+    _sock.async_send_to(asio::buffer(data, size), endpoint, [](asio::error_code ec, std::size_t /* bytes */) {
         if (ec) {
             eng::logError(ec.message());
         } else {
@@ -80,7 +80,7 @@ void ntw::UDPServer::sendAllExcept(const char *data, std::size_t size, std::init
     }
 }
 
-void ntw::UDPServer::registerCommand(std::function<void(char *, std::size_t)> func)
+void ntw::UDPServer::registerCommand(std::function<void(udp::endpoint &, char *, std::size_t)> func)
 {
     _handler = std::move(func);
 }

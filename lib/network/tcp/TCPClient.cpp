@@ -14,7 +14,6 @@
 
 ntw::TCPClient::TCPClient(const std::string &host, int port) : _socket(_io), _host(host), _port(port)
 {
-    auto end = tcp::endpoint();
     _socket.connect(tcp::endpoint(asio::ip::make_address(host), _port));
 }
 

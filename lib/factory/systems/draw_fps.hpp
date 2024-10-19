@@ -2,16 +2,16 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** draw_player_beam_bar
+** draw_fps
 */
 
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Registry.hpp"
+#include "../../../client/src/Metric.hpp"
 
 namespace ecs::systems {
 
-void drawScore(Registry &reg, const sf::Vector2u &windowSize);
+void drawFPS(rtc::Metric &metric, float dt, const sf::Vector2u &windowSize);
 
 } // namespace ecs::systems

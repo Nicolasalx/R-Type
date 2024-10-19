@@ -45,12 +45,10 @@ entity_t rts::ais::fireRandomMissileAi(
         reg, "assets/missileBall.json", missilePosX, missilePosY, sharedId, xFactor * 150, yFactor * 150
     );
 
-    datasToSend.push_back(
-        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-            {.cmd = rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
-             .sharedEntityId = sharedId,
-             .body = {.moveData = {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}}}
-        ).serialize()
-    );
+    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
+                              rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
+                              sharedId,
+                              {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}
+    ).serialize());
     return rMissile;
 }
