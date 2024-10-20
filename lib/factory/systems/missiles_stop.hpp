@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <list>
 #include "Registry.hpp"
 
 /**
@@ -17,9 +18,10 @@
  * related to missiles and kill the missiles entities when needed.
  *
  * @param reg Reference to the ECS registry containing the entities and components.
+ * @param datasToSend Reference of a list of data that will be sent to all the clients.
  */
 namespace ecs::systems {
 
-void missilesStop(ecs::Registry &reg);
+void missilesStop(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend);
 
 } // namespace ecs::systems

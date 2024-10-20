@@ -210,7 +210,9 @@ class Registry {
     {
         auto &array = getComponents<Component>();
         if (!array.has(static_cast<size_t>(entity))) {
-            throw std::runtime_error(std::format("Component {} not found for this entity.", typeid(Component).name()));
+            throw std::runtime_error(
+                std::format("Component {} not found for entity [{}].", typeid(Component).name(), entity)
+            );
         }
         return array[static_cast<size_t>(entity)];
     }
@@ -220,7 +222,9 @@ class Registry {
     {
         const auto &array = getComponents<Component>();
         if (!array.has(static_cast<size_t>(entity))) {
-            throw std::runtime_error(std::format("Component {} not found for this entity.", typeid(Component).name()));
+            throw std::runtime_error(
+                std::format("Component {} not found for entity [{}].", typeid(Component).name(), entity)
+            );
         }
         return array[static_cast<size_t>(entity)];
     }

@@ -37,8 +37,8 @@
 #include "components/shared_entity.hpp"
 #include "imgui-SFML.h"
 #include "systems/ai_act.hpp"
-#include "systems/health_check.hpp"
 #include "systems/health_mob_check.hpp"
+#include "systems/health_shared_check.hpp"
 #include "systems/missiles_stop.hpp"
 #include "systems/server_share_movement.hpp"
 
@@ -95,17 +95,17 @@ void rts::registerSystems(
         }
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg]() { ecs::systems::collision(reg); });
-    reg.addSystem([&reg, &waveManager]() {
+    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend); });
+    reg.addSystem([&reg, &waveManager, &datasToSend]() {
         ecs::systems::healthMobCheck(reg, waveManager);
-        ecs::systems::healthCheck(reg);
+        ecs::systems::healthSharedCheck(reg, datasToSend);
     });
     reg.addSystem([&reg, &waveManager]() {
         if (!waveManager.hasEntity() && !waveManager.isEnd()) {
             waveManager.spawnNextWave(reg);
         }
     });
-    reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
+    reg.addSystem([&reg, &datasToSend]() { ecs::systems::missilesStop(reg, datasToSend); });
     if (debugMode) {
         reg.addSystem([&reg, &window]() {
             window.clear();

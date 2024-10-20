@@ -44,8 +44,7 @@
 #include "systems/draw_player_health_bar.hpp"
 #include "systems/draw_score.hpp"
 #include "systems/draw_team_data.hpp"
-#include "systems/health_check.hpp"
-#include "systems/missiles_stop.hpp"
+#include "systems/health_local_check.hpp"
 #include "systems/send_ping.hpp"
 #include "systems/sprite_system.hpp"
 #include <unordered_map>
@@ -96,9 +95,8 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &input]() { ecs::systems::controlMove(reg, input); });
     reg.addSystem([&reg, &input, &udpClient]() { ecs::systems::controlSpecial(reg, input, udpClient); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg]() { ecs::systems::collision(reg); });
-    reg.addSystem([&reg]() { ecs::systems::missilesStop(reg); });
-    reg.addSystem([&reg]() { ecs::systems::healthCheck(reg); });
+    reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
+    reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });

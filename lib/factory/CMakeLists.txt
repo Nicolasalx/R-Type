@@ -14,7 +14,8 @@ add_library(FACTORY STATIC
     systems/missiles_stop.cpp
     systems/client_share_movement.cpp
     systems/server_share_movement.cpp
-    systems/health_check.cpp
+    systems/health_local_check.cpp
+    systems/health_shared_check.cpp
     systems/health_mob_check.cpp
     systems/parallax.cpp
     systems/send_ping.cpp

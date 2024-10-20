@@ -20,7 +20,7 @@ namespace ecs::systems {
  * the elapsed time `dt`.
  *
  * @param reg Reference to the registry managing entities and their components.
- * @param dt The delta time since the last update, used to scale velocity.
+ * @param datasToSend Reference of a list of data that will be sent to all the clients.
  */
 void serverShareMovement(Registry &reg, std::list<std::vector<char>> &datasToSend);
 
