@@ -81,8 +81,8 @@
             "height": 16.0
         },
         "health": {
-            "maxHp": 100,
-            "currHp": 100
+            "maxHp": 3,
+            "currHp": 3
         },
         "beam": 30,
         "score": 29320,
