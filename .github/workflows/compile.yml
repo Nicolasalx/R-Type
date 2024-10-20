@@ -5,7 +5,7 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     strategy:
       matrix:
@@ -20,45 +20,47 @@ jobs:
       with:
         path: |
           build/
-        key: cmake-build-linux-${{ runner.os }}-${{ hashFiles('dependencies.cmake')}}
+        key: cmake-build-linux-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
         restore-keys: |
-          cmake-build-linux-${{ runner.os }}-
+          cmake-build-linux-${{ matrix.os }}-
 
-    - name: Install apt dependencies
+    - name: Cache CMake build (Windows)
+      if: matrix.os == 'windows'
+      uses: actions/cache@v3
+      with:
+        path: |
+          build-mingw32/
+        key: cmake-build-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
+        restore-keys: |
+          cmake-build-${{ matrix.os }}-
+
+    - name: Install apt dependencies (Linux)
+      if: matrix.os == 'linux'
       run: |
-        sudo apt update
-        sudo apt-get install -y flex bison javacc libflac-dev libx11-dev libxext-dev libgl1-mesa-dev libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev
+        sudo apt-get update
+        sudo apt-get install -y flex bison javacc libflac-dev libx11-dev libxext-dev libgl1-mesa-dev \
+        libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev
 
     - name: Check compilation (Linux)
       if: matrix.os == 'linux'
       run: |
         echo "## 🚀 Linux compilation result" >> $GITHUB_STEP_SUMMARY
-        mkdir -p build
         cd build
         {
           set +e
-          cmake ..; make
+          cmake .. && make
           if [ $? -ne 0 ]; then
             echo "- ### Compilation failed ❌" >> $GITHUB_STEP_SUMMARY
-            echo "Linux compilation failed."
             exit 1
           else
-            echo "- ### Compilation succeed ✅" >> $GITHUB_STEP_SUMMARY
-            exit 0
+            echo "- ### Compilation succeeded ✅" >> $GITHUB_STEP_SUMMARY
           fi
         }
-
-    - name: Cache Mingw-w64 (Windows)
-      if: matrix.os == 'windows'
-      uses: actions/cache@v3
-      with:
-        path: /usr/lib/mingw-w64
-        key: mingw-w64-${{ runner.os }}
 
     - name: Install Mingw-w64 (Windows)
       if: matrix.os == 'windows'
       run: |
-        sudo apt update
+        sudo apt-get update
         sudo apt-get install -y mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev
 
     - name: Download OpenAL Soft for Windows
@@ -66,28 +68,42 @@ jobs:
       run: |
         git clone https://github.com/kcat/openal-soft.git
 
-    - name: Build OpenAL Soft for Windows
+    - name: Ensure OpenAL Soft install directory exists (Windows)
       if: matrix.os == 'windows'
+      run: mkdir -p openal-soft-install
+
+    - name: Get OpenAL Soft commit hash
+      if: matrix.os == 'windows'
+      id: openal_commit_hash
+      run: |
+        echo "hash=$(git -C openal-soft rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+    - name: Cache OpenAL Soft (Windows)
+      if: matrix.os == 'windows'
+      id: openal_cache
+      uses: actions/cache@v3
+      with:
+        path: openal-soft-install/
+        key: openal-soft-${{ matrix.os }}-${{ steps.openal_commit_hash.outputs.hash }}
+        restore-keys: |
+          openal-soft-${{ matrix.os }}-
+
+    - name: Build OpenAL Soft for Windows
+      if: matrix.os == 'windows' && steps.openal_cache.outputs.cache-hit != 'true'
       run: |
         cd openal-soft
         mkdir -p build
         cd build
         cmake .. -DCMAKE_TOOLCHAIN_FILE=../../cmake/mingw32-toolchain.cmake \
-                -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/openal-soft-install \
-                -DCMAKE_BUILD_TYPE=Release
+                 -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/openal-soft-install \
+                 -DCMAKE_BUILD_TYPE=Release
         make
         make install
 
-
-    - name: Cache cross-compilation artifacts (Windows)
-      if: matrix.os == 'windows'
-      uses: actions/cache@v3
-      with:
-        path: build-mingw32
-        key: cross-build-windows-${{ runner.os }}-${{ hashFiles('tools/build-mingw32.sh', 'cmake/mingw32-toolchain.cmake', 'dependencies.cmake' ) }}
-        restore-keys: |
-          cross-build-windows-${{ runner.os }}-
-
+    - name: Use cached OpenAL Soft (Windows)
+      if: matrix.os == 'windows' && steps.openal_cache.outputs.cache-hit == 'true'
+      run: |
+        echo "Using cached OpenAL Soft installation"
 
     - name: Cross-compile for Windows
       if: matrix.os == 'windows'
@@ -99,10 +115,8 @@ jobs:
           ./tools/build-mingw32.sh -c ON
           if [ $? -ne 0 ]; then
             echo "- ### Cross-compilation for Windows failed ❌" >> $GITHUB_STEP_SUMMARY
-            echo "Cross-compilation failed."
             exit 1
           else
-            echo "- ### Cross-compilation succeed ✅" >> $GITHUB_STEP_SUMMARY
-            exit 0
+            echo "- ### Cross-compilation succeeded ✅" >> $GITHUB_STEP_SUMMARY
           fi
         }
