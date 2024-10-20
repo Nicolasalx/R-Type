@@ -14,29 +14,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install ccache
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y ccache
-
-    - name: Ensure ccache directory exists
-      run: |
-        mkdir -p $(ccache --get-config cache_dir)
-
-    - name: Cache ccache
-      uses: actions/cache@v3
-      with:
-        path: $(ccache --get-config cache_dir)
-        key: ccache-${{ matrix.os }}-${{ hashFiles('**/*') }}
-        restore-keys: |
-          ccache-${{ matrix.os }}-
-
     - name: Install apt dependencies (Linux)
       if: matrix.os == 'linux'
       run: |
         sudo apt-get update
         sudo apt-get install -y flex bison javacc libflac-dev libx11-dev libxext-dev libgl1-mesa-dev \
         libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev
+
+    - name: Ensure build directory exists (Linux)
+      if: matrix.os == 'linux'
+      run: mkdir -p build
 
     - name: Cache CMake build (Linux)
       if: matrix.os == 'linux'
@@ -51,19 +38,15 @@ jobs:
       if: matrix.os == 'linux'
       run: |
         echo "## 🚀 Linux compilation result" >> $GITHUB_STEP_SUMMARY
-        mkdir -p build
         cd build
         {
           set +e
-          export CC="ccache gcc"
-          export CXX="ccache g++"
-          cmake ..; make
+          cmake .. && make
           if [ $? -ne 0 ]; then
             echo "- ### Compilation failed ❌" >> $GITHUB_STEP_SUMMARY
             exit 1
           else
             echo "- ### Compilation succeeded ✅" >> $GITHUB_STEP_SUMMARY
-            exit 0
           fi
         }
 
@@ -73,30 +56,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev
 
-    - name: Install ccache (Windows)
-      if: matrix.os == 'windows'
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y ccache
-
-    - name: Ensure ccache directory exists (Windows)
-      if: matrix.os == 'windows'
-      run: |
-        mkdir -p $(ccache --get-config cache_dir)
-
-    - name: Cache ccache (Windows)
-      if: matrix.os == 'windows'
-      uses: actions/cache@v3
-      with:
-        path: $(ccache --get-config cache_dir)
-        key: ccache-${{ matrix.os }}-${{ hashFiles('**/*') }}
-        restore-keys: |
-          ccache-${{ matrix.os }}-
-
     - name: Download OpenAL Soft for Windows
       if: matrix.os == 'windows'
       run: |
         git clone https://github.com/kcat/openal-soft.git
+
+    - name: Ensure OpenAL Soft install directory exists (Windows)
+      if: matrix.os == 'windows'
+      run: mkdir -p openal-soft-install
 
     - name: Get OpenAL Soft commit hash
       if: matrix.os == 'windows'
@@ -109,7 +76,7 @@ jobs:
       id: openal_cache
       uses: actions/cache@v3
       with:
-        path: $GITHUB_WORKSPACE/openal-soft-install
+        path: openal-soft-install/
         key: openal-soft-${{ matrix.os }}-${{ steps.openal_commit_hash.outputs.hash }}
         restore-keys: |
           openal-soft-${{ matrix.os }}-
@@ -137,11 +104,15 @@ jobs:
       run: |
         echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
+    - name: Ensure build-mingw32 directory exists (Windows)
+      if: matrix.os == 'windows'
+      run: mkdir -p build-mingw32
+
     - name: Cache cross-compilation artifacts (Windows)
       if: matrix.os == 'windows'
       uses: actions/cache@v3
       with:
-        path: build-mingw32
+        path: build-mingw32/
         key: cross-build-${{ matrix.os }}-${{ steps.source_commit_hash.outputs.hash }}
         restore-keys: |
           cross-build-${{ matrix.os }}-
@@ -151,8 +122,6 @@ jobs:
       run: |
         echo "## 🚀 Cross-compilation for Windows result" >> $GITHUB_STEP_SUMMARY
         chmod +x tools/build-mingw32.sh
-        export CC="ccache x86_64-w64-mingw32-gcc"
-        export CXX="ccache x86_64-w64-mingw32-g++"
         {
           set +e
           ./tools/build-mingw32.sh -c ON
@@ -161,6 +130,5 @@ jobs:
             exit 1
           else
             echo "- ### Cross-compilation succeeded ✅" >> $GITHUB_STEP_SUMMARY
-            exit 0
           fi
         }
