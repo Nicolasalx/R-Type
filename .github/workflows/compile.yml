@@ -78,6 +78,7 @@ jobs:
         make
         make install
 
+
     - name: Cache cross-compilation artifacts (Windows)
       if: matrix.os == 'windows'
       uses: actions/cache@v3
@@ -95,7 +96,7 @@ jobs:
         chmod +x tools/build-mingw32.sh
         {
           set +e
-          ./tools/build-mingw32.sh
+          ./tools/build-mingw32.sh -c ON
           if [ $? -ne 0 ]; then
             echo "- ### Cross-compilation for Windows failed ❌" >> $GITHUB_STEP_SUMMARY
             echo "Cross-compilation failed."

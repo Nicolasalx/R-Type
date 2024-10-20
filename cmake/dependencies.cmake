@@ -4,9 +4,15 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 set(SFML_GENERATE_PACKAGE FALSE CACHE BOOL "" FORCE)
 set(SFML_USE_STATIC_STD_LIBS ON CACHE BOOL "" FORCE)
 if(WIN32)
-    SET(OPENAL_LIBRARY /usr/x86_64-w64-mingw32/lib/libOpenAL32.dll.a)
-    SET(OPENAL_INCLUDE_DIR /usr/x86_64-w64-mingw32/include/AL)
+    if(CI)
+        set(OPENAL_LIBRARY ${CMAKE_SOURCE_DIR}/openal-soft-install/lib/libOpenAL32.dll.a)
+        set(OPENAL_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/openal-soft-install/include/AL)
+    else()
+        set(OPENAL_LIBRARY /usr/x86_64-w64-mingw32/lib/libOpenAL32.dll.a)
+        set(OPENAL_INCLUDE_DIR /usr/x86_64-w64-mingw32/include/AL)
+    endif()
 endif()
+
 
 CPMAddPackage(
     NAME SFML
