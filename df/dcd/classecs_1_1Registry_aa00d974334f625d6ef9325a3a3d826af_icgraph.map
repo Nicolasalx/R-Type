@@ -1,28 +1,30 @@
 <map id="ecs::Registry::getComponents" name="ecs::Registry::getComponents">
-<area shape="rect" id="node1" title="Retrieves the sparse_array for a specific component type." alt="" coords="792,521,1008,547"/>
+<area shape="rect" id="node1" title="Retrieves the sparse_array for a specific component type." alt="" coords="792,587,1008,612"/>
 <area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a1264603701180e9a20a9588f3f086455" title="Make ai act with respect with their ai_actor component and his callback act." alt="" coords="551,5,699,31"/>
-<area shape="rect" id="node3" href="$db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="531,382,719,422"/>
-<area shape="rect" id="node5" href="$db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d" title="Handles collision detection and response for entities." alt="" coords="540,595,709,620"/>
-<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a282c1c508bd0632676bf16e1f82d1118" title="Handles entity control movement." alt="" coords="527,447,723,472"/>
-<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a41e51c52dc5e4565d367a1983ff0e370" title="Handles entity control and input processing." alt="" coords="521,496,728,521"/>
-<area shape="rect" id="node10" href="$db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="551,668,698,693"/>
-<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44" title=" " alt="" coords="531,55,719,95"/>
-<area shape="rect" id="node12" href="$db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5" title=" " alt="" coords="531,119,719,159"/>
-<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#a2ea0aa9522164295b90c3d4222b65f52" title=" " alt="" coords="533,184,716,209"/>
-<area shape="rect" id="node14" href="$db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4" title=" " alt="" coords="518,233,731,259"/>
-<area shape="rect" id="node15" href="$db/d9a/namespaceecs_1_1systems.html#ad025bf9154726fe33b7fc7d1952eb634" title=" " alt="" coords="527,717,723,743"/>
-<area shape="rect" id="node16" href="$db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="513,816,737,841"/>
-<area shape="rect" id="node17" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="524,980,725,1005"/>
-<area shape="rect" id="node18" href="$db/d9a/namespaceecs_1_1systems.html#ad9bb6a5b660eebebd277beeb7243bbba" title=" " alt="" coords="525,767,724,792"/>
-<area shape="rect" id="node19" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="523,1029,726,1055"/>
-<area shape="rect" id="node20" href="$db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="541,283,709,308"/>
-<area shape="rect" id="node21" href="$db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="541,545,708,571"/>
-<area shape="rect" id="node22" href="$df/dcd/classecs_1_1Registry.html#a8ae60d5b07b673167b3bdcf4dd36c627" title="Registers a new component type." alt="" coords="505,931,744,956"/>
-<area shape="rect" id="node25" href="$db/d9a/namespaceecs_1_1systems.html#a66aadbaaa057cb4a72a87b0c8f2bb5d1" title="Updates the position of all entities based on their velocity." alt="" coords="528,866,721,906"/>
-<area shape="rect" id="node26" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="524,332,725,357"/>
-<area shape="rect" id="node4" href="$d9/d77/namespacertc.html#a7c76174c5584e95f1c46df33ac7e9647" title=" " alt="" coords="291,419,445,444"/>
-<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971" title=" " alt="" coords="291,743,445,768"/>
-<area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,784,231,809"/>
-<area shape="rect" id="node23" href="$d9/d77/namespacertc.html#a3b38969f49ab0c77c13dc28e73bfee15" title=" " alt="" coords="279,931,457,956"/>
-<area shape="rect" id="node24" href="$d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="279,824,457,849"/>
+<area shape="rect" id="node3" href="$db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="531,55,719,95"/>
+<area shape="rect" id="node5" href="$db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f" title="Handles collision detection and response for entities." alt="" coords="540,848,709,873"/>
+<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#ae80f34fea1072a7504940d2ecebe6a8b" title="Handles collision detection and response for entities." alt="" coords="517,120,732,145"/>
+<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a282c1c508bd0632676bf16e1f82d1118" title="Handles entity control movement." alt="" coords="527,169,723,195"/>
+<area shape="rect" id="node10" href="$db/d9a/namespaceecs_1_1systems.html#a41e51c52dc5e4565d367a1983ff0e370" title="Handles entity control and input processing." alt="" coords="521,219,728,244"/>
+<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="551,684,698,709"/>
+<area shape="rect" id="node12" href="$db/d9a/namespaceecs_1_1systems.html#ae5b9bb84ebf60ba51f7ec0e139297a44" title=" " alt="" coords="531,269,719,309"/>
+<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#a5c4edd0c2aae53a7eb3235d952187af5" title=" " alt="" coords="531,333,719,373"/>
+<area shape="rect" id="node14" href="$db/d9a/namespaceecs_1_1systems.html#a2ea0aa9522164295b90c3d4222b65f52" title=" " alt="" coords="533,397,716,423"/>
+<area shape="rect" id="node15" href="$db/d9a/namespaceecs_1_1systems.html#a3f020e44b56be4d7393d7ae0233b94d4" title=" " alt="" coords="518,447,731,472"/>
+<area shape="rect" id="node16" href="$db/d9a/namespaceecs_1_1systems.html#a47f1e6cb07902f5012a61ba1e1c9eddd" title=" " alt="" coords="529,497,720,537"/>
+<area shape="rect" id="node17" href="$db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="513,897,737,923"/>
+<area shape="rect" id="node18" href="$db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="524,947,725,987"/>
+<area shape="rect" id="node19" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="524,1111,725,1136"/>
+<area shape="rect" id="node20" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="525,1012,724,1037"/>
+<area shape="rect" id="node21" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="523,1160,726,1185"/>
+<area shape="rect" id="node22" href="$db/d9a/namespaceecs_1_1systems.html#aea6294e292d9fc2811906098f9c6caca" title=" " alt="" coords="541,561,709,587"/>
+<area shape="rect" id="node23" href="$db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="541,733,708,759"/>
+<area shape="rect" id="node24" href="$df/dcd/classecs_1_1Registry.html#a8ae60d5b07b673167b3bdcf4dd36c627" title="Registers a new component type." alt="" coords="505,1061,744,1087"/>
+<area shape="rect" id="node27" href="$db/d9a/namespaceecs_1_1systems.html#a66aadbaaa057cb4a72a87b0c8f2bb5d1" title="Updates the position of all entities based on their velocity." alt="" coords="528,783,721,823"/>
+<area shape="rect" id="node28" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="524,611,725,636"/>
+<area shape="rect" id="node4" href="$d9/d77/namespacertc.html#a7c76174c5584e95f1c46df33ac7e9647" title=" " alt="" coords="291,397,445,423"/>
+<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971" title=" " alt="" coords="291,873,445,899"/>
+<area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,915,231,940"/>
+<area shape="rect" id="node25" href="$d9/d77/namespacertc.html#a3b38969f49ab0c77c13dc28e73bfee15" title=" " alt="" coords="279,1061,457,1087"/>
+<area shape="rect" id="node26" href="$d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="279,955,457,980"/>
 </map>

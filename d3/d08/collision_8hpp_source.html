@@ -85,16 +85,20 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d">collision</a>(Registry &amp;reg);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace ecs::systems</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#ae80f34fea1072a7504940d2ecebe6a8b">collisionPredict</a>(Registry &amp;reg);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f">collision</a>(Registry &amp;reg, std::list&lt;std::vector&lt;char&gt;&gt; &amp;datasToSend);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>} <span class="comment">// namespace ecs::systems</span></div>
 <div class="ttc" id="aRegistry_8hpp_html"><div class="ttname"><a href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a></div></div>
 <div class="ttc" id="anamespaceecs_1_1systems_html"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a></div><div class="ttdoc">Perform health checks on entities within the registry.</div><div class="ttdef"><b>Definition:</b> ai_act.hpp:12</div></div>
-<div class="ttc" id="anamespaceecs_1_1systems_html_a5fac7c9239b8b9a50b2e5efa3fe0335d"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a5fac7c9239b8b9a50b2e5efa3fe0335d">ecs::systems::collision</a></div><div class="ttdeci">void collision(Registry &amp;reg)</div><div class="ttdoc">Handles collision detection and response for entities.</div><div class="ttdef"><b>Definition:</b> collision.cpp:70</div></div>
+<div class="ttc" id="anamespaceecs_1_1systems_html_a9e74d37b544cf9311d0591b71d77d93f"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f">ecs::systems::collision</a></div><div class="ttdeci">void collision(Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</div><div class="ttdoc">Handles collision detection and response for entities.</div><div class="ttdef"><b>Definition:</b> collision.cpp:90</div></div>
+<div class="ttc" id="anamespaceecs_1_1systems_html_ae80f34fea1072a7504940d2ecebe6a8b"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#ae80f34fea1072a7504940d2ecebe6a8b">ecs::systems::collisionPredict</a></div><div class="ttdeci">void collisionPredict(Registry &amp;reg)</div><div class="ttdoc">Handles collision detection and response for entities.</div><div class="ttdef"><b>Definition:</b> collision.cpp:132</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

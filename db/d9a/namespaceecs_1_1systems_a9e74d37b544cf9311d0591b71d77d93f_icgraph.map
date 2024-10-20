@@ -1,0 +1,5 @@
+<map id="ecs::systems::collision" name="ecs::systems::collision">
+<area shape="rect" id="node1" title="Handles collision detection and response for entities." alt="" coords="480,5,649,31"/>
+<area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#ac72f597813a5df53ae6e6d66d7c83971" title=" " alt="" coords="279,5,432,31"/>
+<area shape="rect" id="node3" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="ecs::systems::healthLocalCheck" name="ecs::systems::healthLocalCheck">
+<area shape="rect" id="node1" title=" " alt="" coords="5,47,196,87"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="244,5,460,31"/>
+<area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="247,55,457,80"/>
+<area shape="rect" id="node4" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="267,104,437,129"/>
+</map>
