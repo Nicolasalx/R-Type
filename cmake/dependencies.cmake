@@ -50,6 +50,13 @@ CPMAddPackage(
   GIT_TAG v3.11.3
 )
 
+CPMAddPackage(
+  NAME sfml_clandle
+  GITHUB_REPOSITORY MiguelMJ/Candle
+  GIT_TAG v1.0.2
+)
+target_compile_definitions(Candle-s PUBLIC RADIAL_LIGHT_FIX)
+
 # CPMAddPackage(
 #     NAME sol2
 #     GITHUB_REPOSITORY ThePhD/sol2
