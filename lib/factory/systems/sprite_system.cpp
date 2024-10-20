@@ -6,7 +6,7 @@
 */
 
 #include "sprite_system.hpp"
-#include <iostream>
+#include "../../utils/Logger.hpp"
 #include "IndexedZipper.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
@@ -40,7 +40,7 @@ void spriteSystem(Registry &reg, float dt, SpriteManager &spriteManager)
             anim_comp.elapsedTime = 0.0f;
             auto size = anim_comp.frames[anim_comp.state].size();
             if (size == 0) {
-                std::cerr << "No frames for state " << anim_comp.state << std::endl;
+                eng::logError("No frames for state: " + anim_comp.state);
                 continue;
             }
             anim_comp.currentFrame = (anim_comp.currentFrame + 1) % anim_comp.frames[anim_comp.state].size();

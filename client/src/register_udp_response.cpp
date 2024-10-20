@@ -6,39 +6,41 @@
 */
 
 #include <cstddef>
+#include <cstdio>
 #include <exception>
 #include <string>
 #include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
+#include "Logger.hpp"
+#include "RTypeClientConst.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SpriteManager.hpp"
 #include "components/controllable.hpp"
 #include "components/player.hpp"
+#include "components/velocity.hpp"
 #include "imgui.h"
-#include "udp/UDPClient.hpp"
 #include "components/ally_player.hpp"
+#include "components/client_share_movement.hpp"
 #include "components/self_player.hpp"
-#include "components/share_movement.hpp"
 #include <imgui-SFML.h>
 
 static void handlePlayerCreation(
     std::size_t userId,
     ecs::SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient,
-    std::list<std::function<void(ecs::Registry &)>> &_networkCallbacks,
+    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet,
-    std::shared_ptr<ImFont> font
+    const std::shared_ptr<ImFont> &font
 )
 {
-    _networkCallbacks.push_back([packet, &spriteManager, &udpClient, userId, font](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([packet, &spriteManager, userId, font](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
-            udpClient,
+
             "assets/player" + std::to_string(packet.body.playerIndex) + ".json",
-            packet.body.moveData.pos.x,
-            packet.body.moveData.pos.y,
+            packet.body.pos.x,
+            packet.body.pos.y,
             packet.sharedEntityId,
             0.0f,
             0.0f,
@@ -51,7 +53,7 @@ static void handlePlayerCreation(
         } else {
             reg.addComponent<ecs::component::AllyPlayer>(entity, ecs::component::AllyPlayer{});
             reg.removeComponent<ecs::component::Controllable>(reg.getLocalEntity().at(packet.sharedEntityId));
-            reg.removeComponent<ecs::component::ShareMovement>(reg.getLocalEntity().at(packet.sharedEntityId));
+            reg.removeComponent<ecs::component::ClientShareMovement>(reg.getLocalEntity().at(packet.sharedEntityId));
         }
     });
 }
@@ -60,98 +62,112 @@ template <typename T>
 static void handleSharedCreation(
     const std::string &jsonFilePath,
     ecs::SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient,
-    std::list<std::function<void(ecs::Registry &)>> &_networkCallbacks,
+    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<T> &packet
 )
 {
-    auto &[pos, _] = packet.body.moveData;
+    auto &pos = packet.body.pos;
     auto sharedEntityId = packet.sharedEntityId;
 
-    _networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, &udpClient, jsonFilePath](ecs::Registry &reg) {
+    networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, jsonFilePath](ecs::Registry &reg) {
         ecs::ClientEntityFactory::createClientEntityFromJSON(
-            reg, spriteManager, udpClient, jsonFilePath, pos.x, pos.y, sharedEntityId
+            reg, spriteManager, jsonFilePath, pos.x, pos.y, sharedEntityId
         );
     });
 }
 
-void rtc::GameManager::_registerUdpResponse(
-    ecs::Registry &reg,
-    ecs::SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient
-)
+void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
 {
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
         rt::UDPCommand::NEW_ENTITY_STATIC,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_STATIC>(
-                "assets/static.json", spriteManager, udpClient, this->_networkCallbacks, packet
+                "assets/static.json", spriteManager, this->_networkCallbacks, packet
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
         rt::UDPCommand::NEW_ENTITY_PLAYER,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet) {
-            handlePlayerCreation(_userId, spriteManager, udpClient, this->_networkCallbacks, packet, _font);
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet) {
+            handlePlayerCreation(_userId, spriteManager, this->_networkCallbacks, packet, _font);
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE>(
         rt::UDPCommand::NEW_ENTITY_MISSILE,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &packet) {
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
-                "assets/missile.json", spriteManager, udpClient, this->_networkCallbacks, packet
+                "assets/missile.json", spriteManager, this->_networkCallbacks, packet
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
         rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL> &packet) {
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-                "assets/missileBall.json", spriteManager, udpClient, this->_networkCallbacks, packet
+                "assets/missileBall.json", spriteManager, this->_networkCallbacks, packet
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
         rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE> &packet) {
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
-                "assets/bydosWave.json", spriteManager, udpClient, this->_networkCallbacks, packet
+                "assets/bydosWave.json", spriteManager, this->_networkCallbacks, packet
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
         rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND> &packet) {
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
-                "assets/robotGround.json", spriteManager, udpClient, this->_networkCallbacks, packet
+                "assets/robotGround.json", spriteManager, this->_networkCallbacks, packet
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
-        [&reg](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
-            try {
-                reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                    packet.body.pos;
-                reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId)).value() =
-                    packet.body.vel;
-            } catch (const std::exception &e) {
-                // If entity does not exist, maybe server is late or ahead.
-                // auto currentTime = std::chrono::system_clock::now().time_since_epoch();
-                // auto currentTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime).count();
-                // eng::logWarning(std::to_string(currentTimeMs) + ": " + e.what());
-            }
+        [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
+            _networkCallbacks.emplace_back([packet](ecs::Registry &reg) {
+                try {
+                    if (reg.hasComponent<ecs::component::SelfPlayer>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        return;
+                    }
+                    if (reg.hasComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(packet.sharedEntityId))
+                            .value() = packet.body.pos;
+                    }
+                    if (reg.hasComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId))) {
+                        reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(packet.sharedEntityId))
+                            .value() = packet.body.vel;
+                    }
+                } catch (const std::exception &e) {
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
+                }
+            });
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
             try {
-                _networkCallbacks.push_back([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
+                _networkCallbacks.emplace_back([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
                     reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
                 });
-            } catch (...) {
+            } catch (const std::exception &e) {
+                // If entity does not exist, maybe server is late or ahead.
+                eng::logTimeWarning(e.what());
             }
+        }
+    );
+    _udpResponseHandler.registerHandler<rt::UDPBody::PING>(
+        rt::UDPCommand::PING,
+        [this](const rt::UDPPacket<rt::UDPBody::PING> &packet) {
+            long currentTime = std::chrono::duration_cast<std::chrono::microseconds>(
+                                   std::chrono::high_resolution_clock::now().time_since_epoch()
+            )
+                                   .count();
+            _metrics.at(rtc::ClientMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
         }
     );
 }

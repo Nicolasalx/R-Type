@@ -39,65 +39,88 @@ std::map<std::string, rtc::RoomManager::RoomContent> &rtc::RoomManager::getRooms
     return _rooms;
 }
 
+const std::string &rtc::RoomManager::getSelfName()
+{
+    return _userName;
+}
+
+std::vector<std::string> &rtc::RoomManager::getChatMsg()
+{
+    return _chat;
+}
+
+const std::vector<std::string> &rtc::RoomManager::getChatMsg() const
+{
+    return _chat;
+}
+
 void rtc::RoomManager::askToCreateRoom(const std::string &roomName, const std::size_t &stage)
 {
-    rt::TCPPacket<rt::TCPData::CL_CREATE_ROOM> packet{.cmd = rt::TCPCommand::CL_CREATE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_CREATE_ROOM> packet(rt::TCPCommand::CL_CREATE_ROOM);
 
-    packet.data.stage = stage;
-    roomName.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    packet.body.stage = stage;
+    roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
 void rtc::RoomManager::askToDeleteRoom(const std::string &roomName)
 {
-    rt::TCPPacket<rt::TCPData::CL_DELETE_ROOM> packet{.cmd = rt::TCPCommand::CL_DELETE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_DELETE_ROOM> packet(rt::TCPCommand::CL_DELETE_ROOM);
 
-    roomName.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
 void rtc::RoomManager::askToJoinRoom(const std::string &roomName)
 {
-    rt::TCPPacket<rt::TCPData::CL_JOIN_ROOM> packet{.cmd = rt::TCPCommand::CL_JOIN_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_JOIN_ROOM> packet(rt::TCPCommand::CL_JOIN_ROOM);
 
-    packet.data.user_id = _userId;
-    roomName.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
-    _userName.copy(packet.data.user_name, sizeof(packet.data.user_name) - 1);
+    packet.body.userId = _userId;
+    roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
+    _userName.copy(packet.body.userName, sizeof(packet.body.userName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
 void rtc::RoomManager::askToLeaveRoom()
 {
-    rt::TCPPacket<rt::TCPData::CL_LEAVE_ROOM> packet{.cmd = rt::TCPCommand::CL_LEAVE_ROOM};
+    rt::TCPPacket<rt::TCPBody::CL_LEAVE_ROOM> packet(rt::TCPCommand::CL_LEAVE_ROOM);
 
-    packet.data.user_id = _userId;
-    _currentRoom.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    packet.body.userId = _userId;
+    _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
 void rtc::RoomManager::askToBeReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_READY> packet{.cmd = rt::TCPCommand::CL_READY};
+    rt::TCPPacket<rt::TCPBody::CL_READY> packet(rt::TCPCommand::CL_READY);
 
-    packet.data.user_id = _userId;
-    _currentRoom.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    packet.body.userId = _userId;
+    _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
 void rtc::RoomManager::askToBeNotReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_NOT_READY> packet{.cmd = rt::TCPCommand::CL_NOT_READY};
+    rt::TCPPacket<rt::TCPBody::CL_NOT_READY> packet(rt::TCPCommand::CL_NOT_READY);
 
-    packet.data.user_id = _userId;
-    _currentRoom.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    packet.body.userId = _userId;
+    _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }
 
-void rtc::RoomManager::UDPConnectionReady()
+void rtc::RoomManager::udpConnectionReady()
 {
-    rt::TCPPacket<rt::TCPData::CL_UDP_CONNECTION_READY> packet{.cmd = rt::TCPCommand::CL_UDP_CONNECTION_READY};
+    rt::TCPPacket<rt::TCPBody::CL_UDP_CONNECTION_READY> packet(rt::TCPCommand::CL_UDP_CONNECTION_READY);
 
-    packet.data.user_id = _userId;
-    _currentRoom.copy(packet.data.room_name, sizeof(packet.data.room_name) - 1);
+    packet.body.userId = _userId;
+    _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
+    _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
+}
+
+void rtc::RoomManager::askToSendChatMsg(const std::string &msg)
+{
+    rt::TCPPacket<rt::TCPBody::CL_SEND_CHAT_MSG> packet(rt::TCPCommand::CL_SEND_CHAT_MSG);
+
+    msg.copy(packet.body.msg, sizeof(packet.body.msg) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }

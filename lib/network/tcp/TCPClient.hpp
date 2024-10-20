@@ -55,7 +55,7 @@ class TCPClient : public ntw::AsioClient {
     tcp::socket _socket;
     std::string _host;
     int _port;
-    std::array<char, BUFF_SIZE> _buff;
+    std::array<char, BUFF_SIZE> _buff = {0};
     std::function<void(const char *, std::size_t)> _recvHandler;
 };
 

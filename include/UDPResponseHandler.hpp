@@ -16,6 +16,7 @@
 #include "../lib/utils/TrackedException.hpp"
 #include "RTypeConst.hpp"
 #include "RTypeUDPProtol.hpp"
+#include <type_traits>
 #include <unordered_map>
 
 namespace rt {
@@ -46,10 +47,10 @@ class UDPResponseHandler {
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
-        const rt::UDPPacket<void *> *header;
+        const rt::UDPPacket<UDPBody::EMPTY> *header = nullptr;
 
-        while (size >= sizeof(rt::UDPPacket<void *>)) {
-            header = reinterpret_cast<const rt::UDPPacket<void *> *>(ptr);
+        while (size >= sizeof(rt::UDPPacket<UDPBody::EMPTY>)) {
+            header = reinterpret_cast<const rt::UDPPacket<UDPBody::EMPTY> *>(ptr);
 
             if (header->magic != rt::UDP_MAGIC) {
                 eng::logWarning("Invalid UDP magic received !");
@@ -64,12 +65,16 @@ class UDPResponseHandler {
             } else if (_specialHandler.contains(header->cmd)) {
                 _specialHandler.at(header->cmd)(ptr, arg);
             } else {
-                eng::TrackedException(
-                    "Response without handler: " + std::to_string(static_cast<std::size_t>(header->cmd)) + '.'
+                throw eng::TrackedException(
+                    "Response without handler: " +
+                    std::to_string(static_cast<std::underlying_type_t<rt::UDPCommand>>(header->cmd)) + '.'
                 );
             }
             ptr += header->size;
             size -= header->size;
+        }
+        if (size != 0) {
+            eng::logWarning("Fail to analyze the entire UDP packet: " + std::to_string(size) + " byte remaining.");
         }
     }
 

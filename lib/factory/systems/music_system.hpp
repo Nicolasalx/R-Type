@@ -21,6 +21,6 @@ namespace ecs::systems {
  * @param soundManager Reference to the SoundManager.
  * @param dt Delta time since the last update.
  */
-void MusicSystem(ecs::Registry &reg, ecs::SoundManager &soundManager, float dt);
+void musicSystem(ecs::Registry &reg, ecs::SoundManager &soundManager, float dt);
 
 } // namespace ecs::systems

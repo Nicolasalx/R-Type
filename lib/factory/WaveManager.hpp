@@ -29,19 +29,19 @@ class WaveManager {
      * @typedef MobSpawner
      * @brief A function type that spawns an entity in the ECS registry.
      */
-    using MobSpawner = std::function<entity_t(ecs::Registry &)>;
+    using mob_spawner_t = std::function<entity_t(ecs::Registry &)>;
 
     /**
      * @typedef Wave
      * @brief A vector of MobSpawner functions representing a wave of entities.
      */
-    using Wave = std::vector<MobSpawner>;
+    using wave_t = std::vector<mob_spawner_t>;
 
     public:
     /**
      * @brief Constructs a new WaveManager object.
      */
-    WaveManager();
+    WaveManager() = default;
 
     /**
      * @brief Default destructor for WaveManager.
@@ -58,7 +58,7 @@ class WaveManager {
      * @param waveId The ID of the wave to add the mob spawner to.
      * @param spawner The mob spawner function to add.
      */
-    void addNewMob(size_t waveId, std::function<entity_t(ecs::Registry &)> spawner);
+    void addNewMob(size_t waveId, const std::function<entity_t(ecs::Registry &)> &spawner);
 
     /**
      * @brief Checks if a given entity is a mob.
@@ -110,7 +110,7 @@ class WaveManager {
      * @var _nextWave
      * @brief The index of the next wave to spawn.
      */
-    size_t _nextWave;
+    size_t _nextWave = 0;
     /**
      * @var _currEntities
      * @brief A vector of entities currently managed by the WaveManager.
@@ -120,6 +120,6 @@ class WaveManager {
      * @var _waves
      * @brief A vector of waves of entities.
      */
-    std::vector<Wave> _waves;
+    std::vector<wave_t> _waves;
 };
 } // namespace ecs

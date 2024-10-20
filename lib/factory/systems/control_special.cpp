@@ -9,33 +9,23 @@
 #include "InputManager.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
-#include "SpriteManager.hpp"
 #include "Zipper.hpp"
 #include "components/controllable.hpp"
 #include "components/position.hpp"
 #include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 
-static void spawnMissile(
-    ecs::Registry &reg,
-    ntw::UDPClient &udp,
-    ecs::component::Position playerPos,
-    ecs::SpriteManager &spriteManager
-)
+static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos)
 {
-    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg = {
-        .cmd = rt::UDPCommand::NEW_ENTITY_MISSILE, .sharedEntityId = ecs::generateSharedEntityId()
-    };
-    msg.body.moveData = {.pos = {playerPos.x + 36, playerPos.y}, .vel = {.vx = 250.f, .vy = 0}};
+    rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
+        rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
+    );
+    msg.body.pos = {playerPos.x + 36, playerPos.y};
+    msg.body.vel = {250, 0};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(
-    ecs::Registry &reg,
-    ecs::InputManager &input,
-    ntw::UDPClient &udp,
-    SpriteManager &spriteManager
-)
+void ecs::systems::controlSpecial(ecs::Registry &reg, ecs::InputManager &input, ntw::UDPClient &udp)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();
@@ -46,11 +36,11 @@ void ecs::systems::controlSpecial(
     for (auto [_, pos] : zipControl) {
         if (input.isKeyPressed(sf::Keyboard::Space)) {
             auto now = std::chrono::high_resolution_clock::now();
-            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 500) {
+            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 250) {
                 continue;
             }
             lastTime = now;
-            spawnMissile(reg, udp, pos, spriteManager);
+            spawnMissile(udp, pos);
         }
     }
 }

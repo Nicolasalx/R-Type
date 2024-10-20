@@ -6,32 +6,22 @@
 */
 
 #include "fireRandomMissileAi.hpp"
-
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
 #include "RTypeUDPProtol.hpp"
+#include "RandomGenerator.hpp"
 #include "ServerEntityFactory.hpp"
 #include "components/hitbox.hpp"
 #include "components/position.hpp"
 #include "entity.hpp"
 #include "shared_entity.hpp"
 
-static float randomFloatRange(float min, float max)
-{
-    auto r = rand() % 101;
-    auto d = std::abs(max - min);
-
-    if (d == 0)
-        return min;
-    return min + (static_cast<float>(r) / (100.f / d));
-}
-
 entity_t rts::ais::fireRandomMissileAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
-    std::function<bool()> cond,
+    const std::function<bool()> &cond,
     std::array<float, 2> randXRange,
     std::array<float, 2> randYRange
 )
@@ -39,15 +29,14 @@ entity_t rts::ais::fireRandomMissileAi(
     if (cond != nullptr && !cond()) {
         return std::numeric_limits<size_t>::max();
     }
-    // Use rand() temporarly
-    if (rand() % 101 > 0) {
+    if (eng::RandomGenerator::generate(0, 100) > 0) {
         return std::numeric_limits<size_t>::max();
     }
     auto aiPos = reg.getComponent<ecs::component::Position>(e);
     auto hitbox = reg.getComponent<ecs::component::Hitbox>(e);
 
-    auto xFactor = randomFloatRange(randXRange[0], randXRange[1]);
-    auto yFactor = randomFloatRange(randYRange[0], randYRange[1]);
+    auto xFactor = eng::RandomGenerator::generate(randXRange[0], randXRange[1]);
+    auto yFactor = eng::RandomGenerator::generate(randYRange[0], randYRange[1]);
 
     shared_entity_t sharedId = ecs::generateSharedEntityId();
     auto missilePosX = (aiPos->x - (hitbox->width / 2.f)) + xFactor * 20;
@@ -56,12 +45,10 @@ entity_t rts::ais::fireRandomMissileAi(
         reg, "assets/missileBall.json", missilePosX, missilePosY, sharedId, xFactor * 150, yFactor * 150
     );
 
-    datasToSend.push_back(
-        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-            {.cmd = rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
-             .sharedEntityId = sharedId,
-             .body = {.moveData = {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}}}
-        ).serialize()
-    );
+    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
+                              rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
+                              sharedId,
+                              {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}
+    ).serialize());
     return rMissile;
 }

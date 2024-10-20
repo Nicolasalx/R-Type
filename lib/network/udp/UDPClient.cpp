@@ -8,7 +8,7 @@
 #include "UDPClient.hpp"
 #include <asio.hpp>
 #include <asio/placeholders.hpp>
-#include <iostream>
+#include "../../utils/Logger.hpp"
 
 ntw::UDPClient::UDPClient(const std::string &host, int port) : _endpoint(asio::ip::make_address(host), port), _sock(_io)
 {
@@ -25,7 +25,7 @@ void ntw::UDPClient::_asioRun()
 void ntw::UDPClient::_handleRecv(asio::error_code ec, std::size_t bytes)
 {
     if (ec) {
-        std::cerr << "Receive error: " << ec.message() << std::endl;
+        eng::logError("Receive error: " + ec.message());
         return;
     }
     _recvHandler(_buff.data(), bytes);
@@ -34,10 +34,10 @@ void ntw::UDPClient::_handleRecv(asio::error_code ec, std::size_t bytes)
 
 void ntw::UDPClient::send(const char *data, std::size_t size)
 {
-    _sock.async_send_to(asio::buffer(data, size), _endpoint, [](asio::error_code ec, std::size_t bytes) {
+    _sock.async_send_to(asio::buffer(data, size), _endpoint, [](asio::error_code ec, std::size_t /* bytes */) {
         if (!ec) {
         } else {
-            std::cerr << "Send error: " << ec.message() << std::endl;
+            eng::logError("Send error: " + ec.message());
         }
     });
 }
@@ -47,6 +47,6 @@ void ntw::UDPClient::run()
     _recvThread = std::thread([this]() {
         _asioRun();
         _io.run();
-        std::cout << "Client terminated" << std::endl;
+        eng::logInfo("Client terminated");
     });
 }

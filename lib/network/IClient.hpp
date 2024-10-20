@@ -43,7 +43,7 @@ class IClient {
      * the client's runtime behavior, such as initiating connections, handling events,
      * and managing the client's lifecycle.
      *
-     * @throws std::runtime_error If the client fails to start correctly.
+     * @throws eng::TrackedException If the client fails to start correctly.
      */
     virtual void run() = 0;
 
@@ -58,7 +58,7 @@ class IClient {
      * @param size The size of the data buffer in bytes.
      *
      * @throws std::invalid_argument If the data pointer is null or the size is zero.
-     * @throws std::runtime_error If the data fails to send successfully.
+     * @throws eng::TrackedException If the data fails to send successfully.
      */
     virtual void send(const char *data, std::size_t size) = 0;
 };

@@ -8,6 +8,7 @@
 #include "ServerEntityFactory.hpp"
 #include "components/drawable.hpp"
 #include "components/ai_actor.hpp"
+#include "components/server_share_movement.hpp"
 
 namespace ecs {
 
@@ -15,7 +16,7 @@ void ServerEntityFactory::addComponents(
     Registry &reg,
     entity_t entity,
     const nlohmann::json &componentsJson,
-    bool isShared,
+    bool /*isShared*/,
     int x,
     int y,
     float vx,
@@ -41,13 +42,16 @@ void ServerEntityFactory::addComponents(
     if (componentsJson.contains("ai_actor")) {
         reg.addComponent(entity, ecs::component::AiActor{});
     }
+    if (componentsJson.contains("server_share_movement")) {
+        reg.addComponent(entity, ecs::component::ServerShareMovement{});
+    }
 }
 
 void ServerEntityFactory::handleNetworkSync(
-    Registry &reg,
-    entity_t entity,
-    const nlohmann::json &entityJson,
-    bool isShared
+    Registry & /* reg */,
+    entity_t /* entity */,
+    const nlohmann::json & /* entityJson */,
+    bool /* isShared */
 )
 {
     // Server does not handle UDP network synchronization
