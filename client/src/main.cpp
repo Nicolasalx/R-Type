@@ -21,7 +21,7 @@ void rtc::run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &windo
     while (window->isOpen()) {
         dt = clock.restart().asSeconds();
 
-        sf::Event event;
+        sf::Event event{};
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window->close();

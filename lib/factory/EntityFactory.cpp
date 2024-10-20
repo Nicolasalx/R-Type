@@ -7,7 +7,8 @@
 
 #include "EntityFactory.hpp"
 #include <fstream>
-#include <stdexcept>
+#include <utility>
+#include "../utils/TrackedException.hpp"
 #include "ClientEntityFactory.hpp"
 #include "Registry.hpp"
 #include "ServerEntityFactory.hpp"
@@ -23,7 +24,6 @@
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
-#include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
 
@@ -32,7 +32,6 @@ namespace ecs {
 entity_t EntityFactory::createClientEntityFromJSON(
     Registry &reg,
     SpriteManager &spriteManager,
-    ntw::UDPClient &udpClient,
     const std::string &jsonFilePath,
     int x,
     int y,
@@ -44,7 +43,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;
@@ -68,7 +67,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
     }
 
     ClientEntityFactory::addComponents(
-        reg, spriteManager, entity, entityJson["components"], isShared, x, y, vx, vy, font
+        reg, spriteManager, entity, entityJson["components"], isShared, x, y, vx, vy, std::move(font)
     );
 
     return entity;
@@ -86,7 +85,7 @@ entity_t EntityFactory::createServerEntityFromJSON(
 {
     std::ifstream file(jsonFilePath);
     if (!file.is_open()) {
-        throw std::runtime_error("Failed to open entity JSON file: " + jsonFilePath);
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
     }
 
     nlohmann::json entityJson;
@@ -171,7 +170,7 @@ void EntityFactory::addCommonComponents(
     if (componentsJson.contains("score")) {
         float scoreValue = componentsJson["score"].get<float>();
         ecs::component::Score score;
-        score.font = font;
+        score.font = std::move(font);
         score.text = std::to_string(scoreValue);
         reg.addComponent(entity, ecs::component::Score{score});
     }

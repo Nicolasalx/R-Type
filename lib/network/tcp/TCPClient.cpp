@@ -7,7 +7,6 @@
 
 #include "TCPClient.hpp"
 #include <functional>
-#include <iostream>
 #include <utility>
 #include "../../utils/Logger.hpp"
 #include <asio/ip/address_v4.hpp>
@@ -15,7 +14,6 @@
 
 ntw::TCPClient::TCPClient(const std::string &host, int port) : _socket(_io), _host(host), _port(port)
 {
-    auto end = tcp::endpoint();
     _socket.connect(tcp::endpoint(asio::ip::make_address(host), _port));
 }
 
@@ -64,7 +62,7 @@ void ntw::TCPClient::_asioRun()
             this->_recvHandler(_buff.data(), bytes);
             _asioRun();
         } else {
-            std::cerr << ec.message() << std::endl;
+            eng::logError(ec.message());
         }
     });
 }

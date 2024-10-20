@@ -6,8 +6,8 @@
 */
 
 #include <cstddef>
+#include <cstdio>
 #include <exception>
-#include <limits>
 #include <string>
 #include <utility>
 #include "RTypeServer.hpp"
@@ -26,9 +26,9 @@ static void handlePlayerCreation(
 {
     shared_entity_t sharedEntityId = msg.sharedEntityId;
     std::size_t playerIndex = msg.body.playerIndex;
-    const auto &pos = msg.body.moveData.pos;
+    const auto &pos = msg.body.pos;
 
-    networkCallbacks.push_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
         );
@@ -43,12 +43,12 @@ static void handleMissileCreation(
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
 )
 {
-    const auto &pos = msg.body.moveData.pos;
-    const auto &vel = msg.body.moveData.vel;
+    const auto &pos = msg.body.pos;
+    const auto &vel = msg.body.vel;
 
-    networkCallbacks.push_back([pos, vel](ecs::Registry &reg) {
+    networkCallbacks.emplace_back([pos, vel, sharedEntityId = msg.sharedEntityId](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, std::numeric_limits<size_t>::max(), vel.vx, vel.vy
+            reg, "assets/missile.json", pos.x, pos.y, sharedEntityId, vel.vx, vel.vy
         );
     });
     datasToSend.push_back(std::move(msg).serialize());
@@ -57,7 +57,8 @@ static void handleMissileCreation(
 void rts::registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks
+    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    ntw::UDPServer &udpServer
 )
 {
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
@@ -75,18 +76,27 @@ void rts::registerUdpResponse(
     responseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [&networkCallbacks](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &msg) {
-            networkCallbacks.push_back([msg](ecs::Registry &reg) {
+            networkCallbacks.emplace_back([msg](ecs::Registry &reg) {
                 try {
                     reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.pos;
                     reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.vel;
                 } catch (const std::exception &e) {
-                    // auto currentTime = std::chrono::system_clock::now().time_since_epoch();
-                    // auto currentTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime).count();
-                    // eng::logWarning(std::to_string(currentTimeMs) + ": " + e.what());
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
                 }
             });
+        }
+    );
+    responseHandler.registerHandler<rt::UDPBody::PING>(
+        rt::UDPCommand::PING,
+        [&udpServer](const rt::UDPPacket<rt::UDPBody::PING> &msg, const std::vector<std::any> &arg) {
+            udpServer.send(
+                std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get(),
+                reinterpret_cast<const char *>(&msg),
+                msg.size
+            );
         }
     );
 }

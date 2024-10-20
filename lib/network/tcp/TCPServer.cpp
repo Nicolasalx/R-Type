@@ -43,7 +43,7 @@ void ntw::Session::_handleRead(
             eng::logError(err.what());
             std::cerr << "No such command: ";
             std::cerr.write(_buff.data(), bytes);
-            std::cerr << std::endl;
+            std::cerr << '\n';
         }
     }
     handleClient(handler);

@@ -16,9 +16,7 @@
 #include "components/velocity.hpp"
 
 static void resolveCollision(
-    ecs::Registry &reg,
     ecs::component::Position &pos,
-    size_t entity,
     const sf::FloatRect &intersection,
     std::optional<ecs::component::Velocity> &vel
 )
@@ -44,7 +42,7 @@ static void resolveCollision(
     }
 }
 
-static void resolve_tag_effect(ecs::Registry &reg, size_t entityA, size_t entityB)
+static void resolveTagEffect(ecs::Registry &reg, size_t entityA, size_t entityB)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
     auto &health = reg.getComponents<ecs::component::Health>();
@@ -100,12 +98,12 @@ void collision(Registry &reg)
                 bool entityBControllable = controllables.has(entityB);
 
                 if (entityAControllable && !entityBControllable) {
-                    resolveCollision(reg, posA, entityA, intersection, velocities[entityA]);
+                    resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAControllable && entityBControllable) {
-                    resolveCollision(reg, posB, entityB, intersection, velocities[entityB]);
+                    resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
-                resolve_tag_effect(reg, entityA, entityB);
+                resolveTagEffect(reg, entityA, entityB);
             }
         }
     }

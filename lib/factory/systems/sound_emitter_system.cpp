@@ -9,7 +9,7 @@
 
 namespace ecs::systems {
 
-void SoundEmitterSystem(ecs::Registry &reg, ecs::SoundManager &soundManager)
+void soundEmitterSystem(ecs::Registry &reg, ecs::SoundManager &soundManager)
 {
     // auto &emitters = reg.getComponents<ecs::component::SoundEmitter>();
 

@@ -7,6 +7,8 @@ add_library(FACTORY STATIC
     systems/draw_team_data.cpp
     systems/draw_score.cpp
     systems/draw_player_health_bar.cpp
+    systems/draw_fps.cpp
+    systems/draw_ping.cpp
     systems/sprite_system.cpp
     systems/position.cpp
     systems/missiles_stop.cpp
@@ -15,6 +17,7 @@ add_library(FACTORY STATIC
     systems/health_check.cpp
     systems/health_mob_check.cpp
     systems/parallax.cpp
+    systems/send_ping.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp
@@ -22,6 +25,18 @@ add_library(FACTORY STATIC
     WaveManager.cpp
     SoundManager.cpp
 )
+
+if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
+    set_target_properties(FACTORY PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color"
+    )
+elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
+    set_target_properties(FACTORY PROPERTIES CXX_CLANG_TIDY
+        "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/lib/factory/.*\\.hpp$"
+    )
+endif()
+
+target_compile_options(FACTORY PUBLIC -Wall -Wextra)
 
 target_include_directories(FACTORY PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}

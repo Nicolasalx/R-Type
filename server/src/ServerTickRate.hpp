@@ -7,11 +7,12 @@
 
 #pragma once
 
+#include <cstdint>
 #include <unordered_map>
 
 namespace rts {
 
-enum class TickRate : std::size_t {
+enum class TickRate : std::uint8_t {
     ENTITY_MOVEMENT,
     AI_ACTING,
     SEND_PACKETS

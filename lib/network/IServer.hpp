@@ -41,7 +41,7 @@ class IServer {
      * the server's runtime behavior, such as initiating connections, handling client
      * requests, and managing the server's lifecycle.
      *
-     * @throws std::runtime_error If the server fails to start correctly.
+     * @throws eng::TrackedException If the server fails to start correctly.
      */
     virtual void run() = 0;
 };

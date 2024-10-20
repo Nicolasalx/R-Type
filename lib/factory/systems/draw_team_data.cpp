@@ -22,7 +22,8 @@ static void drawBar(
 {
     sf::Vector2u size =
         sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.1f), static_cast<unsigned int>(windowSize.y * 0.01f)};
-    ImU32 main, background;
+    ImU32 main = 0;
+    ImU32 background = 0;
 
     if (componentType == "health") {
         main = IM_COL32(0, 153, 0, 255);

@@ -11,10 +11,10 @@
 #include <cstdint>
 #include <cstring>
 #include <vector>
+#include "../lib/ecs/components/position.hpp"
+#include "../lib/ecs/components/velocity.hpp"
 #include "RTypeConst.hpp"
-#include "components/position.hpp"
-#include "components/velocity.hpp"
-#include "shared_entity.hpp"
+#include "../lib/ecs/shared_entity.hpp"
 
 namespace rt {
 enum class UDPCommand : std::uint8_t {
@@ -29,48 +29,60 @@ enum class UDPCommand : std::uint8_t {
 
     MOVE_ENTITY,
 
-    MOD_ENTITY,
-    MOD_ENTITES,
-    DEL_ENTITY
+    DEL_ENTITY,
+
+    PING
 };
 
+// NOLINTBEGIN(readability-identifier-naming)
 namespace UDPBody {
 
-struct MOVE_ENTITY {
-    ecs::component::Position pos{};
-    ecs::component::Velocity vel{};
-};
+struct EMPTY {}; // Used in the UDP responce handler
 
 struct NEW_ENTITY_STATIC {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_PLAYER {
     std::size_t playerId = 0;
     std::size_t playerIndex = 1;
     char playerName[rt::MAX_USER_NAME_SIZE + 1] = {0};
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_MISSILE {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct NEW_ENTITY_MISSILE_BALL {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct NEW_ENTITY_BYDOS_WAVE {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
 };
 
 struct NEW_ENTITY_ROBOT_GROUND {
-    MOVE_ENTITY moveData{};
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
+};
+
+struct MOVE_ENTITY {
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 
 struct DEL_ENTITY {};
 
+struct PING {
+    long sendTime = 0;
+};
+
 } // namespace UDPBody
+
+// NOLINTEND(readability-identifier-naming)
 
 /**
  * ! Later on we could have a timestamp member variable
@@ -80,10 +92,21 @@ template <typename T>
 struct UDPPacket {
     std::size_t magic = rt::UDP_MAGIC;
     std::size_t size = sizeof(*this);
-    UDPCommand cmd;
-    shared_entity_t sharedEntityId;
+    UDPCommand cmd = UDPCommand::NONE;
+    shared_entity_t sharedEntityId = 0;
 
     T body{};
+
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body)
+        : cmd(cmd), sharedEntityId(sharedEntityId), body(body)
+    {
+    }
+
+    UDPPacket(UDPCommand cmd, const T &body) : cmd(cmd), body(body) {}
+
+    UDPPacket(UDPCommand cmd) : cmd(cmd) {}
+
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId) : cmd(cmd), sharedEntityId(sharedEntityId) {}
 
     std::vector<char> serialize() const
     {

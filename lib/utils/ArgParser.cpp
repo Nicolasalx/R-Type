@@ -38,26 +38,26 @@ bool eng::ArgParser::parse(int argc, const char **argv)
         Argument *argument = nullptr;
         std::string argName;
 
-        if (arg.rfind("--", 0) == 0) {
+        if (arg.starts_with("--")) {
             argName = arg.substr(2);
             auto it = _argMap.find(argName);
             if (it != _argMap.end()) {
                 argument = it->second;
             } else {
-                std::cerr << "Unknown argument: --" << argName << std::endl;
+                std::cerr << "Unknown argument: --" << argName << '\n';
                 return false;
             }
-        } else if (arg.rfind('-', 0) == 0) {
+        } else if (arg.starts_with('-')) {
             argName = arg.substr(1);
             auto it = _argMap.find(argName);
             if (it != _argMap.end()) {
                 argument = it->second;
             } else {
-                std::cerr << "Unknown argument: -" << argName << std::endl;
+                std::cerr << "Unknown argument: -" << argName << '\n';
                 return false;
             }
         } else {
-            std::cerr << "Invalid argument format: " << arg << std::endl;
+            std::cerr << "Invalid argument format: " << arg << '\n';
             return false;
         }
 
@@ -68,7 +68,7 @@ bool eng::ArgParser::parse(int argc, const char **argv)
                 std::string value(argv[++i]);
                 argument->value = value;
             } else {
-                std::cerr << "The argument " << arg << " expects a value." << std::endl;
+                std::cerr << "The argument " << arg << " expects a value.\n";
                 return false;
             }
         }
@@ -79,15 +79,15 @@ bool eng::ArgParser::parse(int argc, const char **argv)
             std::string val = *arg.value;
             if (!_validateType(val, arg.type)) {
                 std::cerr << "Invalid type for argument " << arg.long_name
-                          << ". Expected type: " << _argTypeToString(arg.type) << "." << std::endl;
+                          << ". Expected type: " << _argTypeToString(arg.type) << ".\n";
                 return false;
             }
             if (arg.validator && !(*arg.validator)(val)) {
-                std::cerr << "Validation failed for argument " << arg.long_name << "." << std::endl;
+                std::cerr << "Validation failed for argument " << arg.long_name << ".\n";
                 return false;
             }
         } else if (arg.required) {
-            std::cerr << "Required argument --" << arg.long_name << " is missing." << std::endl;
+            std::cerr << "Required argument --" << arg.long_name << " is missing.\n";
             return false;
         } else if (arg.type == ArgType::BOOL && !arg.value.has_value()) {
             arg.value = "false";
@@ -106,7 +106,7 @@ void eng::ArgParser::printHelp() const
             std::cout << "-" << *arg.short_name << ", ";
         }
         std::cout << "--" << arg.long_name << " (" << _argTypeToString(arg.type) << ") "
-                  << (arg.required ? "[required]" : "[optional]") << " : " << arg.description << std::endl;
+                  << (arg.required ? "[required]" : "[optional]") << " : " << arg.description << '\n';
     }
 }
 

@@ -7,13 +7,11 @@
 
 #pragma once
 
-#include "../BuffSize.hpp"
-#include "AsioClient.hpp"
-
 #include <asio/ip/udp.hpp>
-
 #include <thread>
 #include <utility>
+#include "../BuffSize.hpp"
+#include "AsioClient.hpp"
 
 using asio::ip::udp;
 
@@ -80,7 +78,7 @@ class UDPClient : public AsioClient {
 
     udp::endpoint _endpoint;
     udp::socket _sock;
-    std::array<char, BUFF_SIZE> _buff;
+    std::array<char, BUFF_SIZE> _buff = {0};
     std::thread _recvThread;
     std::function<void(const char *, std::size_t)> _recvHandler; // ! Do the handler of the responses with this
 };

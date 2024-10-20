@@ -46,10 +46,10 @@ class TCPResponseHandler {
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
-        const TCPPacket<void *> *header;
+        const TCPPacket<TCPBody::EMPTY> *header = nullptr;
 
-        while (size >= sizeof(TCPPacket<void *>)) {
-            header = reinterpret_cast<const TCPPacket<void *> *>(ptr);
+        while (size >= sizeof(TCPPacket<TCPBody::EMPTY>)) {
+            header = reinterpret_cast<const TCPPacket<TCPBody::EMPTY> *>(ptr);
 
             if (header->magic != rt::TCP_MAGIC) {
                 eng::logWarning("Invalid TCP magic received !");
@@ -64,12 +64,16 @@ class TCPResponseHandler {
             } else if (_specialHandler.contains(header->cmd)) {
                 _specialHandler.at(header->cmd)(ptr, arg);
             } else {
-                eng::TrackedException(
-                    "Response without handler: " + std::to_string(static_cast<std::size_t>(header->cmd)) + '.'
+                throw eng::TrackedException(
+                    "Response without handler: " +
+                    std::to_string(static_cast<std::underlying_type_t<rt::TCPCommand>>(header->cmd)) + '.'
                 );
             }
             ptr += header->size;
             size -= header->size;
+        }
+        if (size != 0) {
+            eng::logWarning("Fail to analyze the entire TCP packet: " + std::to_string(size) + " byte remaining.");
         }
     }
 
