@@ -144,3 +144,27 @@ void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &w
     renderRoomCreation(roomManager);
     ImGui::End();
 }
+
+static void unsupportedWindowSize(const sf::Vector2u &windowSize)
+{
+    ImGui::SetNextWindowSize(ImVec2(windowSize.x, windowSize.y));
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::Begin(
+        "Window to small",
+        nullptr,
+        ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove
+    );
+    ImGui::Text("Window size not supported !");
+    ImGui::End();
+}
+
+void rtc::lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager)
+{
+    if (windowSize.x < rt::MIN_SCREEN_WIDTH || windowSize.y < rt::MIN_SCREEN_HEIGHT) {
+        unsupportedWindowSize(windowSize);
+    } else if (roomManager.getCurrentRoom().empty()) {
+        rtc::renderLobbyWindow(roomManager, windowSize);
+    } else {
+        renderInsideRoom(roomManager, windowSize);
+    }
+}

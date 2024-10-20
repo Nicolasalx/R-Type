@@ -8,6 +8,7 @@
 #pragma once
 
 #include <cstddef>
+#include <cstdint>
 
 namespace rt {
 
@@ -30,6 +31,16 @@ constexpr unsigned int SCREEN_WIDTH = 720;
  * @brief The default screen height for the game window.
  */
 constexpr unsigned int SCREEN_HEIGHT = 480;
+
+/**
+ * @brief The game view (camera) width.
+ */
+constexpr unsigned int GAME_VIEW_WIDTH = 720;
+
+/**
+ * @brief The game view (camera) height.
+ */
+constexpr unsigned int GAME_VIEW_HEIGHT = 480;
 
 /**
  * @brief The minimum screen width for the game window.
@@ -70,5 +81,18 @@ constexpr std::size_t MAX_CHAT_MSG_SIZE = 256;
  * @brief The number of stages in the game.
  */
 constexpr std::size_t NB_STAGE = 10;
+
+enum class PlayerAction : std::uint8_t {
+    MOVE_UP,
+    MOVE_RIGHT,
+    MOVE_LEFT,
+    MOVE_DOWN,
+    SHOOT_MISSILE
+};
+
+enum class GameMetric : std::uint8_t {
+    FPS,
+    PING
+};
 
 } // namespace rt
