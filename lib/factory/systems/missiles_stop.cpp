@@ -10,10 +10,12 @@
 
 #include "IndexedZipper.hpp"
 #include "RTypeConst.hpp"
+#include "RTypeUDPProtol.hpp"
 #include "components/missile.hpp"
 #include "components/position.hpp"
+#include "components/shared_entity.hpp"
 
-void ecs::systems::missilesStop(ecs::Registry &reg)
+void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
     auto &positions = reg.getComponents<ecs::component::Position>();
@@ -22,6 +24,12 @@ void ecs::systems::missilesStop(ecs::Registry &reg)
 
     for (auto [entityId, pos, missile] : zip) {
         if (pos.x < 0 || pos.y < 0 || pos.x > rt::SCREEN_WIDTH || pos.y > rt::SCREEN_HEIGHT) {
+            if (reg.hasComponent<component::SharedEntity>(entityId)) {
+                auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entityId)->sharedEntityId;
+                datasToSend.push_back(
+                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize()
+                );
+            }
             reg.killEntity(entityId);
         }
     }
