@@ -20,30 +20,22 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y flex bison javacc libflac-dev ccache
+        sudo apt-get install -y flex bison javacc libflac-dev
 
-    - name: Cache ccache
-      uses: actions/cache@v3
-      with:
-        path: ~/.ccache
-        key: ccache-${{ runner.os }}-${{ hashFiles('**/*.cpp', '**/*.hpp') }}
-        restore-keys: |
-          ccache-${{ runner.os }}-
+    - name: Ensure build directory exists
+      run: mkdir -p build
 
     - name: Cache CMake build directory
       uses: actions/cache@v3
       with:
         path: build/
-        key: build-cache-${{ runner.os }}-${{ hashFiles('CMakeLists.txt', '**/*.cmake') }}
+        key: build-cache-${{ runner.os }}-${{ github.sha }}
         restore-keys: |
           build-cache-${{ runner.os }}-
 
     - name: Set base_dir and configure project
       run: |
-        mkdir -p build
         cd build
-        export CC="ccache gcc"
-        export CXX="ccache g++"
         cmake ..
         echo "base_dir=$(pwd)" >> $GITHUB_ENV
 
