@@ -6,7 +6,7 @@ on:
 
 jobs:
   review:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     permissions: write-all
 
     container:
@@ -17,27 +17,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies
+    - name: install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y flex bison javacc libflac-dev
+        sudo apt-get install -y flex bison javacc
+        sudo apt-get install -y libflac-dev
 
-    - name: Ensure build directory exists
-      run: mkdir -p build
-
-    - name: Cache CMake build directory
-      uses: actions/cache@v3
-      with:
-        path: build/
-        key: build-cache-${{ runner.os }}-${{ github.sha }}
-        restore-keys: |
-          build-cache-${{ runner.os }}-
-
-    - name: Set base_dir and configure project
+    - name: Set base_dir
       run: |
-        cd build
-        cmake ..
         echo "base_dir=$(pwd)" >> $GITHUB_ENV
+        cmake ..
 
     - uses: ZedThree/clang-tidy-review@v0.19.0
       id: review
