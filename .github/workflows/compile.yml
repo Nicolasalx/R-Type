@@ -14,20 +14,29 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install ccache
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ccache
+
+    - name: Ensure ccache directory exists
+      run: |
+        mkdir -p $(ccache --get-config cache_dir)
+
     - name: Cache ccache
       uses: actions/cache@v3
       with:
-        path: ~/.ccache
-        key: ccache-${{ matrix.os }}
+        path: $(ccache --get-config cache_dir)
+        key: ccache-${{ matrix.os }}-${{ hashFiles('**/*') }}
         restore-keys: |
           ccache-${{ matrix.os }}-
 
     - name: Install apt dependencies (Linux)
       if: matrix.os == 'linux'
       run: |
-        sudo apt update
+        sudo apt-get update
         sudo apt-get install -y flex bison javacc libflac-dev libx11-dev libxext-dev libgl1-mesa-dev \
-        libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev ccache
+        libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev
 
     - name: Cache CMake build (Linux)
       if: matrix.os == 'linux'
@@ -58,11 +67,31 @@ jobs:
           fi
         }
 
-    - name: Install Mingw-w64 and ccache (Windows)
+    - name: Install Mingw-w64 (Windows)
       if: matrix.os == 'windows'
       run: |
-        sudo apt update
-        sudo apt-get install -y mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev ccache
+        sudo apt-get update
+        sudo apt-get install -y mingw-w64 mingw-w64-tools mingw-w64-x86-64-dev
+
+    - name: Install ccache (Windows)
+      if: matrix.os == 'windows'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ccache
+
+    - name: Ensure ccache directory exists (Windows)
+      if: matrix.os == 'windows'
+      run: |
+        mkdir -p $(ccache --get-config cache_dir)
+
+    - name: Cache ccache (Windows)
+      if: matrix.os == 'windows'
+      uses: actions/cache@v3
+      with:
+        path: $(ccache --get-config cache_dir)
+        key: ccache-${{ matrix.os }}-${{ hashFiles('**/*') }}
+        restore-keys: |
+          ccache-${{ matrix.os }}-
 
     - name: Download OpenAL Soft for Windows
       if: matrix.os == 'windows'
