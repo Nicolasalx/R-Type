@@ -17,7 +17,7 @@
     #include <dlfcn.h>
     #include <stdexcept>
     #include <string>
-    #include "dynamic/DLLoader.hpp"
+    #include "DLLoader.hpp"
 
 namespace ecs {
 /**
