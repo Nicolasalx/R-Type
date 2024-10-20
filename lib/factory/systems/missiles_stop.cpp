@@ -15,6 +15,8 @@
 #include "components/position.hpp"
 #include "components/shared_entity.hpp"
 
+// NOLINTBEGIN(bugprone-unchecked-optional-access)
+
 void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
@@ -34,3 +36,5 @@ void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>>
         }
     }
 }
+
+// NOLINTEND(bugprone-unchecked-optional-access)

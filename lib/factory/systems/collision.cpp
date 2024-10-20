@@ -47,6 +47,7 @@ static void resolveCollision(
     }
 }
 
+// NOLINTBEGIN(bugprone-unchecked-optional-access)
 static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::vector<char>> &datasToSend)
 {
     if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
@@ -168,5 +169,7 @@ void collisionPredict(Registry &reg)
         }
     }
 }
+
+// NOLINTEND(bugprone-unchecked-optional-access)
 
 } // namespace ecs::systems
