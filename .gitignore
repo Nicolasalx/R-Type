@@ -18,6 +18,9 @@ r-type_server
 *.gcno
 *.gcov
 
+*.zip
+*.tar.gz
+
 # ? tmp
 *~
 \#*#
