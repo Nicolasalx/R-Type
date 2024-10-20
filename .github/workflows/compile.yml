@@ -24,15 +24,15 @@ jobs:
         restore-keys: |
           cmake-build-linux-${{ matrix.os }}-
 
-    - name: Cache CMake build (Linux)
-      if: matrix.os == 'linux'
+    - name: Cache CMake build (Windows)
+      if: matrix.os == 'windows'
       uses: actions/cache@v3
       with:
         path: |
           build-mingw32/
-        key: cmake-build-linux-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
+        key: cmake-build-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
         restore-keys: |
-          cmake-build-linux-${{ matrix.os }}-
+          cmake-build-${{ matrix.os }}-
 
     - name: Install apt dependencies (Linux)
       if: matrix.os == 'linux'
