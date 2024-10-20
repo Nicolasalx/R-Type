@@ -25,15 +25,6 @@ jobs:
       if: matrix.os == 'linux'
       run: mkdir -p build
 
-    - name: Cache CMake build (Linux)
-      if: matrix.os == 'linux'
-      uses: actions/cache@v3
-      with:
-        path: build/
-        key: cmake-build-${{ matrix.os }}-${{ hashFiles('dependencies.cmake') }}
-        restore-keys: |
-          cmake-build-${{ matrix.os }}-
-
     - name: Check compilation (Linux)
       if: matrix.os == 'linux'
       run: |
@@ -98,24 +89,9 @@ jobs:
       run: |
         echo "Using cached OpenAL Soft installation"
 
-    - name: Get source code commit hash
-      if: matrix.os == 'windows'
-      id: source_commit_hash
-      run: |
-        echo "hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-
     - name: Ensure build-mingw32 directory exists (Windows)
       if: matrix.os == 'windows'
       run: mkdir -p build-mingw32
-
-    - name: Cache cross-compilation artifacts (Windows)
-      if: matrix.os == 'windows'
-      uses: actions/cache@v3
-      with:
-        path: build-mingw32/
-        key: cross-build-${{ matrix.os }}-${{ steps.source_commit_hash.outputs.hash }}
-        restore-keys: |
-          cross-build-${{ matrix.os }}-
 
     - name: Cross-compile for Windows
       if: matrix.os == 'windows'
