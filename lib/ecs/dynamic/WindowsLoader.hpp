@@ -2,19 +2,15 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** UnixDLLoader
+** WindowsLoader
 */
 
 #pragma once
 
 #ifdef _WIN32
+    #include <climits>
 
-    #error \
-        "UnixDLLoader.hpp is the DLLoader implementation for UNIX System, you should include WindowsLoader.hpp instead"
-
-#else
-
-    #include <dlfcn.h>
+    // #include <windows.h> 
     #include <stdexcept>
     #include <string>
     #include "dynamic/DLLoader.hpp"
@@ -30,29 +26,31 @@ namespace ecs {
  *       from DLLoader interface class.
  */
 template <typename T>
-class UnixDLLoader : public DLLoader<T> {
+class WindowsLoader : public DLLoader<T> {
     public:
     /**
-     * @brief Constructor of the UnixDLLoader which takes a path and load the library.
+     * @brief Constructor of the WindowsLoader which takes a path and load the library.
      *
      * @param libPath Path of the shared library to load
      */
-    UnixDLLoader(const std::string &libPath) : DLLoader<T>(libPath), _handle(dlopen(libPath.c_str(), RTLD_LAZY))
+    WindowsLoader(const std::string &libPath) :
+        DLLoader<T>(libPath)
+        // _handle(dlopen(libPath.c_str(), RTLD_LAZY))
     {
-        if (!_handle) {
-            throw std::runtime_error(dlerror());
-        }
+        // if (!_handle) {
+            // throw std::runtime_error(dlerror());
+        // }
     }
 
     /**
-     * @brief Default constructor of the UnixDLLoader, library path can be added later.
+     * @brief Default constructor of the WindowsLoader, library path can be added later.
      */
-    UnixDLLoader() : DLLoader<T>() {}
+    WindowsLoader() : DLLoader<T>() {}
 
     /**
      * @brief Default destructor of the DLLoader.
      */
-    ~UnixDLLoader() override
+    ~WindowsLoader() override
     {
         close();
     }
@@ -66,13 +64,13 @@ class UnixDLLoader : public DLLoader<T> {
      */
     T getFunction(const std::string &functionName = "entry") override
     {
-        dlerror();
-        void *function = dlsym(_handle, functionName.c_str());
-        const char *error = dlerror();
-        if (error != nullptr) {
-            throw std::runtime_error(error);
-        }
-        return reinterpret_cast<T>(function);
+        // dlerror();
+        // void *function = dlsym(_handle, functionName.c_str());
+        // const char *error = dlerror();
+        // if (error != nullptr) {
+            // throw std::runtime_error(error);
+        // }
+        // return reinterpret_cast<T>(function);
     }
 
     /**
@@ -83,11 +81,11 @@ class UnixDLLoader : public DLLoader<T> {
     void open(const std::string &filepath) override
     {
         close();
-        _handle = dlopen(filepath.c_str(), RTLD_LAZY);
-        if (!_handle) {
-            throw std::runtime_error(dlerror());
-        }
-        this->_libPath = filepath;
+        // _handle = dlopen(filepath.c_str(), RTLD_LAZY);
+        // if (!_handle) {
+            // throw std::runtime_error(dlerror());
+        // }
+        // this->_libPath = filepath;
     }
 
     /**
@@ -95,17 +93,23 @@ class UnixDLLoader : public DLLoader<T> {
      */
     void close() override
     {
-        if (_handle) {
-            if (dlclose(_handle)) {
-                throw std::runtime_error(dlerror());
-            }
-        }
+        // if (_handle) {
+            // if (dlclose(_handle)) {
+                // throw std::runtime_error(dlerror());
+            // }
+        // }
     }
 
     protected:
-    void *_handle = nullptr;
+    // void *_handle = nullptr;
+    // HINSTANCE hinstLib;
 };
 
 } // namespace ecs
+
+#else
+
+    #error \
+        "WindowsLoader.hpp is the DLLoader implementation for Windows, you should include UnixDLLoader.hpp instead"
 
 #endif

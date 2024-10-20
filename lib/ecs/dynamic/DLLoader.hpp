@@ -23,16 +23,23 @@ template <typename T>
 class DLLoader {
     public:
     /**
-     * @brief Constructor of the DLLoader which takes a path and load the library.
+     * @brief Constructor of the DLLoader which takes a path as lvalue reference and load the library.
      *
      * @param libPath Path of the shared library to load
      */
     DLLoader(const std::string &libPath) : _libPath(libPath) {}
 
     /**
+     * @brief Constructor of the DLLoader which takes a path as rvalue reference and load the library.
+     *
+     * @param libPath Path of the shared library to load
+     */
+    DLLoader(std::string &&libPath) : _libPath(std::move(libPath)) {}
+
+    /**
      * @brief Default constructor of the DLLoader, library path can be added later.
      */
-    DLLoader() : _libPath() {}
+    DLLoader() = default;
 
     /**
      * @brief Default destructor of the DLLoader.
