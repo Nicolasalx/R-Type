@@ -14,16 +14,32 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Cache CMake build (Linux)
+      if: matrix.os == 'linux'
+      uses: actions/cache@v3
+      with:
+        path: |
+          build/
+        key: cmake-build-linux-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
+        restore-keys: |
+          cmake-build-linux-${{ matrix.os }}-
+
+    - name: Cache CMake build (Linux)
+      if: matrix.os == 'linux'
+      uses: actions/cache@v3
+      with:
+        path: |
+          build-mingw32/
+        key: cmake-build-linux-${{ matrix.os }}-${{ hashFiles('dependencies.cmake')}}
+        restore-keys: |
+          cmake-build-linux-${{ matrix.os }}-
+
     - name: Install apt dependencies (Linux)
       if: matrix.os == 'linux'
       run: |
         sudo apt-get update
         sudo apt-get install -y flex bison javacc libflac-dev libx11-dev libxext-dev libgl1-mesa-dev \
         libudev-dev libopenal-dev libvorbis-dev libxcursor-dev libxrandr-dev libfreetype6-dev
-
-    - name: Ensure build directory exists (Linux)
-      if: matrix.os == 'linux'
-      run: mkdir -p build
 
     - name: Check compilation (Linux)
       if: matrix.os == 'linux'
@@ -88,10 +104,6 @@ jobs:
       if: matrix.os == 'windows' && steps.openal_cache.outputs.cache-hit == 'true'
       run: |
         echo "Using cached OpenAL Soft installation"
-
-    - name: Ensure build-mingw32 directory exists (Windows)
-      if: matrix.os == 'windows'
-      run: mkdir -p build-mingw32
 
     - name: Cross-compile for Windows
       if: matrix.os == 'windows'
