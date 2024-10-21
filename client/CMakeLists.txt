@@ -11,6 +11,9 @@ add_executable(r-type_client
     src/menu/room_selection.cpp
     src/menu/title_menu.cpp
     src/menu/chat.cpp
+    src/menu/inside_room.cpp
+    src/menu/accessibility.cpp
+    src/menu/option.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)

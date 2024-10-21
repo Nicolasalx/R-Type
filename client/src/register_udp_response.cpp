@@ -12,7 +12,6 @@
 #include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
 #include "Logger.hpp"
-#include "RTypeClientConst.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SpriteManager.hpp"
@@ -167,7 +166,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
                                    std::chrono::high_resolution_clock::now().time_since_epoch()
             )
                                    .count();
-            _metrics.at(rtc::ClientMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
+            _metrics.getMetric(rt::GameMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
         }
     );
 }

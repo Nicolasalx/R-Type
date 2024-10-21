@@ -8,10 +8,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../../../client/src/Metric.hpp"
+#include "MetricManager.hpp"
 
 namespace ecs::systems {
 
-void drawPing(rtc::Metric &metric, const sf::Vector2u &windowSize);
+void drawPing(ecs::Metric &metric, const sf::Vector2u &windowSize);
 
 } // namespace ecs::systems
