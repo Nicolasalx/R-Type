@@ -11,41 +11,53 @@
 
 void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode)
 {
-    ImGui::SetNextWindowPos(ImVec2(windowSize.x / 2.0f, windowSize.y / 2.0f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
-    ImGui::SetNextWindowSize(ImVec2(500, 400));
+    float buttonWidth = windowSize.x * 0.20f;
+    float buttonHeight = windowSize.y * 0.07f;
+
+    ImGui::SetNextWindowPos(ImVec2(windowSize.x * 0.5f, windowSize.y * 0.5f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+    ImGui::SetNextWindowSize(ImVec2(windowSize.x * 0.75f, windowSize.y * 0.75f));
+
     ImGui::Begin(
-        "InvisibleWindow",
+        "Options Window",
         nullptr,
-        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-            ImGuiWindowFlags_NoBringToFrontOnFocus
+        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus
     );
-    ImGui::SetWindowFontScale(2);
+
+    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+
     ImGui::Text("Frame Rate Limit: %d", fpsLimit);
     ImGui::SliderInt("##fps_slider", &fpsLimit, 30, 144, "", ImGuiSliderFlags_AlwaysClamp);
     window.setFramerateLimit(fpsLimit);
+
     ImGui::Spacing();
     ImGui::Separator();
     ImGui::Spacing();
+
     ImGui::Text("Resolution:");
     ImGui::Spacing();
+
     ImGui::BeginGroup();
-    if (ImGui::Button("1920x1080", ImVec2(150, 50))) {
+    if (ImGui::Button("1920x1080", ImVec2(buttonWidth, buttonHeight))) {
         window.setSize(sf::Vector2u(1920, 1080));
     }
     ImGui::SameLine();
-    if (ImGui::Button("1280x720", ImVec2(150, 50))) {
+    if (ImGui::Button("1280x720", ImVec2(buttonWidth, buttonHeight))) {
         window.setSize(sf::Vector2u(1280, 720));
     }
     ImGui::SameLine();
-    if (ImGui::Button("640x480", ImVec2(150, 50))) {
-        window.setSize(sf::Vector2u(640, 480));
+    if (ImGui::Button("720x480", ImVec2(buttonWidth, buttonHeight))) {
+        window.setSize(sf::Vector2u(720, 480));
     }
     ImGui::EndGroup();
+
     ImGui::Spacing();
+    ImGui::Separator();
     ImGui::Spacing();
-    ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 300) * 0.5f);
-    if (ImGui::Button("Back", ImVec2(300, 50))) {
+
+    ImGui::SetCursorPosX((ImGui::GetWindowWidth() - buttonWidth) * 0.5f);
+    if (ImGui::Button("Back", ImVec2(buttonWidth, buttonHeight))) {
         windowMode = rtc::WindowMode::MENU;
     }
+
     ImGui::End();
 }
