@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <SFML/Graphics/View.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include <functional>
 #include <memory>
 #include "KeyBind.hpp"
@@ -15,8 +17,6 @@
 #include "Registry.hpp"
 #include "RoomManager.hpp"
 #include "SafeList.hpp"
-#include <SFML/Graphics/View.hpp>
-#include <SFML/Window/Keyboard.hpp>
 #include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
 #include "UDPResponseHandler.hpp"
