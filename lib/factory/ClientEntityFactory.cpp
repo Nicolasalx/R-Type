@@ -17,6 +17,7 @@
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
 #include "components/music_component.hpp"
+#include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
 namespace ecs {
@@ -243,6 +244,10 @@ void ClientEntityFactory::addComponents(
         ecs::component::DeathTimer deathTimerComp;
         deathTimerComp.timeToDeath = deathTimerJson["time"].get<float>();
         reg.addComponent(entity, std::move(deathTimerComp));
+    }
+    if (componentsJson.contains("score_earned")) {
+        auto scoreJson = componentsJson["score_earned"];
+        reg.addComponent(entity, ecs::component::ScoreEarned{scoreJson["points"].get<int>()});
     }
 }
 

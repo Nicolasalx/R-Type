@@ -33,6 +33,7 @@
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
 #include "components/music_component.hpp"
+#include "components/score_earned.hpp"
 #include "components/self_player.hpp"
 #include "components/sound_emitter.hpp"
 #include "imgui-SFML.h"
@@ -72,6 +73,7 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::SelfPlayer>();
     reg.registerComponent<ecs::component::AllyPlayer>();
+    reg.registerComponent<ecs::component::ScoreEarned>();
     reg.registerComponent<ecs::component::DeathTimer>();
 }
 
