@@ -1,0 +1,4 @@
+<map id="ecs::component::SubSprite" name="ecs::component::SubSprite">
+<area shape="rect" id="node1" title=" " alt="" coords="8,93,203,119"/>
+<area shape="rect" id="node2" href="$df/d9e/structecs_1_1component_1_1Animation.html" title="Component that represents animation data for a sprite." alt="" coords="5,5,205,31"/>
+</map>

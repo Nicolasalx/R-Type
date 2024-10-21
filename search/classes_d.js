@@ -14,5 +14,6 @@ var searchData=
   ['soundmanager_11',['SoundManager',['../dc/dcf/classecs_1_1SoundManager.html',1,'ecs']]],
   ['sparsearray_12',['SparseArray',['../d8/d2e/classecs_1_1SparseArray.html',1,'ecs']]],
   ['sprite_13',['Sprite',['../d9/d4b/structecs_1_1component_1_1Sprite.html',1,'ecs::component']]],
-  ['spritemanager_14',['SpriteManager',['../d5/d93/classecs_1_1SpriteManager.html',1,'ecs']]]
+  ['spritemanager_14',['SpriteManager',['../d5/d93/classecs_1_1SpriteManager.html',1,'ecs']]],
+  ['subsprite_15',['SubSprite',['../dc/d1b/structecs_1_1component_1_1SubSprite.html',1,'ecs::component']]]
 ];
