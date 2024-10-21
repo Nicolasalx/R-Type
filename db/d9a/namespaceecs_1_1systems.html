@@ -102,6 +102,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a7389579aac29262f1b527711b52d30e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a7389579aac29262f1b527711b52d30e1">controlSpecial</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udp, const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind)</td></tr>
 <tr class="memdesc:a7389579aac29262f1b527711b52d30e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles entity control and input processing.  <br /></td></tr>
 <tr class="separator:a7389579aac29262f1b527711b52d30e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21513169eed974de8c770f37e5bd6663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a21513169eed974de8c770f37e5bd6663">deathTimer</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, float dt)</td></tr>
+<tr class="separator:a21513169eed974de8c770f37e5bd6663"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27b0a8a4531bb33a7af2d783560c1aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef">draw</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, sf::RenderWindow &amp;window)</td></tr>
 <tr class="memdesc:a27b0a8a4531bb33a7af2d783560c1aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders all drawable entities to the provided window.  <br /></td></tr>
 <tr class="separator:a27b0a8a4531bb33a7af2d783560c1aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -519,6 +521,53 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph" alt=""/></div>
 <map name="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph" id="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph">
 <area shape="rect" title="Handles entity control and input processing." alt="" coords="207,5,413,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a688710763ed338f36616236d6e1939ec" title=" " alt="" coords="5,5,159,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a21513169eed974de8c770f37e5bd6663" name="a21513169eed974de8c770f37e5bd6663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21513169eed974de8c770f37e5bd6663">&#9670;&#160;</a></span>deathTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecs::systems::deathTimer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_cgraph" id="adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,196,56"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="244,5,460,31"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="267,55,437,80"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_icgraph" id="adb/d9a/namespaceecs_1_1systems_a21513169eed974de8c770f37e5bd6663_icgraph">
+<area shape="rect" title=" " alt="" coords="207,5,397,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a688710763ed338f36616236d6e1939ec" title=" " alt="" coords="5,5,159,31"/>
 </map>
 </div>

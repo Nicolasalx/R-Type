@@ -1,10 +1,11 @@
 <map id="ecs::Registry::killEntity" name="ecs::Registry::killEntity">
-<area shape="rect" id="node1" title="Marks an entity for destruction." alt="" coords="729,106,900,131"/>
-<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a47f1e6cb07902f5012a61ba1e1c9eddd" title=" " alt="" coords="485,5,676,45"/>
-<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="480,69,681,109"/>
-<area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="480,134,681,159"/>
-<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="481,183,680,209"/>
-<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a688710763ed338f36616236d6e1939ec" title=" " alt="" coords="279,13,432,38"/>
-<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,130,432,155"/>
-<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,130,231,155"/>
+<area shape="rect" id="node1" title="Marks an entity for destruction." alt="" coords="729,127,900,152"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a21513169eed974de8c770f37e5bd6663" title=" " alt="" coords="485,5,676,31"/>
+<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a47f1e6cb07902f5012a61ba1e1c9eddd" title=" " alt="" coords="485,55,676,95"/>
+<area shape="rect" id="node5" href="$db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="480,119,681,159"/>
+<area shape="rect" id="node8" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="480,184,681,209"/>
+<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="481,233,680,259"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a688710763ed338f36616236d6e1939ec" title=" " alt="" coords="279,35,432,60"/>
+<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,180,432,205"/>
+<area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,180,231,205"/>
 </map>
