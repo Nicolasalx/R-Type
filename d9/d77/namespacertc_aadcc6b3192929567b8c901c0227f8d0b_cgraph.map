@@ -1,5 +1,11 @@
 <map id="rtc::lobbyWindow" name="rtc::lobbyWindow">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,140,56"/>
-<area shape="rect" id="node2" href="$d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="188,5,445,31"/>
-<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="227,55,407,80"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,127,140,152"/>
+<area shape="rect" id="node2" href="$d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2" title=" " alt="" coords="419,5,677,31"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a826b94045180092edfb94c88af029050" title=" " alt="" coords="195,127,361,152"/>
+<area shape="rect" id="node9" href="$d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced" title=" " alt="" coords="188,176,368,201"/>
+<area shape="rect" id="node4" href="$d0/d42/classrtc_1_1RoomManager.html#a60c1d666d6301beafbf4ada9b19df6c3" title=" " alt="" coords="446,55,650,95"/>
+<area shape="rect" id="node5" href="$d0/d42/classrtc_1_1RoomManager.html#a6597619dd30a0b9dd3a8ff985791db7a" title=" " alt="" coords="446,119,650,159"/>
+<area shape="rect" id="node6" href="$d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42" title=" " alt="" coords="416,184,680,209"/>
+<area shape="rect" id="node7" href="$d0/d42/classrtc_1_1RoomManager.html#acc01bd69aac076ace3aa49b5671c23a6" title=" " alt="" coords="439,234,657,274"/>
+<area shape="rect" id="node8" href="$d0/d42/classrtc_1_1RoomManager.html#a19e7c6a015899fc1cbd8cda4266fd569" title=" " alt="" coords="444,299,652,324"/>
 </map>

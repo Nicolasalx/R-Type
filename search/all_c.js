@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['lastcomputedmetric_0',['lastComputedMetric',['../df/ddf/classrtc_1_1Metric.html#a86dd6b61464b34c1747cb95130b773d0',1,'rtc::Metric']]],
+  ['lastcomputedmetric_0',['lastComputedMetric',['../d4/d71/classecs_1_1Metric.html#aea1430cff8decd6b2c6804ce37ba3615',1,'ecs::Metric']]],
   ['launch_5fgame_2ecpp_1',['launch_game.cpp',['../db/dfe/launch__game_8cpp.html',1,'']]],
   ['layer_2',['layer',['../d1/ddf/structecs_1_1component_1_1Parallax.html#aaee41dde6420bbb7f2f8d70caa8c963e',1,'ecs::component::Parallax']]],
   ['leaveroom_3',['leaveRoom',['../d1/d36/classrts_1_1RoomManager.html#a362661cdf6f3b625c83943c01bb34166',1,'rts::RoomManager']]],

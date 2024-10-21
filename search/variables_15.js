@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../db/d8f/structecs_1_1component_1_1Position.html#ac9a7a6e991d800ddd4b79bbdd31fef9d',1,'ecs::component::Position']]]
+  ['x_0',['x',['../db/d8f/structecs_1_1component_1_1Position.html#ae9c867a6647b7667184497b51fecdfb5',1,'ecs::component::Position']]]
 ];

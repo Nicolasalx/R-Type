@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['player_0',['player',['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html#a967edce03f76b31f77094d371d5fb331',1,'rtc::RoomManager::RoomContent']]],
-  ['power_1',['power',['../de/de1/structecs_1_1component_1_1Beam.html#a5b8512891f6348b543e61cb34baccf20',1,'ecs::component::Beam']]]
+  ['name_0',['name',['../d7/dfe/structrtc_1_1RoomManager_1_1Player.html#a85e119e2aa188816e14a69eb7c512cab',1,'rtc::RoomManager::Player::name()'],['../dd/d3f/structecs_1_1component_1_1Player.html#a95a78a8e0d75d947e23ee0fdbf656d9d',1,'ecs::component::Player::name()'],['../d4/d18/structecs_1_1component_1_1SelfPlayer.html#a69359bae55e22c822229dce1c8589c7b',1,'ecs::component::SelfPlayer::name()']]]
 ];

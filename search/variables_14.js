@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_0',['x',['../db/d8f/structecs_1_1component_1_1Position.html#ae9c867a6647b7667184497b51fecdfb5',1,'ecs::component::Position']]]
+  ['width_0',['width',['../dd/d5e/structecs_1_1component_1_1Hitbox.html#ab6f357dfebfa8a69a7ef1cdd46ff3cdc',1,'ecs::component::Hitbox']]]
 ];

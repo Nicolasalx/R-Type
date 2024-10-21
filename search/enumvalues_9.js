@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['options_0',['OPTIONS',['../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa164dd62adb30ca051b5289672a572f9b',1,'rtc']]]
+  ['ping_5frefresh_0',['PING_REFRESH',['../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e',1,'rtc']]]
 ];

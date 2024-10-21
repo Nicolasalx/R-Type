@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['server_5ftickrate_0',['SERVER_TICKRATE',['../d9/dbb/namespacerts.html#acacb2934d801c40e161eaacb1e969aef',1,'rts']]],
-  ['shape_1',['shape',['../da/dff/structecs_1_1component_1_1Drawable.html#a9e9b39bce644fe74552e8070fbe16345',1,'ecs::component::Drawable']]],
-  ['sharedentityid_2',['sharedEntityId',['../d0/dd6/structecs_1_1component_1_1SharedEntity.html#af00dfcff83b22b502f95b8cbe816d372',1,'ecs::component::SharedEntity']]],
-  ['short_5fname_3',['short_name',['../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a333f611e2d7958cc1ad26be0ed188727',1,'eng::ArgParser::Argument']]],
-  ['soundbufferid_4',['soundBufferId',['../dd/d9a/structecs_1_1component_1_1SoundEmitter.html#a85dc5a0d5adf0f9035cd641a5dc472f5',1,'ecs::component::SoundEmitter']]],
-  ['spriteobj_5',['spriteObj',['../d9/d4b/structecs_1_1component_1_1Sprite.html#a6d9ef87536354af06d3071ca2532b8d3',1,'ecs::component::Sprite']]],
-  ['stage_6',['stage',['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html#a1ab5ce031d4058c9ceef610c69b1cbae',1,'rtc::RoomManager::RoomContent']]],
-  ['state_7',['state',['../df/d9e/structecs_1_1component_1_1Animation.html#aed2691d8e6c9691639453eca279ce23c',1,'ecs::component::Animation']]]
+  ['ready_0',['ready',['../d7/dfe/structrtc_1_1RoomManager_1_1Player.html#ab9b25ebcc571e9642f285e7a01d9dead',1,'rtc::RoomManager::Player']]],
+  ['repeatx_1',['repeatX',['../d1/ddf/structecs_1_1component_1_1Parallax.html#a8b8fb1b2c9ca0f68bd9399705c43e2ea',1,'ecs::component::Parallax']]],
+  ['repeaty_2',['repeatY',['../d1/ddf/structecs_1_1component_1_1Parallax.html#a2e84d6a72126ab4ba81e6149e69c000b',1,'ecs::component::Parallax']]],
+  ['required_3',['required',['../d1/df7/structeng_1_1ArgParser_1_1Argument.html#a5f65963af85302dbc0876dee97590fd2',1,'eng::ArgParser::Argument']]],
+  ['respawnx_4',['respawnX',['../d1/ddf/structecs_1_1component_1_1Parallax.html#ab1bf8d04471d25d975597e0bbf6b4243',1,'ecs::component::Parallax']]],
+  ['respawny_5',['respawnY',['../d1/ddf/structecs_1_1component_1_1Parallax.html#acd7ad6b3e9006f56b7c9a05642eacde2',1,'ecs::component::Parallax']]]
 ];
