@@ -8,7 +8,6 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <list>
 #include "ClientTickRate.hpp"
 #include "InputManager.hpp"
 #include "KeyBind.hpp"
@@ -16,6 +15,7 @@
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "udp/UDPClient.hpp"
@@ -39,7 +39,7 @@ void registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );

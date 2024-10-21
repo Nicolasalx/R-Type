@@ -30,14 +30,14 @@ void registerSystems(
     ntw::TickRateManager<rts::TickRate> &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
     bool debugMode
 );
 void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ntw::UDPServer &udpServer
 );
 void registerTcpResponse(

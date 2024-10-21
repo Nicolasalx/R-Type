@@ -5,11 +5,11 @@
 ** register_ecs
 */
 
-#include <list>
 #include "ClientTickRate.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -80,7 +80,7 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
@@ -113,12 +113,9 @@ void rtc::registerSystems(
             ecs::systems::clientShareMovement(reg, udpClient);
         }
     });
-    reg.addSystem([&networkCallbacks, &tickRateManager, &dt, &reg]() {
+    reg.addSystem([&networkCallbacks, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::CALL_NETWORK_CALLBACKS, dt)) {
-            while (!networkCallbacks.empty()) {
-                networkCallbacks.front()(reg);
-                networkCallbacks.pop_front();
-            }
+            networkCallbacks.consumeList();
         }
     });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
