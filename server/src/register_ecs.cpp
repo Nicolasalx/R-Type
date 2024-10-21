@@ -83,9 +83,7 @@ void rts::registerSystems(
         rts::TickRate::ENTITY_MOVEMENT, rts::SERVER_TICKRATE.at(rts::TickRate::ENTITY_MOVEMENT)
     );
 
-    reg.addSystem([&networkCallbacks]() {
-        networkCallbacks.consumeList();
-    });
+    reg.addSystem([&networkCallbacks]() { networkCallbacks.consumeList(); });
     reg.addSystem([&reg, &dt, &tickRateManager]() {
         if (tickRateManager.needUpdate(rts::TickRate::AI_ACTING, dt)) {
             ecs::systems::aiAct(reg);

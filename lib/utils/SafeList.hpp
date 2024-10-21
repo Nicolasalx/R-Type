@@ -35,14 +35,14 @@ class SafeList {
 
     /**
      *  @brief Destructor of the SafeList class.
-    */
+     */
     ~SafeList() = default;
 
     /**
      *  @brief Push at the end of the `std::list` the data specified in @param data.
      *
      *  @param data Data to push at the end of the list.
-    */
+     */
     void pushBack(const T &data)
     {
         std::scoped_lock<std::mutex> lck(_mut);
@@ -53,7 +53,7 @@ class SafeList {
      *  @brief Register a consume function that will be used on each data when consuming the list.
      *
      *  @param func Function that will will be used as the consumeFunction.
-    */
+     */
     void registerConsumeFunc(std::function<void(T)> func)
     {
         _consumeFunc = func;
@@ -61,7 +61,7 @@ class SafeList {
 
     /**
      *  @brief Consume all the elements of the `std::list` (poping them).
-    */
+     */
     void consumeList()
     {
         if (!_consumeFunc) {
