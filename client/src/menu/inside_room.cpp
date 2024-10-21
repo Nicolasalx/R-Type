@@ -16,7 +16,8 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     ImGui::Begin(
         roomManager.getCurrentRoom().c_str(),
         nullptr,
-        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus
+        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
     ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
@@ -44,7 +45,8 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     float padding = windowSize.x * 0.02f;
 
     ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
-    ImVec2 leaveButtonPos = ImVec2(windowContentRegionMax.x - buttonSize.x - padding, windowContentRegionMax.y - buttonSize.y - padding);
+    ImVec2 leaveButtonPos =
+        ImVec2(windowContentRegionMax.x - buttonSize.x - padding, windowContentRegionMax.y - buttonSize.y - padding);
     ImGui::SetCursorPos(leaveButtonPos);
     if (ImGui::Button("Leave Room", buttonSize)) {
         roomManager.askToLeaveRoom();

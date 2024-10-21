@@ -20,7 +20,8 @@ void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &
     ImGui::Begin(
         "Options Window",
         nullptr,
-        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus
+        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
     ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
