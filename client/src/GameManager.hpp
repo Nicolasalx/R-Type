@@ -8,12 +8,12 @@
 #pragma once
 
 #include <functional>
-#include <list>
 #include <memory>
 #include "Metric.hpp"
 #include "RTypeClientConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
 #include "UDPResponseHandler.hpp"
@@ -40,7 +40,7 @@ class GameManager {
     rt::UDPResponseHandler _udpResponseHandler;
     std::promise<bool> _allUDPClientReady;
 
-    std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<ImFont> _font;
 

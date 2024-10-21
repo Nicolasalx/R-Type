@@ -8,13 +8,13 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <list>
 #include "ClientTickRate.hpp"
 #include "InputManager.hpp"
 #include "Metric.hpp"
 #include "RTypeClientConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "imgui.h"
@@ -37,7 +37,7 @@ void registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     std::unordered_map<rtc::ClientMetric, rtc::Metric> &metrics
 );
 

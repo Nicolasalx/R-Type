@@ -80,6 +80,7 @@ void rtc::GameManager::_launchGame()
     soundManager.playMusic("battle", 5.f, true);
 
     rtc::registerComponents(reg);
+    _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
     rtc::registerSystems(
         reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks, _metrics
     );
