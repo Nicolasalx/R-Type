@@ -5,6 +5,9 @@
             "x": 100.0,
             "y": 200.0
         },
+        "death_timer": {
+            "time": 0.5
+        },
         "sprite": {
             "texture": "assets/typesheets/r-typesheet43.png",
             "initial_frame": {
