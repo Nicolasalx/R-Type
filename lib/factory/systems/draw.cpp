@@ -6,7 +6,6 @@
 */
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "Registry.hpp"
 #include "Zipper.hpp"
 #include "components/drawable.hpp"
@@ -42,7 +41,6 @@ void draw(Registry &reg, sf::RenderWindow &window)
         if (sprites.has(i) && sprites[i] && !reg.hasComponent<component::Parallax>(i)) {
             if (sprites[i]->subSprites.size() > 0) {
                 for (auto &subSprite : sprites[i]->subSprites) {
-                    std::cout << "subSprite: " << subSprite.spriteObj.getPosition().x << std::endl;
                     window.draw(subSprite.spriteObj);
                 }
             }

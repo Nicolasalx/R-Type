@@ -7,7 +7,6 @@
 
 #include "ClientEntityFactory.hpp"
 
-#include <iostream>
 #include <utility>
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
@@ -123,7 +122,6 @@ void ClientEntityFactory::addComponents(
         }
         if (spriteJson.contains("sub_sprites")) {
             for (const auto &subSpriteJson : spriteJson["sub_sprites"]) {
-                std::cout << "subSpriteJson: " << subSpriteJson << std::endl;
                 ecs::component::SubSprite subSprite;
                 subSprite.textureId = subSpriteJson["texture"].get<std::string>();
                 subSprite.spriteObj.setTexture(spriteManager.getTexture(subSprite.textureId));
