@@ -28,7 +28,67 @@
                 "y": 0,
                 "width": 32,
                 "height": 16
-            }
+            },
+            "sub_sprites": [
+                {
+                    "texture": "assets/typesheets/r-typesheet1.gif",
+                    "initial_frame": {
+                        "x": 135,
+                        "y": 18,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "x" : -30,
+                    "y" : -5,
+                    "animation": {
+                        "frames": {
+                            "right": [
+                                {
+                                    "x": 135,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 168,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                }
+                            ],
+                            "idle": [
+                                {
+                                    "x": 168,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 201,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                }
+                            ],
+                            "left": [
+                                {
+                                    "x": 201,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 234,
+                                    "y": 18,
+                                    "width": 32,
+                                    "height": 32
+                                }
+                            ]
+                        },
+                        "frame_time": 0.1
+                    }
+                }
+            ]
         },
         "animation": {
             "frames": {
