@@ -7,16 +7,16 @@
 
 #pragma once
 
+#include <SFML/Graphics/View.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include <functional>
-#include <list>
 #include <memory>
 #include "KeyBind.hpp"
 #include "MetricManager.hpp"
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
-#include "SFML/Graphics/View.hpp"
-#include "SFML/Window/Keyboard.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
 #include "UDPResponseHandler.hpp"
@@ -43,7 +43,7 @@ class GameManager {
     rt::UDPResponseHandler _udpResponseHandler;
     std::promise<bool> _allUDPClientReady;
 
-    std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;
     sf::View _view = {
         sf::Vector2f(rt::GAME_VIEW_WIDTH / 2.0, rt::GAME_VIEW_HEIGHT / 2.0),

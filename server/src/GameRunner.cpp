@@ -24,6 +24,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
+    _networkCallbacks.registerConsumeFunc([this](auto f) { f(_reg); });
     rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer);
     _udpServer.registerCommand([this](udp::endpoint &endpoint, char *data, std::size_t size) {
         this->_responseHandler.handleResponse(data, size, {std::ref(endpoint)});
@@ -39,7 +40,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
 
 void rts::GameRunner::killPlayer(size_t playerId)
 {
-    _networkCallbacks.emplace_back([playerId, this](ecs::Registry &reg) {
+    _networkCallbacks.pushBack([playerId, this](ecs::Registry &reg) {
         ecs::IndexedZipper<ecs::component::Player, ecs::component::SharedEntity> zip(
             reg.getComponents<ecs::component::Player>(), reg.getComponents<ecs::component::SharedEntity>()
         );

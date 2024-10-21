@@ -18,9 +18,10 @@
 #include "components/position.hpp"
 #include "components/velocity.hpp"
 
+// dataToSend inside networkCallbacks
 static void handlePlayerCreation(
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg
 )
 {
@@ -28,36 +29,36 @@ static void handlePlayerCreation(
     std::size_t playerIndex = msg.body.playerIndex;
     const auto &pos = msg.body.pos;
 
-    networkCallbacks.emplace_back([playerIndex, sharedEntityId, pos, playerId = msg.body.playerId](ecs::Registry &reg) {
+    networkCallbacks.pushBack([playerIndex, sharedEntityId, pos, msg, &datasToSend](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
         );
-        reg.getComponent<ecs::component::Player>(entity)->id = playerId;
+        reg.getComponent<ecs::component::Player>(entity)->id = msg.body.playerId;
+        datasToSend.push_back(std::move(msg).serialize());
     });
-    datasToSend.push_back(std::move(msg).serialize());
 }
 
 static void handleMissileCreation(
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
 )
 {
     const auto &pos = msg.body.pos;
     const auto &vel = msg.body.vel;
 
-    networkCallbacks.emplace_back([pos, vel, sharedEntityId = msg.sharedEntityId](ecs::Registry &reg) {
+    networkCallbacks.pushBack([pos, vel, msg, &datasToSend](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, sharedEntityId, vel.vx, vel.vy
+            reg, "assets/missile.json", pos.x, pos.y, msg.sharedEntityId, vel.vx, vel.vy
         );
+        datasToSend.push_back(std::move(msg).serialize());
     });
-    datasToSend.push_back(std::move(msg).serialize());
 }
 
 void rts::registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ntw::UDPServer &udpServer
 )
 {
@@ -76,7 +77,7 @@ void rts::registerUdpResponse(
     responseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [&networkCallbacks](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &msg) {
-            networkCallbacks.emplace_back([msg](ecs::Registry &reg) {
+            networkCallbacks.pushBack([msg](ecs::Registry &reg) {
                 try {
                     reg.getComponent<ecs::component::Position>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.pos;
