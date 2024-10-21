@@ -15,6 +15,7 @@
 #include "components/velocity.hpp"
 #include "imgui.h"
 #include "components/client_share_movement.hpp"
+#include "components/death_timer.hpp"
 #include "components/music_component.hpp"
 #include "components/sound_emitter.hpp"
 
@@ -236,6 +237,12 @@ void ClientEntityFactory::addComponents(
     }
     if (componentsJson.contains("client_share_movement")) {
         reg.addComponent(entity, ecs::component::ClientShareMovement{});
+    }
+    if (componentsJson.contains("death_timer")) {
+        auto deathTimerJson = componentsJson["death_timer"];
+        ecs::component::DeathTimer deathTimerComp;
+        deathTimerComp.timeToDeath = deathTimerJson["time"].get<float>();
+        reg.addComponent(entity, std::move(deathTimerComp));
     }
 }
 
