@@ -173,7 +173,9 @@ void rts::RoomManager::playerDisconnected(std::size_t playerId, ntw::TCPServer &
     for (const auto &[roomName, room] : this->_rooms) {
         for (const auto &[id, _] : room.player) {
             if (playerId == id) {
-                room.gameRunner->killPlayer(playerId);
+                if (room.gameRunner) {
+                    room.gameRunner->killPlayer(playerId);
+                }
                 this->leaveRoom(roomName, id, tcpServer);
                 return;
             }

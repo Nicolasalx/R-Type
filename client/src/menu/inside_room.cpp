@@ -12,18 +12,21 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
 {
     ImGui::SetNextWindowSize(ImVec2(windowSize.x, windowSize.y));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
+
     ImGui::Begin(
         roomManager.getCurrentRoom().c_str(),
         nullptr,
-        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
-            ImGuiWindowFlags_NoBringToFrontOnFocus
+        ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus
     );
+
+    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
 
     ImGui::BeginTable("playersTable", 2);
     ImGui::TableSetupColumn("Name");
     ImGui::TableSetupColumn("Status");
     ImGui::TableHeadersRow();
-    ImU32 selfRowColor = ImGui::GetColorU32(ImVec4(0.5, 1, 0.5, 0.25));
+
+    ImU32 selfRowColor = ImGui::GetColorU32(ImVec4(0.5f, 1.0f, 0.5f, 0.25f));
 
     for (const auto &[id, player] : roomManager.getCurrentRoomPlayer()) {
         ImGui::TableNextRow();
@@ -37,21 +40,19 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     }
     ImGui::EndTable();
 
-    {
-        ImVec2 buttonSize(200, 50);
-        ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
-        ImVec2 buttonPos =
-            ImVec2(windowContentRegionMax.x - buttonSize.x - 20, windowContentRegionMax.y - buttonSize.y - 20);
-        ImGui::SetCursorPos(buttonPos);
-        if (ImGui::Button("Leave Room", buttonSize)) {
-            roomManager.askToLeaveRoom();
-        }
+    ImVec2 buttonSize(windowSize.x * 0.25f, windowSize.y * 0.15f);
+    float padding = windowSize.x * 0.02f;
+
+    ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
+    ImVec2 leaveButtonPos = ImVec2(windowContentRegionMax.x - buttonSize.x - padding, windowContentRegionMax.y - buttonSize.y - padding);
+    ImGui::SetCursorPos(leaveButtonPos);
+    if (ImGui::Button("Leave Room", buttonSize)) {
+        roomManager.askToLeaveRoom();
     }
 
-    ImVec2 buttonSize(200, 50);
-    ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
-    ImVec2 buttonPos = ImVec2(20, windowContentRegionMax.y - buttonSize.y - 20);
-    ImGui::SetCursorPos(buttonPos);
+    ImVec2 readyButtonPos = ImVec2(padding, windowContentRegionMax.y - buttonSize.y - padding);
+    ImGui::SetCursorPos(readyButtonPos);
+
     if (!roomManager.getCurrentRoomPlayer().at(roomManager.getSelfId()).ready) {
         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.0f, 1.0f, 0.0f, 1.0f));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.0f, 0.8f, 0.0f, 1.0f));

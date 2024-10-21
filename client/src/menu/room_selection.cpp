@@ -137,6 +137,8 @@ void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &w
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
+    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+
     ImGui::BeginChild("RoomList", ImVec2(0, windowSize.y * 0.7), true);
     renderRoomTable(roomManager);
     ImGui::EndChild();
