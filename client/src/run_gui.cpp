@@ -8,24 +8,31 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <cstring>
+#include <string>
+#include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
-#include "imgui.h"
+#include "SFML/Graphics/Sprite.hpp"
 #include "imgui-SFML.h"
 
-void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManager &roomManager, bool &inLobby)
+void rtc::runGui(
+    const std::shared_ptr<sf::RenderWindow> &window,
+    rtc::RoomManager &roomManager,
+    bool &inLobby,
+    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+)
 {
     sf::Clock dt;
     sf::Vector2u windowSize;
     WindowMode windowMode = rtc::WindowMode::MENU;
     int fpsLimit = rt::CLIENT_FPS_LIMIT;
     bool chatEnable = false;
-
-    ImGuiIO &io = ImGui::GetIO();
-    io.Fonts->AddFontFromFileTTF("assets/font/DroidSansMono.ttf", 32.0f);
-    if (!ImGui::SFML::UpdateFontTexture()) {
-        return;
-    };
+    sf::Texture texture;
+    if (!texture.loadFromFile("assets/menu/background.jpg")) {
+        eng::logError("Failed to load background image !");
+    }
+    sf::Sprite background(texture);
+    background.setScale(rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y));
 
     while (window->isOpen() && inLobby) {
         sf::Event event{};
@@ -33,21 +40,31 @@ void rtc::runGui(const std::shared_ptr<sf::RenderWindow> &window, rtc::RoomManag
             ImGui::SFML::ProcessEvent(*window, event);
             if (event.type == sf::Event::Closed) {
                 window->close();
-            }
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::RControl) {
+            } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::RControl) {
                 chatEnable = !chatEnable;
+            } else if (event.type == sf::Event::Resized) {
+                windowSize = window->getSize();
             }
         }
         ImGui::SFML::Update(*window, dt.restart());
         window->clear();
-        windowSize = window->getSize();
-
-        if (windowMode == rtc::WindowMode::MENU) {
-            menuWindow(*window, io, windowMode);
-        } else if (windowMode == rtc::WindowMode::OPTIONS) {
-            optionsWindow(*window, windowSize, fpsLimit, windowMode);
-        } else {
-            lobbyWindow(windowSize, roomManager);
+        window->draw(background);
+        switch (windowMode) {
+            case rtc::WindowMode::EXIT_MENU:
+                window->close();
+                break;
+            case rtc::WindowMode::MENU:
+                menuWindow(windowSize, windowMode);
+                break;
+            case rtc::WindowMode::OPTIONS:
+                optionsWindow(*window, windowSize, fpsLimit, windowMode);
+                break;
+            case rtc::WindowMode::ACCESSIBILITY:
+                renderAccessibility(windowSize, windowMode, keyBind);
+                break;
+            case rtc::WindowMode::LOBBY:
+                lobbyWindow(windowSize, roomManager);
+                break;
         }
         renderChat(roomManager, windowSize, chatEnable);
 

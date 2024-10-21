@@ -7,6 +7,7 @@
 
 #include "systems/control_special.hpp"
 #include "InputManager.hpp"
+#include "KeyBind.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
@@ -25,7 +26,12 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(ecs::Registry &reg, ecs::InputManager &input, ntw::UDPClient &udp)
+void ecs::systems::controlSpecial(
+    ecs::Registry &reg,
+    ecs::InputManager &input,
+    ntw::UDPClient &udp,
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();
@@ -34,7 +40,7 @@ void ecs::systems::controlSpecial(ecs::Registry &reg, ecs::InputManager &input, 
 
     static auto lastTime = std::chrono::high_resolution_clock::now();
     for (auto [_, pos] : zipControl) {
-        if (input.isKeyPressed(sf::Keyboard::Space)) {
+        if (input.isKeyPressed(keyBind.getActionKey(rt::PlayerAction::SHOOT_MISSILE))) {
             auto now = std::chrono::high_resolution_clock::now();
             if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 250) {
                 continue;

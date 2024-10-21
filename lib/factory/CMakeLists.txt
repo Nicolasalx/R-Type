@@ -41,6 +41,7 @@ target_compile_options(FACTORY PUBLIC -Wall -Wextra)
 
 target_include_directories(FACTORY PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../utils
     ${CMAKE_SOURCE_DIR}/include
 )
 

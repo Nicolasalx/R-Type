@@ -61,7 +61,7 @@ void rtc::GameManager::_launchGame()
         return;
     }
 
-    runGui(_window, _roomManager, _inLobby);
+    runGui(_window, _roomManager, _inLobby, _keyBind);
 
     if (_inLobby) {
         return;
@@ -76,12 +76,24 @@ void rtc::GameManager::_launchGame()
     ecs::SpriteManager spriteManager;
     ecs::SoundManager soundManager;
 
+    _window->setView(_view);
+
     soundManager.loadMusic("battle", "assets/battle.ogg");
     soundManager.playMusic("battle", 5.f, true);
 
     rtc::registerComponents(reg);
+    _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
     rtc::registerSystems(
-        reg, *_window, dt, udpClient, inputManager, tickRateManager, spriteManager, _networkCallbacks, _metrics
+        reg,
+        *_window,
+        dt,
+        udpClient,
+        inputManager,
+        tickRateManager,
+        spriteManager,
+        _networkCallbacks,
+        _metrics,
+        _keyBind
     );
 
     _setupUdpConnection(spriteManager, udpClient);

@@ -8,7 +8,7 @@
 #include "UDPClient.hpp"
 #include <asio.hpp>
 #include <asio/placeholders.hpp>
-#include "../../utils/Logger.hpp"
+#include "Logger.hpp"
 
 ntw::UDPClient::UDPClient(const std::string &host, int port) : _endpoint(asio::ip::make_address(host), port), _sock(_io)
 {

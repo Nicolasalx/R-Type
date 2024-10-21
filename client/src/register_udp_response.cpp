@@ -12,7 +12,6 @@
 #include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
 #include "Logger.hpp"
-#include "RTypeClientConst.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SpriteManager.hpp"
@@ -28,12 +27,12 @@
 static void handlePlayerCreation(
     std::size_t userId,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet,
     const std::shared_ptr<ImFont> &font
 )
 {
-    networkCallbacks.emplace_back([packet, &spriteManager, userId, font](ecs::Registry &reg) {
+    networkCallbacks.pushBack([packet, &spriteManager, userId, font](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
@@ -62,14 +61,14 @@ template <typename T>
 static void handleSharedCreation(
     const std::string &jsonFilePath,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<T> &packet
 )
 {
     auto &pos = packet.body.pos;
     auto sharedEntityId = packet.sharedEntityId;
 
-    networkCallbacks.push_back([sharedEntityId, pos, &spriteManager, jsonFilePath](ecs::Registry &reg) {
+    networkCallbacks.pushBack([sharedEntityId, pos, &spriteManager, jsonFilePath](ecs::Registry &reg) {
         ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg, spriteManager, jsonFilePath, pos.x, pos.y, sharedEntityId
         );
@@ -127,7 +126,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
-            _networkCallbacks.emplace_back([packet](ecs::Registry &reg) {
+            _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
                 try {
                     if (reg.hasComponent<ecs::component::SelfPlayer>(reg.getLocalEntity().at(packet.sharedEntityId))) {
                         return;
@@ -151,7 +150,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
         rt::UDPCommand::DEL_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
             try {
-                _networkCallbacks.emplace_back([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
+                _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
                     reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
                 });
             } catch (const std::exception &e) {
@@ -167,7 +166,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
                                    std::chrono::high_resolution_clock::now().time_since_epoch()
             )
                                    .count();
-            _metrics.at(rtc::ClientMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
+            _metrics.getMetric(rt::GameMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
         }
     );
 }

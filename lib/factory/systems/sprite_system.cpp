@@ -6,8 +6,8 @@
 */
 
 #include "sprite_system.hpp"
-#include "../../utils/Logger.hpp"
 #include "IndexedZipper.hpp"
+#include "Logger.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
 #include "components/animation.hpp"
