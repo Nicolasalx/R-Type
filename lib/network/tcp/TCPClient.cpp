@@ -8,7 +8,7 @@
 #include "TCPClient.hpp"
 #include <functional>
 #include <utility>
-#include "../../utils/Logger.hpp"
+#include "Logger.hpp"
 #include <asio/ip/address_v4.hpp>
 #include <asio/socket_base.hpp>
 

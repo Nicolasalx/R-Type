@@ -7,9 +7,9 @@
 
 #include <list>
 #include "ClientTickRate.hpp"
-#include "Metric.hpp"
+#include "MetricManager.hpp"
 #include "RTypeClient.hpp"
-#include "RTypeClientConst.hpp"
+#include "RTypeConst.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -81,7 +81,8 @@ void rtc::registerSystems(
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
     std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    std::unordered_map<rtc::ClientMetric, rtc::Metric> &metrics
+    ecs::MetricManager<rt::GameMetric> &metrics,
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
 {
     tickRateManager.addTickRate(
@@ -92,8 +93,10 @@ void rtc::registerSystems(
         rtc::TickRate::CALL_NETWORK_CALLBACKS, rtc::CLIENT_TICKRATE.at(rtc::TickRate::CALL_NETWORK_CALLBACKS)
     );
 
-    reg.addSystem([&reg, &input]() { ecs::systems::controlMove(reg, input); });
-    reg.addSystem([&reg, &input, &udpClient]() { ecs::systems::controlSpecial(reg, input, udpClient); });
+    reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
+    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
+        ecs::systems::controlSpecial(reg, input, udpClient, keyBind);
+    });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
@@ -123,9 +126,9 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
     reg.addSystem([&metrics, &dt, &window]() {
-        ecs::systems::drawFPS(metrics.at(rtc::ClientMetric::FPS), dt, window.getSize());
+        ecs::systems::drawFPS(metrics.getMetric(rt::GameMetric::FPS), dt, window.getSize());
     });
     reg.addSystem([&metrics, &window]() {
-        ecs::systems::drawPing(metrics.at(rtc::ClientMetric::PING), window.getSize());
+        ecs::systems::drawPing(metrics.getMetric(rt::GameMetric::PING), window.getSize());
     });
 }

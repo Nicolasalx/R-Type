@@ -9,8 +9,9 @@
 
 #include <cstddef>
 #include <vector>
+#include <unordered_map>
 
-namespace rtc {
+namespace ecs {
 
 class Metric {
     private:
@@ -48,4 +49,36 @@ class Metric {
 
     float lastComputedMetric = 0;
 };
-} // namespace rtc
+
+template <typename MetricKey>
+class MetricManager {
+    private:
+    std::unordered_map<MetricKey, ecs::Metric> _metrics;
+
+    public:
+    MetricManager() = default;
+
+    MetricManager(const std::unordered_map<MetricKey, ecs::Metric> &metrics) : _metrics(metrics) {}
+
+    void addMetric(const MetricKey &key, ecs::Metric newMetric)
+    {
+        _metrics[key] = newMetric;
+    }
+
+    void eraseMetric(const MetricKey &key)
+    {
+        _metrics.erase(key);
+    }
+
+    const Metric &getMetric(const MetricKey &key) const
+    {
+        return _metrics.at(key);
+    }
+
+    Metric &getMetric(const MetricKey &key)
+    {
+        return _metrics.at(key);
+    }
+};
+
+} // namespace ecs

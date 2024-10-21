@@ -10,7 +10,7 @@
 #include "RTypeConst.hpp"
 #include "imgui.h"
 
-void ecs::systems::drawFPS(rtc::Metric &metric, float dt, const sf::Vector2u &windowSize)
+void ecs::systems::drawFPS(ecs::Metric &metric, float dt, const sf::Vector2u &windowSize)
 {
     metric.lastComputedMetric = 1.0f / dt;
     metric.addNewValue(metric.lastComputedMetric);

@@ -10,10 +10,13 @@
 #include <functional>
 #include <list>
 #include <memory>
-#include "Metric.hpp"
-#include "RTypeClientConst.hpp"
+#include "KeyBind.hpp"
+#include "MetricManager.hpp"
+#include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SFML/Graphics/View.hpp"
+#include "SFML/Window/Keyboard.hpp"
 #include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
 #include "UDPResponseHandler.hpp"
@@ -42,9 +45,21 @@ class GameManager {
 
     std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
     std::shared_ptr<sf::RenderWindow> _window;
+    sf::View _view = {
+        sf::Vector2f(rt::GAME_VIEW_WIDTH / 2.0, rt::GAME_VIEW_HEIGHT / 2.0),
+        sf::Vector2f(rt::GAME_VIEW_WIDTH, rt::GAME_VIEW_HEIGHT)
+    };
     std::shared_ptr<ImFont> _font;
 
-    std::unordered_map<rtc::ClientMetric, rtc::Metric> _metrics;
+    ecs::MetricManager<rt::GameMetric> _metrics = {{{rt::GameMetric::FPS, 100}, {rt::GameMetric::PING, 100}}};
+
+    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> _keyBind{
+        {{rt::PlayerAction::MOVE_UP, sf::Keyboard::Key::Up},
+         {rt::PlayerAction::MOVE_DOWN, sf::Keyboard::Key::Down},
+         {rt::PlayerAction::MOVE_LEFT, sf::Keyboard::Key::Left},
+         {rt::PlayerAction::MOVE_RIGHT, sf::Keyboard::Key::Right},
+         {rt::PlayerAction::SHOOT_MISSILE, sf::Keyboard::Key::Space}}
+    };
 
     void _registerTcpResponse();
     void _registerUdpResponse(ecs::SpriteManager &spriteManager);
@@ -56,11 +71,7 @@ class GameManager {
     public:
     GameManager(const std::string &ip, int port, const std::string &playerName)
         : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(ecs::generateSharedEntityId()),
-          _roomManager(_tcpClient, _userId, playerName),
-          _metrics(
-              {{rtc::ClientMetric::FPS, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::FPS))},
-               {rtc::ClientMetric::PING, Metric(rtc::METRIC_HISTORY_SIZE.at(rtc::ClientMetric::PING))}}
-          )
+          _roomManager(_tcpClient, _userId, playerName)
     {
     }
 

@@ -9,7 +9,7 @@
 #include <format>
 #include "imgui.h"
 
-void ecs::systems::drawPing(rtc::Metric &metric, const sf::Vector2u &windowSize)
+void ecs::systems::drawPing(ecs::Metric &metric, const sf::Vector2u &windowSize)
 {
     metric.addNewValue(metric.lastComputedMetric);
 

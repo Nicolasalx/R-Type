@@ -10,6 +10,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "../RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "imgui.h"
 
 void rtc::renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable)
 {

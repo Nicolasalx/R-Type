@@ -8,10 +8,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../../../client/src/Metric.hpp"
+#include "MetricManager.hpp"
 
 namespace ecs::systems {
 
-void drawFPS(rtc::Metric &metric, float dt, const sf::Vector2u &windowSize);
+void drawFPS(ecs::Metric &metric, float dt, const sf::Vector2u &windowSize);
 
 } // namespace ecs::systems
