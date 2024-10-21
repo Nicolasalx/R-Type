@@ -16,6 +16,7 @@
 #include "imgui.h"
 #include "components/client_share_movement.hpp"
 #include "components/music_component.hpp"
+#include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
 namespace ecs {
@@ -183,6 +184,10 @@ void ClientEntityFactory::addComponents(
     }
     if (componentsJson.contains("client_share_movement")) {
         reg.addComponent(entity, ecs::component::ClientShareMovement{});
+    }
+    if (componentsJson.contains("score_earned")) {
+        auto scoreJson = componentsJson["score_earned"];
+        reg.addComponent(entity, ecs::component::ScoreEarned{scoreJson["points"].get<int>()});
     }
 }
 
