@@ -13,40 +13,35 @@ static void renderMenuButton(
     rtc::WindowMode newWindowMode,
     const sf::Vector2u &windowSize,
     rtc::WindowMode &windowMode,
-    float &currentYOffset // Pass in the current Y offset to stack buttons
+    float &currentYOffset
 )
 {
-    float buttonWidth = windowSize.x * 0.25f;   // Button width
-    float buttonHeight = windowSize.y * 0.08f;  // Button height
-    float buttonSpacing = windowSize.y * 0.02f; // Spacing between buttons
+    float buttonWidth = windowSize.x * 0.25f;
+    float buttonHeight = windowSize.y * 0.08f;
+    float buttonSpacing = windowSize.y * 0.02f;
 
-    // Set button color
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.2f, 0.8f, 0.7f));        // Semi-transparent blue background
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.4f, 0.4f, 1.0f, 0.9f)); // Lighten on hover
-    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.2f, 0.2f, 0.6f, 1.0f));  // Darker when clicked
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.2f, 0.8f, 0.7f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.4f, 0.4f, 1.0f, 0.9f));
+    ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.2f, 0.2f, 0.6f, 1.0f));
 
-    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 10.0f);               // Rounded corners
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 10.0f)); // Padding for better text alignment
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 10.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(10.0f, 10.0f));
 
-    // Set button position at the bottom left corner
-    ImGui::SetCursorPosX(windowSize.x * 0.05f); // 5% from the left edge
-    ImGui::SetCursorPosY(currentYOffset);       // Use currentYOffset for Y position
+    ImGui::SetCursorPosX(windowSize.x * 0.05f);
+    ImGui::SetCursorPosY(currentYOffset);
 
-    // Render the button and handle the action
     if (ImGui::Button(name.c_str(), ImVec2(buttonWidth, buttonHeight))) {
         windowMode = newWindowMode;
     }
 
-    // Increase the current Y offset for the next button
     currentYOffset += buttonHeight + buttonSpacing;
 
-    ImGui::PopStyleColor(3); // Restore original button color
-    ImGui::PopStyleVar(2);   // Restore frame padding and rounding
+    ImGui::PopStyleColor(3);
+    ImGui::PopStyleVar(2);
 }
 
 void rtc::menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode)
 {
-    // Set up window size and position
     ImGui::SetNextWindowSize(ImVec2(windowSize.x, windowSize.y));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::Begin(
@@ -56,16 +51,12 @@ void rtc::menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode)
             ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
-    // Set font scaling based on window size for responsiveness
     ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1200.0);
 
-    // Apply transparent background for buttons area
-    ImGui::Dummy(ImVec2(0.0f, windowSize.y * 0.75f)); // Reserve 75% for background image
+    ImGui::Dummy(ImVec2(0.0f, windowSize.y * 0.75f));
 
-    // Initialize Y offset for buttons
-    float currentYOffset = windowSize.y * 0.575f; // Start from 75% of window height
+    float currentYOffset = windowSize.y * 0.575f;
 
-    // Render buttons, each time increasing the Y offset
     renderMenuButton("PLAY", rtc::WindowMode::LOBBY, windowSize, windowMode, currentYOffset);
     renderMenuButton("OPTIONS", rtc::WindowMode::OPTIONS, windowSize, windowMode, currentYOffset);
     renderMenuButton("ACCESSIBILITY", rtc::WindowMode::ACCESSIBILITY, windowSize, windowMode, currentYOffset);
