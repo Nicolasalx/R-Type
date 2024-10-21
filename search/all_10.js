@@ -19,11 +19,12 @@ var searchData=
   ['playmusic_16',['playMusic',['../dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed',1,'ecs::SoundManager']]],
   ['playsoundeffect_17',['playSoundEffect',['../dc/dcf/classecs_1_1SoundManager.html#ae501f6a571c9eb7efc9825d96899d7dc',1,'ecs::SoundManager']]],
   ['pointer_5ft_18',['pointer_t',['../da/d2a/classecs_1_1ZipperIterator.html#a62bd6b0fae3b747b9eea21dcb3344860',1,'ecs::ZipperIterator']]],
-  ['position_19',['Position',['../db/d8f/structecs_1_1component_1_1Position.html',1,'ecs::component']]],
-  ['position_20',['position',['../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a',1,'ecs::systems']]],
-  ['position_2ecpp_21',['position.cpp',['../d4/d59/position_8cpp.html',1,'']]],
-  ['position_2ehpp_22',['position.hpp',['../d2/d55/ecs_2components_2position_8hpp.html',1,'(Global Namespace)'],['../d6/d1c/factory_2systems_2position_8hpp.html',1,'(Global Namespace)']]],
-  ['power_23',['power',['../de/de1/structecs_1_1component_1_1Beam.html#a5b8512891f6348b543e61cb34baccf20',1,'ecs::component::Beam']]],
-  ['printhelp_24',['printHelp',['../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7',1,'eng::ArgParser']]],
-  ['pushback_25',['pushBack',['../df/df0/classeng_1_1SafeList.html#a3590fa834784a8925467064bbee71791',1,'eng::SafeList']]]
+  ['points_19',['points',['../db/dc3/structecs_1_1component_1_1ScoreEarned.html#aedb16c1f83f1a29e290647e96635eebd',1,'ecs::component::ScoreEarned']]],
+  ['position_20',['Position',['../db/d8f/structecs_1_1component_1_1Position.html',1,'ecs::component']]],
+  ['position_21',['position',['../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a',1,'ecs::systems']]],
+  ['position_2ecpp_22',['position.cpp',['../d4/d59/position_8cpp.html',1,'']]],
+  ['position_2ehpp_23',['position.hpp',['../d2/d55/ecs_2components_2position_8hpp.html',1,'(Global Namespace)'],['../d6/d1c/factory_2systems_2position_8hpp.html',1,'(Global Namespace)']]],
+  ['power_24',['power',['../de/de1/structecs_1_1component_1_1Beam.html#a5b8512891f6348b543e61cb34baccf20',1,'ecs::component::Beam']]],
+  ['printhelp_25',['printHelp',['../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7',1,'eng::ArgParser']]],
+  ['pushback_26',['pushBack',['../df/df0/classeng_1_1SafeList.html#a3590fa834784a8925467064bbee71791',1,'eng::SafeList']]]
 ];
