@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['randomgenerator_0',['RandomGenerator',['../d0/d9f/classeng_1_1RandomGenerator.html',1,'eng']]],
-  ['registry_1',['Registry',['../df/dcd/classecs_1_1Registry.html',1,'ecs']]],
-  ['registry_2',['registry',['../db/d16/classregistry.html',1,'']]],
-  ['responsehandler_3',['ResponseHandler',['../d4/d19/classntw_1_1ResponseHandler.html',1,'ntw']]],
-  ['roomcontent_4',['RoomContent',['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html',1,'rtc::RoomManager']]],
-  ['roommanager_5',['RoomManager',['../d0/d42/classrtc_1_1RoomManager.html',1,'rtc::RoomManager'],['../d1/d36/classrts_1_1RoomManager.html',1,'rts::RoomManager']]]
+  ['parallax_0',['Parallax',['../d1/ddf/structecs_1_1component_1_1Parallax.html',1,'ecs::component']]],
+  ['parallax_1',['parallax',['../dc/de8/structparallax.html',1,'']]],
+  ['player_2',['Player',['../dd/d3f/structecs_1_1component_1_1Player.html',1,'ecs::component']]],
+  ['player_3',['player',['../d6/d2a/structplayer.html',1,'']]],
+  ['player_4',['Player',['../d7/dfe/structrtc_1_1RoomManager_1_1Player.html',1,'rtc::RoomManager']]],
+  ['position_5',['Position',['../db/d8f/structecs_1_1component_1_1Position.html',1,'ecs::component']]]
 ];

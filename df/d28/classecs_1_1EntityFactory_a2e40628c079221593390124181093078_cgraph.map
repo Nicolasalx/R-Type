@@ -1,11 +1,13 @@
 <map id="ecs::EntityFactory::createClientEntityFromJSON" name="ecs::EntityFactory::createClientEntityFromJSON">
-<area shape="rect" id="node1" title="Creates a client entity from a JSON file." alt="" coords="5,140,217,180"/>
-<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a40f8bb3d8fbd1d144163731dae67dec3" title="Adds components to an entity." alt="" coords="281,33,456,73"/>
-<area shape="rect" id="node6" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="266,98,471,123"/>
-<area shape="rect" id="node7" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="265,147,472,173"/>
-<area shape="rect" id="node8" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="272,197,465,222"/>
-<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="520,197,720,237"/>
-<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="523,5,717,45"/>
-<area shape="rect" id="node4" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="768,70,980,95"/>
-<area shape="rect" id="node5" href="$d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="547,120,693,160"/>
+<area shape="rect" id="node1" title="Creates a client entity from a JSON file." alt="" coords="5,211,217,251"/>
+<area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a40f8bb3d8fbd1d144163731dae67dec3" title="Adds components to an entity." alt="" coords="281,104,456,144"/>
+<area shape="rect" id="node8" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="266,169,471,194"/>
+<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="265,218,472,243"/>
+<area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="272,267,465,293"/>
+<area shape="rect" id="node11" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="525,293,725,333"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="528,5,723,45"/>
+<area shape="rect" id="node4" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="779,70,991,95"/>
+<area shape="rect" id="node5" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="521,121,730,146"/>
+<area shape="rect" id="node6" href="$d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1" title="Retrieves a texture by its identifier, loading it if necessary." alt="" coords="552,171,699,211"/>
+<area shape="rect" id="node7" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="520,235,731,261"/>
 </map>

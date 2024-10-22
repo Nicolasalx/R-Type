@@ -1,5 +1,5 @@
 <map id="lib/ecs/Zipper.hpp" name="lib/ecs/Zipper.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1549,5,1687,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1649,5,1787,31"/>
 <area shape="rect" id="node2" href="$d5/d09/client_2src_2register__udp__response_8cpp.html" title=" " alt="" coords="429,86,575,126"/>
 <area shape="rect" id="node3" href="$d4/d3c/IndexedZipper_8hpp.html" title=" " alt="" coords="600,93,788,119"/>
 <area shape="rect" id="node8" href="$d3/da3/sprite__system_8cpp.html" title=" " alt="" coords="1018,181,1165,221"/>
@@ -13,7 +13,8 @@
 <area shape="rect" id="node17" href="$d6/da9/draw__team__data_8cpp.html" title=" " alt="" coords="2194,86,2357,126"/>
 <area shape="rect" id="node18" href="$d6/d33/parallax_8cpp.html" title=" " alt="" coords="2381,86,2527,126"/>
 <area shape="rect" id="node19" href="$d4/d59/position_8cpp.html" title=" " alt="" coords="2551,86,2698,126"/>
-<area shape="rect" id="node20" href="$d7/d3a/server__share__movement_8cpp.html" title=" " alt="" coords="2723,86,2937,126"/>
+<area shape="rect" id="node20" href="$dd/dd2/render__radial__light_8cpp.html" title=" " alt="" coords="2723,86,2897,126"/>
+<area shape="rect" id="node21" href="$d7/d3a/server__share__movement_8cpp.html" title=" " alt="" coords="2921,86,3136,126"/>
 <area shape="rect" id="node4" href="$d5/dee/health__local__check_8cpp.html" title=" " alt="" coords="5,181,183,221"/>
 <area shape="rect" id="node5" href="$d4/df9/health__mob__check_8cpp.html" title=" " alt="" coords="207,181,381,221"/>
 <area shape="rect" id="node6" href="$d9/d40/health__shared__check_8cpp.html" title=" " alt="" coords="405,181,596,221"/>
