@@ -19,6 +19,8 @@ add_library(FACTORY STATIC
     systems/health_mob_check.cpp
     systems/parallax.cpp
     systems/send_ping.cpp
+    systems/death_timer.cpp
+    systems/render_radial_light.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp
@@ -45,4 +47,4 @@ target_include_directories(FACTORY PUBLIC
     ${CMAKE_SOURCE_DIR}/include
 )
 
-target_link_libraries(FACTORY PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML)
+target_link_libraries(FACTORY PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML Candle-s)
