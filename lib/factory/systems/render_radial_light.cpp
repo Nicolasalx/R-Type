@@ -46,7 +46,7 @@ static std::vector<candle::Edge> updateEdgePosition(ecs::Registry &reg)
 
 void ecs::systems::renderRadialLight(ecs::Registry &reg, sf::RenderWindow &window)
 {
-   std::vector<candle::Edge> edgeList = updateEdgePosition(reg);
+    std::vector<candle::Edge> edgeList = updateEdgePosition(reg);
 
     auto &pos = reg.getComponents<ecs::component::Position>();
     auto &radialLight = reg.getComponents<ecs::component::RadialLight>();
@@ -55,7 +55,7 @@ void ecs::systems::renderRadialLight(ecs::Registry &reg, sf::RenderWindow &windo
 
     for (auto [pos, radialLight] : zip) {
         radialLight.light.setPosition(sf::Vector2f(pos.x + radialLight.offset.x, pos.y + radialLight.offset.y));
-       radialLight.light.castLight(edgeList.begin(), edgeList.end());
+        radialLight.light.castLight(edgeList.begin(), edgeList.end());
         window.draw(radialLight.light);
     }
 }
