@@ -92,7 +92,9 @@ template <typename T>
 struct UDPPacket {
     std::size_t magic = rt::UDP_MAGIC;
     std::size_t size = sizeof(*this);
+    // id ??
     UDPCommand cmd = UDPCommand::NONE;
+    bool ack = false;
     shared_entity_t sharedEntityId = 0;
 
     T body{};
