@@ -1,0 +1,34 @@
+{
+    "type": "local",
+    "components": {
+        "position": {
+            "x": 640.0,
+            "y": 472.0
+        },
+        "velocity": {
+            "vx": -20.0,
+            "vy": 0.0
+        },
+        "sprite": {
+            "texture": "assets/bg/obstacles/verylowground.png",
+            "initial_frame": {
+                "x": 0,
+                "y": 0,
+                "width": 64,
+                "height": 8
+            },
+            "width": 64,
+            "height": 8
+        },
+        "parallax": {
+            "layer": 5,
+            "repeat_x": -96,
+            "respawn_x": 768
+        },
+        "hitbox": {
+            "width": 64.0,
+            "height": 8.0
+        },
+        "light_edge": {}
+    }
+}

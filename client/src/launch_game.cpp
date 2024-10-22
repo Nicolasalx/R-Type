@@ -8,6 +8,7 @@
 #include <SFML/Window/VideoMode.hpp>
 #include <cstddef>
 #include <memory>
+#include <string>
 #include "ClientEntityFactory.hpp"
 #include "ClientTickRate.hpp"
 #include "GameManager.hpp"
@@ -103,7 +104,15 @@ void rtc::GameManager::_launchGame()
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/ruins.json");
+    for (std::size_t i = 1; i <= 11; ++i) {
+        ecs::ClientEntityFactory::createClientEntityFromJSON(
+            reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
+        );
+    }
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bottomCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/topCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/rightCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/leftCollision.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
