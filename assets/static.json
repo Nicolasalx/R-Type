@@ -93,6 +93,9 @@
             "maxHp": 1,
             "currHp": 1
         },
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "score_earned": {
+            "points": 10
+        }
     }
 }

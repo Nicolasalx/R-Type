@@ -29,6 +29,13 @@ void spriteSystem(Registry &reg, float dt, SpriteManager &spriteManager)
             sf::Texture &texture = spriteManager.getTexture(sprite_comp.textureId);
             sprite_comp.spriteObj.setTexture(texture);
         }
+        for (auto &subSprite : sprite_comp.subSprites) {
+            if (subSprite.spriteObj.getTexture() == nullptr) {
+                sf::Texture &subTexture = spriteManager.getTexture(subSprite.textureId);
+                subSprite.spriteObj.setTexture(subTexture);
+            }
+            subSprite.spriteObj.setPosition(subSprite.x + pos_comp.x, subSprite.y + pos_comp.y);
+        }
         sprite_comp.spriteObj.setPosition(pos_comp.x, pos_comp.y);
     }
     IndexedZipper<component::Sprite, component::Animation> animZip(sprites, animations);
@@ -45,6 +52,26 @@ void spriteSystem(Registry &reg, float dt, SpriteManager &spriteManager)
             }
             anim_comp.currentFrame = (anim_comp.currentFrame + 1) % anim_comp.frames[anim_comp.state].size();
             sprite_comp.spriteObj.setTextureRect(anim_comp.frames[anim_comp.state][anim_comp.currentFrame]);
+        }
+        for (auto &subSprite : sprite_comp.subSprites) {
+            if (subSprite.animation.frames.empty()) {
+                continue;
+            }
+            subSprite.animation.elapsedTime += dt;
+            if (subSprite.animation.elapsedTime >= subSprite.animation.frameTime) {
+                subSprite.animation.updateState(reg, id, subSprite.animation);
+                subSprite.animation.elapsedTime = 0.0f;
+                auto size = subSprite.animation.frames[subSprite.animation.state].size();
+                if (size == 0) {
+                    eng::logError("No frames for state: " + subSprite.animation.state);
+                    continue;
+                }
+                subSprite.animation.currentFrame = (subSprite.animation.currentFrame + 1) %
+                    subSprite.animation.frames[subSprite.animation.state].size();
+                subSprite.spriteObj.setTextureRect(
+                    subSprite.animation.frames[subSprite.animation.state][subSprite.animation.currentFrame]
+                );
+            }
         }
     }
 }

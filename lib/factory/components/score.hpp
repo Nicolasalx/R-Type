@@ -21,10 +21,7 @@ namespace ecs::component {
 
 struct Score {
     std::shared_ptr<ImFont> font;
-    std::string text;
-    // sf::Font font;
-    // sf::Text text;
-    int value;
+    int value = 0;
 };
 
 } // namespace ecs::component

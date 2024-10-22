@@ -13,6 +13,7 @@
 #include <list>
 #include <vector>
 #include "Registry.hpp"
+#include "SafeList.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
 #include "UDPResponseHandler.hpp"
@@ -33,7 +34,7 @@ class GameRunner {
     ntw::TickRateManager<rts::TickRate> _tickRateManager;
 
     std::list<std::vector<char>> _datasToSend;
-    std::list<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> _networkCallbacks;
 
     sf::RenderWindow _window;
 

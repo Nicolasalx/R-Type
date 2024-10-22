@@ -15,7 +15,9 @@
 #include "components/velocity.hpp"
 #include "imgui.h"
 #include "components/client_share_movement.hpp"
+#include "components/death_timer.hpp"
 #include "components/music_component.hpp"
+#include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
 namespace ecs {
@@ -57,6 +59,15 @@ const std::unordered_map<std::string, std::function<void(Registry &, entity_t, e
                  } else {
                      state = "idle";
                  }
+             }
+             std::string &stateSub = reg.getComponent<ecs::component::Sprite>(id)->subSprites[0].animation.state;
+             float vx = vel.vx;
+             if (vx < 0) {
+                 stateSub = "left";
+             } else if (vx > 0) {
+                 stateSub = "right";
+             } else {
+                 stateSub = "idle";
              }
          }},
         {"robotGround",
@@ -110,6 +121,50 @@ void ClientEntityFactory::addComponents(
                 spriteJson["width"].get<float>() / frameJson["width"].get<float>(),
                 spriteJson["height"].get<float>() / frameJson["height"].get<float>()
             );
+        }
+        if (spriteJson.contains("sub_sprites")) {
+            for (const auto &subSpriteJson : spriteJson["sub_sprites"]) {
+                ecs::component::SubSprite subSprite;
+                subSprite.textureId = subSpriteJson["texture"].get<std::string>();
+                subSprite.spriteObj.setTexture(spriteManager.getTexture(subSprite.textureId));
+                auto subFrameJson = subSpriteJson["initial_frame"];
+                subSprite.spriteObj.setTextureRect(sf::IntRect(
+                    subFrameJson["x"].get<int>(),
+                    subFrameJson["y"].get<int>(),
+                    subFrameJson["width"].get<int>(),
+                    subFrameJson["height"].get<int>()
+                ));
+                if (subSpriteJson.contains("x") && subSpriteJson.contains("y")) {
+                    subSprite.x = subSpriteJson["x"].get<int>();
+                    subSprite.y = subSpriteJson["y"].get<int>();
+                }
+                if (subSpriteJson.contains("animation")) {
+                    auto animJson = subSpriteJson["animation"];
+                    subSprite.animation.frameTime = animJson["frame_time"].get<float>();
+                    for (const auto &[stateName, framesJson] : animJson["frames"].items()) {
+                        for (const auto &frameJson : framesJson) {
+                            subSprite.animation.frames[stateName].emplace_back(
+                                frameJson["x"].get<int>(),
+                                frameJson["y"].get<int>(),
+                                frameJson["width"].get<int>(),
+                                frameJson["height"].get<int>()
+                            );
+                        }
+                    }
+                    if (subSpriteJson.contains("current_frame")) {
+                        subSprite.animation.currentFrame = subSpriteJson["current_frame"].get<size_t>();
+                    }
+                    if (subSpriteJson.contains("state")) {
+                        subSprite.animation.state = subSpriteJson["state"].get<std::string>();
+                    } else {
+                        subSprite.animation.state = "idle";
+                    }
+                    if (subSpriteJson.contains("update_state")) {
+                        subSprite.animation.updateState = ANIM_MAP.at(subSpriteJson["update_state"].get<std::string>());
+                    }
+                }
+                spriteComp.subSprites.push_back(subSprite);
+            }
         }
         reg.addComponent(entity, std::move(spriteComp));
     }
@@ -183,6 +238,16 @@ void ClientEntityFactory::addComponents(
     }
     if (componentsJson.contains("client_share_movement")) {
         reg.addComponent(entity, ecs::component::ClientShareMovement{});
+    }
+    if (componentsJson.contains("death_timer")) {
+        auto deathTimerJson = componentsJson["death_timer"];
+        ecs::component::DeathTimer deathTimerComp;
+        deathTimerComp.timeToDeath = deathTimerJson["time"].get<float>();
+        reg.addComponent(entity, std::move(deathTimerComp));
+    }
+    if (componentsJson.contains("score_earned")) {
+        auto scoreJson = componentsJson["score_earned"];
+        reg.addComponent(entity, ecs::component::ScoreEarned{scoreJson["points"].get<int>()});
     }
 }
 

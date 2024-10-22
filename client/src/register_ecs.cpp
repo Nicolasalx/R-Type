@@ -5,11 +5,11 @@
 ** register_ecs
 */
 
-#include <list>
 #include "ClientTickRate.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -31,13 +31,16 @@
 #include "systems/position.hpp"
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
+#include "components/death_timer.hpp"
 #include "components/music_component.hpp"
+#include "components/score_earned.hpp"
 #include "components/self_player.hpp"
 #include "components/sound_emitter.hpp"
 #include "imgui-SFML.h"
 #include "systems/client_share_movement.hpp"
 #include "systems/control_move.hpp"
 #include "systems/control_special.hpp"
+#include "systems/death_timer.cpp"
 #include "systems/draw_fps.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
@@ -70,6 +73,8 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::SelfPlayer>();
     reg.registerComponent<ecs::component::AllyPlayer>();
+    reg.registerComponent<ecs::component::ScoreEarned>();
+    reg.registerComponent<ecs::component::DeathTimer>();
 }
 
 void rtc::registerSystems(
@@ -80,7 +85,7 @@ void rtc::registerSystems(
     ecs::InputManager &input,
     ntw::TickRateManager<rtc::TickRate> &tickRateManager,
     ecs::SpriteManager &spriteManager,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
@@ -92,7 +97,7 @@ void rtc::registerSystems(
     tickRateManager.addTickRate(
         rtc::TickRate::CALL_NETWORK_CALLBACKS, rtc::CLIENT_TICKRATE.at(rtc::TickRate::CALL_NETWORK_CALLBACKS)
     );
-
+    reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
     reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
         ecs::systems::controlSpecial(reg, input, udpClient, keyBind);
@@ -113,12 +118,9 @@ void rtc::registerSystems(
             ecs::systems::clientShareMovement(reg, udpClient);
         }
     });
-    reg.addSystem([&networkCallbacks, &tickRateManager, &dt, &reg]() {
+    reg.addSystem([&networkCallbacks, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::CALL_NETWORK_CALLBACKS, dt)) {
-            while (!networkCallbacks.empty()) {
-                networkCallbacks.front()(reg);
-                networkCallbacks.pop_front();
-            }
+            networkCallbacks.consumeList();
         }
     });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });

@@ -85,6 +85,9 @@
             "currHp": 2
         },
         "ai_actor": {},
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "score_earned": {
+            "points": 10
+        }
     }
 }

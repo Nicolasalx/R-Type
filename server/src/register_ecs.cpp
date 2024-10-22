@@ -72,7 +72,7 @@ void rts::registerSystems(
     ntw::TickRateManager<rts::TickRate> &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
-    std::list<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
+    eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
     bool debugMode
 )
@@ -83,12 +83,7 @@ void rts::registerSystems(
         rts::TickRate::ENTITY_MOVEMENT, rts::SERVER_TICKRATE.at(rts::TickRate::ENTITY_MOVEMENT)
     );
 
-    reg.addSystem([&networkCallbacks, &reg]() {
-        while (!networkCallbacks.empty()) {
-            networkCallbacks.front()(reg);
-            networkCallbacks.pop_front();
-        }
-    });
+    reg.addSystem([&networkCallbacks]() { networkCallbacks.consumeList(); });
     reg.addSystem([&reg, &dt, &tickRateManager]() {
         if (tickRateManager.needUpdate(rts::TickRate::AI_ACTING, dt)) {
             ecs::systems::aiAct(reg);

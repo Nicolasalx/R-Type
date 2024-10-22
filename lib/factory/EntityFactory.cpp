@@ -171,7 +171,7 @@ void EntityFactory::addCommonComponents(
         float scoreValue = componentsJson["score"].get<float>();
         ecs::component::Score score;
         score.font = std::move(font);
-        score.text = std::to_string(scoreValue);
+        score.value = scoreValue;
         reg.addComponent(entity, ecs::component::Score{score});
     }
     if (componentsJson.contains("player")) {

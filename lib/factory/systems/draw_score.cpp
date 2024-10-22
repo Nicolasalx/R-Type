@@ -26,7 +26,7 @@ void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize)
                 (windowSize.y * 0.05),
                 ImVec2(windowSize.x * 0.85, windowSize.y * 0.05),
                 IM_COL32(255, 255, 255, 255),
-                std::to_string(static_cast<int>(std::stof(score.text))).c_str()
+                std::to_string(score.value).c_str()
             );
         }
     }
