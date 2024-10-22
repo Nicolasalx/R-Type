@@ -19,6 +19,7 @@ add_library(FACTORY STATIC
     systems/health_mob_check.cpp
     systems/parallax.cpp
     systems/send_ping.cpp
+    systems/death_timer.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp

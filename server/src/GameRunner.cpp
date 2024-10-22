@@ -20,7 +20,7 @@
 #include "components/shared_entity.hpp"
 
 rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Use the stage argument
-    : _udpServer(port), _debugMode(debugMode)
+    : _udpServer(port), /*_timeoutHandler(_udpServer),*/ _debugMode(debugMode)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
@@ -51,6 +51,8 @@ void rts::GameRunner::killPlayer(size_t playerId)
                     rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, shared.sharedEntityId)
                         .serialize()
                 );
+                _udpServer.removeClient(playerId); // Kill the player in udpServer
+                // Kill inside the timeoutHandler
                 reg.killEntity(e);
                 return;
             }

@@ -40,7 +40,7 @@
 #include "systems/client_share_movement.hpp"
 #include "systems/control_move.hpp"
 #include "systems/control_special.hpp"
-#include "systems/death_timer.cpp"
+#include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"

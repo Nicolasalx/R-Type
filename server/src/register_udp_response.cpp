@@ -25,16 +25,19 @@ static void handlePlayerCreation(
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg
 )
 {
-    shared_entity_t sharedEntityId = msg.sharedEntityId;
-    std::size_t playerIndex = msg.body.playerIndex;
-    const auto &pos = msg.body.pos;
+    auto newMsg = msg;
+    shared_entity_t sharedEntityId = newMsg.sharedEntityId;
+    std::size_t playerIndex = newMsg.body.playerIndex;
+    const auto &pos = newMsg.body.pos;
 
-    networkCallbacks.pushBack([playerIndex, sharedEntityId, pos, msg, &datasToSend](ecs::Registry &reg) {
+    newMsg.ack = true;
+    // Store packet in ack checker
+    networkCallbacks.pushBack([playerIndex, sharedEntityId, pos, newMsg, &datasToSend](ecs::Registry &reg) {
         auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
         );
-        reg.getComponent<ecs::component::Player>(entity)->id = msg.body.playerId;
-        datasToSend.push_back(std::move(msg).serialize());
+        reg.getComponent<ecs::component::Player>(entity)->id = newMsg.body.playerId;
+        datasToSend.push_back(std::move(newMsg).serialize());
     });
 }
 
@@ -44,14 +47,18 @@ static void handleMissileCreation(
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
 )
 {
-    const auto &pos = msg.body.pos;
-    const auto &vel = msg.body.vel;
 
-    networkCallbacks.pushBack([pos, vel, msg, &datasToSend](ecs::Registry &reg) {
+    auto newMsg = msg;
+    const auto &pos = newMsg.body.pos;
+    const auto &vel = newMsg.body.vel;
+
+    newMsg.ack = true;
+    // Store packet in ack checker
+    networkCallbacks.pushBack([pos, vel, newMsg, &datasToSend](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, msg.sharedEntityId, vel.vx, vel.vy
+            reg, "assets/missile.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
         );
-        datasToSend.push_back(std::move(msg).serialize());
+        datasToSend.push_back(std::move(newMsg).serialize());
     });
 }
 

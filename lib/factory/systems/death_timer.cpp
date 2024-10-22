@@ -1,5 +1,3 @@
-#pragma once
-
 #include "death_timer.hpp"
 #include "components/death_timer.hpp"
 
