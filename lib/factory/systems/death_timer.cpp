@@ -1,4 +1,9 @@
-#pragma once
+/*
+** EPITECH PROJECT, 2024
+** R-Type
+** File description:
+** death_timer
+*/
 
 #include "death_timer.hpp"
 #include "components/death_timer.hpp"

@@ -2,15 +2,16 @@
 ** EPITECH PROJECT, 2024
 ** R-Type
 ** File description:
-** death_timer
+** draw_radial_ligh
 */
 
 #pragma once
 
 #include "Registry.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
 
 namespace ecs::systems {
 
-void deathTimer(Registry &reg, float dt);
+void renderRadialLight(Registry &reg, sf::RenderWindow &window);
 
 } // namespace ecs::systems

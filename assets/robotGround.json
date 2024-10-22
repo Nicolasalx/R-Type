@@ -81,13 +81,29 @@
             "height": 34.0
         },
         "health": {
-            "maxHp": 2,
-            "currHp": 2
+            "maxHp": 5,
+            "currHp": 5
         },
         "ai_actor": {},
         "server_share_movement": {},
         "score_earned": {
             "points": 10
+        },
+        "radial_light": {
+            "offset": {
+                "x": 17,
+                "y": 17
+            },
+            "color": {
+                "r": 150,
+                "g": 65,
+                "b": 0
+            },
+            "range": 50.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
         }
     }
 }

@@ -148,6 +148,22 @@
         "score": 0,
         "client_share_movement": {},
         "server_share_movement": {},
-        "player": {}
+        "player": {},
+        "radial_light": {
+            "offset": {
+                "x": 13,
+                "y": 6
+            },
+            "color": {
+                "r": 165,
+                "g": 0,
+                "b": 255
+            },
+            "range": 50.0,
+            "intensity": 0.5,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
+        }
     }
 }

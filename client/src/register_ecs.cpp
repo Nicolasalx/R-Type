@@ -32,7 +32,9 @@
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
+#include "components/light_edge.hpp"
 #include "components/music_component.hpp"
+#include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
 #include "components/sound_emitter.hpp"
@@ -40,7 +42,7 @@
 #include "systems/client_share_movement.hpp"
 #include "systems/control_move.hpp"
 #include "systems/control_special.hpp"
-#include "systems/death_timer.cpp"
+#include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
@@ -48,6 +50,7 @@
 #include "systems/draw_score.hpp"
 #include "systems/draw_team_data.hpp"
 #include "systems/health_local_check.hpp"
+#include "systems/render_radial_light.hpp"
 #include "systems/send_ping.hpp"
 #include "systems/sprite_system.hpp"
 #include <unordered_map>
@@ -75,6 +78,8 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::AllyPlayer>();
     reg.registerComponent<ecs::component::ScoreEarned>();
     reg.registerComponent<ecs::component::DeathTimer>();
+    reg.registerComponent<ecs::component::RadialLight>();
+    reg.registerComponent<ecs::component::LightEdge>();
 }
 
 void rtc::registerSystems(
@@ -108,6 +113,7 @@ void rtc::registerSystems(
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
+    reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
     reg.addSystem([&udpClient, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::PING_REFRESH, dt)) {
             ecs::systems::sendPing(udpClient);

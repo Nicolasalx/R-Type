@@ -66,6 +66,22 @@
             "width": 10.0,
             "height": 10.0
         },
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "radial_light": {
+            "offset": {
+                "x": 5,
+                "y": 5
+            },
+            "color": {
+                "r": 255,
+                "g": 0,
+                "b": 0
+            },
+            "range": 25.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
+        }
     }
 }

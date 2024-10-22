@@ -8,15 +8,21 @@
 #include "ClientEntityFactory.hpp"
 
 #include <utility>
+#include "Candle/LightSource.hpp"
+#include "SFML/Graphics/Color.hpp"
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
+#include "components/hitbox.hpp"
 #include "components/parallax.hpp"
+#include "components/position.hpp"
 #include "components/sprite.hpp"
 #include "components/velocity.hpp"
 #include "imgui.h"
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
+#include "components/light_edge.hpp"
 #include "components/music_component.hpp"
+#include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
@@ -248,6 +254,41 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("score_earned")) {
         auto scoreJson = componentsJson["score_earned"];
         reg.addComponent(entity, ecs::component::ScoreEarned{scoreJson["points"].get<int>()});
+    }
+    if (componentsJson.contains("radial_light")) {
+        auto radialLightJson = componentsJson["radial_light"];
+        ecs::component::RadialLight light;
+        auto componentsOffset = radialLightJson["offset"];
+        light.offset.x = componentsOffset["x"].get<float>();
+        light.offset.y = componentsOffset["y"].get<float>();
+        auto componentsColor = radialLightJson["color"];
+        light.light.setColor(
+            sf::Color(componentsColor["r"].get<int>(), componentsColor["g"].get<int>(), componentsColor["b"].get<int>())
+        );
+        light.light.setRange(radialLightJson["range"].get<float>());
+        light.light.setFade(radialLightJson["fade"].get<bool>());
+        light.light.setBeamAngle(radialLightJson["angle"].get<float>());
+        light.light.setRotation(radialLightJson["rotation"].get<float>());
+        light.light.setIntensity(radialLightJson["intensity"].get<float>());
+        reg.addComponent(entity, std::move(light));
+    }
+    if (componentsJson.contains("light_edge") && reg.hasComponent<ecs::component::Hitbox>(entity)) {
+        ecs::component::LightEdge lightEdge;
+
+        auto hitbox = reg.getComponent<ecs::component::Hitbox>(entity);
+        auto pos = reg.getComponent<ecs::component::Position>(entity);
+
+        float x1 = pos->x;
+        float y1 = pos->y;
+        float x2 = x1 + hitbox->width;
+        float y2 = y1 + hitbox->height;
+
+        lightEdge.edge.emplace_back(sf::Vector2f(x1, y1), sf::Vector2f(x2, y1));
+        lightEdge.edge.emplace_back(sf::Vector2f(x1, y2), sf::Vector2f(x2, y2));
+        lightEdge.edge.emplace_back(sf::Vector2f(x1, y1), sf::Vector2f(x1, y2));
+        lightEdge.edge.emplace_back(sf::Vector2f(x2, y1), sf::Vector2f(x2, y2));
+
+        reg.addComponent(entity, std::move(lightEdge));
     }
 }
 
