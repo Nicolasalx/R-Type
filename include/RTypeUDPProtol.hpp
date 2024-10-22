@@ -108,6 +108,11 @@ struct UDPPacket {
 
     UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId) : cmd(cmd), sharedEntityId(sharedEntityId) {}
 
+    UDPPacket(const std::vector<char> &data)
+    {
+        std::memcpy(this, data, sizeof(*this));
+    }
+
     UDPPacket(std::vector<char> data, char key)
     {
         for (char &current : data) {

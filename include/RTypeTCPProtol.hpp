@@ -175,6 +175,11 @@ struct TCPPacket {
 
     TCPPacket(TCPCommand cmd, const T &body) : cmd(cmd), body(body) {}
 
+    TCPPacket(const std::vector<char> &data)
+    {
+        std::memcpy(this, data, sizeof(*this));
+    }
+
     TCPPacket(std::vector<char> data, char key)
     {
         for (char &current : data) {
