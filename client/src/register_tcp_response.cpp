@@ -67,11 +67,13 @@ void rtc::GameManager::_registerTcpResponse()
     _tcpResponseHandler.registerHandler<rt::TCPBody::SER_READY>(
         rt::TCPCommand::SER_READY,
         [this](const rt::TCPPacket<rt::TCPBody::SER_READY> &packet) {
-            if (packet.body.missileSpawnRate != 100) {
-                rtc::GameOptions::enemyMissileSpawnRate = packet.body.missileSpawnRate;
-            }
-            if (packet.body.playerMissileSpawnRate != 250) {
-                rtc::GameOptions::missileSpawnRate = packet.body.playerMissileSpawnRate;
+            if (packet.body.roomName == _roomManager.getCurrentRoom()) {
+                if (packet.body.missileSpawnRate != 100) {
+                    rtc::GameOptions::enemyMissileSpawnRate = packet.body.missileSpawnRate;
+                }
+                if (packet.body.playerMissileSpawnRate != 250) {
+                    rtc::GameOptions::missileSpawnRate = packet.body.playerMissileSpawnRate;
+                }
             }
             _roomManager.getRooms().at(packet.body.roomName).player.at(packet.body.userId).ready = true;
         }
