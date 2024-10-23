@@ -5,6 +5,7 @@
 ** inside_room
 */
 
+#include "../GameOptions.hpp"
 #include "../RTypeClient.hpp"
 #include "imgui.h"
 
@@ -19,8 +20,11 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
         ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
-
     ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+
+    float roomSectionWidth = windowSize.x * 0.6f;
+
+    ImGui::BeginChild("RoomSection", ImVec2(roomSectionWidth, 0), true);
 
     ImGui::BeginTable("playersTable", 2);
     ImGui::TableSetupColumn("Name");
@@ -41,8 +45,8 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     }
     ImGui::EndTable();
 
-    ImVec2 buttonSize(windowSize.x * 0.25f, windowSize.y * 0.15f);
-    float padding = windowSize.x * 0.02f;
+    ImVec2 buttonSize(roomSectionWidth * 0.25f, windowSize.y * 0.15f);
+    float padding = roomSectionWidth * 0.02f;
 
     ImVec2 windowContentRegionMax = ImGui::GetWindowContentRegionMax();
     ImVec2 leaveButtonPos =
@@ -72,5 +76,24 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     }
     ImGui::PopStyleColor(3);
 
+    ImGui::EndChild();
+
+    ImGui::SameLine();
+
+    ImGui::BeginChild("Game Option", ImVec2(0, 0), true);
+
+    ImGui::Text("Game Options:");
+    ImGui::Spacing();
+
+    ImGui::Text("Missile Spawn delay:");
+    ImGui::SliderInt("##missileSpawnRate", &rtc::GameOptions::missileSpawnRate, 1, 500);
+
+    ImGui::Text("Enemy Missile Spawn Rate:");
+    ImGui::SliderInt("##enemyMissileSpawnRate", &rtc::GameOptions::enemyMissileSpawnRate, 1, 200);
+
+    ImGui::Text("Enable Light:");
+    ImGui::Checkbox("##visualEffects", &rtc::GameOptions::lightEffect);
+
+    ImGui::EndChild();
     ImGui::End();
 }

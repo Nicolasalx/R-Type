@@ -7,6 +7,7 @@
 
 #include "RoomManager.hpp"
 #include <cstddef>
+#include "GameOptions.hpp"
 #include "RTypeTCPProtol.hpp"
 
 std::size_t rtc::RoomManager::getSelfId() const
@@ -95,6 +96,8 @@ void rtc::RoomManager::askToBeReady()
     rt::TCPPacket<rt::TCPBody::CL_READY> packet(rt::TCPCommand::CL_READY);
 
     packet.body.userId = _userId;
+    packet.body.missileSpawnRate = rtc::GameOptions::enemyMissileSpawnRate;
+    packet.body.playerMissileSpawnRate = rtc::GameOptions::missileSpawnRate;
     _currentRoom.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
     _tcpClient.send(reinterpret_cast<const char *>(&packet), sizeof(packet));
 }

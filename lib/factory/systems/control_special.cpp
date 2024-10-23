@@ -30,7 +30,8 @@ void ecs::systems::controlSpecial(
     ecs::Registry &reg,
     ecs::InputManager &input,
     ntw::UDPClient &udp,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    int spawnRate
 )
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
@@ -42,7 +43,7 @@ void ecs::systems::controlSpecial(
     for (auto [_, pos] : zipControl) {
         if (input.isKeyPressed(keyBind.getActionKey(rt::PlayerAction::SHOOT_MISSILE))) {
             auto now = std::chrono::high_resolution_clock::now();
-            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 250) {
+            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < spawnRate) {
                 continue;
             }
             lastTime = now;
