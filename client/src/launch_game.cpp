@@ -78,8 +78,10 @@ void rtc::GameManager::_launchGame()
 
     _window->setView(_view);
 
-    soundManager.loadMusic("battle", "assets/battle.ogg");
-    soundManager.playMusic("battle", 5.f, true);
+    // soundManager.loadMusic("battle", "assets/battle.ogg");
+    // soundManager.playMusic("battle", 5.f, true);
+    soundManager.loadSoundBuffer("explosion", "assets/boom12.wav");
+    soundManager.playSoundEffect("explosion", 100.f, false);
 
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
@@ -93,7 +95,8 @@ void rtc::GameManager::_launchGame()
         spriteManager,
         _networkCallbacks,
         _metrics,
-        _keyBind
+        _keyBind,
+        soundManager
     );
 
     _setupUdpConnection(spriteManager, udpClient);

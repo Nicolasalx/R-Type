@@ -159,6 +159,10 @@
             "width": 16.0,
             "height": 16.0
         },
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "sound_emitter": {
+            "sound": "assets/missile.wav",
+            "volume": 10.0
+        }
     }
 }
