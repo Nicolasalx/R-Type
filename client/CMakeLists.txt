@@ -8,6 +8,7 @@ add_executable(r-type_client
     src/register_tcp_response.cpp
     src/register_udp_response.cpp
     src/run_gui.cpp
+    src/GameOptions.cpp
     src/menu/room_selection.cpp
     src/menu/title_menu.cpp
     src/menu/chat.cpp

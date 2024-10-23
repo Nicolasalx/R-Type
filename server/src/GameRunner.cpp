@@ -19,7 +19,8 @@
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
 
-rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Use the stage argument
+rts::GameRunner::GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode) // ! Use the stage
+                                                                                               // argument
     : _udpServer(port), _debugMode(debugMode)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
@@ -35,7 +36,7 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Us
     rts::registerSystems(
         _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, debugMode
     );
-    rts::initWaves(_waveManager, _datasToSend);
+    rts::initWaves(_waveManager, _datasToSend, missileSpawnRate);
 }
 
 void rts::GameRunner::killPlayer(size_t playerId)

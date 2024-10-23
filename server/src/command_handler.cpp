@@ -25,17 +25,13 @@ void rts::commandHandler(std::string &str, rts::RoomManager &roomManager, ntw::T
         roomManager.printRoomList();
     }
     if (str == "ban" || str == "kick") {
-        try {
-            std::size_t playerId = 0;
-            std::cout << "playerId: ";
-            std::getline(std::cin, str);
-            playerId = std::stoul(str);
-            std::cout << "roomName: ";
-            std::getline(std::cin, str);
-            roomManager.banPlayer(str, playerId, tcpServer);
-        } catch (const std::exception &) {
-            std::cerr << "Invalid command argument\n";
-        }
+        std::size_t playerId = 0;
+        std::cout << "playerId: ";
+        std::getline(std::cin, str);
+        playerId = std::stoul(str);
+        std::cout << "roomName: ";
+        std::getline(std::cin, str);
+        roomManager.banPlayer(str, playerId, tcpServer);
     }
     if (str == "broadcast") {
         std::cout << "msg: ";

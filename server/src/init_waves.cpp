@@ -22,7 +22,13 @@
 #include "components/ai_actor.hpp"
 #include "shared_entity.hpp"
 
-static entity_t spawnRobot(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend, size_t maxMob, size_t i)
+static entity_t spawnRobot(
+    ecs::Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    size_t maxMob,
+    size_t i,
+    int missileSpawnRate
+)
 {
     float x = float(rt::SCREEN_WIDTH) * (float(i) / float(maxMob + 1));
     float y = float(rt::SCREEN_HEIGHT) * (4.f / 5.f);
@@ -31,14 +37,21 @@ static entity_t spawnRobot(ecs::Registry &reg, std::list<std::vector<char>> &dat
                               rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND, sharedId, {.pos = {x, y}, .vel = {-10, 0}}
     ).serialize());
     auto e = ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/robotGround.json", x, y, sharedId, -10);
-    reg.getComponent<ecs::component::AiActor>(e)->act = [x, &datasToSend](ecs::Registry &reg, entity_t e) {
-        rts::ais::horizontalMoveAi(reg, e, x - 100, x + 100);
-        rts::ais::fireRandomMissileAi(reg, e, datasToSend, nullptr, {-1, 1}, {-1, 0});
-    };
+    reg.getComponent<ecs::component::AiActor>(e)->act =
+        [x, &datasToSend, missileSpawnRate](ecs::Registry &reg, entity_t e) {
+            rts::ais::horizontalMoveAi(reg, e, x - 100, x + 100);
+            rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate, nullptr, {-1, 1}, {-1, 0});
+        };
     return e;
 }
 
-static entity_t spawnBydosWave(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend, size_t maxMob, size_t i)
+static entity_t spawnBydosWave(
+    ecs::Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    size_t maxMob,
+    size_t i,
+    int missileSpawnRate
+)
 {
     float x = float(rt::SCREEN_WIDTH) * (4.f / 5.f);
     float y = float(rt::SCREEN_HEIGHT) * (float(i) / float(maxMob + 1));
@@ -47,32 +60,38 @@ static entity_t spawnBydosWave(ecs::Registry &reg, std::list<std::vector<char>> 
                               rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedId, {.pos = {x, y}}
     ).serialize());
     auto e = ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/bydosWave.json", x, y, sharedId, -10);
-    reg.getComponent<ecs::component::AiActor>(e)->act = [y, &datasToSend](ecs::Registry &reg, entity_t e) {
-        rts::ais::waveMovement(reg, e, y);
-        rts::ais::fireRandomMissileAi(reg, e, datasToSend);
-    };
+    reg.getComponent<ecs::component::AiActor>(e)->act =
+        [y, &datasToSend, missileSpawnRate](ecs::Registry &reg, entity_t e) {
+            rts::ais::waveMovement(reg, e, y);
+            rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
+        };
     return e;
 }
 
 // Create robot and put his ais
-static void waveInit(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend, size_t maxMob)
+static void waveInit(
+    ecs::WaveManager &waveManager,
+    std::list<std::vector<char>> &datasToSend,
+    size_t maxMob,
+    int missileSpawnRate
+)
 {
     auto waveId = waveManager.addNewWave();
 
     for (size_t i = 1; i < maxMob + 1; i++) {
         if (i % 2 == 0) {
-            waveManager.addNewMob(waveId, [i, &datasToSend, maxMob](ecs::Registry &reg) {
-                return spawnRobot(reg, datasToSend, maxMob, i);
+            waveManager.addNewMob(waveId, [i, &datasToSend, maxMob, missileSpawnRate](ecs::Registry &reg) {
+                return spawnRobot(reg, datasToSend, maxMob, i, missileSpawnRate);
             });
         } else {
-            waveManager.addNewMob(waveId, [i, &datasToSend, maxMob](ecs::Registry &reg) {
-                return spawnBydosWave(reg, datasToSend, maxMob, i);
+            waveManager.addNewMob(waveId, [i, &datasToSend, maxMob, missileSpawnRate](ecs::Registry &reg) {
+                return spawnBydosWave(reg, datasToSend, maxMob, i, missileSpawnRate);
             });
         }
     }
 }
 
-void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend)
+void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend, int missileSpawnRate)
 {
     auto waveId = waveManager.addNewWave();
 
@@ -88,6 +107,6 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
             return entity;
         });
     }
-    waveInit(waveManager, datasToSend, 5);
-    waveInit(waveManager, datasToSend, 6);
+    waveInit(waveManager, datasToSend, 5, missileSpawnRate);
+    waveInit(waveManager, datasToSend, 6, missileSpawnRate);
 }
