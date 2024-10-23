@@ -11,6 +11,7 @@
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
+#include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/position.hpp"
 #include "udp/UDPClient.hpp"
@@ -26,27 +27,26 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(
-    ecs::Registry &reg,
-    ecs::InputManager &input,
-    ntw::UDPClient &udp,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
-)
+void ecs::systems::controlSpecial(ecs::Registry &reg, ntw::UDPClient &udp)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();
+    auto &beams = reg.getComponents<ecs::component::Beam>();
 
-    ecs::Zipper<ecs::component::Controllable, ecs::component::Position> zipControl(controllables, positions);
+    ecs::Zipper<ecs::component::Controllable, ecs::component::Position, ecs::component::Beam> zipControl(
+        controllables, positions, beams
+    );
 
     static auto lastTime = std::chrono::high_resolution_clock::now();
-    for (auto [_, pos] : zipControl) {
-        if (input.isKeyPressed(keyBind.getActionKey(rt::PlayerAction::SHOOT_MISSILE))) {
+    for (auto [_, pos, beam] : zipControl) {
+        if (!beam.isCharging && beam.sendMissile) {
             auto now = std::chrono::high_resolution_clock::now();
             if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 250) {
                 continue;
             }
             lastTime = now;
             spawnMissile(udp, pos);
+            beam.sendMissile = false;
         }
     }
 }

@@ -6,6 +6,7 @@
 */
 
 #include "draw_player_beam_bar.hpp"
+#include "RTypeConst.hpp"
 #include "Zipper.hpp"
 #include "components/beam.hpp"
 #include "imgui.h"
@@ -32,7 +33,13 @@ static void drawBar(int percentageBar, const sf::Vector2u &windowSize)
     ImGui::GetBackgroundDrawList()->AddText(ImVec2(rect2Pos.x, rect2Pos.y - 20), IM_COL32(255, 255, 255, 255), "Beam");
 }
 
-void ecs::systems::drawPlayerBeamBar(Registry &reg, const sf::Vector2u &windowSize)
+void ecs::systems::drawPlayerBeamBar(
+    Registry &reg,
+    const sf::Vector2u &windowSize,
+    ecs::InputManager &input,
+    sf::Clock &chargeClock,
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+)
 {
     auto &beams = reg.getComponents<ecs::component::Beam>();
     auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
@@ -40,6 +47,20 @@ void ecs::systems::drawPlayerBeamBar(Registry &reg, const sf::Vector2u &windowSi
     Zipper<ecs::component::Beam, ecs::component::SelfPlayer> zip(beams, selfPlayer);
 
     for (auto [beam, _] : zip) {
-        drawBar(beam.power, windowSize);
+        if (input.isKeyPressed(keyBind.getActionKey(rt::PlayerAction::SHOOT_MISSILE))) {
+            if (!beam.isCharging) {
+                beam.isCharging = true;
+                chargeClock.restart();
+                beam.sendMissile = true;
+            }
+        } else {
+            beam.isCharging = false;
+            beam.chargeValue = 0;
+        }
+        if (beam.isCharging) {
+            float elapsedTime = chargeClock.getElapsedTime().asSeconds();
+            beam.chargeValue = std::min(100, static_cast<int>((elapsedTime / 1.0f) * 100));
+        }
+        drawBar(beam.chargeValue, windowSize);
     }
 }

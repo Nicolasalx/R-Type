@@ -82,6 +82,7 @@ void rtc::GameManager::_launchGame()
     soundManager.loadMusic("battle", "assets/battle.ogg");
     soundManager.playMusic("battle", 5.f, true);
 
+    sf::Clock chargeClock;
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
     rtc::registerSystems(
@@ -94,7 +95,8 @@ void rtc::GameManager::_launchGame()
         spriteManager,
         _networkCallbacks,
         _metrics,
-        _keyBind
+        _keyBind,
+        chargeClock
     );
 
     _setupUdpConnection(spriteManager, udpClient);

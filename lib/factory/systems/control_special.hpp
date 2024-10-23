@@ -30,11 +30,6 @@ namespace ecs::systems {
  * @param udp Udp client to send informations to server.
  */
 
-void controlSpecial(
-    Registry &reg,
-    ecs::InputManager &input,
-    ntw::UDPClient &udp,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
-);
+void controlSpecial(Registry &reg, ntw::UDPClient &udp);
 
 } // namespace ecs::systems

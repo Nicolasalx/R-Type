@@ -92,7 +92,8 @@ void rtc::registerSystems(
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    sf::Clock &chargeClock
 )
 {
     tickRateManager.addTickRate(
@@ -104,9 +105,7 @@ void rtc::registerSystems(
     );
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
-    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, keyBind);
-    });
+    reg.addSystem([&reg, &udpClient]() { ecs::systems::controlSpecial(reg, udpClient); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
@@ -129,7 +128,9 @@ void rtc::registerSystems(
             networkCallbacks.consumeList();
         }
     });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
+    reg.addSystem([&reg, &window, &input, &chargeClock, &keyBind]() {
+        ecs::systems::drawPlayerBeamBar(reg, window.getSize(), input, chargeClock, keyBind);
+    });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
