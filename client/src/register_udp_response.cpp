@@ -158,9 +158,10 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
-        [this](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
-            try {
-                _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId](ecs::Registry &reg) {
+        [this, &udpClient](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
+            _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId, packet, &udpClient](ecs::Registry &reg
+                                       ) {
+                try {
                     if (reg.hasComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))) {
                         auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
                         auto &score = reg.getComponents<ecs::component::Score>();
@@ -173,11 +174,13 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                         }
                     }
                     reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
-                });
-            } catch (const std::exception &e) {
-                // If entity does not exist, maybe server is late or ahead.
-                eng::logTimeWarning(e.what());
-            }
+                    auto packSer = packet.serialize();
+                    udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
+                } catch (const std::exception &e) {
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
+                }
+            });
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::PING>(
