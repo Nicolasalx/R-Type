@@ -48,7 +48,7 @@ Checks:
   -cppcoreguidelines-avoid-const-or-ref-data-members,
   -cppcoreguidelines-non-private-member-variables-in-classes,
   -performance-move-const-arg,
-
+  -bugprone-unchecked-optional-access,
 
 CheckOptions:
   - key: readability-identifier-naming.ClassCase

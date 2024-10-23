@@ -14,6 +14,7 @@ add_executable(r-type_client
     src/menu/inside_room.cpp
     src/menu/accessibility.cpp
     src/menu/option.cpp
+    src/menu/scoreBoard.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)

@@ -9,6 +9,8 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
+#include <vector>
 #include "RTypeConst.hpp"
 
 namespace rt {
@@ -172,5 +174,37 @@ struct TCPPacket {
     TCPPacket(TCPCommand cmd) : cmd(cmd) {}
 
     TCPPacket(TCPCommand cmd, const T &body) : cmd(cmd), body(body) {}
+
+    TCPPacket(const std::vector<char> &data)
+    {
+        std::memcpy(this, data, sizeof(*this));
+    }
+
+    TCPPacket(std::vector<char> data, char key)
+    {
+        for (char &current : data) {
+            current ^= key;
+        }
+        std::memcpy(this, data, sizeof(*this));
+    }
+
+    std::vector<char> serialize() const
+    {
+        std::vector<char> buff(this->size);
+
+        std::memcpy(buff.data(), this, size);
+        return buff;
+    }
+
+    std::vector<char> encrypt(char key) const
+    {
+        std::vector<char> buff(this->size);
+
+        std::memcpy(buff.data(), this, size);
+        for (char &current : buff) {
+            current ^= key;
+        }
+        return buff;
+    }
 };
 } // namespace rt

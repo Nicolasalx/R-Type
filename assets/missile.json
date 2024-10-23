@@ -163,6 +163,22 @@
         "sound_emitter": {
             "sound": "assets/missile.wav",
             "volume": 10.0
+        },
+        "radial_light": {
+            "offset": {
+                "x": 9,
+                "y": 9
+            },
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 255
+            },
+            "range": 25.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
         }
     }
 }

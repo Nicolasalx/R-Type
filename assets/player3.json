@@ -151,6 +151,22 @@
         "player": {},
         "on_death": {
             "entity": "assets/explosion.json"
+        },
+        "radial_light": {
+            "offset": {
+                "x": 13,
+                "y": 6
+            },
+            "color": {
+                "r": 165,
+                "g": 255,
+                "b": 0
+            },
+            "range": 50.0,
+            "intensity": 0.5,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
         }
     }
 }

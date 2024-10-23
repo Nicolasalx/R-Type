@@ -65,5 +65,8 @@ class RoomManager {
     void playerDisconnected(std::size_t playerId, ntw::TCPServer &tcpServer);
     void udpPlayerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
     void sendNewChatMsg(const std::string &msg, ntw::TCPServer &tcpServer);
+
+    void printRoomList();
+    void banPlayer(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
 };
 } // namespace rts

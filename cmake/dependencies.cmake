@@ -52,8 +52,8 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME sfml_clandle
-  GITHUB_REPOSITORY MiguelMJ/Candle
-  GIT_TAG v1.0.2
+  GITHUB_REPOSITORY thibaudcathala/SFML-Candle
+  GIT_TAG "master"
 )
 target_compile_definitions(Candle-s PUBLIC RADIAL_LIGHT_FIX)
 

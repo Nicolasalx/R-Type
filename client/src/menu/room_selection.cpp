@@ -126,7 +126,7 @@ static void renderRoomCreation(rtc::RoomManager &roomManager)
     }
 }
 
-void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize)
+void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool &scoreBoardEnable)
 {
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
@@ -139,7 +139,11 @@ void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &w
 
     ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
 
-    ImGui::BeginChild("RoomList", ImVec2(0, windowSize.y * 0.7), true);
+    if (ImGui::Button("Score Board")) {
+        scoreBoardEnable = !scoreBoardEnable;
+    }
+
+    ImGui::BeginChild("RoomList", ImVec2(0, windowSize.y * 0.6), true);
     renderRoomTable(roomManager);
     ImGui::EndChild();
 
@@ -160,12 +164,12 @@ static void unsupportedWindowSize(const sf::Vector2u &windowSize)
     ImGui::End();
 }
 
-void rtc::lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager)
+void rtc::lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager, bool &scoreBoardEnable)
 {
     if (windowSize.x < rt::MIN_SCREEN_WIDTH || windowSize.y < rt::MIN_SCREEN_HEIGHT) {
         unsupportedWindowSize(windowSize);
     } else if (roomManager.getCurrentRoom().empty()) {
-        rtc::renderLobbyWindow(roomManager, windowSize);
+        rtc::renderLobbyWindow(roomManager, windowSize, scoreBoardEnable);
     } else {
         renderInsideRoom(roomManager, windowSize);
     }

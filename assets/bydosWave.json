@@ -90,8 +90,8 @@
             "height": 32.0
         },
         "health": {
-            "maxHp": 1,
-            "currHp": 1
+            "maxHp": 3,
+            "currHp": 3
         },
         "ai_actor": {},
         "server_share_movement": {},
@@ -100,6 +100,22 @@
         },
         "on_death": {
             "entity": "assets/explosion.json"
+        },
+        "radial_light": {
+            "offset": {
+                "x": 15,
+                "y": 17
+            },
+            "color": {
+                "r": 255,
+                "g": 50,
+                "b": 50
+            },
+            "range": 32.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
         }
     }
 }

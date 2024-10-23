@@ -141,8 +141,8 @@
             "height": 16.0
         },
         "health": {
-            "maxHp": 3,
-            "currHp": 3
+            "maxHp": 100,
+            "currHp": 100
         },
         "beam": 30,
         "score": 0,
@@ -151,6 +151,22 @@
         "player": {},
         "on_death": {
             "entity": "assets/explosion.json"
+        },
+        "radial_light": {
+            "offset": {
+                "x": 13,
+                "y": 6
+            },
+            "color": {
+                "r": 0,
+                "g": 165,
+                "b": 255
+            },
+            "range": 50.0,
+            "intensity": 0.5,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
         }
     }
 }

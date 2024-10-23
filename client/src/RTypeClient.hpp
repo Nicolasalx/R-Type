@@ -54,15 +54,17 @@ void runGui(
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
 void renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
-void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
+void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool &scoreBoardEnable);
 void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
 void menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode);
-void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager);
+void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager, bool &scoreBoardEnable);
 void renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable);
 void renderAccessibility(
     sf::Vector2u windowSize,
     WindowMode &windowMode,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
+void renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable);
+void addScore(const std::string &filename, const std::string &playerName, int score);
 
 } // namespace rtc
