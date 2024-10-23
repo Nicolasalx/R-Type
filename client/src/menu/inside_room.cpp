@@ -92,7 +92,7 @@ void rtc::renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &wi
     ImGui::SliderInt("##enemyMissileSpawnRate", &rtc::GameOptions::enemyMissileSpawnRate, 1, 200);
 
     ImGui::Text("Enable Light:");
-    ImGui::Checkbox("##visualEffects", &rtc::GameOptions::lightEffect);
+    ImGui::Checkbox("##light", &rtc::GameOptions::lightEffect);
 
     ImGui::EndChild();
     ImGui::End();
