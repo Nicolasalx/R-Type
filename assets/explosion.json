@@ -60,6 +60,10 @@
             },
             "frame_time": 0.2,
             "update_state": "none"
+        },
+        "sound_emitter": {
+            "sound": "assets/boom12.wav",
+            "volume": 10.0
         }
     }
 }

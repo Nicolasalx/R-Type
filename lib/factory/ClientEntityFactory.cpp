@@ -7,6 +7,8 @@
 
 #include "ClientEntityFactory.hpp"
 
+#include <iostream>
+#include <string>
 #include <utility>
 #include "Candle/LightSource.hpp"
 #include "SFML/Graphics/Color.hpp"
@@ -22,6 +24,7 @@
 #include "components/death_timer.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
+#include "components/on_death.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
@@ -113,7 +116,7 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("sprite")) {
         auto spriteJson = componentsJson["sprite"];
         ecs::component::Sprite spriteComp;
-        spriteComp.textureId = spriteJson["texture"].get<std::string>();
+        spriteComp.textureId = spriteJson["texture"];
         spriteComp.spriteObj.setTexture(spriteManager.getTexture(spriteComp.textureId));
         auto frameJson = spriteJson["initial_frame"];
         spriteComp.spriteObj.setTextureRect(sf::IntRect(
@@ -131,7 +134,7 @@ void ClientEntityFactory::addComponents(
         if (spriteJson.contains("sub_sprites")) {
             for (const auto &subSpriteJson : spriteJson["sub_sprites"]) {
                 ecs::component::SubSprite subSprite;
-                subSprite.textureId = subSpriteJson["texture"].get<std::string>();
+                subSprite.textureId = subSpriteJson["texture"];
                 subSprite.spriteObj.setTexture(spriteManager.getTexture(subSprite.textureId));
                 auto subFrameJson = subSpriteJson["initial_frame"];
                 subSprite.spriteObj.setTextureRect(sf::IntRect(
@@ -161,12 +164,12 @@ void ClientEntityFactory::addComponents(
                         subSprite.animation.currentFrame = subSpriteJson["current_frame"].get<size_t>();
                     }
                     if (subSpriteJson.contains("state")) {
-                        subSprite.animation.state = subSpriteJson["state"].get<std::string>();
+                        subSprite.animation.state = subSpriteJson["state"];
                     } else {
                         subSprite.animation.state = "idle";
                     }
                     if (subSpriteJson.contains("update_state")) {
-                        subSprite.animation.updateState = ANIM_MAP.at(subSpriteJson["update_state"].get<std::string>());
+                        subSprite.animation.updateState = ANIM_MAP.at(subSpriteJson["update_state"]);
                     }
                 }
                 spriteComp.subSprites.push_back(subSprite);
@@ -215,12 +218,12 @@ void ClientEntityFactory::addComponents(
             animComp.currentFrame = animJson["current_frame"].get<size_t>();
         }
         if (animJson.contains("state")) {
-            animComp.state = animJson["state"].get<std::string>();
+            animComp.state = animJson["state"];
         } else {
             animComp.state = "idle";
         }
         if (animJson.contains("update_state")) {
-            animComp.updateState = ANIM_MAP.at(animJson["update_state"].get<std::string>());
+            animComp.updateState = ANIM_MAP.at(animJson["update_state"]);
         }
 
         reg.addComponent(entity, std::move(animComp));
@@ -228,15 +231,14 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("sound_emitter")) {
         auto soundEmitterJson = componentsJson["sound_emitter"];
         ecs::component::SoundEmitter soundEmitterComp;
-        soundEmitterComp.soundBufferId = soundEmitterJson["sound_buffer"].get<std::string>();
+        soundEmitterComp.soundBufferId = soundEmitterJson["sound"];
         soundEmitterComp.volume = soundEmitterJson["volume"].get<float>();
-        soundEmitterComp.loop = soundEmitterJson["loop"].get<bool>();
         reg.addComponent(entity, std::move(soundEmitterComp));
     }
     if (componentsJson.contains("music")) {
         auto musicJson = componentsJson["music"];
         ecs::component::MusicComponent musicComp;
-        musicComp.musicFilePath = musicJson["file_path"].get<std::string>();
+        musicComp.musicFilePath = musicJson["file_path"];
         musicComp.volume = musicJson["volume"].get<float>();
         musicComp.loop = musicJson["loop"].get<bool>();
         musicComp.isPlaying = musicJson["is_playing"].get<bool>();
@@ -289,6 +291,10 @@ void ClientEntityFactory::addComponents(
         lightEdge.edge.emplace_back(sf::Vector2f(x2, y1), sf::Vector2f(x2, y2));
 
         reg.addComponent(entity, std::move(lightEdge));
+    }
+    if (componentsJson.contains("on_death")) {
+        auto onDeathJson = componentsJson["on_death"];
+        reg.addComponent(entity, ecs::component::OnDeath{onDeathJson["entity"]});
     }
 }
 

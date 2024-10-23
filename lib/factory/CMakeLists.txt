@@ -20,6 +20,8 @@ add_library(FACTORY STATIC
     systems/parallax.cpp
     systems/send_ping.cpp
     systems/death_timer.cpp
+    systems/sound_emitter_system.cpp
+    systems/death_timer.cpp
     systems/render_radial_light.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp

@@ -16,6 +16,7 @@
 #include "Registry.hpp"
 #include "RoomManager.hpp"
 #include "SafeList.hpp"
+#include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "udp/UDPClient.hpp"
@@ -41,7 +42,8 @@ void registerSystems(
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    ecs::SoundManager &soundManager
 );
 
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);

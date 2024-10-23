@@ -160,6 +160,10 @@
             "height": 16.0
         },
         "server_share_movement": {},
+        "sound_emitter": {
+            "sound": "assets/missile.wav",
+            "volume": 10.0
+        },
         "radial_light": {
             "offset": {
                 "x": 9,
