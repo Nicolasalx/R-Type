@@ -41,7 +41,8 @@ void registerSystems(
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    sf::Clock &chargeClock
 );
 
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);
