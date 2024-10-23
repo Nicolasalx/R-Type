@@ -148,6 +148,9 @@
         "score": 0,
         "client_share_movement": {},
         "server_share_movement": {},
-        "player": {}
+        "player": {},
+        "on_death": {
+            "entity": "assets/explosion.json"
+        }
     }
 }

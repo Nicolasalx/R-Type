@@ -97,6 +97,9 @@
         "server_share_movement": {},
         "score_earned": {
             "points": 10
+        },
+        "on_death": {
+            "entity": "assets/explosion.json"
         }
     }
 }

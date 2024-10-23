@@ -7,6 +7,7 @@
 
 #include "ClientEntityFactory.hpp"
 
+#include <string>
 #include <utility>
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
@@ -17,6 +18,7 @@
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
 #include "components/music_component.hpp"
+#include "components/on_death.hpp"
 #include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
@@ -248,6 +250,10 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("score_earned")) {
         auto scoreJson = componentsJson["score_earned"];
         reg.addComponent(entity, ecs::component::ScoreEarned{scoreJson["points"].get<int>()});
+    }
+    if (componentsJson.contains("on_death")) {
+        auto onDeathJson = componentsJson["on_death"];
+        reg.addComponent(entity, ecs::component::OnDeath{onDeathJson["entity"]});
     }
 }
 
