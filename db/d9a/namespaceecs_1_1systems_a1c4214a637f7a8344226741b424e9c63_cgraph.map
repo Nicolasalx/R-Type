@@ -1,0 +1,9 @@
+<map id="ecs::systems::soundEmitterSystem" name="ecs::systems::soundEmitterSystem">
+<area shape="rect" id="node1" title="System to handle sound effects emitted by entities." alt="" coords="5,87,208,127"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="267,5,483,31"/>
+<area shape="rect" id="node3" href="$dc/dcf/classecs_1_1SoundManager.html#a8a2444177b460f62b47e454df60223c2" title="Loads a sound buffer from a file." alt="" coords="297,55,454,95"/>
+<area shape="rect" id="node5" href="$dc/dcf/classecs_1_1SoundManager.html#ae501f6a571c9eb7efc9825d96899d7dc" title="Plays a sound effect." alt="" coords="297,119,454,159"/>
+<area shape="rect" id="node7" href="$df/dcd/classecs_1_1Registry.html#a17f754ebcd023208146c9c383406ce16" title="Removes a component from an entity." alt="" coords="256,184,495,209"/>
+<area shape="rect" id="node4" href="$d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="569,67,674,92"/>
+<area shape="rect" id="node6" href="$dc/dcf/classecs_1_1SoundManager.html#ad3aa2731413d1f837f2445e41dfd66ea" title="Retrieves a sound buffer by its identifier." alt="" coords="543,119,700,159"/>
+</map>

@@ -22,5 +22,5 @@ var searchData=
   ['logtimewarning_19',['logTimeWarning',['../d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5',1,'eng']]],
   ['logwarning_20',['logWarning',['../d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27',1,'eng']]],
   ['long_5fname_21',['long_name',['../d1/df7/structeng_1_1ArgParser_1_1Argument.html#aa8b30b5e04d8f21bf3371f8525ca78dc',1,'eng::ArgParser::Argument']]],
-  ['loop_22',['loop',['../dd/d9a/structecs_1_1component_1_1SoundEmitter.html#ade5a76b0d131411dd5a82afc3bc9a5c2',1,'ecs::component::SoundEmitter::loop()'],['../d8/ddb/structecs_1_1component_1_1MusicComponent.html#a4981648c0533c5b56b67020339b847a8',1,'ecs::component::MusicComponent::loop()']]]
+  ['loop_22',['loop',['../d8/ddb/structecs_1_1component_1_1MusicComponent.html#a4981648c0533c5b56b67020339b847a8',1,'ecs::component::MusicComponent']]]
 ];

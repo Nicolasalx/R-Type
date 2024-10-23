@@ -1,0 +1,5 @@
+<map id="ecs::SoundManager::loadSoundBuffer" name="ecs::SoundManager::loadSoundBuffer">
+<area shape="rect" id="node1" title="Loads a sound buffer from a file." alt="" coords="457,5,615,45"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63" title="System to handle sound effects emitted by entities." alt="" coords="207,5,409,45"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="5,13,159,38"/>
+</map>
