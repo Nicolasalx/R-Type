@@ -8,6 +8,7 @@
 #include "RoomManager.hpp"
 #include <cstddef>
 #include <future>
+#include <iostream>
 #include <memory>
 #include "GameRunner.hpp"
 #include "RTypeTCPProtol.hpp"
@@ -212,4 +213,24 @@ void rts::RoomManager::sendNewChatMsg(const std::string &msg, ntw::TCPServer &tc
     rt::TCPPacket<rt::TCPBody::SER_NEW_CHAT_MSG> packet(rt::TCPCommand::SER_NEW_CHAT_MSG);
     msg.copy(packet.body.msg, sizeof(packet.body.msg) - 1);
     tcpServer.sendToAllUser(reinterpret_cast<const char *>(&packet), sizeof(packet));
+}
+
+void rts::RoomManager::printRoomList()
+{
+    std::cout << "┌───────\n";
+    for (const auto &[roomName, room] : this->_rooms) {
+        std::cout << "│ " << roomName << ", " << (room.gameRunner ? "in game" : "in lobby") << ":\n";
+        for (const auto &[id, player] : room.player) {
+            std::cout << "│     [" << id << "]: " << player.name << ", " << (player.ready ? "ready" : "not ready") << "\n";
+        }
+    }
+    std::cout << "└───────\n";
+}
+
+void rts::RoomManager::banPlayer(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer)
+{
+    if (this->_rooms.at(roomName).gameRunner) {
+        this->_rooms.at(roomName).gameRunner->killPlayer(playerId);
+    }
+    this->leaveRoom(roomName, playerId, tcpServer);
 }

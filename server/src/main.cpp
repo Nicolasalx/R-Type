@@ -8,7 +8,9 @@
 #include <SFML/Graphics.hpp>
 #include <cstddef>
 #include <cstring>
+#include <exception>
 #include <iostream>
+#include <string>
 #include <vector>
 #include "RTypeServer.hpp"
 #include "RoomManager.hpp"
@@ -37,10 +39,13 @@ int main(int argc, const char *argv[])
     tcpServer.run();
 
     std::string str;
+    std::cout << "> ";
     while (std::getline(std::cin, str)) {
         if (str == "quit" || str == "exit") {
             break;
         }
+        rts::commandHandler(str, roomManager, tcpServer);
+        std::cout << "> ";
     }
     return 0;
 }
