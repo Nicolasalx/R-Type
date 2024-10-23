@@ -24,8 +24,8 @@
 #include "components/death_timer.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
-#include "components/radial_light.hpp"
 #include "components/on_death.hpp"
+#include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
 
