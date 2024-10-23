@@ -13,6 +13,7 @@
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SFML/Graphics/Sprite.hpp"
+#include "imgui.h"
 #include "imgui-SFML.h"
 
 void rtc::runGui(
@@ -27,6 +28,7 @@ void rtc::runGui(
     WindowMode windowMode = rtc::WindowMode::MENU;
     int fpsLimit = rt::CLIENT_FPS_LIMIT;
     bool chatEnable = false;
+    bool scoreBoardEnable = false;
     sf::Texture texture;
     if (!texture.loadFromFile("assets/menu/background.jpg")) {
         eng::logError("Failed to load background image !");
@@ -63,11 +65,11 @@ void rtc::runGui(
                 renderAccessibility(windowSize, windowMode, keyBind);
                 break;
             case rtc::WindowMode::LOBBY:
-                lobbyWindow(windowSize, roomManager);
+                lobbyWindow(windowSize, roomManager, scoreBoardEnable);
                 break;
         }
         renderChat(roomManager, windowSize, chatEnable);
-
+        renderScoreBoard(windowSize, scoreBoardEnable);
         ImGui::SFML::Render(*window);
         window->display();
     }

@@ -48,5 +48,5 @@ void registerTcpResponse(
 );
 
 void initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend);
-
+void commandHandler(std::string &str, rts::RoomManager &roomManager, ntw::TCPServer &tcpServer);
 } // namespace rts

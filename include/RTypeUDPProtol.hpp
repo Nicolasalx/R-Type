@@ -115,11 +115,35 @@ struct UDPPacket {
     {
     }
 
+    UDPPacket(const std::vector<char> &data)
+    {
+        std::memcpy(this, data, sizeof(*this));
+    }
+
+    UDPPacket(std::vector<char> data, char key)
+    {
+        for (char &current : data) {
+            current ^= key;
+        }
+        std::memcpy(this, data, sizeof(*this));
+    }
+
     std::vector<char> serialize() const
     {
         std::vector<char> buff(this->size);
 
         std::memcpy(buff.data(), this, size);
+        return buff;
+    }
+
+    std::vector<char> encrypt(char key) const
+    {
+        std::vector<char> buff(this->size);
+
+        std::memcpy(buff.data(), this, size);
+        for (char &current : buff) {
+            current ^= key;
+        }
         return buff;
     }
 };

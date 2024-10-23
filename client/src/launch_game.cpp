@@ -8,6 +8,7 @@
 #include <SFML/Window/VideoMode.hpp>
 #include <cstddef>
 #include <memory>
+#include <string>
 #include "ClientEntityFactory.hpp"
 #include "ClientTickRate.hpp"
 #include "GameManager.hpp"
@@ -78,8 +79,10 @@ void rtc::GameManager::_launchGame()
 
     _window->setView(_view);
 
-    soundManager.loadMusic("battle", "assets/battle.ogg");
-    soundManager.playMusic("battle", 5.f, true);
+    // soundManager.loadMusic("battle", "assets/battle.ogg");
+    // soundManager.playMusic("battle", 5.f, true);
+    soundManager.loadSoundBuffer("explosion", "assets/boom12.wav");
+    soundManager.playSoundEffect("explosion", 100.f, false);
 
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
@@ -93,7 +96,8 @@ void rtc::GameManager::_launchGame()
         spriteManager,
         _networkCallbacks,
         _metrics,
-        _keyBind
+        _keyBind,
+        soundManager
     );
 
     _setupUdpConnection(spriteManager, udpClient);
@@ -103,7 +107,15 @@ void rtc::GameManager::_launchGame()
     otherPlayer.wait();
 
     spawnPlayer(udpClient, _userId, this->_roomManager);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/ruins.json");
+    for (std::size_t i = 1; i <= 11; ++i) {
+        ecs::ClientEntityFactory::createClientEntityFromJSON(
+            reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
+        );
+    }
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bottomCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/topCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/rightCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/leftCollision.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);

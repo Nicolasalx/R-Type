@@ -6,6 +6,7 @@
 */
 
 #include "SoundManager.hpp"
+#include <iostream>
 #include "../utils/Logger.hpp"
 #include "../utils/TrackedException.hpp"
 
@@ -43,32 +44,23 @@ const sf::SoundBuffer &SoundManager::getSoundBuffer(const std::string &id) const
 
 void SoundManager::playSoundEffect(const std::string &bufferId, float volume, bool loop)
 {
-    sf::Sound sound;
     try {
+        _activeSounds.emplace_back();
+        sf::Sound &sound = _activeSounds.back();
         sound.setBuffer(getSoundBuffer(bufferId));
+        sound.setVolume(volume);
+        sound.setLoop(loop);
+        sound.play();
     } catch (const std::exception &e) {
         eng::logError("Error playing sound effect: " + std::string(e.what()));
-        return;
+        _activeSounds.pop_back();
     }
-    sound.setVolume(volume);
-    sound.setLoop(loop);
-    sound.play();
-    _activeSounds.emplace_back(std::make_unique<sf::Sound>(std::move(sound)));
-
-    _activeSounds.erase(
-        std::remove_if(
-            _activeSounds.begin(),
-            _activeSounds.end(),
-            [](const std::unique_ptr<sf::Sound> &s) { return s->getStatus() == sf::Sound::Stopped; }
-        ),
-        _activeSounds.end()
-    );
 }
 
 void SoundManager::stopAllSoundEffects()
 {
     for (auto &sound : _activeSounds) {
-        sound->stop();
+        sound.stop();
     }
     _activeSounds.clear();
 }

@@ -23,6 +23,7 @@
 #include "imgui.h"
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
+#include "components/on_death.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
 #include <imgui-SFML.h>
@@ -158,8 +159,9 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
-        [this, &udpClient](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
-            _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId, packet, &udpClient](ecs::Registry &reg
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
+            _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId, packet, &udpClient, &spriteManager](
+                                           ecs::Registry &reg
                                        ) {
                 try {
                     if (reg.hasComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))) {
@@ -171,6 +173,20 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                                 reg.getComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))
                                     .value()
                                     .points;
+                        }
+                    }
+                    auto entity = reg.getLocalEntity().at(sharedEntityId);
+                    if (reg.hasComponent<ecs::component::OnDeath>(entity)) {
+                        if (reg.hasComponent<ecs::component::Position>(entity)) {
+                            int x = reg.getComponent<ecs::component::Position>(entity)->x;
+                            int y = reg.getComponent<ecs::component::Position>(entity)->y;
+                            ecs::ClientEntityFactory::createClientEntityFromJSON(
+                                reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity, x, y
+                            );
+                        } else {
+                            ecs::ClientEntityFactory::createClientEntityFromJSON(
+                                reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity
+                            );
                         }
                     }
                     reg.killEntity(reg.getLocalEntity().at(sharedEntityId));

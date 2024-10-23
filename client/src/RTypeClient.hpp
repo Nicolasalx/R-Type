@@ -16,6 +16,7 @@
 #include "Registry.hpp"
 #include "RoomManager.hpp"
 #include "SafeList.hpp"
+#include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "udp/UDPClient.hpp"
@@ -41,7 +42,8 @@ void registerSystems(
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    ecs::SoundManager &soundManager
 );
 
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);
@@ -52,15 +54,17 @@ void runGui(
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
 void renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
-void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
+void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool &scoreBoardEnable);
 void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
 void menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode);
-void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager);
+void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager, bool &scoreBoardEnable);
 void renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable);
 void renderAccessibility(
     sf::Vector2u windowSize,
     WindowMode &windowMode,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
+void renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable);
+void addScore(const std::string &filename, const std::string &playerName, int score);
 
 } // namespace rtc
