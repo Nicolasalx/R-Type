@@ -32,10 +32,11 @@ static void handlePlayerCreation(
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &)>> &networkCallbacks,
     const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet,
-    const std::shared_ptr<ImFont> &font
+    const std::shared_ptr<ImFont> &font,
+    ntw::UDPClient &udpClient
 )
 {
-    networkCallbacks.pushBack([packet, &spriteManager, userId, font](ecs::Registry &reg) {
+    networkCallbacks.pushBack([packet, &spriteManager, userId, font, &udpClient](ecs::Registry &reg) {
         auto entity = ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg,
             spriteManager,
@@ -57,6 +58,8 @@ static void handlePlayerCreation(
             reg.removeComponent<ecs::component::Controllable>(reg.getLocalEntity().at(packet.sharedEntityId));
             reg.removeComponent<ecs::component::ClientShareMovement>(reg.getLocalEntity().at(packet.sharedEntityId));
         }
+        auto packSer = packet.serialize();
+        udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
     });
 }
 
@@ -65,64 +68,68 @@ static void handleSharedCreation(
     const std::string &jsonFilePath,
     ecs::SpriteManager &spriteManager,
     eng::SafeList<std::function<void(ecs::Registry &)>> &networkCallbacks,
-    const rt::UDPPacket<T> &packet
+    const rt::UDPPacket<T> &packet,
+    ntw::UDPClient &udpClient
 )
 {
     auto &pos = packet.body.pos;
     auto sharedEntityId = packet.sharedEntityId;
 
-    networkCallbacks.pushBack([sharedEntityId, pos, &spriteManager, jsonFilePath](ecs::Registry &reg) {
+    networkCallbacks.pushBack([sharedEntityId, pos, &spriteManager, jsonFilePath, &udpClient, packet](ecs::Registry &reg
+                              ) {
         ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg, spriteManager, jsonFilePath, pos.x, pos.y, sharedEntityId
         );
+        auto packSer = packet.serialize();
+        udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
     });
 }
 
-void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
+void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient)
 {
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
         rt::UDPCommand::NEW_ENTITY_STATIC,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_STATIC>(
-                "assets/static.json", spriteManager, this->_networkCallbacks, packet
+                "assets/static.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
         rt::UDPCommand::NEW_ENTITY_PLAYER,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet) {
-            handlePlayerCreation(_userId, spriteManager, this->_networkCallbacks, packet, _font);
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet) {
+            handlePlayerCreation(_userId, spriteManager, this->_networkCallbacks, packet, _font, udpClient);
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE>(
         rt::UDPCommand::NEW_ENTITY_MISSILE,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &packet) {
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
-                "assets/missile.json", spriteManager, this->_networkCallbacks, packet
+                "assets/missile.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
         rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL> &packet) {
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-                "assets/missileBall.json", spriteManager, this->_networkCallbacks, packet
+                "assets/missileBall.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
         rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE> &packet) {
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
-                "assets/bydosWave.json", spriteManager, this->_networkCallbacks, packet
+                "assets/bydosWave.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
         rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND> &packet) {
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
-                "assets/robotGround.json", spriteManager, this->_networkCallbacks, packet
+                "assets/robotGround.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );

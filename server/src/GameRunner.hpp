@@ -12,7 +12,6 @@
 #include <functional>
 #include <list>
 #include <vector>
-#include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SafeList.hpp"
 #include "ServerTickRate.hpp"
@@ -27,7 +26,7 @@ namespace rts {
 class GameRunner {
     private:
     ntw::UDPServer _udpServer;
-    // ntw::TimeoutHandler<rt::UDPPacket<rt::UDPBody::EMPTY>> _timeoutHandler;
+    ntw::TimeoutHandler _timeoutHandler;
     rt::UDPResponseHandler _responseHandler;
 
     ecs::Registry _reg;

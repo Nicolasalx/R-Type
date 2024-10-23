@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <asio/ip/udp.hpp>
 #include <chrono>
+#include <cstdio>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -28,7 +29,7 @@ class TimeoutHandler {
     };
 
     public:
-    TimeoutHandler(UDPServer &udp) : _udp(udp) {}
+    TimeoutHandler() = default;
 
     ~TimeoutHandler()
     {
@@ -38,11 +39,20 @@ class TimeoutHandler {
         }
     }
 
-    void addTimeoutPacket(std::vector<char> &&packet, size_t packetId)
+    void addTimeoutPacket(std::vector<char> &&packet, size_t packetId, UDPServer &udp)
     {
         std::lock_guard<std::mutex> lck(_mut);
+        std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
         _tickRateManager.addTickRate(packetId, 1);
-        _timeoutPackets.push_back({.packet = std::move(packet), .packetId = packetId, .clientIds = {}});
+        std::vector<size_t> clients;
+
+        const auto &ends = udp.endpoints();
+
+        clients.reserve(ends.size());
+        for (const auto &end : ends) {
+            clients.push_back(end.first);
+        }
+        _timeoutPackets.push_back({.packet = std::move(packet), .packetId = packetId, .clientIds = std::move(clients)});
     }
 
     void killClientId(UDPServer::client_id_t clientId)
@@ -86,39 +96,38 @@ class TimeoutHandler {
         }
     }
 
-    void runTimeoutChecker(float &dt)
+    void runTimeoutChecker(float &dt, UDPServer &udp)
     {
-        _tickRateThread = std::thread([this, &dt]() {
+        _tickRateThread = std::thread([this, &dt, &udp]() {
             while (_state) {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
 
-                _checkTickRates(dt);
+                _checkTickRates(dt, udp);
             }
         });
     }
 
     private:
-    void _checkTickRates(float &dt)
+    void _checkTickRates(float &dt, UDPServer &udp)
     {
         std::lock_guard<std::mutex> lck(_mut);
 
         for (auto &packet : _timeoutPackets) {
             if (_tickRateManager.needUpdate(packet.packetId, dt)) {
-                _sendAgainPacket(packet);
+                _sendAgainPacket(packet, udp);
             }
         }
     }
 
-    void _sendAgainPacket(PacketInfos &packet)
+    void _sendAgainPacket(PacketInfos &packet, UDPServer &udp)
     {
         for (auto cli : packet.clientIds) {
-            _udp.send(cli, reinterpret_cast<const char *>(&packet.packet), packet.packet.size());
+            udp.send(cli, reinterpret_cast<const char *>(&packet.packet), packet.packet.size());
         }
     }
 
     bool _state = true;
 
-    UDPServer &_udp;
     std::thread _tickRateThread;
     std::mutex _mut;
 

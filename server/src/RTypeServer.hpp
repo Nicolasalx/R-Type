@@ -38,7 +38,8 @@ void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    ntw::UDPServer &udpServer
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
 );
 void registerTcpResponse(
     rts::RoomManager &roomManager,

@@ -8,6 +8,8 @@
 #pragma once
 
 #include <any>
+#include <cstddef>
+#include <cstdio>
 #include <cstring>
 #include <functional>
 #include <optional>
@@ -45,6 +47,11 @@ class UDPResponseHandler {
         };
     }
 
+    void registerAckHandler(std::function<void(size_t, const std::vector<std::any> &)> handler)
+    {
+        _ackHandler = std::move(handler);
+    }
+
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
@@ -62,7 +69,7 @@ class UDPResponseHandler {
                 break;
             }
             if (header->ack && _ackHandler.has_value()) {
-                _ackHandler.value()(ptr);
+                _ackHandler.value()(header->packetId, arg);
             } else {
                 if (_handler.contains(header->cmd)) {
                     _handler.at(header->cmd)(ptr);
@@ -87,7 +94,7 @@ class UDPResponseHandler {
     std::unordered_map<rt::UDPCommand, std::function<void(const char *)>> _handler;
     std::unordered_map<rt::UDPCommand, std::function<void(const char *, const std::vector<std::any> &)>>
         _specialHandler;
-    std::optional<std::function<void(const char *)>> _ackHandler;
+    std::optional<std::function<void(size_t, const std::vector<std::any> &)>> _ackHandler;
 };
 
 } // namespace rt

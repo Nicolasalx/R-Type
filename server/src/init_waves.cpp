@@ -28,8 +28,9 @@ static entity_t spawnRobot(ecs::Registry &reg, std::list<std::vector<char>> &dat
     float y = float(rt::SCREEN_HEIGHT) * (4.f / 5.f);
     auto sharedId = ecs::generateSharedEntityId();
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
-                              rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND, sharedId, {.pos = {x, y}, .vel = {-10, 0}}
-    ).serialize());
+                              rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND, sharedId, {.pos = {x, y}, .vel = {-10, 0}}, true
+    )
+                              .serialize());
     auto e = ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/robotGround.json", x, y, sharedId, -10);
     reg.getComponent<ecs::component::AiActor>(e)->act = [x, &datasToSend](ecs::Registry &reg, entity_t e) {
         rts::ais::horizontalMoveAi(reg, e, x - 100, x + 100);
@@ -44,8 +45,9 @@ static entity_t spawnBydosWave(ecs::Registry &reg, std::list<std::vector<char>> 
     float y = float(rt::SCREEN_HEIGHT) * (float(i) / float(maxMob + 1));
     auto sharedId = ecs::generateSharedEntityId();
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
-                              rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedId, {.pos = {x, y}}
-    ).serialize());
+                              rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedId, {.pos = {x, y}}, true
+    )
+                              .serialize());
     auto e = ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/bydosWave.json", x, y, sharedId, -10);
     reg.getComponent<ecs::component::AiActor>(e)->act = [y, &datasToSend](ecs::Registry &reg, entity_t e) {
         rts::ais::waveMovement(reg, e, y);
@@ -82,9 +84,12 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
             entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
                 reg, "assets/static.json", 100.f * (i + 1), 100.f * (i + 1), sharedEntityId
             );
-            datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC>(
-                                      rt::UDPCommand::NEW_ENTITY_STATIC, sharedEntityId, {.pos = {100.f * i, 100.f * i}}
-            ).serialize());
+            datasToSend.push_back(
+                rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC>(
+                    rt::UDPCommand::NEW_ENTITY_STATIC, sharedEntityId, {.pos = {100.f * i, 100.f * i}}, true
+                )
+                    .serialize()
+            );
             return entity;
         });
     }

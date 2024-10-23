@@ -79,6 +79,18 @@ class UDPServer : public ntw::AsioServer {
     };
 
     /**
+     * @brief Return the mutex used for datas thread safety.
+     * @return Mutex used inside the class for datas safety.
+     *
+     * NOTE: This mutex SHOULD be used around variable members of this classes accessed by
+     *       their getters/setter.
+     */
+    std::recursive_mutex &mut()
+    {
+        return _mut;
+    }
+
+    /**
      * @brief Return the udp endpoint of the last client that have connected.
      * @return Udp endpoint of type `udp::endpoint &`.
      */

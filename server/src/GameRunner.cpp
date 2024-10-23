@@ -20,12 +20,13 @@
 #include "components/shared_entity.hpp"
 
 rts::GameRunner::GameRunner(int port, std::size_t stage, bool debugMode) // ! Use the stage argument
-    : _udpServer(port), /*_timeoutHandler(_udpServer),*/ _debugMode(debugMode)
+    : _udpServer(port), _debugMode(debugMode)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
     _networkCallbacks.registerConsumeFunc([this](auto f) { f(_reg); });
-    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer);
+    _timeoutHandler.runTimeoutChecker(_dt, _udpServer);
+    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer, _timeoutHandler);
     _udpServer.registerCommand([this](udp::endpoint &endpoint, char *data, std::size_t size) {
         this->_responseHandler.handleResponse(data, size, {std::ref(endpoint)});
     });
