@@ -149,6 +149,9 @@
         "client_share_movement": {},
         "server_share_movement": {},
         "player": {},
+        "on_death": {
+            "entity": "assets/explosion.json"
+        },
         "radial_light": {
             "offset": {
                 "x": 13,

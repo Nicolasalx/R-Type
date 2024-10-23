@@ -104,7 +104,7 @@ class SoundManager {
     /**
      * @brief A vector of active sound effects.
      */
-    std::vector<std::unique_ptr<sf::Sound>> _activeSounds;
+    std::vector<sf::Sound> _activeSounds;
 
     /**
      * @brief A map of music identifiers to their corresponding music objects.
