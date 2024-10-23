@@ -17,12 +17,13 @@ var searchData=
   ['renderaccessibility_14',['renderAccessibility',['../d9/d77/namespacertc.html#a0fe8a0c624541f8adde43c4199f10ba8',1,'rtc']]],
   ['renderchat_15',['renderChat',['../d9/d77/namespacertc.html#a65f2d4076fdad3f6d85fde28a59add3f',1,'rtc']]],
   ['renderinsideroom_16',['renderInsideRoom',['../d9/d77/namespacertc.html#a826b94045180092edfb94c88af029050',1,'rtc']]],
-  ['renderlobbywindow_17',['renderLobbyWindow',['../d9/d77/namespacertc.html#ae882b666beee34e8fd5a971df620bced',1,'rtc']]],
+  ['renderlobbywindow_17',['renderLobbyWindow',['../d9/d77/namespacertc.html#ab002c319fb83d8d672200783773c2acc',1,'rtc']]],
   ['renderradiallight_18',['renderRadialLight',['../db/d9a/namespaceecs_1_1systems.html#ae8ec335439a2bed605b3e8883a6e46d2',1,'ecs::systems']]],
-  ['responsehandler_19',['ResponseHandler',['../d4/d19/classntw_1_1ResponseHandler.html#a5d4e3185058653c8a04baa3102013c18',1,'ntw::ResponseHandler']]],
-  ['roommanager_20',['RoomManager',['../d1/d36/classrts_1_1RoomManager.html#aab614a313d3af1a0ee3aa5020f65e044',1,'rts::RoomManager::RoomManager()'],['../d0/d42/classrtc_1_1RoomManager.html#aa9054d3cafaaf8920610999bd1104a53',1,'rtc::RoomManager::RoomManager()']]],
-  ['run_21',['run',['../d9/d77/namespacertc.html#aaf16b852c2152ce537cabad01a256b23',1,'rtc::run()'],['../d7/d65/classntw_1_1TCPServer.html#a96e3d670fba7547cb443383cf05c07fe',1,'ntw::TCPServer::run()'],['../da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103',1,'ntw::UDPServer::run()'],['../d6/d90/classntw_1_1UDPClient.html#afc152832cbde1ec063b9a47475474ef6',1,'ntw::UDPClient::run()'],['../d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123',1,'ntw::TCPClient::run()'],['../d7/d3d/classntw_1_1IServer.html#a650a83e3a1879ee6feeafd2304722bfc',1,'ntw::IServer::run()'],['../de/dcb/classntw_1_1IClient.html#a2021ea036d10a954f835e6b469249d74',1,'ntw::IClient::run()']]],
-  ['rungame_22',['runGame',['../d7/d18/classrts_1_1GameRunner.html#ae5a26110b801f9f72868ed6b1c3450ee',1,'rts::GameRunner::runGame()'],['../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37',1,'rtc::GameManager::runGame()']]],
-  ['rungui_23',['runGui',['../d9/d77/namespacertc.html#a105f1d579734850065c33648844e96bb',1,'rtc']]],
-  ['runsystems_24',['runSystems',['../df/dcd/classecs_1_1Registry.html#a326f953c2452598ea9a867d7e545d392',1,'ecs::Registry']]]
+  ['renderscoreboard_19',['renderScoreBoard',['../d9/d77/namespacertc.html#a45473d51a151c2935bc8c7872cbb0bb3',1,'rtc']]],
+  ['responsehandler_20',['ResponseHandler',['../d4/d19/classntw_1_1ResponseHandler.html#a5d4e3185058653c8a04baa3102013c18',1,'ntw::ResponseHandler']]],
+  ['roommanager_21',['RoomManager',['../d0/d42/classrtc_1_1RoomManager.html#aa9054d3cafaaf8920610999bd1104a53',1,'rtc::RoomManager::RoomManager()'],['../d1/d36/classrts_1_1RoomManager.html#aab614a313d3af1a0ee3aa5020f65e044',1,'rts::RoomManager::RoomManager()']]],
+  ['run_22',['run',['../d9/d77/namespacertc.html#aaf16b852c2152ce537cabad01a256b23',1,'rtc::run()'],['../d7/d65/classntw_1_1TCPServer.html#a96e3d670fba7547cb443383cf05c07fe',1,'ntw::TCPServer::run()'],['../da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103',1,'ntw::UDPServer::run()'],['../d6/d90/classntw_1_1UDPClient.html#afc152832cbde1ec063b9a47475474ef6',1,'ntw::UDPClient::run()'],['../d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123',1,'ntw::TCPClient::run()'],['../d7/d3d/classntw_1_1IServer.html#a650a83e3a1879ee6feeafd2304722bfc',1,'ntw::IServer::run()'],['../de/dcb/classntw_1_1IClient.html#a2021ea036d10a954f835e6b469249d74',1,'ntw::IClient::run()']]],
+  ['rungame_23',['runGame',['../d7/d18/classrts_1_1GameRunner.html#ae5a26110b801f9f72868ed6b1c3450ee',1,'rts::GameRunner::runGame()'],['../de/dfd/classrtc_1_1GameManager.html#ab5a031da91210ef12df7d574d092ff37',1,'rtc::GameManager::runGame()']]],
+  ['rungui_24',['runGui',['../d9/d77/namespacertc.html#a105f1d579734850065c33648844e96bb',1,'rtc']]],
+  ['runsystems_25',['runSystems',['../df/dcd/classecs_1_1Registry.html#a326f953c2452598ea9a867d7e545d392',1,'ecs::Registry']]]
 ];
