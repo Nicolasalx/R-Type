@@ -1,5 +1,6 @@
 <map id="rts::RoomManager::deleteRoom" name="rts::RoomManager::deleteRoom">
-<area shape="rect" id="node1" title=" " alt="" coords="337,5,567,31"/>
-<area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#ace888220f569c127503b3767aa092a98" title=" " alt="" coords="108,5,289,31"/>
-<area shape="rect" id="node3" href="$da/d6a/server_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,5,60,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="337,31,567,56"/>
+<area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#aa51ec9ff65f7e1fe91b37eddcf43fae4" title=" " alt="" coords="117,5,280,31"/>
+<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#ace888220f569c127503b3767aa092a98" title=" " alt="" coords="108,55,289,80"/>
+<area shape="rect" id="node3" href="$da/d6a/server_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="5,31,60,56"/>
 </map>
