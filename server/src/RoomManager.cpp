@@ -221,7 +221,8 @@ void rts::RoomManager::printRoomList()
     for (const auto &[roomName, room] : this->_rooms) {
         std::cout << "│ " << roomName << ", " << (room.gameRunner ? "in game" : "in lobby") << ":\n";
         for (const auto &[id, player] : room.player) {
-            std::cout << "│     [" << id << "]: " << player.name << ", " << (player.ready ? "ready" : "not ready") << "\n";
+            std::cout << "│     [" << id << "]: " << player.name << ", " << (player.ready ? "ready" : "not ready")
+                      << "\n";
         }
     }
     std::cout << "└───────\n";

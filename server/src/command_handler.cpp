@@ -14,12 +14,12 @@ void rts::commandHandler(std::string &str, rts::RoomManager &roomManager, ntw::T
 {
     if (str == "help") {
         std::cout << "    list: list all room and player\n"
-            << "    ban: ban a player from his game an kick it from his room\n"
-            << "    kick: ban a player from his game an kick it from his room\n"
-            << "    broadcast: send a warning message to all player\n"
-            << "    create room: create a room\n"
-            << "    delete room: delete a room\n"
-            << "    debug mode: activate the debug mode\n";
+                  << "    ban: ban a player from his game an kick it from his room\n"
+                  << "    kick: ban a player from his game an kick it from his room\n"
+                  << "    broadcast: send a warning message to all player\n"
+                  << "    create room: create a room\n"
+                  << "    delete room: delete a room\n"
+                  << "    debug mode: activate the debug mode\n";
     }
     if (str == "list") {
         roomManager.printRoomList();
