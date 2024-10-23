@@ -99,9 +99,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cc6cca97cfa501de71e6252aed92c18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a8cc6cca97cfa501de71e6252aed92c18">controlMove</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind)</td></tr>
 <tr class="memdesc:a8cc6cca97cfa501de71e6252aed92c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles entity control movement.  <br /></td></tr>
 <tr class="separator:a8cc6cca97cfa501de71e6252aed92c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7389579aac29262f1b527711b52d30e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a7389579aac29262f1b527711b52d30e1">controlSpecial</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udp, const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind)</td></tr>
-<tr class="memdesc:a7389579aac29262f1b527711b52d30e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles entity control and input processing.  <br /></td></tr>
-<tr class="separator:a7389579aac29262f1b527711b52d30e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b8f465bc313e17727e9b612fb698b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a57b8f465bc313e17727e9b612fb698b0">controlSpecial</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udp, const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind, int spawnRate)</td></tr>
+<tr class="memdesc:a57b8f465bc313e17727e9b612fb698b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles entity control and input processing.  <br /></td></tr>
+<tr class="separator:a57b8f465bc313e17727e9b612fb698b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21513169eed974de8c770f37e5bd6663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a21513169eed974de8c770f37e5bd6663">deathTimer</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, float dt)</td></tr>
 <tr class="separator:a21513169eed974de8c770f37e5bd6663"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27b0a8a4531bb33a7af2d783560c1aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef">draw</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, sf::RenderWindow &amp;window)</td></tr>
@@ -337,7 +337,7 @@ Here is the caller graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a9e74d37b544cf9311d0591b71d77d93f_icgraph" id="adb/d9a/namespaceecs_1_1systems_a9e74d37b544cf9311d0591b71d77d93f_icgraph">
 <area shape="rect" title="Handles collision detection and response for entities." alt="" coords="480,5,649,31"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,5,432,31"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
 
@@ -452,8 +452,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a7389579aac29262f1b527711b52d30e1" name="a7389579aac29262f1b527711b52d30e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7389579aac29262f1b527711b52d30e1">&#9670;&#160;</a></span>controlSpecial()</h2>
+<a id="a57b8f465bc313e17727e9b612fb698b0" name="a57b8f465bc313e17727e9b612fb698b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57b8f465bc313e17727e9b612fb698b0">&#9670;&#160;</a></span>controlSpecial()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -480,7 +480,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;&#160;</td>
-          <td class="paramname"><em>keyBind</em>&#160;</td>
+          <td class="paramname"><em>keyBind</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>spawnRate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -509,8 +515,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_cgraph" alt=""/></div>
-<map name="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_cgraph" id="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_cgraph">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_cgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_cgraph" id="adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_cgraph">
 <area shape="rect" title="Handles entity control and input processing." alt="" coords="5,55,212,80"/>
 <area shape="rect" href="../../dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title=" " alt="" coords="269,5,467,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="260,55,476,80"/>
@@ -520,8 +526,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph" alt=""/></div>
-<map name="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph" id="adb/d9a/namespaceecs_1_1systems_a7389579aac29262f1b527711b52d30e1_icgraph">
+<div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_icgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_icgraph" alt=""/></div>
+<map name="adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_icgraph" id="adb/d9a/namespaceecs_1_1systems_a57b8f465bc313e17727e9b612fb698b0_icgraph">
 <area shape="rect" title="Handles entity control and input processing." alt="" coords="207,5,413,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="5,5,159,31"/>
 </map>
@@ -629,7 +635,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Renders all drawable entities to the provided window." alt="" coords="480,31,627,56"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,5,432,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="279,55,432,80"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
 
@@ -1004,7 +1010,7 @@ Here is the caller graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_acfd36d86458348922ccf72f0170eee66_icgraph" id="adb/d9a/namespaceecs_1_1systems_acfd36d86458348922ccf72f0170eee66_icgraph">
 <area shape="rect" title=" " alt="" coords="480,5,704,31"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,5,432,31"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
 
@@ -1052,7 +1058,7 @@ Here is the caller graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a6fab200e11588a6f76b3ac815134c66b_icgraph" id="adb/d9a/namespaceecs_1_1systems_a6fab200e11588a6f76b3ac815134c66b_icgraph">
 <area shape="rect" title=" " alt="" coords="480,5,681,45"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,13,432,38"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,13,231,38"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,13,231,38"/>
 </map>
 </div>
 
@@ -1102,7 +1108,7 @@ Here is the caller graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a15f1d018bb94f80f3b1881a41d488691_icgraph" id="adb/d9a/namespaceecs_1_1systems_a15f1d018bb94f80f3b1881a41d488691_icgraph">
 <area shape="rect" title=" " alt="" coords="480,5,679,31"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,5,432,31"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
 
@@ -1252,7 +1258,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="480,31,647,56"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,5,432,31"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="279,55,432,80"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
 
@@ -1392,7 +1398,7 @@ Here is the caller graph for this function:</div>
 <map name="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph" id="adb/d9a/namespaceecs_1_1systems_a66aadbaaa057cb4a72a87b0c8f2bb5d1_icgraph">
 <area shape="rect" title="Updates the position of all entities based on their velocity." alt="" coords="480,5,673,45"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="279,13,432,38"/>
-<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ae537b836fb973518f8da012513f0a4f9" title=" " alt="" coords="5,13,231,38"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,13,231,38"/>
 </map>
 </div>
 

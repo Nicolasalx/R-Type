@@ -1,6 +1,6 @@
 <map id="ecs::KeyBind::getActionKey" name="ecs::KeyBind::getActionKey">
 <area shape="rect" id="node1" title=" " alt="" coords="461,31,660,56"/>
 <area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a8cc6cca97cfa501de71e6252aed92c18" title="Handles entity control movement." alt="" coords="212,5,408,31"/>
-<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a7389579aac29262f1b527711b52d30e1" title="Handles entity control and input processing." alt="" coords="207,55,413,80"/>
+<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a57b8f465bc313e17727e9b612fb698b0" title="Handles entity control and input processing." alt="" coords="207,55,413,80"/>
 <area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="5,31,159,56"/>
 </map>

@@ -32,7 +32,7 @@ var searchData=
   ['controllable_29',['Controllable',['../d0/dec/structecs_1_1component_1_1Controllable.html',1,'ecs::component']]],
   ['controllable_2ehpp_30',['controllable.hpp',['../d4/d68/controllable_8hpp.html',1,'']]],
   ['controlmove_31',['controlMove',['../db/d9a/namespaceecs_1_1systems.html#a8cc6cca97cfa501de71e6252aed92c18',1,'ecs::systems']]],
-  ['controlspecial_32',['controlSpecial',['../db/d9a/namespaceecs_1_1systems.html#a7389579aac29262f1b527711b52d30e1',1,'ecs::systems']]],
+  ['controlspecial_32',['controlSpecial',['../db/d9a/namespaceecs_1_1systems.html#a57b8f465bc313e17727e9b612fb698b0',1,'ecs::systems']]],
   ['createcliententityfromjson_33',['createClientEntityFromJSON',['../df/d28/classecs_1_1EntityFactory.html#a2e40628c079221593390124181093078',1,'ecs::EntityFactory']]],
   ['createentity_34',['createEntity',['../df/d29/classecs_1_1EntityManager.html#ab9e8f199e7e6bb77d154aa1f8b22e6d6',1,'ecs::EntityManager']]],
   ['createroom_35',['createRoom',['../d1/d36/classrts_1_1RoomManager.html#a27678b57dc5b8d5f69e08e4fde351259',1,'rts::RoomManager']]],
