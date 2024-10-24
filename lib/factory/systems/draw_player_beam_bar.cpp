@@ -24,10 +24,10 @@ static void drawBar(int percentageBar, const sf::Vector2u &windowSize)
     ImVec2 rect2Size = ImVec2(size.x * (percentageBar / 100.0f), size.y);
 
     ImGui::GetBackgroundDrawList()->AddRectFilled(
-        rect1Pos, ImVec2(rect1Pos.x + rect1Size.x, rect1Pos.y + rect1Size.y), IM_COL32(102, 178, 255, 255), 10.f
+        rect1Pos, ImVec2(rect1Pos.x + rect1Size.x, rect1Pos.y + rect1Size.y), IM_COL32(0, 136, 255, 100), 10.f
     );
     ImGui::GetBackgroundDrawList()->AddRectFilled(
-        rect2Pos, ImVec2(rect2Pos.x + rect2Size.x, rect2Pos.y + rect2Size.y), IM_COL32(0, 0, 204, 255), 10.f
+        rect2Pos, ImVec2(rect2Pos.x + rect2Size.x, rect2Pos.y + rect2Size.y), IM_COL32(0, 136, 255, 255), 10.f
     );
     ImGui::GetBackgroundDrawList()->AddText(ImVec2(rect2Pos.x, rect2Pos.y - 20), IM_COL32(255, 255, 255, 255), "Beam");
 }

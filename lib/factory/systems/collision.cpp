@@ -91,7 +91,7 @@ static void resolveTagEffect(
     }
     if (missiles.has(entityB) && !missiles.has(entityA)) {
         if (health.has(entityA)) {
-            tagEffectDamage(reg, entityB, 1, datasToSend);
+            tagEffectDamage(reg, entityA, 1, datasToSend);
             health[entityA]->currHp -= 1;
         } else {
             tagEffectKill(reg, entityA, datasToSend);
