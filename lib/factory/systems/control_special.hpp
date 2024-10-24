@@ -34,7 +34,8 @@ void controlSpecial(
     Registry &reg,
     ecs::InputManager &input,
     ntw::UDPClient &udp,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    int spawnRate
 );
 
 } // namespace ecs::systems

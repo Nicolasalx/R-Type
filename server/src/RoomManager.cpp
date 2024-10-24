@@ -69,15 +69,26 @@ void rts::RoomManager::leaveRoom(const std::string &name, std::size_t playerId, 
     }
 }
 
-void rts::RoomManager::playerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer)
+void rts::RoomManager::playerReady(
+    const std::string &roomName,
+    std::size_t playerId,
+    int missileSpawnRate,
+    int playerMissileSpawnRate,
+    ntw::TCPServer &tcpServer
+)
 {
     {
         rt::TCPPacket<rt::TCPBody::SER_READY> packet(rt::TCPCommand::SER_READY);
 
         packet.body.userId = playerId;
+        packet.body.missileSpawnRate = missileSpawnRate;
+        packet.body.playerMissileSpawnRate = playerMissileSpawnRate;
         roomName.copy(packet.body.roomName, sizeof(packet.body.roomName) - 1);
 
         _rooms.at(roomName).player.at(playerId).ready = true;
+        if (missileSpawnRate != 100) {
+            _rooms.at(roomName).missileSpawnRate = missileSpawnRate;
+        }
         tcpServer.sendToAllUser(reinterpret_cast<const char *>(&packet), sizeof(packet));
     }
     // * check if all player in the room are ready
@@ -95,8 +106,9 @@ void rts::RoomManager::playerReady(const std::string &roomName, std::size_t play
     std::promise<bool> serverReady;
     std::future<bool> server = serverReady.get_future();
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
-    _rooms.at(roomName).gameRunner =
-        std::make_shared<rts::GameRunner>(_nextPort, _rooms.at(roomName).stage, this->_debugMode);
+    _rooms.at(roomName).gameRunner = std::make_shared<rts::GameRunner>(
+        _nextPort, _rooms.at(roomName).stage, _rooms.at(roomName).missileSpawnRate, this->_debugMode
+    );
 
     _rooms.at(roomName).game = std::make_unique<std::thread>(
         [gameRunner = _rooms.at(roomName).gameRunner](

@@ -21,6 +21,7 @@ entity_t rts::ais::fireRandomMissileAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
+    int missileSpawnRate,
     const std::function<bool()> &cond,
     std::array<float, 2> randXRange,
     std::array<float, 2> randYRange
@@ -29,7 +30,7 @@ entity_t rts::ais::fireRandomMissileAi(
     if (cond != nullptr && !cond()) {
         return std::numeric_limits<size_t>::max();
     }
-    if (eng::RandomGenerator::generate(0, 100) > 0) {
+    if (eng::RandomGenerator::generate(1, missileSpawnRate) > 1) {
         return std::numeric_limits<size_t>::max();
     }
     auto aiPos = reg.getComponent<ecs::component::Position>(e);

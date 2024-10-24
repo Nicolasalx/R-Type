@@ -45,7 +45,7 @@ class GameRunner {
     void _runGameDebug(bool &stopGame);
 
     public:
-    GameRunner(int port, std::size_t stage, bool debugMode);
+    GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode);
 
     void killPlayer(size_t playerId);
     void addWindow(const sf::VideoMode &videomode, const std::string &title);
