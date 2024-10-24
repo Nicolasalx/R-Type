@@ -8,17 +8,17 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <cstring>
+#include <memory>
 #include <string>
 #include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SFML/Graphics/Sprite.hpp"
-#include "imgui.h"
 #include "imgui-SFML.h"
 
 void rtc::runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
-    rtc::RoomManager &roomManager,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
     bool &inLobby,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )

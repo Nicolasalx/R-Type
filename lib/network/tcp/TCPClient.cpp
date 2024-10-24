@@ -6,6 +6,7 @@
 */
 
 #include "TCPClient.hpp"
+#include <exception>
 #include <functional>
 #include <utility>
 #include "Logger.hpp"
@@ -19,22 +20,30 @@ ntw::TCPClient::TCPClient(const std::string &host, int port) : _socket(_io), _ho
 
 ntw::TCPClient::~TCPClient()
 {
-    if (_thread.joinable()) {
-        _io.stop();
-        _thread.join();
-    }
-    if (_socket.is_open()) {
-        _socket.shutdown(asio::socket_base::shutdown_both);
-        _socket.close();
+    try {
+        if (_thread.joinable()) {
+            _io.stop();
+            _thread.join();
+        }
+        if (_socket.is_open()) {
+            _socket.shutdown(asio::socket_base::shutdown_both);
+            _socket.close();
+        }
+    } catch (const std::exception &e) {
+        eng::logError(e.what());
     }
 }
 
 void ntw::TCPClient::run()
 {
     _thread = std::thread([this]() {
-        _asioRun();
-        _io.run();
-        eng::logInfo("Client closed.");
+        try {
+            _asioRun();
+            _io.run();
+            eng::logInfo("Client closed.");
+        } catch (const std::exception &e) {
+            eng::logError(e.what());
+        }
     });
 }
 

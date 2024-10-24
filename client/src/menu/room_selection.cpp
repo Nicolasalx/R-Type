@@ -6,13 +6,14 @@
 */
 
 #include <cstddef>
+#include <memory>
 #include <string>
 #include "../RTypeClient.hpp"
 #include "../RoomManager.hpp"
 #include "RTypeConst.hpp"
 #include "imgui.h"
 
-static void renderRoomTable(rtc::RoomManager &roomManager)
+static void renderRoomTable(const std::shared_ptr<rtc::RoomManager> &roomManager)
 {
     ImGui::BeginTable("table", 4);
     ImGui::TableSetupColumn("Name");
@@ -22,14 +23,14 @@ static void renderRoomTable(rtc::RoomManager &roomManager)
     ImGui::TableHeadersRow();
     ImU32 inGameRowColor = ImGui::GetColorU32(ImVec4(1, 0, 0, 0.25));
 
-    for (const auto &[room_name, room_data] : roomManager.getRooms()) {
+    for (const auto &[room_name, room_data] : roomManager->getRooms()) {
         ImGui::TableNextRow();
         if (!room_data.joinable) {
             ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, inGameRowColor);
         }
         ImGui::TableSetColumnIndex(0);
         if (ImGui::Button(room_name.c_str()) && room_data.joinable) {
-            roomManager.askToJoinRoom(room_name);
+            roomManager->askToJoinRoom(room_name);
         }
         ImGui::TableSetColumnIndex(1);
         ImGui::Text("%zu", room_data.stage);
@@ -38,7 +39,7 @@ static void renderRoomTable(rtc::RoomManager &roomManager)
         ImGui::TableSetColumnIndex(3);
         if (ImGui::Button((std::string("Delete##") + room_name).c_str()) && room_data.joinable &&
             room_data.player.empty()) {
-            roomManager.askToDeleteRoom(room_name);
+            roomManager->askToDeleteRoom(room_name);
         }
     }
     ImGui::EndTable();
@@ -74,12 +75,12 @@ static void renderStageButton(const ImVec2 &currentRegion, const ImVec2 &current
     }
 }
 
-static void renderRoomCreation(rtc::RoomManager &roomManager)
+static void renderRoomCreation(const std::shared_ptr<rtc::RoomManager> &roomManager)
 {
     static char roomName[rt::MAX_ROOM_NAME_SIZE + 1] = {0};
     static std::size_t selectedStage = 1;
     bool isInputNotEmpty = roomName[0];
-    bool canCreateRoom = roomName[0] && !std::isspace(roomName[0]) && !roomManager.getRooms().contains(roomName);
+    bool canCreateRoom = roomName[0] && !std::isspace(roomName[0]) && !roomManager->getRooms().contains(roomName);
     ImVec2 currentRegion = ImGui::GetContentRegionAvail();
     ImVec2 currentCursor = ImGui::GetCursorPos();
 
@@ -93,7 +94,7 @@ static void renderRoomCreation(rtc::RoomManager &roomManager)
     ImGui::SetNextItemWidth(currentRegion.x * 0.5);
     if (ImGui::InputText("##roomNameInput", roomName, sizeof(roomName) - 1, ImGuiInputTextFlags_EnterReturnsTrue)) {
         if (canCreateRoom) {
-            roomManager.askToCreateRoom(roomName, selectedStage);
+            roomManager->askToCreateRoom(roomName, selectedStage);
             selectedStage = 1;
             std::memset(roomName, 0, sizeof(roomName));
         }
@@ -117,7 +118,7 @@ static void renderRoomCreation(rtc::RoomManager &roomManager)
         ImGui::BeginDisabled();
     }
     if (ImGui::Button("Create", buttonSize) && canCreateRoom) {
-        roomManager.askToCreateRoom(roomName, selectedStage);
+        roomManager->askToCreateRoom(roomName, selectedStage);
         selectedStage = 1;
         std::memset(roomName, 0, sizeof(roomName));
     }
@@ -126,7 +127,11 @@ static void renderRoomCreation(rtc::RoomManager &roomManager)
     }
 }
 
-void rtc::renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool &scoreBoardEnable)
+void rtc::renderLobbyWindow(
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    const sf::Vector2u &windowSize,
+    bool &scoreBoardEnable
+)
 {
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
@@ -164,11 +169,15 @@ static void unsupportedWindowSize(const sf::Vector2u &windowSize)
     ImGui::End();
 }
 
-void rtc::lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager, bool &scoreBoardEnable)
+void rtc::lobbyWindow(
+    sf::Vector2u &windowSize,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    bool &scoreBoardEnable
+)
 {
     if (windowSize.x < rt::MIN_SCREEN_WIDTH || windowSize.y < rt::MIN_SCREEN_HEIGHT) {
         unsupportedWindowSize(windowSize);
-    } else if (roomManager.getCurrentRoom().empty()) {
+    } else if (roomManager->getCurrentRoom().empty()) {
         rtc::renderLobbyWindow(roomManager, windowSize, scoreBoardEnable);
     } else {
         renderInsideRoom(roomManager, windowSize);

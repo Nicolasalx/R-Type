@@ -12,7 +12,11 @@
 #include "RTypeConst.hpp"
 #include "imgui.h"
 
-void rtc::renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable)
+void rtc::renderChat(
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    const sf::Vector2u &windowSize,
+    bool chatEnable
+)
 {
     float chatWidth = windowSize.x * 0.30f;
     float chatHeight = windowSize.y * 0.25f;
@@ -32,7 +36,7 @@ void rtc::renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSi
         "ChatMessages", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()), true, ImGuiWindowFlags_HorizontalScrollbar
     );
 
-    for (const auto &msg : roomManager.getChatMsg()) {
+    for (const auto &msg : roomManager->getChatMsg()) {
 
         ImGui::TextWrapped("%s", msg.c_str());
     }
@@ -46,7 +50,7 @@ void rtc::renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSi
     static char buff[rt::MAX_CHAT_MSG_SIZE + 1] = {0};
     if (ImGui::InputText("Send", buff, rt::MAX_CHAT_MSG_SIZE, ImGuiInputTextFlags_EnterReturnsTrue)) {
         if (buff[0]) {
-            roomManager.askToSendChatMsg(roomManager.getSelfName() + ": " + std::string(buff));
+            roomManager->askToSendChatMsg(roomManager->getSelfName() + ": " + std::string(buff));
             buff[0] = '\0';
         }
         ImGui::SetKeyboardFocusHere(-1);
