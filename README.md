@@ -98,3 +98,7 @@ This project is licensed under the **MIT License**.
 ## Useful Links / Quick-Start Information
 
 Entity-Component-System (ECS) explanation: https://en.wikipedia.org/wiki/Entity_component_system
+
+## 🤝 Contributing
+
+Check out the [CONTRIBUTE.md](CONTRIBUTE.md) file it has everything you want to contribute to this project.
