@@ -63,10 +63,10 @@ static void tagEffectDamage(ecs::Registry &reg, entity_t entity, int damage, std
 {
     if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
         auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
-        datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::TAKE_DAMAGE>(rt::UDPCommand::TAKE_DAMAGE, sharedId, rt::UDPBody::TAKE_DAMAGE{.damage = damage})
-                .serialize()
-        );
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::TAKE_DAMAGE>(
+                                  rt::UDPCommand::TAKE_DAMAGE, sharedId, rt::UDPBody::TAKE_DAMAGE{.damage = damage}
+        )
+                                  .serialize());
     }
 }
 

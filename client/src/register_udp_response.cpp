@@ -217,7 +217,8 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
             _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
                 try {
                     reg.getComponent<ecs::component::Health>(reg.getLocalEntity().at(packet.sharedEntityId))
-                        .value().currHp -= packet.body.damage;
+                        .value()
+                        .currHp -= packet.body.damage;
                 } catch (const std::exception &e) {
                     // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());

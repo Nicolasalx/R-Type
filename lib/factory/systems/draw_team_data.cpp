@@ -21,7 +21,7 @@ static void drawBar(
     const sf::Vector2u &windowSize
 )
 {
-     sf::Vector2f size = {windowSize.x * 0.1f, windowSize.y * 0.01f};
+    sf::Vector2f size = {windowSize.x * 0.1f, windowSize.y * 0.01f};
     ImU32 main = 0;
     ImU32 background = 0;
 
@@ -60,15 +60,12 @@ void ecs::systems::drawTeamData(Registry &reg, const sf::Vector2u &windowSize)
 
     int i = 0;
     for (auto [player, health, beam, _] : zip) {
-        sf::Vector2f pos = {windowSize.x * 0.01f, (windowSize.y * 0.13f) + (i * (windowSize.y * 0.08f))
-        };
+        sf::Vector2f pos = {windowSize.x * 0.01f, (windowSize.y * 0.13f) + (i * (windowSize.y * 0.08f))};
         ImGui::GetBackgroundDrawList()->AddText(
             ImVec2(pos.x, pos.y - 20), IM_COL32(255, 255, 255, 255), player.name.c_str()
         );
         drawBar("health", health.currHp, health.maxHp, pos, windowSize);
-        drawBar(
-            "beam", beam.power, 100.f, sf::Vector2f{pos.x, pos.y + windowSize.y * 0.03f}, windowSize
-        );
+        drawBar("beam", beam.power, 100.f, sf::Vector2f{pos.x, pos.y + windowSize.y * 0.03f}, windowSize);
         ++i;
     }
 }

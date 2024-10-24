@@ -13,7 +13,12 @@
 #include "imgui.h"
 #include "components/self_player.hpp"
 
-static void drawBar(int percentageBar, float maxPercentage, const sf::Vector2u &windowSize, const std::string &playerName)
+static void drawBar(
+    int percentageBar,
+    float maxPercentage,
+    const sf::Vector2u &windowSize,
+    const std::string &playerName
+)
 {
     sf::Vector2u pos =
         sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.01f), static_cast<unsigned int>(windowSize.y * 0.05f)};
