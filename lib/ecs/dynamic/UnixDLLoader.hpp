@@ -7,13 +7,7 @@
 
 #pragma once
 
-#ifdef _WIN32
-
-    #error \
-        "UnixDLLoader.hpp is the DLLoader implementation for UNIX System, you should include WindowsLoader.hpp instead"
-
-#else
-
+#ifdef linux
     #include <dlfcn.h>
     #include <stdexcept>
     #include <string>
@@ -107,5 +101,10 @@ class UnixDLLoader : public DLLoader<T> {
 };
 
 } // namespace ecs
+
+#else
+
+    #error \
+        "UnixDLLoader.hpp is the DLLoader implementation for UNIX System, you should include WindowsLoader.hpp instead"
 
 #endif
