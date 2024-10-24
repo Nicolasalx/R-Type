@@ -74,6 +74,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../de/d95/classntw_1_1UDPServer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ntw::UDPServer Class Reference</div></div>
@@ -105,6 +106,12 @@ Collaboration diagram for ntw::UDPServer:</div>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aca3b02b31da1507a608a5401e83b97c3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a> = size_t</td></tr>
+<tr class="memdesc:aca3b02b31da1507a608a5401e83b97c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type that represent a client id useful to identify a specific client.  <br /></td></tr>
+<tr class="separator:aca3b02b31da1507a608a5401e83b97c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7701c5d1c9dbfbce0ed88c1b9225d8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa7701c5d1c9dbfbce0ed88c1b9225d8a">UDPServer</a> (int port)</td></tr>
@@ -122,15 +129,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72857ddcd26d04faf5b2fe23ffb19e2b"><td class="memItemLeft" align="right" valign="top">udp::socket &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a72857ddcd26d04faf5b2fe23ffb19e2b">socket</a> ()</td></tr>
 <tr class="memdesc:a72857ddcd26d04faf5b2fe23ffb19e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the udp socket used for asynchronous operations.  <br /></td></tr>
 <tr class="separator:a72857ddcd26d04faf5b2fe23ffb19e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5cd4fd62980d86bf5c334edda40b53a"><td class="memItemLeft" align="right" valign="top">std::recursive_mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5cd4fd62980d86bf5c334edda40b53a">mut</a> ()</td></tr>
+<tr class="memdesc:aa5cd4fd62980d86bf5c334edda40b53a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the mutex used for datas thread safety.  <br /></td></tr>
+<tr class="separator:aa5cd4fd62980d86bf5c334edda40b53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5991e788d7bc6796d888398a24bd108"><td class="memItemLeft" align="right" valign="top">udp::endpoint &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a> ()</td></tr>
 <tr class="memdesc:aa5991e788d7bc6796d888398a24bd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the udp endpoint of the last client that have connected.  <br /></td></tr>
 <tr class="separator:aa5991e788d7bc6796d888398a24bd108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; client_id_t, udp::endpoint &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6">endpoints</a> ()</td></tr>
+<tr class="memitem:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a>, udp::endpoint &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6">endpoints</a> ()</td></tr>
 <tr class="memdesc:aa8a709a676e3fef428ba7bf5944dadf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all the clients endpoint that have connected to the udp server.  <br /></td></tr>
 <tr class="separator:aa8a709a676e3fef428ba7bf5944dadf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0bed1a793086caf52b525355983069"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a3b0bed1a793086caf52b525355983069">removeClient</a> (<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a> id)</td></tr>
+<tr class="memdesc:a3b0bed1a793086caf52b525355983069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the client specified in.  <br /></td></tr>
+<tr class="separator:a3b0bed1a793086caf52b525355983069"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a796389b2c266315a75f6854f07b23615"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615">send</a> (udp::endpoint &amp;<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aa5991e788d7bc6796d888398a24bd108">endpoint</a>, const char *data, std::size_t size)</td></tr>
 <tr class="memdesc:a796389b2c266315a75f6854f07b23615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:a796389b2c266315a75f6854f07b23615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2224cc337677789013993a8666b0d0a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a2224cc337677789013993a8666b0d0a5">send</a> (<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a> id, const char *data, std::size_t size)</td></tr>
+<tr class="memdesc:a2224cc337677789013993a8666b0d0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
+<tr class="separator:a2224cc337677789013993a8666b0d0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72bff9a6b552aa10f3b93195470730e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9">sendAll</a> (const char *data, std::size_t size)</td></tr>
 <tr class="memdesc:a72bff9a6b552aa10f3b93195470730e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a message specified in.  <br /></td></tr>
 <tr class="separator:a72bff9a6b552aa10f3b93195470730e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,7 +183,24 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html" title="UDPServer is a server that handle udp network connections from remote clients.">UDPServer</a> is a server that handle udp network connections from remote clients. </p>
 <p>The server handle commands that can be registered. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aca3b02b31da1507a608a5401e83b97c3" name="aca3b02b31da1507a608a5401e83b97c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca3b02b31da1507a608a5401e83b97c3">&#9670;&#160;</a></span>client_id_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">ntw::UDPServer::client_id_t</a> =  size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type that represent a client id useful to identify a specific client. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa7701c5d1c9dbfbce0ed88c1b9225d8a" name="aa7701c5d1c9dbfbce0ed88c1b9225d8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7701c5d1c9dbfbce0ed88c1b9225d8a">&#9670;&#160;</a></span>UDPServer()</h2>
 
@@ -268,7 +301,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt; client_id_t, udp::endpoint &gt; &amp; ntw::UDPServer::endpoints </td>
+          <td class="memname">std::unordered_map&lt; <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a>, udp::endpoint &gt; &amp; ntw::UDPServer::endpoints </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -283,6 +316,53 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Return all the clients endpoint that have connected to the udp server. </p>
 <dl class="section return"><dt>Returns</dt><dd>An unordered_map with the <code>client_id</code> and the client <code>endpoint</code> as value. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/classntw_1_1UDPServer_aa8a709a676e3fef428ba7bf5944dadf6_icgraph.png" border="0" usemap="#ada/dbf/classntw_1_1UDPServer_aa8a709a676e3fef428ba7bf5944dadf6_icgraph" alt=""/></div>
+<map name="ada/dbf/classntw_1_1UDPServer_aa8a709a676e3fef428ba7bf5944dadf6_icgraph" id="ada/dbf/classntw_1_1UDPServer_aa8a709a676e3fef428ba7bf5944dadf6_icgraph">
+<area shape="rect" title="Return all the clients endpoint that have connected to the udp server." alt="" coords="212,13,407,38"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title=" " alt="" coords="5,5,164,45"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa5cd4fd62980d86bf5c334edda40b53a" name="aa5cd4fd62980d86bf5c334edda40b53a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5cd4fd62980d86bf5c334edda40b53a">&#9670;&#160;</a></span>mut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::recursive_mutex &amp; ntw::UDPServer::mut </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the mutex used for datas thread safety. </p>
+<dl class="section return"><dt>Returns</dt><dd>Mutex used inside the class for datas safety.</dd></dl>
+<p>NOTE: This mutex SHOULD be used around variable members of this classes accessed by their getters/setter. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/dbf/classntw_1_1UDPServer_aa5cd4fd62980d86bf5c334edda40b53a_icgraph.png" border="0" usemap="#ada/dbf/classntw_1_1UDPServer_aa5cd4fd62980d86bf5c334edda40b53a_icgraph" alt=""/></div>
+<map name="ada/dbf/classntw_1_1UDPServer_aa5cd4fd62980d86bf5c334edda40b53a_icgraph" id="ada/dbf/classntw_1_1UDPServer_aa5cd4fd62980d86bf5c334edda40b53a_icgraph">
+<area shape="rect" title="Return the mutex used for datas thread safety." alt="" coords="212,13,369,38"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title=" " alt="" coords="5,5,164,45"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -318,6 +398,33 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,13,231,38"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a3b0bed1a793086caf52b525355983069" name="a3b0bed1a793086caf52b525355983069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b0bed1a793086caf52b525355983069">&#9670;&#160;</a></span>removeClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ntw::UDPServer::removeClient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove the client specified in. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id,it</td><td>removes its udp enpoint too.</td></tr>
+    <tr><td class="paramname">id</td><td>Id of the client to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -359,8 +466,56 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a2224cc337677789013993a8666b0d0a5" name="a2224cc337677789013993a8666b0d0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2224cc337677789013993a8666b0d0a5">&#9670;&#160;</a></span>send() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ntw::UDPServer::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">client_id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a message specified in. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>of size (</td></tr>
+    <tr><td class="paramname">size</td><td>) to the client with id (</td></tr>
+    <tr><td class="paramname">endpoint</td><td>). </td></tr>
+    <tr><td class="paramname">id</td><td>Id of the client to which we send the</td></tr>
+    <tr><td class="paramname">data.</td><td></td></tr>
+    <tr><td class="paramname">data</td><td>Bytes to send. </td></tr>
+    <tr><td class="paramname">size</td><td>Number of bytes to send. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a796389b2c266315a75f6854f07b23615" name="a796389b2c266315a75f6854f07b23615"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a796389b2c266315a75f6854f07b23615">&#9670;&#160;</a></span>send()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a796389b2c266315a75f6854f07b23615">&#9670;&#160;</a></span>send() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +573,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../da/dbf/classntw_1_1UDPServer_a796389b2c266315a75f6854f07b23615_icgraph.png" border="0" usemap="#ada/dbf/classntw_1_1UDPServer_a796389b2c266315a75f6854f07b23615_icgraph" alt=""/></div>
 <map name="ada/dbf/classntw_1_1UDPServer_a796389b2c266315a75f6854f07b23615_icgraph" id="ada/dbf/classntw_1_1UDPServer_a796389b2c266315a75f6854f07b23615_icgraph">
 <area shape="rect" title="Send a message specified in." alt="" coords="513,5,676,31"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#ad5e11fa437bf142196c8cb88b041d4e2" title=" " alt="" coords="279,5,465,31"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#ad1b28f5013f9629296a2574510724584" title=" " alt="" coords="279,5,465,31"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>

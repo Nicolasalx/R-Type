@@ -13,7 +13,8 @@ var searchData=
   ['_7esparsearray_10',['~SparseArray',['../d8/d2e/classecs_1_1SparseArray.html#ae7d499079af6b8b866d8845042ec8270',1,'ecs::SparseArray']]],
   ['_7etcpclient_11',['~TCPClient',['../d2/d10/classntw_1_1TCPClient.html#a58a378af02aec3e3d70fdc1d49ad0cce',1,'ntw::TCPClient']]],
   ['_7etcpserver_12',['~TCPServer',['../d7/d65/classntw_1_1TCPServer.html#a9f783be188eed501035e0c35b6f84f08',1,'ntw::TCPServer']]],
-  ['_7eudpclient_13',['~UDPClient',['../d6/d90/classntw_1_1UDPClient.html#a862bcf524f21217734041738714a4425',1,'ntw::UDPClient']]],
-  ['_7eudpserver_14',['~UDPServer',['../da/dbf/classntw_1_1UDPServer.html#af2d66ff45f59295c9fa6bda472987392',1,'ntw::UDPServer']]],
-  ['_7ewavemanager_15',['~WaveManager',['../d5/d35/classecs_1_1WaveManager.html#a64042ce2e1b776a0dc9216da8e5c4271',1,'ecs::WaveManager']]]
+  ['_7etimeouthandler_13',['~TimeoutHandler',['../d8/d0c/classntw_1_1TimeoutHandler.html#ad6c4ac179ce9eea308788fdc330da509',1,'ntw::TimeoutHandler']]],
+  ['_7eudpclient_14',['~UDPClient',['../d6/d90/classntw_1_1UDPClient.html#a862bcf524f21217734041738714a4425',1,'ntw::UDPClient']]],
+  ['_7eudpserver_15',['~UDPServer',['../da/dbf/classntw_1_1UDPServer.html#af2d66ff45f59295c9fa6bda472987392',1,'ntw::UDPServer']]],
+  ['_7ewavemanager_16',['~WaveManager',['../d5/d35/classecs_1_1WaveManager.html#a64042ce2e1b776a0dc9216da8e5c4271',1,'ecs::WaveManager']]]
 ];

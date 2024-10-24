@@ -1,0 +1,4 @@
+<map id="ntw::UDPServer::endpoints" name="ntw::UDPServer::endpoints">
+<area shape="rect" id="node1" title="Return all the clients endpoint that have connected to the udp server." alt="" coords="212,13,407,38"/>
+<area shape="rect" id="node2" href="$d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title=" " alt="" coords="5,5,164,45"/>
+</map>

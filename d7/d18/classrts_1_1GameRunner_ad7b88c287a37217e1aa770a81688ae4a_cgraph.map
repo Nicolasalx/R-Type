@@ -1,13 +1,14 @@
 <map id="rts::GameRunner::GameRunner" name="rts::GameRunner::GameRunner">
-<area shape="rect" id="node1" title=" " alt="" coords="5,903,231,928"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,927,231,952"/>
 <area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="351,105,461,131"/>
 <area shape="rect" id="node14" href="$d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="937,448,1063,473"/>
 <area shape="rect" id="node15" href="$da/dbf/classntw_1_1UDPServer.html#a93a41b4479ae667e284ac672879224a0" title="Register a command that is handled by the server." alt="" coords="315,977,497,1017"/>
 <area shape="rect" id="node16" href="$d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="317,927,495,952"/>
 <area shape="rect" id="node19" href="$df/df0/classeng_1_1SafeList.html#ae80c32fae859b825e7bc9c9d4a0edae1" title="Register a consume function that will be used on each data when consuming the list." alt="" coords="279,1041,533,1067"/>
 <area shape="rect" id="node20" href="$d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="329,877,483,903"/>
-<area shape="rect" id="node40" href="$d9/dbb/namespacerts.html#ad5e11fa437bf142196c8cb88b041d4e2" title=" " alt="" coords="313,397,499,423"/>
+<area shape="rect" id="node40" href="$d9/dbb/namespacerts.html#ad1b28f5013f9629296a2574510724584" title=" " alt="" coords="313,397,499,423"/>
 <area shape="rect" id="node44" href="$da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="330,1091,482,1116"/>
+<area shape="rect" id="node45" href="$d8/d0c/classntw_1_1TimeoutHandler.html#adb0f334f4d5aa66e229c8f9d398a7529" title=" " alt="" coords="327,1141,485,1181"/>
 <area shape="rect" id="node3" href="$d5/d35/classecs_1_1WaveManager.html#a165c71cf770efb59ae72970462429f39" title="Adds a new mob spawner to a specific wave." alt="" coords="595,5,830,31"/>
 <area shape="rect" id="node4" href="$d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01" title="Adds a new wave to the WaveManager." alt="" coords="591,55,834,80"/>
 <area shape="rect" id="node5" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="605,155,821,195"/>

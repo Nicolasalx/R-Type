@@ -7,7 +7,8 @@ var searchData=
   ['tcpserver_2ehpp_4',['TCPServer.hpp',['../d0/d59/TCPServer_8hpp.html',1,'']]],
   ['technical_2dand_2dcomparative_2dstudy_2emd_5',['technical-and-comparative-Study.md',['../d0/dee/technical-and-comparative-Study_8md.html',1,'']]],
   ['tickratemanager_2ehpp_6',['TickRateManager.hpp',['../da/dcb/TickRateManager_8hpp.html',1,'']]],
-  ['title_5fmenu_2ecpp_7',['title_menu.cpp',['../da/d1f/title__menu_8cpp.html',1,'']]],
-  ['trackedexception_2ecpp_8',['TrackedException.cpp',['../d4/d0a/TrackedException_8cpp.html',1,'']]],
-  ['trackedexception_2ehpp_9',['TrackedException.hpp',['../d7/dc4/TrackedException_8hpp.html',1,'']]]
+  ['timeouthandler_2ehpp_7',['TimeoutHandler.hpp',['../d8/dca/TimeoutHandler_8hpp.html',1,'']]],
+  ['title_5fmenu_2ecpp_8',['title_menu.cpp',['../da/d1f/title__menu_8cpp.html',1,'']]],
+  ['trackedexception_2ecpp_9',['TrackedException.cpp',['../d4/d0a/TrackedException_8cpp.html',1,'']]],
+  ['trackedexception_2ehpp_10',['TrackedException.hpp',['../d7/dc4/TrackedException_8hpp.html',1,'']]]
 ];

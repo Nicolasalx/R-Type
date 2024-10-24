@@ -5,6 +5,7 @@ var searchData=
   ['keybind_3c_20rt_3a_3aplayeraction_2c_20sf_3a_3akeyboard_3a_3akey_20_3e_2',['KeyBind&lt; rt::PlayerAction, sf::Keyboard::Key &gt;',['../dc/d93/classecs_1_1KeyBind.html',1,'ecs']]],
   ['keyboard_5fmap_3',['KEYBOARD_MAP',['../d9/d77/namespacertc.html#a1052d55f868fc2dcbc2c4aaa84cf2898',1,'rtc']]],
   ['keyboardmap_2ehpp_4',['KeyboardMap.hpp',['../d5/d17/KeyboardMap_8hpp.html',1,'']]],
-  ['killentity_5',['killEntity',['../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf',1,'ecs::Registry']]],
-  ['killplayer_6',['killPlayer',['../d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106',1,'rts::GameRunner']]]
+  ['killclientid_5',['killClientId',['../d8/d0c/classntw_1_1TimeoutHandler.html#acd9d019f0c8b720eb2b0e05e684f9c39',1,'ntw::TimeoutHandler']]],
+  ['killentity_6',['killEntity',['../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf',1,'ecs::Registry']]],
+  ['killplayer_7',['killPlayer',['../d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106',1,'rts::GameRunner']]]
 ];
