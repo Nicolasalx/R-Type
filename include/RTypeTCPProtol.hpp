@@ -104,11 +104,15 @@ struct SER_ROOM_LEAVED {
 struct CL_READY {
     char roomName[rt::MAX_ROOM_NAME_SIZE + 1] = {0};
     std::size_t userId = 0;
+    int missileSpawnRate = 100;
+    int playerMissileSpawnRate = 250;
 };
 
 struct SER_READY {
     char roomName[rt::MAX_ROOM_NAME_SIZE + 1] = {0};
     std::size_t userId = 0;
+    int missileSpawnRate = 100;
+    int playerMissileSpawnRate = 250;
 };
 
 struct CL_NOT_READY {

@@ -6,6 +6,7 @@
 */
 
 #include "ClientTickRate.hpp"
+#include "GameOptions.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
@@ -111,7 +112,7 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
     reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, keyBind);
+        ecs::systems::controlSpecial(reg, input, udpClient, keyBind, rtc::GameOptions::missileSpawnRate);
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
@@ -119,7 +120,9 @@ void rtc::registerSystems(
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
-    reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
+    if (rtc::GameOptions::lightEffect) {
+        reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
+    }
     reg.addSystem([&udpClient, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::PING_REFRESH, dt)) {
             ecs::systems::sendPing(udpClient);
