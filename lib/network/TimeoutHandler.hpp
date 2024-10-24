@@ -19,6 +19,8 @@
 
 using asio::ip::udp;
 
+// NOLINTBEGIN(readability-identifier-naming)
+
 namespace ntw {
 
 class TimeoutHandler {
@@ -39,7 +41,7 @@ class TimeoutHandler {
         }
     }
 
-    void addTimeoutPacket(std::vector<char> &&packet, size_t packetId, UDPServer &udp)
+    void addTimeoutPacket(const std::vector<char> &packet, size_t packetId, UDPServer &udp)
     {
         std::lock_guard<std::mutex> lck(_mut);
         std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
@@ -136,3 +138,5 @@ class TimeoutHandler {
 };
 
 } // namespace ntw
+
+// NOLINTEND(readability-identifier-naming)
