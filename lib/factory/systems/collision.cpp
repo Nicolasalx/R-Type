@@ -52,7 +52,9 @@ static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::ve
 {
     if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
         auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
-        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize());
+        datasToSend.push_back(
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
+        );
     }
     reg.killEntity(entity);
 }

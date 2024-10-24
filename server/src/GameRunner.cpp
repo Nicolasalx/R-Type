@@ -26,7 +26,8 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, int missileSpawnRate, b
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
     _networkCallbacks.registerConsumeFunc([this](auto f) { f(_reg); });
-    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer);
+    _timeoutHandler.runTimeoutChecker(_dt, _udpServer);
+    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer, _timeoutHandler);
     _udpServer.registerCommand([this](udp::endpoint &endpoint, char *data, std::size_t size) {
         this->_responseHandler.handleResponse(data, size, {std::ref(endpoint)});
     });
@@ -49,9 +50,11 @@ void rts::GameRunner::killPlayer(size_t playerId)
         for (auto [e, player, shared] : zip) {
             if (player.id == playerId) {
                 _datasToSend.push_back(
-                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, shared.sharedEntityId)
+                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, shared.sharedEntityId, true)
                         .serialize()
                 );
+                _udpServer.removeClient(playerId); // Kill the player in udpServer
+                _timeoutHandler.killClientId(playerId);
                 reg.killEntity(e);
                 return;
             }

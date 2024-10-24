@@ -29,7 +29,7 @@ void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>>
             if (reg.hasComponent<component::SharedEntity>(entityId)) {
                 auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entityId)->sharedEntityId;
                 datasToSend.push_back(
-                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize()
+                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
                 );
             }
             reg.killEntity(entityId);

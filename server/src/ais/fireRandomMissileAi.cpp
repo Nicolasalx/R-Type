@@ -49,7 +49,9 @@ entity_t rts::ais::fireRandomMissileAi(
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
                               rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
                               sharedId,
-                              {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}
-    ).serialize());
+                              {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}},
+                              true
+    )
+                              .serialize());
     return rMissile;
 }

@@ -16,6 +16,7 @@
 #include "SafeList.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
+#include "TimeoutHandler.hpp"
 #include "UDPResponseHandler.hpp"
 #include "WaveManager.hpp"
 #include "udp/UDPServer.hpp"
@@ -25,6 +26,7 @@ namespace rts {
 class GameRunner {
     private:
     ntw::UDPServer _udpServer;
+    ntw::TimeoutHandler _timeoutHandler;
     rt::UDPResponseHandler _responseHandler;
 
     ecs::Registry _reg;

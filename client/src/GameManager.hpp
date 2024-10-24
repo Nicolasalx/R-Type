@@ -62,7 +62,7 @@ class GameManager {
     };
 
     void _registerTcpResponse();
-    void _registerUdpResponse(ecs::SpriteManager &spriteManager);
+    void _registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
 
     void _setupTcpConnection();
     void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);

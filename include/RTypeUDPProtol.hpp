@@ -82,6 +82,8 @@ struct PING {
 
 } // namespace UDPBody
 
+constexpr const auto generatePacketId = &ecs::generateSharedEntityId;
+
 // NOLINTEND(readability-identifier-naming)
 
 /**
@@ -92,21 +94,26 @@ template <typename T>
 struct UDPPacket {
     std::size_t magic = rt::UDP_MAGIC;
     std::size_t size = sizeof(*this);
+    std::size_t packetId = generatePacketId();
     UDPCommand cmd = UDPCommand::NONE;
+    bool ack;
     shared_entity_t sharedEntityId = 0;
 
     T body{};
 
-    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body)
-        : cmd(cmd), sharedEntityId(sharedEntityId), body(body)
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body, bool ack = false)
+        : cmd(cmd), ack(ack), sharedEntityId(sharedEntityId), body(body)
     {
     }
 
-    UDPPacket(UDPCommand cmd, const T &body) : cmd(cmd), body(body) {}
+    UDPPacket(UDPCommand cmd, const T &body, bool ack = false) : cmd(cmd), ack(ack), body(body) {}
 
-    UDPPacket(UDPCommand cmd) : cmd(cmd) {}
+    UDPPacket(UDPCommand cmd, bool ack = false) : cmd(cmd), ack(ack) {}
 
-    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId) : cmd(cmd), sharedEntityId(sharedEntityId) {}
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, bool ack = false)
+        : cmd(cmd), ack(ack), sharedEntityId(sharedEntityId)
+    {
+    }
 
     UDPPacket(const std::vector<char> &data)
     {
