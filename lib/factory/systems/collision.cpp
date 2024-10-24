@@ -59,6 +59,17 @@ static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::ve
     reg.killEntity(entity);
 }
 
+static void tagEffectDamage(ecs::Registry &reg, entity_t entity, int damage, std::list<std::vector<char>> &datasToSend)
+{
+    if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
+        auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::TAKE_DAMAGE>(
+                                  rt::UDPCommand::TAKE_DAMAGE, sharedId, rt::UDPBody::TAKE_DAMAGE{.damage = damage}
+        )
+                                  .serialize());
+    }
+}
+
 static void resolveTagEffect(
     ecs::Registry &reg,
     size_t entityA,
@@ -71,6 +82,7 @@ static void resolveTagEffect(
 
     if (missiles.has(entityA) && !missiles.has(entityB)) {
         if (health.has(entityB)) {
+            tagEffectDamage(reg, entityB, 1, datasToSend);
             health[entityB]->currHp -= 1;
         } else {
             tagEffectKill(reg, entityB, datasToSend);
@@ -79,6 +91,7 @@ static void resolveTagEffect(
     }
     if (missiles.has(entityB) && !missiles.has(entityA)) {
         if (health.has(entityA)) {
+            tagEffectDamage(reg, entityA, 1, datasToSend);
             health[entityA]->currHp -= 1;
         } else {
             tagEffectKill(reg, entityA, datasToSend);

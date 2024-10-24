@@ -17,7 +17,9 @@
 #include "SpriteManager.hpp"
 #include "Zipper.hpp"
 #include "components/controllable.hpp"
+#include "components/health.hpp"
 #include "components/player.hpp"
+#include "components/position.hpp"
 #include "components/score.hpp"
 #include "components/velocity.hpp"
 #include "imgui.h"
@@ -207,6 +209,21 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
             )
                                    .count();
             _metrics.getMetric(rt::GameMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
+        }
+    );
+    _udpResponseHandler.registerHandler<rt::UDPBody::TAKE_DAMAGE>(
+        rt::UDPCommand::TAKE_DAMAGE,
+        [this](const rt::UDPPacket<rt::UDPBody::TAKE_DAMAGE> &packet) {
+            _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
+                try {
+                    reg.getComponent<ecs::component::Health>(reg.getLocalEntity().at(packet.sharedEntityId))
+                        .value()
+                        .currHp -= packet.body.damage;
+                } catch (const std::exception &e) {
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
+                }
+            });
         }
     );
 }

@@ -7,7 +7,6 @@
 
 #include "ClientEntityFactory.hpp"
 
-#include <iostream>
 #include <string>
 #include <utility>
 #include "Candle/LightSource.hpp"

@@ -27,6 +27,8 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_BYDOS_WAVE,
     NEW_ENTITY_ROBOT_GROUND,
 
+    TAKE_DAMAGE,
+
     MOVE_ENTITY,
 
     DEL_ENTITY,
@@ -69,6 +71,10 @@ struct NEW_ENTITY_ROBOT_GROUND {
     ecs::component::Velocity vel{};
 };
 
+struct TAKE_DAMAGE {
+    int damage = 1;
+};
+
 struct MOVE_ENTITY {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
@@ -96,7 +102,7 @@ struct UDPPacket {
     std::size_t size = sizeof(*this);
     std::size_t packetId = generatePacketId();
     UDPCommand cmd = UDPCommand::NONE;
-    bool ack;
+    bool ack = false;
     shared_entity_t sharedEntityId = 0;
 
     T body{};
