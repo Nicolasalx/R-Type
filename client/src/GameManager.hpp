@@ -34,11 +34,11 @@ class GameManager {
     std::string _ip;
     std::string _playerName;
 
-    ntw::TCPClient _tcpClient;
+    std::shared_ptr<ntw::TCPClient> _tcpClient;
     bool _inLobby = true;
     std::size_t _userId = 0;
     int _gamePort = 0;
-    rtc::RoomManager _roomManager;
+    std::shared_ptr<rtc::RoomManager> _roomManager;
     rt::TCPResponseHandler _tcpResponseHandler;
     rt::UDPResponseHandler _udpResponseHandler;
     std::promise<bool> _allUDPClientReady;
@@ -70,9 +70,10 @@ class GameManager {
 
     public:
     GameManager(const std::string &ip, int port, const std::string &playerName)
-        : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(ecs::generateSharedEntityId()),
-          _roomManager(_tcpClient, _userId, playerName)
+        : _ip(ip), _playerName(playerName), _userId(ecs::generateSharedEntityId())
     {
+        _tcpClient = std::make_shared<ntw::TCPClient>(ip, port);
+        _roomManager = std::make_shared<rtc::RoomManager>(_tcpClient, _userId, playerName);
     }
 
     ~GameManager()

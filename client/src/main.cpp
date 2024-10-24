@@ -6,10 +6,12 @@
 */
 
 #include <SFML/Graphics.hpp>
+#include <exception>
 #include <memory>
 #include "ArgParser.hpp"
 #include "GameManager.hpp"
 #include "InputManager.hpp"
+#include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "Registry.hpp"
 #include <imgui-SFML.h>
@@ -57,8 +59,11 @@ int main(int argc, const char *argv[])
     auto port = argParser.getValue<int>("port");
     auto playerName = argParser.getValue<std::string>("player_name");
 
-    rtc::GameManager game(ip, port, playerName);
-
-    game.runGame();
+    try {
+        rtc::GameManager game(ip, port, playerName);
+        game.runGame();
+    } catch (const std::exception &e) {
+        eng::logError(e.what());
+    }
     return 0;
 }

@@ -103,10 +103,10 @@ void rtc::GameManager::_launchGame()
     _setupUdpConnection(spriteManager, udpClient);
 
     std::future<bool> otherPlayer = _allUDPClientReady.get_future();
-    _roomManager.udpConnectionReady();
+    _roomManager->udpConnectionReady();
     otherPlayer.wait();
 
-    spawnPlayer(udpClient, _userId, this->_roomManager);
+    spawnPlayer(udpClient, _userId, *_roomManager);
     for (std::size_t i = 1; i <= 11; ++i) {
         ecs::ClientEntityFactory::createClientEntityFromJSON(
             reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"

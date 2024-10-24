@@ -49,16 +49,24 @@ void registerSystems(
 void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);
 void runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
-    rtc::RoomManager &roomManager,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
     bool &inLobby,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
-void renderInsideRoom(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize);
-void renderLobbyWindow(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool &scoreBoardEnable);
+void renderInsideRoom(const std::shared_ptr<rtc::RoomManager> &roomManager, const sf::Vector2u &windowSize);
+void renderLobbyWindow(
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    const sf::Vector2u &windowSize,
+    bool &scoreBoardEnable
+);
 void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
 void menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode);
-void lobbyWindow(sf::Vector2u &windowSize, rtc::RoomManager &roomManager, bool &scoreBoardEnable);
-void renderChat(rtc::RoomManager &roomManager, const sf::Vector2u &windowSize, bool chatEnable);
+void lobbyWindow(
+    sf::Vector2u &windowSize,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    bool &scoreBoardEnable
+);
+void renderChat(const std::shared_ptr<rtc::RoomManager> &roomManager, const sf::Vector2u &windowSize, bool chatEnable);
 void renderAccessibility(
     sf::Vector2u windowSize,
     WindowMode &windowMode,
