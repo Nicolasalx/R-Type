@@ -19,7 +19,7 @@
 
 using asio::ip::udp;
 
-// NOLINTBEGIN(readability-identifier-naming)
+// NOLINTBEGIN(cppcoreguidelines-pro-type-member-init)
 
 namespace ntw {
 
@@ -139,4 +139,4 @@ class TimeoutHandler {
 
 } // namespace ntw
 
-// NOLINTEND(readability-identifier-naming)
+// NOLINTEND(cppcoreguidelines-pro-type-member-init)
