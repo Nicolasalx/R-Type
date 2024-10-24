@@ -6,13 +6,14 @@
 */
 
 #include "draw_player_health_bar.hpp"
+#include <string>
 #include "Zipper.hpp"
 #include "components/health.hpp"
 #include "components/player.hpp"
 #include "imgui.h"
 #include "components/self_player.hpp"
 
-static void drawBar(int percentageBar, const sf::Vector2u &windowSize, const std::string &playerName)
+static void drawBar(int percentageBar, float maxPercentage, const sf::Vector2u &windowSize, const std::string &playerName)
 {
     sf::Vector2u pos =
         sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.01f), static_cast<unsigned int>(windowSize.y * 0.05f)};
@@ -22,7 +23,7 @@ static void drawBar(int percentageBar, const sf::Vector2u &windowSize, const std
     ImVec2 rect1Pos = ImVec2(pos.x, pos.y);
     ImVec2 rect1Size = ImVec2(size.x, size.y);
     ImVec2 rect2Pos = ImVec2(pos.x, pos.y);
-    ImVec2 rect2Size = ImVec2(size.x * (percentageBar / 100.0f), size.y);
+    ImVec2 rect2Size = ImVec2(size.x * (percentageBar / maxPercentage), size.y);
 
     ImGui::GetBackgroundDrawList()->AddRectFilled(
         rect1Pos, ImVec2(rect1Pos.x + rect1Size.x, rect1Pos.y + rect1Size.y), IM_COL32(153, 255, 153, 255), 10.f
@@ -44,6 +45,6 @@ void ecs::systems::drawPlayerHealthBar(Registry &reg, const sf::Vector2u &window
     Zipper<ecs::component::Player, ecs::component::Health, ecs::component::SelfPlayer> zip(player, healths, selfPlayer);
 
     for (auto [player, health, _] : zip) {
-        drawBar(health.currHp, windowSize, player.name);
+        drawBar(health.currHp, health.maxHp, windowSize, player.name);
     }
 }
