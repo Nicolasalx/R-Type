@@ -89,7 +89,6 @@ void collision(
                 }
                 // TODO: If both entities are controllable or both are non-controllable
                 collideCallback(reg, entityA, entityB, datasToSend);
-                // resolveTagEffect(reg, entityA, entityB, datasToSend);
             }
         }
     }

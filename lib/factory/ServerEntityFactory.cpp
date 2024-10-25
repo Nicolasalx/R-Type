@@ -6,8 +6,11 @@
 */
 
 #include "ServerEntityFactory.hpp"
+#include <sys/types.h>
 #include "components/drawable.hpp"
+#include "components/tag.hpp"
 #include "components/ai_actor.hpp"
+#include "components/game_tag.hpp"
 #include "components/server_share_movement.hpp"
 
 namespace ecs {
@@ -44,6 +47,10 @@ void ServerEntityFactory::addComponents(
     }
     if (componentsJson.contains("server_share_movement")) {
         reg.addComponent(entity, ecs::component::ServerShareMovement{});
+    }
+    if (componentsJson.contains("tag")) {
+        component::EntityTag tag{componentsJson["tag"].get<component::EntityTag>()};
+        reg.addComponent(entity, component::Tag<component::EntityTag>{std::move(tag)});
     }
 }
 

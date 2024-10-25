@@ -21,7 +21,7 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
         rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
     );
-    msg.body.pos = {playerPos.x + 36, playerPos.y};
+    msg.body.pos = {playerPos.x + 20, playerPos.y};
     msg.body.vel = {250, 0};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }

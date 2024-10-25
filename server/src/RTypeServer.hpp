@@ -9,6 +9,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <list>
+#include <sys/types.h>
 #include <vector>
 #include "Registry.hpp"
 #include "RoomManager.hpp"
@@ -20,7 +21,6 @@
 #include "udp/UDPServer.hpp"
 
 namespace rts {
-
 int parseArg(int argc, const char **argv, rts::RoomManager &roomManager);
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
