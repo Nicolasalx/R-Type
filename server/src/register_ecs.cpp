@@ -28,6 +28,7 @@
 #include "components/sprite.hpp"
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
+#include "gameCallbacks/collideEffect.hpp"
 #include "systems/collision.hpp"
 #include "systems/draw.hpp"
 #include "systems/position.hpp"
@@ -90,7 +91,7 @@ void rts::registerSystems(
         }
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend); });
+    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &resolveTagEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {
         ecs::systems::healthMobCheck(reg, waveManager);
         ecs::systems::healthSharedCheck(reg, datasToSend);
