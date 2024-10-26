@@ -75,7 +75,7 @@ static void handleAckClient(
     ntw::UDPServer &udpServer,
     const std::vector<std::any> &arg,
     size_t packetId,
-    u_int8_t cmd,
+    std::uint8_t cmd,
     ntw::TimeoutHandler &timeoutHandler,
     std::atomic<bool> &stopGame
 )
@@ -107,7 +107,7 @@ void rts::registerUdpResponse(
 )
 {
     responseHandler.registerAckHandler([&udpServer, &networkCallbacks, &timeoutHandler, &stopGame](
-                                           u_int8_t cmd, size_t packetId, const std::vector<std::any> &arg
+                                           std::uint8_t cmd, size_t packetId, const std::vector<std::any> &arg
                                        ) {
         networkCallbacks.pushBack([&timeoutHandler, arg, &udpServer, packetId, cmd, &stopGame](ecs::Registry &) {
             handleAckClient(udpServer, arg, packetId, cmd, timeoutHandler, stopGame);
