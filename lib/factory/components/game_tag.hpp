@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <sys/types.h>
+#include <cstdint>
 
 namespace ecs::component {
 
@@ -15,7 +15,7 @@ namespace ecs::component {
  * @brief Enum that represent the value that a `Tag<EntityTag>` can have,
  *        the purpose of a tag is to be able to represent any entity in the game logic.
  */
-enum class EntityTag : u_int8_t {
+enum class EntityTag : std::uint8_t {
     NONE,
 
     ALLY,
