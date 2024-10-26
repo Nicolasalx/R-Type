@@ -57,13 +57,13 @@
             "state": "idle"
         },
         "health": {
-            "maxHp": 150,
-            "currHp": 150
+            "maxHp": 15,
+            "currHp": 15
         },
         "server_share_movement": {},
         "ai_actor": {},
         "score_earned": {
-            "points": 10000
+            "points": 1000
         }
     }
 }

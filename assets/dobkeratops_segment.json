@@ -34,8 +34,8 @@
             }
         },
         "health": {
-            "maxHp": 20,
-            "currHp": 20
+            "maxHp": 1000000,
+            "currHp": 1000000
         },
         "server_share_movement": {}
     }

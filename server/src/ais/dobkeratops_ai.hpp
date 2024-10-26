@@ -13,6 +13,7 @@
 #include "components/health.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
+#include "components/shared_entity.hpp"
 
 namespace rts::ais {
 
@@ -27,6 +28,17 @@ struct DobkeratopsState {
 };
 
 static std::unordered_map<entity_t, DobkeratopsState> dobkeratopsStates;
+
+static void sendAnimationStateChange(
+    std::list<std::vector<char>> &datasToSend,
+    shared_entity_t entityId,
+    const std::string &newState
+)
+{
+    rt::UDPPacket<rt::UDPBody::CHANGE_ANIMATION_STATE> msg(rt::UDPCommand::CHANGE_ANIMATION_STATE, entityId);
+    newState.copy(msg.body.newState, sizeof(msg.body.newState) - 1);
+    datasToSend.push_back(msg.serialize());
+}
 
 entity_t createNeckSegment(
     ecs::Registry &reg,
@@ -85,7 +97,7 @@ void spawnDobkeratopsProjectile(
     auto bossPos = reg.getComponent<ecs::component::Position>(bossEntity);
     if (!bossPos) {
         return;
-}
+    }
 
     const float projectileSpeed = 250.0f;
     shared_entity_t sharedId = ecs::generateSharedEntityId();
@@ -105,6 +117,41 @@ void spawnDobkeratopsProjectile(
             rt::UDPCommand::NEW_ENTITY_MISSILE_BALL, sharedId, {.pos = {spawnX, spawnY}, .vel = {vx, vy}}
         ).serialize()
     );
+}
+
+void cleanupDobkeratopsSegments(ecs::Registry &reg, entity_t bossEntity, std::list<std::vector<char>> &datasToSend)
+{
+    if (!dobkeratopsStates.contains(bossEntity)) {
+        eng::logWarning("Attempted to cleanup non-existent Dobkeratops state");
+        return;
+    }
+
+    auto &state = dobkeratopsStates[bossEntity];
+
+    std::vector<entity_t> segmentsToRemove = state.neckSegments;
+
+    state.neckSegments.clear();
+
+    for (auto segment : segmentsToRemove) {
+        try {
+            if (!reg.hasComponent<ecs::component::SharedEntity>(segment)) {
+                eng::logWarning("Segment " + std::to_string(segment) + " missing SharedEntity component");
+                reg.killEntity(segment);
+                continue;
+            }
+
+            auto sharedId = reg.getComponent<ecs::component::SharedEntity>(segment)->sharedEntityId;
+
+            datasToSend.push_back(
+                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize()
+            );
+            reg.killEntity(segment);
+
+        } catch (const std::exception &e) {
+            eng::logError("Failed to cleanup segment " + std::to_string(segment) + ": " + e.what());
+        }
+    }
+    dobkeratopsStates.erase(bossEntity);
 }
 
 void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend)
@@ -133,7 +180,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
         entity_t segmentEntity = state.neckSegments[i];
         if (!reg.hasComponent<ecs::component::Position>(segmentEntity)) {
             continue;
-}
+        }
 
         auto &segPos = reg.getComponent<ecs::component::Position>(segmentEntity);
 
@@ -147,7 +194,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
             auto prevSegPos = reg.getComponent<ecs::component::Position>(state.neckSegments[i - 1]);
             if (!prevSegPos) {
                 continue;
-}
+            }
 
             float targetX = prevSegPos->x - segmentLength;
             float baseY = prevSegPos->y - (segmentLength * 0.2f);
@@ -170,12 +217,13 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
         }
     }
 
-    if (state.attackTicks >= 120) {
+    if (state.attackTicks >= 90) {
         state.attackTicks = 0;
         state.isAttacking = true;
         state.projectilesShot = 0;
         state.attackPattern = (state.attackPattern + 1) % 3;
         anim->state = "attack";
+        sendAnimationStateChange(datasToSend, sharedEntity->sharedEntityId, "attack");
     }
 
     if (state.isAttacking) {
@@ -189,16 +237,16 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
                 break;
 
             case 1:
-                if (state.projectilesShot < 3) {
+                if (state.projectilesShot < 8) {
                     float baseAngle = -0.5f;
-                    float angleStep = 0.5f;
+                    float angleStep = 0.2f;
                     spawnDobkeratopsProjectile(reg, e, datasToSend, baseAngle + angleStep * state.projectilesShot);
                     state.projectilesShot++;
                 }
                 break;
 
             case 2:
-                if (state.projectilesShot < 5 && (state.attackTicks % 6 == 0)) {
+                if (state.projectilesShot < 20 && (state.attackTicks % 3 == 0)) {
                     float angle = eng::RandomGenerator::generate(-0.7f, 0.7f);
                     spawnDobkeratopsProjectile(reg, e, datasToSend, angle);
                     state.projectilesShot++;
@@ -206,19 +254,21 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
                 break;
         }
 
-        if ((state.attackPattern != 2 && state.projectilesShot >= 3) ||
-            (state.attackPattern == 2 && state.projectilesShot >= 5)) {
+        if ((state.attackPattern != 2 && state.projectilesShot >= 8) ||
+            (state.attackPattern == 2 && state.projectilesShot >= 20)) {
             state.isAttacking = false;
             anim->state = "idle";
+            sendAnimationStateChange(datasToSend, sharedEntity->sharedEntityId, "idle");
         }
     }
 
-    if (health->currHp <= 0) {
-        for (auto segment : state.neckSegments) {
-            reg.killEntity(segment);
-        }
-        state.neckSegments.clear();
-        dobkeratopsStates.erase(e);
+    if (health->currHp <= 1) {
+        cleanupDobkeratopsSegments(reg, e, datasToSend);
+        datasToSend.push_back(
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId).serialize()
+        );
+        reg.killEntity(e);
+        return;
     }
 }
 

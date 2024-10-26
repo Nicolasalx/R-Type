@@ -155,6 +155,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
             });
         }
     );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
@@ -177,6 +178,24 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
             });
         }
     );
+
+    _udpResponseHandler.registerHandler<rt::UDPBody::CHANGE_ANIMATION_STATE>(
+        rt::UDPCommand::CHANGE_ANIMATION_STATE,
+        [this](const rt::UDPPacket<rt::UDPBody::CHANGE_ANIMATION_STATE> &packet) {
+            _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
+                try {
+                    auto &animation =
+                        reg.getComponent<ecs::component::Animation>(reg.getLocalEntity().at(packet.sharedEntityId));
+                    if (animation) {
+                        animation->state = packet.body.newState;
+                    }
+                } catch (const std::exception &e) {
+                    eng::logTimeWarning(e.what());
+                }
+            });
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
         [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {

@@ -30,6 +30,7 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_DOBKERATOPS_PART,
 
     MOVE_ENTITY,
+    CHANGE_ANIMATION_STATE,
 
     DEL_ENTITY,
 
@@ -84,6 +85,10 @@ struct NEW_ENTITY_DOBKERATOPS_PART {
 struct MOVE_ENTITY {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+};
+
+struct CHANGE_ANIMATION_STATE {
+    char newState[32] = {0};
 };
 
 struct DEL_ENTITY {};
