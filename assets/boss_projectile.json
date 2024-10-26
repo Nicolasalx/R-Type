@@ -1,0 +1,60 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "velocity": {
+            "vx": 0,
+            "vy": 0
+        },
+        "hitbox": {
+            "width": 16,
+            "height": 16
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet30.gif",
+            "initial_frame": {
+                "x": 0,
+                "y": 300,
+                "width": 16,
+                "height": 16
+            }
+        },
+        "animation": {
+            "frame_time": 0.1,
+            "frames": {
+                "idle": [
+                    {
+                        "x": 0,
+                        "y": 300,
+                        "width": 16,
+                        "height": 16
+                    },
+                    {
+                        "x": 16,
+                        "y": 300,
+                        "width": 16,
+                        "height": 16
+                    },
+                    {
+                        "x": 32,
+                        "y": 300,
+                        "width": 16,
+                        "height": 16
+                    },
+                    {
+                        "x": 48,
+                        "y": 300,
+                        "width": 16,
+                        "height": 16
+                    }
+                ]
+            },
+            "state": "idle"
+        },
+        "missile": {},
+        "server_share_movement": {}
+    }
+}

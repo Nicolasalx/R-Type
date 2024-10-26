@@ -1,0 +1,69 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 400,
+            "y": 120
+        },
+        "velocity": {
+            "vx": 0,
+            "vy": 0
+        },
+        "hitbox": {
+            "width": 156,
+            "height": 208
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet30.gif",
+            "initial_frame": {
+                "x": 24,
+                "y": 0,
+                "width": 156,
+                "height": 208
+            }
+        },
+        "animation": {
+            "frame_time": 0.15,
+            "frames": {
+                "idle": [
+                    {
+                        "x": 348,
+                        "y": 0,
+                        "width": 156,
+                        "height": 208
+                    }
+                ],
+                "attack": [
+                    {
+                        "x": 24,
+                        "y": 0,
+                        "width": 156,
+                        "height": 208
+                    },
+                    {
+                        "x": 186,
+                        "y": 0,
+                        "width": 156,
+                        "height": 208
+                    },
+                    {
+                        "x": 348,
+                        "y": 0,
+                        "width": 156,
+                        "height": 208
+                    }
+                ]
+            },
+            "state": "idle"
+        },
+        "health": {
+            "maxHp": 150,
+            "currHp": 150
+        },
+        "server_share_movement": {},
+        "ai_actor": {},
+        "score_earned": {
+            "points": 10000
+        }
+    }
+}

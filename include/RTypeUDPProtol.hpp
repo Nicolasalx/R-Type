@@ -26,6 +26,8 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_MISSILE_BALL,
     NEW_ENTITY_BYDOS_WAVE,
     NEW_ENTITY_ROBOT_GROUND,
+    NEW_ENTITY_DOBKERATOPS,
+    NEW_ENTITY_DOBKERATOPS_PART,
 
     MOVE_ENTITY,
 
@@ -67,6 +69,16 @@ struct NEW_ENTITY_BYDOS_WAVE {
 struct NEW_ENTITY_ROBOT_GROUND {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+};
+
+struct NEW_ENTITY_DOBKERATOPS {
+    ecs::component::Position pos{};
+    int stage = 1;
+};
+
+struct NEW_ENTITY_DOBKERATOPS_PART {
+    ecs::component::Position pos{};
+    int partIndex = 0;
 };
 
 struct MOVE_ENTITY {
