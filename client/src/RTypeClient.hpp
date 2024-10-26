@@ -32,7 +32,7 @@ enum class WindowMode : std::uint8_t {
     LOBBY
 };
 
-enum class GameState : u_int8_t {
+enum class GameState : std::uint8_t {
     NONE,
     LOBBY,
     GAME
