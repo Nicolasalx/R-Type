@@ -16,7 +16,12 @@
 #include "Registry.hpp"
 #include <imgui-SFML.h>
 
-void rtc::run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input)
+void rtc::runGameLoop(
+    ecs::Registry &reg,
+    const std::shared_ptr<sf::RenderWindow> &window,
+    float &dt,
+    ecs::InputManager &input
+)
 {
     sf::Clock clock;
 
@@ -61,7 +66,7 @@ int main(int argc, const char *argv[])
 
     try {
         rtc::GameManager game(ip, port, playerName);
-        game.runGame();
+        game.run();
     } catch (const std::exception &e) {
         eng::logError(e.what());
     }

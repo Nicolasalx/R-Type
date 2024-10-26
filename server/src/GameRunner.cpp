@@ -21,7 +21,7 @@
 
 rts::GameRunner::GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode) // ! Use the stage
                                                                                                // argument
-    : _udpServer(port), _debugMode(debugMode)
+    : _udpServer(port), _debugMode(debugMode), _stopGame(false)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
@@ -71,11 +71,11 @@ void rts::GameRunner::addWindow(const sf::VideoMode &videomode, const std::strin
     _window.setFramerateLimit(rt::SERVER_ENGINE_TARGET_FPS);
 }
 
-void rts::GameRunner::_runGameDebug(bool &stopGame)
+void rts::GameRunner::_runGameDebug()
 {
     sf::Clock clock;
 
-    while (_window.isOpen() && !stopGame) {
+    while (_window.isOpen() && !_stopGame.load()) {
         _dt = clock.restart().asSeconds();
 
         sf::Event event{};
@@ -93,16 +93,16 @@ void rts::GameRunner::_runGameDebug(bool &stopGame)
     }
 }
 
-void rts::GameRunner::runGame(bool &stopGame)
+void rts::GameRunner::runGame()
 {
     eng::FramerateManager frameRate(rt::SERVER_ENGINE_TARGET_FPS);
     sf::Clock clock;
 
     if (_debugMode) {
-        _runGameDebug(stopGame);
+        _runGameDebug();
         return;
     }
-    while (!stopGame) {
+    while (!_stopGame.load()) {
         frameRate.start();
         _dt = clock.restart().asSeconds();
         _reg.runSystems();

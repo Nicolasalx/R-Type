@@ -31,7 +31,6 @@ class RoomManager {
         std::unique_ptr<std::thread> game;
         std::shared_ptr<GameRunner> gameRunner = nullptr;
         std::promise<bool> clientReady;
-        bool stopGame = false;
     };
 
     std::map<std::string, Room> _rooms;

@@ -41,14 +41,20 @@ class GameRunner {
     sf::RenderWindow _window;
 
     bool _debugMode = false;
+    std::atomic<bool> _stopGame;
 
-    void _runGameDebug(bool &stopGame);
+    void _runGameDebug();
 
     public:
     GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode);
 
+    void setGameState(bool state)
+    {
+        _stopGame.store(state);
+    }
+
     void killPlayer(size_t playerId);
     void addWindow(const sf::VideoMode &videomode, const std::string &title);
-    void runGame(bool &stopGame);
+    void runGame();
 };
 } // namespace rts

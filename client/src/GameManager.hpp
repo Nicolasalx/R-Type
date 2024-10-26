@@ -66,7 +66,11 @@ class GameManager {
 
     void _setupTcpConnection();
     void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _setupGui();
+    void _setupEntities(ntw::UDPClient &udpClient, ecs::Registry &reg, ecs::SpriteManager &spriteManager);
+
     void _launchGame();
+    void _runGame();
 
     public:
     GameManager(const std::string &ip, int port, const std::string &playerName)
@@ -81,7 +85,7 @@ class GameManager {
         ImGui::SFML::Shutdown();
     }
 
-    void runGame()
+    void run()
     {
         _setupTcpConnection();
         _launchGame();

@@ -46,7 +46,12 @@ void registerSystems(
     ecs::SoundManager &soundManager
 );
 
-void run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input);
+void runGameLoop(
+    ecs::Registry &reg,
+    const std::shared_ptr<sf::RenderWindow> &window,
+    float &dt,
+    ecs::InputManager &input
+);
 void runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
     const std::shared_ptr<rtc::RoomManager> &roomManager,
