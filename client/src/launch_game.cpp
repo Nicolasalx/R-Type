@@ -148,4 +148,7 @@ void rtc::GameManager::_launchGame()
                 return;
         }
     }
+    if (_window->isOpen()) {
+        _window->close();
+    }
 }

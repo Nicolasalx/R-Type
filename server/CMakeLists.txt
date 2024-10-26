@@ -12,6 +12,7 @@ add_executable(r-type_server
     src/ais/fireRandomMissileAi.cpp
     src/ais/horizontalMoveAi.cpp
     src/gameCallbacks/collideEffect.cpp
+    src/gameCallbacks/endGame.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)

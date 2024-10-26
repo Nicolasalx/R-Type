@@ -33,7 +33,8 @@ enum class UDPCommand : std::uint8_t {
 
     DEL_ENTITY,
 
-    PING
+    PING,
+    END_GAME
 };
 
 // NOLINTBEGIN(readability-identifier-naming)
@@ -85,6 +86,8 @@ struct DEL_ENTITY {};
 struct PING {
     long sendTime = 0;
 };
+
+struct END_GAME {};
 
 } // namespace UDPBody
 

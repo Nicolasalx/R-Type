@@ -10,6 +10,7 @@
 #include <functional>
 #include <vector>
 #include "components/game_tag.hpp"
+#include "systems/check_game_ending.hpp"
 #include <imgui-SFML.h>
 
 #include "RTypeServer.hpp"
@@ -17,6 +18,7 @@
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
 #include "gameCallbacks/collideEffect.hpp"
+#include "gameCallbacks/endGame.hpp"
 #include "udp/UDPServer.hpp"
 
 #include "components/animation.hpp"
@@ -78,7 +80,8 @@ void rts::registerSystems(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
-    bool debugMode
+    bool debugMode,
+    size_t &nbPlayers
 )
 {
     tickRateManager.addTickRate(rts::TickRate::SEND_PACKETS, rts::SERVER_TICKRATE.at(rts::TickRate::SEND_PACKETS));
@@ -116,6 +119,15 @@ void rts::registerSystems(
         if (tickRateManager.needUpdate(rts::TickRate::ENTITY_MOVEMENT, dt)) {
             ecs::systems::serverShareMovement(reg, datasToSend);
         }
+    });
+    reg.addSystem([&nbPlayers, &waveManager, &reg, &datasToSend]() {
+        ecs::systems::checkGameEnding(
+            reg,
+            [&nbPlayers, &waveManager](ecs::Registry &) {
+                return nbPlayers == 0 || (!waveManager.hasEntity() && waveManager.isEnd());
+            },
+            [&datasToSend](ecs::Registry &) { endGame(datasToSend); }
+        );
     });
     reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rts::TickRate::SEND_PACKETS, dt)) {

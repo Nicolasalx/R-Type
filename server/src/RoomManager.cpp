@@ -108,7 +108,11 @@ void rts::RoomManager::playerReady(
     std::future<bool> server = serverReady.get_future();
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
     _rooms.at(roomName).gameRunner = std::make_shared<rts::GameRunner>(
-        _nextPort, _rooms.at(roomName).stage, _rooms.at(roomName).missileSpawnRate, this->_debugMode
+        _nextPort,
+        _rooms.at(roomName).stage,
+        _rooms.at(roomName).missileSpawnRate,
+        this->_debugMode,
+        _rooms.at(roomName).player.size()
     );
 
     _rooms.at(roomName).game = std::make_unique<std::thread>(

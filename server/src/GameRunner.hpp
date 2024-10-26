@@ -29,6 +29,7 @@ class GameRunner {
     ntw::TimeoutHandler _timeoutHandler;
     rt::UDPResponseHandler _responseHandler;
 
+    size_t _nbPlayers;
     ecs::Registry _reg;
     ecs::WaveManager _waveManager;
 
@@ -46,7 +47,7 @@ class GameRunner {
     void _runGameDebug();
 
     public:
-    GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode);
+    GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode, size_t nbPlayers);
 
     void setGameState(bool state)
     {
