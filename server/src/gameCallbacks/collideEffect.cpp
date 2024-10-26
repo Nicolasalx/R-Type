@@ -32,7 +32,8 @@ static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::ve
 static void tagEffectDamage(ecs::Registry &reg, entity_t entity, int damage, std::list<std::vector<char>> &datasToSend)
 {
     if (!reg.hasComponent<ecs::component::Health>(entity)) {
-        return tagEffectKill(reg, entity, datasToSend);
+        tagEffectKill(reg, entity, datasToSend);
+        return;
     }
     auto &health = reg.getComponents<ecs::component::Health>();
 
