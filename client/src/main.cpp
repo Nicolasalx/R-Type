@@ -20,18 +20,20 @@ void rtc::runGameLoop(
     ecs::Registry &reg,
     const std::shared_ptr<sf::RenderWindow> &window,
     float &dt,
-    ecs::InputManager &input
+    ecs::InputManager &input,
+    std::atomic<GameState> &gameState
 )
 {
     sf::Clock clock;
 
-    while (window->isOpen()) {
+    while (window->isOpen() && gameState.load() == GameState::GAME) {
         dt = clock.restart().asSeconds();
 
         sf::Event event{};
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window->close();
+                gameState.store(GameState::NONE);
             }
             input.update(event);
         }

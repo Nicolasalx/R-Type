@@ -8,6 +8,7 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <sys/types.h>
 #include "ClientTickRate.hpp"
 #include "InputManager.hpp"
 #include "KeyBind.hpp"
@@ -31,6 +32,12 @@ enum class WindowMode : std::uint8_t {
     LOBBY
 };
 
+enum class GameState : u_int8_t {
+    NONE,
+    LOBBY,
+    GAME
+};
+
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
     ecs::Registry &reg,
@@ -50,12 +57,13 @@ void runGameLoop(
     ecs::Registry &reg,
     const std::shared_ptr<sf::RenderWindow> &window,
     float &dt,
-    ecs::InputManager &input
+    ecs::InputManager &input,
+    std::atomic<GameState> &gameState
 );
 void runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
     const std::shared_ptr<rtc::RoomManager> &roomManager,
-    bool &inLobby,
+    std::atomic<GameState> &gameState,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
 void renderInsideRoom(const std::shared_ptr<rtc::RoomManager> &roomManager, const sf::Vector2u &windowSize);

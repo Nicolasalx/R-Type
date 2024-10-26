@@ -7,6 +7,7 @@
 
 #include <SFML/Window/VideoMode.hpp>
 #include <cstddef>
+#include <cstdio>
 #include <memory>
 #include <string>
 #include "ClientEntityFactory.hpp"
@@ -125,7 +126,7 @@ void rtc::GameManager::_runGame()
     otherPlayer.wait();
 
     _setupEntities(udpClient, reg, spriteManager);
-    runGameLoop(reg, _window, dt, inputManager);
+    runGameLoop(reg, _window, dt, inputManager, _gameState);
 }
 
 void rtc::GameManager::_launchGame()
@@ -134,10 +135,17 @@ void rtc::GameManager::_launchGame()
     _window->setFramerateLimit(rt::CLIENT_FPS_LIMIT);
 
     _setupGui();
-    runGui(_window, _roomManager, _inLobby, _keyBind);
 
-    if (_inLobby) {
-        return;
+    while (_gameState.load() != GameState::NONE) {
+        switch (_gameState.load()) {
+            case GameState::LOBBY:
+                rtc::runGui(_window, _roomManager, _gameState, _keyBind);
+                break;
+            case GameState::GAME:
+                _runGame();
+                break;
+            default:
+                return;
+        }
     }
-    _runGame();
 }

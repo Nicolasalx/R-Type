@@ -11,8 +11,10 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <functional>
 #include <memory>
+#include <sys/types.h>
 #include "KeyBind.hpp"
 #include "MetricManager.hpp"
+#include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
@@ -35,7 +37,7 @@ class GameManager {
     std::string _playerName;
 
     std::shared_ptr<ntw::TCPClient> _tcpClient;
-    bool _inLobby = true;
+    std::atomic<GameState> _gameState = GameState::LOBBY;
     std::size_t _userId = 0;
     int _gamePort = 0;
     std::shared_ptr<rtc::RoomManager> _roomManager;

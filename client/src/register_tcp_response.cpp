@@ -8,6 +8,7 @@
 #include <string>
 #include "GameManager.hpp"
 #include "GameOptions.hpp"
+#include "RTypeClient.hpp"
 #include "RTypeTCPProtol.hpp"
 #include "RoomManager.hpp"
 
@@ -29,7 +30,7 @@ void rtc::GameManager::_registerTcpResponse()
     _tcpResponseHandler.registerHandler<rt::TCPBody::SER_ROOM_READY>(
         rt::TCPCommand::SER_ROOM_READY,
         [this](const rt::TCPPacket<rt::TCPBody::SER_ROOM_READY> &packet) {
-            _inLobby = false;
+            _gameState.store(GameState::GAME);
             _gamePort = packet.body.port;
         }
     );
