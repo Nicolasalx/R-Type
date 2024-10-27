@@ -1,8 +1,6 @@
 #pragma once
 
-#include <array>
 #include <cmath>
-#include <iostream>
 #include <list>
 #include <vector>
 #include "Logger.hpp"
