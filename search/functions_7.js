@@ -13,13 +13,14 @@ var searchData=
   ['getcurrentroom_10',['getCurrentRoom',['../d0/d42/classrtc_1_1RoomManager.html#a8913a688b64ce34e5e22f46dd66cc6e2',1,'rtc::RoomManager::getCurrentRoom() const'],['../d0/d42/classrtc_1_1RoomManager.html#ac0b0d4692e2514dc98a679df14cdc171',1,'rtc::RoomManager::getCurrentRoom()']]],
   ['getcurrentroomplayer_11',['getCurrentRoomPlayer',['../d0/d42/classrtc_1_1RoomManager.html#acc01bd69aac076ace3aa49b5671c23a6',1,'rtc::RoomManager']]],
   ['getindex_12',['getIndex',['../d8/d2e/classecs_1_1SparseArray.html#ae9addf62161ae2412d61e285be7bb7bb',1,'ecs::SparseArray::getIndex()'],['../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b',1,'ecs::Metric::getIndex()']]],
-  ['getlocalentity_13',['getLocalEntity',['../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947',1,'ecs::Registry']]],
-  ['getmetric_14',['getMetric',['../d5/dff/classecs_1_1MetricManager.html#a4b29d66cfe9e19f12a3011f31cedd8bf',1,'ecs::MetricManager::getMetric(const MetricKey &amp;key) const'],['../d5/dff/classecs_1_1MetricManager.html#af20e6c8d5209cb9ca632fc3fa70f4675',1,'ecs::MetricManager::getMetric(const MetricKey &amp;key)']]],
-  ['getnbwave_15',['getNbWave',['../d5/d35/classecs_1_1WaveManager.html#ae8d06732d72bc04e0e02505c8c30a934',1,'ecs::WaveManager']]],
-  ['getrooms_16',['getRooms',['../d0/d42/classrtc_1_1RoomManager.html#a88af2da4d7b85942288175751d092102',1,'rtc::RoomManager::getRooms() const'],['../d0/d42/classrtc_1_1RoomManager.html#a655207772ca376ec76fe5e17d22de118',1,'rtc::RoomManager::getRooms()']]],
-  ['getselfid_17',['getSelfId',['../d0/d42/classrtc_1_1RoomManager.html#a19e7c6a015899fc1cbd8cda4266fd569',1,'rtc::RoomManager']]],
-  ['getselfname_18',['getSelfName',['../d0/d42/classrtc_1_1RoomManager.html#a8efd34a5953eacfbbe4de4401eaef3b7',1,'rtc::RoomManager']]],
-  ['getsoundbuffer_19',['getSoundBuffer',['../dc/dcf/classecs_1_1SoundManager.html#ad3aa2731413d1f837f2445e41dfd66ea',1,'ecs::SoundManager']]],
-  ['gettexture_20',['getTexture',['../d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1',1,'ecs::SpriteManager']]],
-  ['getvalue_21',['getValue',['../dc/de1/classeng_1_1ArgParser.html#a8a6f3f5f519e7a7ba9ac1b0150f8f6ae',1,'eng::ArgParser::getValue(const std::string &amp;longName) const'],['../dc/de1/classeng_1_1ArgParser.html#a6dc60406ffb1ed5305b6d80d305f59f2',1,'eng::ArgParser::getValue(const std::string &amp;longName) const']]]
+  ['getjson_13',['getJSON',['../df/d28/classecs_1_1EntityFactory.html#a9f303c21271fd54031a5466d7cb6fdc3',1,'ecs::EntityFactory']]],
+  ['getlocalentity_14',['getLocalEntity',['../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947',1,'ecs::Registry']]],
+  ['getmetric_15',['getMetric',['../d5/dff/classecs_1_1MetricManager.html#a4b29d66cfe9e19f12a3011f31cedd8bf',1,'ecs::MetricManager::getMetric(const MetricKey &amp;key) const'],['../d5/dff/classecs_1_1MetricManager.html#af20e6c8d5209cb9ca632fc3fa70f4675',1,'ecs::MetricManager::getMetric(const MetricKey &amp;key)']]],
+  ['getnbwave_16',['getNbWave',['../d5/d35/classecs_1_1WaveManager.html#ae8d06732d72bc04e0e02505c8c30a934',1,'ecs::WaveManager']]],
+  ['getrooms_17',['getRooms',['../d0/d42/classrtc_1_1RoomManager.html#a88af2da4d7b85942288175751d092102',1,'rtc::RoomManager::getRooms() const'],['../d0/d42/classrtc_1_1RoomManager.html#a655207772ca376ec76fe5e17d22de118',1,'rtc::RoomManager::getRooms()']]],
+  ['getselfid_18',['getSelfId',['../d0/d42/classrtc_1_1RoomManager.html#a19e7c6a015899fc1cbd8cda4266fd569',1,'rtc::RoomManager']]],
+  ['getselfname_19',['getSelfName',['../d0/d42/classrtc_1_1RoomManager.html#a8efd34a5953eacfbbe4de4401eaef3b7',1,'rtc::RoomManager']]],
+  ['getsoundbuffer_20',['getSoundBuffer',['../dc/dcf/classecs_1_1SoundManager.html#ad3aa2731413d1f837f2445e41dfd66ea',1,'ecs::SoundManager']]],
+  ['gettexture_21',['getTexture',['../d5/d93/classecs_1_1SpriteManager.html#a8c7869a307d17d2c53cdc337d76cd8d1',1,'ecs::SpriteManager']]],
+  ['getvalue_22',['getValue',['../dc/de1/classeng_1_1ArgParser.html#a8a6f3f5f519e7a7ba9ac1b0150f8f6ae',1,'eng::ArgParser::getValue(const std::string &amp;longName) const'],['../dc/de1/classeng_1_1ArgParser.html#a6dc60406ffb1ed5305b6d80d305f59f2',1,'eng::ArgParser::getValue(const std::string &amp;longName) const']]]
 ];

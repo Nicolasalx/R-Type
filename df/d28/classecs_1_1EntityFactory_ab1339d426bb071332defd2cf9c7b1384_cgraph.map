@@ -1,11 +1,12 @@
 <map id="ecs::EntityFactory::createServerEntityFromJSON" name="ecs::EntityFactory::createServerEntityFromJSON">
-<area shape="rect" id="node1" title="Creates a server entity from a JSON file." alt="" coords="5,141,221,181"/>
+<area shape="rect" id="node1" title="Creates a server entity from a JSON file." alt="" coords="5,177,221,217"/>
 <area shape="rect" id="node2" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="283,5,462,45"/>
 <area shape="rect" id="node5" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="270,70,475,95"/>
-<area shape="rect" id="node6" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="269,119,476,145"/>
-<area shape="rect" id="node7" href="$de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="283,169,462,209"/>
-<area shape="rect" id="node8" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="276,234,469,259"/>
-<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="524,199,724,239"/>
+<area shape="rect" id="node6" href="$df/d28/classecs_1_1EntityFactory.html#a9f303c21271fd54031a5466d7cb6fdc3" title="Gets JSON data from cache or loads it if not cached." alt="" coords="304,120,441,160"/>
+<area shape="rect" id="node7" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="269,185,476,210"/>
+<area shape="rect" id="node8" href="$de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="283,235,462,275"/>
+<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="276,299,469,325"/>
+<area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="524,231,724,271"/>
 <area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="527,5,721,45"/>
 <area shape="rect" id="node4" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="772,70,984,95"/>
 </map>

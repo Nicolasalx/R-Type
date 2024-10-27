@@ -90,7 +90,7 @@ Inheritance diagram for ecs::ServerEntityFactory:</div>
 <div class="center"><img src="../../d9/d02/classecs_1_1ServerEntityFactory__inherit__graph.png" border="0" usemap="#aecs_1_1ServerEntityFactory_inherit__map" alt="Inheritance graph"/></div>
 <map name="aecs_1_1ServerEntityFactory_inherit__map" id="aecs_1_1ServerEntityFactory_inherit__map">
 <area shape="rect" title="A factory class for creating and managing server&#45;side entities." alt="" coords="5,79,184,104"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files." alt="" coords="26,5,163,31"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files with automatic caching." alt="" coords="26,5,163,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -99,7 +99,7 @@ Collaboration diagram for ecs::ServerEntityFactory:</div>
 <div class="center"><img src="../../d7/dbe/classecs_1_1ServerEntityFactory__coll__graph.png" border="0" usemap="#aecs_1_1ServerEntityFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aecs_1_1ServerEntityFactory_coll__map" id="aecs_1_1ServerEntityFactory_coll__map">
 <area shape="rect" title="A factory class for creating and managing server&#45;side entities." alt="" coords="5,79,184,104"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files." alt="" coords="26,5,163,31"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html" title="A factory class for creating entities from JSON files with automatic caching." alt="" coords="26,5,163,31"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -121,6 +121,16 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a82e6d2ddca59810ce47cab17ce464111 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111">addCommonComponents</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> entity, const nlohmann::json &amp;componentsJson, int x, int y, float vx, float vy, std::shared_ptr&lt; ImFont &gt; font=nullptr)</td></tr>
 <tr class="memdesc:a82e6d2ddca59810ce47cab17ce464111 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds common components to an entity.  <br /></td></tr>
 <tr class="separator:a82e6d2ddca59810ce47cab17ce464111 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f303c21271fd54031a5466d7cb6fdc3 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static const nlohmann::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#a9f303c21271fd54031a5466d7cb6fdc3">getJSON</a> (const std::string &amp;jsonFilePath)</td></tr>
+<tr class="memdesc:a9f303c21271fd54031a5466d7cb6fdc3 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets JSON data from cache or loads it if not cached.  <br /></td></tr>
+<tr class="separator:a9f303c21271fd54031a5466d7cb6fdc3 inherit pub_static_methods_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_attribs_classecs_1_1EntityFactory"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classecs_1_1EntityFactory')"><img src="../../closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="../../df/d28/classecs_1_1EntityFactory.html">ecs::EntityFactory</a></td></tr>
+<tr class="memitem:a6b2b13599396bc14937e4cba6a01e5cc inherit pub_static_attribs_classecs_1_1EntityFactory"><td class="memItemLeft" align="right" valign="top">static std::unordered_map&lt; std::string, nlohmann::json &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d28/classecs_1_1EntityFactory.html#a6b2b13599396bc14937e4cba6a01e5cc">jsonCache</a></td></tr>
+<tr class="memdesc:a6b2b13599396bc14937e4cba6a01e5cc inherit pub_static_attribs_classecs_1_1EntityFactory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache storing loaded JSON data.  <br /></td></tr>
+<tr class="separator:a6b2b13599396bc14937e4cba6a01e5cc inherit pub_static_attribs_classecs_1_1EntityFactory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A factory class for creating and managing server-side entities. </p>

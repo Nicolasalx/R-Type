@@ -1,0 +1,12 @@
+<map id="ecs::EntityFactory::getJSON" name="ecs::EntityFactory::getJSON">
+<area shape="rect" id="node1" title="Gets JSON data from cache or loads it if not cached." alt="" coords="1212,67,1349,107"/>
+<area shape="rect" id="node2" href="$df/d28/classecs_1_1EntityFactory.html#a2e40628c079221593390124181093078" title="Creates a client entity from a JSON file." alt="" coords="950,35,1162,75"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="948,99,1164,139"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a53426c8c7c7b08637727d5c7018e7327" title=" " alt="" coords="693,5,900,31"/>
+<area shape="rect" id="node5" href="$da/d18/namespacerts_1_1ais.html#a5ca57e1f5c63bbd7426e6159aaac083a" title=" " alt="" coords="446,56,637,81"/>
+<area shape="rect" id="node6" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="279,132,389,157"/>
+<area shape="rect" id="node8" href="$da/d18/namespacerts_1_1ais.html#a34c718b24a4fa390dca2b9e767c94dd1" title=" " alt="" coords="437,157,645,183"/>
+<area shape="rect" id="node9" href="$da/d18/namespacerts_1_1ais.html#a9f7067f183b3a054ffa0cd7e1031f608" title=" " alt="" coords="697,207,896,247"/>
+<area shape="rect" id="node7" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,132,231,157"/>
+<area shape="rect" id="node10" href="$da/d18/namespacerts_1_1ais.html#aa22cd49646951c97d8b3efdf0fb62530" title=" " alt="" coords="458,211,625,236"/>
+</map>
