@@ -10,10 +10,10 @@
 
 ## Task Distribution
 
-- **Nicolas:**
-  - Provided a summary of the Sprint Review for Week 5.
-  - Working on calculating the score in real-time when an enemy is defeated.
-  - Developing a global scoreboard to track player performance.
+- **Manuel:**
+  - Implementing a spawn-on-death component to manage player reappearance.
+  - Working on a death timer for explosions to create a more dynamic gameplay experience.
+  - Developing a subsprite system to enhance character animations.
 
 - **Thibaud:**
   - Responsible for fixing the health bar to improve player feedback.
@@ -21,10 +21,10 @@
   - Creating a new environmental obstacle to enhance game challenges.
   - Remapping the keys to improve player controls.
 
-- **Manuel:**
-  - Implementing a spawn-on-death component to manage player reappearance.
-  - Working on a death timer for explosions to create a more dynamic gameplay experience.
-  - Developing a subsprite system to enhance character animations.
+- **Nicolas:**
+  - Provided a summary of the Sprint Review for Week 5.
+  - Working on calculating the score in real-time when an enemy is defeated.
+  - Developing a global scoreboard to track player performance.
 
 - **Rahul:**
   - Focusing on UDP acknowledgment for create and delete operations to improve network reliability.
