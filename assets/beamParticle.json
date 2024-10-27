@@ -1,0 +1,60 @@
+{
+    "type": "local",
+    "components": {
+        "position": {
+            "x": 200.0,
+            "y": 200.0
+        },
+        "particle": {
+            "offset": {
+                "x": 10,
+                "y": 5
+            },
+            "max_nb_particle": 10000,
+            "additive_blend_mode": true,
+            "emit_rate": 100.0,
+            "life_time": {
+                "min": 0.3,
+                "max": 3
+            },
+            "size": {
+                "min_start": 3,
+                "max_start": 5,
+                "min_end": 15,
+                "max_end": 30
+            },
+            "velocity": {
+                "min_angle": -45.0,
+                "max_angle": 90.0,
+                "min_start_speed": 5.0,
+                "max_start_speed": 25.0
+            },
+            "color": {
+                "min_start": {
+                    "r": 200,
+                    "g": 150,
+                    "b": 100,
+                    "a": 255
+                },
+                "max_start": {
+                    "r": 100,
+                    "g": 100,
+                    "b": 100,
+                    "a": 255
+                },
+                "min_end": {
+                    "r": 50,
+                    "g": 50,
+                    "b": 50,
+                    "a": 0
+                },
+                "max_end": {
+                    "r": 150,
+                    "g": 100,
+                    "b": 50,
+                    "a": 0
+                }
+            }
+        }
+    }
+}

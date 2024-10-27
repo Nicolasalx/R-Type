@@ -8,12 +8,14 @@
 #include <SFML/Graphics.hpp>
 #include <exception>
 #include <memory>
+#include <string>
 #include "ArgParser.hpp"
 #include "GameManager.hpp"
 #include "InputManager.hpp"
 #include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "Registry.hpp"
+#include "SFML/System/Time.hpp"
 #include <imgui-SFML.h>
 
 void rtc::runGameLoop(
@@ -37,8 +39,8 @@ void rtc::runGameLoop(
             }
             input.update(event);
         }
+        ImGui::SFML::Update(*window, sf::seconds(dt));
         window->clear();
-        ImGui::SFML::Update(*window, clock.restart());
         reg.runSystems();
         ImGui::SFML::Render(*window);
         window->display();

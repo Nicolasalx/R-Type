@@ -57,6 +57,12 @@ CPMAddPackage(
 )
 target_compile_definitions(Candle-s PUBLIC RADIAL_LIGHT_FIX)
 
+CPMAddPackage(
+  NAME sfml_particules
+  GITHUB_REPOSITORY thibaudcathala/SFML-Particles
+  GIT_TAG "master"
+)
+
 # CPMAddPackage(
 #     NAME sol2
 #     GITHUB_REPOSITORY ThePhD/sol2
