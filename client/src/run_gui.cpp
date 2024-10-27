@@ -23,6 +23,7 @@ void rtc::runGui(
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
 {
+    ecs::SoundManager soundManager;
     sf::Clock dt;
     sf::Vector2u windowSize;
     WindowMode windowMode = rtc::WindowMode::MENU;
@@ -47,6 +48,10 @@ void rtc::runGui(
                 chatEnable = !chatEnable;
             } else if (event.type == sf::Event::Resized) {
                 windowSize = window->getSize();
+            }
+            if (event.type == sf::Event::MouseButtonPressed) {
+                soundManager.loadSoundBuffer("ui_click", "assets/uiClick.wav");
+                soundManager.playSoundEffect("ui_click", 100.f, false);
             }
         }
         ImGui::SFML::Update(*window, dt.restart());
