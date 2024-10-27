@@ -1,0 +1,93 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "velocity": {
+            "vx": 0,
+            "vy": 0
+        },
+        "hitbox": {
+            "width": 32,
+            "height": 32
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet30.gif",
+            "initial_frame": {
+                "x": 636,
+                "y": 1928,
+                "width": 32,
+                "height": 32
+            }
+        },
+        "animation": {
+            "frame_time": 0.15,
+            "frames": {
+                "idle": [
+                    {
+                        "x": 636,
+                        "y": 1928,
+                        "width": 32,
+                        "height": 32
+                    }
+                ],
+                "p1": [
+                    {
+                        "x": 636,
+                        "y": 1928,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 602,
+                        "y": 1928,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 570,
+                        "y": 1928,
+                        "width": 32,
+                        "height": 32
+                    }
+                ],
+                "p2": [
+                    {
+                        "x": 602,
+                        "y": 1964,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 570,
+                        "y": 1964,
+                        "width": 32,
+                        "height": 32
+                    }
+                ]
+            },
+            "state": "idle"
+        },
+        "drawable": {
+            "size": {
+                "x": 32.0,
+                "y": 32.0
+            },
+            "fill_color": {
+                "r": 128,
+                "g": 255,
+                "b": 0
+            }
+        },
+        "health": {
+            "maxHp": 151,
+            "currHp": 151
+        },
+        "score_earned": {
+            "points": 1000
+        },
+        "server_share_movement": {}
+    }
+}

@@ -74,10 +74,9 @@ static void waveInit(ecs::WaveManager &waveManager, std::list<std::vector<char>>
 
 void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend)
 {
-    //auto waveId = waveManager.addNewWave();
-
-    // waveInit(waveManager, datasToSend, 5);
-    // waveInit(waveManager, datasToSend, 6);
+    waveManager.addNewWave();
+    waveInit(waveManager, datasToSend, 5);
+    waveInit(waveManager, datasToSend, 6);
     auto bossWaveId = waveManager.addNewWave();
     waveManager.addNewMob(bossWaveId, [&datasToSend](ecs::Registry &reg) -> entity_t {
         shared_entity_t sharedEntityId = ecs::generateSharedEntityId();

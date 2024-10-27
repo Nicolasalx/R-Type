@@ -141,6 +141,20 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager)
         }
     );
 
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+        rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE,
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE> &packet) {
+            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
+                const auto &pos = packet.body.pos;
+                auto sharedEntityId = packet.sharedEntityId;
+
+                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                    reg, spriteManager, "assets/boss_parasite.json", pos.x, pos.y, sharedEntityId
+                );
+            });
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
         rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART,
         [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART> &packet) {

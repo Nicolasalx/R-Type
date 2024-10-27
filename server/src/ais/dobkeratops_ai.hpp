@@ -2,6 +2,7 @@
 
 #include <array>
 #include <cmath>
+#include <iostream>
 #include <list>
 #include <vector>
 #include "Logger.hpp"
@@ -13,7 +14,9 @@
 #include "components/health.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
+#include "entity.hpp"
 #include "components/shared_entity.hpp"
+#include "shared_entity.hpp"
 
 namespace rts::ais {
 
@@ -25,6 +28,8 @@ struct DobkeratopsState {
     float targetY = 240.0f;
     int attackPattern = 0;
     int projectilesShot = 0;
+    entity_t bossParasite = 0;
+    int phase = 0;
 };
 
 static std::unordered_map<entity_t, DobkeratopsState> dobkeratopsStates;
@@ -81,10 +86,17 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
 
         entity_t segment = createNeckSegment(reg, segX, segY, i, datasToSend);
         state.neckSegments.push_back(segment);
-        eng::logInfo("Created segment with entity ID: " + std::to_string(segment));
     }
-
     state.targetY = pos->y;
+    shared_entity_t sharedId = ecs::generateSharedEntityId();
+
+    state.bossParasite = ecs::ServerEntityFactory::createServerEntityFromJSON(
+        reg, "assets/boss_parasite.json", pos->x + 76, pos->y + 96, sharedId
+    );
+
+    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+                              rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE, sharedId, {.pos = {pos->x + 80, pos->y + 96}}
+    ).serialize());
 }
 
 void spawnDobkeratopsProjectile(
@@ -109,7 +121,7 @@ void spawnDobkeratopsProjectile(
     float spawnY = bossPos->y + 60.0f;
 
     ecs::ServerEntityFactory::createServerEntityFromJSON(
-        reg, "assets/boss_projectile.json", spawnX, spawnY, sharedId, vx, vy
+        reg, "assets/missileBall.json", spawnX, spawnY, sharedId, vx, vy
     );
 
     datasToSend.push_back(
@@ -152,6 +164,13 @@ void cleanupDobkeratopsSegments(ecs::Registry &reg, entity_t bossEntity, std::li
         }
     }
     dobkeratopsStates.erase(bossEntity);
+    try {
+        auto sharedId = reg.getComponent<ecs::component::SharedEntity>(state.bossParasite)->sharedEntityId;
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize());
+        reg.killEntity(state.bossParasite);
+    } catch (const std::exception &e) {
+        eng::logError("Failed to cleanup boss parasite: " + std::string(e.what()));
+    }
 }
 
 void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend)
@@ -159,7 +178,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
     auto &state = dobkeratopsStates[e];
     auto bossPos = reg.getComponent<ecs::component::Position>(e);
     auto vel = reg.getComponent<ecs::component::Velocity>(e);
-    auto health = reg.getComponent<ecs::component::Health>(e);
+    auto health = reg.getComponent<ecs::component::Health>(state.bossParasite);
     auto anim = reg.getComponent<ecs::component::Animation>(e);
     auto sharedEntity = reg.getComponent<ecs::component::SharedEntity>(e);
 
@@ -167,7 +186,6 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
         eng::logWarning("Missing required components for Dobkeratops AI");
         return;
     }
-
     state.attackTicks++;
     state.neckTicks++;
 
@@ -260,6 +278,19 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
             anim->state = "idle";
             sendAnimationStateChange(datasToSend, sharedEntity->sharedEntityId, "idle");
         }
+    }
+
+    if (state.phase == 0 && health->currHp <= 75) {
+        auto shared = reg.getComponent<ecs::component::SharedEntity>(state.bossParasite);
+        sendAnimationStateChange(datasToSend, shared->sharedEntityId, "p1");
+        state.phase = 1;
+        state.attackTicks = -20;
+    }
+
+    if (state.phase == 1 && state.attackTicks >= 0) {
+        auto shared = reg.getComponent<ecs::component::SharedEntity>(state.bossParasite);
+        sendAnimationStateChange(datasToSend, shared->sharedEntityId, "p2");
+        state.phase = 2;
     }
 
     if (health->currHp <= 1) {

@@ -9,10 +9,6 @@
             "vx": 0,
             "vy": 0
         },
-        "hitbox": {
-            "width": 156,
-            "height": 208
-        },
         "sprite": {
             "texture": "assets/typesheets/r-typesheet30.gif",
             "initial_frame": {
@@ -56,14 +52,7 @@
             },
             "state": "idle"
         },
-        "health": {
-            "maxHp": 15,
-            "currHp": 15
-        },
         "server_share_movement": {},
-        "ai_actor": {},
-        "score_earned": {
-            "points": 1000
-        }
+        "ai_actor": {}
     }
 }
