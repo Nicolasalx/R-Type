@@ -21,7 +21,8 @@ void ecs::systems::healthSharedCheck(Registry &reg, std::list<std::vector<char>>
     for (auto [entityId, health, sharedId] : zip) {
         if (health.currHp <= 0) {
             datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId).serialize()
+                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId, true)
+                    .serialize()
             );
             reg.killEntity(entityId);
         }

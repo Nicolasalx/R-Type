@@ -8,7 +8,6 @@
 #include <SFML/Graphics.hpp>
 #include <cstddef>
 #include <cstring>
-#include <exception>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -44,7 +43,11 @@ int main(int argc, const char *argv[])
         if (str == "quit" || str == "exit") {
             break;
         }
-        rts::commandHandler(str, roomManager, tcpServer);
+        try {
+            rts::commandHandler(str, roomManager, tcpServer);
+        } catch (const std::exception &) {
+            std::cerr << "Invalid command argument\n";
+        }
         std::cout << "> ";
     }
     return 0;

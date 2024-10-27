@@ -30,12 +30,15 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_DOBKERATOPS_PART,
     NEW_ENTITY_BOSS_PARASITE,
 
+    TAKE_DAMAGE,
+
     MOVE_ENTITY,
     CHANGE_ANIMATION_STATE,
 
     DEL_ENTITY,
 
-    PING
+    PING,
+    END_GAME
 };
 
 // NOLINTBEGIN(readability-identifier-naming)
@@ -87,6 +90,10 @@ struct NEW_ENTITY_DOBKERATOPS_PART {
     int partIndex = 0;
 };
 
+struct TAKE_DAMAGE {
+    int damage = 1;
+};
+
 struct MOVE_ENTITY {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
@@ -102,7 +109,11 @@ struct PING {
     long sendTime = 0;
 };
 
+struct END_GAME {};
+
 } // namespace UDPBody
+
+constexpr const auto generatePacketId = &ecs::generateSharedEntityId;
 
 // NOLINTEND(readability-identifier-naming)
 
@@ -114,21 +125,26 @@ template <typename T>
 struct UDPPacket {
     std::size_t magic = rt::UDP_MAGIC;
     std::size_t size = sizeof(*this);
+    std::size_t packetId = generatePacketId();
     UDPCommand cmd = UDPCommand::NONE;
+    bool ack = false;
     shared_entity_t sharedEntityId = 0;
 
     T body{};
 
-    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body)
-        : cmd(cmd), sharedEntityId(sharedEntityId), body(body)
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, const T &body, bool ack = false)
+        : cmd(cmd), ack(ack), sharedEntityId(sharedEntityId), body(body)
     {
     }
 
-    UDPPacket(UDPCommand cmd, const T &body) : cmd(cmd), body(body) {}
+    UDPPacket(UDPCommand cmd, const T &body, bool ack = false) : cmd(cmd), ack(ack), body(body) {}
 
-    UDPPacket(UDPCommand cmd) : cmd(cmd) {}
+    UDPPacket(UDPCommand cmd, bool ack = false) : cmd(cmd), ack(ack) {}
 
-    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId) : cmd(cmd), sharedEntityId(sharedEntityId) {}
+    UDPPacket(UDPCommand cmd, shared_entity_t sharedEntityId, bool ack = false)
+        : cmd(cmd), ack(ack), sharedEntityId(sharedEntityId)
+    {
+    }
 
     UDPPacket(const std::vector<char> &data)
     {

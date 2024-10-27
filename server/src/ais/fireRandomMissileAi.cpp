@@ -14,13 +14,29 @@
 #include "ServerEntityFactory.hpp"
 #include "components/hitbox.hpp"
 #include "components/position.hpp"
+#include "components/velocity.hpp"
 #include "entity.hpp"
 #include "shared_entity.hpp"
+
+static ecs::component::Velocity generateEntityVel(float xFactor, float yFactor)
+{
+    auto velX = xFactor * 150;
+    auto velY = yFactor * 150;
+
+    if (velX < 150.f) {
+        velX *= 100.f;
+    }
+    if (velY < 150.f) {
+        velY *= 100.f;
+    }
+    return {velX, velY};
+}
 
 entity_t rts::ais::fireRandomMissileAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
+    int missileSpawnRate,
     const std::function<bool()> &cond,
     std::array<float, 2> randXRange,
     std::array<float, 2> randYRange
@@ -29,7 +45,7 @@ entity_t rts::ais::fireRandomMissileAi(
     if (cond != nullptr && !cond()) {
         return std::numeric_limits<size_t>::max();
     }
-    if (eng::RandomGenerator::generate(0, 100) > 0) {
+    if (eng::RandomGenerator::generate(1, missileSpawnRate) > 1) {
         return std::numeric_limits<size_t>::max();
     }
     auto aiPos = reg.getComponent<ecs::component::Position>(e);
@@ -48,7 +64,9 @@ entity_t rts::ais::fireRandomMissileAi(
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
                               rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
                               sharedId,
-                              {.pos = {missilePosX, missilePosY}, .vel = {xFactor * 150, yFactor * 150}}
-    ).serialize());
+                              {.pos = {missilePosX, missilePosY}, .vel = generateEntityVel(xFactor, yFactor)},
+                              true
+    )
+                              .serialize());
     return rMissile;
 }

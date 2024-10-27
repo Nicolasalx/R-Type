@@ -16,33 +16,34 @@
 static void drawBar(
     const std::string &componentType,
     int percentageBar,
-    const sf::Vector2u &pos,
+    float maxPercentage,
+    const sf::Vector2f &pos,
     const sf::Vector2u &windowSize
 )
 {
-    sf::Vector2u size =
-        sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.1f), static_cast<unsigned int>(windowSize.y * 0.01f)};
+    sf::Vector2f size = {windowSize.x * 0.1f, windowSize.y * 0.01f};
     ImU32 main = 0;
     ImU32 background = 0;
 
     if (componentType == "health") {
-        main = IM_COL32(0, 153, 0, 255);
-        background = IM_COL32(0, 153, 0, 255);
+        main = IM_COL32(0, 255, 0, 255);
+        background = IM_COL32(0, 255, 0, 100);
     } else if (componentType == "beam") {
-        main = IM_COL32(102, 178, 255, 255);
-        background = IM_COL32(0, 0, 204, 255);
+        main = IM_COL32(0, 136, 255, 255);
+        background = IM_COL32(0, 136, 255, 100);
     }
 
     ImVec2 rect1Pos = ImVec2(pos.x, pos.y);
     ImVec2 rect1Size = ImVec2(size.x, size.y);
-    ImVec2 rect2Pos = ImVec2(pos.x, pos.y);
-    ImVec2 rect2Size = ImVec2(size.x * (percentageBar / 100.0f), size.y);
+
+    ImVec2 rect2Size = ImVec2(size.x * (static_cast<float>(percentageBar) / maxPercentage), size.y);
 
     ImGui::GetBackgroundDrawList()->AddRectFilled(
-        rect1Pos, ImVec2(rect1Pos.x + rect1Size.x, rect1Pos.y + rect1Size.y), main, 10.f
+        rect1Pos, ImVec2(rect1Pos.x + rect1Size.x, rect1Pos.y + rect1Size.y), background, 10.f
     );
+
     ImGui::GetBackgroundDrawList()->AddRectFilled(
-        rect2Pos, ImVec2(rect2Pos.x + rect2Size.x, rect2Pos.y + rect2Size.y), background, 10.f
+        rect1Pos, ImVec2(rect1Pos.x + rect2Size.x, rect1Pos.y + rect2Size.y), main, 10.f
     );
 }
 
@@ -59,17 +60,12 @@ void ecs::systems::drawTeamData(Registry &reg, const sf::Vector2u &windowSize)
 
     int i = 0;
     for (auto [player, health, beam, _] : zip) {
-        sf::Vector2u pos = {
-            static_cast<unsigned int>(windowSize.x * 0.01f),
-            static_cast<unsigned int>((windowSize.y * 0.13f) + (i * (windowSize.y * 0.08)))
-        };
+        sf::Vector2f pos = {windowSize.x * 0.01f, (windowSize.y * 0.13f) + (i * (windowSize.y * 0.08f))};
         ImGui::GetBackgroundDrawList()->AddText(
             ImVec2(pos.x, pos.y - 20), IM_COL32(255, 255, 255, 255), player.name.c_str()
         );
-        drawBar("health", health.currHp, pos, windowSize);
-        drawBar(
-            "beam", beam.power, sf::Vector2u{pos.x, pos.y + static_cast<unsigned int>(windowSize.y * 0.03)}, windowSize
-        );
+        drawBar("health", health.currHp, health.maxHp, pos, windowSize);
+        drawBar("beam", beam.power, 100.f, sf::Vector2f{pos.x, pos.y + windowSize.y * 0.03f}, windowSize);
         ++i;
     }
 }
