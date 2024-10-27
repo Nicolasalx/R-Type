@@ -84,18 +84,20 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad7b88c287a37217e1aa770a81688ae4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#ad7b88c287a37217e1aa770a81688ae4a">GameRunner</a> (int port, std::size_t stage, int missileSpawnRate, bool debugMode)</td></tr>
-<tr class="separator:ad7b88c287a37217e1aa770a81688ae4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0baf316198e475aca2e28e627e0f0067"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067">GameRunner</a> (int port, std::size_t stage, int missileSpawnRate, bool debugMode, size_t nbPlayers)</td></tr>
+<tr class="separator:a0baf316198e475aca2e28e627e0f0067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f64eae650e0ae602ea88ca9c5546d91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#a8f64eae650e0ae602ea88ca9c5546d91">setGameState</a> (bool state)</td></tr>
+<tr class="separator:a8f64eae650e0ae602ea88ca9c5546d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad807bdebe5c44941dd54cb0169c05106"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106">killPlayer</a> (size_t playerId)</td></tr>
 <tr class="separator:ad807bdebe5c44941dd54cb0169c05106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff98df6b9586b759e7ed16bfc256d0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#acff98df6b9586b759e7ed16bfc256d0d">addWindow</a> (const sf::VideoMode &amp;videomode, const std::string &amp;title)</td></tr>
 <tr class="separator:acff98df6b9586b759e7ed16bfc256d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5a26110b801f9f72868ed6b1c3450ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#ae5a26110b801f9f72868ed6b1c3450ee">runGame</a> (bool &amp;stopGame)</td></tr>
-<tr class="separator:ae5a26110b801f9f72868ed6b1c3450ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a446f3a41e94398c4bf7edb4d9140e6a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d18/classrts_1_1GameRunner.html#a446f3a41e94398c4bf7edb4d9140e6a1">runGame</a> ()</td></tr>
+<tr class="separator:a446f3a41e94398c4bf7edb4d9140e6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad7b88c287a37217e1aa770a81688ae4a" name="ad7b88c287a37217e1aa770a81688ae4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7b88c287a37217e1aa770a81688ae4a">&#9670;&#160;</a></span>GameRunner()</h2>
+<a id="a0baf316198e475aca2e28e627e0f0067" name="a0baf316198e475aca2e28e627e0f0067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0baf316198e475aca2e28e627e0f0067">&#9670;&#160;</a></span>GameRunner()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,7 +124,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>debugMode</em>&#160;</td>
+          <td class="paramname"><em>debugMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>nbPlayers</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,53 +142,56 @@ Public Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_ad7b88c287a37217e1aa770a81688ae4a_cgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_ad7b88c287a37217e1aa770a81688ae4a_cgraph" alt=""/></div>
-<map name="ad7/d18/classrts_1_1GameRunner_ad7b88c287a37217e1aa770a81688ae4a_cgraph" id="ad7/d18/classrts_1_1GameRunner_ad7b88c287a37217e1aa770a81688ae4a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,927,231,952"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="351,105,461,131"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="937,448,1063,473"/>
-<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a93a41b4479ae667e284ac672879224a0" title="Register a command that is handled by the server." alt="" coords="315,977,497,1017"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="317,927,495,952"/>
-<area shape="rect" href="../../df/df0/classeng_1_1SafeList.html#ae80c32fae859b825e7bc9c9d4a0edae1" title="Register a consume function that will be used on each data when consuming the list." alt="" coords="279,1041,533,1067"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#a36614a0ca67a679c3e6d5cc1e4bc7b61" title=" " alt="" coords="329,877,483,903"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#ad1b28f5013f9629296a2574510724584" title=" " alt="" coords="313,397,499,423"/>
-<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="330,1091,482,1116"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#adb0f334f4d5aa66e229c8f9d398a7529" title=" " alt="" coords="327,1141,485,1181"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a165c71cf770efb59ae72970462429f39" title="Adds a new mob spawner to a specific wave." alt="" coords="595,5,830,31"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01" title="Adds a new wave to the WaveManager." alt="" coords="591,55,834,80"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="605,155,821,195"/>
-<area shape="rect" href="../../da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="897,19,1103,44"/>
-<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="911,183,1089,223"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="897,299,1103,324"/>
-<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="911,69,1089,109"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="903,133,1097,159"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="1156,241,1356,281"/>
-<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="1159,126,1353,166"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="1404,191,1616,216"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a8ae60d5b07b673167b3bdcf4dd36c627" title="Registers a new component type." alt="" coords="593,1279,832,1304"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="892,767,1108,792"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2" title="Adds a system to the registry." alt="" coords="619,951,806,976"/>
-<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="629,1001,796,1041"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f" title="Handles collision detection and response for entities." alt="" coords="628,852,797,877"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="639,688,786,713"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a2372648db2144b83bcfff629bde32807" title="Checks if there are any entities currently managed by the WaveManager." alt="" coords="605,1065,820,1091"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="601,1328,825,1353"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="612,599,813,639"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#ab25a402f706e819dfcda4e3aeda0e091" title="Checks if all waves have been spawned." alt="" coords="619,1115,807,1140"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="613,549,812,575"/>
-<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="629,1165,796,1205"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="629,737,796,763"/>
-<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9" title="Send a message specified in." alt="" coords="623,1229,802,1255"/>
-<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a66aadbaaa057cb4a72a87b0c8f2bb5d1" title="Updates the position of all entities based on their velocity." alt="" coords="616,787,809,827"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf" title="Spawns the next wave of entities in the ECS registry." alt="" coords="581,901,844,927"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="895,672,1105,697"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="904,1356,1096,1381"/>
-<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="899,1291,1101,1331"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="915,603,1085,628"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="895,549,1105,575"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5" title="Logs a warning message with source location and time." alt="" coords="633,397,793,423"/>
-<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615" title="Send a message specified in." alt="" coords="631,348,794,373"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="947,348,1053,373"/>
+<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_a0baf316198e475aca2e28e627e0f0067_cgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_a0baf316198e475aca2e28e627e0f0067_cgraph" alt=""/></div>
+<map name="ad7/d18/classrts_1_1GameRunner_a0baf316198e475aca2e28e627e0f0067_cgraph" id="ad7/d18/classrts_1_1GameRunner_a0baf316198e475aca2e28e627e0f0067_cgraph">
+<area shape="rect" title=" " alt="" coords="5,961,231,987"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="351,148,461,173"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#ac95e1dcef5dafb5bda9e0b4e87021b27" title="Logs a warning message with source location." alt="" coords="937,435,1063,460"/>
+<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a93a41b4479ae667e284ac672879224a0" title="Register a command that is handled by the server." alt="" coords="315,1011,497,1051"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#a231375c5950d052c6144309475bc7bd9" title=" " alt="" coords="317,961,495,987"/>
+<area shape="rect" href="../../df/df0/classeng_1_1SafeList.html#ae80c32fae859b825e7bc9c9d4a0edae1" title="Register a consume function that will be used on each data when consuming the list." alt="" coords="279,1076,533,1101"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="329,912,483,937"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#aa07c177913a9df7337c3cabec9b19816" title=" " alt="" coords="313,384,499,409"/>
+<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#af56602155df842752a1e2d6a92fbe103" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="330,1125,482,1151"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#adb0f334f4d5aa66e229c8f9d398a7529" title=" " alt="" coords="327,1175,485,1215"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a165c71cf770efb59ae72970462429f39" title="Adds a new mob spawner to a specific wave." alt="" coords="595,205,830,231"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#aab7880bf98b3f21a6b3a6cdb582b1e01" title="Adds a new wave to the WaveManager." alt="" coords="591,40,834,65"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="605,141,821,181"/>
+<area shape="rect" href="../../da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="897,5,1103,31"/>
+<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="911,170,1089,210"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="897,285,1103,311"/>
+<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="911,55,1089,95"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="903,120,1097,145"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="1156,227,1356,267"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="1159,113,1353,153"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="1404,177,1616,203"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a8ae60d5b07b673167b3bdcf4dd36c627" title="Registers a new component type." alt="" coords="593,1412,832,1437"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="892,1179,1108,1204"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a731c4f5350b21180da272a60488da5b2" title="Adds a system to the registry." alt="" coords="619,1363,806,1388"/>
+<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="629,535,796,575"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a201f33e624ebfa814b291e8d1d383f10" title=" " alt="" coords="595,600,831,625"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#a6263465c62a6c4767f8d87bdabccd4b1" title=" " alt="" coords="649,649,776,675"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a8ec85069d2046fe42bd63668d1ffde1b" title="Handles collision detection and response for entities." alt="" coords="628,1264,797,1289"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a27b0a8a4531bb33a7af2d783560c1aef" title="Renders all drawable entities to the provided window." alt="" coords="639,1035,786,1060"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#a19246a2b8704dd602a3368c409758aab" title=" " alt="" coords="657,699,768,724"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a2372648db2144b83bcfff629bde32807" title="Checks if there are any entities currently managed by the WaveManager." alt="" coords="605,748,820,773"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="601,1461,825,1487"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="612,1085,813,1125"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#ab25a402f706e819dfcda4e3aeda0e091" title="Checks if all waves have been spawned." alt="" coords="619,797,807,823"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="613,961,812,987"/>
+<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc" title=" " alt="" coords="629,847,796,887"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a" title="Updates the position of all entities based on their velocity." alt="" coords="629,1149,796,1175"/>
+<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a72bff9a6b552aa10f3b93195470730e9" title="Send a message specified in." alt="" coords="623,912,802,937"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a66aadbaaa057cb4a72a87b0c8f2bb5d1" title="Updates the position of all entities based on their velocity." alt="" coords="616,1199,809,1239"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf" title="Spawns the next wave of entities in the ECS registry." alt="" coords="581,1313,844,1339"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="895,999,1105,1024"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="904,1489,1096,1515"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="899,1425,1101,1465"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="915,1071,1085,1096"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="895,748,1105,773"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a1cb02e66470c7f85800bb536aebd61c5" title="Logs a warning message with source location and time." alt="" coords="633,384,793,409"/>
+<area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615" title="Send a message specified in." alt="" coords="631,335,794,360"/>
+<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="947,335,1053,360"/>
 </map>
 </div>
 
@@ -243,8 +254,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ae5a26110b801f9f72868ed6b1c3450ee" name="ae5a26110b801f9f72868ed6b1c3450ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5a26110b801f9f72868ed6b1c3450ee">&#9670;&#160;</a></span>runGame()</h2>
+<a id="a446f3a41e94398c4bf7edb4d9140e6a1" name="a446f3a41e94398c4bf7edb4d9140e6a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a446f3a41e94398c4bf7edb4d9140e6a1">&#9670;&#160;</a></span>runGame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,8 +263,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void rts::GameRunner::runGame </td>
           <td>(</td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>stopGame</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -261,13 +271,39 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_cgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_cgraph" alt=""/></div>
-<map name="ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_cgraph" id="ad7/d18/classrts_1_1GameRunner_ae5a26110b801f9f72868ed6b1c3450ee_cgraph">
+<div class="center"><img src="../../d7/d18/classrts_1_1GameRunner_a446f3a41e94398c4bf7edb4d9140e6a1_cgraph.png" border="0" usemap="#ad7/d18/classrts_1_1GameRunner_a446f3a41e94398c4bf7edb4d9140e6a1_cgraph" alt=""/></div>
+<map name="ad7/d18/classrts_1_1GameRunner_a446f3a41e94398c4bf7edb4d9140e6a1_cgraph" id="ad7/d18/classrts_1_1GameRunner_a446f3a41e94398c4bf7edb4d9140e6a1_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,205,60"/>
 <area shape="rect" href="../../d1/d80/classeng_1_1FramerateManager.html#a2610ad5393911202553877e6f8afc3ff" title=" " alt="" coords="253,5,464,31"/>
 <area shape="rect" href="../../d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944" title=" " alt="" coords="269,55,448,95"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a8f64eae650e0ae602ea88ca9c5546d91" name="a8f64eae650e0ae602ea88ca9c5546d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f64eae650e0ae602ea88ca9c5546d91">&#9670;&#160;</a></span>setGameState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rts::GameRunner::setGameState </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,8 +1,9 @@
 <map id="eng::logInfo" name="eng::logInfo">
-<area shape="rect" id="node1" title="Logs an informational message with source location." alt="" coords="245,104,344,129"/>
+<area shape="rect" id="node1" title="Logs an informational message with source location." alt="" coords="245,145,344,171"/>
 <area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#afd1a9c915c48b8696e7c356d580469d4" title="Logs an informational message with source location and time." alt="" coords="35,5,167,31"/>
-<area shape="rect" id="node3" href="$d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="29,55,173,80"/>
-<area shape="rect" id="node4" href="$d6/d90/classntw_1_1UDPClient.html#afc152832cbde1ec063b9a47475474ef6" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="27,104,175,129"/>
-<area shape="rect" id="node5" href="$d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195" title="Sends data to the server." alt="" coords="24,153,179,179"/>
-<area shape="rect" id="node6" href="$d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4" title="Sends data to a specific client socket." alt="" coords="5,203,197,228"/>
+<area shape="rect" id="node3" href="$d8/d0c/classntw_1_1TimeoutHandler.html#afc1ddc930112c236569f4bf8d03928cf" title=" " alt="" coords="22,55,181,95"/>
+<area shape="rect" id="node4" href="$d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="29,120,173,145"/>
+<area shape="rect" id="node5" href="$d6/d90/classntw_1_1UDPClient.html#afc152832cbde1ec063b9a47475474ef6" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="27,169,175,195"/>
+<area shape="rect" id="node6" href="$d2/d10/classntw_1_1TCPClient.html#aac3df95691634261d9185cb71199b195" title="Sends data to the server." alt="" coords="24,219,179,244"/>
+<area shape="rect" id="node7" href="$d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4" title="Sends data to a specific client socket." alt="" coords="5,268,197,293"/>
 </map>

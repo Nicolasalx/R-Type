@@ -83,49 +83,43 @@ $(function() {
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;list&gt;</code><br />
-<code>#include &quot;RTypeUDPProtol.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dd1/Registry_8hpp_source.html">Registry.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d4/d68/controllable_8hpp_source.html">components/controllable.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/d18/health_8hpp_source.html">components/health.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/de5/hitbox_8hpp_source.html">components/hitbox.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/da3/missile_8hpp_source.html">components/missile.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d55/ecs_2components_2position_8hpp_source.html">components/position.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dc/d8a/velocity_8hpp_source.html">components/velocity.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/de2/entity_8hpp_source.html">entity.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/d29/components_2shared__entity_8hpp_source.html">components/shared_entity.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d08/collision_8hpp_source.html">systems/collision.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for collision.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d5a/collision_8cpp__incl.png" border="0" usemap="#alib_2factory_2systems_2collision_8cpp" alt=""/></div>
 <map name="alib_2factory_2systems_2collision_8cpp" id="alib_2factory_2systems_2collision_8cpp">
-<area shape="rect" title=" " alt="" coords="968,5,1115,45"/>
+<area shape="rect" title=" " alt="" coords="1011,5,1157,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,152,119"/>
-<area shape="rect" title=" " alt="" coords="203,240,288,265"/>
-<area shape="rect" title=" " alt="" coords="1125,313,1195,339"/>
-<area shape="rect" title=" " alt="" coords="629,93,672,119"/>
-<area shape="rect" title=" " alt="" coords="696,93,851,119"/>
-<area shape="rect" href="../../db/dd1/Registry_8hpp.html" title=" " alt="" coords="875,93,978,119"/>
-<area shape="rect" href="../../db/de2/entity_8hpp.html" title=" " alt="" coords="111,167,198,192"/>
-<area shape="rect" href="../../db/d29/components_2shared__entity_8hpp.html" title=" " alt="" coords="1192,167,1413,192"/>
-<area shape="rect" href="../../d4/d68/controllable_8hpp.html" title=" " alt="" coords="1104,93,1315,119"/>
-<area shape="rect" href="../../de/d18/health_8hpp.html" title=" " alt="" coords="1339,93,1514,119"/>
-<area shape="rect" href="../../d5/de5/hitbox_8hpp.html" title=" " alt="" coords="1538,93,1713,119"/>
-<area shape="rect" href="../../d2/da3/missile_8hpp.html" title=" " alt="" coords="1737,93,1919,119"/>
-<area shape="rect" href="../../d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="1943,93,2129,119"/>
-<area shape="rect" href="../../dc/d8a/velocity_8hpp.html" title=" " alt="" coords="2153,93,2337,119"/>
-<area shape="rect" href="../../d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="278,167,405,192"/>
-<area shape="rect" title=" " alt="" coords="722,240,809,265"/>
-<area shape="rect" href="../../df/dc5/shared__entity_8hpp.html" title=" " alt="" coords="1141,240,1291,265"/>
-<area shape="rect" title=" " alt="" coords="934,167,981,192"/>
-<area shape="rect" title=" " alt="" coords="1005,167,1067,192"/>
-<area shape="rect" title=" " alt="" coords="429,167,515,192"/>
-<area shape="rect" title=" " alt="" coords="540,167,599,192"/>
-<area shape="rect" title=" " alt="" coords="623,167,710,192"/>
-<area shape="rect" title=" " alt="" coords="734,167,858,192"/>
-<area shape="rect" title=" " alt="" coords="499,240,565,265"/>
-<area shape="rect" title=" " alt="" coords="312,240,387,265"/>
-<area shape="rect" title=" " alt="" coords="411,240,474,265"/>
-<area shape="rect" title=" " alt="" coords="115,240,178,265"/>
+<area shape="rect" title=" " alt="" coords="1797,313,1883,339"/>
+<area shape="rect" title=" " alt="" coords="445,387,515,412"/>
+<area shape="rect" title=" " alt="" coords="1549,167,1592,192"/>
+<area shape="rect" href="../../db/dd1/Registry_8hpp.html" title=" " alt="" coords="785,167,887,192"/>
+<area shape="rect" href="../../d4/d68/controllable_8hpp.html" title=" " alt="" coords="1051,93,1261,119"/>
+<area shape="rect" href="../../d5/de5/hitbox_8hpp.html" title=" " alt="" coords="1286,93,1461,119"/>
+<area shape="rect" href="../../d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="1485,93,1672,119"/>
+<area shape="rect" href="../../dc/d8a/velocity_8hpp.html" title=" " alt="" coords="1696,93,1880,119"/>
+<area shape="rect" href="../../d3/d08/collision_8hpp.html" title=" " alt="" coords="813,93,976,119"/>
+<area shape="rect" href="../../d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="1347,240,1474,265"/>
+<area shape="rect" title=" " alt="" coords="1222,313,1309,339"/>
+<area shape="rect" href="../../db/de2/entity_8hpp.html" title=" " alt="" coords="574,240,661,265"/>
+<area shape="rect" href="../../db/d29/components_2shared__entity_8hpp.html" title=" " alt="" coords="227,240,448,265"/>
+<area shape="rect" href="../../df/dc5/shared__entity_8hpp.html" title=" " alt="" coords="349,313,499,339"/>
+<area shape="rect" title=" " alt="" coords="685,240,731,265"/>
+<area shape="rect" title=" " alt="" coords="756,240,817,265"/>
+<area shape="rect" title=" " alt="" coords="842,240,929,265"/>
+<area shape="rect" title=" " alt="" coords="953,240,1012,265"/>
+<area shape="rect" title=" " alt="" coords="1037,240,1123,265"/>
+<area shape="rect" title=" " alt="" coords="1147,240,1271,265"/>
+<area shape="rect" title=" " alt="" coords="1333,313,1400,339"/>
+<area shape="rect" title=" " alt="" coords="1424,313,1499,339"/>
+<area shape="rect" title=" " alt="" coords="1523,313,1586,339"/>
+<area shape="rect" title=" " alt="" coords="574,313,637,339"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -140,9 +134,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9e74d37b544cf9311d0591b71d77d93f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f">ecs::systems::collision</a> (Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</td></tr>
-<tr class="memdesc:a9e74d37b544cf9311d0591b71d77d93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
-<tr class="separator:a9e74d37b544cf9311d0591b71d77d93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec85069d2046fe42bd63668d1ffde1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a8ec85069d2046fe42bd63668d1ffde1b">ecs::systems::collision</a> (Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, const std::function&lt; callback_collide_function_t &gt; &amp;collideCallback={})</td></tr>
+<tr class="memdesc:a8ec85069d2046fe42bd63668d1ffde1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
+<tr class="separator:a8ec85069d2046fe42bd63668d1ffde1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae80f34fea1072a7504940d2ecebe6a8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#ae80f34fea1072a7504940d2ecebe6a8b">ecs::systems::collisionPredict</a> (Registry &amp;reg)</td></tr>
 <tr class="memdesc:ae80f34fea1072a7504940d2ecebe6a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
 <tr class="separator:ae80f34fea1072a7504940d2ecebe6a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>

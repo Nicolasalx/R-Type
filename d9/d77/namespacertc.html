@@ -106,6 +106,11 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a5ac47684a26a104eb546ab0d6aad9bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705614a58166d1dc86cbf0aded8fd128"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">GameState</a> : std::uint8_t { <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128ab50339a10e1de285ac99d4c3990b8693">NONE</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128a531109fbee70c7b3d1196aff910e52a2">LOBBY</a>
+, <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128a4504e1ed59cd9732b8a844e5424e6f13">GAME</a>
+ }</td></tr>
+<tr class="separator:a705614a58166d1dc86cbf0aded8fd128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -113,10 +118,10 @@ Functions</h2></td></tr>
 <tr class="separator:a3b38969f49ab0c77c13dc28e73bfee15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09e920667613d824802d95f5e0b78b9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e">registerSystems</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, sf::RenderWindow &amp;window, float &amp;dt, <a class="el" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udpClient, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, <a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html">ntw::TickRateManager</a>&lt; <a class="el" href="../../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354">rtc::TickRate</a> &gt; &amp;tickRateManager, <a class="el" href="../../d5/d93/classecs_1_1SpriteManager.html">ecs::SpriteManager</a> &amp;spriteManager, <a class="el" href="../../df/df0/classeng_1_1SafeList.html">eng::SafeList</a>&lt; std::function&lt; void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg)&gt; &gt; &amp;networkCallbacks, <a class="el" href="../../d5/dff/classecs_1_1MetricManager.html">ecs::MetricManager</a>&lt; rt::GameMetric &gt; &amp;metrics, const <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind, <a class="el" href="../../dc/dcf/classecs_1_1SoundManager.html">ecs::SoundManager</a> &amp;soundManager)</td></tr>
 <tr class="separator:a09e920667613d824802d95f5e0b78b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf16b852c2152ce537cabad01a256b23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#aaf16b852c2152ce537cabad01a256b23">run</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, float &amp;dt, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input)</td></tr>
-<tr class="separator:aaf16b852c2152ce537cabad01a256b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39407a4e69d488e2a60d3f2801257634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634">runGui</a> (const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, const std::shared_ptr&lt; <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &gt; &amp;roomManager, bool &amp;inLobby, <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind)</td></tr>
-<tr class="separator:a39407a4e69d488e2a60d3f2801257634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed8540b6321c814b7f1a11a2cb38e3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a2ed8540b6321c814b7f1a11a2cb38e3d">runGameLoop</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, float &amp;dt, <a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input, std::atomic&lt; <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">GameState</a> &gt; &amp;gameState)</td></tr>
+<tr class="separator:a2ed8540b6321c814b7f1a11a2cb38e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa82afd93eb05f643a5bfd067b5b747be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#aa82afd93eb05f643a5bfd067b5b747be">runGui</a> (const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window, const std::shared_ptr&lt; <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &gt; &amp;roomManager, std::atomic&lt; <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">GameState</a> &gt; &amp;gameState, <a class="el" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a>&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind)</td></tr>
+<tr class="separator:aa82afd93eb05f643a5bfd067b5b747be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a625ba6dd66df393c6a9897bab347ef1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a625ba6dd66df393c6a9897bab347ef1a">renderInsideRoom</a> (const std::shared_ptr&lt; <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &gt; &amp;roomManager, const sf::Vector2u &amp;windowSize)</td></tr>
 <tr class="separator:a625ba6dd66df393c6a9897bab347ef1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67f6641ec90b2a5ee9b4c60fec931142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d77/namespacertc.html#a67f6641ec90b2a5ee9b4c60fec931142">renderLobbyWindow</a> (const std::shared_ptr&lt; <a class="el" href="../../d0/d42/classrtc_1_1RoomManager.html">rtc::RoomManager</a> &gt; &amp;roomManager, const sf::Vector2u &amp;windowSize, bool &amp;scoreBoardEnable)</td></tr>
@@ -144,6 +149,33 @@ Variables</h2></td></tr>
 <tr class="separator:a1052d55f868fc2dcbc2c4aaa84cf2898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a705614a58166d1dc86cbf0aded8fd128" name="a705614a58166d1dc86cbf0aded8fd128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a705614a58166d1dc86cbf0aded8fd128">&#9670;&#160;</a></span>GameState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">rtc::GameState</a> : std::uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a705614a58166d1dc86cbf0aded8fd128ab50339a10e1de285ac99d4c3990b8693" name="a705614a58166d1dc86cbf0aded8fd128ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a705614a58166d1dc86cbf0aded8fd128a531109fbee70c7b3d1196aff910e52a2" name="a705614a58166d1dc86cbf0aded8fd128a531109fbee70c7b3d1196aff910e52a2"></a>LOBBY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a705614a58166d1dc86cbf0aded8fd128a4504e1ed59cd9732b8a844e5424e6f13" name="a705614a58166d1dc86cbf0aded8fd128a4504e1ed59cd9732b8a844e5424e6f13"></a>GAME&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ae2f72f69b5704eb760313ba4e0de9354" name="ae2f72f69b5704eb760313ba4e0de9354"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2f72f69b5704eb760313ba4e0de9354">&#9670;&#160;</a></span>TickRate</h2>
 
@@ -287,15 +319,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a67f6641ec90b2a5ee9b4c60fec931142" title=" " alt="" coords="188,55,368,80"/>
 </map>
 </div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a717a45d127071db93fa28b0c5a353a26_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a717a45d127071db93fa28b0c5a353a26_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a717a45d127071db93fa28b0c5a353a26_icgraph" id="ad9/d77/namespacertc_a717a45d127071db93fa28b0c5a353a26_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,279,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -324,15 +347,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a2971667e5e0db9efd7e56fb14e360f04_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a2971667e5e0db9efd7e56fb14e360f04_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a2971667e5e0db9efd7e56fb14e360f04_icgraph" id="ad9/d77/namespacertc_a2971667e5e0db9efd7e56fb14e360f04_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,280,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -373,15 +387,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph" id="ad9/d77/namespacertc_a6d229c2aba04718a18a574bbe239a556_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,291,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -573,15 +578,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a0fe8a0c624541f8adde43c4199f10ba8_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a0fe8a0c624541f8adde43c4199f10ba8_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a0fe8a0c624541f8adde43c4199f10ba8_icgraph" id="ad9/d77/namespacertc_a0fe8a0c624541f8adde43c4199f10ba8_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,315,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -616,15 +612,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_aa7fe1b3503f574ff7b114df7eba40af1_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_aa7fe1b3503f574ff7b114df7eba40af1_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_aa7fe1b3503f574ff7b114df7eba40af1_icgraph" id="ad9/d77/namespacertc_aa7fe1b3503f574ff7b114df7eba40af1_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,263,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -658,9 +645,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d77/namespacertc_a625ba6dd66df393c6a9897bab347ef1a_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a625ba6dd66df393c6a9897bab347ef1a_icgraph" alt=""/></div>
 <map name="ad9/d77/namespacertc_a625ba6dd66df393c6a9897bab347ef1a_icgraph" id="ad9/d77/namespacertc_a625ba6dd66df393c6a9897bab347ef1a_icgraph">
-<area shape="rect" title=" " alt="" coords="327,5,493,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26" title=" " alt="" coords="144,5,279,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
+<area shape="rect" title=" " alt="" coords="188,5,355,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26" title=" " alt="" coords="5,5,140,31"/>
 </map>
 </div>
 
@@ -702,9 +688,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d77/namespacertc_a67f6641ec90b2a5ee9b4c60fec931142_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a67f6641ec90b2a5ee9b4c60fec931142_icgraph" alt=""/></div>
 <map name="ad9/d77/namespacertc_a67f6641ec90b2a5ee9b4c60fec931142_icgraph" id="ad9/d77/namespacertc_a67f6641ec90b2a5ee9b4c60fec931142_icgraph">
-<area shape="rect" title=" " alt="" coords="327,5,507,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26" title=" " alt="" coords="144,5,279,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
+<area shape="rect" title=" " alt="" coords="188,5,368,31"/>
+<area shape="rect" href="../../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26" title=" " alt="" coords="5,5,140,31"/>
 </map>
 </div>
 
@@ -746,26 +731,17 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d4/dc2/scoreBoard_8cpp.html#a55266b463c56406d461d6acff3975f4c" title=" " alt="" coords="388,5,508,31"/>
 </map>
 </div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a45473d51a151c2935bc8c7872cbb0bb3_icgraph.png" border="0" usemap="#ad9/d77/namespacertc_a45473d51a151c2935bc8c7872cbb0bb3_icgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a45473d51a151c2935bc8c7872cbb0bb3_icgraph" id="ad9/d77/namespacertc_a45473d51a151c2935bc8c7872cbb0bb3_icgraph">
-<area shape="rect" title=" " alt="" coords="144,5,307,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a39407a4e69d488e2a60d3f2801257634" title=" " alt="" coords="5,5,96,31"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="aaf16b852c2152ce537cabad01a256b23" name="aaf16b852c2152ce537cabad01a256b23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf16b852c2152ce537cabad01a256b23">&#9670;&#160;</a></span>run()</h2>
+<a id="a2ed8540b6321c814b7f1a11a2cb38e3d" name="a2ed8540b6321c814b7f1a11a2cb38e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ed8540b6321c814b7f1a11a2cb38e3d">&#9670;&#160;</a></span>runGameLoop()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rtc::run </td>
+          <td class="memname">void rtc::runGameLoop </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;&#160;</td>
           <td class="paramname"><em>reg</em>, </td>
@@ -786,7 +762,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;&#160;</td>
-          <td class="paramname"><em>input</em>&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::atomic&lt; <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">GameState</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gameState</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -798,18 +780,18 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_aaf16b852c2152ce537cabad01a256b23_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_aaf16b852c2152ce537cabad01a256b23_cgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_aaf16b852c2152ce537cabad01a256b23_cgraph" id="ad9/d77/namespacertc_aaf16b852c2152ce537cabad01a256b23_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,73,60"/>
-<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a326f953c2452598ea9a867d7e545d392" title="Executes all registered systems." alt="" coords="121,5,312,31"/>
-<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#aad16d1fed96b34872bdab00c2cec123c" title="Updates the state of the keys based on the received event." alt="" coords="141,55,292,95"/>
+<div class="center"><img src="../../d9/d77/namespacertc_a2ed8540b6321c814b7f1a11a2cb38e3d_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_a2ed8540b6321c814b7f1a11a2cb38e3d_cgraph" alt=""/></div>
+<map name="ad9/d77/namespacertc_a2ed8540b6321c814b7f1a11a2cb38e3d_cgraph" id="ad9/d77/namespacertc_a2ed8540b6321c814b7f1a11a2cb38e3d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,144,60"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a326f953c2452598ea9a867d7e545d392" title="Executes all registered systems." alt="" coords="192,5,383,31"/>
+<area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#aad16d1fed96b34872bdab00c2cec123c" title="Updates the state of the keys based on the received event." alt="" coords="212,55,363,95"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a39407a4e69d488e2a60d3f2801257634" name="a39407a4e69d488e2a60d3f2801257634"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39407a4e69d488e2a60d3f2801257634">&#9670;&#160;</a></span>runGui()</h2>
+<a id="aa82afd93eb05f643a5bfd067b5b747be" name="aa82afd93eb05f643a5bfd067b5b747be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82afd93eb05f643a5bfd067b5b747be">&#9670;&#160;</a></span>runGui()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -829,8 +811,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>inLobby</em>, </td>
+          <td class="paramtype">std::atomic&lt; <a class="el" href="../../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128">GameState</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gameState</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -845,26 +827,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/d77/namespacertc_a39407a4e69d488e2a60d3f2801257634_cgraph.png" border="0" usemap="#ad9/d77/namespacertc_a39407a4e69d488e2a60d3f2801257634_cgraph" alt=""/></div>
-<map name="ad9/d77/namespacertc_a39407a4e69d488e2a60d3f2801257634_cgraph" id="ad9/d77/namespacertc_a39407a4e69d488e2a60d3f2801257634_cgraph">
-<area shape="rect" title=" " alt="" coords="5,177,96,203"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26" title=" " alt="" coords="162,29,297,55"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4" title="Logs an error message with source location." alt="" coords="177,79,282,104"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a2971667e5e0db9efd7e56fb14e360f04" title=" " alt="" coords="161,128,297,153"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a6d229c2aba04718a18a574bbe239a556" title=" " alt="" coords="156,177,303,203"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a0fe8a0c624541f8adde43c4199f10ba8" title=" " alt="" coords="144,227,315,252"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#aa7fe1b3503f574ff7b114df7eba40af1" title=" " alt="" coords="170,276,289,301"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a45473d51a151c2935bc8c7872cbb0bb3" title=" " alt="" coords="148,325,311,351"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a625ba6dd66df393c6a9897bab347ef1a" title=" " alt="" coords="369,5,536,31"/>
-<area shape="rect" href="../../d9/d77/namespacertc.html#a67f6641ec90b2a5ee9b4c60fec931142" title=" " alt="" coords="363,55,543,80"/>
-<area shape="rect" href="../../d4/dc2/scoreBoard_8cpp.html#a9d45d0bfed39d801a0e4d436f0a77c2d" title=" " alt="" coords="391,300,514,325"/>
-<area shape="rect" href="../../d4/dc2/scoreBoard_8cpp.html#a50f85c5781c7e2fda7c1760a713a6cec" title=" " alt="" coords="391,349,515,375"/>
-<area shape="rect" href="../../d4/dc2/scoreBoard_8cpp.html#a55266b463c56406d461d6acff3975f4c" title=" " alt="" coords="591,300,711,325"/>
-</map>
-</div>
 
 </div>
 </div>

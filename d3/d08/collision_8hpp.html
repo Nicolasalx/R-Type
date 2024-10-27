@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">collision.hpp File Reference</div></div>
 </div><!--header-->
@@ -114,9 +115,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/d5b/collision_8hpp__dep__incl.png" border="0" usemap="#alib_2factory_2systems_2collision_8hppdep" alt=""/></div>
 <map name="alib_2factory_2systems_2collision_8hppdep" id="alib_2factory_2systems_2collision_8hppdep">
-<area shape="rect" title=" " alt="" coords="79,5,226,45"/>
+<area shape="rect" title=" " alt="" coords="165,5,311,45"/>
 <area shape="rect" href="../../d6/db9/client_2src_2register__ecs_8cpp.html" title=" " alt="" coords="5,93,140,133"/>
-<area shape="rect" href="../../d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="164,93,304,133"/>
+<area shape="rect" href="../../df/d69/collision_8cpp.html" title=" " alt="" coords="165,93,311,133"/>
+<area shape="rect" href="../../d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="336,93,476,133"/>
 </map>
 </div>
 </div>
@@ -131,14 +133,19 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:db/d9a/namespaceecs_1_1systems"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform health checks on entities within the registry. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a8c9bc0c597bd1ee9234066219e745a99"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a8c9bc0c597bd1ee9234066219e745a99">ecs::systems::callback_collide_function_t</a> = void(<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, size_t entityA, size_t entityB, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</td></tr>
+<tr class="separator:a8c9bc0c597bd1ee9234066219e745a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae80f34fea1072a7504940d2ecebe6a8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#ae80f34fea1072a7504940d2ecebe6a8b">ecs::systems::collisionPredict</a> (Registry &amp;reg)</td></tr>
 <tr class="memdesc:ae80f34fea1072a7504940d2ecebe6a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
 <tr class="separator:ae80f34fea1072a7504940d2ecebe6a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e74d37b544cf9311d0591b71d77d93f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a9e74d37b544cf9311d0591b71d77d93f">ecs::systems::collision</a> (Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</td></tr>
-<tr class="memdesc:a9e74d37b544cf9311d0591b71d77d93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
-<tr class="separator:a9e74d37b544cf9311d0591b71d77d93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec85069d2046fe42bd63668d1ffde1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/namespaceecs_1_1systems.html#a8ec85069d2046fe42bd63668d1ffde1b">ecs::systems::collision</a> (Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, const std::function&lt; callback_collide_function_t &gt; &amp;collideCallback={})</td></tr>
+<tr class="memdesc:a8ec85069d2046fe42bd63668d1ffde1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision detection and response for entities.  <br /></td></tr>
+<tr class="separator:a8ec85069d2046fe42bd63668d1ffde1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -12,7 +12,7 @@ var searchData=
   ['loadmusic_9',['loadMusic',['../dc/dcf/classecs_1_1SoundManager.html#a4c7eae279e9dfd58cd2d8ca011f9fcd3',1,'ecs::SoundManager']]],
   ['loadscoreboard_10',['loadScoreboard',['../d4/dc2/scoreBoard_8cpp.html#a9d45d0bfed39d801a0e4d436f0a77c2d',1,'scoreBoard.cpp']]],
   ['loadsoundbuffer_11',['loadSoundBuffer',['../dc/dcf/classecs_1_1SoundManager.html#a8a2444177b460f62b47e454df60223c2',1,'ecs::SoundManager']]],
-  ['lobby_12',['LOBBY',['../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2',1,'rtc']]],
+  ['lobby_12',['LOBBY',['../d9/d77/namespacertc.html#a5ac47684a26a104eb546ab0d6aad9bcaa531109fbee70c7b3d1196aff910e52a2',1,'rtc::LOBBY()'],['../d9/d77/namespacertc.html#a705614a58166d1dc86cbf0aded8fd128a531109fbee70c7b3d1196aff910e52a2',1,'rtc::LOBBY()']]],
   ['lobbywindow_13',['lobbyWindow',['../d9/d77/namespacertc.html#a717a45d127071db93fa28b0c5a353a26',1,'rtc']]],
   ['logerror_14',['logError',['../d5/d87/namespaceeng.html#a933f39a6c093a39ed3c6271e7ea7b9e4',1,'eng']]],
   ['logger_2ecpp_15',['Logger.cpp',['../d9/df5/Logger_8cpp.html',1,'']]],
