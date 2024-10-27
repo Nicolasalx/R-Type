@@ -117,8 +117,6 @@ void rtc::GameManager::_runGame()
         _metrics,
         _keyBind,
         soundManager
-        _keyBind,
-        soundManager
     );
 
     _setupUdpConnection(spriteManager, udpClient);

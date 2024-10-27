@@ -37,6 +37,7 @@
             "maxHp": 1000000,
             "currHp": 1000000
         },
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "tag": 2
     }
 }

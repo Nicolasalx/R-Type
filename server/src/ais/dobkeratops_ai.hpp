@@ -58,7 +58,7 @@ entity_t createNeckSegment(
 
     datasToSend.push_back(
         rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
-            rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART, sharedId, {.pos = {x, y}, .partIndex = partIndex}
+            rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART, sharedId, {.pos = {x, y}, .partIndex = partIndex}, true
         )
             .serialize()
     );
@@ -92,9 +92,12 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
         reg, "assets/boss_parasite.json", pos->x + 76, pos->y + 96, sharedId
     );
 
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
-                              rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE, sharedId, {.pos = {pos->x + 80, pos->y + 96}}
-    ).serialize());
+    datasToSend.push_back(
+        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+            rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE, sharedId, {.pos = {pos->x + 80, pos->y + 96}}, true
+        )
+            .serialize()
+    );
 }
 
 void spawnDobkeratopsProjectile(
@@ -124,8 +127,9 @@ void spawnDobkeratopsProjectile(
 
     datasToSend.push_back(
         rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-            rt::UDPCommand::NEW_ENTITY_MISSILE_BALL, sharedId, {.pos = {spawnX, spawnY}, .vel = {vx, vy}}
-        ).serialize()
+            rt::UDPCommand::NEW_ENTITY_MISSILE_BALL, sharedId, {.pos = {spawnX, spawnY}, .vel = {vx, vy}}, true
+        )
+            .serialize()
     );
 }
 
@@ -153,7 +157,7 @@ void cleanupDobkeratopsSegments(ecs::Registry &reg, entity_t bossEntity, std::li
             auto sharedId = reg.getComponent<ecs::component::SharedEntity>(segment)->sharedEntityId;
 
             datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize()
+                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
             );
             reg.killEntity(segment);
 
@@ -164,7 +168,9 @@ void cleanupDobkeratopsSegments(ecs::Registry &reg, entity_t bossEntity, std::li
     dobkeratopsStates.erase(bossEntity);
     try {
         auto sharedId = reg.getComponent<ecs::component::SharedEntity>(state.bossParasite)->sharedEntityId;
-        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize());
+        datasToSend.push_back(
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
+        );
         reg.killEntity(state.bossParasite);
     } catch (const std::exception &e) {
         eng::logError("Failed to cleanup boss parasite: " + std::string(e.what()));
@@ -294,7 +300,8 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
     if (health->currHp <= 1) {
         cleanupDobkeratopsSegments(reg, e, datasToSend);
         datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId).serialize()
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId, true)
+                .serialize()
         );
         reg.killEntity(e);
         return;

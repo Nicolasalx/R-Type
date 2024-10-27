@@ -58,7 +58,7 @@
                     }
                 ]
             },
-            "frame_time": 0.2,
+            "frame_time": 0.1,
             "update_state": "none"
         },
         "sound_emitter": {

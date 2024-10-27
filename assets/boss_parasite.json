@@ -88,6 +88,7 @@
         "score_earned": {
             "points": 1000
         },
-        "server_share_movement": {}
+        "server_share_movement": {},
+        "tag": 2
     }
 }

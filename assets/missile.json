@@ -164,6 +164,9 @@
             "sound": "assets/missile.wav",
             "volume": 10.0
         },
+        "on_death": {
+            "entity": "assets/explosion2.json"
+        },
         "radial_light": {
             "offset": {
                 "x": 9,

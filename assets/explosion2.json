@@ -1,61 +1,57 @@
 {
-    "type": "shared",
+    "type": "local",
     "components": {
         "position": {
-            "x": 0,
-            "y": 0
+            "x": 100.0,
+            "y": 160.0
         },
-        "velocity": {
-            "vx": 0,
-            "vy": 0
-        },
-        "hitbox": {
-            "width": 16,
-            "height": 16
+        "death_timer": {
+            "time": 0.5
         },
         "sprite": {
-            "texture": "assets/typesheets/r-typesheet30.gif",
+            "texture": "assets/typesheets/r-typesheet43.png",
             "initial_frame": {
                 "x": 0,
-                "y": 300,
+                "y": 0,
                 "width": 16,
                 "height": 16
             }
         },
         "animation": {
-            "frame_time": 0.1,
             "frames": {
                 "idle": [
                     {
-                        "x": 0,
-                        "y": 300,
+                        "x": 123,
+                        "y": 18,
                         "width": 16,
                         "height": 16
                     },
                     {
-                        "x": 16,
-                        "y": 300,
+                        "x": 141,
+                        "y": 18,
                         "width": 16,
                         "height": 16
                     },
                     {
-                        "x": 32,
-                        "y": 300,
+                        "x": 159,
+                        "y": 18,
                         "width": 16,
                         "height": 16
-                    },
-                    {
-                        "x": 48,
-                        "y": 300,
+                    },{
+                        "x": 177,
+                        "y": 18,
+                        "width": 16,
+                        "height": 16
+                    },{
+                        "x": 195,
+                        "y": 18,
                         "width": 16,
                         "height": 16
                     }
                 ]
             },
-            "state": "idle"
-        },
-        "missile": {},
-        "server_share_movement": {},
-        "tag": 2
+            "frame_time": 0.1,
+            "update_state": "none"
+        }
     }
 }
