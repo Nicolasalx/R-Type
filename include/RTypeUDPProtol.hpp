@@ -26,10 +26,14 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_MISSILE_BALL,
     NEW_ENTITY_BYDOS_WAVE,
     NEW_ENTITY_ROBOT_GROUND,
+    NEW_ENTITY_DOBKERATOPS,
+    NEW_ENTITY_DOBKERATOPS_PART,
+    NEW_ENTITY_BOSS_PARASITE,
 
     TAKE_DAMAGE,
 
     MOVE_ENTITY,
+    CHANGE_ANIMATION_STATE,
 
     DEL_ENTITY,
 
@@ -67,9 +71,23 @@ struct NEW_ENTITY_BYDOS_WAVE {
     ecs::component::Position pos{};
 };
 
+struct NEW_ENTITY_BOSS_PARASITE {
+    ecs::component::Position pos{};
+};
+
 struct NEW_ENTITY_ROBOT_GROUND {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+};
+
+struct NEW_ENTITY_DOBKERATOPS {
+    ecs::component::Position pos{};
+    int stage = 1;
+};
+
+struct NEW_ENTITY_DOBKERATOPS_PART {
+    ecs::component::Position pos{};
+    int partIndex = 0;
 };
 
 struct TAKE_DAMAGE {
@@ -79,6 +97,10 @@ struct TAKE_DAMAGE {
 struct MOVE_ENTITY {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+};
+
+struct CHANGE_ANIMATION_STATE {
+    char newState[32] = {0};
 };
 
 struct DEL_ENTITY {};

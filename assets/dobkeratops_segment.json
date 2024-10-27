@@ -1,0 +1,43 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "velocity": {
+            "vx": 0,
+            "vy": 0
+        },
+        "hitbox": {
+            "width": 16,
+            "height": 16
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet30.gif",
+            "initial_frame": {
+                "x": 652,
+                "y": 2000,
+                "width": 16,
+                "height": 16
+            }
+        },
+        "drawable": {
+            "size": {
+                "x": 16.0,
+                "y": 16.0
+            },
+            "fill_color": {
+                "r": 0,
+                "g": 255,
+                "b": 255
+            }
+        },
+        "health": {
+            "maxHp": 1000000,
+            "currHp": 1000000
+        },
+        "server_share_movement": {},
+        "tag": 2
+    }
+}

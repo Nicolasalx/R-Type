@@ -6,7 +6,7 @@
 */
 
 #include "ServerEntityFactory.hpp"
-#include <sys/types.h>
+#include "components/animation.hpp"
 #include "components/drawable.hpp"
 #include "components/tag.hpp"
 #include "components/ai_actor.hpp"
@@ -51,6 +51,33 @@ void ServerEntityFactory::addComponents(
     if (componentsJson.contains("tag")) {
         component::EntityTag tag{componentsJson["tag"].get<component::EntityTag>()};
         reg.addComponent(entity, component::Tag<component::EntityTag>{std::move(tag)});
+    }
+
+    if (componentsJson.contains("animation")) {
+        auto animJson = componentsJson["animation"];
+        ecs::component::Animation animComp;
+        animComp.frameTime = animJson["frame_time"].get<float>();
+
+        for (const auto &[stateName, framesJson] : animJson["frames"].items()) {
+            for (auto &frameJson : framesJson) {
+                animComp.frames[stateName].emplace_back(
+                    frameJson["x"].get<int>(),
+                    frameJson["y"].get<int>(),
+                    frameJson["width"].get<int>(),
+                    frameJson["height"].get<int>()
+                );
+            }
+        }
+        if (animJson.contains("current_frame")) {
+            animComp.currentFrame = animJson["current_frame"].get<size_t>();
+        }
+        if (animJson.contains("state")) {
+            animComp.state = animJson["state"];
+        } else {
+            animComp.state = "idle";
+        }
+
+        reg.addComponent(entity, std::move(animComp));
     }
 }
 
