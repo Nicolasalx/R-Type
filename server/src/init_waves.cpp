@@ -19,6 +19,7 @@
 #include "ais/horizontalMoveAi.hpp"
 #include "ais/waveAi.hpp"
 #include "entity.hpp"
+#include "ais/dobkeratops_ai.hpp"
 #include "components/ai_actor.hpp"
 #include "shared_entity.hpp"
 
@@ -95,23 +96,73 @@ static void waveInit(
 
 void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend, int missileSpawnRate)
 {
-    auto waveId = waveManager.addNewWave();
+    // waveManager.addNewWave();
+    // waveInit(waveManager, datasToSend, 5, missileSpawnRate);
+    // waveInit(waveManager, datasToSend, 6, missileSpawnRate);
+    auto bossWaveId = waveManager.addNewWave();
+    waveManager.addNewMob(bossWaveId, [&datasToSend](ecs::Registry &reg) -> entity_t {
+        shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
 
-    for (std::size_t i = 0; i < 3; ++i) {
-        waveManager.addNewMob(waveId, [i, &datasToSend](ecs::Registry &reg) -> entity_t {
-            shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
-            entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
-                reg, "assets/static.json", 100.f * (i + 1), 100.f * (i + 1), sharedEntityId
-            );
-            datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC>(
-                    rt::UDPCommand::NEW_ENTITY_STATIC, sharedEntityId, {.pos = {100.f * i, 100.f * i}}, true
-                )
-                    .serialize()
-            );
-            return entity;
-        });
-    }
-    waveInit(waveManager, datasToSend, 5, missileSpawnRate);
-    waveInit(waveManager, datasToSend, 6, missileSpawnRate);
+        entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
+            reg, "assets/dobkeratops.json", 560.f, 120.f, sharedEntityId
+        );
+
+        datasToSend.push_back(
+            rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
+                rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedEntityId, {.pos = {560.f, 120.f}, .stage = 1}, true
+            )
+                .serialize()
+        );
+
+        reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend](ecs::Registry &reg, entity_t e) {
+            static bool initialized = false;
+            if (!initialized) {
+                rts::ais::initDobkeratopsAi(reg, e, datasToSend);
+                initialized = true;
+            }
+            rts::ais::dobkeratopsAi(reg, e, datasToSend);
+        };
+
+        return entity;
+    });
+
+    waveManager.addNewMob(bossWaveId, [&datasToSend, &missileSpawnRate](ecs::Registry &reg) -> entity_t {
+        shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
+        entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
+            reg, "assets/bydosWave.json", 500.f, 100.f, sharedEntityId
+        );
+
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
+                                  rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedEntityId, {.pos = {500.f, 100.f}}, true
+        )
+                                  .serialize());
+
+        reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend,
+                                                                  &missileSpawnRate](ecs::Registry &reg, entity_t e) {
+            rts::ais::waveMovement(reg, e, 100.f);
+            rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
+        };
+
+        return entity;
+    });
+
+    waveManager.addNewMob(bossWaveId, [&datasToSend, &missileSpawnRate](ecs::Registry &reg) -> entity_t {
+        shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
+        entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
+            reg, "assets/bydosWave.json", 500.f, 380.f, sharedEntityId
+        );
+
+        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
+                                  rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedEntityId, {.pos = {500.f, 380.f}}, true
+        )
+                                  .serialize());
+
+        reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend,
+                                                                  &missileSpawnRate](ecs::Registry &reg, entity_t e) {
+            rts::ais::waveMovement(reg, e, 380.f);
+            rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
+        };
+
+        return entity;
+    });
 }

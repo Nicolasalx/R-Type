@@ -138,6 +138,49 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
             );
         }
     );
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
+        rt::UDPCommand::NEW_ENTITY_DOBKERATOPS,
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS> &packet) {
+            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
+                const auto &pos = packet.body.pos;
+                auto sharedEntityId = packet.sharedEntityId;
+
+                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                    reg, spriteManager, "assets/dobkeratops.json", pos.x, pos.y, sharedEntityId
+                );
+            });
+        }
+    );
+
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+        rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE,
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE> &packet) {
+            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
+                const auto &pos = packet.body.pos;
+                auto sharedEntityId = packet.sharedEntityId;
+
+                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                    reg, spriteManager, "assets/boss_parasite.json", pos.x, pos.y, sharedEntityId
+                );
+            });
+        }
+    );
+
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
+        rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART,
+        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART> &packet) {
+            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
+                const auto &pos = packet.body.pos;
+                auto sharedEntityId = packet.sharedEntityId;
+
+                std::string partJson = "assets/dobkeratops_segment.json";
+                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                    reg, spriteManager, partJson, pos.x, pos.y, sharedEntityId
+                );
+            });
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
@@ -155,12 +198,29 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                             .value() = packet.body.vel;
                     }
                 } catch (const std::exception &e) {
-                    // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());
                 }
             });
         }
     );
+
+    _udpResponseHandler.registerHandler<rt::UDPBody::CHANGE_ANIMATION_STATE>(
+        rt::UDPCommand::CHANGE_ANIMATION_STATE,
+        [this](const rt::UDPPacket<rt::UDPBody::CHANGE_ANIMATION_STATE> &packet) {
+            _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
+                try {
+                    auto &animation =
+                        reg.getComponent<ecs::component::Animation>(reg.getLocalEntity().at(packet.sharedEntityId));
+                    if (animation) {
+                        animation->state = packet.body.newState;
+                    }
+                } catch (const std::exception &e) {
+                    eng::logTimeWarning(e.what());
+                }
+            });
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
