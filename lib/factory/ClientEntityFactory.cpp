@@ -14,6 +14,7 @@
 #include "components/animation.hpp"
 #include "components/hitbox.hpp"
 #include "components/parallax.hpp"
+#include "components/gravity.hpp"
 #include "components/position.hpp"
 #include "components/sprite.hpp"
 #include "components/velocity.hpp"
@@ -271,6 +272,10 @@ void ClientEntityFactory::addComponents(
         light.light.setRotation(radialLightJson["rotation"].get<float>());
         light.light.setIntensity(radialLightJson["intensity"].get<float>());
         reg.addComponent(entity, std::move(light));
+    }
+    if (componentsJson.contains("ennemy_type")) {
+        auto typeJson = componentsJson["ennemy_type"];
+        reg.addComponent(entity, ecs::component::Gravity{typeJson["type"].get<std::string>()});
     }
     if (componentsJson.contains("light_edge") && reg.hasComponent<ecs::component::Hitbox>(entity)) {
         ecs::component::LightEdge lightEdge;

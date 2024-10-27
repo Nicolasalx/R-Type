@@ -16,6 +16,7 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
+#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -49,6 +50,7 @@
 #include "systems/draw_player_health_bar.hpp"
 #include "systems/draw_score.hpp"
 #include "systems/draw_team_data.hpp"
+#include "systems/gravity_system.hpp"
 #include "systems/health_local_check.hpp"
 #include "systems/render_radial_light.hpp"
 #include "systems/send_ping.hpp"
@@ -80,6 +82,7 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::DeathTimer>();
     reg.registerComponent<ecs::component::RadialLight>();
     reg.registerComponent<ecs::component::LightEdge>();
+    reg.registerComponent<ecs::component::Gravity>();
 }
 
 void rtc::registerSystems(
@@ -139,4 +142,5 @@ void rtc::registerSystems(
     reg.addSystem([&metrics, &window]() {
         ecs::systems::drawPing(metrics.getMetric(rt::GameMetric::PING), window.getSize());
     });
+    reg.addSystem([&reg, &window]() { ecs::systems::gravitySystem(reg, window.getSize()); });
 }
