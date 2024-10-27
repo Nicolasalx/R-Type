@@ -5,6 +5,7 @@
 ** register_udp_response
 */
 
+#include <atomic>
 #include <cstddef>
 #include <cstdio>
 #include <exception>
@@ -12,6 +13,7 @@
 #include "ClientEntityFactory.hpp"
 #include "GameManager.hpp"
 #include "Logger.hpp"
+#include "RTypeClient.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "SpriteManager.hpp"
@@ -209,6 +211,14 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
             )
                                    .count();
             _metrics.getMetric(rt::GameMetric::PING).lastComputedMetric = (currentTime - packet.body.sendTime) / 1000.0;
+        }
+    );
+    _udpResponseHandler.registerHandler<rt::UDPBody::END_GAME>(
+        rt::UDPCommand::END_GAME,
+        [&udpClient, this](const rt::UDPPacket<rt::UDPBody::END_GAME> &packet) {
+            _gameState.store(GameState::NONE);
+            auto packSer = packet.serialize();
+            udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::TAKE_DAMAGE>(

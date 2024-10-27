@@ -8,7 +8,9 @@
 #pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <atomic>
 #include <list>
+#include <sys/types.h>
 #include <vector>
 #include "Registry.hpp"
 #include "RoomManager.hpp"
@@ -20,7 +22,6 @@
 #include "udp/UDPServer.hpp"
 
 namespace rts {
-
 int parseArg(int argc, const char **argv, rts::RoomManager &roomManager);
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
@@ -32,14 +33,16 @@ void registerSystems(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
-    bool debugMode
+    bool debugMode,
+    size_t &nbPlayers
 );
 void registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ntw::UDPServer &udpServer,
-    ntw::TimeoutHandler &timeoutHandler
+    ntw::TimeoutHandler &timeoutHandler,
+    std::atomic<bool> &stopGame
 );
 void registerTcpResponse(
     rts::RoomManager &roomManager,

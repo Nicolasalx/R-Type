@@ -11,7 +11,9 @@
 #include <exception>
 #include <mutex>
 #include <string>
+#include <sys/types.h>
 #include <utility>
+#include "Logger.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
@@ -73,7 +75,9 @@ static void handleAckClient(
     ntw::UDPServer &udpServer,
     const std::vector<std::any> &arg,
     size_t packetId,
-    ntw::TimeoutHandler &timeoutHandler
+    std::uint8_t cmd,
+    ntw::TimeoutHandler &timeoutHandler,
+    std::atomic<bool> &stopGame
 )
 {
     auto &mut = udpServer.mut();
@@ -85,7 +89,12 @@ static void handleAckClient(
     if (it == allEndpoints.end()) {
         return;
     }
-    timeoutHandler.removeClient(packetId, it->first);
+    if (!timeoutHandler.removeClient(packetId, it->first)) {
+        return;
+    }
+    if ((rt::UDPCommand)cmd == rt::UDPCommand::END_GAME) {
+        stopGame.store(true);
+    }
 }
 
 void rts::registerUdpResponse(
@@ -93,16 +102,17 @@ void rts::registerUdpResponse(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ntw::UDPServer &udpServer,
-    ntw::TimeoutHandler &timeoutHandler
+    ntw::TimeoutHandler &timeoutHandler,
+    std::atomic<bool> &stopGame
 )
 {
-    responseHandler.registerAckHandler(
-        [&udpServer, &networkCallbacks, &timeoutHandler](size_t packetId, const std::vector<std::any> &arg) {
-            networkCallbacks.pushBack([&timeoutHandler, arg, &udpServer, packetId](ecs::Registry &) {
-                handleAckClient(udpServer, arg, packetId, timeoutHandler);
-            });
-        }
-    );
+    responseHandler.registerAckHandler([&udpServer, &networkCallbacks, &timeoutHandler, &stopGame](
+                                           std::uint8_t cmd, size_t packetId, const std::vector<std::any> &arg
+                                       ) {
+        networkCallbacks.pushBack([&timeoutHandler, arg, &udpServer, packetId, cmd, &stopGame](ecs::Registry &) {
+            handleAckClient(udpServer, arg, packetId, cmd, timeoutHandler, stopGame);
+        });
+    });
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
         rt::UDPCommand::NEW_ENTITY_PLAYER,
         [&datasToSend, &networkCallbacks, &timeoutHandler, &udpServer](

@@ -6,6 +6,7 @@
 */
 
 #include "RoomManager.hpp"
+#include <SFML/System/Mutex.hpp>
 #include <cstddef>
 #include <future>
 #include <iostream>
@@ -64,7 +65,7 @@ void rts::RoomManager::leaveRoom(const std::string &name, std::size_t playerId, 
     tcpServer.sendToAllUser(reinterpret_cast<const char *>(&packet), sizeof(packet));
     if (playerWasReady && _rooms.at(name).player.empty()) {
         _rooms.at(name).game->detach();
-        _rooms.at(name).stopGame = true;
+        _rooms.at(name).gameRunner->setGameState(true);
         deleteRoom(name, tcpServer);
     }
 }
@@ -107,19 +108,20 @@ void rts::RoomManager::playerReady(
     std::future<bool> server = serverReady.get_future();
     std::future<bool> udpClient = _rooms.at(roomName).clientReady.get_future();
     _rooms.at(roomName).gameRunner = std::make_shared<rts::GameRunner>(
-        _nextPort, _rooms.at(roomName).stage, _rooms.at(roomName).missileSpawnRate, this->_debugMode
+        _nextPort,
+        _rooms.at(roomName).stage,
+        _rooms.at(roomName).missileSpawnRate,
+        this->_debugMode,
+        _rooms.at(roomName).player.size()
     );
 
     _rooms.at(roomName).game = std::make_unique<std::thread>(
-        [gameRunner = _rooms.at(roomName).gameRunner](
-            bool &stopGame, std::promise<bool> serverReady, std::future<bool> udpClient
-        ) {
+        [gameRunner = _rooms.at(roomName).gameRunner](std::promise<bool> serverReady, std::future<bool> udpClient) {
             serverReady.set_value(true);
             udpClient.wait();
             gameRunner->addWindow(sf::VideoMode(720, 480), "R-Type");
-            gameRunner->runGame(stopGame);
+            gameRunner->runGame();
         },
-        std::ref(_rooms.at(roomName).stopGame),
         std::move(serverReady),
         std::move(udpClient)
     );

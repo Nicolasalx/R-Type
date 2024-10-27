@@ -19,15 +19,20 @@
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
 
-rts::GameRunner::GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode) // ! Use the stage
-                                                                                               // argument
-    : _udpServer(port), _debugMode(debugMode)
+rts::GameRunner::GameRunner(
+    int port,
+    std::size_t stage, // ! Use the stage as argument
+    int missileSpawnRate,
+    bool debugMode,
+    size_t nbPlayers
+)
+    : _udpServer(port), _nbPlayers(nbPlayers), _debugMode(debugMode), _stopGame(false)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
     _networkCallbacks.registerConsumeFunc([this](auto f) { f(_reg); });
     _timeoutHandler.runTimeoutChecker(_dt, _udpServer);
-    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer, _timeoutHandler);
+    rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer, _timeoutHandler, _stopGame);
     _udpServer.registerCommand([this](udp::endpoint &endpoint, char *data, std::size_t size) {
         this->_responseHandler.handleResponse(data, size, {std::ref(endpoint)});
     });
@@ -35,7 +40,16 @@ rts::GameRunner::GameRunner(int port, std::size_t stage, int missileSpawnRate, b
 
     rts::registerComponents(_reg);
     rts::registerSystems(
-        _reg, _window, _dt, _tickRateManager, _udpServer, _datasToSend, _networkCallbacks, _waveManager, debugMode
+        _reg,
+        _window,
+        _dt,
+        _tickRateManager,
+        _udpServer,
+        _datasToSend,
+        _networkCallbacks,
+        _waveManager,
+        debugMode,
+        _nbPlayers
     );
     rts::initWaves(_waveManager, _datasToSend, missileSpawnRate);
 }
@@ -56,6 +70,7 @@ void rts::GameRunner::killPlayer(size_t playerId)
                 _udpServer.removeClient(playerId); // Kill the player in udpServer
                 _timeoutHandler.killClientId(playerId);
                 reg.killEntity(e);
+                _nbPlayers--;
                 return;
             }
         }
@@ -71,11 +86,11 @@ void rts::GameRunner::addWindow(const sf::VideoMode &videomode, const std::strin
     _window.setFramerateLimit(rt::SERVER_ENGINE_TARGET_FPS);
 }
 
-void rts::GameRunner::_runGameDebug(bool &stopGame)
+void rts::GameRunner::_runGameDebug()
 {
     sf::Clock clock;
 
-    while (_window.isOpen() && !stopGame) {
+    while (_window.isOpen() && !_stopGame.load()) {
         _dt = clock.restart().asSeconds();
 
         sf::Event event{};
@@ -93,16 +108,16 @@ void rts::GameRunner::_runGameDebug(bool &stopGame)
     }
 }
 
-void rts::GameRunner::runGame(bool &stopGame)
+void rts::GameRunner::runGame()
 {
     eng::FramerateManager frameRate(rt::SERVER_ENGINE_TARGET_FPS);
     sf::Clock clock;
 
     if (_debugMode) {
-        _runGameDebug(stopGame);
+        _runGameDebug();
         return;
     }
-    while (!stopGame) {
+    while (!_stopGame.load()) {
         frameRate.start();
         _dt = clock.restart().asSeconds();
         _reg.runSystems();

@@ -11,8 +11,10 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <functional>
 #include <memory>
+#include <sys/types.h>
 #include "KeyBind.hpp"
 #include "MetricManager.hpp"
+#include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
@@ -35,7 +37,7 @@ class GameManager {
     std::string _playerName;
 
     std::shared_ptr<ntw::TCPClient> _tcpClient;
-    bool _inLobby = true;
+    std::atomic<GameState> _gameState = GameState::LOBBY;
     std::size_t _userId = 0;
     int _gamePort = 0;
     std::shared_ptr<rtc::RoomManager> _roomManager;
@@ -66,7 +68,11 @@ class GameManager {
 
     void _setupTcpConnection();
     void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _setupGui();
+    void _setupEntities(ntw::UDPClient &udpClient, ecs::Registry &reg, ecs::SpriteManager &spriteManager);
+
     void _launchGame();
+    void _runGame();
 
     public:
     GameManager(const std::string &ip, int port, const std::string &playerName)
@@ -81,7 +87,7 @@ class GameManager {
         ImGui::SFML::Shutdown();
     }
 
-    void runGame()
+    void run()
     {
         _setupTcpConnection();
         _launchGame();

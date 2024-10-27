@@ -14,6 +14,7 @@
 #include <functional>
 #include <optional>
 #include <string>
+#include <sys/types.h>
 #include <vector>
 #include "../lib/utils/Logger.hpp"
 #include "../lib/utils/TrackedException.hpp"
@@ -47,7 +48,7 @@ class UDPResponseHandler {
         };
     }
 
-    void registerAckHandler(std::function<void(size_t, const std::vector<std::any> &)> handler)
+    void registerAckHandler(std::function<void(std::uint8_t, size_t, const std::vector<std::any> &)> handler)
     {
         _ackHandler = std::move(handler);
     }
@@ -69,7 +70,7 @@ class UDPResponseHandler {
                 break;
             }
             if (header->ack && _ackHandler.has_value()) {
-                _ackHandler.value()(header->packetId, arg);
+                _ackHandler.value()((std::uint8_t)header->cmd, header->packetId, arg);
             } else {
                 if (_handler.contains(header->cmd)) {
                     _handler.at(header->cmd)(ptr);
@@ -94,7 +95,7 @@ class UDPResponseHandler {
     std::unordered_map<rt::UDPCommand, std::function<void(const char *)>> _handler;
     std::unordered_map<rt::UDPCommand, std::function<void(const char *, const std::vector<std::any> &)>>
         _specialHandler;
-    std::optional<std::function<void(size_t, const std::vector<std::any> &)>> _ackHandler;
+    std::optional<std::function<void(std::uint8_t, size_t, const std::vector<std::any> &)>> _ackHandler;
 };
 
 } // namespace rt

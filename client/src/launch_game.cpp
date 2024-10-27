@@ -7,6 +7,7 @@
 
 #include <SFML/Window/VideoMode.hpp>
 #include <cstddef>
+#include <cstdio>
 #include <memory>
 #include <string>
 #include "ClientEntityFactory.hpp"
@@ -41,11 +42,8 @@ static void spawnPlayer(ntw::UDPClient &udp, std::size_t userId, const rtc::Room
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void rtc::GameManager::_launchGame()
+void rtc::GameManager::_setupGui()
 {
-    _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(rt::SCREEN_WIDTH, rt::SCREEN_HEIGHT), "R-Type");
-    _window->setFramerateLimit(rt::CLIENT_FPS_LIMIT);
-
     if (!ImGui::SFML::Init(*_window, false)) {
         throw eng::TrackedException("IMGUI Window init failed");
     }
@@ -61,13 +59,34 @@ void rtc::GameManager::_launchGame()
     if (!ImGui::SFML::UpdateFontTexture()) {
         return;
     }
+}
 
-    runGui(_window, _roomManager, _inLobby, _keyBind);
+void rtc::GameManager::_setupEntities(ntw::UDPClient &udpClient, ecs::Registry &reg, ecs::SpriteManager &spriteManager)
+{
+    spawnPlayer(udpClient, _userId, *_roomManager);
 
-    if (_inLobby) {
-        return;
+    for (std::size_t i = 1; i <= 11; ++i) {
+        ecs::ClientEntityFactory::createClientEntityFromJSON(
+            reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
+        );
     }
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bottomCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/topCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/rightCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/leftCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planet50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
+}
 
+void rtc::GameManager::_runGame()
+{
     ntw::UDPClient udpClient(_ip, _gamePort);
 
     ecs::Registry reg;
@@ -106,25 +125,30 @@ void rtc::GameManager::_launchGame()
     _roomManager->udpConnectionReady();
     otherPlayer.wait();
 
-    spawnPlayer(udpClient, _userId, *_roomManager);
-    for (std::size_t i = 1; i <= 11; ++i) {
-        ecs::ClientEntityFactory::createClientEntityFromJSON(
-            reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
-        );
-    }
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bottomCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/topCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/rightCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/leftCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planet50.json", 1500, 303);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade50.json", 1500, 303);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
+    _setupEntities(udpClient, reg, spriteManager);
+    runGameLoop(reg, _window, dt, inputManager, _gameState);
+}
 
-    run(reg, _window, dt, inputManager);
+void rtc::GameManager::_launchGame()
+{
+    _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(rt::SCREEN_WIDTH, rt::SCREEN_HEIGHT), "R-Type");
+    _window->setFramerateLimit(rt::CLIENT_FPS_LIMIT);
+
+    _setupGui();
+
+    while (_gameState.load() != GameState::NONE) {
+        switch (_gameState.load()) {
+            case GameState::LOBBY:
+                rtc::runGui(_window, _roomManager, _gameState, _keyBind);
+                break;
+            case GameState::GAME:
+                _runGame();
+                break;
+            default:
+                return;
+        }
+    }
+    if (_window->isOpen()) {
+        _window->close();
+    }
 }

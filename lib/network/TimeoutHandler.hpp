@@ -14,6 +14,7 @@
 #include <mutex>
 #include <thread>
 #include <vector>
+#include "Logger.hpp"
 #include "TickRateManager.hpp"
 #include "udp/UDPServer.hpp"
 
@@ -80,22 +81,24 @@ class TimeoutHandler {
         }
     }
 
-    void removeClient(size_t packetId, UDPServer::client_id_t clientId)
+    bool removeClient(size_t packetId, UDPServer::client_id_t clientId)
     {
         std::lock_guard<std::mutex> lck(_mut);
         for (auto &timeoutPacket : _timeoutPackets) {
             if (packetId == timeoutPacket.packetId) {
                 auto itCli = std::find(timeoutPacket.clientIds.begin(), timeoutPacket.clientIds.end(), clientId);
                 if (itCli == timeoutPacket.clientIds.end()) {
-                    return;
+                    eng::logInfo(std::format("No such client ({}) in packet ({})", clientId, packetId));
+                    return false;
                 }
                 timeoutPacket.clientIds.erase(itCli);
                 if (timeoutPacket.clientIds.empty()) {
                     removeTimeoutPacket(packetId);
                 }
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     void runTimeoutChecker(float &dt, UDPServer &udp)

@@ -29,6 +29,7 @@ class GameRunner {
     ntw::TimeoutHandler _timeoutHandler;
     rt::UDPResponseHandler _responseHandler;
 
+    size_t _nbPlayers;
     ecs::Registry _reg;
     ecs::WaveManager _waveManager;
 
@@ -41,14 +42,20 @@ class GameRunner {
     sf::RenderWindow _window;
 
     bool _debugMode = false;
+    std::atomic<bool> _stopGame;
 
-    void _runGameDebug(bool &stopGame);
+    void _runGameDebug();
 
     public:
-    GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode);
+    GameRunner(int port, std::size_t stage, int missileSpawnRate, bool debugMode, size_t nbPlayers);
+
+    void setGameState(bool state)
+    {
+        _stopGame.store(state);
+    }
 
     void killPlayer(size_t playerId);
     void addWindow(const sf::VideoMode &videomode, const std::string &title);
-    void runGame(bool &stopGame);
+    void runGame();
 };
 } // namespace rts
