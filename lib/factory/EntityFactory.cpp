@@ -29,6 +29,24 @@
 
 namespace ecs {
 
+std::unordered_map<std::string, nlohmann::json> EntityFactory::jsonCache;
+
+const nlohmann::json &EntityFactory::getJSON(const std::string &jsonFilePath)
+{
+    auto it = jsonCache.find(jsonFilePath);
+    if (it != jsonCache.end()) {
+        return it->second;
+    }
+
+    std::ifstream file(jsonFilePath);
+    if (!file.is_open()) {
+        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
+    }
+
+    auto [insertedIt, _] = jsonCache.emplace(jsonFilePath, nlohmann::json::parse(file));
+    return insertedIt->second;
+}
+
 entity_t EntityFactory::createClientEntityFromJSON(
     Registry &reg,
     SpriteManager &spriteManager,
@@ -41,13 +59,7 @@ entity_t EntityFactory::createClientEntityFromJSON(
     std::shared_ptr<ImFont> font
 )
 {
-    std::ifstream file(jsonFilePath);
-    if (!file.is_open()) {
-        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
-    }
-
-    nlohmann::json entityJson;
-    file >> entityJson;
+    const nlohmann::json &entityJson = getJSON(jsonFilePath);
 
     std::string entityType = entityJson["type"].get<std::string>();
     bool isShared = entityType == "shared" || sharedEntity != std::numeric_limits<size_t>::max();
@@ -83,17 +95,12 @@ entity_t EntityFactory::createServerEntityFromJSON(
     float vy
 )
 {
-    std::ifstream file(jsonFilePath);
-    if (!file.is_open()) {
-        throw eng::TrackedException("Failed to open entity JSON file: " + jsonFilePath);
-    }
-
-    nlohmann::json entityJson;
-    file >> entityJson;
+    const nlohmann::json &entityJson = getJSON(jsonFilePath);
 
     std::string entityType = entityJson["type"].get<std::string>();
     bool isShared = entityType == "shared" || sharedEntity != std::numeric_limits<size_t>::max();
     entity_t entity = 0;
+
     if (isShared) {
         if (sharedEntity == std::numeric_limits<size_t>::max()) {
             sharedEntity = generateSharedEntityId();
@@ -106,6 +113,7 @@ entity_t EntityFactory::createServerEntityFromJSON(
     } else {
         entity = reg.spawnEntity();
     }
+
     ServerEntityFactory::addComponents(reg, entity, entityJson["components"], isShared, x, y, vx, vy);
     ServerEntityFactory::handleNetworkSync(reg, entity, entityJson, isShared);
 
@@ -133,6 +141,7 @@ void EntityFactory::addCommonComponents(
         }
         reg.addComponent(entity, ecs::component::Position{posJson["x"].get<float>(), posJson["y"].get<float>()});
     }
+
     if (componentsJson.contains("velocity")) {
         auto velJson = componentsJson["velocity"];
         if (vx != std::numeric_limits<float>::max()) {
@@ -150,9 +159,11 @@ void EntityFactory::addCommonComponents(
             entity, ecs::component::Hitbox{hitboxJson["width"].get<float>(), hitboxJson["height"].get<float>()}
         );
     }
+
     if (componentsJson.contains("controllable")) {
         reg.addComponent(entity, ecs::component::Controllable{});
     }
+
     if (componentsJson.contains("missile")) {
         reg.addComponent(entity, ecs::component::Missile{});
     }
@@ -163,10 +174,12 @@ void EntityFactory::addCommonComponents(
             entity, ecs::component::Health{healthJson["maxHp"].get<int>(), healthJson["currHp"].get<int>()}
         );
     }
+
     if (componentsJson.contains("beam")) {
         float beamValue = componentsJson["beam"].get<float>();
         reg.addComponent(entity, ecs::component::Beam{beamValue});
     }
+
     if (componentsJson.contains("score")) {
         float scoreValue = componentsJson["score"].get<float>();
         ecs::component::Score score;
@@ -174,6 +187,7 @@ void EntityFactory::addCommonComponents(
         score.value = scoreValue;
         reg.addComponent(entity, ecs::component::Score{score});
     }
+
     if (componentsJson.contains("player")) {
         reg.addComponent(entity, ecs::component::Player{});
     }
