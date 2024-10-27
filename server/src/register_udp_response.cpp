@@ -5,11 +5,15 @@
 ** register_ecs
 */
 
+#include <algorithm>
 #include <cstddef>
 #include <cstdio>
 #include <exception>
+#include <mutex>
 #include <string>
+#include <sys/types.h>
 #include <utility>
+#include "Logger.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
@@ -22,57 +26,104 @@
 static void handlePlayerCreation(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg
+    const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer
 )
 {
-    shared_entity_t sharedEntityId = msg.sharedEntityId;
-    std::size_t playerIndex = msg.body.playerIndex;
-    const auto &pos = msg.body.pos;
+    auto newMsg = msg;
+    shared_entity_t sharedEntityId = newMsg.sharedEntityId;
+    std::size_t playerIndex = newMsg.body.playerIndex;
+    const auto &pos = newMsg.body.pos;
 
-    networkCallbacks.pushBack([playerIndex, sharedEntityId, pos, msg, &datasToSend](ecs::Registry &reg) {
-        auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
-        );
-        reg.getComponent<ecs::component::Player>(entity)->id = msg.body.playerId;
-        datasToSend.push_back(std::move(msg).serialize());
-    });
+    newMsg.ack = true;
+    networkCallbacks.pushBack(
+        [playerIndex, sharedEntityId, pos, newMsg, &datasToSend, &udpServer, &timeoutHandler](ecs::Registry &reg) {
+            auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
+                reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
+            );
+            reg.getComponent<ecs::component::Player>(entity)->id = newMsg.body.playerId;
+            timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+            datasToSend.push_back(std::move(newMsg).serialize());
+        }
+    );
 }
 
 static void handleMissileCreation(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
+    const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer
 )
 {
-    const auto &pos = msg.body.pos;
-    const auto &vel = msg.body.vel;
+    auto newMsg = msg;
+    const auto &pos = newMsg.body.pos;
+    const auto &vel = newMsg.body.vel;
 
-    networkCallbacks.pushBack([pos, vel, msg, &datasToSend](ecs::Registry &reg) {
+    newMsg.ack = true;
+    networkCallbacks.pushBack([pos, vel, newMsg, &datasToSend, &timeoutHandler, &udpServer](ecs::Registry &reg) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, msg.sharedEntityId, vel.vx, vel.vy
+            reg, "assets/missile.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
         );
-        datasToSend.push_back(std::move(msg).serialize());
+        timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+        datasToSend.push_back(std::move(newMsg).serialize());
     });
+}
+
+static void handleAckClient(
+    ntw::UDPServer &udpServer,
+    const std::vector<std::any> &arg,
+    size_t packetId,
+    std::uint8_t cmd,
+    ntw::TimeoutHandler &timeoutHandler,
+    std::atomic<bool> &stopGame
+)
+{
+    auto &mut = udpServer.mut();
+    std::lock_guard<std::recursive_mutex> lck(mut);
+
+    auto &end = std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get();
+    auto &allEndpoints = udpServer.endpoints();
+    auto it = std::find_if(allEndpoints.begin(), allEndpoints.end(), [&end](auto &val) { return val.second == end; });
+    if (it == allEndpoints.end()) {
+        return;
+    }
+    if (!timeoutHandler.removeClient(packetId, it->first)) {
+        return;
+    }
+    if ((rt::UDPCommand)cmd == rt::UDPCommand::END_GAME) {
+        stopGame.store(true);
+    }
 }
 
 void rts::registerUdpResponse(
     rt::UDPResponseHandler &responseHandler,
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
-    ntw::UDPServer &udpServer
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
+    std::atomic<bool> &stopGame
 )
 {
+    responseHandler.registerAckHandler([&udpServer, &networkCallbacks, &timeoutHandler, &stopGame](
+                                           std::uint8_t cmd, size_t packetId, const std::vector<std::any> &arg
+                                       ) {
+        networkCallbacks.pushBack([&timeoutHandler, arg, &udpServer, packetId, cmd, &stopGame](ecs::Registry &) {
+            handleAckClient(udpServer, arg, packetId, cmd, timeoutHandler, stopGame);
+        });
+    });
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
         rt::UDPCommand::NEW_ENTITY_PLAYER,
-        [&datasToSend, &networkCallbacks](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg) {
-            handlePlayerCreation(datasToSend, networkCallbacks, msg);
-        }
+        [&datasToSend, &networkCallbacks, &timeoutHandler, &udpServer](
+            const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &msg
+        ) { handlePlayerCreation(datasToSend, networkCallbacks, msg, timeoutHandler, udpServer); }
     );
     responseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE>(
         rt::UDPCommand::NEW_ENTITY_MISSILE,
-        [&datasToSend, &networkCallbacks](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg) {
-            handleMissileCreation(datasToSend, networkCallbacks, msg);
-        }
+        [&datasToSend, &networkCallbacks, &timeoutHandler, &udpServer](
+            const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &msg
+        ) { handleMissileCreation(datasToSend, networkCallbacks, msg, timeoutHandler, udpServer); }
     );
     responseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,

@@ -11,4 +11,4 @@
 
 namespace rts::ais {
 void horizontalMoveAi(ecs::Registry &reg, entity_t e, float minX, float maxX);
-}
+} // namespace rts::ais

@@ -98,6 +98,9 @@
         "score_earned": {
             "points": 10
         },
+        "on_death": {
+            "entity": "assets/explosion.json"
+        },
         "radial_light": {
             "offset": {
                 "x": 15,
@@ -116,6 +119,7 @@
         },
         "ennemy_type": {
             "type": "air"
-        }
+        },
+        "tag": 2
     }
 }

@@ -149,6 +149,9 @@
         "client_share_movement": {},
         "server_share_movement": {},
         "player": {},
+        "on_death": {
+            "entity": "assets/explosion.json"
+        },
         "radial_light": {
             "offset": {
                 "x": 13,
@@ -164,6 +167,8 @@
             "fade": true,
             "angle": 360.0,
             "rotation": 0.0
-        }
+        },
+        "_comment": "Tag of '1' means ALLY",
+        "tag": 1
     }
 }

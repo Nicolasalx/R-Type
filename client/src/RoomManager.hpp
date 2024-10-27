@@ -9,6 +9,7 @@
 
 #include <cstddef>
 #include <map>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -32,14 +33,14 @@ class RoomManager {
     private:
     std::map<std::string, RoomContent> _rooms;
     std::string _currentRoom;
-    ntw::TCPClient &_tcpClient;
+    std::shared_ptr<ntw::TCPClient> _tcpClient;
     std::size_t _userId;
     std::string _userName;
     std::vector<std::string> _chat;
 
     public:
-    RoomManager(ntw::TCPClient &tcpClient, std::size_t userId, std::string userName)
-        : _tcpClient(tcpClient), _userId(userId), _userName(std::move(userName))
+    RoomManager(std::shared_ptr<ntw::TCPClient> tcpClient, std::size_t userId, std::string userName)
+        : _tcpClient(std::move(tcpClient)), _userId(userId), _userName(std::move(userName))
     {
     }
 

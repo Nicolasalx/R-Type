@@ -18,6 +18,7 @@ entity_t fireRandomMissileAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
+    int missileSpawnRate,
     const std::function<bool()> &cond = nullptr,
     std::array<float, 2> randXRange = {-1, 1}, // ! Arrays used as trigonometrical limits
     std::array<float, 2> randYRange = {-1, 1}

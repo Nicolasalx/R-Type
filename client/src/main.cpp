@@ -6,25 +6,34 @@
 */
 
 #include <SFML/Graphics.hpp>
+#include <exception>
 #include <memory>
 #include "ArgParser.hpp"
 #include "GameManager.hpp"
 #include "InputManager.hpp"
+#include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "Registry.hpp"
 #include <imgui-SFML.h>
 
-void rtc::run(ecs::Registry &reg, const std::shared_ptr<sf::RenderWindow> &window, float &dt, ecs::InputManager &input)
+void rtc::runGameLoop(
+    ecs::Registry &reg,
+    const std::shared_ptr<sf::RenderWindow> &window,
+    float &dt,
+    ecs::InputManager &input,
+    std::atomic<GameState> &gameState
+)
 {
     sf::Clock clock;
 
-    while (window->isOpen()) {
+    while (window->isOpen() && gameState.load() == GameState::GAME) {
         dt = clock.restart().asSeconds();
 
         sf::Event event{};
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window->close();
+                gameState.store(GameState::NONE);
             }
             input.update(event);
         }
@@ -57,8 +66,11 @@ int main(int argc, const char *argv[])
     auto port = argParser.getValue<int>("port");
     auto playerName = argParser.getValue<std::string>("player_name");
 
-    rtc::GameManager game(ip, port, playerName);
-
-    game.runGame();
+    try {
+        rtc::GameManager game(ip, port, playerName);
+        game.run();
+    } catch (const std::exception &e) {
+        eng::logError(e.what());
+    }
     return 0;
 }

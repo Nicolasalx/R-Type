@@ -9,16 +9,13 @@
 #include <algorithm>
 #include <cstddef>
 #include <list>
-#include "RTypeUDPProtol.hpp"
+
 #include "Registry.hpp"
 #include "components/controllable.hpp"
-#include "components/health.hpp"
 #include "components/hitbox.hpp"
-#include "components/missile.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
-#include "entity.hpp"
-#include "components/shared_entity.hpp"
+#include "systems/collision.hpp"
 
 static void resolveCollision(
     ecs::component::Position &pos,
@@ -48,46 +45,14 @@ static void resolveCollision(
 }
 
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
-static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::vector<char>> &datasToSend)
-{
-    if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
-        auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
-        datasToSend.push_back(rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId).serialize());
-    }
-    reg.killEntity(entity);
-}
-
-static void resolveTagEffect(
-    ecs::Registry &reg,
-    size_t entityA,
-    size_t entityB,
-    std::list<std::vector<char>> &datasToSend
-)
-{
-    auto &missiles = reg.getComponents<ecs::component::Missile>();
-    auto &health = reg.getComponents<ecs::component::Health>();
-
-    if (missiles.has(entityA) && !missiles.has(entityB)) {
-        if (health.has(entityB)) {
-            health[entityB]->currHp -= 1;
-        } else {
-            tagEffectKill(reg, entityB, datasToSend);
-        }
-        tagEffectKill(reg, entityA, datasToSend);
-    }
-    if (missiles.has(entityB) && !missiles.has(entityA)) {
-        if (health.has(entityA)) {
-            health[entityA]->currHp -= 1;
-        } else {
-            tagEffectKill(reg, entityA, datasToSend);
-        }
-        tagEffectKill(reg, entityB, datasToSend);
-    }
-}
 
 namespace ecs::systems {
 
-void collision(Registry &reg, std::list<std::vector<char>> &datasToSend)
+void collision(
+    Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    const std::function<callback_collide_function_t> &collideCallback
+)
 {
     auto &positions = reg.getComponents<ecs::component::Position>();
     auto &hitboxes = reg.getComponents<ecs::component::Hitbox>();
@@ -123,7 +88,7 @@ void collision(Registry &reg, std::list<std::vector<char>> &datasToSend)
                     resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
-                resolveTagEffect(reg, entityA, entityB, datasToSend);
+                collideCallback(reg, entityA, entityB, datasToSend);
             }
         }
     }

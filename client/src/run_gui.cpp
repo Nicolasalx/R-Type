@@ -8,18 +8,18 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <cstring>
+#include <memory>
 #include <string>
 #include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SFML/Graphics/Sprite.hpp"
-#include "imgui.h"
 #include "imgui-SFML.h"
 
 void rtc::runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
-    rtc::RoomManager &roomManager,
-    bool &inLobby,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    std::atomic<rtc::GameState> &gameState,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
 {
@@ -36,11 +36,12 @@ void rtc::runGui(
     sf::Sprite background(texture);
     background.setScale(rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y));
 
-    while (window->isOpen() && inLobby) {
+    while (window->isOpen() && gameState.load() == GameState::LOBBY) {
         sf::Event event{};
         while (window->pollEvent(event)) {
             ImGui::SFML::ProcessEvent(*window, event);
             if (event.type == sf::Event::Closed) {
+                gameState.store(GameState::NONE);
                 window->close();
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::RControl) {
                 chatEnable = !chatEnable;

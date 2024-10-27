@@ -18,7 +18,6 @@ namespace ecs::component {
 struct SoundEmitter {
     std::string soundBufferId;
     float volume;
-    bool loop;
 };
 
 } // namespace ecs::component

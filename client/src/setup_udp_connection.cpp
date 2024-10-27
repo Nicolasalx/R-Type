@@ -10,7 +10,7 @@
 
 void rtc::GameManager::_setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient)
 {
-    _registerUdpResponse(spriteManager);
+    _registerUdpResponse(spriteManager, udpClient);
     udpClient.registerHandler([this](const char *data, std::size_t size) {
         _udpResponseHandler.handleResponse(data, size);
     });
