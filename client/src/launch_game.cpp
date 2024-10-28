@@ -83,7 +83,6 @@ void rtc::GameManager::_setupEntities(ntw::UDPClient &udpClient, ecs::Registry &
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/beamParticle.json");
 }
 
 void rtc::GameManager::_runGame()
