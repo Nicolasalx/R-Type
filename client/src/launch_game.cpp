@@ -105,7 +105,7 @@ void rtc::GameManager::_runGame()
 
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
-    rtc::registerSystems(
+    rtc::registerGameSystems(
         reg,
         *_window,
         dt,
@@ -127,6 +127,11 @@ void rtc::GameManager::_runGame()
 
     _setupEntities(udpClient, reg, spriteManager);
     runGameLoop(reg, _window, dt, inputManager, _gameState);
+
+    // Add the score.
+    // ecs::Registry regEnd;
+    // rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN);
+    // runGameLoop(regEnd, _window, dt, inputManager, _gameState);
 }
 
 void rtc::GameManager::_launchGame()
@@ -145,7 +150,8 @@ void rtc::GameManager::_launchGame()
                 _runGame();
                 break;
             default:
-                return;
+                _gameState.store(GameState::NONE);
+                break;
         }
     }
     if (_window->isOpen()) {

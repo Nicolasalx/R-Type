@@ -12,6 +12,6 @@
 
 namespace rts {
 
-void endGame(std::list<std::vector<char>> &datasToSend);
+void endGame(std::list<std::vector<char>> &datasToSend, bool winner = false);
 
 } // namespace rts

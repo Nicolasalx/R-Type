@@ -276,7 +276,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     _udpResponseHandler.registerHandler<rt::UDPBody::END_GAME>(
         rt::UDPCommand::END_GAME,
         [&udpClient, this](const rt::UDPPacket<rt::UDPBody::END_GAME> &packet) {
-            _gameState.store(GameState::NONE);
+            _gameState.store(packet.body.win ? GameState::WIN : GameState::LOSE);
             auto packSer = packet.serialize();
             udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
         }

@@ -24,6 +24,7 @@ add_library(FACTORY STATIC
     systems/death_timer.cpp
     systems/render_radial_light.cpp
     systems/check_game_ending.cpp
+    systems/draw_game_ending.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp

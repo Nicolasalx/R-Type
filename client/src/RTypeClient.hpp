@@ -35,11 +35,14 @@ enum class WindowMode : std::uint8_t {
 enum class GameState : std::uint8_t {
     NONE,
     LOBBY,
-    GAME
+    GAME,
+
+    WIN,
+    LOSE
 };
 
 void registerComponents(ecs::Registry &reg);
-void registerSystems(
+void registerGameSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
     float &dt,
@@ -52,6 +55,8 @@ void registerSystems(
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
     ecs::SoundManager &soundManager
 );
+
+void registerEndingSystems(ecs::Registry &reg, sf::RenderWindow &window, bool win);
 
 void runGameLoop(
     ecs::Registry &reg,

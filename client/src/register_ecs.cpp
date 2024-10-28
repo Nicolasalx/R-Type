@@ -47,6 +47,7 @@
 #include "systems/control_special.hpp"
 #include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
+#include "systems/draw_game_ending.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
 #include "systems/draw_player_health_bar.hpp"
@@ -87,7 +88,16 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::LightEdge>();
 }
 
-void rtc::registerSystems(
+void rtc::registerEndingSystems(
+    ecs::Registry &,
+    sf::RenderWindow &,
+    bool /* win */
+)
+{
+    // ecs::systems::drawGameEnding !
+}
+
+void rtc::registerGameSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
     float &dt,

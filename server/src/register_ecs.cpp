@@ -123,10 +123,13 @@ void rts::registerSystems(
     reg.addSystem([&nbPlayers, &waveManager, &reg, &datasToSend]() {
         ecs::systems::checkGameEnding(
             reg,
-            [&nbPlayers, &waveManager](ecs::Registry &) {
-                return nbPlayers == 0 || (!waveManager.hasEntity() && waveManager.isEnd());
-            },
+            [&nbPlayers](ecs::Registry &) { return nbPlayers == 0; },
             [&datasToSend](ecs::Registry &) { endGame(datasToSend); }
+        );
+        ecs::systems::checkGameEnding(
+            reg,
+            [&waveManager](ecs::Registry &) { return !waveManager.hasEntity() && waveManager.isEnd(); },
+            [&datasToSend](ecs::Registry &) { endGame(datasToSend, true); }
         );
     });
     reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt]() {
