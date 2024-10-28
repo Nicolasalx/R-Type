@@ -22,7 +22,7 @@ void ecs::systems::gravitySystem(Registry &reg, const sf::Vector2u &windowSize)
     int index = 0;
     for (const auto &[gravity, position] : zipParallax) {
         if (gravity.ennemyType == "ground") {
-            position.y += 100;
+            position.y += 20;
             std::cout << "ROBOT N°" << index << " => POSITION X: " << position.x << " / POSITION Y: " << position.y << "\n";
             ++index;
         }
