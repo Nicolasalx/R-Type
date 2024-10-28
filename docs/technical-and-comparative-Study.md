@@ -73,6 +73,18 @@ C++ has been used in several aspects of our project:
 - **Development Time**:
   C++ projects may require more time for implementation and debugging due to this complexity.
 
+### Comparison
+
+| Feature               | C++                                                                                                      | Python                                                                                                   | Java                                                                                                   |
+|-----------------------|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Performance**       | Very high performance, ideal for applications requiring precise resource control                         | Less performant than C++ due to interpreter, but sufficient for most applications                         | High performance through JVM, but generally slower than C++                                            |
+| **Memory Management** | Manual management (pointers), offering fine control but high risk of errors                              | Automatic memory management (garbage collection), easier to manage but with less control                  | Automatic management (garbage collection), offering a good balance between control and simplicity      |
+| **Ease of Learning**  | Complex to learn, with strict syntax and advanced concepts (pointers, templates, etc.)                   | Easy to learn, with simple and intuitive syntax, popular for beginners                                   | Relatively easy, with a faster learning curve than C++                                                |
+| **Ecosystem**         | Large ecosystem with many libraries for game development, systems, etc.                                 | Extensive ecosystem for web development, scripting, data science, and AI                                 | Large ecosystem for enterprise applications, with robust cross-platform support                        |
+| **Object-Oriented**   | Yes, with advanced support for polymorphism, inheritance, and encapsulation                              | Yes, but without advanced C++ concepts                                                                   | Yes, with a complete implementation of object-oriented programming                                     |
+| **Use Cases**         | Game development, operating systems, embedded applications                                              | Scripting, web applications, data science, AI                                                            | Enterprise applications, Android applications, distributed systems                                    |
+| **Disadvantages**     | High complexity, manual memory management, and frequent compile-time errors                             | Less performant, can lead to memory overuse                                                             | Requires JVM, less control over memory, and can be verbose                                            |
+
 ### Conclusion
 
 Using **C++** for the development of our R-Type inspired game has allowed us to leverage its many features and advantages.
@@ -125,6 +137,19 @@ CMake has been used in several aspects of our project:
 - **Dependency on CMake**:
   Developers must install CMake to compile the project, which can add an extra step in the configuration process.
 
+### Comparison
+
+| Feature               | CMake                                                                                                    | Make                                                                                                     | Meson                                                                                                  |
+|-----------------------|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Cross-Platform**    | Yes, supports Windows, macOS, Linux, and generates platform-specific project files (e.g., Visual Studio) | Primarily for Unix-based systems, less effective on Windows                                             | Yes, designed to be cross-platform, supporting Windows, macOS, Linux                                  |
+| **Ease of Use**       | Moderate, with a scripting language that can be complex for larger projects                              | Simple syntax, but can be cumbersome to handle dependencies and complex projects                          | Very user-friendly syntax, designed to be easy for developers                                         |
+| **Dependency Management** | Effective at managing dependencies, including third-party libraries (e.g., SFML, ImGui)              | Limited, dependencies must often be managed manually                                                      | Excellent dependency handling with built-in support for packages like pkg-config                      |
+| **Flexibility**       | Highly flexible with extensive configuration options                                                     | Limited flexibility, especially for complex or multi-platform builds                                     | Flexible and modern, with good support for custom configurations                                      |
+| **Performance**       | Efficient, with support for parallel builds and complex configurations                                   | Can be slow on larger projects, lacks native parallelization                                             | Fast build process, designed to optimize speed and performance                                        |
+| **Learning Curve**    | Moderate to steep, especially for beginners                                                              | Easy for small projects, but complex for larger ones                                                     | Low learning curve, intuitive and well-documented                                                     |
+| **Use Cases**         | Ideal for cross-platform C++ projects, embedded systems, game development                                | Suitable for Unix-based, smaller projects where cross-platform support is not a priority                 | Great for both small and large projects, particularly where cross-platform support is required        |
+| **Disadvantages**     | Initial setup can be complex; requires CMake installation                                                | Limited to Unix systems without extra tools; challenging to manage complex dependencies                  | Requires Python for installation; some features still in development                                  |
+
 ### Conclusion
 
 Using **CMake** for the compilation and management of our R-Type inspired project has been a strategic decision aimed at ensuring optimal portability and flexibility.
@@ -175,6 +200,19 @@ We used SFML for the following elements:
 
 - **Lack of High-Level Features**:
   SFML focuses on providing low-level tools, meaning that some advanced features may require additional development or the integration of other libraries.
+
+### Comparison
+| Feature                   | SFML                                                                                                      | SDL (Simple DirectMedia Layer)                                                                          | Allegro                                                                                               |
+|---------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Ease of Use**           | User-friendly and intuitive API; ideal for beginners and small to medium game projects                   | Moderate complexity; larger learning curve but widely documented                                        | Beginner-friendly API, with a good balance between simplicity and flexibility                         |
+| **2D Graphics**           | Strong 2D support with efficient rendering, great for shoot 'em ups and other 2D games                   | Good 2D support but requires additional work to achieve effects like transparency                        | Excellent 2D support, optimized for game development with built-in functions                          |
+| **3D Graphics**           | Limited 3D support, primarily designed for 2D applications                                               | Limited native support; requires OpenGL for 3D capabilities                                             | Limited 3D support, though possible with integrations                                                 |
+| **Sound & Music**         | Built-in audio module, simplifying sound effect and music integration                                    | Audio support via SDL_mixer or third-party libraries                                                     | Built-in sound support, with support for various formats                                              |
+| **Cross-Platform Support**| Works on Windows, Linux, and macOS seamlessly                                                            | Cross-platform support across a wide range of systems, including Windows, Linux, macOS, and consoles    | Cross-platform support on Windows, Linux, macOS, with additional options for mobile                   |
+| **Documentation**         | Extensive documentation with examples, tutorials, and community support                                  | Large documentation base with many resources and tutorials                                              | Comprehensive documentation and an active developer community                                         |
+| **Performance**           | High performance, with optimizations for smooth 2D rendering                                             | High performance but requires additional setup for optimal resource usage                               | High performance, especially optimized for 2D games                                                   |
+| **Use Cases**             | Ideal for 2D games, GUI applications, and media-focused projects                                         | Widely used in game engines, emulators, and multimedia applications                                     | Best for 2D games, media playback, and simpler game projects                                          |
+| **Limitations**           | Limited 3D capabilities, lacks high-level game development features                                       | Requires add-ons for advanced functionality; some features may require OpenGL                            | Limited built-in support for networking and 3D, requiring extra work for complex applications         |
 
 ### Conclusion
 
@@ -227,6 +265,19 @@ We used ImGUI to create the following interface elements:
 - **Dependence on the Rendering Loop**:
   Since ImGUI operates in immediate mode, each interface element must be redrawn every frame, which can pose performance issues in heavily loaded scenarios.
 
+### Comparison
+
+| Feature                       | ImGUI                                                                                                             | Qt                                                                                                   | Dear ImGui                                                                                              |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **Ease of Use**               | Straightforward and intuitive syntax; accessible for beginners with simple APIs                                  | Comprehensive but complex; has a steeper learning curve due to its extensive feature set             | Similar to ImGUI; easy for immediate-mode interfaces but requires more setup for detailed customization |
+| **UI Mode**                   | Immediate Mode, which allows for real-time, dynamic updates                                                      | Retained Mode, ideal for applications needing complex and static UIs                                | Immediate Mode; real-time updates, best for game tools and prototyping                                   |
+| **Cross-Platform Support**    | Integrates with most graphics engines and works across major OS platforms                                        | Broad support across all major OS, including mobile platforms                                       | Cross-platform, though optimized mainly for desktop applications                                       |
+| **Customization**             | Highly customizable, flexible layouts but more manual coding needed                                              | Extensive built-in customization options and widgets                                                | Highly customizable, ideal for custom styling and layout management                                     |
+| **Performance**               | Fast rendering for dynamic UIs but may consume resources in highly loaded scenarios due to frame-by-frame redrawing | Highly optimized for desktop applications; performance varies with mobile                            | High performance for real-time use cases but dependent on rendering backends                            |
+| **Use Cases**                 | Ideal for in-game HUDs, debugging tools, and development dashboards                                              | Broad applications from desktop to mobile, including enterprise software                             | Great for game development tools, HUDs, and development dashboards                                      |
+| **Limitations**               | Limited for complex state management and extensive hierarchical interfaces                                        | Heavier setup and more complex integration; slower for immediate-mode needs                         | Less suitable for highly complex UIs due to its minimal state handling                                  |
+| **Documentation**             | Good documentation, with a solid community and examples                                                          | Extensive and widely supported documentation, plus active community                                 | Strong community support, with comprehensive examples and resources available                           |
+
 ### Conclusion
 
 Using the ImGUI library for the graphical interface of our prototype has proven to be a strategic and effective choice. Its rapid development, flexibility, and ease of integration have allowed us to create an engaging and responsive user interface while maintaining a high level of performance.
@@ -269,6 +320,22 @@ The TCP protocol relies on several mechanisms to ensure reliable and ordered com
 
 - **Automatic Error Recovery**:
   If data segments are lost or corrupted during transmission, TCP ensures that they are retransmitted.
+
+### Comparison
+
+| Feature                    | TCP (Transmission Control Protocol)                                               | SCTP (Stream Control Transmission Protocol)                  |
+|----------------------------|-----------------------------------------------------------------------------------|--------------------------------------------------------------|
+| **Connection Type**        | Connection-oriented; requires a three-way handshake                               | Connection-oriented; supports multihoming and multi-streaming |
+| **Reliability**            | Reliable transmission with error-checking, sequencing, and retransmission         | Reliable, with error-checking, sequencing, and retransmission |
+| **Flow and Congestion Control** | Yes, adjusts data flow based on network and receiver's capacity              | Yes, supports advanced flow and congestion control           |
+| **Ordering of Messages**   | Guaranteed in-order delivery                                                     | Guaranteed in-order delivery within streams                  |
+| **Transmission Speed**     | Moderate speed due to overhead from error-checking and flow control               | Generally faster due to efficient multi-stream handling      |
+| **Ideal Use Cases**        | File transfers, web browsing, email (where reliable delivery is crucial)          | Telecommunications, VoIP, and applications needing both reliability and low latency |
+| **Error Handling**         | Retransmits lost packets and verifies data integrity                             | Built-in error handling with retransmission for lost packets |
+| **Multi-Streaming**        | No support; data follows a single stream                                         | Yes, supports multiple streams within a single connection   |
+| **Multihoming Support**    | No, typically binds to a single IP address                                       | Yes, allows multiple IP addresses per endpoint               |
+| **Resource Efficiency**    | Higher resource use due to state maintenance and control mechanisms               | Higher resource use but optimized for telecom applications    |
+
 
 ## Architecture of the Rooms and Lobby
 
@@ -353,6 +420,22 @@ It lacks the complex connection management and reliable transmission mechanisms 
 - **Non-blocking Transmission**:
   UDP does not wait for confirmation from the recipient to continue sending data, making it non-blocking and avoiding retransmission delays that can slow down exchanges.
 
+### Comparison
+
+| Feature                     | UDP (User Datagram Protocol)                                | SCTP (Stream Control Transmission Protocol)                 |
+|-----------------------------|------------------------------------------------------------|-------------------------------------------------------------|
+| **Connection Type**         | Connectionless; no need for a prior connection             | Connection-oriented; establishes a connection before data transmission |
+| **Reliability**             | Unreliable; no guarantees of delivery, order, or duplication handling | Reliable; ensures data delivery with retransmission mechanisms and checks |
+| **Flow Control**            | No flow control; sends data regardless of network conditions | Yes; manages data flow to avoid congestion and packet loss   |
+| **Ordering of Messages**    | No ordering; packets may arrive out of sequence             | Ordered delivery; maintains the sequence of messages within each stream |
+| **Transmission Speed**      | High speed due to minimal overhead                          | Moderate speed; reliability and ordering mechanisms introduce some latency |
+| **Ideal Use Cases**         | Real-time applications like online gaming, VoIP, live streaming | Telephony signaling, multimedia applications, and any scenario needing multiple streams |
+| **Error Handling**          | No error handling; losses are not corrected                 | Includes error detection and retransmission of lost packets  |
+| **Header Size**             | Smaller; minimal header overhead                            | Larger; includes fields for stream management and control     |
+| **Resource Efficiency**     | Low resource use; minimal state management                  | Moderate resource use due to its additional features          |
+| **Transmission Mode**       | Non-blocking; does not wait for acknowledgment              | Blocking; may wait for acknowledgments to ensure reliability   |
+
+
 ## Using UDP for in game communication
 
 In the context of our game, we chose to use UDP for communication between the client and the server due to the characteristics mentioned above, which perfectly match the needs of a dynamic and responsive application.
@@ -430,10 +513,26 @@ Asio was utilized in several aspects of our project:
 - **Initial Setup**:
   Setting up Asio and integrating it into the project may require additional effort compared to simpler solutions.
 
+### Comparison
+
+| Feature                           | Asio                                                     | Boost.Asio                                              |
+|-----------------------------------|----------------------------------------------------------|--------------------------------------------------------|
+| **Library Type**                  | Standalone library; does not depend on other libraries   | Part of the Boost C++ Libraries; requires Boost to use  |
+| **Installation**                  | Simpler installation as a single header-only library    | More complex due to the need to install the entire Boost library |
+| **Support for Multiple Protocols**| Supports TCP and UDP; designed for network programming   | Supports TCP, UDP, and other protocols; extensive network features |
+| **Performance**                   | High-performance, lightweight for real-time applications  | Similar performance; optimized for various networking tasks |
+| **Asynchronous Operations**       | Built-in support for asynchronous I/O                     | Excellent asynchronous support; widely used for network programming |
+| **Error Handling**                | Manual error handling; may require additional management   | Integrated error handling with Boost's error categories |
+| **Documentation**                 | Good documentation, but less extensive than Boost        | Extensive documentation and a large community for support |
+| **Flexibility**                   | Flexible for network communication in games and real-time apps | Highly flexible, suitable for a wide range of applications beyond networking |
+| **Dependencies**                  | Minimal dependencies; lightweight                         | Relies on the Boost framework, which may add complexity |
+| **Learning Curve**                | Moderate learning curve for beginners                      | Steeper learning curve due to the vast number of features in Boost |
+
+
 ### Conclusion
 
-The use of **Asio** to manage our **TCP** and **UDP** protocols was a crucial strategic choice in the development of our R-Type inspired project.  
-Asio enabled us to establish effective communication between the client and server while ensuring asynchronous management of connections.  
+The use of **Asio** to manage our **TCP** and **UDP** protocols was a crucial strategic choice in the development of our R-Type inspired project.
+Asio enabled us to establish effective communication between the client and server while ensuring asynchronous management of connections.
 The advantages of Asio in terms of performance, flexibility, and protocol support make it an ideal solution for our game's needs.
 
 # Data Structures
@@ -480,10 +579,23 @@ The ECS architecture was implemented in several key aspects of our project:
 - **Management Overhead**:
   Managing entities, components, and systems can introduce overhead, especially in smaller projects where a simpler approach might suffice.
 
+### Comparison
+
+| Feature                           | Entity-Component-System (ECS)                                | Model-View-Controller (MVC)                               | Component-Based Architecture                              |
+|-----------------------------------|---------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------|
+| **Basic Concept**                 | Separates entities, components, and systems for flexible game development | Separates application logic, user interface, and input handling | Composes objects from reusable components                  |
+| **Entity Management**             | Entities represent game objects with unique IDs              | Models represent data, views represent UI, controllers handle user input | Entities can be composed from various components          |
+| **Data Management**               | Components hold data, processed by systems                    | Models hold data, views present it, controllers manage input | Components are self-contained, can hold both data and behavior |
+| **Code Organization**             | Highly modular and organized, enhancing code clarity         | Clear separation of concerns, promoting maintainability    | Allows for high modularity and reusability                |
+| **Performance**                   | Optimizes performance through data-oriented design and parallel processing | Performance can be impacted by tight coupling between components | May offer good performance but depends on component interaction |
+| **Flexibility and Reusability**   | Highly flexible, allows for dynamic addition of behaviors     | Moderate flexibility; changes in one part may affect others | High reusability; components can be reused across different entities |
+| **Initial Complexity**            | Complex setup; may require significant initial investment     | Easier to understand and implement for simpler applications | Can be complex if components are not well-defined        |
+| **Use Cases**                     | Best for games with many dynamic entities and behaviors       | Suitable for applications with clear user interaction      | Good for modular applications where entities share behaviors |
+
 ### Conclusion
 
-The adoption of the **ECS** architecture in our project was crucial in creating an efficient and modular game engine.  
-This approach allowed us to easily manage the increasing complexity of the game while maintaining the flexibility needed for expansion and iteration.  
+The adoption of the **ECS** architecture in our project was crucial in creating an efficient and modular game engine.
+This approach allowed us to easily manage the increasing complexity of the game while maintaining the flexibility needed for expansion and iteration.
 The advantages in terms of performance, reusability, and code clarity make ECS an ideal solution for our game development.
 
 ## Client algorithm
@@ -631,6 +743,21 @@ We used JSON files to manage the following configurations:
 - **Lack of Transaction Mechanisms**
   Unlike a relational database, JSON does not have mechanisms for handling transactions or ensuring data consistency in case of failures or interruptions when writing files.
 
+### Comparison
+
+| Feature                   | JSON                                | XML                                 | YAML                               |
+|---------------------------|-------------------------------------|-------------------------------------|-------------------------------------|
+| **Basic Structure**       | Key-value pairs and arrays          | Hierarchical tree structure with tags | Human-readable format with indentation |
+| **Ease of Use**           | Simple syntax, easy to read        | More verbose and complex            | Intuitive and easy to write        |
+| **Data Types**            | Supports strings, numbers, arrays, booleans | Supports strings, numbers, and custom types | Supports strings, numbers, lists, and maps |
+| **Readability**           | Highly readable and concise         | Can be difficult to read due to verbosity | Very readable due to clear indentation |
+| **Comments**              | No support for comments             | Supports comments                   | Supports comments                   |
+| **Data Handling**         | Generally easier to parse          | More complex parsing with schema validation | Easy to parse, supports complex data structures |
+| **Standard Libraries**    | Widely supported across languages   | Supported in many languages but less common | Supported in many languages but less common |
+| **Use Cases**             | Configuration files, API data exchange | Configuration files, document storage | Configuration files, data serialization |
+| **Performance**           | Fast serialization/deserialization  | Slower due to verbosity and complexity | Fast but can vary with complex structures |
+
+
 ### Conclusion
 
 Using JSON configuration files is a smart choice for this prototype project, combining simplicity and flexibility in data management.
@@ -677,6 +804,20 @@ The **nlohmann/json** library was integrated into our project for several tasks:
 
 - **Memory Consumption**
   For very large JSON files, memory consumption can be a factor to consider, especially if the project evolves towards more complex data management.
+
+### Comparison
+
+| Feature                   | nlohmann/json                        | RapidJSON                            | jsoncpp                              |
+|---------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
+| **Ease of Use**           | Intuitive syntax, user-friendly      | More complex syntax, optimized for performance | Moderate ease, somewhat verbose       |
+| **Performance**           | Good performance for most use cases  | High performance, very fast parsing and writing | Average performance                   |
+| **Memory Management**     | Automatic memory management           | Manual memory management for optimization | Automatic, but less efficient for large files |
+| **Complexity of API**     | Simple and consistent API            | More advanced features, steeper learning curve | Basic API, fewer features             |
+| **Data Structures Supported** | Supports arrays, objects, and nested structures | Supports all JSON structures, with efficient handling | Supports basic structures, but lacks advanced features |
+| **Error Handling**        | Exception-based error handling       | Returns error codes, requires manual checks | Exception-based error handling        |
+| **Compatibility**         | C++11 and later                      | C++11 and later                      | C++98 and later                      |
+| **Documentation**         | Well-documented, easy to understand  | Comprehensive but can be complex    | Decent documentation, less extensive |
+
 
 ### Conclusion
 
