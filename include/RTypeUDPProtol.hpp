@@ -109,7 +109,9 @@ struct PING {
     long sendTime = 0;
 };
 
-struct END_GAME {};
+struct END_GAME {
+    bool win = false;
+};
 
 } // namespace UDPBody
 
