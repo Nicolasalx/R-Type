@@ -29,8 +29,11 @@ void rtc::runGameLoop(
     sf::Clock clock;
 
     while (window->isOpen() && gameState.load() == GameState::GAME) {
-        dt = clock.restart().asSeconds();
-
+        sf::Time timeDt = clock.restart();
+        dt = timeDt.asSeconds();
+        if (timeDt.asSeconds() <= 0) {
+            timeDt = sf::milliseconds(1);
+        }
         sf::Event event{};
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -39,8 +42,8 @@ void rtc::runGameLoop(
             }
             input.update(event);
         }
-        ImGui::SFML::Update(*window, sf::seconds(dt));
         window->clear();
+        ImGui::SFML::Update(*window, timeDt);
         reg.runSystems();
         ImGui::SFML::Render(*window);
         window->display();

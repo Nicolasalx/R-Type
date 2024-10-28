@@ -319,9 +319,8 @@ void ClientEntityFactory::addComponents(
         particle.system->additiveBlendMode = particleJson["additive_blend_mode"].get<bool>();
         particle.system->emitRate = particleJson["emit_rate"].get<int>();
 
-        particle.system->addSpawner<particles::PointSpawner>();
-        // particle.spawner =
-        // particle.spawner->center = sf::Vector2f();
+        particle.spawner = particle.system->addSpawner<particles::PointSpawner>();
+        particle.spawner->center = sf::Vector2f();
 
         auto *timeGenerator = particle.system->addGenerator<particles::TimeGenerator>();
         auto lifeTimeJson = particleJson["life_time"];

@@ -2,8 +2,8 @@
     "type": "local",
     "components": {
         "position": {
-            "x": 200.0,
-            "y": 200.0
+            "x": 220.0,
+            "y": 456.0
         },
         "particle": {
             "offset": {
@@ -12,46 +12,46 @@
             },
             "max_nb_particle": 10000,
             "additive_blend_mode": true,
-            "emit_rate": 100.0,
+            "emit_rate": 200.0,
             "life_time": {
-                "min": 0.3,
-                "max": 3
+                "min": 2,
+                "max": 2.5
             },
             "size": {
-                "min_start": 3,
-                "max_start": 5,
-                "min_end": 15,
-                "max_end": 30
+                "min_start": 10,
+                "max_start": 15,
+                "min_end": 40,
+                "max_end": 50
             },
             "velocity": {
-                "min_angle": -45.0,
-                "max_angle": 90.0,
-                "min_start_speed": 5.0,
-                "max_start_speed": 25.0
+                "min_angle": 89.0,
+                "max_angle": 91.0,
+                "min_start_speed": 100.0,
+                "max_start_speed": 150.0
             },
             "color": {
                 "min_start": {
-                    "r": 200,
-                    "g": 150,
-                    "b": 100,
+                    "r": 0,
+                    "g": 155,
+                    "b": 255,
                     "a": 255
                 },
                 "max_start": {
-                    "r": 100,
-                    "g": 100,
-                    "b": 100,
+                    "r": 0,
+                    "g": 155,
+                    "b": 255,
                     "a": 255
                 },
                 "min_end": {
-                    "r": 50,
-                    "g": 50,
-                    "b": 50,
+                    "r": 155,
+                    "g": 0,
+                    "b": 255,
                     "a": 0
                 },
                 "max_end": {
-                    "r": 150,
-                    "g": 100,
-                    "b": 50,
+                    "r": 255,
+                    "g": 0,
+                    "b": 255,
                     "a": 0
                 }
             }

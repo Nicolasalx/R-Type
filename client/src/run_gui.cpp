@@ -14,6 +14,7 @@
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SFML/Graphics/Sprite.hpp"
+#include "SFML/System/Time.hpp"
 #include "imgui-SFML.h"
 
 void rtc::runGui(
@@ -37,7 +38,11 @@ void rtc::runGui(
     background.setScale(rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y));
 
     while (window->isOpen() && gameState.load() == GameState::LOBBY) {
+        sf::Time timeDt = dt.restart();
         sf::Event event{};
+        if (timeDt.asSeconds() <= 0) {
+            timeDt = sf::milliseconds(1);
+        }
         while (window->pollEvent(event)) {
             ImGui::SFML::ProcessEvent(*window, event);
             if (event.type == sf::Event::Closed) {
@@ -49,7 +54,7 @@ void rtc::runGui(
                 windowSize = window->getSize();
             }
         }
-        ImGui::SFML::Update(*window, dt.restart());
+        ImGui::SFML::Update(*window, timeDt);
         window->clear();
         window->draw(background);
         switch (windowMode) {

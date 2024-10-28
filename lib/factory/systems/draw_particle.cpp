@@ -19,8 +19,7 @@ void ecs::systems::drawParticle(ecs::Registry &reg, const sf::Time &dt, sf::Rend
     ecs::Zipper<ecs::component::Position, ecs::component::ParticleSpawner> zip(position, particle);
 
     for (const auto &[pos, part] : zip) {
-        // part.spawner->center = sf::Vector2f(pos.x + part.offset.x, pos.y + part.offset.y);
-        part.system->setPosition(sf::Vector2f(pos.x + part.offset.x, pos.y + part.offset.y));
+        part.spawner->center = sf::Vector2f(pos.x + part.offset.x, pos.y + part.offset.y);
         part.system->update(dt);
         part.system->render(window);
     }
