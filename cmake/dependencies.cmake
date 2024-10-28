@@ -1,5 +1,7 @@
 include(cmake/CPM.cmake)
 
+set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libraries" FORCE)
+
 include(${CMAKE_CURRENT_LIST_DIR}/deps/openal.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/deps/sfml.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/deps/imgui.cmake)
