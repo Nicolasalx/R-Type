@@ -17,6 +17,7 @@
 #include "Registry.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
+#include "components/dobkeratops.hpp"
 #include "gameCallbacks/collideEffect.hpp"
 #include "gameCallbacks/endGame.hpp"
 #include "udp/UDPServer.hpp"
@@ -69,6 +70,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Beam>();
     reg.registerComponent<ecs::component::Score>();
     reg.registerComponent<ecs::component::Player>();
+    reg.registerComponent<ecs::component::DobkeratopsState>();
 }
 
 void rts::registerSystems(
