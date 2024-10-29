@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <functional>
 #include <vector>
+#include "components/death_split.hpp"
 #include "components/game_tag.hpp"
 #include "systems/check_game_ending.hpp"
 #include <imgui-SFML.h>
@@ -71,6 +72,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Score>();
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::DobkeratopsState>();
+    reg.registerComponent<ecs::component::DeathSplit>();
 }
 
 void rts::registerSystems(
