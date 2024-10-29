@@ -63,8 +63,8 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
         return;
     }
 
-    const int numSegments = 8;
-    float segmentSpacing = 16.0f;
+    const int numSegments = 12;
+    float segmentSpacing = 12.0f;
 
     for (int i = 0; i < numSegments; i++) {
         float segX = pos->x - (i + 1) * segmentSpacing + 60.0f;
@@ -106,7 +106,7 @@ static void spawnDobkeratopsProjectile(
     float vx = -projectileSpeed * std::cos(angle);
     float vy = projectileSpeed * std::sin(angle);
 
-    float spawnX = bossPos->x - 40.0f;
+    float spawnX = bossPos->x + 40.0f;
     float spawnY = bossPos->y + 60.0f;
 
     ecs::ServerEntityFactory::createServerEntityFromJSON(
