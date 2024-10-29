@@ -6,14 +6,15 @@ add_executable(r-type_server
     src/register_tcp_response.cpp
     src/register_udp_response.cpp
     src/RoomManager.cpp
-    src/init_waves.cpp
     src/command_handler.cpp
     src/ais/waveAi.cpp
     src/ais/fireRandomMissileAi.cpp
     src/ais/horizontalMoveAi.cpp
     src/ais/dobkeratops_ai.cpp
+    src/ais/splitAi.cpp
     src/gameCallbacks/collideEffect.cpp
     src/gameCallbacks/endGame.cpp
+    src/waveCreator/WaveCreator.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)

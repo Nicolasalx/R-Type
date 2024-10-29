@@ -7,6 +7,7 @@
 
 #include "ServerEntityFactory.hpp"
 #include "components/animation.hpp"
+#include "components/dobkeratops.hpp"
 #include "components/drawable.hpp"
 #include "components/tag.hpp"
 #include "components/ai_actor.hpp"
@@ -78,6 +79,9 @@ void ServerEntityFactory::addComponents(
         }
 
         reg.addComponent(entity, std::move(animComp));
+    }
+    if (componentsJson.contains("dobkeratops")) {
+        reg.addComponent<ecs::component::DobkeratopsState>(entity, ecs::component::DobkeratopsState{});
     }
 }
 
