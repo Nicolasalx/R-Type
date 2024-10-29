@@ -12,6 +12,7 @@ add_executable(r-type_server
     src/ais/fireRandomMissileAi.cpp
     src/ais/horizontalMoveAi.cpp
     src/ais/dobkeratops_ai.cpp
+    src/ais/splitAi.cpp
     src/gameCallbacks/collideEffect.cpp
     src/gameCallbacks/endGame.cpp
     src/waveCreator/WaveCreator.cpp

@@ -12,14 +12,15 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include "WaveManager.hpp"
+#include "entity.hpp"
 #include <unordered_map>
 
 namespace rts {
 
 class WaveCreator {
-    using ai_function_t = std::function<void(ecs::Registry &reg, entity_t e)>;
+    using ai_function_t = std::function<void(ecs::Registry &, entity_t)>;
     using setup_mob_function_t = std::function<
-        void(std::list<std::vector<char>> &datasToSend, size_t sharedId, float x, float y, float vx, float vy)>;
+        void(std::list<std::vector<char>> &, ecs::Registry &, entity_t, size_t, float, float, float, float)>;
 
     public:
     WaveCreator(const std::string &basePath = "./assets/stages");
@@ -41,10 +42,12 @@ class WaveCreator {
         _setupMobFunc["bydosWave"] = &setupBydosDatas;
         _setupMobFunc["robot"] = &setupRobotDatas;
         _setupMobFunc["dobkeratops"] = &setupDobkeratopsDatas;
+        _setupMobFunc["blob"] = &setupBlobDatas;
 
-        _mobCreateFunc["bydosWave"] = &getBydosWaveAi;
-        _mobCreateFunc["robot"] = &getRobotAi;
-        _mobCreateFunc["dobkeratops"] = &getDobkeratopsAi;
+        _mobAiCreateFunc["bydosWave"] = &getBydosWaveAi;
+        _mobAiCreateFunc["robot"] = &getRobotAi;
+        _mobAiCreateFunc["dobkeratops"] = &getDobkeratopsAi;
+        _mobAiCreateFunc["blob"] = &getBlobAi;
     }
 
     void _addJSONMobs(
@@ -57,6 +60,8 @@ class WaveCreator {
 
     static void setupDobkeratopsDatas(
         std::list<std::vector<char>> &datasToSend,
+        ecs::Registry &reg,
+        entity_t e,
         size_t sharedId,
         float x,
         float y,
@@ -65,6 +70,8 @@ class WaveCreator {
     );
     static void setupRobotDatas(
         std::list<std::vector<char>> &datasToSend,
+        ecs::Registry &reg,
+        entity_t e,
         size_t sharedId,
         float x,
         float y,
@@ -73,6 +80,18 @@ class WaveCreator {
     );
     static void setupBydosDatas(
         std::list<std::vector<char>> &datasToSend,
+        ecs::Registry &reg,
+        entity_t e,
+        size_t sharedId,
+        float x,
+        float y,
+        float vx,
+        float vy
+    );
+    static void setupBlobDatas(
+        std::list<std::vector<char>> &datasToSend,
+        ecs::Registry &reg,
+        entity_t e,
         size_t sharedId,
         float x,
         float y,
@@ -82,18 +101,28 @@ class WaveCreator {
 
     static std::function<void(ecs::Registry &reg, entity_t e)> getDobkeratopsAi(
         std::list<std::vector<char>> &datasToSend,
+        ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
         float y
     );
     static std::function<void(ecs::Registry &reg, entity_t e)> getRobotAi(
         std::list<std::vector<char>> &datasToSend,
+        ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
         float y
     );
     static std::function<void(ecs::Registry &reg, entity_t e)> getBydosWaveAi(
         std::list<std::vector<char>> &datasToSend,
+        ecs::WaveManager &waveManager,
+        int missileSpawnRate,
+        float x,
+        float y
+    );
+    static std::function<void(ecs::Registry &reg, entity_t e)> getBlobAi(
+        std::list<std::vector<char>> &datasToSend,
+        ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
         float y
@@ -102,8 +131,8 @@ class WaveCreator {
     std::unordered_map<std::string, setup_mob_function_t> _setupMobFunc;
     std::unordered_map<
         std::string,
-        std::function<ai_function_t(std::list<std::vector<char>> &datasToSend, int missileSpawnRate, float x, float y)>>
-        _mobCreateFunc;
+        std::function<ai_function_t(std::list<std::vector<char>> &, ecs::WaveManager &, int, float, float)>>
+        _mobAiCreateFunc;
     std::string _basePath;
 };
 

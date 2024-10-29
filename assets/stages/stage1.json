@@ -69,6 +69,36 @@
         ],
         "wave2": [
             {
+                "mobJsonPath": "assets/blob.json",
+                "nbMob": 2,
+                "pos": [
+                    {
+                        "x": 500.0,
+                        "y": 100.0
+                    },
+                    {
+                        "x": 500.0,
+                        "y": 380.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "blob",
+                    "blob"
+                ]
+            }
+        ],
+        "wave3": [
+            {
                 "mobJsonPath": "assets/dobkeratops.json",
                 "nbMob": 1,
                 "pos": [

@@ -17,9 +17,11 @@
 
 #include "../ais/fireRandomMissileAi.hpp"
 #include "../ais/horizontalMoveAi.hpp"
+#include "../ais/splitAi.hpp"
 #include "../ais/waveAi.hpp"
 #include "../ais/dobkeratops_ai.hpp"
 #include "components/ai_actor.hpp"
+#include "components/death_split.hpp"
 #include "nlohmann/json_fwd.hpp"
 
 rts::WaveCreator::WaveCreator(const std::string &basePath) : _basePath(basePath)
@@ -54,7 +56,6 @@ void rts::WaveCreator::createStage(
 
     for (const auto &[waveName, wave] : waveJson["waves"].items()) {
         auto waveId = waveManager.addNewWave();
-        dprintf(2, "%s\n", waveName.c_str());
         for (const auto &mobs : wave) {
             _addJSONMobs(waveId, mobs, missileSpawnRate, waveManager, datasToSend);
         }
@@ -94,15 +95,16 @@ void rts::WaveCreator::_addJSONMobs(
              t = type->get<std::string>(),
              this,
              &datasToSend,
-             missileSpawnRate](ecs::Registry &reg) -> entity_t {
+             missileSpawnRate,
+             &waveManager](ecs::Registry &reg) -> entity_t {
                 shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
 
                 entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
                     reg, mobJsonPath, x, y, sharedEntityId, vx, vy
                 );
-                _setupMobFunc[t](datasToSend, sharedEntityId, x, y, vx, vy);
+                _setupMobFunc[t](datasToSend, reg, entity, sharedEntityId, x, y, vx, vy);
                 reg.getComponent<ecs::component::AiActor>(entity)->act =
-                    _mobCreateFunc[t](datasToSend, missileSpawnRate, x, y);
+                    _mobAiCreateFunc[t](datasToSend, waveManager, missileSpawnRate, x, y);
                 return entity;
             }
 
@@ -119,6 +121,7 @@ void rts::WaveCreator::_addJSONMobs(
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getDobkeratopsAi(
     std::list<std::vector<char>> &datasToSend,
+    ecs::WaveManager & /*waveManager*/,
     int /*missileSpawnRate*/,
     float /*x*/,
     float /*y*/
@@ -136,6 +139,7 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getDobkera
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getRobotAi(
     std::list<std::vector<char>> &datasToSend,
+    ecs::WaveManager & /*waveManager*/,
     int missileSpawnRate,
     float x,
     float /*y*/
@@ -149,6 +153,7 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getRobotAi
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBydosWaveAi(
     std::list<std::vector<char>> &datasToSend,
+    ecs::WaveManager & /*waveManager*/,
     int missileSpawnRate,
     float /*x*/,
     float y
@@ -160,12 +165,29 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBydosWa
     };
 }
 
+std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
+    std::list<std::vector<char>> &datasToSend,
+    ecs::WaveManager &waveManager,
+    int missileSpawnRate,
+    float /*x*/,
+    float y
+)
+{
+    return [y, &datasToSend, missileSpawnRate, &waveManager](ecs::Registry &r, entity_t entity) {
+        rts::ais::waveMovement(r, entity, y);
+        rts::ais::fireRandomMissileAi(r, entity, datasToSend, missileSpawnRate);
+        rts::ais::splitAi(r, entity, datasToSend, waveManager);
+    };
+}
+
 /**
  * Setup mob functions
  */
 
 void rts::WaveCreator::setupBydosDatas(
     std::list<std::vector<char>> &datasToSend,
+    ecs::Registry & /*reg*/,
+    entity_t /*e*/,
     size_t sharedId,
     float x,
     float y,
@@ -181,6 +203,8 @@ void rts::WaveCreator::setupBydosDatas(
 
 void rts::WaveCreator::setupRobotDatas(
     std::list<std::vector<char>> &datasToSend,
+    ecs::Registry & /*reg*/,
+    entity_t /*e*/,
     size_t sharedId,
     float x,
     float y,
@@ -196,6 +220,8 @@ void rts::WaveCreator::setupRobotDatas(
 
 void rts::WaveCreator::setupDobkeratopsDatas(
     std::list<std::vector<char>> &datasToSend,
+    ecs::Registry & /*reg*/,
+    entity_t /*e*/,
     size_t sharedId,
     float x,
     float y,
@@ -205,6 +231,24 @@ void rts::WaveCreator::setupDobkeratopsDatas(
 {
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
                               rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedId, {.pos = {x, y}, .stage = 1}, true
+    )
+                              .serialize());
+}
+
+void rts::WaveCreator::setupBlobDatas(
+    std::list<std::vector<char>> &datasToSend,
+    ecs::Registry &reg,
+    entity_t e,
+    size_t sharedId,
+    float x,
+    float y,
+    float /*vx*/,
+    float /*vy*/
+)
+{
+    reg.addComponent(e, ecs::component::DeathSplit{.splitCount = 2, .offsets = {{-32.0f, -32.0f}, {32.0f, -32.0f}}});
+    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
+                              rt::UDPCommand::NEW_ENTITY_BLOB, sharedId, {.pos = {.x = x, .y = y}}, true
     )
                               .serialize());
 }

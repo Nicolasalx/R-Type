@@ -66,12 +66,12 @@ static entity_t spawnBydosWaveSplit(
     auto e = ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/blob.json", x, y, sharedId, -10.0f);
 
     reg.addComponent(e, ecs::component::DeathSplit{.splitCount = 2, .offsets = {{-32.0f, -32.0f}, {32.0f, -32.0f}}});
-    auto &aiActor = reg.addComponent(e, ecs::component::AiActor{});
-    aiActor->act = [y, &datasToSend, missileSpawnRate, &waveManager](ecs::Registry &r, entity_t entity) {
-        rts::ais::waveMovement(r, entity, y);
-        rts::ais::fireRandomMissileAi(r, entity, datasToSend, missileSpawnRate);
-        rts::ais::splitAi(r, entity, datasToSend, waveManager);
-    };
+    reg.getComponent<ecs::component::AiActor>(e)->act =
+        [y, &datasToSend, missileSpawnRate, &waveManager](ecs::Registry &r, entity_t entity) {
+            rts::ais::waveMovement(r, entity, y);
+            rts::ais::fireRandomMissileAi(r, entity, datasToSend, missileSpawnRate);
+            rts::ais::splitAi(r, entity, datasToSend, waveManager);
+        };
 
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
                               rt::UDPCommand::NEW_ENTITY_BLOB, sharedId, {.pos = {.x = x, .y = y}}, true
