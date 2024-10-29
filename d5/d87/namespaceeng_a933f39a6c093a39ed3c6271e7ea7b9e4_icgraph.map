@@ -1,24 +1,21 @@
 <map id="eng::logError" name="eng::logError">
-<area shape="rect" id="node1" title="Logs an error message with source location." alt="" coords="1019,309,1124,335"/>
-<area shape="rect" id="node2" href="$da/d18/namespacerts_1_1ais.html#a9c807330d7a978d219153e648b7b15df" title=" " alt="" coords="764,562,971,602"/>
-<area shape="rect" id="node6" href="$dc/dcf/classecs_1_1SoundManager.html#a4c7eae279e9dfd58cd2d8ca011f9fcd3" title="Loads music from a file." alt="" coords="789,55,946,95"/>
-<area shape="rect" id="node7" href="$dc/dcf/classecs_1_1SoundManager.html#a8a2444177b460f62b47e454df60223c2" title="Loads a sound buffer from a file." alt="" coords="789,434,946,474"/>
-<area shape="rect" id="node10" href="$d5/d87/namespaceeng.html#a26ee0fbfbcf0d9c69cedac998f7a1ec6" title="Logs an error message with source location and time." alt="" coords="798,184,937,209"/>
-<area shape="rect" id="node11" href="$d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="840,233,895,259"/>
-<area shape="rect" id="node12" href="$dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title="Plays music." alt="" coords="789,119,946,159"/>
-<area shape="rect" id="node14" href="$dc/dcf/classecs_1_1SoundManager.html#ae501f6a571c9eb7efc9825d96899d7dc" title="Plays a sound effect." alt="" coords="789,498,946,538"/>
-<area shape="rect" id="node15" href="$d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="795,384,939,409"/>
-<area shape="rect" id="node16" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="788,335,947,360"/>
-<area shape="rect" id="node19" href="$da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615" title="Send a message specified in." alt="" coords="786,5,949,31"/>
-<area shape="rect" id="node21" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="514,277,715,303"/>
-<area shape="rect" id="node22" href="$d2/d10/classntw_1_1TCPClient.html#a58a378af02aec3e3d70fdc1d49ad0cce" title="Destructor of the TCPClient Object." alt="" coords="769,627,965,652"/>
-<area shape="rect" id="node3" href="$da/d18/namespacerts_1_1ais.html#aa22cd49646951c97d8b3efdf0fb62530" title=" " alt="" coords="531,537,698,563"/>
-<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="317,461,427,487"/>
-<area shape="rect" id="node5" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,412,231,437"/>
-<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63" title="System to handle sound effects emitted by entities." alt="" coords="513,442,716,482"/>
-<area shape="rect" id="node9" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="295,364,449,389"/>
-<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="513,127,716,152"/>
-<area shape="rect" id="node17" href="$db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="521,327,709,367"/>
-<area shape="rect" id="node18" href="$db/d9a/namespaceecs_1_1systems.html#a90013fbe37dd2fb55e62366fa00d5371" title=" " alt="" coords="527,392,702,417"/>
-<area shape="rect" id="node20" href="$d9/dbb/namespacerts.html#aa07c177913a9df7337c3cabec9b19816" title=" " alt="" coords="279,164,465,189"/>
+<area shape="rect" id="node1" title="Logs an error message with source location." alt="" coords="773,285,879,310"/>
+<area shape="rect" id="node2" href="$dc/dcf/classecs_1_1SoundManager.html#a4c7eae279e9dfd58cd2d8ca011f9fcd3" title="Loads music from a file." alt="" coords="549,5,706,45"/>
+<area shape="rect" id="node3" href="$dc/dcf/classecs_1_1SoundManager.html#a8a2444177b460f62b47e454df60223c2" title="Loads a sound buffer from a file." alt="" coords="549,384,706,424"/>
+<area shape="rect" id="node6" href="$d5/d87/namespaceeng.html#a26ee0fbfbcf0d9c69cedac998f7a1ec6" title="Logs an error message with source location and time." alt="" coords="558,134,697,159"/>
+<area shape="rect" id="node7" href="$d1/daf/client_2src_2main_8cpp.html#ac0f2228420376f4db7e1274f2b41667c" title=" " alt="" coords="600,183,655,209"/>
+<area shape="rect" id="node8" href="$dc/dcf/classecs_1_1SoundManager.html#a21189fc9f4a9ec7a8dccdfacd3b078ed" title="Plays music." alt="" coords="549,69,706,109"/>
+<area shape="rect" id="node10" href="$dc/dcf/classecs_1_1SoundManager.html#ae501f6a571c9eb7efc9825d96899d7dc" title="Plays a sound effect." alt="" coords="549,448,706,488"/>
+<area shape="rect" id="node11" href="$d2/d10/classntw_1_1TCPClient.html#a26d6fb98b53a80a15817971e7e9eb123" title="Run the io_context variable member of this class and the asio_run function that is a recursive loop o..." alt="" coords="555,334,699,359"/>
+<area shape="rect" id="node12" href="$d6/d90/classntw_1_1UDPClient.html#aa84d7e1d450f2d11dd3c90cd6b10da85" title="Send a data specified in param data of size param size to the endpoint variable member." alt="" coords="548,285,707,310"/>
+<area shape="rect" id="node15" href="$da/dbf/classntw_1_1UDPServer.html#a796389b2c266315a75f6854f07b23615" title="Send a message specified in." alt="" coords="546,513,709,538"/>
+<area shape="rect" id="node18" href="$db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c" title="Updates sprite animations and synchronizes sprite positions." alt="" coords="279,234,481,259"/>
+<area shape="rect" id="node19" href="$d2/d10/classntw_1_1TCPClient.html#a58a378af02aec3e3d70fdc1d49ad0cce" title="Destructor of the TCPClient Object." alt="" coords="529,562,725,587"/>
+<area shape="rect" id="node4" href="$db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63" title="System to handle sound effects emitted by entities." alt="" coords="279,397,481,437"/>
+<area shape="rect" id="node5" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="41,313,195,338"/>
+<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#ada66c83de5245ca342738b85a2c115e1" title="System to manage background music playback." alt="" coords="279,77,481,102"/>
+<area shape="rect" id="node13" href="$db/d9a/namespaceecs_1_1systems.html#a5f93cb40f29394b24241504162db7237" title="Updates the position of all entities based on their velocity." alt="" coords="286,333,474,373"/>
+<area shape="rect" id="node14" href="$db/d9a/namespaceecs_1_1systems.html#a90013fbe37dd2fb55e62366fa00d5371" title=" " alt="" coords="293,283,467,309"/>
+<area shape="rect" id="node16" href="$d9/dbb/namespacerts.html#aa07c177913a9df7337c3cabec9b19816" title=" " alt="" coords="287,513,473,538"/>
+<area shape="rect" id="node17" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,513,231,538"/>
 </map>

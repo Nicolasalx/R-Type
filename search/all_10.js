@@ -10,7 +10,7 @@ var searchData=
   ['particle_5fspawner_2ehpp_7',['particle_spawner.hpp',['../d0/db5/particle__spawner_8hpp.html',1,'']]],
   ['particlespawner_8',['ParticleSpawner',['../db/d05/structecs_1_1component_1_1ParticleSpawner.html',1,'ecs::component']]],
   ['pausemusic_9',['pauseMusic',['../dc/dcf/classecs_1_1SoundManager.html#a70034de6af111a540eddc35740e87359',1,'ecs::SoundManager']]],
-  ['phase_10',['phase',['../d1/da0/structrts_1_1ais_1_1DobkeratopsState.html#a178581a127c28a6ee57b939f13531140',1,'rts::ais::DobkeratopsState']]],
+  ['phase_10',['phase',['../d3/da1/structDobkeratops.html#afc8b5b96f69e6e07c1d9fcdd5218578f',1,'Dobkeratops']]],
   ['ping_5frefresh_11',['PING_REFRESH',['../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e',1,'rtc']]],
   ['player_12',['Player',['../dd/d3f/structecs_1_1component_1_1Player.html',1,'ecs::component']]],
   ['player_13',['player',['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html#a967edce03f76b31f77094d371d5fb331',1,'rtc::RoomManager::RoomContent::player()'],['../d6/d2a/structplayer.html',1,'player']]],
@@ -30,6 +30,6 @@ var searchData=
   ['power_27',['power',['../de/de1/structecs_1_1component_1_1Beam.html#a5b8512891f6348b543e61cb34baccf20',1,'ecs::component::Beam']]],
   ['printhelp_28',['printHelp',['../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7',1,'eng::ArgParser']]],
   ['printroomlist_29',['printRoomList',['../d1/d36/classrts_1_1RoomManager.html#ae8331d83dc1843c6b66cdbb304757a05',1,'rts::RoomManager']]],
-  ['projectilesshot_30',['projectilesShot',['../d1/da0/structrts_1_1ais_1_1DobkeratopsState.html#a8ccc8058fcb83f36fd0e72d9faba85d8',1,'rts::ais::DobkeratopsState']]],
+  ['projectilesshot_30',['projectilesShot',['../d3/da1/structDobkeratops.html#ae7d4016815ff4d3e26e0f5e85c52d7ac',1,'Dobkeratops']]],
   ['pushback_31',['pushBack',['../df/df0/classeng_1_1SafeList.html#a3590fa834784a8925467064bbee71791',1,'eng::SafeList']]]
 ];

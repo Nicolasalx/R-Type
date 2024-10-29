@@ -1,14 +1,13 @@
 <map id="ecs::Registry::killEntity" name="ecs::Registry::killEntity">
-<area shape="rect" id="node1" title="Marks an entity for destruction." alt="" coords="907,178,1077,203"/>
-<area shape="rect" id="node2" href="$da/d18/namespacerts_1_1ais.html#a9c807330d7a978d219153e648b7b15df" title=" " alt="" coords="652,5,859,45"/>
-<area shape="rect" id="node3" href="$da/d18/namespacerts_1_1ais.html#aa22cd49646951c97d8b3efdf0fb62530" title=" " alt="" coords="437,70,604,95"/>
-<area shape="rect" id="node6" href="$db/d9a/namespaceecs_1_1systems.html#a21513169eed974de8c770f37e5bd6663" title=" " alt="" coords="660,121,851,146"/>
-<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a47f1e6cb07902f5012a61ba1e1c9eddd" title=" " alt="" coords="660,171,851,211"/>
-<area shape="rect" id="node9" href="$db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="655,235,856,275"/>
-<area shape="rect" id="node11" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="655,299,856,325"/>
-<area shape="rect" id="node12" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="656,349,855,374"/>
-<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="279,101,389,126"/>
-<area shape="rect" id="node5" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,157,231,182"/>
-<area shape="rect" id="node7" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="444,150,597,175"/>
-<area shape="rect" id="node10" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="444,242,597,267"/>
+<area shape="rect" id="node1" title="Marks an entity for destruction." alt="" coords="729,149,900,175"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a21513169eed974de8c770f37e5bd6663" title=" " alt="" coords="485,5,676,31"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#ac531f12342f5c0c4119d4f6501cd7dfc" title=" " alt="" coords="497,120,664,145"/>
+<area shape="rect" id="node7" href="$db/d9a/namespaceecs_1_1systems.html#a47f1e6cb07902f5012a61ba1e1c9eddd" title=" " alt="" coords="485,55,676,95"/>
+<area shape="rect" id="node8" href="$db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b" title=" " alt="" coords="480,170,681,210"/>
+<area shape="rect" id="node10" href="$d7/d18/classrts_1_1GameRunner.html#ad807bdebe5c44941dd54cb0169c05106" title=" " alt="" coords="480,235,681,260"/>
+<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="481,284,680,309"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a09e920667613d824802d95f5e0b78b9e" title=" " alt="" coords="279,35,432,60"/>
+<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="300,124,411,149"/>
+<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,149,231,175"/>
+<area shape="rect" id="node9" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="279,177,432,203"/>
 </map>

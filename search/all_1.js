@@ -47,6 +47,6 @@ var searchData=
   ['asktojoinroom_44',['askToJoinRoom',['../d0/d42/classrtc_1_1RoomManager.html#a149eadc0e5d9cd933a95ec7dc8beae27',1,'rtc::RoomManager']]],
   ['asktoleaveroom_45',['askToLeaveRoom',['../d0/d42/classrtc_1_1RoomManager.html#a19a50ccb9d7b9b22f8880d22862f7e42',1,'rtc::RoomManager']]],
   ['asktosendchatmsg_46',['askToSendChatMsg',['../d0/d42/classrtc_1_1RoomManager.html#ace464a90652885b845ec926ef88222b4',1,'rtc::RoomManager']]],
-  ['attackpattern_47',['attackPattern',['../d1/da0/structrts_1_1ais_1_1DobkeratopsState.html#ab841754ce46387f6fadff181f6980d94',1,'rts::ais::DobkeratopsState']]],
-  ['attackticks_48',['attackTicks',['../d1/da0/structrts_1_1ais_1_1DobkeratopsState.html#a1bd5049882fa61ade544ab585599f235',1,'rts::ais::DobkeratopsState']]]
+  ['attackpattern_47',['attackPattern',['../d3/da1/structDobkeratops.html#a14cf01c53a19f73385f9bbb010836126',1,'Dobkeratops']]],
+  ['attackticks_48',['attackTicks',['../d3/da1/structDobkeratops.html#af48be12d337cbe9459ea67dc588a24b4',1,'Dobkeratops']]]
 ];
