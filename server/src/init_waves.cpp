@@ -106,7 +106,7 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
         entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/dobkeratops.json", 560.f, 120.f, sharedEntityId
         );
-        reg.addComponent<ecs::component::DobkeratopsState>(entity, ecs::component::DobkeratopsState{});
+        // reg.addComponent<ecs::component::DobkeratopsState>(entity, ecs::component::DobkeratopsState{});
         datasToSend.push_back(
             rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
                 rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedEntityId, {.pos = {560.f, 120.f}, .stage = 1}, true
@@ -126,7 +126,7 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
         return entity;
     });
 
-    waveManager.addNewMob(bossWaveId, [&datasToSend, &missileSpawnRate](ecs::Registry &reg) -> entity_t {
+    waveManager.addNewMob(bossWaveId, [&datasToSend, missileSpawnRate](ecs::Registry &reg) -> entity_t {
         shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
         entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/bydosWave.json", 500.f, 100.f, sharedEntityId
@@ -138,7 +138,7 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
                                   .serialize());
 
         reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend,
-                                                                  &missileSpawnRate](ecs::Registry &reg, entity_t e) {
+                                                                  missileSpawnRate](ecs::Registry &reg, entity_t e) {
             rts::ais::waveMovement(reg, e, 100.f);
             rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
         };
@@ -146,7 +146,7 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
         return entity;
     });
 
-    waveManager.addNewMob(bossWaveId, [&datasToSend, &missileSpawnRate](ecs::Registry &reg) -> entity_t {
+    waveManager.addNewMob(bossWaveId, [&datasToSend, missileSpawnRate](ecs::Registry &reg) -> entity_t {
         shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
         entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/bydosWave.json", 500.f, 380.f, sharedEntityId
@@ -158,7 +158,7 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
                                   .serialize());
 
         reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend,
-                                                                  &missileSpawnRate](ecs::Registry &reg, entity_t e) {
+                                                                  missileSpawnRate](ecs::Registry &reg, entity_t e) {
             rts::ais::waveMovement(reg, e, 380.f);
             rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
         };

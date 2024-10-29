@@ -26,7 +26,7 @@ rts::GameRunner::GameRunner(
     bool debugMode,
     size_t nbPlayers
 )
-    : _udpServer(port), _nbPlayers(nbPlayers), _debugMode(debugMode), _stopGame(false)
+    : _udpServer(port), _nbPlayers(nbPlayers), _waveCreator("./assets/stages"), _debugMode(debugMode), _stopGame(false)
 {
     eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
 
@@ -51,7 +51,8 @@ rts::GameRunner::GameRunner(
         debugMode,
         _nbPlayers
     );
-    rts::initWaves(_waveManager, _datasToSend, missileSpawnRate);
+    _waveCreator.createStage(stage, missileSpawnRate, _waveManager, _datasToSend);
+    // rts::initWaves(_waveManager, _datasToSend, missileSpawnRate);
 }
 
 void rts::GameRunner::killPlayer(size_t playerId)

@@ -14,6 +14,7 @@ add_executable(r-type_server
     src/ais/dobkeratops_ai.cpp
     src/gameCallbacks/collideEffect.cpp
     src/gameCallbacks/endGame.cpp
+    src/waveCreator/WaveCreator.cpp
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
