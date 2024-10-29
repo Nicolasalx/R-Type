@@ -5,7 +5,6 @@
 ** ai_actor
 */
 
-
 #pragma once
 
 #include "entity.hpp"

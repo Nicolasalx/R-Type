@@ -16,18 +16,8 @@
 
 namespace rts::ais {
 
-void initDobkeratopsAi(
-    ecs::Registry &reg,
-    entity_t e,
-    std::list<std::vector<char>> &datasToSend,
-    Dobkeratops &state
-);
+void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend, Dobkeratops &state);
 
-void dobkeratopsAi(
-    ecs::Registry &reg,
-    entity_t e,
-    std::list<std::vector<char>> &datasToSend,
-    Dobkeratops &state
-);
+void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend, Dobkeratops &state);
 
 } // namespace rts::ais
