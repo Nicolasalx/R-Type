@@ -100,8 +100,6 @@ void rtc::GameManager::_runGame()
 
     soundManager.loadMusic("battle", "assets/battle.ogg");
     soundManager.playMusic("battle", 5.f, true);
-    soundManager.loadSoundBuffer("explosion", "assets/boom12.wav");
-    soundManager.playSoundEffect("explosion", 100.f, false);
 
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });

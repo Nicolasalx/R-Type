@@ -1,18 +1,14 @@
 include(cmake/CPM.cmake)
 
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
-set(SFML_GENERATE_PACKAGE FALSE CACHE BOOL "" FORCE)
-set(SFML_USE_STATIC_STD_LIBS ON CACHE BOOL "" FORCE)
-if(WIN32)
-    if(CI)
-        set(OPENAL_LIBRARY ${CMAKE_SOURCE_DIR}/openal-soft-install/lib/libOpenAL32.dll.a)
-        set(OPENAL_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/openal-soft-install/include/AL)
-    else()
-        set(OPENAL_LIBRARY /usr/x86_64-w64-mingw32/lib/libOpenAL32.dll.a)
-        set(OPENAL_INCLUDE_DIR /usr/x86_64-w64-mingw32/include/AL)
-    endif()
-endif()
+set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libraries" FORCE)
 
+include(${CMAKE_CURRENT_LIST_DIR}/deps/openal.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/sfml.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/imgui.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/asio.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/json.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/candle.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/deps/particles.cmake)
 
 CPMAddPackage(
     NAME SFML
@@ -74,3 +70,13 @@ CPMAddPackage(
 #     GITHUB_REPOSITORY walterschell/Lua
 #     GIT_TAG v5.4.5
 # )
+
+function(configure_dependencies)
+    configure_openal()
+    configure_sfml()
+    configure_imgui()
+    configure_asio()
+    configure_json()
+    configure_candle()
+    configure_particles()
+endfunction()
