@@ -6,7 +6,6 @@ add_executable(r-type_server
     src/register_tcp_response.cpp
     src/register_udp_response.cpp
     src/RoomManager.cpp
-    src/init_waves.cpp
     src/command_handler.cpp
     src/ais/waveAi.cpp
     src/ais/fireRandomMissileAi.cpp

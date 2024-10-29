@@ -52,7 +52,6 @@ rts::GameRunner::GameRunner(
         _nbPlayers
     );
     _waveCreator.createStage(stage, missileSpawnRate, _waveManager, _datasToSend);
-    // rts::initWaves(_waveManager, _datasToSend, missileSpawnRate);
 }
 
 void rts::GameRunner::killPlayer(size_t playerId)

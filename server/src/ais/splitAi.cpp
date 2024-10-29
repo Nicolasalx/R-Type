@@ -32,7 +32,8 @@ void rts::ais::splitAi(
     auto &split = reg.getComponent<ecs::component::DeathSplit>(e).value();
     auto &sharedEntity = reg.getComponent<ecs::component::SharedEntity>(e).value();
     if (split.splitCount <= 0) {
-        return reg.removeComponent<ecs::component::DeathSplit>(e);
+        reg.removeComponent<ecs::component::DeathSplit>(e);
+        return;
     }
 
     if (health.currHp <= 1 && split.splitCount > 0) {
