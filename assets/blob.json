@@ -1,0 +1,110 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 100.0,
+            "y": 200.0
+        },
+        "velocity": {
+            "vx": 0.0,
+            "vy": 0.0
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet18.gif",
+            "initial_frame": {
+                "x": 0,
+                "y": 0,
+                "width": 32,
+                "height": 32
+            }
+        },
+        "drawable": {
+            "size": {
+                "x": 32.0,
+                "y": 32.0
+            },
+            "fill_color": {
+                "r": 255,
+                "g": 0,
+                "b": 0
+            }
+        },
+        "animation": {
+            "frames": {
+                "idle": [
+                    {
+                        "x": 1,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 34,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 67,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 100,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 67,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    {
+                        "x": 34,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    }
+                ]
+            },
+            "frame_time": 0.2,
+            "update_state": "none"
+        },
+        "hitbox": {
+            "width": 32.0,
+            "height": 32.0
+        },
+        "health": {
+            "maxHp": 3,
+            "currHp": 3
+        },
+        "ai_actor": {},
+        "server_share_movement": {},
+        "score_earned": {
+            "points": 10
+        },
+        "on_death": {
+            "entity": "assets/explosion.json"
+        },
+        "radial_light": {
+            "offset": {
+                "x": 15,
+                "y": 17
+            },
+            "color": {
+                "r": 255,
+                "g": 50,
+                "b": 50
+            },
+            "range": 32.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
+        },
+        "tag": 2
+    }
+}

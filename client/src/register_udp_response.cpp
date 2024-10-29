@@ -181,6 +181,15 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         }
     );
 
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BLOB>(
+        rt::UDPCommand::NEW_ENTITY_BLOB,
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_BLOB>(
+                "assets/blob.json", spriteManager, this->_networkCallbacks, packet, udpClient
+            );
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
