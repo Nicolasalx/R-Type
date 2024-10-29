@@ -15,7 +15,7 @@ var searchData=
   ['setgamestate_12',['setGameState',['../d7/d18/classrts_1_1GameRunner.html#a8f64eae650e0ae602ea88ca9c5546d91',1,'rts::GameRunner']]],
   ['setmusicvolume_13',['setMusicVolume',['../dc/dcf/classecs_1_1SoundManager.html#a11a0a53e482a3831a21d4f35f793e397',1,'ecs::SoundManager']]],
   ['size_14',['size',['../d8/d2e/classecs_1_1SparseArray.html#a1d52c46fea474c9e51544238fa90777a',1,'ecs::SparseArray']]],
-  ['socket_15',['socket',['../da/dbf/classntw_1_1UDPServer.html#a72857ddcd26d04faf5b2fe23ffb19e2b',1,'ntw::UDPServer::socket()'],['../d6/d60/classntw_1_1Session.html#af4ed727cfcd06b2cddaf68e7b0676349',1,'ntw::Session::socket()']]],
+  ['socket_15',['socket',['../d6/d60/classntw_1_1Session.html#af4ed727cfcd06b2cddaf68e7b0676349',1,'ntw::Session::socket()'],['../da/dbf/classntw_1_1UDPServer.html#a72857ddcd26d04faf5b2fe23ffb19e2b',1,'ntw::UDPServer::socket()']]],
   ['sockwrite_16',['sockWrite',['../d7/d65/classntw_1_1TCPServer.html#a8491e821f82deb9eae1f5cc4b5a6f7e4',1,'ntw::TCPServer']]],
   ['sortscoreboard_17',['sortScoreboard',['../d4/dc2/scoreBoard_8cpp.html#a55266b463c56406d461d6acff3975f4c',1,'scoreBoard.cpp']]],
   ['soundemittersystem_18',['soundEmitterSystem',['../db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63',1,'ecs::systems']]],
@@ -24,8 +24,9 @@ var searchData=
   ['spawnentity_21',['spawnEntity',['../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125',1,'ecs::Registry']]],
   ['spawnnextwave_22',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf',1,'ecs::WaveManager']]],
   ['spawnsharedentity_23',['spawnSharedEntity',['../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7',1,'ecs::Registry']]],
-  ['spritesystem_24',['spriteSystem',['../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c',1,'ecs::systems']]],
-  ['start_25',['start',['../d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944',1,'eng::FramerateManager']]],
-  ['stopallsoundeffects_26',['stopAllSoundEffects',['../dc/dcf/classecs_1_1SoundManager.html#a4e04561adaa315e757097e73324f21db',1,'ecs::SoundManager']]],
-  ['stopmusic_27',['stopMusic',['../dc/dcf/classecs_1_1SoundManager.html#a14accc54d8a46bd07bf5e0cec29e14e1',1,'ecs::SoundManager']]]
+  ['splitai_24',['splitAi',['../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd',1,'rts::ais']]],
+  ['spritesystem_25',['spriteSystem',['../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c',1,'ecs::systems']]],
+  ['start_26',['start',['../d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944',1,'eng::FramerateManager']]],
+  ['stopallsoundeffects_27',['stopAllSoundEffects',['../dc/dcf/classecs_1_1SoundManager.html#a4e04561adaa315e757097e73324f21db',1,'ecs::SoundManager']]],
+  ['stopmusic_28',['stopMusic',['../dc/dcf/classecs_1_1SoundManager.html#a14accc54d8a46bd07bf5e0cec29e14e1',1,'ecs::SoundManager']]]
 ];

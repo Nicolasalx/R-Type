@@ -1,15 +1,16 @@
 <map id="ecs::Registry::getComponent" name="ecs::Registry::getComponent">
-<area shape="rect" id="node1" title=" " alt="" coords="795,221,1004,246"/>
+<area shape="rect" id="node1" title=" " alt="" coords="795,246,1004,271"/>
 <area shape="rect" id="node2" href="$de/d4c/classecs_1_1ClientEntityFactory.html#a40f8bb3d8fbd1d144163731dae67dec3" title="Adds components to an entity." alt="" coords="555,5,730,45"/>
-<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#ac531f12342f5c0c4119d4f6501cd7dfc" title=" " alt="" coords="559,70,726,95"/>
-<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="329,221,440,246"/>
-<area shape="rect" id="node7" href="$da/d18/namespacerts_1_1ais.html#a34c718b24a4fa390dca2b9e767c94dd1" title=" " alt="" coords="539,171,747,197"/>
-<area shape="rect" id="node8" href="$da/d18/namespacerts_1_1ais.html#addb066d275a51c4abae991938b3a1097" title=" " alt="" coords="549,221,737,246"/>
-<area shape="rect" id="node9" href="$da/d18/namespacerts_1_1ais.html#a9ff10b02aeb42865cd580b7bf2e4219f" title=" " alt="" coords="547,270,738,295"/>
-<area shape="rect" id="node10" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="543,369,742,394"/>
-<area shape="rect" id="node12" href="$d9/dbb/namespacerts.html#aa07c177913a9df7337c3cabec9b19816" title=" " alt="" coords="291,418,478,443"/>
-<area shape="rect" id="node13" href="$da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3" title=" " alt="" coords="553,319,732,345"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#ac531f12342f5c0c4119d4f6501cd7dfc" title=" " alt="" coords="559,171,726,197"/>
+<area shape="rect" id="node5" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="329,183,440,209"/>
+<area shape="rect" id="node7" href="$da/d18/namespacerts_1_1ais.html#a34c718b24a4fa390dca2b9e767c94dd1" title=" " alt="" coords="539,270,747,295"/>
+<area shape="rect" id="node8" href="$da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd" title=" " alt="" coords="327,270,442,295"/>
+<area shape="rect" id="node9" href="$da/d18/namespacerts_1_1ais.html#addb066d275a51c4abae991938b3a1097" title=" " alt="" coords="549,473,737,498"/>
+<area shape="rect" id="node10" href="$da/d18/namespacerts_1_1ais.html#a9ff10b02aeb42865cd580b7bf2e4219f" title=" " alt="" coords="547,70,738,95"/>
+<area shape="rect" id="node11" href="$db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691" title=" " alt="" coords="543,371,742,397"/>
+<area shape="rect" id="node13" href="$d9/dbb/namespacerts.html#aa07c177913a9df7337c3cabec9b19816" title=" " alt="" coords="291,421,478,446"/>
+<area shape="rect" id="node14" href="$da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3" title=" " alt="" coords="553,221,732,246"/>
 <area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#a2e40628c079221593390124181093078" title="Creates a client entity from a JSON file." alt="" coords="279,5,491,45"/>
-<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,369,231,394"/>
-<area shape="rect" id="node11" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="308,369,461,394"/>
+<area shape="rect" id="node6" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,371,231,397"/>
+<area shape="rect" id="node12" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="308,371,461,397"/>
 </map>

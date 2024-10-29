@@ -89,6 +89,8 @@ Functions</h2></td></tr>
 <tr class="separator:a34c718b24a4fa390dca2b9e767c94dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addb066d275a51c4abae991938b3a1097"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#addb066d275a51c4abae991938b3a1097">horizontalMoveAi</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, float minX, float maxX)</td></tr>
 <tr class="separator:addb066d275a51c4abae991938b3a1097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92544e531042d77f7f2cfbc9653bdcbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd">splitAi</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;waveManager)</td></tr>
+<tr class="separator:a92544e531042d77f7f2cfbc9653bdcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a651ed7a7c6f3513baf5389d8cf4767f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3">waveMovement</a> (<a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, <a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a> e, float defaultY)</td></tr>
 <tr class="separator:a651ed7a7c6f3513baf5389d8cf4767f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -236,8 +238,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d18/namespacerts_1_1ais_a34c718b24a4fa390dca2b9e767c94dd1_icgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a34c718b24a4fa390dca2b9e767c94dd1_icgraph" alt=""/></div>
 <map name="ada/d18/namespacerts_1_1ais_a34c718b24a4fa390dca2b9e767c94dd1_icgraph" id="ada/d18/namespacerts_1_1ais_a34c718b24a4fa390dca2b9e767c94dd1_icgraph">
-<area shape="rect" title=" " alt="" coords="437,5,645,31"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="279,5,389,31"/>
+<area shape="rect" title=" " alt="" coords="441,43,649,68"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="281,5,391,31"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd" title=" " alt="" coords="279,79,393,104"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>
@@ -363,6 +366,80 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a92544e531042d77f7f2cfbc9653bdcbd" name="a92544e531042d77f7f2cfbc9653bdcbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92544e531042d77f7f2cfbc9653bdcbd">&#9670;&#160;</a></span>splitAi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rts::ais::splitAi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/de2/entity_8hpp.html#a54a0e7143e7af445fad3522fe4b4904c">entity_t</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::list&lt; std::vector&lt; char &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>datasToSend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">ecs::WaveManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>waveManager</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_cgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_cgraph" alt=""/></div>
+<map name="ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_cgraph" id="ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,255,120,280"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="1221,242,1433,267"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="455,152,671,192"/>
+<area shape="rect" href="../../da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="719,51,925,76"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a34c718b24a4fa390dca2b9e767c94dd1" title=" " alt="" coords="183,179,391,204"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="458,280,667,306"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="457,330,668,355"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="202,382,373,407"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#a17f754ebcd023208146c9c383406ce16" title="Removes a component from an entity." alt="" coords="168,431,407,456"/>
+<area shape="rect" href="../../d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="186,481,389,521"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3" title=" " alt="" coords="198,280,377,306"/>
+<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="733,265,911,305"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a9f303c21271fd54031a5466d7cb6fdc3" title="Gets JSON data from cache or loads it if not cached." alt="" coords="753,380,891,420"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="719,100,925,126"/>
+<area shape="rect" href="../../de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="733,150,911,190"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="725,215,919,240"/>
+<area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="973,326,1173,366"/>
+<area shape="rect" href="../../df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="976,262,1171,302"/>
+<area shape="rect" href="../../d0/d9f/classeng_1_1RandomGenerator.html#aadbbfcbabbfd2d7ea912f1887dc58f24" title=" " alt="" coords="476,216,649,256"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../da/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_icgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_icgraph" alt=""/></div>
+<map name="ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_icgraph" id="ada/d18/namespacerts_1_1ais_a92544e531042d77f7f2cfbc9653bdcbd_icgraph">
+<area shape="rect" title=" " alt="" coords="5,29,120,55"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a651ed7a7c6f3513baf5389d8cf4767f3" name="a651ed7a7c6f3513baf5389d8cf4767f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a651ed7a7c6f3513baf5389d8cf4767f3">&#9670;&#160;</a></span>waveMovement()</h2>
 
@@ -409,8 +486,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d18/namespacerts_1_1ais_a651ed7a7c6f3513baf5389d8cf4767f3_icgraph.png" border="0" usemap="#ada/d18/namespacerts_1_1ais_a651ed7a7c6f3513baf5389d8cf4767f3_icgraph" alt=""/></div>
 <map name="ada/d18/namespacerts_1_1ais_a651ed7a7c6f3513baf5389d8cf4767f3_icgraph" id="ada/d18/namespacerts_1_1ais_a651ed7a7c6f3513baf5389d8cf4767f3_icgraph">
-<area shape="rect" title=" " alt="" coords="437,5,616,31"/>
-<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="279,5,389,31"/>
+<area shape="rect" title=" " alt="" coords="441,43,620,68"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="281,5,391,31"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd" title=" " alt="" coords="279,79,393,104"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,5,231,31"/>
 </map>
 </div>

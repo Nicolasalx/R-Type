@@ -1,0 +1,21 @@
+<map id="rts::ais::splitAi" name="rts::ais::splitAi">
+<area shape="rect" id="node1" title=" " alt="" coords="5,255,120,280"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a2002e2a06b06878e6b5ecb039d40213e" title="Adds a component to an entity." alt="" coords="1221,242,1433,267"/>
+<area shape="rect" id="node3" href="$df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384" title="Creates a server entity from a JSON file." alt="" coords="455,152,671,192"/>
+<area shape="rect" id="node6" href="$da/dc8/namespaceecs.html#a763cedb70bb118e785adfa3ec3dafefb" title=" " alt="" coords="719,51,925,76"/>
+<area shape="rect" id="node12" href="$da/d18/namespacerts_1_1ais.html#a34c718b24a4fa390dca2b9e767c94dd1" title=" " alt="" coords="183,179,391,204"/>
+<area shape="rect" id="node14" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="458,280,667,306"/>
+<area shape="rect" id="node15" href="$df/dcd/classecs_1_1Registry.html#a97b5613f78ed9577a55875fc97a255ef" title="Checks if an entity has a specific component." alt="" coords="457,330,668,355"/>
+<area shape="rect" id="node16" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="202,382,373,407"/>
+<area shape="rect" id="node17" href="$df/dcd/classecs_1_1Registry.html#a17f754ebcd023208146c9c383406ce16" title="Removes a component from an entity." alt="" coords="168,431,407,456"/>
+<area shape="rect" id="node18" href="$d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="186,481,389,521"/>
+<area shape="rect" id="node19" href="$da/d18/namespacerts_1_1ais.html#a651ed7a7c6f3513baf5389d8cf4767f3" title=" " alt="" coords="198,280,377,306"/>
+<area shape="rect" id="node4" href="$de/de3/classecs_1_1ServerEntityFactory.html#a64e86dd87fa4133453506f567072b259" title="Adds components to an entity in the registry." alt="" coords="733,265,911,305"/>
+<area shape="rect" id="node7" href="$df/d28/classecs_1_1EntityFactory.html#a9f303c21271fd54031a5466d7cb6fdc3" title="Gets JSON data from cache or loads it if not cached." alt="" coords="753,380,891,420"/>
+<area shape="rect" id="node8" href="$df/dcd/classecs_1_1Registry.html#ad4ac14545b73a4de3f77e00c325ba947" title=" " alt="" coords="719,100,925,126"/>
+<area shape="rect" id="node9" href="$de/de3/classecs_1_1ServerEntityFactory.html#a91824da7b3e7c3bd6b24f17c69d46383" title="Handles the synchronization of an entity&#39;s state with the network." alt="" coords="733,150,911,190"/>
+<area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="725,215,919,240"/>
+<area shape="rect" id="node11" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="973,326,1173,366"/>
+<area shape="rect" id="node5" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="976,262,1171,302"/>
+<area shape="rect" id="node13" href="$d0/d9f/classeng_1_1RandomGenerator.html#aadbbfcbabbfd2d7ea912f1887dc58f24" title=" " alt="" coords="476,216,649,256"/>
+</map>
