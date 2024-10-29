@@ -18,6 +18,7 @@
 #include "ais/fireRandomMissileAi.hpp"
 #include "ais/horizontalMoveAi.hpp"
 #include "ais/waveAi.hpp"
+#include "components/dobkeratops.hpp"
 #include "entity.hpp"
 #include "ais/dobkeratops_ai.hpp"
 #include "components/ai_actor.hpp"
@@ -97,16 +98,15 @@ static void waveInit(
 void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> &datasToSend, int missileSpawnRate)
 {
     waveManager.addNewWave();
-    waveInit(waveManager, datasToSend, 5, missileSpawnRate);
-    waveInit(waveManager, datasToSend, 6, missileSpawnRate);
+    //waveInit(waveManager, datasToSend, 5, missileSpawnRate);
+    //waveInit(waveManager, datasToSend, 6, missileSpawnRate);
     auto bossWaveId = waveManager.addNewWave();
     waveManager.addNewMob(bossWaveId, [&datasToSend](ecs::Registry &reg) -> entity_t {
         shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
-
         entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
             reg, "assets/dobkeratops.json", 560.f, 120.f, sharedEntityId
         );
-
+        reg.addComponent<ecs::component::DobkeratopsState>(entity, ecs::component::DobkeratopsState{});
         datasToSend.push_back(
             rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
                 rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedEntityId, {.pos = {560.f, 120.f}, .stage = 1}, true
@@ -115,12 +115,12 @@ void rts::initWaves(ecs::WaveManager &waveManager, std::list<std::vector<char>> 
         );
 
         reg.getComponent<ecs::component::AiActor>(entity)->act = [&datasToSend](ecs::Registry &reg, entity_t e) {
-            static bool initialized = false;
-            if (!initialized) {
-                rts::ais::initDobkeratopsAi(reg, e, datasToSend);
-                initialized = true;
+            auto &stateComp = reg.getComponent<ecs::component::DobkeratopsState>(e);
+            if (!stateComp->initialized) {
+                rts::ais::initDobkeratopsAi(reg, e, datasToSend, stateComp->state);
+                stateComp->initialized = true;
             }
-            rts::ais::dobkeratopsAi(reg, e, datasToSend);
+            rts::ais::dobkeratopsAi(reg, e, datasToSend, stateComp->state);
         };
 
         return entity;
