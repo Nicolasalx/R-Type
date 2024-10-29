@@ -16,5 +16,6 @@ var searchData=
   ['_7etimeouthandler_13',['~TimeoutHandler',['../d8/d0c/classntw_1_1TimeoutHandler.html#ad6c4ac179ce9eea308788fdc330da509',1,'ntw::TimeoutHandler']]],
   ['_7eudpclient_14',['~UDPClient',['../d6/d90/classntw_1_1UDPClient.html#a862bcf524f21217734041738714a4425',1,'ntw::UDPClient']]],
   ['_7eudpserver_15',['~UDPServer',['../da/dbf/classntw_1_1UDPServer.html#af2d66ff45f59295c9fa6bda472987392',1,'ntw::UDPServer']]],
-  ['_7ewavemanager_16',['~WaveManager',['../d5/d35/classecs_1_1WaveManager.html#a64042ce2e1b776a0dc9216da8e5c4271',1,'ecs::WaveManager']]]
+  ['_7ewavecreator_16',['~WaveCreator',['../da/df3/classrts_1_1WaveCreator.html#a4f7cb6486f60b550005a1a306e10bc6e',1,'rts::WaveCreator']]],
+  ['_7ewavemanager_17',['~WaveManager',['../d5/d35/classecs_1_1WaveManager.html#a64042ce2e1b776a0dc9216da8e5c4271',1,'ecs::WaveManager']]]
 ];

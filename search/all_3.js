@@ -45,6 +45,7 @@ var searchData=
   ['createentity_42',['createEntity',['../df/d29/classecs_1_1EntityManager.html#ab9e8f199e7e6bb77d154aa1f8b22e6d6',1,'ecs::EntityManager']]],
   ['createroom_43',['createRoom',['../d1/d36/classrts_1_1RoomManager.html#a27678b57dc5b8d5f69e08e4fde351259',1,'rts::RoomManager']]],
   ['createserverentityfromjson_44',['createServerEntityFromJSON',['../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384',1,'ecs::EntityFactory']]],
-  ['currentframe_45',['currentFrame',['../df/d9e/structecs_1_1component_1_1Animation.html#a42edf7c9b2bba783d84689cc74e4dd83',1,'ecs::component::Animation']]],
-  ['currhp_46',['currHp',['../d8/d3d/structecs_1_1component_1_1Health.html#ab953b63f46cc6104e58950ab56726ba1',1,'ecs::component::Health']]]
+  ['createstage_45',['createStage',['../da/df3/classrts_1_1WaveCreator.html#ada5d2779bd6a3774fbe32860298df869',1,'rts::WaveCreator']]],
+  ['currentframe_46',['currentFrame',['../df/d9e/structecs_1_1component_1_1Animation.html#a42edf7c9b2bba783d84689cc74e4dd83',1,'ecs::component::Animation']]],
+  ['currhp_47',['currHp',['../d8/d3d/structecs_1_1component_1_1Health.html#ab953b63f46cc6104e58950ab56726ba1',1,'ecs::component::Health']]]
 ];

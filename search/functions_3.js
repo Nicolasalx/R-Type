@@ -15,5 +15,6 @@ var searchData=
   ['createcliententityfromjson_12',['createClientEntityFromJSON',['../df/d28/classecs_1_1EntityFactory.html#a2e40628c079221593390124181093078',1,'ecs::EntityFactory']]],
   ['createentity_13',['createEntity',['../df/d29/classecs_1_1EntityManager.html#ab9e8f199e7e6bb77d154aa1f8b22e6d6',1,'ecs::EntityManager']]],
   ['createroom_14',['createRoom',['../d1/d36/classrts_1_1RoomManager.html#a27678b57dc5b8d5f69e08e4fde351259',1,'rts::RoomManager']]],
-  ['createserverentityfromjson_15',['createServerEntityFromJSON',['../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384',1,'ecs::EntityFactory']]]
+  ['createserverentityfromjson_15',['createServerEntityFromJSON',['../df/d28/classecs_1_1EntityFactory.html#ab1339d426bb071332defd2cf9c7b1384',1,'ecs::EntityFactory']]],
+  ['createstage_16',['createStage',['../da/df3/classrts_1_1WaveCreator.html#ada5d2779bd6a3774fbe32860298df869',1,'rts::WaveCreator']]]
 ];
