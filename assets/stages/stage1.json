@@ -83,7 +83,9 @@
                         "vy": 0.0
                     }
                 ],
-                "type": ["dobkeratops"]
+                "type": [
+                    "dobkeratops"
+                ]
             },
             {
                 "mobJsonPath": "assets/bydosWave.json",
