@@ -82,6 +82,7 @@
             "fade": true,
             "angle": 360.0,
             "rotation": 0.0
-        }
+        },
+        "tag": 2
     }
 }

@@ -6,10 +6,12 @@
 */
 
 #include "ClientTickRate.hpp"
+#include "GameOptions.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SafeList.hpp"
+#include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
 #include "components/animation.hpp"
@@ -34,6 +36,8 @@
 #include "components/death_timer.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
+#include "components/on_death.hpp"
+#include "components/particle_spawner.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
@@ -44,6 +48,7 @@
 #include "systems/control_special.hpp"
 #include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
+#include "systems/draw_particle.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
 #include "systems/draw_player_health_bar.hpp"
@@ -52,6 +57,7 @@
 #include "systems/health_local_check.hpp"
 #include "systems/render_radial_light.hpp"
 #include "systems/send_ping.hpp"
+#include "systems/sound_emitter_system.hpp"
 #include "systems/sprite_system.hpp"
 #include <unordered_map>
 
@@ -78,8 +84,10 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::AllyPlayer>();
     reg.registerComponent<ecs::component::ScoreEarned>();
     reg.registerComponent<ecs::component::DeathTimer>();
+    reg.registerComponent<ecs::component::OnDeath>();
     reg.registerComponent<ecs::component::RadialLight>();
     reg.registerComponent<ecs::component::LightEdge>();
+    reg.registerComponent<ecs::component::ParticleSpawner>();
 }
 
 void rtc::registerSystems(
@@ -93,7 +101,8 @@ void rtc::registerSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
-    sf::Clock &chargeClock
+    sf::Clock &chargeClock,
+    ecs::SoundManager &soundManager
 )
 {
     tickRateManager.addTickRate(
@@ -103,16 +112,22 @@ void rtc::registerSystems(
     tickRateManager.addTickRate(
         rtc::TickRate::CALL_NETWORK_CALLBACKS, rtc::CLIENT_TICKRATE.at(rtc::TickRate::CALL_NETWORK_CALLBACKS)
     );
+    reg.addSystem([&reg, &soundManager]() { ecs::systems::soundEmitterSystem(reg, soundManager); });
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
-    reg.addSystem([&reg, &udpClient]() { ecs::systems::controlSpecial(reg, udpClient); });
+    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
+        ecs::systems::controlSpecial(reg, input, udpClient, keyBind, rtc::GameOptions::missileSpawnRate);
+    });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
-    reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
+    reg.addSystem([&reg, &dt, &window]() { ecs::systems::drawParticle(reg, sf::seconds(dt), window); });
+    if (rtc::GameOptions::lightEffect) {
+        reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
+    }
     reg.addSystem([&udpClient, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rtc::TickRate::PING_REFRESH, dt)) {
             ecs::systems::sendPing(udpClient);

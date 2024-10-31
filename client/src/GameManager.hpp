@@ -11,8 +11,10 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <functional>
 #include <memory>
+#include <sys/types.h>
 #include "KeyBind.hpp"
 #include "MetricManager.hpp"
+#include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
@@ -34,11 +36,11 @@ class GameManager {
     std::string _ip;
     std::string _playerName;
 
-    ntw::TCPClient _tcpClient;
-    bool _inLobby = true;
+    std::shared_ptr<ntw::TCPClient> _tcpClient;
+    std::atomic<GameState> _gameState = GameState::LOBBY;
     std::size_t _userId = 0;
     int _gamePort = 0;
-    rtc::RoomManager _roomManager;
+    std::shared_ptr<rtc::RoomManager> _roomManager;
     rt::TCPResponseHandler _tcpResponseHandler;
     rt::UDPResponseHandler _udpResponseHandler;
     std::promise<bool> _allUDPClientReady;
@@ -62,17 +64,22 @@ class GameManager {
     };
 
     void _registerTcpResponse();
-    void _registerUdpResponse(ecs::SpriteManager &spriteManager);
+    void _registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
 
     void _setupTcpConnection();
     void _setupUdpConnection(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);
+    void _setupGui();
+    void _setupEntities(ntw::UDPClient &udpClient, ecs::Registry &reg, ecs::SpriteManager &spriteManager);
+
     void _launchGame();
+    void _runGame();
 
     public:
     GameManager(const std::string &ip, int port, const std::string &playerName)
-        : _ip(ip), _playerName(playerName), _tcpClient(ip, port), _userId(ecs::generateSharedEntityId()),
-          _roomManager(_tcpClient, _userId, playerName)
+        : _ip(ip), _playerName(playerName), _userId(ecs::generateSharedEntityId())
     {
+        _tcpClient = std::make_shared<ntw::TCPClient>(ip, port);
+        _roomManager = std::make_shared<rtc::RoomManager>(_tcpClient, _userId, playerName);
     }
 
     ~GameManager()
@@ -80,7 +87,7 @@ class GameManager {
         ImGui::SFML::Shutdown();
     }
 
-    void runGame()
+    void run()
     {
         _setupTcpConnection();
         _launchGame();

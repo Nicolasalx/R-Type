@@ -6,10 +6,16 @@
 */
 
 #include "ClientEntityFactory.hpp"
-
+#include <memory>
+#include <string>
 #include <utility>
 #include "Candle/LightSource.hpp"
+#include "Particles/ParticleGenerator.h"
+#include "Particles/ParticleSpawner.h"
+#include "Particles/ParticleSystem.h"
 #include "SFML/Graphics/Color.hpp"
+#include "SFML/Graphics/Texture.hpp"
+#include "SFML/System/Vector2.hpp"
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
 #include "components/beam.hpp"
@@ -23,6 +29,8 @@
 #include "components/death_timer.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
+#include "components/on_death.hpp"
+#include "components/particle_spawner.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/sound_emitter.hpp"
@@ -132,7 +140,7 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("sprite")) {
         auto spriteJson = componentsJson["sprite"];
         ecs::component::Sprite spriteComp;
-        spriteComp.textureId = spriteJson["texture"].get<std::string>();
+        spriteComp.textureId = spriteJson["texture"];
         spriteComp.spriteObj.setTexture(spriteManager.getTexture(spriteComp.textureId));
         auto frameJson = spriteJson["initial_frame"];
         spriteComp.spriteObj.setTextureRect(sf::IntRect(
@@ -150,7 +158,7 @@ void ClientEntityFactory::addComponents(
         if (spriteJson.contains("sub_sprites")) {
             for (const auto &subSpriteJson : spriteJson["sub_sprites"]) {
                 ecs::component::SubSprite subSprite;
-                subSprite.textureId = subSpriteJson["texture"].get<std::string>();
+                subSprite.textureId = subSpriteJson["texture"];
                 subSprite.spriteObj.setTexture(spriteManager.getTexture(subSprite.textureId));
                 auto subFrameJson = subSpriteJson["initial_frame"];
                 subSprite.spriteObj.setTextureRect(sf::IntRect(
@@ -180,12 +188,12 @@ void ClientEntityFactory::addComponents(
                         subSprite.animation.currentFrame = subSpriteJson["current_frame"].get<size_t>();
                     }
                     if (subSpriteJson.contains("state")) {
-                        subSprite.animation.state = subSpriteJson["state"].get<std::string>();
+                        subSprite.animation.state = subSpriteJson["state"];
                     } else {
                         subSprite.animation.state = "idle";
                     }
                     if (subSpriteJson.contains("update_state")) {
-                        subSprite.animation.updateState = ANIM_MAP.at(subSpriteJson["update_state"].get<std::string>());
+                        subSprite.animation.updateState = ANIM_MAP.at(subSpriteJson["update_state"]);
                     }
                 }
                 spriteComp.subSprites.push_back(subSprite);
@@ -234,12 +242,12 @@ void ClientEntityFactory::addComponents(
             animComp.currentFrame = animJson["current_frame"].get<size_t>();
         }
         if (animJson.contains("state")) {
-            animComp.state = animJson["state"].get<std::string>();
+            animComp.state = animJson["state"];
         } else {
             animComp.state = "idle";
         }
         if (animJson.contains("update_state")) {
-            animComp.updateState = ANIM_MAP.at(animJson["update_state"].get<std::string>());
+            animComp.updateState = ANIM_MAP.at(animJson["update_state"]);
         }
 
         reg.addComponent(entity, std::move(animComp));
@@ -247,15 +255,14 @@ void ClientEntityFactory::addComponents(
     if (componentsJson.contains("sound_emitter")) {
         auto soundEmitterJson = componentsJson["sound_emitter"];
         ecs::component::SoundEmitter soundEmitterComp;
-        soundEmitterComp.soundBufferId = soundEmitterJson["sound_buffer"].get<std::string>();
+        soundEmitterComp.soundBufferId = soundEmitterJson["sound"];
         soundEmitterComp.volume = soundEmitterJson["volume"].get<float>();
-        soundEmitterComp.loop = soundEmitterJson["loop"].get<bool>();
         reg.addComponent(entity, std::move(soundEmitterComp));
     }
     if (componentsJson.contains("music")) {
         auto musicJson = componentsJson["music"];
         ecs::component::MusicComponent musicComp;
-        musicComp.musicFilePath = musicJson["file_path"].get<std::string>();
+        musicComp.musicFilePath = musicJson["file_path"];
         musicComp.volume = musicJson["volume"].get<float>();
         musicComp.loop = musicJson["loop"].get<bool>();
         musicComp.isPlaying = musicJson["is_playing"].get<bool>();
@@ -308,6 +315,81 @@ void ClientEntityFactory::addComponents(
         lightEdge.edge.emplace_back(sf::Vector2f(x2, y1), sf::Vector2f(x2, y2));
 
         reg.addComponent(entity, std::move(lightEdge));
+    }
+    if (componentsJson.contains("on_death")) {
+        auto onDeathJson = componentsJson["on_death"];
+        reg.addComponent(entity, ecs::component::OnDeath{onDeathJson["entity"]});
+    }
+    if (componentsJson.contains("particle")) {
+        auto particleJson = componentsJson["particle"];
+        ecs::component::ParticleSpawner particle;
+
+        auto offsetJson = particleJson["offset"];
+        particle.offset.x = offsetJson["x"].get<float>();
+        particle.offset.y = offsetJson["y"].get<float>();
+
+        particle.texture = std::make_shared<sf::Texture>();
+        particle.texture->loadFromFile("assets/particule/blob.png");
+        particle.texture->setSmooth(true);
+
+        particle.system = std::make_shared<particles::TextureParticleSystem>(
+            particleJson["max_nb_particle"].get<int>(), particle.texture.get()
+        );
+        particle.system->additiveBlendMode = particleJson["additive_blend_mode"].get<bool>();
+        particle.system->emitRate = particleJson["emit_rate"].get<int>();
+
+        particle.spawner = particle.system->addSpawner<particles::PointSpawner>();
+        particle.spawner->center = sf::Vector2f();
+
+        auto *timeGenerator = particle.system->addGenerator<particles::TimeGenerator>();
+        auto lifeTimeJson = particleJson["life_time"];
+        timeGenerator->minTime = lifeTimeJson["min"].get<float>();
+        timeGenerator->maxTime = lifeTimeJson["max"].get<float>();
+        auto *sizeGenerator = particle.system->addGenerator<particles::SizeGenerator>();
+        auto sizeJson = particleJson["size"];
+        sizeGenerator->minStartSize = sizeJson["min_start"].get<float>();
+        sizeGenerator->maxStartSize = sizeJson["max_start"].get<float>();
+        sizeGenerator->minEndSize = sizeJson["min_end"].get<float>();
+        sizeGenerator->maxEndSize = sizeJson["max_end"].get<float>();
+        auto *velocityGenerator = particle.system->addGenerator<particles::AngledVelocityGenerator>();
+        auto velocityJson = particleJson["velocity"];
+        velocityGenerator->minAngle = velocityJson["min_angle"].get<float>();
+        velocityGenerator->maxAngle = velocityJson["max_angle"].get<float>();
+        velocityGenerator->minStartSpeed = velocityJson["min_start_speed"].get<float>();
+        velocityGenerator->maxStartSpeed = velocityJson["max_start_speed"].get<float>();
+        auto *colorGenerator = particle.system->addGenerator<particles::ColorGenerator>();
+        auto colorJson = particleJson["color"];
+        colorGenerator->minStartCol = sf::Color(
+            colorJson["min_start"]["r"].get<int>(),
+            colorJson["min_start"]["g"].get<int>(),
+            colorJson["min_start"]["b"].get<int>(),
+            colorJson["min_start"]["a"].get<int>()
+        );
+        colorGenerator->maxStartCol = sf::Color(
+            colorJson["max_start"]["r"].get<int>(),
+            colorJson["max_start"]["g"].get<int>(),
+            colorJson["max_start"]["b"].get<int>(),
+            colorJson["max_start"]["a"].get<int>()
+        );
+        colorGenerator->minEndCol = sf::Color(
+            colorJson["min_end"]["r"].get<int>(),
+            colorJson["min_end"]["g"].get<int>(),
+            colorJson["min_end"]["b"].get<int>(),
+            colorJson["min_end"]["a"].get<int>()
+        );
+        colorGenerator->maxEndCol = sf::Color(
+            colorJson["max_end"]["r"].get<int>(),
+            colorJson["max_end"]["g"].get<int>(),
+            colorJson["max_end"]["b"].get<int>(),
+            colorJson["max_end"]["a"].get<int>()
+        );
+
+        particle.system->addUpdater<particles::TimeUpdater>();
+        particle.system->addUpdater<particles::ColorUpdater>();
+        particle.system->addUpdater<particles::SizeUpdater>();
+        particle.system->addUpdater<particles::EulerUpdater>();
+
+        reg.addComponent(entity, std::move(particle));
     }
 }
 

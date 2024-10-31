@@ -27,10 +27,10 @@ class RoomManager {
     struct Room {
         std::map<std::size_t, PlayerLobby> player;
         std::size_t stage = 1;
+        int missileSpawnRate = 100;
         std::unique_ptr<std::thread> game;
         std::shared_ptr<GameRunner> gameRunner = nullptr;
         std::promise<bool> clientReady;
-        bool stopGame = false;
     };
 
     std::map<std::string, Room> _rooms;
@@ -59,11 +59,20 @@ class RoomManager {
         ntw::TCPServer &tcpServer
     );
     void leaveRoom(const std::string &name, std::size_t playerId, ntw::TCPServer &tcpServer);
-    void playerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
+    void playerReady(
+        const std::string &roomName,
+        std::size_t playerId,
+        int playerMissileSpawnRate,
+        int missileSpawnRate,
+        ntw::TCPServer &tcpServer
+    );
     void playerNotReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
     void sendListRoom(std::size_t playerId, ntw::TCPServer &tcpServer);
     void playerDisconnected(std::size_t playerId, ntw::TCPServer &tcpServer);
     void udpPlayerReady(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
     void sendNewChatMsg(const std::string &msg, ntw::TCPServer &tcpServer);
+
+    void printRoomList();
+    void banPlayer(const std::string &roomName, std::size_t playerId, ntw::TCPServer &tcpServer);
 };
 } // namespace rts

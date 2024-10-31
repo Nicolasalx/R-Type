@@ -11,6 +11,7 @@
 #include <asio/ip/udp.hpp>
 #include <cstring>
 #include <functional>
+#include <mutex>
 #include <thread>
 #include "../BuffSize.hpp"
 #include "AsioServer.hpp"
@@ -31,12 +32,12 @@ namespace ntw {
  *  The server handle commands that can be registered.
  */
 class UDPServer : public ntw::AsioServer {
+    public:
     /**
      * @brief Type that represent a client id useful to identify a specific client.
      */
     using client_id_t = size_t;
 
-    public:
     /**
      * @brief Constructor takes the param port that the server listens,
      *        and construct the asynchronous udp server.
@@ -78,6 +79,18 @@ class UDPServer : public ntw::AsioServer {
     };
 
     /**
+     * @brief Return the mutex used for datas thread safety.
+     * @return Mutex used inside the class for datas safety.
+     *
+     * NOTE: This mutex SHOULD be used around variable members of this classes accessed by
+     *       their getters/setter.
+     */
+    std::recursive_mutex &mut()
+    {
+        return _mut;
+    }
+
+    /**
      * @brief Return the udp endpoint of the last client that have connected.
      * @return Udp endpoint of type `udp::endpoint &`.
      */
@@ -96,12 +109,27 @@ class UDPServer : public ntw::AsioServer {
     }
 
     /**
+     * @brief Remove the client specified in @param id, it removes its udp enpoint too.
+     *
+     * @param id Id of the client to remove.
+     */
+    void removeClient(client_id_t id);
+
+    /**
      * @brief Send a message specified in @param data of size ( @param size ) to the @param endpoint parameter.
      * @param endpoint Remote endpoint where to send the data.
      * @param data Bytes to send.
      * @param size Number of bytes to send.
      */
     void send(udp::endpoint &endpoint, const char *data, std::size_t size);
+
+    /**
+     * @brief Send a message specified in @param data of size ( @param size ) to the client with id ( @param endpoint ).
+     * @param id Id of the client to which we send the @param data.
+     * @param data Bytes to send.
+     * @param size Number of bytes to send.
+     */
+    void send(client_id_t id, const char *data, std::size_t size);
 
     /**
      * @brief Send a message specified in @param data of size ( @param size ) to all the clients.
@@ -155,6 +183,7 @@ class UDPServer : public ntw::AsioServer {
     std::unordered_map<client_id_t, udp::endpoint> _cliEndpoints;
     size_t _nbClients = 0;
     udp::socket _sock;
+    std::recursive_mutex _mut;
 
     std::array<char, BUFF_SIZE> _buff{};
     std::function<void(udp::endpoint &, char *, std::size_t)> _handler;

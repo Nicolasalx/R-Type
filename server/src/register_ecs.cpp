@@ -6,14 +6,23 @@
 */
 
 #include <SFML/Graphics.hpp>
-#include <cstddef>
 #include <cstdio>
 #include <functional>
 #include <vector>
+#include "components/death_split.hpp"
+#include "components/game_tag.hpp"
+#include "systems/check_game_ending.hpp"
+#include <imgui-SFML.h>
+
 #include "RTypeServer.hpp"
 #include "Registry.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
+#include "components/dobkeratops.hpp"
+#include "gameCallbacks/collideEffect.hpp"
+#include "gameCallbacks/endGame.hpp"
+#include "udp/UDPServer.hpp"
+
 #include "components/animation.hpp"
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
@@ -28,14 +37,13 @@
 #include "components/sprite.hpp"
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
-#include "systems/collision.hpp"
-#include "systems/draw.hpp"
-#include "systems/position.hpp"
-#include "udp/UDPServer.hpp"
 #include "components/ai_actor.hpp"
 #include "components/server_share_movement.hpp"
 #include "components/shared_entity.hpp"
-#include "imgui-SFML.h"
+
+#include "systems/collision.hpp"
+#include "systems/draw.hpp"
+#include "systems/position.hpp"
 #include "systems/ai_act.hpp"
 #include "systems/health_mob_check.hpp"
 #include "systems/health_shared_check.hpp"
@@ -56,13 +64,15 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::SharedEntity>();
     reg.registerComponent<ecs::component::Missile>();
     reg.registerComponent<ecs::component::AiActor>();
-    reg.registerComponent<ecs::component::Tag<size_t>>();
+    reg.registerComponent<ecs::component::Tag<ecs::component::EntityTag>>();
     reg.registerComponent<ecs::component::Health>();
     reg.registerComponent<ecs::component::AiActor>();
     reg.registerComponent<ecs::component::Health>();
     reg.registerComponent<ecs::component::Beam>();
     reg.registerComponent<ecs::component::Score>();
     reg.registerComponent<ecs::component::Player>();
+    reg.registerComponent<ecs::component::DobkeratopsState>();
+    reg.registerComponent<ecs::component::DeathSplit>();
 }
 
 void rts::registerSystems(
@@ -74,7 +84,8 @@ void rts::registerSystems(
     std::list<std::vector<char>> &datasToSend,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
-    bool debugMode
+    bool debugMode,
+    size_t &nbPlayers
 )
 {
     tickRateManager.addTickRate(rts::TickRate::SEND_PACKETS, rts::SERVER_TICKRATE.at(rts::TickRate::SEND_PACKETS));
@@ -90,7 +101,7 @@ void rts::registerSystems(
         }
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend); });
+    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {
         ecs::systems::healthMobCheck(reg, waveManager);
         ecs::systems::healthSharedCheck(reg, datasToSend);
@@ -112,6 +123,15 @@ void rts::registerSystems(
         if (tickRateManager.needUpdate(rts::TickRate::ENTITY_MOVEMENT, dt)) {
             ecs::systems::serverShareMovement(reg, datasToSend);
         }
+    });
+    reg.addSystem([&nbPlayers, &waveManager, &reg, &datasToSend]() {
+        ecs::systems::checkGameEnding(
+            reg,
+            [&nbPlayers, &waveManager](ecs::Registry &) {
+                return nbPlayers == 0 || (!waveManager.hasEntity() && waveManager.isEnd());
+            },
+            [&datasToSend](ecs::Registry &) { endGame(datasToSend); }
+        );
     });
     reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt]() {
         if (tickRateManager.needUpdate(rts::TickRate::SEND_PACKETS, dt)) {

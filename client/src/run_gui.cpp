@@ -8,21 +8,23 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <cstring>
+#include <memory>
 #include <string>
 #include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
 #include "SFML/Graphics/Sprite.hpp"
-#include "imgui.h"
+#include "SFML/System/Time.hpp"
 #include "imgui-SFML.h"
 
 void rtc::runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
-    rtc::RoomManager &roomManager,
-    bool &inLobby,
+    const std::shared_ptr<rtc::RoomManager> &roomManager,
+    std::atomic<rtc::GameState> &gameState,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 )
 {
+    ecs::SoundManager soundManager;
     sf::Clock dt;
     sf::Vector2u windowSize;
     WindowMode windowMode = rtc::WindowMode::MENU;
@@ -36,19 +38,28 @@ void rtc::runGui(
     sf::Sprite background(texture);
     background.setScale(rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y));
 
-    while (window->isOpen() && inLobby) {
+    while (window->isOpen() && gameState.load() == GameState::LOBBY) {
+        sf::Time timeDt = dt.restart();
         sf::Event event{};
+        if (timeDt.asSeconds() <= 0) {
+            timeDt = sf::milliseconds(1);
+        }
         while (window->pollEvent(event)) {
             ImGui::SFML::ProcessEvent(*window, event);
             if (event.type == sf::Event::Closed) {
+                gameState.store(GameState::NONE);
                 window->close();
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::RControl) {
                 chatEnable = !chatEnable;
             } else if (event.type == sf::Event::Resized) {
                 windowSize = window->getSize();
             }
+            if (event.type == sf::Event::MouseButtonPressed) {
+                soundManager.loadSoundBuffer("ui_click", "assets/uiClick.wav");
+                soundManager.playSoundEffect("ui_click", 100.f, false);
+            }
         }
-        ImGui::SFML::Update(*window, dt.restart());
+        ImGui::SFML::Update(*window, timeDt);
         window->clear();
         window->draw(background);
         switch (windowMode) {

@@ -56,7 +56,13 @@ void rts::registerTcpResponse(
     responseHandler.registerHandler<rt::TCPBody::CL_READY>(
         rt::TCPCommand::CL_READY,
         [&roomManager, &tcpServer](const rt::TCPPacket<rt::TCPBody::CL_READY> &packet) {
-            roomManager.playerReady(packet.body.roomName, packet.body.userId, tcpServer);
+            roomManager.playerReady(
+                packet.body.roomName,
+                packet.body.userId,
+                packet.body.missileSpawnRate,
+                packet.body.playerMissileSpawnRate,
+                tcpServer
+            );
         }
     );
     responseHandler.registerHandler<rt::TCPBody::CL_NOT_READY>(

@@ -22,12 +22,18 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
         rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
     );
-    msg.body.pos = {playerPos.x + 36, playerPos.y};
+    msg.body.pos = {playerPos.x + 30, playerPos.y};
     msg.body.vel = {250, 0};
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(ecs::Registry &reg, ntw::UDPClient &udp)
+void ecs::systems::controlSpecial(
+    ecs::Registry &reg,
+    ecs::InputManager &input,
+    ntw::UDPClient &udp,
+    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    int spawnRate
+)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();
@@ -41,7 +47,7 @@ void ecs::systems::controlSpecial(ecs::Registry &reg, ntw::UDPClient &udp)
     for (auto [_, pos, beam] : zipControl) {
         if (!beam.isCharging && beam.sendMissile) {
             auto now = std::chrono::high_resolution_clock::now();
-            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < 250) {
+            if (std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count() < spawnRate) {
                 continue;
             }
             lastTime = now;

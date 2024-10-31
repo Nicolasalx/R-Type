@@ -8,6 +8,7 @@ add_executable(r-type_client
     src/register_tcp_response.cpp
     src/register_udp_response.cpp
     src/run_gui.cpp
+    src/GameOptions.cpp
     src/menu/room_selection.cpp
     src/menu/title_menu.cpp
     src/menu/chat.cpp
@@ -29,7 +30,7 @@ endif()
 
 target_compile_options(r-type_client PRIVATE -Wall -Wextra)
 
-target_link_libraries(r-type_client PRIVATE FACTORY NETWORK UTILS ImGui-SFML::ImGui-SFML Candle-s)
+target_link_libraries(r-type_client PRIVATE FACTORY NETWORK UTILS ImGui-SFML::ImGui-SFML Candle-s Particles-s)
 
 target_include_directories(r-type_client PRIVATE ${CMAKE_SOURCE_DIR}/include)
 

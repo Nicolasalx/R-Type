@@ -8,9 +8,13 @@
 #pragma once
 
 #include <any>
+#include <cstddef>
+#include <cstdio>
 #include <cstring>
 #include <functional>
+#include <optional>
 #include <string>
+#include <sys/types.h>
 #include <vector>
 #include "../lib/utils/Logger.hpp"
 #include "../lib/utils/TrackedException.hpp"
@@ -44,6 +48,11 @@ class UDPResponseHandler {
         };
     }
 
+    void registerAckHandler(std::function<void(std::uint8_t, size_t, const std::vector<std::any> &)> handler)
+    {
+        _ackHandler = std::move(handler);
+    }
+
     void handleResponse(const char *data, std::size_t size, const std::vector<std::any> &arg = {})
     {
         const char *ptr = data;
@@ -60,15 +69,19 @@ class UDPResponseHandler {
                 eng::logWarning("Packet of invalid size received !");
                 break;
             }
-            if (_handler.contains(header->cmd)) {
-                _handler.at(header->cmd)(ptr);
-            } else if (_specialHandler.contains(header->cmd)) {
-                _specialHandler.at(header->cmd)(ptr, arg);
+            if (header->ack && _ackHandler.has_value()) {
+                _ackHandler.value()((std::uint8_t)header->cmd, header->packetId, arg);
             } else {
-                throw eng::TrackedException(
-                    "Response without handler: " +
-                    std::to_string(static_cast<std::underlying_type_t<rt::UDPCommand>>(header->cmd)) + '.'
-                );
+                if (_handler.contains(header->cmd)) {
+                    _handler.at(header->cmd)(ptr);
+                } else if (_specialHandler.contains(header->cmd)) {
+                    _specialHandler.at(header->cmd)(ptr, arg);
+                } else {
+                    throw eng::TrackedException(
+                        "Response without handler: " +
+                        std::to_string(static_cast<std::underlying_type_t<rt::UDPCommand>>(header->cmd)) + '.'
+                    );
+                }
             }
             ptr += header->size;
             size -= header->size;
@@ -82,6 +95,7 @@ class UDPResponseHandler {
     std::unordered_map<rt::UDPCommand, std::function<void(const char *)>> _handler;
     std::unordered_map<rt::UDPCommand, std::function<void(const char *, const std::vector<std::any> &)>>
         _specialHandler;
+    std::optional<std::function<void(std::uint8_t, size_t, const std::vector<std::any> &)>> _ackHandler;
 };
 
 } // namespace rt
