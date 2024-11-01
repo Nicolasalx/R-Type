@@ -177,7 +177,7 @@ void EntityFactory::addCommonComponents(
 
     if (componentsJson.contains("beam")) {
         float beamValue = componentsJson["beam"].get<float>();
-        reg.addComponent(entity, ecs::component::Beam{beamValue});
+        reg.addComponent(entity, ecs::component::Beam{beamValue, false, 0, false});
     }
 
     if (componentsJson.contains("score")) {

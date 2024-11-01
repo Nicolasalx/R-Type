@@ -101,24 +101,6 @@ const std::unordered_map<std::string, std::function<void(Registry &, entity_t, e
                  state = "right";
              }
          }},
-        {"missile", // ! To finish
-         [](ecs::Registry &reg, entity_t id, ecs::component::Animation &anim) {
-             // auto beam = reg.getComponent<ecs::component::Beam>(id);
-             // if (!beam) {
-             //     return;
-             // }
-             //
-             //  std::cout << "IS CHARGING: " << beam->isCharging << "\n";
-
-             //  float vx = velOpt->vx;
-             //  std::string &state = anim.state;
-
-             //  if (vx < 0) {
-             //      state = "left";
-             //  } else {
-             //      state = "right";
-             //  }
-         }},
         {"none", [](ecs::Registry &, entity_t, ecs::component::Animation &) {}},
 };
 

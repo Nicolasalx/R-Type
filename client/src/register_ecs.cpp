@@ -115,8 +115,8 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &soundManager]() { ecs::systems::soundEmitterSystem(reg, soundManager); });
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
-    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, keyBind, rtc::GameOptions::missileSpawnRate);
+    reg.addSystem([&reg, &udpClient]() {
+        ecs::systems::controlSpecial(reg, udpClient, rtc::GameOptions::missileSpawnRate);
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });

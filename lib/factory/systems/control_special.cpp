@@ -27,13 +27,7 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
-void ecs::systems::controlSpecial(
-    ecs::Registry &reg,
-    ecs::InputManager &input,
-    ntw::UDPClient &udp,
-    const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
-    int spawnRate
-)
+void ecs::systems::controlSpecial(ecs::Registry &reg, ntw::UDPClient &udp, int spawnRate)
 {
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &positions = reg.getComponents<ecs::component::Position>();
