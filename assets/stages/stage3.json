@@ -1,0 +1,119 @@
+{
+    "waves": {
+        "wave1": [
+            {
+                "mobJsonPath": "assets/robotGround.json",
+                "nbMob": 2,
+                "pos": [
+                    {
+                        "x": 600.0,
+                        "y": 400.0
+                    },
+                    {
+                        "x": 200.0,
+                        "y": 400.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "robot",
+                    "robot"
+                ]
+            }
+        ],
+        "wave2": [
+            {
+                "mobJsonPath": "assets/bydosWave.json",
+                "nbMob": 4,
+                "pos": [
+                    {
+                        "x": 650.0,
+                        "y": 100.0
+                    },
+                    {
+                        "x": 600.0,
+                        "y": 150.0
+                    },
+                    {
+                        "x": 600.0,
+                        "y": 225.0
+                    },
+                    {
+                        "x": 600.0,
+                        "y": 300.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "bydosWave",
+                    "bydosWave",
+                    "bydosWave",
+                    "bydosWave"
+                ]
+            },
+            {
+                "mobJsonPath": "assets/robotGround.json",
+                "nbMob": 3,
+                "pos": [
+                    {
+                        "x": 600.0,
+                        "y": 400.0
+                    },
+                    {
+                        "x": 400.0,
+                        "y": 400.0
+                    },
+                    {
+                        "x": 200.0,
+                        "y": 400.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "robot",
+                    "robot",
+                    "robot"
+                ]
+            }
+        ]
+    }
+}
