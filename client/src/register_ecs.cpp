@@ -114,7 +114,7 @@ void rtc::registerEndingSystems(
 
     rtc::addScore("assets/score/scoreBoard.json", playerName, score);
 
-    reg.addSystem([win, &window, font, &gameState, texture, &playerName, &score]() {
+    reg.addSystem([win, &window, font, texture, &playerName, &score]() {
         sf::Sprite background(texture);
         background.setScale(
             rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)
@@ -122,7 +122,7 @@ void rtc::registerEndingSystems(
         sf::Color color = background.getColor();
         color.a = 100;
         background.setColor(color);
-        ecs::systems::drawGameEnding(win, window, window.getSize(), font, gameState, background, playerName, score);
+        ecs::systems::drawGameEnding(win, window, window.getSize(), font, background, playerName, score);
     });
 }
 

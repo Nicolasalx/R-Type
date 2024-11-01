@@ -20,7 +20,6 @@ void drawGameEnding(
     sf::RenderWindow &window,
     const sf::Vector2u &windowSize,
     const std::shared_ptr<ImFont> &font,
-    std::atomic<rtc::GameState> &gameState,
     sf::Sprite &background,
     const std::string &playerName,
     const int &score

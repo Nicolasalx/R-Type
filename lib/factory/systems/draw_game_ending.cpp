@@ -13,11 +13,10 @@
 #include "components/self_player.hpp"
 
 void ecs::systems::drawGameEnding(
-    bool resultGame,
+    bool win,
     sf::RenderWindow &window,
     const sf::Vector2u &windowSize,
     const std::shared_ptr<ImFont> &font,
-    std::atomic<rtc::GameState> &gameState,
     sf::Sprite &background,
     const std::string &playerName,
     const int &score
@@ -25,7 +24,7 @@ void ecs::systems::drawGameEnding(
 {
     const std::string playerText = "Hello " + playerName + " !";
     const std::string scoreText = "You have " + std::to_string(score) + " points";
-    const std::string resultText = resultGame ? "You Win !" : "You lose !";
+    const std::string resultText = win ? "You Win !" : "You lose !";
 
     if (background.getTexture()) {
         window.draw(background);
