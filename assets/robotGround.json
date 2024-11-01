@@ -108,6 +108,9 @@
             "angle": 360.0,
             "rotation": 0.0
         },
+        "ennemy_type": {
+            "type": "ground"
+        },
         "tag": 2
     }
 }

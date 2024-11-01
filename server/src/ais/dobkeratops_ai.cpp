@@ -280,7 +280,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
         state.phase = 2;
     }
 
-    if (health->currHp <= 1) {
+    if (health->currHp <= 10) {
         cleanupDobkeratopsSegments(reg, datasToSend, state);
         datasToSend.push_back(
             rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId, true)

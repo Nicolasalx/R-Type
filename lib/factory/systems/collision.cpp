@@ -12,6 +12,7 @@
 
 #include "Registry.hpp"
 #include "components/controllable.hpp"
+#include "components/gravity.hpp"
 #include "components/hitbox.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
@@ -59,6 +60,7 @@ void collision(
     auto &hitboxes = reg.getComponents<ecs::component::Hitbox>();
     auto &velocities = reg.getComponents<ecs::component::Velocity>();
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
+    auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &players = reg.getComponents<ecs::component::Player>();
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
@@ -81,8 +83,10 @@ void collision(
 
             sf::FloatRect intersection;
             if (rectA.intersects(rectB, intersection)) {
-                const bool entityAControllable = controllables.has(entityA);
-                const bool entityBControllable = controllables.has(entityB);
+                bool entityAControllable = controllables.has(entityA);
+                bool entityBControllable = controllables.has(entityB);
+                bool entityAGravity = gravities.has(entityA);
+                bool entityBGravity = gravities.has(entityB);
                 const bool entityAPlayer = players.has(entityA);
                 const bool entityBPlayer = players.has(entityB);
 
@@ -94,6 +98,10 @@ void collision(
                     if (!entityBPlayer) {
                         resolveCollision(posB, intersection, velocities[entityB]);
                     }
+                } else if (entityAGravity && !entityBGravity) {
+                    resolveCollision(posA, intersection, velocities[entityA]);
+                } else if (!entityAGravity && entityBGravity) {
+                    resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
                 collideCallback(reg, entityA, entityB, datasToSend);
@@ -108,6 +116,7 @@ void collisionPredict(Registry &reg)
     auto &hitboxes = reg.getComponents<ecs::component::Hitbox>();
     auto &velocities = reg.getComponents<ecs::component::Velocity>();
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
+    auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &players = reg.getComponents<ecs::component::Player>();
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
@@ -130,8 +139,10 @@ void collisionPredict(Registry &reg)
 
             sf::FloatRect intersection;
             if (rectA.intersects(rectB, intersection)) {
-                const bool entityAControllable = controllables.has(entityA);
-                const bool entityBControllable = controllables.has(entityB);
+                bool entityAControllable = controllables.has(entityA);
+                bool entityBControllable = controllables.has(entityB);
+                bool entityAGravity = gravities.has(entityA);
+                bool entityBGravity = gravities.has(entityB);
                 const bool entityAPlayer = players.has(entityA);
                 const bool entityBPlayer = players.has(entityB);
 
@@ -143,6 +154,10 @@ void collisionPredict(Registry &reg)
                     if (!entityBPlayer) {
                         resolveCollision(posB, intersection, velocities[entityB]);
                     }
+                } else if (entityAGravity && !entityBGravity) {
+                    resolveCollision(posA, intersection, velocities[entityA]);
+                } else if (!entityAGravity && entityBGravity) {
+                    resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
             }

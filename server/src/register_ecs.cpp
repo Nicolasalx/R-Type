@@ -28,6 +28,7 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
+#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -74,6 +75,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::DobkeratopsState>();
     reg.registerComponent<ecs::component::DeathSplit>();
+    reg.registerComponent<ecs::component::Gravity>();
 }
 
 void rts::registerSystems(
