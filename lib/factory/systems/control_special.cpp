@@ -6,8 +6,6 @@
 */
 
 #include "systems/control_special.hpp"
-#include "InputManager.hpp"
-#include "KeyBind.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "Zipper.hpp"
@@ -17,13 +15,14 @@
 #include "udp/UDPClient.hpp"
 #include "shared_entity.hpp"
 
-static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos)
+static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos, int chargeLevel)
 {
     rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
         rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
     );
     msg.body.pos = {playerPos.x + 30, playerPos.y};
     msg.body.vel = {250, 0};
+    msg.body.chargeLevel = chargeLevel;
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }
 
@@ -45,7 +44,8 @@ void ecs::systems::controlSpecial(ecs::Registry &reg, ntw::UDPClient &udp, int s
                 continue;
             }
             lastTime = now;
-            spawnMissile(udp, pos);
+            spawnMissile(udp, pos, beam.chargeValue);
+            beam.chargeValue = 0;
             beam.sendMissile = false;
         }
     }

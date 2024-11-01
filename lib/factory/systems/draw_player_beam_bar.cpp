@@ -55,7 +55,6 @@ void ecs::systems::drawPlayerBeamBar(
             }
         } else {
             beam.isCharging = false;
-            beam.chargeValue = 0;
         }
         if (beam.isCharging) {
             float elapsedTime = chargeClock.getElapsedTime().asSeconds();

@@ -165,7 +165,11 @@ void EntityFactory::addCommonComponents(
     }
 
     if (componentsJson.contains("missile")) {
-        reg.addComponent(entity, ecs::component::Missile{});
+        int damage = 1;
+        if (componentsJson["missile"].contains("damage")) {
+            damage = componentsJson["missile"]["damage"].get<int>();
+        }
+        reg.addComponent(entity, ecs::component::Missile{damage});
     }
 
     if (componentsJson.contains("health")) {
@@ -176,8 +180,7 @@ void EntityFactory::addCommonComponents(
     }
 
     if (componentsJson.contains("beam")) {
-        float beamValue = componentsJson["beam"].get<float>();
-        reg.addComponent(entity, ecs::component::Beam{beamValue, false, 0, false});
+        reg.addComponent(entity, ecs::component::Beam{false, 0, false});
     }
 
     if (componentsJson.contains("score")) {
