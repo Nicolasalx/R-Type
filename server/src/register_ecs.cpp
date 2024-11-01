@@ -34,12 +34,12 @@
 #include "components/parallax.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
-#include "components/is_a_boss.hpp"
 #include "components/score.hpp"
 #include "components/sprite.hpp"
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
 #include "components/ai_actor.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/server_share_movement.hpp"
 #include "components/shared_entity.hpp"
 
