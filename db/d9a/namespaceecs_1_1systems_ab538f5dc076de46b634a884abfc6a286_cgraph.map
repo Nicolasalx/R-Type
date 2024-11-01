@@ -1,0 +1,9 @@
+<map id="ecs::systems::checkOutOfRange" name="ecs::systems::checkOutOfRange">
+<area shape="rect" id="node1" title=" " alt="" coords="5,105,196,145"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="244,5,460,31"/>
+<area shape="rect" id="node3" href="$d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="256,55,448,80"/>
+<area shape="rect" id="node4" href="$d5/d35/classecs_1_1WaveManager.html#a61d4a9b26a18a8aedf29021d4f13ea8a" title="Checks some mobs are out of range, if there are it remove it from registry and send it to the clients..." alt="" coords="251,105,453,145"/>
+<area shape="rect" id="node6" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="267,169,437,195"/>
+<area shape="rect" id="node7" href="$d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="251,219,453,259"/>
+<area shape="rect" id="node5" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="508,112,717,137"/>
+</map>

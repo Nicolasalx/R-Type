@@ -1,0 +1,4 @@
+<map id="ecs::WaveManager::isOutOfBonds" name="ecs::WaveManager::isOutOfBonds">
+<area shape="rect" id="node1" title="Checks some mobs are out of range, if there are it remove it from registry and send it to the clients..." alt="" coords="5,5,208,45"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="256,13,465,38"/>
+</map>

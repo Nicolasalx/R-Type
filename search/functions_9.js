@@ -11,5 +11,6 @@ var searchData=
   ['isend_8',['isEnd',['../d5/d35/classecs_1_1WaveManager.html#ab25a402f706e819dfcda4e3aeda0e091',1,'ecs::WaveManager']]],
   ['iserver_9',['IServer',['../d7/d3d/classntw_1_1IServer.html#a060a3b546109ef261bd0015dfcf73267',1,'ntw::IServer']]],
   ['iskeypressed_10',['isKeyPressed',['../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08',1,'ecs::InputManager']]],
-  ['ismob_11',['isMob',['../d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf',1,'ecs::WaveManager']]]
+  ['ismob_11',['isMob',['../d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf',1,'ecs::WaveManager']]],
+  ['isoutofbonds_12',['isOutOfBonds',['../d5/d35/classecs_1_1WaveManager.html#a61d4a9b26a18a8aedf29021d4f13ea8a',1,'ecs::WaveManager']]]
 ];
