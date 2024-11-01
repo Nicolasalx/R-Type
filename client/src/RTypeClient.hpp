@@ -62,7 +62,6 @@ void registerGameSystems(
 void registerEndingSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
-    bool win,
     const std::shared_ptr<ImFont> &font,
     std::atomic<GameState> &gameState,
     const std::string &playerName,

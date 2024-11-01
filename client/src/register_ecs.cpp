@@ -101,13 +101,13 @@ void rtc::registerComponents(ecs::Registry &reg)
 void rtc::registerEndingSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
-    bool resultGame,
     const std::shared_ptr<ImFont> &font,
     std::atomic<GameState> &gameState,
     const std::string &playerName,
     const int &score
 )
 {
+    bool win = gameState.load() == GameState::WIN;
     sf::Texture texture;
     if (!texture.loadFromFile("assets/menu/background.jpg")) {
         eng::logError("Failed to load background image !");
@@ -116,7 +116,7 @@ void rtc::registerEndingSystems(
 
     rtc::addScore("assets/score/scoreBoard.json", playerName, score);
 
-    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() {
+    reg.addSystem([win, &window, font, &gameState, texture, &playerName, &score]() {
         sf::Sprite background(texture);
         background.setScale(
             rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)
@@ -124,7 +124,7 @@ void rtc::registerEndingSystems(
         sf::Color color = background.getColor();
         color.a = 100;
         background.setColor(color);
-        ecs::systems::drawGameEnding(resultGame, window, window.getSize(), font, gameState, background, playerName, score);
+        ecs::systems::drawGameEnding(win, window, window.getSize(), font, gameState, background, playerName, score);
     });
 }
 

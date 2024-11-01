@@ -132,8 +132,7 @@ void rtc::GameManager::_runGame()
         return;
     }
     ecs::Registry regEnd;
-    rtc::registerComponents(regEnd);
-    rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN, _font, _gameState, _playerName, _score);
+    rtc::registerEndingSystems(regEnd, *_window, _font, _gameState, _playerName, _score);
 
     _gameState.store(GameState::GAME);
 
