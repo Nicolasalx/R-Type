@@ -1,6 +1,7 @@
 <map id="ecs::Registry::addSystem" name="ecs::Registry::addSystem">
-<area shape="rect" id="node1" title="Adds a system to the registry." alt="" coords="480,31,667,56"/>
-<area shape="rect" id="node2" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="279,5,432,31"/>
-<area shape="rect" id="node4" href="$d9/d77/namespacertc.html#a73fe63dc0d84dfc81f56e193c2bcad16" title=" " alt="" coords="279,55,432,80"/>
-<area shape="rect" id="node3" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,5,231,31"/>
+<area shape="rect" id="node1" title="Adds a system to the registry." alt="" coords="524,55,711,80"/>
+<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#a1d191a5a3ff004d1ec243c54509c25af" title=" " alt="" coords="279,5,476,31"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="281,55,473,80"/>
+<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="301,104,454,129"/>
+<area shape="rect" id="node5" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,104,231,129"/>
 </map>
