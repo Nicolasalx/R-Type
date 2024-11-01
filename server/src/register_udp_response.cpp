@@ -62,10 +62,20 @@ static void handleMissileCreation(
     const auto &vel = newMsg.body.vel;
 
     newMsg.ack = true;
-    networkCallbacks.pushBack([pos, vel, newMsg, &datasToSend, &timeoutHandler, &udpServer](ecs::Registry &reg) {
-        ecs::ServerEntityFactory::createServerEntityFromJSON(
-            reg, "assets/missile.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
-        );
+    networkCallbacks.pushBack([pos, vel, newMsg, &datasToSend, &timeoutHandler, &udpServer, &msg](ecs::Registry &reg) {
+        if (msg.body.chargeLevel > 66) {
+            ecs::ServerEntityFactory::createServerEntityFromJSON(
+                reg, "assets/beam/beam_large.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
+            );
+        } else if (msg.body.chargeLevel > 33 && msg.body.chargeLevel < 66) {
+            ecs::ServerEntityFactory::createServerEntityFromJSON(
+                reg, "assets/beam/beam_medium.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
+            );
+        } else {
+            ecs::ServerEntityFactory::createServerEntityFromJSON(
+                reg, "assets/beam/beam_slim.json", pos.x, pos.y, newMsg.sharedEntityId, vel.vx, vel.vy
+            );
+        }
         timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
         datasToSend.push_back(std::move(newMsg).serialize());
     });
@@ -135,7 +145,6 @@ void rts::registerUdpResponse(
                     reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.vel;
                 } catch (const std::exception &e) {
-                    // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());
                 }
             });

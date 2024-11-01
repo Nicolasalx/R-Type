@@ -1,0 +1,86 @@
+{
+    "type": "shared",
+    "components": {
+        "position": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "velocity": {
+            "vx": 0.0,
+            "vy": 0.0
+        },
+        "sprite": {
+            "texture": "assets/typesheets/r-typesheet1.gif",
+            "initial_frame": {
+                "x": 0,
+                "y": 0,
+                "width": 16,
+                "height": 12
+            }
+        },
+        "drawable": {
+            "size": {
+                "x": 16.0,
+                "y": 12.0
+            },
+            "fill_color": {
+                "r": 0,
+                "g": 255,
+                "b": 255
+            }
+        },
+        "animation": {
+            "frames": {
+                "right": [
+                    {
+                        "x": 232,
+                        "y": 102,
+                        "width": 16,
+                        "height": 12
+                    },
+                    {
+                        "x": 249,
+                        "y": 102,
+                        "width": 16,
+                        "height": 12
+                    }
+                ]
+            },
+            "frame_time": 0.1,
+            "update_state": "none",
+            "state": "right"
+        },
+        "missile": {
+            "damage": 1
+        },
+        "hitbox": {
+            "width": 16.0,
+            "height": 16.0
+        },
+        "server_share_movement": {},
+        "sound_emitter": {
+            "sound": "assets/beam/beam_slim.wav",
+            "volume": 10.0
+        },
+        "on_death": {
+            "entity": "assets/explosion2.json"
+        },
+        "radial_light": {
+            "offset": {
+                "x": 8,
+                "y": 6
+            },
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 255
+            },
+            "range": 20.0,
+            "intensity": 0.50,
+            "fade": true,
+            "angle": 360.0,
+            "rotation": 0.0
+        },
+        "tag": 1
+    }
+}

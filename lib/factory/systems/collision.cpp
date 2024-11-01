@@ -12,6 +12,7 @@
 
 #include "Registry.hpp"
 #include "components/controllable.hpp"
+#include "components/gravity.hpp"
 #include "components/hitbox.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
@@ -58,6 +59,9 @@ void collision(
     auto &hitboxes = reg.getComponents<ecs::component::Hitbox>();
     auto &velocities = reg.getComponents<ecs::component::Velocity>();
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
+    auto &gravities = reg.getComponents<ecs::component::Gravity>();
+
+    dprintf(1, "SIZE GRAVITITES: %d\n", gravities.size());
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
 
@@ -81,10 +85,21 @@ void collision(
             if (rectA.intersects(rectB, intersection)) {
                 bool entityAControllable = controllables.has(entityA);
                 bool entityBControllable = controllables.has(entityB);
+                bool entityAGravity = gravities.has(entityA);
+                bool entityBGravity = gravities.has(entityB);
 
+                dprintf(
+                    1, "ENTITY A N %ld IS %ld | ENTITY B N %ld %ld\n", entityA, entityAGravity, entityB, entityBGravity
+                );
                 if (entityAControllable && !entityBControllable) {
                     resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAControllable && entityBControllable) {
+                    resolveCollision(posB, intersection, velocities[entityB]);
+                } else if (entityAGravity && !entityBGravity) {
+                    dprintf(1, "COLLISION ENTITY A IS ENEMY\n");
+                    resolveCollision(posA, intersection, velocities[entityA]);
+                } else if (!entityAGravity && entityBGravity) {
+                    dprintf(1, "COLLISION ENTITY B IS ENEMY\n");
                     resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
@@ -100,6 +115,9 @@ void collisionPredict(Registry &reg)
     auto &hitboxes = reg.getComponents<ecs::component::Hitbox>();
     auto &velocities = reg.getComponents<ecs::component::Velocity>();
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
+    auto &gravities = reg.getComponents<ecs::component::Gravity>();
+
+    dprintf(1, "SIZE GRAVITITES: %d\n", gravities.size());
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
 
@@ -123,10 +141,18 @@ void collisionPredict(Registry &reg)
             if (rectA.intersects(rectB, intersection)) {
                 bool entityAControllable = controllables.has(entityA);
                 bool entityBControllable = controllables.has(entityB);
+                bool entityAGravity = gravities.has(entityA);
+                bool entityBGravity = gravities.has(entityB);
 
                 if (entityAControllable && !entityBControllable) {
                     resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAControllable && entityBControllable) {
+                    resolveCollision(posB, intersection, velocities[entityB]);
+                } else if (entityAGravity && !entityBGravity) {
+                    dprintf(1, "COLLISION ENTITY A IS ENEMY\n");
+                    resolveCollision(posA, intersection, velocities[entityA]);
+                } else if (!entityAGravity && entityBGravity) {
+                    dprintf(1, "COLLISION ENTITY B IS ENEMY\n");
                     resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable

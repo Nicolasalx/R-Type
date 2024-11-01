@@ -20,6 +20,7 @@
 #include "UDPResponseHandler.hpp"
 #include "WaveManager.hpp"
 #include "udp/UDPServer.hpp"
+#include "waveCreator/WaveCreator.hpp"
 
 namespace rts {
 
@@ -32,6 +33,7 @@ class GameRunner {
     size_t _nbPlayers;
     ecs::Registry _reg;
     ecs::WaveManager _waveManager;
+    rts::WaveCreator _waveCreator;
 
     float _dt = 0;
     ntw::TickRateManager<rts::TickRate> _tickRateManager;

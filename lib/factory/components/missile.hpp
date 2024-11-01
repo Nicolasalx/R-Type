@@ -14,6 +14,8 @@ namespace ecs::component {
  *
  * This component can be used to tag entities that should behave as missiles.
  */
-struct Missile {};
+struct Missile {
+    int damage = 1;
+};
 
 } // namespace ecs::component

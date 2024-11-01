@@ -9,6 +9,7 @@
 
 #include "Registry.hpp"
 #include <SFML/Graphics.hpp>
+#include "udp/UDPClient.hpp"
 
 namespace ecs::systems {
 
@@ -20,6 +21,6 @@ namespace ecs::systems {
  * allowing for more realistic interactions within the game environment.
  *
  */
-void gravitySystem(Registry &reg, const sf::Vector2u &windowSize);
+void gravitySystem(Registry &reg, const sf::Vector2u &windowSize, ntw::UDPClient &udpClient);
 
 } // namespace ecs::systems

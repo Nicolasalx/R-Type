@@ -25,6 +25,8 @@ add_library(FACTORY STATIC
     systems/death_timer.cpp
     systems/render_radial_light.cpp
     systems/check_game_ending.cpp
+    systems/draw_particle.cpp
+    systems/check_out_of_range.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp
@@ -51,4 +53,4 @@ target_include_directories(FACTORY PUBLIC
     ${CMAKE_SOURCE_DIR}/include
 )
 
-target_link_libraries(FACTORY PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML Candle-s)
+target_link_libraries(FACTORY PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML Candle-s Particles-s)

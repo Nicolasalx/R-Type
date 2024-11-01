@@ -6,25 +6,34 @@
 */
 
 #include "systems/gravity_system.hpp"
+#include "RTypeUDPProtol.hpp"
+#include "Registry.hpp"
+#include "Zipper.hpp"
 #include "components/gravity.hpp"
 #include "components/position.hpp"
-#include "Zipper.hpp"
+#include "components/velocity.hpp"
 
-#include <iostream>
-
-void ecs::systems::gravitySystem(Registry &reg, const sf::Vector2u &windowSize)
+void ecs::systems::gravitySystem(Registry &reg, const sf::Vector2u &windowSize, ntw::UDPClient &udpClient)
 {
     auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &positions = reg.getComponents<ecs::component::Position>();
+    auto &sharedEntity = reg.getComponents<ecs::component::SharedEntity>();
+    auto &velocitys = reg.getComponents<ecs::component::Velocity>();
 
-    ecs::Zipper<ecs::component::Gravity, ecs::component::Position> zipParallax(gravities, positions);
+    ecs::Zipper<
+        ecs::component::Gravity,
+        ecs::component::Position,
+        ecs::component::SharedEntity,
+        ecs::component::Velocity>
+        zipParallax(gravities, positions, sharedEntity, velocitys);
 
-    int index = 0;
-    for (const auto &[gravity, position] : zipParallax) {
+    for (auto [gravity, pos, sharedEnt, vel] : zipParallax) {
         if (gravity.ennemyType == "ground") {
-            position.y += 20;
-            std::cout << "ROBOT N°" << index << " => POSITION X: " << position.x << " / POSITION Y: " << position.y << "\n";
-            ++index;
+            pos.y += 1.0f;
+
+            rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> msg(rt::UDPCommand::MOVE_ENTITY, sharedEnt.sharedEntityId);
+            msg.body = {.pos = {pos.x, pos.y}, .vel = {.vx = vel.vx, .vy = vel.vy}};
+            udpClient.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
         }
     }
 }

@@ -9,14 +9,17 @@
 #include <cstdio>
 #include <functional>
 #include <vector>
+#include "components/death_split.hpp"
 #include "components/game_tag.hpp"
 #include "systems/check_game_ending.hpp"
+#include "systems/check_out_of_range.hpp"
 #include <imgui-SFML.h>
 
 #include "RTypeServer.hpp"
 #include "Registry.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
+#include "components/dobkeratops.hpp"
 #include "gameCallbacks/collideEffect.hpp"
 #include "gameCallbacks/endGame.hpp"
 #include "udp/UDPServer.hpp"
@@ -25,6 +28,7 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
+#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -69,6 +73,9 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Beam>();
     reg.registerComponent<ecs::component::Score>();
     reg.registerComponent<ecs::component::Player>();
+    reg.registerComponent<ecs::component::DobkeratopsState>();
+    reg.registerComponent<ecs::component::DeathSplit>();
+    reg.registerComponent<ecs::component::Gravity>();
 }
 
 void rts::registerSystems(
@@ -99,6 +106,9 @@ void rts::registerSystems(
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {
+        if (waveManager.hasEntity()) {
+            ecs::systems::checkOutOfRange(reg, waveManager, datasToSend);
+        }
         ecs::systems::healthMobCheck(reg, waveManager);
         ecs::systems::healthSharedCheck(reg, datasToSend);
     });

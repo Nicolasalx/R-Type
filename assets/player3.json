@@ -38,7 +38,7 @@
                         "width": 32,
                         "height": 32
                     },
-                    "x": -28,
+                    "x": -2800,
                     "y": -7,
                     "animation": {
                         "frames": {
@@ -168,6 +168,57 @@
             "angle": 360.0,
             "rotation": 0.0
         },
-        "tag": 1
+        "tag": 1,
+        "particle": {
+            "offset": {
+                "x": 0,
+                "y": 10.5
+            },
+            "max_nb_particle": 10000,
+            "additive_blend_mode": true,
+            "emit_rate": 150.0,
+            "life_time": {
+                "min": 0.3,
+                "max": 1.2
+            },
+            "size": {
+                "min_start": 3,
+                "max_start": 7,
+                "min_end": 20,
+                "max_end": 30
+            },
+            "velocity": {
+                "min_angle": -70.0,
+                "max_angle": -110.0,
+                "min_start_speed": 25.0,
+                "max_start_speed": 50.0
+            },
+            "color": {
+                "min_start": {
+                    "r": 0,
+                    "g": 255,
+                    "b": 0,
+                    "a": 255
+                },
+                "max_start": {
+                    "r": 75,
+                    "g": 255,
+                    "b": 0,
+                    "a": 255
+                },
+                "min_end": {
+                    "r": 75,
+                    "g": 255,
+                    "b": 0,
+                    "a": 0
+                },
+                "max_end": {
+                    "r": 150,
+                    "g": 255,
+                    "b": 0,
+                    "a": 0
+                }
+            }
+        }
     }
 }

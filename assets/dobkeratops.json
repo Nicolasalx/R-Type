@@ -53,6 +53,7 @@
             "state": "idle"
         },
         "server_share_movement": {},
-        "ai_actor": {}
+        "ai_actor": {},
+        "dobkeratops": {}
     }
 }

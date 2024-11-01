@@ -29,6 +29,7 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_DOBKERATOPS,
     NEW_ENTITY_DOBKERATOPS_PART,
     NEW_ENTITY_BOSS_PARASITE,
+    NEW_ENTITY_BLOB,
 
     TAKE_DAMAGE,
 
@@ -60,6 +61,7 @@ struct NEW_ENTITY_PLAYER {
 struct NEW_ENTITY_MISSILE {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+    int chargeLevel = 0;
 };
 
 struct NEW_ENTITY_MISSILE_BALL {
@@ -88,6 +90,10 @@ struct NEW_ENTITY_DOBKERATOPS {
 struct NEW_ENTITY_DOBKERATOPS_PART {
     ecs::component::Position pos{};
     int partIndex = 0;
+};
+
+struct NEW_ENTITY_BLOB {
+    ecs::component::Position pos{};
 };
 
 struct TAKE_DAMAGE {
