@@ -66,6 +66,16 @@ class WaveManager {
      * @return True if the entity is a mob, false otherwise.
      */
     bool isMob(entity_t entity);
+
+    /**
+     * @brief Checks some mobs are out of range, if there are it remove it from registry
+     *        and send it to the clients.
+     * @param reg The ECS registry to spawn the entities in.
+     * @param entity The entity to check.
+     * @return True if the mob is out of bounds false if it is not
+     */
+    bool isOutOfBonds(ecs::Registry &reg, entity_t entity);
+
     /**
      * @brief Removes an entity from the WaveManager.
      * @param entity The entity to remove.
