@@ -98,11 +98,6 @@ void rtc::GameManager::_runGame()
 
     _window->setView(_view);
 
-    soundManager.loadMusic("battle", "assets/battle.ogg");
-    soundManager.playMusic("battle", 5.f, true);
-    soundManager.loadSoundBuffer("explosion", "assets/boom12.wav");
-    soundManager.playSoundEffect("explosion", 100.f, false);
-
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
     rtc::registerGameSystems(
@@ -116,7 +111,8 @@ void rtc::GameManager::_runGame()
         _networkCallbacks,
         _metrics,
         _keyBind,
-        soundManager
+        soundManager,
+        _score
     );
 
     _setupUdpConnection(spriteManager, udpClient);
@@ -128,10 +124,15 @@ void rtc::GameManager::_runGame()
     _setupEntities(udpClient, reg, spriteManager);
     runGameLoop(reg, _window, dt, inputManager, _gameState);
 
-    // Add the score.
-    // ecs::Registry regEnd;
-    // rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN);
-    // runGameLoop(regEnd, _window, dt, inputManager, _gameState);
+    ecs::Registry regEnd;
+    rtc::registerComponents(regEnd);
+    rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN, _font, _gameState, _playerName, _score);
+
+    _gameState.store(GameState::GAME);
+
+    _setupEntities(udpClient, regEnd, spriteManager);
+
+    runGameLoop(regEnd, _window, dt, inputManager, _gameState);
 }
 
 void rtc::GameManager::_launchGame()

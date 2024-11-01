@@ -13,7 +13,7 @@ void ecs::systems::aiAct(Registry &reg)
     auto &actors = reg.getComponents<ecs::component::AiActor>();
 
     for (size_t entityId = 0; entityId < actors.size(); entityId++) {
-        if (actors[entityId]) {
+        if (actors[entityId] && actors[entityId]->act != nullptr) {
             actors[entityId]->act(reg, entityId);
         }
     }

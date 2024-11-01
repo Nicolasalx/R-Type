@@ -20,7 +20,10 @@ void rtc::renderInsideRoom(const std::shared_ptr<rtc::RoomManager> &roomManager,
         ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove |
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
-    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+    float scale = (windowSize.x + windowSize.y) / 1000.0f;
+    if (scale > 0.0f) {
+        ImGui::SetWindowFontScale(scale);
+    }
 
     float roomSectionWidth = windowSize.x * 0.6f;
 

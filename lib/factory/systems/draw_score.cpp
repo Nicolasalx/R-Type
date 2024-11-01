@@ -12,7 +12,7 @@
 #include "imgui.h"
 #include "components/self_player.hpp"
 
-void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize)
+void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize, int &scoring)
 {
     auto &score = reg.getComponents<ecs::component::Score>();
     auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
@@ -28,6 +28,7 @@ void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize)
                 IM_COL32(255, 255, 255, 255),
                 std::to_string(score.value).c_str()
             );
+            scoring = score.value;
         }
     }
 }

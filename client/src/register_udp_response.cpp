@@ -19,6 +19,7 @@
 #include "SpriteManager.hpp"
 #include "Zipper.hpp"
 #include "components/controllable.hpp"
+#include "components/dobkeratops.hpp"
 #include "components/health.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
@@ -27,10 +28,13 @@
 #include "imgui.h"
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/on_death.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
 #include <imgui-SFML.h>
+
+#include <iostream>
 
 static void handlePlayerCreation(
     std::size_t userId,
@@ -181,6 +185,15 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         }
     );
 
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BLOB>(
+        rt::UDPCommand::NEW_ENTITY_BLOB,
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_BLOB>(
+                "assets/blob.json", spriteManager, this->_networkCallbacks, packet, udpClient
+            );
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
@@ -224,43 +237,64 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     _udpResponseHandler.registerHandler<rt::UDPBody::DEL_ENTITY>(
         rt::UDPCommand::DEL_ENTITY,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::DEL_ENTITY> &packet) {
-            _networkCallbacks.pushBack([sharedEntityId = packet.sharedEntityId, packet, &udpClient, &spriteManager](
-                                           ecs::Registry &reg
-                                       ) {
-                try {
-                    if (reg.hasComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))) {
-                        auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
-                        auto &score = reg.getComponents<ecs::component::Score>();
-                        ecs::Zipper<ecs::component::Score, ecs::component::SelfPlayer> zip(score, selfPlayer);
-                        for (const auto &[actualScore, self] : zip) {
-                            actualScore.value +=
-                                reg.getComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))
-                                    .value()
-                                    .points;
+            _networkCallbacks.pushBack(
+                [sharedEntityId = packet.sharedEntityId, packet, &udpClient, &spriteManager, this](ecs::Registry &reg) {
+                    try {
+                        if (reg.hasComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId))) {
+                            auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
+                            auto &score = reg.getComponents<ecs::component::Score>();
+                            ecs::Zipper<ecs::component::Score, ecs::component::SelfPlayer> zip(score, selfPlayer);
+                            for (const auto &[actualScore, self] : zip) {
+                                actualScore.value +=
+                                    reg.getComponent<ecs::component::ScoreEarned>(reg.getLocalEntity().at(sharedEntityId
+                                                                                  ))
+                                        .value()
+                                        .points;
+                            }
                         }
-                    }
-                    auto entity = reg.getLocalEntity().at(sharedEntityId);
-                    if (reg.hasComponent<ecs::component::OnDeath>(entity)) {
-                        if (reg.hasComponent<ecs::component::Position>(entity)) {
-                            int x = reg.getComponent<ecs::component::Position>(entity)->x;
-                            int y = reg.getComponent<ecs::component::Position>(entity)->y;
-                            ecs::ClientEntityFactory::createClientEntityFromJSON(
-                                reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity, x, y
-                            );
-                        } else {
-                            ecs::ClientEntityFactory::createClientEntityFromJSON(
-                                reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity
-                            );
+                        GameState gameState = GameState::GAME;
+                        if (reg.hasComponent<ecs::component::IsABoss>(reg.getLocalEntity().at(sharedEntityId))) {
+                            gameState = GameState::WIN;
                         }
+                        auto entity = reg.getLocalEntity().at(sharedEntityId);
+
+                        if (reg.hasComponent<ecs::component::Score>(entity)) {
+                            auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
+                            auto &healths = reg.getComponents<ecs::component::Health>();
+                            ecs::Zipper<ecs::component::Health, ecs::component::SelfPlayer> zip(healths, selfPlayer);
+
+                            for (const auto &[health, self] : zip) {
+                                if (health.currHp <= 0) {
+                                    gameState = GameState::LOSE;
+                                }
+                            }
+                        }
+
+                        if (reg.hasComponent<ecs::component::OnDeath>(entity)) {
+                            if (reg.hasComponent<ecs::component::Position>(entity)) {
+                                int x = reg.getComponent<ecs::component::Position>(entity)->x;
+                                int y = reg.getComponent<ecs::component::Position>(entity)->y;
+                                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                                    reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity, x, y
+                                );
+                            } else {
+                                ecs::ClientEntityFactory::createClientEntityFromJSON(
+                                    reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity
+                                );
+                            }
+                        }
+                        reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
+                        auto packSer = packet.serialize();
+                        udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
+                        if (gameState != GameState::GAME) {
+                            this->_gameState.store(gameState);
+                        }
+                    } catch (const std::exception &e) {
+                        // If entity does not exist, maybe server is late or ahead.
+                        eng::logTimeWarning(e.what());
                     }
-                    reg.killEntity(reg.getLocalEntity().at(sharedEntityId));
-                    auto packSer = packet.serialize();
-                    udpClient.send(reinterpret_cast<char const *>(packSer.data()), packSer.size());
-                } catch (const std::exception &e) {
-                    // If entity does not exist, maybe server is late or ahead.
-                    eng::logTimeWarning(e.what());
                 }
-            });
+            );
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::PING>(

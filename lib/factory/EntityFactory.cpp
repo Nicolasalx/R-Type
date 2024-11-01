@@ -16,6 +16,7 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/health.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/player.hpp"
@@ -166,6 +167,10 @@ void EntityFactory::addCommonComponents(
 
     if (componentsJson.contains("missile")) {
         reg.addComponent(entity, ecs::component::Missile{});
+    }
+
+    if (componentsJson.contains("is_a_boss")) {
+        reg.addComponent(entity, ecs::component::IsABoss{});
     }
 
     if (componentsJson.contains("health")) {

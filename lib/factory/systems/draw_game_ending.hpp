@@ -7,10 +7,23 @@
 
 #pragma once
 
+#include <SFML/Graphics.hpp>
+#include <memory>
+#include "RTypeClient.hpp"
 #include "Registry.hpp"
+#include "imgui.h"
 
 namespace ecs::systems {
 
-void drawGameEnding(ecs::Registry &reg, bool win);
+void drawGameEnding(
+    bool win,
+    sf::RenderWindow &window,
+    const sf::Vector2u &windowSize,
+    const std::shared_ptr<ImFont> &font,
+    std::atomic<rtc::GameState> &gameState,
+    sf::Sprite &background,
+    const std::string &playerName,
+    const int &score
+);
 
 } // namespace ecs::systems

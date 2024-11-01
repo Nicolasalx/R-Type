@@ -6,10 +6,12 @@
 */
 
 #include "ClientTickRate.hpp"
+#include "GameManager.hpp"
 #include "GameOptions.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SFML/Graphics/Sprite.hpp"
 #include "SafeList.hpp"
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
@@ -37,6 +39,8 @@
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
 #include "components/on_death.hpp"
+#include "components/particle_spawner.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
@@ -48,6 +52,7 @@
 #include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
 #include "systems/draw_game_ending.hpp"
+#include "systems/draw_particle.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
 #include "systems/draw_player_health_bar.hpp"
@@ -86,15 +91,38 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::OnDeath>();
     reg.registerComponent<ecs::component::RadialLight>();
     reg.registerComponent<ecs::component::LightEdge>();
+    reg.registerComponent<ecs::component::ParticleSpawner>();
+    reg.registerComponent<ecs::component::IsABoss>();
 }
 
 void rtc::registerEndingSystems(
-    ecs::Registry &,
-    sf::RenderWindow &,
-    bool /* win */
+    ecs::Registry &reg,
+    sf::RenderWindow &window,
+    bool resultGame,
+    const std::shared_ptr<ImFont> &font,
+    std::atomic<GameState> &gameState,
+    const std::string &playerName,
+    const int &score
 )
 {
-    // ecs::systems::drawGameEnding !
+    sf::Texture texture;
+    if (!texture.loadFromFile("assets/menu/background.jpg")) {
+        eng::logError("Failed to load background image !");
+        return;
+    }
+
+    rtc::addScore("assets/score/scoreBoard.json", playerName, score);
+
+    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() mutable {
+        sf::Sprite background(texture);
+        background.setScale(
+            rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)
+        );
+        sf::Color color = background.getColor();
+        color.a = 100;
+        background.setColor(color);
+        ecs::systems::drawGameEnding(resultGame, window, window.getSize(), font, gameState, background, playerName, score);
+    });
 }
 
 void rtc::registerGameSystems(
@@ -108,7 +136,8 @@ void rtc::registerGameSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
-    ecs::SoundManager &soundManager
+    ecs::SoundManager &soundManager,
+    int &score
 )
 {
     tickRateManager.addTickRate(
@@ -130,6 +159,7 @@ void rtc::registerGameSystems(
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
     reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
+    reg.addSystem([&reg, &dt, &window]() { ecs::systems::drawParticle(reg, sf::seconds(dt), window); });
     if (rtc::GameOptions::lightEffect) {
         reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });
     }
@@ -150,7 +180,7 @@ void rtc::registerGameSystems(
     });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
+    reg.addSystem([&reg, &window, &score]() { ecs::systems::drawScore(reg, window.getSize(), score); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
     reg.addSystem([&metrics, &dt, &window]() {
         ecs::systems::drawFPS(metrics.getMetric(rt::GameMetric::FPS), dt, window.getSize());

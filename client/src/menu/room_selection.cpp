@@ -142,7 +142,10 @@ void rtc::renderLobbyWindow(
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
-    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+    float scale = (windowSize.x + windowSize.y) / 1000.0f;
+    if (scale > 0.0f) {
+        ImGui::SetWindowFontScale(scale);
+    }
 
     if (ImGui::Button("Score Board")) {
         scoreBoardEnable = !scoreBoardEnable;

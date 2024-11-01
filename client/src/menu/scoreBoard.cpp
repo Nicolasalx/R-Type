@@ -101,14 +101,14 @@ void loadScoreboard(const std::string &filename, std::vector<rtc::ScoreEntry> &s
     }
 }
 
-void rtc::renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable)
+void rtc::renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable, const sf::Vector2u &pos)
 {
     std::vector<rtc::ScoreEntry> scoreboard;
 
-    float scoreWidth = windowSize.x * 0.30f;
-    float scoreHeight = windowSize.y * 0.5f;
-    float scorePosX = windowSize.x - scoreWidth - 10.0f;
-    float scorePosY = 0;
+    float scoreWidth = windowSize.x * 0.3;
+    float scoreHeight = windowSize.y * 0.3;
+    float scorePosX = pos.x;
+    float scorePosY = pos.y;
 
     if (!scoreBoardEnable) {
         return;

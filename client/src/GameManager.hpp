@@ -35,6 +35,7 @@ class GameManager {
     private:
     std::string _ip;
     std::string _playerName;
+    int _score;
 
     std::shared_ptr<ntw::TCPClient> _tcpClient;
     std::atomic<GameState> _gameState = GameState::LOBBY;

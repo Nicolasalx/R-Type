@@ -135,7 +135,6 @@ void rts::registerUdpResponse(
                     reg.getComponent<ecs::component::Velocity>(reg.getLocalEntity().at(msg.sharedEntityId)).value() =
                         msg.body.vel;
                 } catch (const std::exception &e) {
-                    // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());
                 }
             });

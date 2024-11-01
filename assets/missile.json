@@ -154,7 +154,7 @@
             "update_state": "none",
             "state": "right"
         },
-        "missile":{},
+        "missile": {},
         "hitbox": {
             "width": 16.0,
             "height": 16.0

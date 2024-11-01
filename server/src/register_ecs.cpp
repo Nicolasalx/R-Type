@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <functional>
 #include <vector>
+#include "components/death_split.hpp"
 #include "components/game_tag.hpp"
 #include "systems/check_game_ending.hpp"
 #include <imgui-SFML.h>
@@ -17,6 +18,7 @@
 #include "Registry.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
+#include "components/dobkeratops.hpp"
 #include "gameCallbacks/collideEffect.hpp"
 #include "gameCallbacks/endGame.hpp"
 #include "udp/UDPServer.hpp"
@@ -31,6 +33,7 @@
 #include "components/parallax.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/score.hpp"
 #include "components/sprite.hpp"
 #include "components/tag.hpp"
@@ -69,6 +72,9 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Beam>();
     reg.registerComponent<ecs::component::Score>();
     reg.registerComponent<ecs::component::Player>();
+    reg.registerComponent<ecs::component::DobkeratopsState>();
+    reg.registerComponent<ecs::component::DeathSplit>();
+    reg.registerComponent<ecs::component::IsABoss>();
 }
 
 void rts::registerSystems(
