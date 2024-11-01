@@ -50,7 +50,9 @@
             "update_state": "none",
             "state": "right"
         },
-        "missile": {},
+        "missile": {
+            "damage": 10
+        },
         "hitbox": {
             "width": 80.0,
             "height": 18.0

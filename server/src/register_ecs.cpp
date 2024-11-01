@@ -12,6 +12,7 @@
 #include "components/death_split.hpp"
 #include "components/game_tag.hpp"
 #include "systems/check_game_ending.hpp"
+#include "systems/check_out_of_range.hpp"
 #include <imgui-SFML.h>
 
 #include "RTypeServer.hpp"
@@ -105,6 +106,9 @@ void rts::registerSystems(
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {
+        if (waveManager.hasEntity()) {
+            ecs::systems::checkOutOfRange(reg, waveManager, datasToSend);
+        }
         ecs::systems::healthMobCheck(reg, waveManager);
         ecs::systems::healthSharedCheck(reg, datasToSend);
     });

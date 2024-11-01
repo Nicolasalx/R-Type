@@ -7,6 +7,8 @@
 
 #include "WaveManager.hpp"
 #include <algorithm>
+#include "RTypeConst.hpp"
+#include "components/position.hpp"
 #include "entity.hpp"
 
 size_t ecs::WaveManager::addNewWave()
@@ -28,6 +30,13 @@ void ecs::WaveManager::removeEntity(entity_t entity)
         return;
     }
     _currEntities.erase(e);
+}
+
+bool ecs::WaveManager::isOutOfBonds(ecs::Registry &reg, entity_t entity)
+{
+    auto &pos = reg.getComponent<component::Position>(entity);
+
+    return pos->x <= 0.f || pos->x >= rt::GAME_VIEW_WIDTH || pos->y <= 0 || pos->y >= rt::GAME_VIEW_HEIGHT;
 }
 
 void ecs::WaveManager::spawnNextWave(ecs::Registry &reg)

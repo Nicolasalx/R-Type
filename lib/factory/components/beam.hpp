@@ -16,7 +16,9 @@ namespace ecs::component {
  */
 
 struct Beam {
-    float power;
+    bool isCharging;
+    int chargeValue;
+    bool sendMissile;
 };
 
 } // namespace ecs::component

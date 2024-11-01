@@ -58,12 +58,12 @@ static void resolveDamage(ecs::Registry &reg, entity_t ally, entity_t enemy, std
         return;
     }
     if (isAllyMissile && !isEnemyMissile) {
-        tagEffectDamage(reg, enemy, 1, datasToSend);
+        tagEffectDamage(reg, enemy, missiles[ally]->damage, datasToSend);
         tagEffectKill(reg, ally, datasToSend);
         return;
     }
     if (isEnemyMissile && !isAllyMissile) {
-        tagEffectDamage(reg, ally, 1, datasToSend);
+        tagEffectDamage(reg, ally, missiles[enemy]->damage, datasToSend);
         tagEffectKill(reg, enemy, datasToSend);
         return;
     }
@@ -109,8 +109,8 @@ void rts::resolveTagEffect(
 
     if (missiles.has(entityA) && !missiles.has(entityB)) {
         if (health.has(entityB)) {
-            tagEffectDamage(reg, entityB, 1, datasToSend);
-            health[entityB]->currHp -= 1;
+            tagEffectDamage(reg, entityB, missiles[entityA]->damage, datasToSend);
+            health[entityB]->currHp -= missiles[entityA]->damage;
         } else {
             tagEffectKill(reg, entityB, datasToSend);
         }
@@ -118,8 +118,8 @@ void rts::resolveTagEffect(
     }
     if (missiles.has(entityB) && !missiles.has(entityA)) {
         if (health.has(entityA)) {
-            tagEffectDamage(reg, entityA, 1, datasToSend);
-            health[entityA]->currHp -= 1;
+            tagEffectDamage(reg, entityA, missiles[entityB]->damage, datasToSend);
+            health[entityA]->currHp -= missiles[entityB]->damage;
         } else {
             tagEffectKill(reg, entityA, datasToSend);
         }

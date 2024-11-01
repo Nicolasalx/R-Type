@@ -55,7 +55,8 @@ void registerGameSystems(
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
     ecs::SoundManager &soundManager,
-    int &score
+    int &score,
+    sf::Clock &chargeClock
 );
 
 void registerEndingSystems(
