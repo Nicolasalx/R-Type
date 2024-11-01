@@ -121,6 +121,7 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &udpClient]() {
         ecs::systems::controlSpecial(reg, udpClient, rtc::GameOptions::missileSpawnRate);
     });
+    reg.addSystem([&reg, &window, &udpClient]() { ecs::systems::gravitySystem(reg, window.getSize()); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
@@ -158,5 +159,4 @@ void rtc::registerSystems(
     reg.addSystem([&metrics, &window]() {
         ecs::systems::drawPing(metrics.getMetric(rt::GameMetric::PING), window.getSize());
     });
-    reg.addSystem([&reg, &window, &udpClient]() { ecs::systems::gravitySystem(reg, window.getSize(), udpClient); });
 }
