@@ -15,10 +15,10 @@
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
+#include "ServerEntityFactory.hpp"
 #include "asio/ip/udp.hpp"
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
-#include "ServerEntityFactory.hpp"
 
 rts::GameRunner::GameRunner(
     int port,
