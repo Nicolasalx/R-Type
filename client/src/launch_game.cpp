@@ -128,6 +128,9 @@ void rtc::GameManager::_runGame()
     _setupEntities(udpClient, reg, spriteManager);
     runGameLoop(reg, _window, dt, inputManager, _gameState);
 
+    if (_gameState.load() != GameState::WIN && _gameState.load() != GameState::LOSE) {
+        return;
+    }
     ecs::Registry regEnd;
     rtc::registerComponents(regEnd);
     rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN, _font, _gameState, _playerName, _score);
