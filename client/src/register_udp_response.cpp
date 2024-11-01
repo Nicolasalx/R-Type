@@ -34,8 +34,6 @@
 #include "components/self_player.hpp"
 #include <imgui-SFML.h>
 
-#include <iostream>
-
 static void handlePlayerCreation(
     std::size_t userId,
     ecs::SpriteManager &spriteManager,

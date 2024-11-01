@@ -17,8 +17,6 @@
 #include "SFML/System/Time.hpp"
 #include "imgui-SFML.h"
 
-#include <iostream>
-
 void rtc::runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
     const std::shared_ptr<rtc::RoomManager> &roomManager,
