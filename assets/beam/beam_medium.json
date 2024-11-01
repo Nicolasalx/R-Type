@@ -20,7 +20,7 @@
         },
         "drawable": {
             "size": {
-                "x": 49.0,
+                "x": 48.0,
                 "y": 16.0
             },
             "fill_color": {
@@ -63,7 +63,9 @@
             "volume": 20.0
         },
         "on_death": {
-            "entity": "assets/explosion2.json"
+            "entity": "assets/explosion2.json",
+            "x": 40.0,
+            "y": 8.0
         },
         "radial_light": {
             "offset": {

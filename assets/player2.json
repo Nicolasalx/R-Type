@@ -87,6 +87,81 @@
                         },
                         "frame_time": 0.1
                     }
+                },
+                {
+                    "texture": "assets/typesheets/r-typesheet1.gif",
+                    "initial_frame": {
+                        "x": 0,
+                        "y": 48,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "x": 30,
+                    "y": -5,
+                    "animation": {
+                        "frames": {
+                            "idle": [
+                                {
+                                    "x": 0,
+                                    "y": 0,
+                                    "width": 0,
+                                    "height": 0
+                                }
+                            ],
+                            "loading": [
+                                {
+                                    "x": 0,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 32,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 64,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 96,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 128,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 160,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 192,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                },
+                                {
+                                    "x": 228,
+                                    "y": 51,
+                                    "width": 32,
+                                    "height": 32
+                                }
+                            ]
+                        },
+                        "frame_time": 0.1,
+                        "state": "idle"
+                    }
                 }
             ]
         },

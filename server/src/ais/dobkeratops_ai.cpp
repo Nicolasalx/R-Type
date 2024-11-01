@@ -64,7 +64,7 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
     }
 
     const int numSegments = 12;
-    float segmentSpacing = 12.0f;
+    const float segmentSpacing = 16.0f;
 
     for (int i = 0; i < numSegments; i++) {
         float segX = pos->x - (i + 1) * segmentSpacing + 60.0f;
@@ -176,7 +176,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
     state.attackTicks++;
     state.neckTicks++;
 
-    const float maxSegmentDistance = 20.0f;
+    const float maxSegmentDistance = 16.0f;
     const float segmentLength = 16.0f;
     const float initialXOffset = 58.0f;
     const float initialYOffset = 180.0f;
