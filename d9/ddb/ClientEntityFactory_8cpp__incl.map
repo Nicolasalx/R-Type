@@ -1,52 +1,52 @@
 <map id="lib/factory/ClientEntityFactory.cpp" name="lib/factory/ClientEntityFactory.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="2328,5,2496,45"/>
-<area shape="rect" id="node2" href="$d7/da1/ClientEntityFactory_8hpp.html" title=" " alt="" coords="944,101,1115,126"/>
-<area shape="rect" id="node7" title=" " alt="" coords="1680,401,1739,427"/>
-<area shape="rect" id="node16" href="$d2/dbe/SpriteManager_8hpp.html" title=" " alt="" coords="1087,255,1231,280"/>
-<area shape="rect" id="node17" title=" " alt="" coords="2826,328,3025,353"/>
-<area shape="rect" id="node21" title=" " alt="" coords="153,255,223,280"/>
-<area shape="rect" id="node24" href="$d6/d5a/animation_8hpp.html" title=" " alt="" coords="1219,181,1419,207"/>
-<area shape="rect" id="node26" title=" " alt="" coords="2115,181,2192,207"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1486,101,1546,126"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1773,181,1947,207"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1797,101,2003,126"/>
-<area shape="rect" id="node30" title=" " alt="" coords="2365,181,2561,207"/>
-<area shape="rect" id="node31" title=" " alt="" coords="2659,181,2850,207"/>
-<area shape="rect" id="node32" title=" " alt="" coords="2129,101,2311,126"/>
-<area shape="rect" id="node33" title=" " alt="" coords="3602,181,3793,207"/>
-<area shape="rect" id="node34" href="$d5/de5/hitbox_8hpp.html" title=" " alt="" coords="2387,101,2562,126"/>
-<area shape="rect" id="node35" href="$de/d44/components_2parallax_8hpp.html" title=" " alt="" coords="5,181,192,207"/>
-<area shape="rect" id="node36" href="$d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="2637,101,2824,126"/>
-<area shape="rect" id="node37" href="$d1/dd4/sprite_8hpp.html" title=" " alt="" coords="1240,101,1411,126"/>
-<area shape="rect" id="node39" href="$dc/d8a/velocity_8hpp.html" title=" " alt="" coords="3027,101,3211,126"/>
-<area shape="rect" id="node40" href="$df/d5f/components_2client__share__movement_8hpp.html" title=" " alt="" coords="3235,93,3421,133"/>
-<area shape="rect" id="node41" href="$da/def/components_2death__timer_8hpp.html" title=" " alt="" coords="3445,101,3657,126"/>
-<area shape="rect" id="node42" href="$d9/d3b/light__edge_8hpp.html" title=" " alt="" coords="1571,101,1773,126"/>
-<area shape="rect" id="node43" href="$d8/d0b/music__component_8hpp.html" title=" " alt="" coords="4064,101,4317,126"/>
-<area shape="rect" id="node45" href="$d2/d05/on__death_8hpp.html" title=" " alt="" coords="3501,328,3696,353"/>
-<area shape="rect" id="node46" href="$d0/db5/particle__spawner_8hpp.html" title=" " alt="" coords="2848,93,3003,133"/>
-<area shape="rect" id="node47" href="$d0/d38/radial__light_8hpp.html" title=" " alt="" coords="3782,101,3989,126"/>
-<area shape="rect" id="node49" href="$db/daa/score__earned_8hpp.html" title=" " alt="" coords="4341,101,4563,126"/>
-<area shape="rect" id="node50" href="$d2/dbb/sound__emitter_8hpp.html" title=" " alt="" coords="4587,101,4813,126"/>
-<area shape="rect" id="node3" href="$db/deb/EntityFactory_8hpp.html" title=" " alt="" coords="516,181,649,207"/>
-<area shape="rect" id="node4" title=" " alt="" coords="248,255,315,280"/>
-<area shape="rect" id="node5" title=" " alt="" coords="69,255,128,280"/>
-<area shape="rect" id="node6" title=" " alt="" coords="737,255,884,280"/>
-<area shape="rect" id="node8" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="909,255,1011,280"/>
-<area shape="rect" id="node11" href="$db/de2/entity_8hpp.html" title=" " alt="" coords="323,328,410,353"/>
-<area shape="rect" id="node15" title=" " alt="" coords="926,328,1050,353"/>
-<area shape="rect" id="node22" title=" " alt="" coords="441,255,578,280"/>
-<area shape="rect" id="node23" title=" " alt="" coords="602,255,713,280"/>
-<area shape="rect" id="node9" href="$d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="529,328,655,353"/>
-<area shape="rect" id="node12" title=" " alt="" coords="331,401,402,427"/>
-<area shape="rect" id="node13" href="$db/d29/components_2shared__entity_8hpp.html" title=" " alt="" coords="680,328,901,353"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1509,328,1595,353"/>
-<area shape="rect" id="node10" title=" " alt="" coords="1287,401,1350,427"/>
-<area shape="rect" id="node18" href="$d7/dc4/TrackedException_8hpp.html" title=" " alt="" coords="1074,328,1281,353"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1155,401,1242,427"/>
-<area shape="rect" id="node20" title=" " alt="" coords="1007,401,1131,427"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1356,255,1535,280"/>
-<area shape="rect" id="node38" title=" " alt="" coords="1509,181,1697,207"/>
-<area shape="rect" id="node44" title=" " alt="" coords="4181,181,4307,207"/>
-<area shape="rect" id="node48" title=" " alt="" coords="3817,181,3989,207"/>
+<area shape="rect" id="node1" title=" " alt="" coords="2110,5,2278,45"/>
+<area shape="rect" id="node2" href="$d7/da1/ClientEntityFactory_8hpp.html" title=" " alt="" coords="943,101,1114,126"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1643,401,1702,427"/>
+<area shape="rect" id="node15" href="$d2/dbe/SpriteManager_8hpp.html" title=" " alt="" coords="1125,255,1269,280"/>
+<area shape="rect" id="node16" title=" " alt="" coords="2743,328,2941,353"/>
+<area shape="rect" id="node20" title=" " alt="" coords="5,255,76,280"/>
+<area shape="rect" id="node23" href="$d6/d5a/animation_8hpp.html" title=" " alt="" coords="1206,181,1406,207"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2270,181,2347,207"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1240,101,1300,126"/>
+<area shape="rect" id="node27" title=" " alt="" coords="496,181,671,207"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1519,101,1725,126"/>
+<area shape="rect" id="node29" title=" " alt="" coords="2513,181,2709,207"/>
+<area shape="rect" id="node30" title=" " alt="" coords="3092,181,3283,207"/>
+<area shape="rect" id="node31" title=" " alt="" coords="1851,101,2033,126"/>
+<area shape="rect" id="node32" title=" " alt="" coords="3509,181,3700,207"/>
+<area shape="rect" id="node33" href="$dc/d4c/beam_8hpp.html" title=" " alt="" coords="2109,101,2279,126"/>
+<area shape="rect" id="node34" href="$d5/de5/hitbox_8hpp.html" title=" " alt="" coords="2304,101,2479,126"/>
+<area shape="rect" id="node35" href="$de/d44/components_2parallax_8hpp.html" title=" " alt="" coords="87,181,274,207"/>
+<area shape="rect" id="node36" href="$d2/d55/ecs_2components_2position_8hpp.html" title=" " alt="" coords="2554,101,2741,126"/>
+<area shape="rect" id="node37" href="$d1/dd4/sprite_8hpp.html" title=" " alt="" coords="1325,101,1495,126"/>
+<area shape="rect" id="node39" href="$dc/d8a/velocity_8hpp.html" title=" " alt="" coords="2943,101,3127,126"/>
+<area shape="rect" id="node40" href="$df/d5f/components_2client__share__movement_8hpp.html" title=" " alt="" coords="3152,93,3337,133"/>
+<area shape="rect" id="node41" href="$da/def/components_2death__timer_8hpp.html" title=" " alt="" coords="3361,101,3573,126"/>
+<area shape="rect" id="node42" href="$d9/d3b/light__edge_8hpp.html" title=" " alt="" coords="689,101,891,126"/>
+<area shape="rect" id="node43" href="$d8/d0b/music__component_8hpp.html" title=" " alt="" coords="3981,101,4234,126"/>
+<area shape="rect" id="node45" href="$d2/d05/on__death_8hpp.html" title=" " alt="" coords="1799,328,1994,353"/>
+<area shape="rect" id="node46" href="$d0/db5/particle__spawner_8hpp.html" title=" " alt="" coords="2765,93,2919,133"/>
+<area shape="rect" id="node47" href="$d0/d38/radial__light_8hpp.html" title=" " alt="" coords="3699,101,3905,126"/>
+<area shape="rect" id="node49" href="$db/daa/score__earned_8hpp.html" title=" " alt="" coords="4258,101,4479,126"/>
+<area shape="rect" id="node50" href="$d2/dbb/sound__emitter_8hpp.html" title=" " alt="" coords="4503,101,4730,126"/>
+<area shape="rect" id="node3" href="$db/deb/EntityFactory_8hpp.html" title=" " alt="" coords="695,181,829,207"/>
+<area shape="rect" id="node4" title=" " alt="" coords="234,255,301,280"/>
+<area shape="rect" id="node5" title=" " alt="" coords="151,255,210,280"/>
+<area shape="rect" id="node6" title=" " alt="" coords="674,255,821,280"/>
+<area shape="rect" id="node8" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="845,255,948,280"/>
+<area shape="rect" id="node11" href="$db/de2/entity_8hpp.html" title=" " alt="" coords="473,328,560,353"/>
+<area shape="rect" id="node14" title=" " alt="" coords="835,328,959,353"/>
+<area shape="rect" id="node21" title=" " alt="" coords="325,255,463,280"/>
+<area shape="rect" id="node22" title=" " alt="" coords="539,255,649,280"/>
+<area shape="rect" id="node9" href="$d9/db8/SparseArray_8hpp.html" title=" " alt="" coords="684,328,811,353"/>
+<area shape="rect" id="node12" title=" " alt="" coords="481,401,552,427"/>
+<area shape="rect" id="node13" title=" " alt="" coords="1367,328,1453,353"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1460,401,1523,427"/>
+<area shape="rect" id="node17" href="$d7/dc4/TrackedException_8hpp.html" title=" " alt="" coords="983,328,1189,353"/>
+<area shape="rect" id="node18" title=" " alt="" coords="977,401,1064,427"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1088,401,1212,427"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1343,255,1522,280"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1485,181,1673,207"/>
+<area shape="rect" id="node44" title=" " alt="" coords="4097,181,4224,207"/>
+<area shape="rect" id="node48" title=" " alt="" coords="3724,181,3896,207"/>
 </map>

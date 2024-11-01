@@ -1,0 +1,4 @@
+<map id="ecs::systems::controlSpecial" name="ecs::systems::controlSpecial">
+<area shape="rect" id="node1" title="Handles entity control and input processing." alt="" coords="5,5,212,31"/>
+<area shape="rect" id="node2" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="260,5,476,31"/>
+</map>

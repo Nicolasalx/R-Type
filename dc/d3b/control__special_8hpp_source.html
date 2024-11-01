@@ -94,24 +94,16 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a57b8f465bc313e17727e9b612fb698b0">controlSpecial</a>(</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    Registry &amp;reg,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a> &amp;input,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udp,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> <a class="code hl_class" href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind&lt;rt::PlayerAction, sf::Keyboard::Key&gt;</a> &amp;keyBind,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span> spawnRate</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>} <span class="comment">// namespace ecs::systems</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a9d19cc936da9a90378c62c26ad97c5bd">controlSpecial</a>(Registry &amp;reg, <a class="code hl_class" href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a> &amp;udp, <span class="keywordtype">int</span> spawnRate);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>} <span class="comment">// namespace ecs::systems</span></div>
 <div class="ttc" id="aInputManager_8hpp_html"><div class="ttname"><a href="../../d1/d6e/InputManager_8hpp.html">InputManager.hpp</a></div></div>
 <div class="ttc" id="aKeyBind_8hpp_html"><div class="ttname"><a href="../../d6/d50/KeyBind_8hpp.html">KeyBind.hpp</a></div></div>
 <div class="ttc" id="aRegistry_8hpp_html"><div class="ttname"><a href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a></div></div>
 <div class="ttc" id="aUDPClient_8hpp_html"><div class="ttname"><a href="../../d5/d33/UDPClient_8hpp.html">UDPClient.hpp</a></div></div>
-<div class="ttc" id="aclassecs_1_1InputManager_html"><div class="ttname"><a href="../../d0/da3/classecs_1_1InputManager.html">ecs::InputManager</a></div><div class="ttdoc">Manages input events and tracks the state of keyboard keys.</div><div class="ttdef"><b>Definition:</b> InputManager.hpp:19</div></div>
-<div class="ttc" id="aclassecs_1_1KeyBind_html"><div class="ttname"><a href="../../dc/d93/classecs_1_1KeyBind.html">ecs::KeyBind</a></div><div class="ttdef"><b>Definition:</b> KeyBind.hpp:17</div></div>
 <div class="ttc" id="aclassntw_1_1UDPClient_html"><div class="ttname"><a href="../../d6/d90/classntw_1_1UDPClient.html">ntw::UDPClient</a></div><div class="ttdoc">UDPClient is a class that connects to a udp server, and handle asynchronous operations (read,...</div><div class="ttdef"><b>Definition:</b> UDPClient.hpp:25</div></div>
 <div class="ttc" id="anamespaceecs_1_1systems_html"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a></div><div class="ttdoc">Perform health checks on entities within the registry.</div><div class="ttdef"><b>Definition:</b> ai_act.hpp:12</div></div>
-<div class="ttc" id="anamespaceecs_1_1systems_html_a57b8f465bc313e17727e9b612fb698b0"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a57b8f465bc313e17727e9b612fb698b0">ecs::systems::controlSpecial</a></div><div class="ttdeci">void controlSpecial(Registry &amp;reg, ecs::InputManager &amp;input, ntw::UDPClient &amp;udp, const ecs::KeyBind&lt; rt::PlayerAction, sf::Keyboard::Key &gt; &amp;keyBind, int spawnRate)</div><div class="ttdoc">Handles entity control and input processing.</div><div class="ttdef"><b>Definition:</b> control_special.cpp:29</div></div>
+<div class="ttc" id="anamespaceecs_1_1systems_html_a9d19cc936da9a90378c62c26ad97c5bd"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a9d19cc936da9a90378c62c26ad97c5bd">ecs::systems::controlSpecial</a></div><div class="ttdeci">void controlSpecial(Registry &amp;reg, ntw::UDPClient &amp;udp, int spawnRate)</div><div class="ttdoc">Handles entity control and input processing.</div><div class="ttdef"><b>Definition:</b> control_special.cpp:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
