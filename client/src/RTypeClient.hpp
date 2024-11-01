@@ -50,6 +50,7 @@ void registerSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    sf::Clock &chargeClock,
     ecs::SoundManager &soundManager
 );
 

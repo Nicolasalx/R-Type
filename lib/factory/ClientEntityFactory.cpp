@@ -18,6 +18,7 @@
 #include "SFML/System/Vector2.hpp"
 #include "SpriteManager.hpp"
 #include "components/animation.hpp"
+#include "components/beam.hpp"
 #include "components/hitbox.hpp"
 #include "components/parallax.hpp"
 #include "components/position.hpp"

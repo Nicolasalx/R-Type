@@ -101,6 +101,7 @@ void rtc::registerSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    sf::Clock &chargeClock,
     ecs::SoundManager &soundManager
 )
 {
@@ -114,8 +115,8 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &soundManager]() { ecs::systems::soundEmitterSystem(reg, soundManager); });
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
-    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, keyBind, rtc::GameOptions::missileSpawnRate);
+    reg.addSystem([&reg, &udpClient]() {
+        ecs::systems::controlSpecial(reg, udpClient, rtc::GameOptions::missileSpawnRate);
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
@@ -142,7 +143,9 @@ void rtc::registerSystems(
             networkCallbacks.consumeList();
         }
     });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
+    reg.addSystem([&reg, &window, &input, &chargeClock, &keyBind]() {
+        ecs::systems::drawPlayerBeamBar(reg, window.getSize(), input, chargeClock, keyBind);
+    });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
