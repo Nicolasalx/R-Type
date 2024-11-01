@@ -14,8 +14,8 @@ namespace ecs::component {
 /**
  * @brief Represents the gravity effect on an entity.
  *
- * This component holds information about the type of enemy affected 
- * by gravity, allowing for tailored gravitational interactions 
+ * This component holds information about the type of enemy affected
+ * by gravity, allowing for tailored gravitational interactions
  * based on the specific enemy type.
  */
 
