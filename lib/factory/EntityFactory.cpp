@@ -16,7 +16,6 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/health.hpp"
-#include "components/is_a_boss.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
 #include "components/player.hpp"
@@ -25,6 +24,7 @@
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
+#include "components/is_a_boss.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
 
