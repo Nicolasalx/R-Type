@@ -41,6 +41,7 @@
 #include "components/on_death.hpp"
 #include "components/particle_spawner.hpp"
 #include "components/is_a_boss.hpp"
+#include "components/particle_spawner.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
 #include "components/self_player.hpp"
@@ -52,6 +53,7 @@
 #include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
 #include "systems/draw_game_ending.hpp"
+#include "systems/draw_particle.hpp"
 #include "systems/draw_particle.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
@@ -93,6 +95,7 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::LightEdge>();
     reg.registerComponent<ecs::component::ParticleSpawner>();
     reg.registerComponent<ecs::component::IsABoss>();
+    reg.registerComponent<ecs::component::ParticleSpawner>();
 }
 
 void rtc::registerEndingSystems(
