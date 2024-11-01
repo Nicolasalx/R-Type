@@ -19,7 +19,8 @@
 int main(int argc, const char *argv[])
 {
     rts::RoomManager roomManager;
-    int argValidity = rts::parseArg(argc, argv, roomManager);
+    int port = 0;
+    int argValidity = rts::parseArg(argc, argv, roomManager, port);
 
     if (argValidity == 84) {
         return 84;
@@ -27,28 +28,32 @@ int main(int argc, const char *argv[])
         return 0;
     }
 
-    ntw::TCPServer tcpServer(8080);
-    rt::TCPResponseHandler responseHandler;
+    try {
+        ntw::TCPServer tcpServer(port);
+        rt::TCPResponseHandler responseHandler;
 
-    rts::registerTcpResponse(roomManager, tcpServer, responseHandler);
-    tcpServer.registerCommand([&responseHandler](tcp::socket &sock, char *data, std::size_t size) {
-        responseHandler.handleResponse(data, size, {std::ref(sock)});
-    });
+        rts::registerTcpResponse(roomManager, tcpServer, responseHandler);
+        tcpServer.registerCommand([&responseHandler](tcp::socket &sock, char *data, std::size_t size) {
+            responseHandler.handleResponse(data, size, {std::ref(sock)});
+        });
 
-    tcpServer.run();
+        tcpServer.run();
 
-    std::string str;
-    std::cout << "> ";
-    while (std::getline(std::cin, str)) {
-        if (str == "quit" || str == "exit") {
-            break;
-        }
-        try {
-            rts::commandHandler(str, roomManager, tcpServer);
-        } catch (const std::exception &) {
-            std::cerr << "Invalid command argument\n";
-        }
+        std::string str;
         std::cout << "> ";
+        while (std::getline(std::cin, str)) {
+            if (str == "quit" || str == "exit") {
+                break;
+            }
+            try {
+                rts::commandHandler(str, roomManager, tcpServer);
+            } catch (const std::exception &) {
+                std::cerr << "Invalid command argument\n";
+            }
+            std::cout << "> ";
+        }
+    } catch (const std::exception &e) {
+        eng::logError(e.what());
     }
     return 0;
 }
