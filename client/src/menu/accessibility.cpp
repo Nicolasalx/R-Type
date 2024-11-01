@@ -66,7 +66,10 @@ void rtc::renderAccessibility(
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
-    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+    float scale = (windowSize.x + windowSize.y) / 1000.0f;
+    if (scale > 0.0f) {
+        ImGui::SetWindowFontScale(scale);
+    }
 
     ImGui::Text("Key Binding");
     ImGui::Dummy(ImVec2(0.0f, paddingY));

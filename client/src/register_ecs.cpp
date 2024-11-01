@@ -6,10 +6,12 @@
 */
 
 #include "ClientTickRate.hpp"
+#include "GameManager.hpp"
 #include "GameOptions.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SFML/Graphics/Sprite.hpp"
 #include "SafeList.hpp"
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
@@ -35,6 +37,7 @@
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
 #include "components/on_death.hpp"
@@ -49,6 +52,7 @@
 #include "systems/control_special.hpp"
 #include "systems/death_timer.hpp"
 #include "systems/draw_fps.hpp"
+#include "systems/draw_game_ending.hpp"
 #include "systems/draw_particle.hpp"
 #include "systems/draw_ping.hpp"
 #include "systems/draw_player_beam_bar.hpp"
@@ -89,10 +93,42 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::RadialLight>();
     reg.registerComponent<ecs::component::LightEdge>();
     reg.registerComponent<ecs::component::ParticleSpawner>();
+    reg.registerComponent<ecs::component::IsABoss>();
+    reg.registerComponent<ecs::component::ParticleSpawner>();
     reg.registerComponent<ecs::component::Gravity>();
 }
 
-void rtc::registerSystems(
+void rtc::registerEndingSystems(
+    ecs::Registry &reg,
+    sf::RenderWindow &window,
+    const std::shared_ptr<ImFont> &font,
+    std::atomic<GameState> &gameState,
+    const std::string &playerName,
+    const int &score
+)
+{
+    bool win = gameState.load() == GameState::WIN;
+    sf::Texture texture;
+    if (!texture.loadFromFile("assets/menu/background.jpg")) {
+        eng::logError("Failed to load background image !");
+        return;
+    }
+
+    rtc::addScore("assets/score/scoreBoard.json", playerName, score);
+
+    reg.addSystem([win, &window, font, texture, &playerName, &score]() {
+        sf::Sprite background(texture);
+        background.setScale(
+            rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)
+        );
+        sf::Color color = background.getColor();
+        color.a = 100;
+        background.setColor(color);
+        ecs::systems::drawGameEnding(win, window, window.getSize(), font, background, playerName, score);
+    });
+}
+
+void rtc::registerGameSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
     float &dt,
@@ -103,8 +139,9 @@ void rtc::registerSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
-    sf::Clock &chargeClock,
-    ecs::SoundManager &soundManager
+    ecs::SoundManager &soundManager,
+    int &score,
+    sf::Clock &chargeClock
 )
 {
     tickRateManager.addTickRate(
@@ -149,7 +186,7 @@ void rtc::registerSystems(
         ecs::systems::drawPlayerBeamBar(reg, window.getSize(), input, chargeClock, keyBind);
     });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawScore(reg, window.getSize()); });
+    reg.addSystem([&reg, &window, &score]() { ecs::systems::drawScore(reg, window.getSize(), score); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
     reg.addSystem([&metrics, &dt, &window]() {
         ecs::systems::drawFPS(metrics.getMetric(rt::GameMetric::FPS), dt, window.getSize());

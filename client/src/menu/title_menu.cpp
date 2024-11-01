@@ -51,7 +51,10 @@ void rtc::menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode)
             ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
-    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1200.0);
+    float scale = (windowSize.x + windowSize.y) / 1000.0f;
+    if (scale > 0.0f) {
+        ImGui::SetWindowFontScale(scale);
+    }
 
     ImGui::Dummy(ImVec2(0.0f, windowSize.y * 0.75f));
 

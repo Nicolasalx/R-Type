@@ -12,6 +12,6 @@
 
 namespace ecs::systems {
 
-void drawScore(Registry &reg, const sf::Vector2u &windowSize);
+void drawScore(Registry &reg, const sf::Vector2u &windowSize, int &score);
 
 } // namespace ecs::systems

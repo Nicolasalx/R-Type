@@ -26,7 +26,7 @@ void rtc::runGui(
 {
     ecs::SoundManager soundManager;
     sf::Clock dt;
-    sf::Vector2u windowSize;
+    sf::Vector2u windowSize = window->getSize();
     WindowMode windowMode = rtc::WindowMode::MENU;
     int fpsLimit = rt::CLIENT_FPS_LIMIT;
     bool chatEnable = false;
@@ -80,7 +80,7 @@ void rtc::runGui(
                 break;
         }
         renderChat(roomManager, windowSize, chatEnable);
-        renderScoreBoard(windowSize, scoreBoardEnable);
+        renderScoreBoard(windowSize, scoreBoardEnable, sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.7f), 0});
         ImGui::SFML::Render(*window);
         window->display();
     }

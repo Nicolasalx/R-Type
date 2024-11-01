@@ -89,6 +89,7 @@
             "points": 1000
         },
         "server_share_movement": {},
-        "tag": 2
+        "tag": 2,
+        "is_a_boss": 1
     }
 }

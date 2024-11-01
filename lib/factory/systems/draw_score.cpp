@@ -12,22 +12,23 @@
 #include "imgui.h"
 #include "components/self_player.hpp"
 
-void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize)
+void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize, int &score)
 {
-    auto &score = reg.getComponents<ecs::component::Score>();
+    auto &scoring = reg.getComponents<ecs::component::Score>();
     auto &selfPlayer = reg.getComponents<ecs::component::SelfPlayer>();
 
-    Zipper<ecs::component::Score, ecs::component::SelfPlayer> zip(score, selfPlayer);
+    Zipper<ecs::component::Score, ecs::component::SelfPlayer> zip(scoring, selfPlayer);
 
-    for (auto [score, _] : zip) {
-        if (score.font != nullptr) {
+    for (auto [scr, _] : zip) {
+        if (scr.font != nullptr) {
             ImGui::GetBackgroundDrawList()->AddText(
-                score.font.get(),
+                scr.font.get(),
                 (windowSize.y * 0.05),
                 ImVec2(windowSize.x * 0.85, windowSize.y * 0.05),
                 IM_COL32(255, 255, 255, 255),
-                std::to_string(score.value).c_str()
+                std::to_string(scr.value).c_str()
             );
+            score = scr.value;
         }
     }
 }

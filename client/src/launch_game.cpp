@@ -103,7 +103,7 @@ void rtc::GameManager::_runGame()
     sf::Clock chargeClock;
     rtc::registerComponents(reg);
     _networkCallbacks.registerConsumeFunc([&reg](auto f) { f(reg); });
-    rtc::registerSystems(
+    rtc::registerGameSystems(
         reg,
         *_window,
         dt,
@@ -114,8 +114,9 @@ void rtc::GameManager::_runGame()
         _networkCallbacks,
         _metrics,
         _keyBind,
-        chargeClock,
-        soundManager
+        soundManager,
+        _score,
+        chargeClock
     );
 
     _setupUdpConnection(spriteManager, udpClient);
@@ -126,6 +127,16 @@ void rtc::GameManager::_runGame()
 
     _setupEntities(udpClient, reg, spriteManager);
     runGameLoop(reg, _window, dt, inputManager, _gameState);
+
+    if (_gameState.load() != GameState::WIN && _gameState.load() != GameState::LOSE) {
+        return;
+    }
+    ecs::Registry regEnd;
+    rtc::registerEndingSystems(regEnd, *_window, _font, _gameState, _playerName, _score);
+
+    _gameState.store(GameState::GAME);
+
+    runGameLoop(regEnd, _window, dt, inputManager, _gameState);
 }
 
 void rtc::GameManager::_launchGame()
@@ -144,7 +155,8 @@ void rtc::GameManager::_launchGame()
                 _runGame();
                 break;
             default:
-                return;
+                _gameState.store(GameState::NONE);
+                break;
         }
     }
     if (_window->isOpen()) {

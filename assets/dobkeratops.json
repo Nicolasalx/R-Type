@@ -54,6 +54,7 @@
         },
         "server_share_movement": {},
         "ai_actor": {},
-        "dobkeratops": {}
+        "dobkeratops": {},
+        "is_a_boss": 1
     }
 }

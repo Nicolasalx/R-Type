@@ -60,3 +60,6 @@ cpm-package-lock.cmake
 
 # ? imgui
 imgui.ini
+
+# ? scoreBoard
+assets/score/scoreBoard.json

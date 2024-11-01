@@ -20,6 +20,7 @@
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
+#include "imgui.h"
 #include "udp/UDPClient.hpp"
 
 namespace rtc {
@@ -35,11 +36,14 @@ enum class WindowMode : std::uint8_t {
 enum class GameState : std::uint8_t {
     NONE,
     LOBBY,
-    GAME
+    GAME,
+
+    WIN,
+    LOSE
 };
 
 void registerComponents(ecs::Registry &reg);
-void registerSystems(
+void registerGameSystems(
     ecs::Registry &reg,
     sf::RenderWindow &window,
     float &dt,
@@ -50,8 +54,18 @@ void registerSystems(
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
-    sf::Clock &chargeClock,
-    ecs::SoundManager &soundManager
+    ecs::SoundManager &soundManager,
+    int &score,
+    sf::Clock &chargeClock
+);
+
+void registerEndingSystems(
+    ecs::Registry &reg,
+    sf::RenderWindow &window,
+    const std::shared_ptr<ImFont> &font,
+    std::atomic<GameState> &gameState,
+    const std::string &playerName,
+    const int &score
 );
 
 void runGameLoop(
@@ -86,7 +100,7 @@ void renderAccessibility(
     WindowMode &windowMode,
     ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
 );
-void renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable);
+void renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable, const sf::Vector2u &pos);
 void addScore(const std::string &filename, const std::string &playerName, int score);
 
 } // namespace rtc

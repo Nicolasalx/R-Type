@@ -65,7 +65,6 @@ void ecs::systems::drawTeamData(Registry &reg, const sf::Vector2u &windowSize)
             ImVec2(pos.x, pos.y - 20), IM_COL32(255, 255, 255, 255), player.name.c_str()
         );
         drawBar("health", health.currHp, health.maxHp, pos, windowSize);
-        drawBar("beam", beam.chargeValue, 100.f, sf::Vector2f{pos.x, pos.y + windowSize.y * 0.03f}, windowSize);
         ++i;
     }
 }

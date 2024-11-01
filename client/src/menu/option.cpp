@@ -24,7 +24,10 @@ void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &
             ImGuiWindowFlags_NoBringToFrontOnFocus
     );
 
-    ImGui::SetWindowFontScale((windowSize.x + windowSize.y) / 1000.0f);
+    float scale = (windowSize.x + windowSize.y) / 1000.0f;
+    if (scale > 0.0f) {
+        ImGui::SetWindowFontScale(scale);
+    }
 
     ImGui::Text("Frame Rate Limit: %d", fpsLimit);
     ImGui::SliderInt("##fps_slider", &fpsLimit, 30, 144, "", ImGuiSliderFlags_AlwaysClamp);

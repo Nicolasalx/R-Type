@@ -40,6 +40,7 @@
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
 #include "components/ai_actor.hpp"
+#include "components/is_a_boss.hpp"
 #include "components/server_share_movement.hpp"
 #include "components/shared_entity.hpp"
 
@@ -75,6 +76,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::Player>();
     reg.registerComponent<ecs::component::DobkeratopsState>();
     reg.registerComponent<ecs::component::DeathSplit>();
+    reg.registerComponent<ecs::component::IsABoss>();
     reg.registerComponent<ecs::component::Gravity>();
 }
 
@@ -133,10 +135,13 @@ void rts::registerSystems(
     reg.addSystem([&nbPlayers, &waveManager, &reg, &datasToSend]() {
         ecs::systems::checkGameEnding(
             reg,
-            [&nbPlayers, &waveManager](ecs::Registry &) {
-                return nbPlayers == 0 || (!waveManager.hasEntity() && waveManager.isEnd());
-            },
+            [&nbPlayers](ecs::Registry &) { return nbPlayers == 0; },
             [&datasToSend](ecs::Registry &) { endGame(datasToSend); }
+        );
+        ecs::systems::checkGameEnding(
+            reg,
+            [&waveManager](ecs::Registry &) { return !waveManager.hasEntity() && waveManager.isEnd(); },
+            [&datasToSend](ecs::Registry &) { endGame(datasToSend, true); }
         );
     });
     reg.addSystem([&datasToSend, &udpServer, &tickRateManager, &dt]() {

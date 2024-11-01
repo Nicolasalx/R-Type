@@ -25,6 +25,7 @@
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
+#include "components/is_a_boss.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
 
@@ -171,6 +172,10 @@ void EntityFactory::addCommonComponents(
             damage = componentsJson["missile"]["damage"].get<int>();
         }
         reg.addComponent(entity, ecs::component::Missile{damage});
+    }
+
+    if (componentsJson.contains("is_a_boss")) {
+        reg.addComponent(entity, ecs::component::IsABoss{});
     }
 
     if (componentsJson.contains("health")) {
