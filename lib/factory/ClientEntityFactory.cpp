@@ -21,7 +21,6 @@
 #include "components/beam.hpp"
 #include "components/hitbox.hpp"
 #include "components/parallax.hpp"
-#include "components/gravity.hpp"
 #include "components/position.hpp"
 #include "components/sprite.hpp"
 #include "components/velocity.hpp"

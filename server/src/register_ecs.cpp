@@ -28,9 +28,9 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
-#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
+#include "components/gravity.hpp"
 #include "components/missile.hpp"
 #include "components/parallax.hpp"
 #include "components/player.hpp"
@@ -47,7 +47,6 @@
 #include "systems/draw.hpp"
 #include "systems/position.hpp"
 #include "systems/ai_act.hpp"
-#include "systems/gravity_system.hpp"
 #include "systems/health_mob_check.hpp"
 #include "systems/health_shared_check.hpp"
 #include "systems/missiles_stop.hpp"
@@ -104,7 +103,6 @@ void rts::registerSystems(
             ecs::systems::aiAct(reg);
         }
     });
-    reg.addSystem([&reg, &window]() { ecs::systems::gravitySystem(reg, window.getSize()); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {

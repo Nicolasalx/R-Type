@@ -18,7 +18,6 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
-#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -38,6 +37,7 @@
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
 #include "components/on_death.hpp"
+#include "components/gravity.hpp"
 #include "components/particle_spawner.hpp"
 #include "components/radial_light.hpp"
 #include "components/score_earned.hpp"
@@ -55,7 +55,6 @@
 #include "systems/draw_player_health_bar.hpp"
 #include "systems/draw_score.hpp"
 #include "systems/draw_team_data.hpp"
-#include "systems/gravity_system.hpp"
 #include "systems/health_local_check.hpp"
 #include "systems/render_radial_light.hpp"
 #include "systems/send_ping.hpp"
@@ -89,8 +88,8 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::OnDeath>();
     reg.registerComponent<ecs::component::RadialLight>();
     reg.registerComponent<ecs::component::LightEdge>();
-    reg.registerComponent<ecs::component::Gravity>();
     reg.registerComponent<ecs::component::ParticleSpawner>();
+    reg.registerComponent<ecs::component::Gravity>();
 }
 
 void rtc::registerSystems(
@@ -121,7 +120,6 @@ void rtc::registerSystems(
     reg.addSystem([&reg, &udpClient]() {
         ecs::systems::controlSpecial(reg, udpClient, rtc::GameOptions::missileSpawnRate);
     });
-    reg.addSystem([&reg, &window, &udpClient]() { ecs::systems::gravitySystem(reg, window.getSize()); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });

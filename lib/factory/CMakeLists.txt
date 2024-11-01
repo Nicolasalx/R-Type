@@ -9,7 +9,6 @@ add_library(FACTORY STATIC
     systems/draw_player_health_bar.cpp
     systems/draw_fps.cpp
     systems/draw_ping.cpp
-    systems/gravity_system.cpp
     systems/sprite_system.cpp
     systems/position.cpp
     systems/missiles_stop.cpp

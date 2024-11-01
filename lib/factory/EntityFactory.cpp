@@ -199,7 +199,6 @@ void EntityFactory::addCommonComponents(
     if (componentsJson.contains("ennemy_type")) {
         auto typeJson = componentsJson["ennemy_type"];
         reg.addComponent(entity, ecs::component::Gravity{typeJson["type"].get<std::string>()});
-        dprintf(1, "%d\n", entity);
     }
 }
 
