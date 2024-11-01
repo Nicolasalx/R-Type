@@ -15,6 +15,7 @@
 #include "SpriteManager.hpp"
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
+#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -198,6 +199,11 @@ void EntityFactory::addCommonComponents(
 
     if (componentsJson.contains("player")) {
         reg.addComponent(entity, ecs::component::Player{});
+    }
+
+    if (componentsJson.contains("ennemy_type")) {
+        auto typeJson = componentsJson["ennemy_type"];
+        reg.addComponent(entity, ecs::component::Gravity{typeJson["type"].get<std::string>()});
     }
 }
 

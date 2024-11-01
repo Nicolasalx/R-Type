@@ -20,6 +20,7 @@
 #include "components/beam.hpp"
 #include "components/controllable.hpp"
 #include "components/drawable.hpp"
+#include "components/gravity.hpp"
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
@@ -94,6 +95,7 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::ParticleSpawner>();
     reg.registerComponent<ecs::component::IsABoss>();
     reg.registerComponent<ecs::component::ParticleSpawner>();
+    reg.registerComponent<ecs::component::Gravity>();
 }
 
 void rtc::registerEndingSystems(

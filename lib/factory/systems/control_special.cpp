@@ -20,8 +20,8 @@ static void spawnMissile(ntw::UDPClient &udp, ecs::component::Position playerPos
     rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> msg(
         rt::UDPCommand::NEW_ENTITY_MISSILE, ecs::generateSharedEntityId()
     );
-    msg.body.pos = {playerPos.x + 30, playerPos.y};
-    msg.body.vel = {250, 0};
+    msg.body.pos = {playerPos.x - 16, playerPos.y + 8};
+    msg.body.vel = {250.0f + static_cast<float>(chargeLevel) / 2.0f, 0};
     msg.body.chargeLevel = chargeLevel;
     udp.send(reinterpret_cast<const char *>(&msg), sizeof(msg));
 }

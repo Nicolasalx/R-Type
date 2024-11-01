@@ -63,7 +63,9 @@
             "volume": 30.0
         },
         "on_death": {
-            "entity": "assets/explosion2.json"
+            "entity": "assets/explosion2.json",
+            "x": 72.0,
+            "y": 9.0
         },
         "radial_light": {
             "offset": {

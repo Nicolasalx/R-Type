@@ -15,6 +15,7 @@
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
+#include "ServerEntityFactory.hpp"
 #include "asio/ip/udp.hpp"
 #include "components/player.hpp"
 #include "components/shared_entity.hpp"
@@ -52,6 +53,12 @@ rts::GameRunner::GameRunner(
         _nbPlayers
     );
     _waveCreator.createStage(stage, missileSpawnRate, _waveManager, _datasToSend);
+
+    for (std::size_t i = 1; i <= 11; ++i) {
+        ecs::ServerEntityFactory::createServerEntityFromJSON(
+            _reg, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
+        );
+    }
 }
 
 void rts::GameRunner::killPlayer(size_t playerId)
