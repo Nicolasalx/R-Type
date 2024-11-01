@@ -82,7 +82,11 @@ void rtc::GameManager::_setupEntities(ntw::UDPClient &udpClient, ecs::Registry &
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
     ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/explosion.json", 300, 200);
+
+    // TODO: Remove this, only for testing purposes
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/beam/beam_large.json", 200, 100);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/beam/beam_medium.json", 200, 200);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/beam/beam_slim.json", 200, 300);
 }
 
 void rtc::GameManager::_runGame()
@@ -129,8 +133,6 @@ void rtc::GameManager::_runGame()
     rtc::registerEndingSystems(regEnd, *_window, _gameState.load() == GameState::WIN, _font, _gameState, _playerName, _score);
 
     _gameState.store(GameState::GAME);
-
-    _setupEntities(udpClient, regEnd, spriteManager);
 
     runGameLoop(regEnd, _window, dt, inputManager, _gameState);
 }

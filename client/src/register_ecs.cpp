@@ -113,7 +113,7 @@ void rtc::registerEndingSystems(
 
     rtc::addScore("assets/score/scoreBoard.json", playerName, score);
 
-    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() mutable {
+    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() {
         sf::Sprite background(texture);
         background.setScale(
             rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)

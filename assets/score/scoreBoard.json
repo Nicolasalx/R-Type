@@ -10,6 +10,18 @@
         },
         {
             "nom": "nicolas",
+            "score": 1100
+        },
+        {
+            "nom": "thibo",
+            "score": 1100
+        },
+        {
+            "nom": "nicolas",
+            "score": 1090
+        },
+        {
+            "nom": "thibo",
             "score": 1090
         },
         {
@@ -27,18 +39,6 @@
         {
             "nom": "thibo",
             "score": 1080
-        },
-        {
-            "nom": "thibo",
-            "score": 1080
-        },
-        {
-            "nom": "thibo",
-            "score": 1070
-        },
-        {
-            "nom": "thibo",
-            "score": 1070
         }
     ]
 }
