@@ -42,7 +42,7 @@ void controlMove(
         direction.x += 1.f;
     }
 
-    float speed = 100.0f;
+    float speed = 150.0f;
 
     Zipper<ecs::component::Velocity, ecs::component::Controllable> zip(velocities, controllables);
 

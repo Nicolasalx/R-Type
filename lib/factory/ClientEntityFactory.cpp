@@ -84,6 +84,11 @@ const std::unordered_map<std::string, std::function<void(Registry &, entity_t, e
              } else {
                  stateSub = "idle";
              }
+             if (reg.getComponent<ecs::component::Beam>(id)->isCharging) {
+                 reg.getComponent<ecs::component::Sprite>(id)->subSprites[1].animation.state = "loading";
+             } else {
+                 reg.getComponent<ecs::component::Sprite>(id)->subSprites[1].animation.state = "idle";
+             }
          }},
         {"robotGround",
          [](ecs::Registry &reg, entity_t id, ecs::component::Animation &anim) {
@@ -300,7 +305,13 @@ void ClientEntityFactory::addComponents(
     }
     if (componentsJson.contains("on_death")) {
         auto onDeathJson = componentsJson["on_death"];
-        reg.addComponent(entity, ecs::component::OnDeath{onDeathJson["entity"]});
+        float x = 0;
+        float y = 0;
+        if (onDeathJson.contains("x") && onDeathJson.contains("y")) {
+            x = onDeathJson["x"].get<float>();
+            y = onDeathJson["y"].get<float>();
+        }
+        reg.addComponent(entity, ecs::component::OnDeath{onDeathJson["entity"], x, y});
     }
     if (componentsJson.contains("particle")) {
         auto particleJson = componentsJson["particle"];
