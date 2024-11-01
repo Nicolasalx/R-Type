@@ -61,14 +61,14 @@ void ecs::systems::drawGameEnding(
         sf::Vector2u{static_cast<unsigned int>(windowSize.x * 0.35f), static_cast<unsigned int>(windowSize.y * 0.4f)}
     );
 
-    ImGui::SetNextWindowPos(ImVec2(0.3f * windowSize.x, 0.8f * windowSize.y), ImGuiCond_Always);
-    ImGui::SetNextWindowSize(ImVec2(0.4f * windowSize.x, 0.1f * windowSize.y), ImGuiCond_Always);
+    // ImGui::SetNextWindowPos(ImVec2(0.3f * windowSize.x, 0.8f * windowSize.y), ImGuiCond_Always);
+    // ImGui::SetNextWindowSize(ImVec2(0.4f * windowSize.x, 0.1f * windowSize.y), ImGuiCond_Always);
 
-    ImGui::Begin("Game Ending", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground);
+    // ImGui::Begin("Game Ending", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground);
 
-    if (ImGui::Button("Leave game", ImVec2(0.4f * windowSize.x, 0.1f * windowSize.y))) {
-        gameState.store(rtc::GameState::NONE);
-    }
+    // if (ImGui::Button("Leave game", ImVec2(0.4f * windowSize.x, 0.1f * windowSize.y))) {
+    //     gameState.store(rtc::GameState::NONE);
+    // }
 
-    ImGui::End();
+    // ImGui::End();
 }
