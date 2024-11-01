@@ -18,6 +18,8 @@ namespace ecs::component {
  */
 struct OnDeath {
     std::string entity;
+    float x = 0;
+    float y = 0;
 };
 
 } // namespace ecs::component

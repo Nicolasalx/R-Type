@@ -260,9 +260,10 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                     }
                     auto entity = reg.getLocalEntity().at(sharedEntityId);
                     if (reg.hasComponent<ecs::component::OnDeath>(entity)) {
+                        auto onDeath = reg.getComponent<ecs::component::OnDeath>(entity);
                         if (reg.hasComponent<ecs::component::Position>(entity)) {
-                            int x = reg.getComponent<ecs::component::Position>(entity)->x;
-                            int y = reg.getComponent<ecs::component::Position>(entity)->y;
+                            int x = reg.getComponent<ecs::component::Position>(entity)->x + onDeath->x;
+                            int y = reg.getComponent<ecs::component::Position>(entity)->y + onDeath->y;
                             ecs::ClientEntityFactory::createClientEntityFromJSON(
                                 reg, spriteManager, reg.getComponent<ecs::component::OnDeath>(entity)->entity, x, y
                             );
