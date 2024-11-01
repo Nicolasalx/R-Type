@@ -12,6 +12,8 @@
 #include "components/score.hpp"
 #include "components/self_player.hpp"
 
+#include <iostream>
+
 void ecs::systems::drawGameEnding(
     bool resultGame,
     sf::RenderWindow &window,
@@ -67,6 +69,7 @@ void ecs::systems::drawGameEnding(
     ImGui::Begin("Game Ending", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground);
 
     if (ImGui::Button("Leave game", ImVec2(0.4f * windowSize.x, 0.1f * windowSize.y))) {
+        std::cout << "LEAVE THE GAME\n";
         gameState.store(rtc::GameState::NONE);
     }
 

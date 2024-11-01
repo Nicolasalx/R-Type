@@ -61,6 +61,7 @@ struct NEW_ENTITY_PLAYER {
 struct NEW_ENTITY_MISSILE {
     ecs::component::Position pos{};
     ecs::component::Velocity vel{};
+    int chargeLevel = 0;
 };
 
 struct NEW_ENTITY_MISSILE_BALL {

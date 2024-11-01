@@ -113,9 +113,19 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE>(
         rt::UDPCommand::NEW_ENTITY_MISSILE,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE> &packet) {
-            handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
-                "assets/missile.json", spriteManager, this->_networkCallbacks, packet, udpClient
-            );
+            if (packet.body.chargeLevel > 66) {
+                handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
+                    "assets/beam/beam_large.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                );
+            } else if (packet.body.chargeLevel > 33 && packet.body.chargeLevel < 66) {
+                handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
+                    "assets/beam/beam_medium.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                );
+            } else {
+                handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE>(
+                    "assets/beam/beam_slim.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                );
+            }
         }
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(

@@ -116,7 +116,7 @@ void rtc::registerEndingSystems(
 
     rtc::addScore("assets/score/scoreBoard.json", playerName, score);
 
-    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() mutable {
+    reg.addSystem([resultGame, &window, font, &gameState, texture, &playerName, &score]() {
         sf::Sprite background(texture);
         background.setScale(
             rt::SCREEN_WIDTH / float(texture.getSize().x), rt::SCREEN_HEIGHT / float(texture.getSize().y)
@@ -140,7 +140,8 @@ void rtc::registerGameSystems(
     ecs::MetricManager<rt::GameMetric> &metrics,
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
     ecs::SoundManager &soundManager,
-    int &score
+    int &score,
+    sf::Clock &chargeClock
 )
 {
     tickRateManager.addTickRate(
@@ -153,8 +154,8 @@ void rtc::registerGameSystems(
     reg.addSystem([&reg, &soundManager]() { ecs::systems::soundEmitterSystem(reg, soundManager); });
     reg.addSystem([&reg, &dt]() { ecs::systems::deathTimer(reg, dt); });
     reg.addSystem([&reg, &input, &keyBind]() { ecs::systems::controlMove(reg, input, keyBind); });
-    reg.addSystem([&reg, &input, &udpClient, &keyBind]() {
-        ecs::systems::controlSpecial(reg, input, udpClient, keyBind, rtc::GameOptions::missileSpawnRate);
+    reg.addSystem([&reg, &udpClient]() {
+        ecs::systems::controlSpecial(reg, udpClient, rtc::GameOptions::missileSpawnRate);
     });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg]() { ecs::systems::collisionPredict(reg); });
@@ -181,7 +182,9 @@ void rtc::registerGameSystems(
             networkCallbacks.consumeList();
         }
     });
-    reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerBeamBar(reg, window.getSize()); });
+    reg.addSystem([&reg, &window, &input, &chargeClock, &keyBind]() {
+        ecs::systems::drawPlayerBeamBar(reg, window.getSize(), input, chargeClock, keyBind);
+    });
     reg.addSystem([&reg, &window]() { ecs::systems::drawPlayerHealthBar(reg, window.getSize()); });
     reg.addSystem([&reg, &window, &score]() { ecs::systems::drawScore(reg, window.getSize(), score); });
     reg.addSystem([&reg, &window]() { ecs::systems::drawTeamData(reg, window.getSize()); });
