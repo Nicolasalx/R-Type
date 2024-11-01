@@ -25,6 +25,7 @@ add_library(FACTORY STATIC
     systems/render_radial_light.cpp
     systems/check_game_ending.cpp
     systems/draw_particle.cpp
+    systems/check_out_of_range.cpp
     EntityFactory.cpp
     ServerEntityFactory.cpp
     ClientEntityFactory.cpp
