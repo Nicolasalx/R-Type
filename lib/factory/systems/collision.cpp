@@ -14,6 +14,7 @@
 #include "components/controllable.hpp"
 #include "components/gravity.hpp"
 #include "components/hitbox.hpp"
+#include "components/missile.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
@@ -118,6 +119,7 @@ void collisionPredict(Registry &reg)
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &players = reg.getComponents<ecs::component::Player>();
+    auto &missiles = reg.getComponents<ecs::component::Missile>();
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
 
@@ -145,15 +147,19 @@ void collisionPredict(Registry &reg)
                 bool entityBGravity = gravities.has(entityB);
                 const bool entityAPlayer = players.has(entityA);
                 const bool entityBPlayer = players.has(entityB);
+                const bool entityAMissile = missiles.has(entityA);
+                const bool entityBMissile = missiles.has(entityB);
 
                 if (entityAControllable && !entityBControllable) {
-                    if (!entityAPlayer) {
-                        resolveCollision(posA, intersection, velocities[entityA]);
+                    if (entityAPlayer && entityBMissile) {
+                        continue;
                     }
+                    resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAControllable && entityBControllable) {
-                    if (!entityBPlayer) {
-                        resolveCollision(posB, intersection, velocities[entityB]);
+                    if (entityBPlayer && entityAMissile) {
+                        continue;
                     }
+                    resolveCollision(posB, intersection, velocities[entityB]);
                 } else if (entityAGravity && !entityBGravity) {
                     resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAGravity && entityBGravity) {
