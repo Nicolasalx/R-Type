@@ -22,7 +22,7 @@
 #include "udp/UDPServer.hpp"
 
 namespace rts {
-int parseArg(int argc, const char **argv, rts::RoomManager &roomManager);
+int parseArg(int argc, const char **argv, rts::RoomManager &roomManager, int &port);
 void registerComponents(ecs::Registry &reg);
 void registerSystems(
     ecs::Registry &reg,
