@@ -50,7 +50,7 @@ void rts::ais::splitAi(
             );
 
             auto newEntity = ecs::ServerEntityFactory::createServerEntityFromJSON(
-                reg, "assets/bydosWave.json", newX, newY, newSharedId, -10.0f
+                reg, "assets/enemies/bydosWave.json", newX, newY, newSharedId, -10.0f
             );
 
             if (split.splitCount >= 1) {
