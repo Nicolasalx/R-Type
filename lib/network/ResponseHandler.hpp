@@ -16,19 +16,47 @@
 
 namespace ntw {
 
+/**
+ * @brief A template class for handling network responses.
+ *
+ * The `ResponseHandler` class manages command types and their associated handlers,
+ * allowing for the registration and processing of responses received over the network.
+ *
+ * @tparam CommandType The type representing command identifiers.
+ * @tparam PacketType The type representing the structure of incoming packets.
+ */
 template <typename CommandType, typename PacketType>
 class ResponseHandler {
     public:
+    /**
+     * @brief Constructs a ResponseHandler with a command type getter.
+     *
+     * @param cmdTypeGetter A function that extracts the command type from a packet.
+     */
     ResponseHandler(std::function<CommandType(const PacketType &)> cmdTypeGetter)
         : _cmdTypeGetter(std::move(cmdTypeGetter))
     {
     }
 
+    /**
+     * @brief Registers a handler for a specific command type.
+     *
+     * @param cmd The command type to associate with the handler.
+     * @param handler A function to handle packets of the associated command type.
+     */
     void registerHandler(CommandType cmd, std::function<void(const PacketType &)> handler)
     {
         _handler[cmd] = std::move(handler);
     }
 
+    /**
+     * @brief Handles a received response by processing the packet data.
+     *
+     * @param data Pointer to the raw data of the packet.
+     * @param size The size of the received data.
+     * @throws eng::TrackedException if the received data size is incorrect or if there is no handler for the command
+     * type.
+     */
     void handleResponse(const char *data, std::size_t size)
     {
         PacketType msg{};
@@ -49,8 +77,9 @@ class ResponseHandler {
     }
 
     private:
-    std::unordered_map<CommandType, std::function<void(const PacketType &)>> _handler;
-    std::function<CommandType(const PacketType &)> _cmdTypeGetter;
+    std::unordered_map<CommandType, std::function<void(const PacketType &)>>
+        _handler;                                                  ///< Map of command types to their handlers.
+    std::function<CommandType(const PacketType &)> _cmdTypeGetter; ///< Function to extract command type from a packet.
 };
 
 } // namespace ntw
