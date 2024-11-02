@@ -19,6 +19,7 @@
 #include "components/health.hpp"
 #include "components/hitbox.hpp"
 #include "components/missile.hpp"
+#include "components/parallax.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
 #include "components/score.hpp"
@@ -183,6 +184,27 @@ void EntityFactory::addCommonComponents(
         reg.addComponent(
             entity, ecs::component::Health{healthJson["maxHp"].get<int>(), healthJson["currHp"].get<int>()}
         );
+    }
+
+    if (componentsJson.contains("parallax")) {
+        auto parallaxJson = componentsJson["parallax"];
+        ecs::component::Parallax parallaxComp;
+        if (parallaxJson.contains("layer")) {
+            parallaxComp.layer = parallaxJson["layer"].get<size_t>();
+        }
+        if (parallaxJson.contains("repeat_x")) {
+            parallaxComp.repeatX = parallaxJson["repeat_x"].get<int>();
+        }
+        if (parallaxJson.contains("repeat_y")) {
+            parallaxComp.repeatY = parallaxJson["repeat_y"].get<int>();
+        }
+        if (parallaxJson.contains("respawn_x")) {
+            parallaxComp.respawnX = parallaxJson["respawn_x"].get<int>();
+        }
+        if (parallaxJson.contains("respawn_y")) {
+            parallaxComp.respawnY = parallaxJson["respawn_y"].get<int>();
+        }
+        reg.addComponent(entity, std::move(parallaxComp));
     }
 
     if (componentsJson.contains("beam")) {

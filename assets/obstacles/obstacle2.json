@@ -9,6 +9,17 @@
             "vx": -20.0,
             "vy": 0.0
         },
+        "drawable": {
+            "size": {
+                "x": 64.0,
+                "y": 8.0
+            },
+            "fill_color": {
+                "r": 55,
+                "g": 55,
+                "b": 55
+            }
+        },
         "sprite": {
             "texture": "assets/bg/obstacles/verylowground.png",
             "initial_frame": {

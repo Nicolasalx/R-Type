@@ -46,6 +46,7 @@
 
 #include "systems/collision.hpp"
 #include "systems/draw.hpp"
+#include "systems/parallax.hpp"
 #include "systems/position.hpp"
 #include "systems/ai_act.hpp"
 #include "systems/health_mob_check.hpp"
@@ -105,6 +106,7 @@ void rts::registerSystems(
             ecs::systems::aiAct(reg);
         }
     });
+    reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
     reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
     reg.addSystem([&reg, &waveManager, &datasToSend]() {
