@@ -19,6 +19,7 @@
 #include "RTypeUDPProtol.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
 #include "TickRateManager.hpp"
@@ -58,6 +59,10 @@ void rtc::GameManager::_setupGui()
     _font = std::shared_ptr<ImFont>(rawFont, [](ImFont *) {});
     if (!ImGui::SFML::UpdateFontTexture()) {
         return;
+    }
+    _colorBlind = std::make_shared<sf::Shader>();
+    if (!_colorBlind->loadFromFile("assets/accessibility/regular.frag", sf::Shader::Fragment)) {
+        throw eng::TrackedException("Fail to load colorBlind shader.");
     }
 }
 
@@ -116,7 +121,8 @@ void rtc::GameManager::_runGame()
         _keyBind,
         soundManager,
         _score,
-        chargeClock
+        chargeClock,
+        _colorBlind
     );
 
     _setupUdpConnection(spriteManager, udpClient);
@@ -149,7 +155,7 @@ void rtc::GameManager::_launchGame()
     while (_gameState.load() != GameState::NONE) {
         switch (_gameState.load()) {
             case GameState::LOBBY:
-                rtc::runGui(_window, _roomManager, _gameState, _keyBind);
+                rtc::runGui(_window, _roomManager, _gameState, _keyBind, _colorBlind);
                 break;
             case GameState::GAME:
                 _runGame();

@@ -13,6 +13,7 @@
 #include "Logger.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/System/Time.hpp"
 #include "imgui-SFML.h"
@@ -21,7 +22,8 @@ void rtc::runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
     const std::shared_ptr<rtc::RoomManager> &roomManager,
     std::atomic<rtc::GameState> &gameState,
-    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    const std::shared_ptr<sf::Shader> &colorBlind
 )
 {
     ecs::SoundManager soundManager;
@@ -61,7 +63,7 @@ void rtc::runGui(
         }
         ImGui::SFML::Update(*window, timeDt);
         window->clear();
-        window->draw(background);
+        window->draw(background, colorBlind.get());
         switch (windowMode) {
             case rtc::WindowMode::EXIT_MENU:
                 window->close();
@@ -70,7 +72,7 @@ void rtc::runGui(
                 menuWindow(windowSize, windowMode);
                 break;
             case rtc::WindowMode::OPTIONS:
-                optionsWindow(*window, windowSize, fpsLimit, windowMode);
+                optionsWindow(*window, windowSize, fpsLimit, windowMode, colorBlind);
                 break;
             case rtc::WindowMode::ACCESSIBILITY:
                 renderAccessibility(windowSize, windowMode, keyBind);

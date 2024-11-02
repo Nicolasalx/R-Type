@@ -5,12 +5,14 @@
 ** register_ecs
 */
 
+#include <memory>
 #include "ClientTickRate.hpp"
-#include "GameManager.hpp"
 #include "GameOptions.hpp"
+#include "Logger.hpp"
 #include "MetricManager.hpp"
 #include "RTypeClient.hpp"
 #include "RTypeConst.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SafeList.hpp"
 #include "SoundManager.hpp"
@@ -141,7 +143,8 @@ void rtc::registerGameSystems(
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
     ecs::SoundManager &soundManager,
     int &score,
-    sf::Clock &chargeClock
+    sf::Clock &chargeClock,
+    std::shared_ptr<sf::Shader> colorBlind
 )
 {
     tickRateManager.addTickRate(
@@ -162,7 +165,7 @@ void rtc::registerGameSystems(
     reg.addSystem([&reg]() { ecs::systems::healthLocalCheck(reg); });
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt, &spriteManager]() { ecs::systems::spriteSystem(reg, dt, spriteManager); });
-    reg.addSystem([&reg, &window]() { ecs::systems::draw(reg, window); });
+    reg.addSystem([&reg, &window, &colorBlind]() { ecs::systems::draw(reg, window, colorBlind); });
     reg.addSystem([&reg, &dt, &window]() { ecs::systems::drawParticle(reg, sf::seconds(dt), window); });
     if (rtc::GameOptions::lightEffect) {
         reg.addSystem([&reg, &window]() { ecs::systems::renderRadialLight(reg, window); });

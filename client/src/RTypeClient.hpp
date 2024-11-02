@@ -16,6 +16,7 @@
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "SafeList.hpp"
 #include "SoundManager.hpp"
 #include "SpriteManager.hpp"
@@ -56,7 +57,8 @@ void registerGameSystems(
     const ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
     ecs::SoundManager &soundManager,
     int &score,
-    sf::Clock &chargeClock
+    sf::Clock &chargeClock,
+    std::shared_ptr<sf::Shader> colorBlind
 );
 
 void registerEndingSystems(
@@ -79,7 +81,8 @@ void runGui(
     const std::shared_ptr<sf::RenderWindow> &window,
     const std::shared_ptr<rtc::RoomManager> &roomManager,
     std::atomic<GameState> &gameState,
-    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind
+    ecs::KeyBind<rt::PlayerAction, sf::Keyboard::Key> &keyBind,
+    const std::shared_ptr<sf::Shader> &colorBlind
 );
 void renderInsideRoom(const std::shared_ptr<rtc::RoomManager> &roomManager, const sf::Vector2u &windowSize);
 void renderLobbyWindow(
@@ -87,7 +90,13 @@ void renderLobbyWindow(
     const sf::Vector2u &windowSize,
     bool &scoreBoardEnable
 );
-void optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode);
+void optionsWindow(
+    sf::RenderWindow &window,
+    sf::Vector2u windowSize,
+    int &fpsLimit,
+    WindowMode &windowMode,
+    const std::shared_ptr<sf::Shader> &colorBlind
+);
 void menuWindow(const sf::Vector2u &windowSize, WindowMode &windowMode);
 void lobbyWindow(
     sf::Vector2u &windowSize,

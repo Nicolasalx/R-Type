@@ -5,11 +5,19 @@
 ** option
 */
 
+#include <memory>
 #include "../RTypeClient.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &fpsLimit, WindowMode &windowMode)
+void rtc::optionsWindow(
+    sf::RenderWindow &window,
+    sf::Vector2u windowSize,
+    int &fpsLimit,
+    WindowMode &windowMode,
+    const std::shared_ptr<sf::Shader> &colorBlind
+)
 {
     float buttonWidth = windowSize.x * 0.20f;
     float buttonHeight = windowSize.y * 0.07f;
@@ -51,6 +59,40 @@ void rtc::optionsWindow(sf::RenderWindow &window, sf::Vector2u windowSize, int &
     ImGui::SameLine();
     if (ImGui::Button("720x480", ImVec2(buttonWidth, buttonHeight))) {
         window.setSize(sf::Vector2u(720, 480));
+    }
+    ImGui::EndGroup();
+
+    ImGui::Spacing();
+    ImGui::Separator();
+    ImGui::Spacing();
+
+    ImGui::Text("Color Blind Option:");
+    ImGui::Spacing();
+
+    ImGui::BeginGroup();
+
+    if (ImGui::Button("Deuteranopia", ImVec2(windowSize.x * 0.15f, buttonHeight))) {
+        if (!colorBlind->loadFromFile("assets/accessibility/deuteranopia.frag", sf::Shader::Fragment)) {
+            throw eng::TrackedException("Fail to load colorBlind shader.");
+        }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Protanopia", ImVec2(windowSize.x * 0.15f, buttonHeight))) {
+        if (!colorBlind->loadFromFile("assets/accessibility/protanopia.frag", sf::Shader::Fragment)) {
+            throw eng::TrackedException("Fail to load colorBlind shader.");
+        }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Tritanopia", ImVec2(windowSize.x * 0.15f, buttonHeight))) {
+        if (!colorBlind->loadFromFile("assets/accessibility/tritanopia.frag", sf::Shader::Fragment)) {
+            throw eng::TrackedException("Fail to load colorBlind shader.");
+        }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("None", ImVec2(windowSize.x * 0.15f, buttonHeight))) {
+        if (!colorBlind->loadFromFile("assets/accessibility/regular.frag", sf::Shader::Fragment)) {
+            throw eng::TrackedException("Fail to load colorBlind shader.");
+        }
     }
     ImGui::EndGroup();
 
