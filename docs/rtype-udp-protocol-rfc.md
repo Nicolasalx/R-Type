@@ -88,6 +88,7 @@ Packets contain a `cmd` field that specifies the command being sent. The availab
 ### 4.1 Command Descriptions
 
 #### 4.1.1 `NEW_ENTITY_PLAYER`
+
 - **Command ID**: 1
 - **Description**: Creates a new static entity without movement, with the specified initial position.
 - **Data**:
@@ -100,6 +101,7 @@ struct NEW_ENTITY_STATIC {
 ```
 
 #### 4.1.2 `NEW_ENTITY_PLAYER`
+
 - **Command ID**: 2
 - **Description**: Creates a player entity with a unique identifier, player name, and movement data.
 - **Data**:
@@ -118,12 +120,14 @@ struct NEW_ENTITY_PLAYER {
 ```
 
 #### 4.1.3 `NEW_ENTITY_MISSILE`
+
 - **Command ID**: 3
 - **Description**: Creates a missile entity with position and velocity data.
 - **Data**:
   - `pos`: Position of the missile.
   - `vel`: Velocity of the missile.
   - `chargeLevel`: The charge level of the missile.
+
 ```cpp
 struct NEW_ENTITY_MISSILE {
     ecs::component::Position pos{};
@@ -133,11 +137,13 @@ struct NEW_ENTITY_MISSILE {
 ```
 
 #### 4.1.4 `NEW_ENTITY_MISSILE_BALL`
+
 - **Command ID**: 4
 - **Description**: Creates a missile entity in the shape of a ball with position and velocity data.
 - **Data**:
   - `pos`: Position of the missile ball.
   - `vel`: Velocity of the missile ball.
+
 ```cpp
 struct NEW_ENTITY_MISSILE_BALL {
     ecs::component::Position pos{};
@@ -146,10 +152,12 @@ struct NEW_ENTITY_MISSILE_BALL {
 ```
 
 #### 4.1.5 `NEW_ENTITY_BYDOS_WAVE`
+
 - **Command ID**: 5
 - **Description**: Creates a new Bydos wave entity with position data.
 - **Data**:
   - `pos`: Position of the Bydos wave.
+
 ```cpp
 struct NEW_ENTITY_BYDOS_WAVE {
     ecs::component::Position pos{};
@@ -157,11 +165,13 @@ struct NEW_ENTITY_BYDOS_WAVE {
 ```
 
 #### 4.1.6 `NEW_ENTITY_ROBOT_GROUND`
+
 - **Command ID**: 6
 - **Description**: Creates a new ground robot entity with position and movement data.
 - **Data**:
   - `pos`: Position of the ground robot.
   - `vel`: Velocity of the ground robot.
+
 ```cpp
 struct NEW_ENTITY_ROBOT_GROUND {
     ecs::component::Position pos{};
@@ -170,11 +180,13 @@ struct NEW_ENTITY_ROBOT_GROUND {
 ```
 
 #### 4.1.7 `NEW_ENTITY_DOBKERATOPS`
+
 - **Command ID**: 7
 - **Description**: Creates a new Dobkeratops entity with position data and an initial stage.
 - **Data**:
   - `pos`: Position of the Dobkeratops entity.
   - `stage`: Indicates the level of development or difficulty of the entity.
+
 ```cpp
 struct NEW_ENTITY_DOBKERATOPS {
     ecs::component::Position pos{};
@@ -183,11 +195,13 @@ struct NEW_ENTITY_DOBKERATOPS {
 ```
 
 #### 4.1.8 `NEW_ENTITY_DOBKERATOPS_PART`
+
 - **Command ID**: 8
 - **Description**: Creates a new part of the Dobkeratops entity with position data and a part index.
 - **Data**:
   - `pos`: Position of the Dobkeratops part.
   - `partIndex`: Indicates the specific index of the part.
+
 ```cpp
 struct NEW_ENTITY_DOBKERATOPS_PART {
     ecs::component::Position pos{};
@@ -196,10 +210,12 @@ struct NEW_ENTITY_DOBKERATOPS_PART {
 ```
 
 #### 4.1.9 `NEW_ENTITY_BOSS_PARASITE`
+
 - **Command ID**: 9
 - **Description**: Creates a new Boss Parasite entity with position data.
 - **Data**:
   - `pos`: Position of the Boss Parasite entity.
+
 ```cpp
 struct NEW_ENTITY_BOSS_PARASITE {
     ecs::component::Position pos{};
@@ -207,10 +223,12 @@ struct NEW_ENTITY_BOSS_PARASITE {
 ```
 
 #### 4.1.10 `NEW_ENTITY_BLOB`
+
 - **Command ID**: 10
 - **Description**: Creates a new Blob entity with position data.
 - **Data**:
   - `pos`: Position of the Blob entity.
+
 ```cpp
 struct NEW_ENTITY_BLOB {
     ecs::component::Position pos{};
@@ -218,10 +236,12 @@ struct NEW_ENTITY_BLOB {
 ```
 
 #### 4.1.11 `TAKE_DAMAGE`
+
 - **Command ID**: 11
 - **Description**: Applies damage to an entity.
 - **Data**:
   - `damage`: The amount of damage to apply.
+
 ```cpp
 struct TAKE_DAMAGE {
     int damage = 1;
@@ -229,11 +249,13 @@ struct TAKE_DAMAGE {
 ```
 
 #### 4.1.12 `MOVE_ENTITY`
+
 - **Command ID**: 7
 - **Description**: Updates the position and velocity of an existing entity.
 - **Data**:
   - `pos`: Position of the entity.
   - `vel`: Velocity of the entity.
+
 ```cpp
 struct MOVE_ENTITY {
     ecs::component::Position pos;
@@ -242,10 +264,12 @@ struct MOVE_ENTITY {
 ```
 
 #### 4.1.13 `CHANGE_ANIMATION_STATE`
+
 - **Command ID**: 13
 - **Description**: Changes the animation state of an entity.
 - **Data**:
   - `newState`: The new animation state to set for the entity.
+
 ```cpp
 struct CHANGE_ANIMATION_STATE {
     char newState[32] = {0};
@@ -253,10 +277,12 @@ struct CHANGE_ANIMATION_STATE {
 ```
 
 #### 4.1.14 `DEL_ENTITY`
+
 - **Command ID**: 10
 - **Description**: Deletes a specific entity from the game.
 - **Data**:
   - `sharedEntityId`: Unique ID of the entity to delete.
+
 ```cpp
 struct DEL_ENTITY {
     shared_entity_t sharedEntityId; // Unique ID of the entity to delete
@@ -264,10 +290,12 @@ struct DEL_ENTITY {
 ```
 
 #### 4.1.15 `PING`
+
 - **Command ID**: 15
 - **Description**: Sends a ping message to check the connection status.
 - **Data**:
   - `sendTime`: The time the ping was sent, typically used for latency measurement.
+
 ```cpp
 struct PING {
     long sendTime = 0;
@@ -275,10 +303,12 @@ struct PING {
 ```
 
 #### 4.1.16 `END_GAME`
+
 - **Command ID**: 16
 - **Description**: Ends the game and indicates whether the player has won or lost.
 - **Data**:
   - `win`: A boolean value indicating if the player won the game.
+
 ```cpp
 struct END_GAME {
     bool win = false;
@@ -312,6 +342,7 @@ The server sends a DEL_ENTITY command to indicate that an entity has been remove
 In the event of receiving an invalid packet (e.g., wrong magic number or size), the protocol must log the error and discard the packet. Additionally, the system should be able to handle exceptions when processing packets without crashing the game.
 
 Example Error Handling
+
 ```cpp
 if (header->magic != rt::UDP_MAGIC) {
     eng::logWarning("Invalid UDP magic received !");
