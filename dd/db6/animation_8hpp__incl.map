@@ -1,5 +1,5 @@
-<map id="lib/factory/components/animation.hpp" name="lib/factory/components/animation.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="266,5,438,45"/>
+<map id="lib/RTypeECS/components/animation.hpp" name="lib/RTypeECS/components/animation.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="257,5,447,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,184,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="259,167,346,192"/>
 <area shape="rect" id="node4" title=" " alt="" coords="371,167,429,192"/>

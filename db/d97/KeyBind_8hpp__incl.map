@@ -1,5 +1,5 @@
-<map id="lib/factory/KeyBind.hpp" name="lib/factory/KeyBind.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="193,5,366,31"/>
+<map id="lib/RTypeECS/KeyBind.hpp" name="lib/RTypeECS/KeyBind.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="184,5,375,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,79,212,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="237,79,322,104"/>
 <area shape="rect" id="node4" title=" " alt="" coords="347,79,471,104"/>

@@ -1,6 +1,6 @@
-<map id="lib/factory/components/dobkeratops.hpp" name="lib/factory/components/dobkeratops.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,177,45"/>
-<area shape="rect" id="node2" href="$db/de2/entity_8hpp.html" title=" " alt="" coords="48,93,135,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="11,167,81,192"/>
-<area shape="rect" id="node4" title=" " alt="" coords="105,167,168,192"/>
+<map id="lib/RTypeECS/components/dobkeratops.hpp" name="lib/RTypeECS/components/dobkeratops.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,195,45"/>
+<area shape="rect" id="node2" href="$db/de2/entity_8hpp.html" title=" " alt="" coords="57,93,143,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="19,167,90,192"/>
+<area shape="rect" id="node4" title=" " alt="" coords="114,167,177,192"/>
 </map>

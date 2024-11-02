@@ -1,4 +1,4 @@
-<map id="lib/factory/systems/draw_player_beam_bar.hpp" name="lib/factory/systems/draw_player_beam_bar.hpp">
+<map id="lib/RTypeECS/systems/draw_player_beam_bar.hpp" name="lib/RTypeECS/systems/draw_player_beam_bar.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="361,5,566,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="57,93,203,119"/>
 <area shape="rect" id="node3" href="$d1/d6e/InputManager_8hpp.html" title=" " alt="" coords="227,93,366,119"/>

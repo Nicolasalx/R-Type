@@ -1,4 +1,4 @@
-<map id="lib/factory/systems/health_mob_check.hpp" name="lib/factory/systems/health_mob_check.hpp">
+<map id="lib/RTypeECS/systems/health_mob_check.hpp" name="lib/RTypeECS/systems/health_mob_check.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="714,5,890,45"/>
 <area shape="rect" id="node2" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="584,167,686,192"/>
 <area shape="rect" id="node20" href="$de/d0e/WaveManager_8hpp.html" title=" " alt="" coords="961,93,1104,119"/>

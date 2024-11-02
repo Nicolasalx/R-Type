@@ -1,4 +1,4 @@
-<map id="lib/factory/systems/check_game_ending.hpp" name="lib/factory/systems/check_game_ending.hpp">
+<map id="lib/RTypeECS/systems/check_game_ending.hpp" name="lib/RTypeECS/systems/check_game_ending.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="399,5,585,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="165,167,251,192"/>
 <area shape="rect" id="node3" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="713,93,815,119"/>

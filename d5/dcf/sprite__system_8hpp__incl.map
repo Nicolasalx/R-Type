@@ -1,5 +1,5 @@
-<map id="lib/factory/systems/sprite_system.hpp" name="lib/factory/systems/sprite_system.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="619,5,766,45"/>
+<map id="lib/RTypeECS/systems/sprite_system.hpp" name="lib/RTypeECS/systems/sprite_system.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="611,5,775,45"/>
 <area shape="rect" id="node2" href="$d2/dbe/SpriteManager_8hpp.html" title=" " alt="" coords="395,93,551,119"/>
 <area shape="rect" id="node9" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="863,93,965,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,167,204,192"/>

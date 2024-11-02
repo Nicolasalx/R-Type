@@ -1,6 +1,5 @@
 <map id="ecs::WaveManager::addNewWave" name="ecs::WaveManager::addNewWave">
-<area shape="rect" id="node1" title="Adds a new wave to the WaveManager." alt="" coords="507,42,749,67"/>
+<area shape="rect" id="node1" title="Adds a new wave to the WaveManager." alt="" coords="507,13,749,38"/>
 <area shape="rect" id="node2" href="$da/df3/classrts_1_1WaveCreator.html#ada5d2779bd6a3774fbe32860298df869" title=" " alt="" coords="279,5,459,45"/>
-<area shape="rect" id="node4" href="$d9/dbb/namespacerts.html#aa0e770487054b04b00f84c9aa1f18a7d" title=" " alt="" coords="313,70,424,95"/>
 <area shape="rect" id="node3" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,13,231,38"/>
 </map>

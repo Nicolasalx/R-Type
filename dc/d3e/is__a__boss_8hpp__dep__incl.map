@@ -1,7 +1,7 @@
-<map id="lib/factory/components/is_a_boss.hpp" name="lib/factory/components/is_a_boss.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="251,5,423,45"/>
+<map id="lib/RTypeECS/components/is_a_boss.hpp" name="lib/RTypeECS/components/is_a_boss.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="246,5,435,45"/>
 <area shape="rect" id="node2" href="$d6/db9/client_2src_2register__ecs_8cpp.html" title=" " alt="" coords="5,93,140,133"/>
 <area shape="rect" id="node3" href="$d5/d09/client_2src_2register__udp__response_8cpp.html" title=" " alt="" coords="165,93,311,133"/>
-<area shape="rect" id="node4" href="$d0/de3/EntityFactory_8cpp.html" title=" " alt="" coords="335,101,538,126"/>
-<area shape="rect" id="node5" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="563,93,703,133"/>
+<area shape="rect" id="node4" href="$d0/de3/EntityFactory_8cpp.html" title=" " alt="" coords="335,101,554,126"/>
+<area shape="rect" id="node5" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="579,93,719,133"/>
 </map>

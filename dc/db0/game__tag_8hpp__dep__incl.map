@@ -1,6 +1,6 @@
-<map id="lib/factory/components/game_tag.hpp" name="lib/factory/components/game_tag.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="211,5,383,45"/>
-<area shape="rect" id="node2" href="$d4/dd0/ServerEntityFactory_8cpp.html" title=" " alt="" coords="5,93,177,133"/>
-<area shape="rect" id="node3" href="$da/d01/collideEffect_8cpp.html" title=" " alt="" coords="201,93,392,133"/>
-<area shape="rect" id="node4" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="416,93,556,133"/>
+<map id="lib/RTypeECS/components/game_tag.hpp" name="lib/RTypeECS/components/game_tag.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="220,5,409,45"/>
+<area shape="rect" id="node2" href="$d4/dd0/ServerEntityFactory_8cpp.html" title=" " alt="" coords="5,93,195,133"/>
+<area shape="rect" id="node3" href="$da/d01/collideEffect_8cpp.html" title=" " alt="" coords="219,93,410,133"/>
+<area shape="rect" id="node4" href="$d6/de3/server_2src_2register__ecs_8cpp.html" title=" " alt="" coords="434,93,574,133"/>
 </map>

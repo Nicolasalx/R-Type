@@ -1,4 +1,6 @@
 <map id="ecs::systems::parallax" name="ecs::systems::parallax">
-<area shape="rect" id="node1" title=" " alt="" coords="245,5,413,31"/>
-<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,5,197,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="519,31,687,56"/>
+<area shape="rect" id="node2" href="$d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="279,5,471,31"/>
+<area shape="rect" id="node3" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="298,55,451,80"/>
+<area shape="rect" id="node4" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,55,231,80"/>
 </map>

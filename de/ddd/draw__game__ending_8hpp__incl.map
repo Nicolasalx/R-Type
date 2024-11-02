@@ -1,4 +1,4 @@
-<map id="lib/factory/systems/draw_game_ending.hpp" name="lib/factory/systems/draw_game_ending.hpp">
+<map id="lib/RTypeECS/systems/draw_game_ending.hpp" name="lib/RTypeECS/systems/draw_game_ending.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="1701,5,1883,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="1557,93,1704,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="1999,240,2076,265"/>

@@ -82,17 +82,17 @@ Architectural Overview</h1>
 Architectural Diagrams</h1>
 <ul>
 <li><b>Overview Diagram</b>: <div class="fragment"><div class="line">graph TD</div>
-<div class="line">  A[Client Subsystem] --&gt; |Uses| FACTORY</div>
+<div class="line">  A[Client Subsystem] --&gt; |Uses| RTYPE-ECS</div>
 <div class="line">  A --&gt; |Uses| NETWORK</div>
 <div class="line">  A --&gt; |Uses| UTILS</div>
 <div class="line">  A --&gt; |Uses| ImGui-SFML</div>
-<div class="line">  B[Server Subsystem] --&gt; |Uses| FACTORY</div>
+<div class="line">  B[Server Subsystem] --&gt; |Uses| RTYPE-ECS</div>
 <div class="line">  B --&gt; |Uses| NETWORK</div>
 <div class="line">  B --&gt; |Uses| UTILS</div>
 <div class="line"> </div>
-<div class="line">  FACTORY --&gt; |Depends on| ECS</div>
-<div class="line">  FACTORY --&gt; |Depends on| NETWORK</div>
-<div class="line">  FACTORY --&gt; |Uses| SFML</div>
+<div class="line">  RTYPE-ECS --&gt; |Depends on| ECS</div>
+<div class="line">  RTYPE-ECS --&gt; |Depends on| NETWORK</div>
+<div class="line">  RTYPE-ECS --&gt; |Uses| SFML</div>
 <div class="line">  NETWORK --&gt; |Uses| Asio</div>
 <div class="line">  UTILS --&gt; |Provides| Logger</div>
 <div class="line">  UTILS --&gt; |Provides| ArgParser</div>

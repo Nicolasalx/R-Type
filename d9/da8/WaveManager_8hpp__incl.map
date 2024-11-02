@@ -1,5 +1,5 @@
-<map id="lib/factory/WaveManager.hpp" name="lib/factory/WaveManager.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="77,5,289,31"/>
+<map id="lib/RTypeECS/WaveManager.hpp" name="lib/RTypeECS/WaveManager.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="69,5,298,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="181,152,268,177"/>
 <area shape="rect" id="node3" title=" " alt="" coords="144,225,207,251"/>
 <area shape="rect" id="node4" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="604,79,707,104"/>

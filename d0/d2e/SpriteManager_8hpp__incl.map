@@ -1,5 +1,5 @@
-<map id="lib/factory/SpriteManager.hpp" name="lib/factory/SpriteManager.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="204,5,419,31"/>
+<map id="lib/RTypeECS/SpriteManager.hpp" name="lib/RTypeECS/SpriteManager.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="196,5,427,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,79,204,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="233,152,291,177"/>
 <area shape="rect" id="node4" href="$d7/dc4/TrackedException_8hpp.html" title=" " alt="" coords="279,79,485,104"/>

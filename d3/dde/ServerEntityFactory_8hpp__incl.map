@@ -1,5 +1,5 @@
-<map id="lib/factory/ServerEntityFactory.hpp" name="lib/factory/ServerEntityFactory.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="987,5,1159,45"/>
+<map id="lib/RTypeECS/ServerEntityFactory.hpp" name="lib/RTypeECS/ServerEntityFactory.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="978,5,1167,45"/>
 <area shape="rect" id="node2" href="$db/deb/EntityFactory_8hpp.html" title=" " alt="" coords="1267,93,1401,119"/>
 <area shape="rect" id="node7" href="$db/dd1/Registry_8hpp.html" title=" " alt="" coords="620,167,723,192"/>
 <area shape="rect" id="node3" title=" " alt="" coords="1757,167,1823,192"/>
