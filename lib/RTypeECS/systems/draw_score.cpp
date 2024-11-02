@@ -24,7 +24,7 @@ void ecs::systems::drawScore(Registry &reg, const sf::Vector2u &windowSize, int 
             ImGui::GetBackgroundDrawList()->AddText(
                 scr.font.get(),
                 (windowSize.y * 0.05),
-                ImVec2(windowSize.x * 0.85, windowSize.y * 0.05),
+                ImVec2(windowSize.x * 0.95, windowSize.y * 0.10),
                 IM_COL32(255, 255, 255, 255),
                 std::to_string(scr.value).c_str()
             );
