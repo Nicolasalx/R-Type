@@ -20,12 +20,12 @@ namespace ecs {
  * allowing for the addition of new values and retrieval of the history.
  */
 class Metric {
-private:
+    private:
     std::vector<float> _array; ///< Array to store the history of metric values.
     std::size_t _index = 0;    ///< Current index for adding new values.
     std::size_t _count = 0;    ///< Number of values added to the metric.
 
-public:
+    public:
     /**
      * @brief Constructs a Metric with a specified history size.
      *
@@ -92,10 +92,10 @@ public:
  */
 template <typename MetricKey>
 class MetricManager {
-private:
+    private:
     std::unordered_map<MetricKey, ecs::Metric> _metrics; ///< Map of metrics indexed by key.
 
-public:
+    public:
     MetricManager() = default; ///< Default constructor.
 
     /**

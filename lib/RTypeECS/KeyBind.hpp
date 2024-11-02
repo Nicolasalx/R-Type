@@ -25,10 +25,10 @@ namespace ecs {
  */
 template <typename Action, typename Key>
 class KeyBind {
-private:
+    private:
     std::unordered_map<Action, Key> _keyBind; ///< The map storing the action-key pairs.
 
-public:
+    public:
     KeyBind() = default; ///< Default constructor.
 
     /**
