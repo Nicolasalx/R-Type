@@ -1,9 +1,10 @@
 # R-Type Multiplayer Game Engine (ECS-based)
+
 [![Linux/Windows](https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml/badge.svg)](https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml)
 [![Documentation](https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml/badge.svg)](https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-![](docs/main.png)
+![Game Image](docs/main.png)
 
 ## Table of Contents
 
@@ -16,78 +17,107 @@
   - [Unzip the Downloaded File](#unzip-the-downloaded-file)
   - [Run the Binaries](#run-the-binaries)
   - [Commands](#commands)
+- [Troubleshooting] (#troubleshooting)
 - [License](#license)
 - [Authors / Contacts](#authors--contacts)
 - [Useful Links / Quick-Start Information](#useful-links--quick-start-information)
-- [Contributing](#Contributing)
+- [Contributing](#contributing)
 
 ## Project Purpose
 
 This project is a game engine built using an Entity-Component-System (ECS) architecture, offering scalability and flexibility for managing game objects and systems. Included around this engine is an existing implementation of the classic R-Type arcade game with a focus on multiplayer gameplay.
 
 ## Requirements / Supported Platforms
-### Requirements:
+
+### Requirements
+
 There are no dependencies required for users as all necessary components are included in the release.
 
-### Supported Platforms:
+### Supported Platforms
+
 - **Linux**
 - **Windows**
 
 ## Usage Instructions
+
 To use the game engine and play the R-Type implementation, follow these steps:
 
-### Download the Latest Release:
-Visit the [Releases page](https://github.com/ManuelR-T/R-Type/releases) of this repository.
-Download the appropriate zip file for your operating system (e.g., `Rtype-windows.zip` or `Rtype-linux.zip`).
+### Download the Latest Release
 
-### Unzip the Downloaded File:
+Visit the [Releases page](https://github.com/ManuelR-T/R-Type/releases) of this repository.
+Download the appropriate zip file for your operating system (e.g., `Rtype-{version}-Windows.zip` or `Rtype-{version}-Linux.tar.gz` where `{version}` represents the version of the game e.g., `0.2.0`).
+
+### Unzip the Downloaded File
+
 - Windows:
     Right-click the downloaded `.zip` file and select `Extract All...`
 - Linux:
+
     ```bash
     unzip Rtype-linux.zip -d R-Type_Server
     ```
+
 **Note**: If you are a developer, you may want to build the project yourself, you find the tutorial on the [developer documentation](docs/developer-documentation.md#build-the-engine).
 
-### Run the Binaries:
+### Run the Binaries
 
 - Client:
+
     ```bash
     ./r-type_client -i <server_ip> -p <server_port> -pn <player_name>
     ```
-    - Example:
-        ```bash
-        ./r-type_client -i 127.0.0.1 -p 8080 -pn Player1
-        ```
 
-    - All arguments accepted:
-        ```
-        Available arguments:
-        -i, --ip (string) [required] : Server IP address
-        -p, --port (int) [required] : Server port
-        -pn, --player_name (string) [required] : Player name
-        -h, --help (bool) [optional] : Print this help message
-        ```
+  - Example:
+
+    ```bash
+    ./r-type_client -i 127.0.0.1 -p 8080 -pn Player1
+    ```
+
+  - All arguments accepted:
+
+    ```txt
+    Available arguments:
+    -i, --ip (string) [required] : Server IP address
+    -p, --port (int) [required] : Server port
+    -pn, --player_name (string) [required] : Player name
+    -h, --help (bool) [optional] : Print this help message
+    ```
 
 - Server:
+
     ```bash
-    ./build/r-type_server
+    ./build/r-type_server -p <server_port>
     ```
 
 - Server in debug mode:
+
     ```bash
-    ./build/r-type_server --debug
+    ./build/r-type_server -p <server_port> -d
+    ```
+
+- All arguments accepted:
+
+    ```txt
+    Available arguments:
+    -p, --port (int) [required] : Server port.
+    -d, --debug (bool) [optional] : Enable debug mode.
+    -h, --help (bool) [optional] : Print this help message
     ```
 
 ### Commands
 
 Use the `arrow keys` to **move**
 
-and the `space bar` to **shoot missiles**
+and the `space bar` to **shoot beams**
+
+## Troubleshooting
+
+On some version of windows you might want to install yourself openAl from their [website](https://www.openal.org/downloads/)
 
 ## License
 
 This project is licensed under the **MIT License**.
+
 ## Authors / Contacts
 
 - [Thibaud Cathala](https://github.com/thibaudcathala)
@@ -95,10 +125,9 @@ This project is licensed under the **MIT License**.
 - [Rahul Chander](https://github.com/RahulCHANDER25)
 - [Nicolas Alexandre](https://github.com/Nicolasalx)
 
-
 ## Useful Links / Quick-Start Information
 
-Entity-Component-System (ECS) explanation: https://en.wikipedia.org/wiki/Entity_component_system
+Entity-Component-System (ECS) explanation: <https://en.wikipedia.org/wiki/Entity_component_system>
 
 ## Contributing
 
