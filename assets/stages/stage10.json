@@ -2,7 +2,7 @@
     "waves": {
         "wave1": [
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 8,
                 "pos": [
                     {
@@ -84,7 +84,7 @@
                 ]
             },
             {
-                "mobJsonPath": "assets/robotGround.json",
+                "mobJsonPath": "assets/enemies/robotGround.json",
                 "nbMob": 2,
                 "pos": [
                     {
@@ -114,7 +114,7 @@
         ],
         "wave2": [
             {
-                "mobJsonPath": "assets/blob.json",
+                "mobJsonPath": "assets/enemies/blob.json",
                 "nbMob": 6,
                 "pos": [
                     {
@@ -180,7 +180,7 @@
         ],
         "wave3": [
             {
-                "mobJsonPath": "assets/dobkeratops.json",
+                "mobJsonPath": "assets/enemies/dobkeratops.json",
                 "nbMob": 1,
                 "pos": [
                     {
@@ -199,7 +199,7 @@
                 ]
             },
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 2,
                 "pos": [
                     {
@@ -227,7 +227,7 @@
                 ]
             },
             {
-                "mobJsonPath": "assets/blob.json",
+                "mobJsonPath": "assets/enemies/blob.json",
                 "nbMob": 2,
                 "pos": [
                     {

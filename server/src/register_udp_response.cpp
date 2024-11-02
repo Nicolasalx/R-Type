@@ -40,7 +40,7 @@ static void handlePlayerCreation(
     networkCallbacks.pushBack(
         [playerIndex, sharedEntityId, pos, newMsg, &datasToSend, &udpServer, &timeoutHandler](ecs::Registry &reg) {
             auto entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
-                reg, "assets/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
+                reg, "assets/players/player" + std::to_string(playerIndex) + ".json", pos.x, pos.y, sharedEntityId
             );
             reg.getComponent<ecs::component::Player>(entity)->id = newMsg.body.playerId;
             timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);

@@ -58,7 +58,7 @@ entity_t rts::ais::fireRandomMissileAi(
     auto missilePosX = (aiPos->x - (hitbox->width / 2.f)) + xFactor * 20;
     auto missilePosY = (aiPos->y - (hitbox->height / 2.f)) + yFactor * 20;
     auto rMissile = ecs::ServerEntityFactory::createServerEntityFromJSON(
-        reg, "assets/missileBall.json", missilePosX, missilePosY, sharedId, xFactor * 150, yFactor * 150
+        reg, "assets/enemies/missileBall.json", missilePosX, missilePosY, sharedId, xFactor * 150, yFactor * 150
     );
 
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(

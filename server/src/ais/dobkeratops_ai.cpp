@@ -42,8 +42,9 @@ static entity_t createNeckSegment(
     shared_entity_t sharedId = ecs::generateSharedEntityId();
 
     // error:
-    entity_t segment =
-        ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/dobkeratops_segment.json", x, y, sharedId);
+    entity_t segment = ecs::ServerEntityFactory::createServerEntityFromJSON(
+        reg, "assets/enemies/dobkeratops_segment.json", x, y, sharedId
+    );
 
     datasToSend.push_back(
         rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
@@ -77,7 +78,7 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
     shared_entity_t sharedId = ecs::generateSharedEntityId();
 
     state.bossParasite = ecs::ServerEntityFactory::createServerEntityFromJSON(
-        reg, "assets/boss_parasite.json", pos->x + 76, pos->y + 96, sharedId
+        reg, "assets/enemies/boss_parasite.json", pos->x + 76, pos->y + 96, sharedId
     );
 
     datasToSend.push_back(
@@ -110,7 +111,7 @@ static void spawnDobkeratopsProjectile(
     float spawnY = bossPos->y + 60.0f;
 
     ecs::ServerEntityFactory::createServerEntityFromJSON(
-        reg, "assets/missileBall.json", spawnX, spawnY, sharedId, vx, vy
+        reg, "assets/enemies/missileBall.json", spawnX, spawnY, sharedId, vx, vy
     );
 
     datasToSend.push_back(

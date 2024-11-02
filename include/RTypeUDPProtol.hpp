@@ -20,7 +20,6 @@ namespace rt {
 enum class UDPCommand : std::uint8_t {
     NONE,
 
-    NEW_ENTITY_STATIC,
     NEW_ENTITY_PLAYER,
     NEW_ENTITY_MISSILE,
     NEW_ENTITY_MISSILE_BALL,
@@ -46,10 +45,6 @@ enum class UDPCommand : std::uint8_t {
 namespace UDPBody {
 
 struct EMPTY {}; // Used in the UDP responce handler
-
-struct NEW_ENTITY_STATIC {
-    ecs::component::Position pos{};
-};
 
 struct NEW_ENTITY_PLAYER {
     std::size_t playerId = 0;

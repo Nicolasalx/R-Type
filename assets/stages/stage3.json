@@ -2,7 +2,7 @@
     "waves": {
         "wave1": [
             {
-                "mobJsonPath": "assets/robotGround.json",
+                "mobJsonPath": "assets/enemies/robotGround.json",
                 "nbMob": 2,
                 "pos": [
                     {
@@ -32,7 +32,7 @@
         ],
         "wave2": [
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 4,
                 "pos": [
                     {
@@ -78,7 +78,7 @@
                 ]
             },
             {
-                "mobJsonPath": "assets/robotGround.json",
+                "mobJsonPath": "assets/enemies/robotGround.json",
                 "nbMob": 3,
                 "pos": [
                     {

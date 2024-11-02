@@ -1,3 +1,16 @@
 {
-    "scoreboard": []
+    "scoreboard": [
+        {
+            "nom": "nicolas",
+            "score": 1130
+        },
+        {
+            "nom": "nicolas",
+            "score": 1110
+        },
+        {
+            "nom": "nicolas",
+            "score": 0
+        }
+    ]
 }

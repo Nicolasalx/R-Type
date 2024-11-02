@@ -2,7 +2,7 @@
     "waves": {
         "wave1": [
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 6,
                 "pos": [
                     {
@@ -68,7 +68,7 @@
         ],
         "wave2": [
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 8,
                 "pos": [
                     {
@@ -152,7 +152,7 @@
         ],
         "wave3": [
             {
-                "mobJsonPath": "assets/bydosWave.json",
+                "mobJsonPath": "assets/enemies/bydosWave.json",
                 "nbMob": 10,
                 "pos": [
                     {
