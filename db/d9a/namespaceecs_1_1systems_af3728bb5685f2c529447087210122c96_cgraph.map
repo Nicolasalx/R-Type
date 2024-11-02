@@ -1,7 +1,7 @@
 <map id="ecs::systems::drawFPS" name="ecs::systems::drawFPS">
 <area shape="rect" id="node1" title=" " alt="" coords="5,80,176,105"/>
-<area shape="rect" id="node2" href="$d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title=" " alt="" coords="224,5,415,31"/>
-<area shape="rect" id="node3" href="$d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title=" " alt="" coords="241,55,398,80"/>
-<area shape="rect" id="node4" href="$d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title=" " alt="" coords="239,104,399,129"/>
-<area shape="rect" id="node5" href="$d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title=" " alt="" coords="240,153,399,179"/>
+<area shape="rect" id="node2" href="$d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title="Adds a new value to the metric, replacing the oldest value if necessary." alt="" coords="224,5,415,31"/>
+<area shape="rect" id="node3" href="$d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title="Retrieves the array of stored metric values." alt="" coords="241,55,398,80"/>
+<area shape="rect" id="node4" href="$d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title="Retrieves the count of values added to the metric." alt="" coords="239,104,399,129"/>
+<area shape="rect" id="node5" href="$d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title="Retrieves the current index for new value addition." alt="" coords="240,153,399,179"/>
 </map>

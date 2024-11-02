@@ -17,5 +17,5 @@
 <area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125" title="Spawns a new entity within the registry." alt="" coords="725,215,919,240"/>
 <area shape="rect" id="node11" href="$df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7" title="Spawns a new shared_entity within the registry." alt="" coords="973,326,1173,366"/>
 <area shape="rect" id="node5" href="$df/d28/classecs_1_1EntityFactory.html#a82e6d2ddca59810ce47cab17ce464111" title="Adds common components to an entity." alt="" coords="976,262,1171,302"/>
-<area shape="rect" id="node13" href="$d0/d9f/classeng_1_1RandomGenerator.html#aadbbfcbabbfd2d7ea912f1887dc58f24" title=" " alt="" coords="476,216,649,256"/>
+<area shape="rect" id="node13" href="$d0/d9f/classeng_1_1RandomGenerator.html#aadbbfcbabbfd2d7ea912f1887dc58f24" title="Generates a random floating&#45;point number within a specified range." alt="" coords="476,216,649,256"/>
 </map>

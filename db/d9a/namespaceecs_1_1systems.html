@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Perform health checks on entities within the registry.  
+<p>Contains system functions for managing game logic.  
 <a href="../../db/d9a/namespaceecs_1_1systems.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -164,10 +164,125 @@ Functions</h2></td></tr>
 <tr class="separator:a8b0e40cd549e6d1f7faac8ac3fa2324c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Perform health checks on entities within the registry. </p>
+<div class="textblock"><p>Contains system functions for managing game logic. </p>
+<p>Sends a ping message through the UDP client.</p>
+<p>Renders radial light effects on the screen.</p>
 <p>Updates the parallax effect in the ECS registry.</p>
 <p>Stops the missiles in the ECS registry.</p>
 <p>Checks the health of mobs and updates the wave manager accordingly.</p>
+<p>Perform health checks on entities within the registry.</p>
+<p>Renders the team data on the screen.</p>
+<p>Renders the player's score on the screen.</p>
+<p>Renders the player's health bar on the screen.</p>
+<p>Renders the player's beam charge bar on the screen.</p>
+<p>Renders the network ping information on the screen.</p>
+<p>Renders particles to the screen.</p>
+<p>Renders the end game screen.</p>
+<p>Draws the frames per second (FPS) on the screen.</p>
+<p>Updates the death timer for entities in the game.</p>
+<p>Checks for entities that are out of range.</p>
+<p>Checks the conditions for ending the game.</p>
+<p>The <code>checkGameEnding</code> function evaluates whether the game should end based on a given predicate function. If the conditions are met, it executes a callback function to handle the end of the game logic.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">pred</td><td>A predicate function that takes a reference to the registry and returns a boolean indicating whether the game should end. </td></tr>
+    <tr><td class="paramname">callback</td><td>A callback function that will be executed if the game-ending conditions are satisfied. It takes a reference to the registry.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>checkOutOfRange</code> function evaluates the positions of entities in the game and determines if any are out of the defined range. If so, it can update the wave manager and prepare data for sending.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">waveManager</td><td>Reference to the <a class="el" href="../../d5/d35/classecs_1_1WaveManager.html">WaveManager</a> that handles wave-related logic. </td></tr>
+    <tr><td class="paramname">datasToSend</td><td>A list of vectors of characters used to prepare data to send based on the entities' status.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>deathTimer</code> function processes the death timers of entities within the game registry, decrementing their timers based on the elapsed time since the last update. This function is crucial for managing timed destruction of entities.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">dt</td><td>The elapsed time since the last update, typically measured in seconds.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawFPS</code> function renders the current frames per second (FPS) information onto the game window. It updates the display based on the metric information and the elapsed time since the last frame.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">metric</td><td>Reference to the <code><a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a></code> manager that holds FPS data. </td></tr>
+    <tr><td class="paramname">dt</td><td>The elapsed time since the last update, typically measured in seconds. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the FPS display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawGameEnding</code> function displays the end game screen, showing whether the player won or lost, the player's name, and their final score. This function uses ImGui for UI components and SFML for rendering.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>A boolean indicating whether the player has won the game. </td></tr>
+    <tr><td class="paramname">window</td><td>Reference to the SFML render window where the end game screen will be drawn. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning elements on the screen. </td></tr>
+    <tr><td class="paramname">font</td><td>A shared pointer to the font used for text rendering in the UI. </td></tr>
+    <tr><td class="paramname">background</td><td>A sprite representing the background of the end game screen. </td></tr>
+    <tr><td class="paramname">playerName</td><td>The name of the player to display on the screen. </td></tr>
+    <tr><td class="paramname">score</td><td>The final score of the player, displayed on the end game screen.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawParticle</code> function processes and draws all particle entities to the specified SFML render window. It updates the particles based on the elapsed time since the last frame.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">dt</td><td>The elapsed time since the last update, typically measured in seconds. </td></tr>
+    <tr><td class="paramname">window</td><td>Reference to the SFML render window where particles will be drawn.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawPing</code> function displays the current network ping status on the game window. This helps in monitoring the game's network performance during gameplay.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">metric</td><td>Reference to the <code><a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a></code> manager that holds the ping data. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the ping display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawPlayerBeamBar</code> function displays the current charge level of the player's beam weapon. It takes into account player input and updates the visual representation of the beam charge based on the specified window size.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the beam bar. </td></tr>
+    <tr><td class="paramname">input</td><td>Reference to the input manager that handles player input. </td></tr>
+    <tr><td class="paramname">chargeClock</td><td>A clock used to track the charge time of the beam. </td></tr>
+    <tr><td class="paramname">keyBind</td><td>Key bindings for player actions, facilitating customizable controls.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawPlayerHealthBar</code> function displays the current health status of the player character. It updates the visual representation of the health bar based on the player's current health and the specified window size.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the health bar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawScore</code> function displays the current score of the player in the game. It updates the visual representation of the score based on the player's current score and the specified window size.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the score display. </td></tr>
+    <tr><td class="paramname">score</td><td>Reference to the integer representing the player's score.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>drawTeamData</code> function displays information related to the players' teams in the game. This may include details such as team scores, members, or other relevant statistics, updated according to the current state of the game.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">windowSize</td><td>The size of the game window, used for positioning the team data display.</td></tr>
+  </table>
+  </dd>
+</dl>
 <p>This function iterates through the entities in the provided registry and performs necessary health checks on entities marked as local.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -202,7 +317,22 @@ Functions</h2></td></tr>
 <p>This function is responsible for updating the parallax effect within the given registry. It processes all relevant entities and components to achieve the desired parallax scrolling effect.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>Reference to the ECS registry. </td></tr>
+    <tr><td class="paramname">reg</td><td>Reference to the ECS registry.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>renderRadialLight</code> function processes and displays radial light effects in the game, enhancing the visual atmosphere. It uses the current game state and the specified render window to draw the light effects appropriately.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Reference to the game registry that holds all game entities and components. </td></tr>
+    <tr><td class="paramname">window</td><td>Reference to the SFML render window where the radial light effects will be drawn.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The <code>sendPing</code> function utilizes the provided UDP client to send a ping message to the server, which can be used for network latency measurement and maintaining connection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">udpClient</td><td>Reference to the UDP client responsible for sending network messages. </td></tr>
   </table>
   </dd>
 </dl>
@@ -573,7 +703,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a8cc6cca97cfa501de71e6252aed92c18_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a8cc6cca97cfa501de71e6252aed92c18_cgraph" alt=""/></div>
 <map name="adb/d9a/namespaceecs_1_1systems_a8cc6cca97cfa501de71e6252aed92c18_cgraph" id="adb/d9a/namespaceecs_1_1systems_a8cc6cca97cfa501de71e6252aed92c18_cgraph">
 <area shape="rect" title="Handles entity control movement." alt="" coords="5,55,201,80"/>
-<area shape="rect" href="../../dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title=" " alt="" coords="258,5,457,31"/>
+<area shape="rect" href="../../dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title="Retrieves the key associated with a specified action." alt="" coords="258,5,457,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="249,55,465,80"/>
 <area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="282,105,433,145"/>
 </map>
@@ -802,10 +932,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_af3728bb5685f2c529447087210122c96_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_af3728bb5685f2c529447087210122c96_cgraph" alt=""/></div>
 <map name="adb/d9a/namespaceecs_1_1systems_af3728bb5685f2c529447087210122c96_cgraph" id="adb/d9a/namespaceecs_1_1systems_af3728bb5685f2c529447087210122c96_cgraph">
 <area shape="rect" title=" " alt="" coords="5,80,176,105"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title=" " alt="" coords="224,5,415,31"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title=" " alt="" coords="241,55,398,80"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title=" " alt="" coords="239,104,399,129"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title=" " alt="" coords="240,153,399,179"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title="Adds a new value to the metric, replacing the oldest value if necessary." alt="" coords="224,5,415,31"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title="Retrieves the array of stored metric values." alt="" coords="241,55,398,80"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title="Retrieves the count of values added to the metric." alt="" coords="239,104,399,129"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title="Retrieves the current index for new value addition." alt="" coords="240,153,399,179"/>
 </map>
 </div>
 <div class="dynheader">
@@ -983,10 +1113,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_aaa9537dc6910c2f88431c064447b6904_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_aaa9537dc6910c2f88431c064447b6904_cgraph" alt=""/></div>
 <map name="adb/d9a/namespaceecs_1_1systems_aaa9537dc6910c2f88431c064447b6904_cgraph" id="adb/d9a/namespaceecs_1_1systems_aaa9537dc6910c2f88431c064447b6904_cgraph">
 <area shape="rect" title=" " alt="" coords="5,80,180,105"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title=" " alt="" coords="228,5,419,31"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title=" " alt="" coords="245,55,402,80"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title=" " alt="" coords="243,104,403,129"/>
-<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title=" " alt="" coords="244,153,403,179"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41" title="Adds a new value to the metric, replacing the oldest value if necessary." alt="" coords="228,5,419,31"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35" title="Retrieves the array of stored metric values." alt="" coords="245,55,402,80"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65" title="Retrieves the count of values added to the metric." alt="" coords="243,104,403,129"/>
+<area shape="rect" href="../../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b" title="Retrieves the current index for new value addition." alt="" coords="244,153,403,179"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1050,7 +1180,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../db/d9a/namespaceecs_1_1systems_a3e344d5bed97747c22fdb3f708f87d3a_cgraph.png" border="0" usemap="#adb/d9a/namespaceecs_1_1systems_a3e344d5bed97747c22fdb3f708f87d3a_cgraph" alt=""/></div>
 <map name="adb/d9a/namespaceecs_1_1systems_a3e344d5bed97747c22fdb3f708f87d3a_cgraph" id="adb/d9a/namespaceecs_1_1systems_a3e344d5bed97747c22fdb3f708f87d3a_cgraph">
 <area shape="rect" title=" " alt="" coords="5,47,193,87"/>
-<area shape="rect" href="../../dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title=" " alt="" coords="250,5,449,31"/>
+<area shape="rect" href="../../dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title="Retrieves the key associated with a specified action." alt="" coords="250,5,449,31"/>
 <area shape="rect" href="../../df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,55,457,80"/>
 <area shape="rect" href="../../d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="274,105,425,145"/>
 </map>

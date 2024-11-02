@@ -8,7 +8,7 @@ var searchData=
   ['parse_5farg_2ecpp_5',['parse_arg.cpp',['../da/df0/parse__arg_8cpp.html',1,'']]],
   ['parsearg_6',['parseArg',['../d9/dbb/namespacerts.html#a7c862524e18ff0eb911a9efd218c12d2',1,'rts']]],
   ['particle_5fspawner_2ehpp_7',['particle_spawner.hpp',['../d0/db5/particle__spawner_8hpp.html',1,'']]],
-  ['particlespawner_8',['ParticleSpawner',['../db/d05/structecs_1_1component_1_1ParticleSpawner.html',1,'ecs::component']]],
+  ['particlespawner_8',['ParticleSpawner',['../db/d05/structecs_1_1component_1_1ParticleSpawner.html',1,'ecs::component::ParticleSpawner'],['../d4/d9e/structParticleSpawner.html',1,'ParticleSpawner']]],
   ['pausemusic_9',['pauseMusic',['../dc/dcf/classecs_1_1SoundManager.html#a70034de6af111a540eddc35740e87359',1,'ecs::SoundManager']]],
   ['phase_10',['phase',['../d3/da1/structDobkeratops.html#afc8b5b96f69e6e07c1d9fcdd5218578f',1,'Dobkeratops']]],
   ['ping_5frefresh_11',['PING_REFRESH',['../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e',1,'rtc']]],

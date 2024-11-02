@@ -6,7 +6,7 @@ var searchData=
   ['leaveroom_3',['leaveRoom',['../d1/d36/classrts_1_1RoomManager.html#a362661cdf6f3b625c83943c01bb34166',1,'rts::RoomManager']]],
   ['light_4',['light',['../d3/dc4/structecs_1_1component_1_1RadialLight.html#af44bf0db0137779b2218c9cbd6198939',1,'ecs::component::RadialLight']]],
   ['light_5fedge_2ehpp_5',['light_edge.hpp',['../d9/d3b/light__edge_8hpp.html',1,'']]],
-  ['lightedge_6',['LightEdge',['../d8/d55/structecs_1_1component_1_1LightEdge.html',1,'ecs::component']]],
+  ['lightedge_6',['LightEdge',['../d8/d55/structecs_1_1component_1_1LightEdge.html',1,'ecs::component::LightEdge'],['../d8/d6e/structLightEdge.html',1,'LightEdge']]],
   ['lighteffect_7',['lightEffect',['../d4/d8f/structrtc_1_1GameOptions.html#a03bbde85ee57d84cb0a2b351e5e6494a',1,'rtc::GameOptions']]],
   ['limitscoreboard_8',['limitScoreboard',['../d4/dc2/scoreBoard_8cpp.html#a865bbd50ef31d52729b1d78989d74a78',1,'scoreBoard.cpp']]],
   ['loadmusic_9',['loadMusic',['../dc/dcf/classecs_1_1SoundManager.html#a4c7eae279e9dfd58cd2d8ca011f9fcd3',1,'ecs::SoundManager']]],

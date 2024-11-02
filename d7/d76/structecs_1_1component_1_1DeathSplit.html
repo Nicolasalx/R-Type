@@ -80,16 +80,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Component that manages the splitting behavior of an entity upon death.  
+ <a href="../../d7/d76/structecs_1_1component_1_1DeathSplit.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d6/d40/death__split_8hpp_source.html">death_split.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac4d754e2b99a7f81d16baad45b77c9bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d76/structecs_1_1component_1_1DeathSplit.html#ac4d754e2b99a7f81d16baad45b77c9bd">splitCount</a> = 2</td></tr>
+<tr class="memdesc:ac4d754e2b99a7f81d16baad45b77c9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of splits to perform upon death.  <br /></td></tr>
 <tr class="separator:ac4d754e2b99a7f81d16baad45b77c9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3b8aa66250e4031c2fa378d9c11a87d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; float, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d76/structecs_1_1component_1_1DeathSplit.html#ac3b8aa66250e4031c2fa378d9c11a87d">offsets</a></td></tr>
+<tr class="memdesc:ac3b8aa66250e4031c2fa378d9c11a87d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offsets for the split parts' positions.  <br /></td></tr>
 <tr class="separator:ac3b8aa66250e4031c2fa378d9c11a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Component that manages the splitting behavior of an entity upon death. </p>
+<p>The <code><a class="el" href="../../d7/d76/structecs_1_1component_1_1DeathSplit.html" title="Component that manages the splitting behavior of an entity upon death.">DeathSplit</a></code> component defines how an entity splits into multiple parts when it is destroyed. It includes a count of how many splits to perform and a list of offsets for the positions of the split parts. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ac3b8aa66250e4031c2fa378d9c11a87d" name="ac3b8aa66250e4031c2fa378d9c11a87d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac3b8aa66250e4031c2fa378d9c11a87d">&#9670;&#160;</a></span>offsets</h2>
 
@@ -101,6 +109,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Offsets for the split parts' positions. </p>
+<p>A vector of pairs representing the x and y offsets for each part created during the split. These offsets define how far from the original position each split part will be placed. </p>
 
 </div>
 </div>
@@ -115,6 +126,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of splits to perform upon death. </p>
+<p>This value determines how many parts the entity will be divided into when it is destroyed. The default is set to 2. </p>
 
 </div>
 </div>

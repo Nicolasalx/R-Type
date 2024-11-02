@@ -1,4 +1,4 @@
 <map id="ecs::component::DobkeratopsState" name="ecs::component::DobkeratopsState">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,220,133"/>
-<area shape="rect" id="node2" href="$d3/da1/structDobkeratops.html" title=" " alt="" coords="61,5,165,31"/>
+<area shape="rect" id="node1" title="Represents the initialization state of the Dobkeratops boss." alt="" coords="5,93,220,133"/>
+<area shape="rect" id="node2" href="$d3/da1/structDobkeratops.html" title="Represents the state and behavior of the Dobkeratops boss." alt="" coords="61,5,165,31"/>
 </map>

@@ -80,18 +80,35 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A template class for handling network responses.  
+ <a href="../../d4/d19/classntw_1_1ResponseHandler.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/d7a/ResponseHandler_8hpp_source.html">ResponseHandler.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d4e3185058653c8a04baa3102013c18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html#a5d4e3185058653c8a04baa3102013c18">ResponseHandler</a> (std::function&lt; CommandType(const PacketType &amp;)&gt; cmdTypeGetter)</td></tr>
+<tr class="memdesc:a5d4e3185058653c8a04baa3102013c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html" title="A template class for handling network responses.">ResponseHandler</a> with a command type getter.  <br /></td></tr>
 <tr class="separator:a5d4e3185058653c8a04baa3102013c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a651f7879eddc39e68dfdbe4e837f7e18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html#a651f7879eddc39e68dfdbe4e837f7e18">registerHandler</a> (CommandType cmd, std::function&lt; void(const PacketType &amp;)&gt; handler)</td></tr>
+<tr class="memdesc:a651f7879eddc39e68dfdbe4e837f7e18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a handler for a specific command type.  <br /></td></tr>
 <tr class="separator:a651f7879eddc39e68dfdbe4e837f7e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03d1564c2b1299bddc19306593d8045f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html#a03d1564c2b1299bddc19306593d8045f">handleResponse</a> (const char *data, std::size_t size)</td></tr>
+<tr class="memdesc:a03d1564c2b1299bddc19306593d8045f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles a received response by processing the packet data.  <br /></td></tr>
 <tr class="separator:a03d1564c2b1299bddc19306593d8045f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename CommandType, typename PacketType&gt;<br />
+class ntw::ResponseHandler&lt; CommandType, PacketType &gt;</div><p>A template class for handling network responses. </p>
+<p>The <code><a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html" title="A template class for handling network responses.">ResponseHandler</a></code> class manages command types and their associated handlers, allowing for the registration and processing of responses received over the network.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CommandType</td><td>The type representing command identifiers. </td></tr>
+    <tr><td class="paramname">PacketType</td><td>The type representing the structure of incoming packets. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5d4e3185058653c8a04baa3102013c18" name="a5d4e3185058653c8a04baa3102013c18"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d4e3185058653c8a04baa3102013c18">&#9670;&#160;</a></span>ResponseHandler()</h2>
 
@@ -117,6 +134,14 @@ template&lt;typename CommandType , typename PacketType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="../../d4/d19/classntw_1_1ResponseHandler.html" title="A template class for handling network responses.">ResponseHandler</a> with a command type getter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdTypeGetter</td><td>A function that extracts the command type from a packet. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -157,6 +182,21 @@ template&lt;typename CommandType , typename PacketType &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Handles a received response by processing the packet data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the raw data of the packet. </td></tr>
+    <tr><td class="paramname">size</td><td>The size of the received data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="../../df/dac/classeng_1_1TrackedException.html" title="A custom exception class that tracks additional context information.">eng::TrackedException</a></td><td>if the received data size is incorrect or if there is no handler for the command type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a651f7879eddc39e68dfdbe4e837f7e18" name="a651f7879eddc39e68dfdbe4e837f7e18"></a>
@@ -194,6 +234,15 @@ template&lt;typename CommandType , typename PacketType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Registers a handler for a specific command type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>The command type to associate with the handler. </td></tr>
+    <tr><td class="paramname">handler</td><td>A function to handle packets of the associated command type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

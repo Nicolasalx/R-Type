@@ -85,12 +85,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:af2663a5527851f31191d12fc8201d6eb"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d05/structecs_1_1component_1_1ParticleSpawner.html#af2663a5527851f31191d12fc8201d6eb">offset</a></td></tr>
+<tr class="memdesc:af2663a5527851f31191d12fc8201d6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset from the spawner's position.  <br /></td></tr>
 <tr class="separator:af2663a5527851f31191d12fc8201d6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af04304f4e52478587cbfb9a690439864"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; particles::TextureParticleSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d05/structecs_1_1component_1_1ParticleSpawner.html#af04304f4e52478587cbfb9a690439864">system</a></td></tr>
+<tr class="memdesc:af04304f4e52478587cbfb9a690439864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to the particle system.  <br /></td></tr>
 <tr class="separator:af04304f4e52478587cbfb9a690439864"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72be9131746aee41c527df0d63b30328"><td class="memItemLeft" align="right" valign="top">particles::PointSpawner *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d05/structecs_1_1component_1_1ParticleSpawner.html#a72be9131746aee41c527df0d63b30328">spawner</a> = nullptr</td></tr>
+<tr class="memdesc:a72be9131746aee41c527df0d63b30328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the point spawner.  <br /></td></tr>
 <tr class="separator:a72be9131746aee41c527df0d63b30328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a2f96b070e92e3d1c1bb7b5b9620056"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; sf::Texture &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d05/structecs_1_1component_1_1ParticleSpawner.html#a0a2f96b070e92e3d1c1bb7b5b9620056">texture</a></td></tr>
+<tr class="memdesc:a0a2f96b070e92e3d1c1bb7b5b9620056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to the particle texture.  <br /></td></tr>
 <tr class="separator:a0a2f96b070e92e3d1c1bb7b5b9620056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -106,6 +110,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Offset from the spawner's position. </p>
+<p>A vector that defines the offset for the position where particles will be spawned, allowing for more flexible particle effects. </p>
+
 </div>
 </div>
 <a id="a72be9131746aee41c527df0d63b30328" name="a72be9131746aee41c527df0d63b30328"></a>
@@ -119,6 +126,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointer to the point spawner. </p>
+<p>A pointer to an instance of <code>PointSpawner</code>, which defines how particles are emitted from a specific point. </p>
 
 </div>
 </div>
@@ -134,6 +144,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shared pointer to the particle system. </p>
+<p>A shared pointer to an instance of <code>TextureParticleSystem</code> that handles the behavior and rendering of the particles. </p>
+
 </div>
 </div>
 <a id="a0a2f96b070e92e3d1c1bb7b5b9620056" name="a0a2f96b070e92e3d1c1bb7b5b9620056"></a>
@@ -147,6 +160,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Shared pointer to the particle texture. </p>
+<p>A shared pointer to an <code>sf::Texture</code> that represents the visual appearance of the particles being spawned. </p>
 
 </div>
 </div>

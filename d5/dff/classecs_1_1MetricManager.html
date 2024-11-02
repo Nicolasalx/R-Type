@@ -80,13 +80,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A class for managing multiple metrics identified by a key.  
+ <a href="../../d5/dff/classecs_1_1MetricManager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/dd0/MetricManager_8hpp_source.html">MetricManager.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ecs::MetricManager&lt; MetricKey &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d63/classecs_1_1MetricManager__inherit__graph.png" border="0" usemap="#aecs_1_1MetricManager_3_01MetricKey_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aecs_1_1MetricManager_3_01MetricKey_01_4_inherit__map" id="aecs_1_1MetricManager_3_01MetricKey_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,156,45"/>
+<area shape="rect" title="A class for managing multiple metrics identified by a key." alt="" coords="5,5,156,45"/>
 <area shape="rect" href="../../d5/dff/classecs_1_1MetricManager.html" title=" " alt="" coords="5,108,156,148"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
@@ -94,19 +97,35 @@ Inheritance diagram for ecs::MetricManager&lt; MetricKey &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aebf286d1c83c573d93bc7e1af52524c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#aebf286d1c83c573d93bc7e1af52524c7">MetricManager</a> ()=default</td></tr>
+<tr class="memdesc:aebf286d1c83c573d93bc7e1af52524c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="separator:aebf286d1c83c573d93bc7e1af52524c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71681561448a9ffb5925b04145f00e55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#a71681561448a9ffb5925b04145f00e55">MetricManager</a> (const std::unordered_map&lt; MetricKey, <a class="el" href="../../d4/d71/classecs_1_1Metric.html">ecs::Metric</a> &gt; &amp;metrics)</td></tr>
+<tr class="memdesc:a71681561448a9ffb5925b04145f00e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d5/dff/classecs_1_1MetricManager.html" title="A class for managing multiple metrics identified by a key.">MetricManager</a> with an initial set of metrics.  <br /></td></tr>
 <tr class="separator:a71681561448a9ffb5925b04145f00e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a105789ffbe79b54e09b93507bed83ee4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#a105789ffbe79b54e09b93507bed83ee4">addMetric</a> (const MetricKey &amp;key, <a class="el" href="../../d4/d71/classecs_1_1Metric.html">ecs::Metric</a> newMetric)</td></tr>
+<tr class="memdesc:a105789ffbe79b54e09b93507bed83ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new metric or updates an existing metric in the manager.  <br /></td></tr>
 <tr class="separator:a105789ffbe79b54e09b93507bed83ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ae9858525e8d182b73613cb769376db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#a0ae9858525e8d182b73613cb769376db">eraseMetric</a> (const MetricKey &amp;key)</td></tr>
+<tr class="memdesc:a0ae9858525e8d182b73613cb769376db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a metric associated with a specified key.  <br /></td></tr>
 <tr class="separator:a0ae9858525e8d182b73613cb769376db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b29d66cfe9e19f12a3011f31cedd8bf"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d4/d71/classecs_1_1Metric.html">Metric</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#a4b29d66cfe9e19f12a3011f31cedd8bf">getMetric</a> (const MetricKey &amp;key) const</td></tr>
+<tr class="memdesc:a4b29d66cfe9e19f12a3011f31cedd8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a metric associated with a specified key.  <br /></td></tr>
 <tr class="separator:a4b29d66cfe9e19f12a3011f31cedd8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af20e6c8d5209cb9ca632fc3fa70f4675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d71/classecs_1_1Metric.html">Metric</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html#af20e6c8d5209cb9ca632fc3fa70f4675">getMetric</a> (const MetricKey &amp;key)</td></tr>
+<tr class="memdesc:af20e6c8d5209cb9ca632fc3fa70f4675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a mutable metric associated with a specified key.  <br /></td></tr>
 <tr class="separator:af20e6c8d5209cb9ca632fc3fa70f4675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename MetricKey&gt;<br />
+class ecs::MetricManager&lt; MetricKey &gt;</div><p>A class for managing multiple metrics identified by a key. </p>
+<p>The <code><a class="el" href="../../d5/dff/classecs_1_1MetricManager.html" title="A class for managing multiple metrics identified by a key.">MetricManager</a></code> class allows for the addition, removal, and retrieval of metrics using a specified key. This enables organized tracking of various metrics throughout the game.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">MetricKey</td><td>The type representing the key for identifying metrics. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aebf286d1c83c573d93bc7e1af52524c7" name="aebf286d1c83c573d93bc7e1af52524c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebf286d1c83c573d93bc7e1af52524c7">&#9670;&#160;</a></span>MetricManager() <span class="overload">[1/2]</span></h2>
 
@@ -131,6 +150,8 @@ template&lt;typename MetricKey &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -159,6 +180,14 @@ template&lt;typename MetricKey &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="../../d5/dff/classecs_1_1MetricManager.html" title="A class for managing multiple metrics identified by a key.">MetricManager</a> with an initial set of metrics. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">metrics</td><td>A map of metrics to initialize the manager. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -199,6 +228,15 @@ template&lt;typename MetricKey &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Adds a new metric or updates an existing metric in the manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key to associate with the new metric. </td></tr>
+    <tr><td class="paramname">newMetric</td><td>The metric to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0ae9858525e8d182b73613cb769376db" name="a0ae9858525e8d182b73613cb769376db"></a>
@@ -226,6 +264,14 @@ template&lt;typename MetricKey &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Removes a metric associated with a specified key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key of the metric to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -255,6 +301,15 @@ template&lt;typename MetricKey &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves a mutable metric associated with a specified key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key of the metric to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a>&amp; Reference to the requested metric. </dd></dl>
+
 </div>
 </div>
 <a id="a4b29d66cfe9e19f12a3011f31cedd8bf" name="a4b29d66cfe9e19f12a3011f31cedd8bf"></a>
@@ -282,12 +337,21 @@ template&lt;typename MetricKey &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves a metric associated with a specified key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key of the metric to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>const <a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a>&amp; Reference to the requested metric. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/dff/classecs_1_1MetricManager_a4b29d66cfe9e19f12a3011f31cedd8bf_icgraph.png" border="0" usemap="#ad5/dff/classecs_1_1MetricManager_a4b29d66cfe9e19f12a3011f31cedd8bf_icgraph" alt=""/></div>
 <map name="ad5/dff/classecs_1_1MetricManager_a4b29d66cfe9e19f12a3011f31cedd8bf_icgraph" id="ad5/dff/classecs_1_1MetricManager_a4b29d66cfe9e19f12a3011f31cedd8bf_icgraph">
-<area shape="rect" title=" " alt="" coords="245,5,396,45"/>
+<area shape="rect" title="Retrieves a metric associated with a specified key." alt="" coords="245,5,396,45"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,13,197,38"/>
 </map>
 </div>

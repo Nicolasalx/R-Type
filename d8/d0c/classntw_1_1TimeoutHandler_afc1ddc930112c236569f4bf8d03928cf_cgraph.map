@@ -1,6 +1,6 @@
 <map id="ntw::TimeoutHandler::removeClient" name="ntw::TimeoutHandler::removeClient">
-<area shape="rect" id="node1" title=" " alt="" coords="5,27,164,67"/>
+<area shape="rect" id="node1" title="Removes a specific client from a specific packet." alt="" coords="5,27,164,67"/>
 <area shape="rect" id="node2" href="$d5/d87/namespaceeng.html#ab2dc4fc9a09ce4b297290df403bbfe47" title="Logs an informational message with source location." alt="" coords="251,5,349,31"/>
-<area shape="rect" id="node3" href="$d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4" title=" " alt="" coords="212,55,388,95"/>
-<area shape="rect" id="node4" href="$d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033" title=" " alt="" coords="436,55,603,95"/>
+<area shape="rect" id="node3" href="$d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4" title="Removes a timeout packet based on its ID." alt="" coords="212,55,388,95"/>
+<area shape="rect" id="node4" href="$d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033" title="Removes the tick rate associated with a specified ID." alt="" coords="436,55,603,95"/>
 </map>

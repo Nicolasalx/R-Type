@@ -1,5 +1,5 @@
 <map id="rts::GameRunner::runGame" name="rts::GameRunner::runGame">
 <area shape="rect" id="node1" title=" " alt="" coords="5,35,205,60"/>
-<area shape="rect" id="node2" href="$d1/d80/classeng_1_1FramerateManager.html#a2610ad5393911202553877e6f8afc3ff" title=" " alt="" coords="253,5,464,31"/>
-<area shape="rect" id="node3" href="$d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944" title=" " alt="" coords="269,55,448,95"/>
+<area shape="rect" id="node2" href="$d1/d80/classeng_1_1FramerateManager.html#a2610ad5393911202553877e6f8afc3ff" title="Ends the frame timing and sleeps if necessary to maintain target FPS." alt="" coords="253,5,464,31"/>
+<area shape="rect" id="node3" href="$d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944" title="Starts the frame timing." alt="" coords="269,55,448,95"/>
 </map>

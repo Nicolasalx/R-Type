@@ -72,8 +72,8 @@ $(function() {
   <div class="headertitle"><div class="title">R-Type Multiplayer Game Engine (ECS-based) </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a><a href="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml/badge.svg" alt="Linux/Windows" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/></a> <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" style="pointer-events: none;" class="inline"/></a></p>
-<p><img src="docs/main.png" alt="" class="inline"/></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml/badge.svg" alt="Linux/Windows" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml"><img src="https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/></a> <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License" style="pointer-events: none;" class="inline"/></a></p>
+<p><img src="docs/main.png" alt="Game Image" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Table of Contents</h1>
 <ul>
@@ -90,6 +90,7 @@ Table of Contents</h1>
 <li>Commands</li>
 </ul>
 </li>
+<li>[Troubleshooting] (#troubleshooting)</li>
 <li>License</li>
 <li>Authors / Contacts</li>
 <li>Useful Links / Quick-Start Information</li>
@@ -101,10 +102,10 @@ Project Purpose</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Requirements / Supported Platforms</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
-Requirements:</h2>
+Requirements</h2>
 <p>There are no dependencies required for users as all necessary components are included in the release.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
-Supported Platforms:</h2>
+Supported Platforms</h2>
 <ul>
 <li><b>Linux</b></li>
 <li><b>Windows</b></li>
@@ -113,37 +114,55 @@ Supported Platforms:</h2>
 Usage Instructions</h1>
 <p>To use the game engine and play the R-Type implementation, follow these steps:</p>
 <h2><a class="anchor" id="autotoc_md7"></a>
-Download the Latest Release:</h2>
-<p>Visit the <a href="https://github.com/ManuelR-T/R-Type/releases">Releases page</a> of this repository. Download the appropriate zip file for your operating system (e.g., <code>Rtype-windows.zip</code> or <code>Rtype-linux.zip</code>).</p>
+Download the Latest Release</h2>
+<p>Visit the <a href="https://github.com/ManuelR-T/R-Type/releases">Releases page</a> of this repository. Download the appropriate zip file for your operating system (e.g., <code>Rtype-{version}-Windows.zip</code> or <code>Rtype-{version}-Linux.tar.gz</code> where <code>{version}</code> represents the version of the game e.g., <code>0.2.0</code>).</p>
 <h2><a class="anchor" id="autotoc_md8"></a>
-Unzip the Downloaded File:</h2>
+Unzip the Downloaded File</h2>
 <ul>
 <li>Windows: Right-click the downloaded <code>.zip</code> file and select <code>Extract All...</code></li>
-<li>Linux: <div class="fragment"><div class="line">unzip Rtype-linux.zip -d R-Type_Server</div>
-</div><!-- fragment --> <b>Note</b>: If you are a developer, you may want to build the project yourself, you find the tutorial on the <a href="docs/developer-documentation.md#build-the-engine">developer documentation</a>.</li>
+<li><p class="startli">Linux:</p>
+<div class="fragment"><div class="line">unzip Rtype-linux.zip -d R-Type_Server</div>
+</div><!-- fragment --></li>
 </ul>
+<p><b>Note</b>: If you are a developer, you may want to build the project yourself, you find the tutorial on the <a href="docs/developer-documentation.md#build-the-engine">developer documentation</a>.</p>
 <h2><a class="anchor" id="autotoc_md9"></a>
-Run the Binaries:</h2>
+Run the Binaries</h2>
 <ul>
-<li>Client: <div class="fragment"><div class="line">./r-type_client -i &lt;server_ip&gt; -p &lt;server_port&gt; -pn &lt;player_name&gt;</div>
+<li><p class="startli">Client:</p>
+<div class="fragment"><div class="line">./r-type_client -i &lt;server_ip&gt; -p &lt;server_port&gt; -pn &lt;player_name&gt;</div>
 </div><!-- fragment --><ul>
-<li>Example: ```bash ./r-type_client -i 127.0.0.1 -p 8080 -pn Player1 ```</li>
-<li>All arguments accepted: ``` Available arguments: -i, &ndash;ip (string) [required] : Server IP address -p, &ndash;port (int) [required] : Server port -pn, &ndash;player_name (string) [required] : Player name -h, &ndash;help (bool) [optional] : Print this help message ```</li>
+<li><p class="startli">Example:</p>
+<div class="fragment"><div class="line">./r-type_client -i 127.0.0.1 -p 8080 -pn Player1</div>
+</div><!-- fragment --></li>
+<li><p class="startli">All arguments accepted:</p>
+<p class="startli">```txt Available arguments: -i, &ndash;ip (string) [required] : Server IP address -p, &ndash;port (int) [required] : Server port -pn, &ndash;player_name (string) [required] : Player name -h, &ndash;help (bool) [optional] : Print this help message ```</p>
+</li>
 </ul>
 </li>
-<li>Server: <div class="fragment"><div class="line">./build/r-type_server</div>
+<li><p class="startli">Server:</p>
+<div class="fragment"><div class="line">./build/r-type_server -p &lt;server_port&gt;</div>
 </div><!-- fragment --></li>
-<li>Server in debug mode: <div class="fragment"><div class="line">./build/r-type_server --debug</div>
+<li><p class="startli">Server in debug mode:</p>
+<div class="fragment"><div class="line">./build/r-type_server -p &lt;server_port&gt; -d</div>
+</div><!-- fragment --></li>
+<li><p class="startli">All arguments accepted:</p>
+<div class="fragment"><div class="line">Available arguments:</div>
+<div class="line">-p, --port (<span class="keywordtype">int</span>) [required] : Server port.</div>
+<div class="line">-d, --debug (<span class="keywordtype">bool</span>) [optional] : Enable debug mode.</div>
+<div class="line">-h, --help (<span class="keywordtype">bool</span>) [optional] : Print <span class="keyword">this</span> help message</div>
 </div><!-- fragment --></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Commands</h2>
 <p>Use the <code>arrow keys</code> to <b>move</b></p>
-<p>and the <code>space bar</code> to <b>shoot missiles</b></p>
+<p>and the <code>space bar</code> to <b>shoot beams</b></p>
 <h1><a class="anchor" id="autotoc_md11"></a>
-License</h1>
-<p>This project is licensed under the <b>MIT License</b>. </p>
+Troubleshooting</h1>
+<p>On some version of windows you might want to install yourself openAl from their <a href="https://www.openal.org/downloads/">website</a></p>
 <h1><a class="anchor" id="autotoc_md12"></a>
+License</h1>
+<p>This project is licensed under the <b>MIT License</b>.</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Authors / Contacts</h1>
 <ul>
 <li><a href="https://github.com/thibaudcathala">Thibaud Cathala</a></li>
@@ -151,10 +170,10 @@ Authors / Contacts</h1>
 <li><a href="https://github.com/RahulCHANDER25">Rahul Chander</a></li>
 <li><a href="https://github.com/Nicolasalx">Nicolas Alexandre</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Useful Links / Quick-Start Information</h1>
 <p>Entity-Component-System (ECS) explanation: <a href="https://en.wikipedia.org/wiki/Entity_component_system">https://en.wikipedia.org/wiki/Entity_component_system</a></p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Contributing</h1>
 <p>Check out the CONTRIBUTE.md file it has everything you want to contribute to this project. </p>
 </div></div><!-- PageDoc -->

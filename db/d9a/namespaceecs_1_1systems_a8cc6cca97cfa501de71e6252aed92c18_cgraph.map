@@ -1,6 +1,6 @@
 <map id="ecs::systems::controlMove" name="ecs::systems::controlMove">
 <area shape="rect" id="node1" title="Handles entity control movement." alt="" coords="5,55,201,80"/>
-<area shape="rect" id="node2" href="$dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title=" " alt="" coords="258,5,457,31"/>
+<area shape="rect" id="node2" href="$dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title="Retrieves the key associated with a specified action." alt="" coords="258,5,457,31"/>
 <area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="249,55,465,80"/>
 <area shape="rect" id="node4" href="$d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="282,105,433,145"/>
 </map>

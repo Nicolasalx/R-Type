@@ -1,6 +1,6 @@
 <map id="ecs::systems::drawPlayerBeamBar" name="ecs::systems::drawPlayerBeamBar">
 <area shape="rect" id="node1" title=" " alt="" coords="5,47,193,87"/>
-<area shape="rect" id="node2" href="$dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title=" " alt="" coords="250,5,449,31"/>
+<area shape="rect" id="node2" href="$dc/d93/classecs_1_1KeyBind.html#a4e0328dc6b31247ea008c8c445917cc3" title="Retrieves the key associated with a specified action." alt="" coords="250,5,449,31"/>
 <area shape="rect" id="node3" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="241,55,457,80"/>
 <area shape="rect" id="node4" href="$d0/da3/classecs_1_1InputManager.html#a0db4e53185fa399471213d173450df08" title="Checks if a specific key is currently pressed." alt="" coords="274,105,425,145"/>
 </map>

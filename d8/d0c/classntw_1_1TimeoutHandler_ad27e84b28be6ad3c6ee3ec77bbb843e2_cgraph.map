@@ -1,6 +1,6 @@
 <map id="ntw::TimeoutHandler::addTimeoutPacket" name="ntw::TimeoutHandler::addTimeoutPacket">
-<area shape="rect" id="node1" title=" " alt="" coords="5,63,164,103"/>
-<area shape="rect" id="node2" href="$d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title=" " alt="" coords="226,5,393,45"/>
+<area shape="rect" id="node1" title="Adds a timeout packet to the handler." alt="" coords="5,63,164,103"/>
+<area shape="rect" id="node2" href="$d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title="Adds a tick rate for a specified ID." alt="" coords="226,5,393,45"/>
 <area shape="rect" id="node3" href="$da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6" title="Return all the clients endpoint that have connected to the udp server." alt="" coords="212,70,407,95"/>
 <area shape="rect" id="node4" href="$da/dbf/classntw_1_1UDPServer.html#aa5cd4fd62980d86bf5c334edda40b53a" title="Return the mutex used for datas thread safety." alt="" coords="231,119,388,145"/>
 </map>

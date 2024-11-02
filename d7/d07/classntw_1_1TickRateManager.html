@@ -81,13 +81,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A template class for managing tick rates.  
+ <a href="../../d7/d07/classntw_1_1TickRateManager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../da/dcb/TickRateManager_8hpp_source.html">TickRateManager.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ntw::TickRateManager&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/ded/classntw_1_1TickRateManager__inherit__graph.png" border="0" usemap="#antw_1_1TickRateManager_3_01T_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="antw_1_1TickRateManager_3_01T_01_4_inherit__map" id="antw_1_1TickRateManager_3_01T_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="81,5,286,31"/>
+<area shape="rect" title="A template class for managing tick rates." alt="" coords="81,5,286,31"/>
 <area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html" title=" " alt="" coords="5,93,172,133"/>
 <area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html" title=" " alt="" coords="196,93,363,133"/>
 </map>
@@ -96,13 +99,26 @@ Inheritance diagram for ntw::TickRateManager&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae65e6d21337b885c6b310bbcdc98ac32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32">addTickRate</a> (const T &amp;id, float tickRate)</td></tr>
+<tr class="memdesc:ae65e6d21337b885c6b310bbcdc98ac32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a tick rate for a specified ID.  <br /></td></tr>
 <tr class="separator:ae65e6d21337b885c6b310bbcdc98ac32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad760df3ead00d0f643b1502dbf316033"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033">removeTickRate</a> (const T &amp;id)</td></tr>
+<tr class="memdesc:ad760df3ead00d0f643b1502dbf316033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the tick rate associated with a specified ID.  <br /></td></tr>
 <tr class="separator:ad760df3ead00d0f643b1502dbf316033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d4d50900555517787dccdb498bee4bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html#a3d4d50900555517787dccdb498bee4bc">needUpdate</a> (const T &amp;id, float dt)</td></tr>
+<tr class="memdesc:a3d4d50900555517787dccdb498bee4bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an update is needed for a specified ID based on elapsed time.  <br /></td></tr>
 <tr class="separator:a3d4d50900555517787dccdb498bee4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class ntw::TickRateManager&lt; T &gt;</div><p>A template class for managing tick rates. </p>
+<p>The <code><a class="el" href="../../d7/d07/classntw_1_1TickRateManager.html" title="A template class for managing tick rates.">TickRateManager</a></code> class allows for tracking and managing the frequency of updates for various entities identified by a unique ID. It ensures that updates occur at specified intervals, allowing for precise timing control in systems that require it.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type representing the unique identifier for each tick rate. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae65e6d21337b885c6b310bbcdc98ac32" name="ae65e6d21337b885c6b310bbcdc98ac32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae65e6d21337b885c6b310bbcdc98ac32">&#9670;&#160;</a></span>addTickRate()</h2>
 
@@ -138,13 +154,23 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Adds a tick rate for a specified ID. </p>
+<p>This method associates an ID with a tick rate, which defines how frequently updates should occur for that ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique identifier for the tick rate. </td></tr>
+    <tr><td class="paramname">tickRate</td><td>The rate at which to update, in ticks per second. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d07/classntw_1_1TickRateManager_ae65e6d21337b885c6b310bbcdc98ac32_icgraph.png" border="0" usemap="#ad7/d07/classntw_1_1TickRateManager_ae65e6d21337b885c6b310bbcdc98ac32_icgraph" alt=""/></div>
 <map name="ad7/d07/classntw_1_1TickRateManager_ae65e6d21337b885c6b310bbcdc98ac32_icgraph" id="ad7/d07/classntw_1_1TickRateManager_ae65e6d21337b885c6b310bbcdc98ac32_icgraph">
-<area shape="rect" title=" " alt="" coords="519,63,685,103"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title=" " alt="" coords="295,5,454,45"/>
+<area shape="rect" title="Adds a tick rate for a specified ID." alt="" coords="519,63,685,103"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title="Adds a timeout packet to the handler." alt="" coords="295,5,454,45"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="279,70,471,95"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="298,119,451,145"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,119,231,145"/>
@@ -188,12 +214,23 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Checks if an update is needed for a specified ID based on elapsed time. </p>
+<p>This method determines whether the time elapsed since the last update exceeds the configured tick rate, allowing for an update to occur.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique identifier for which to check if an update is needed. </td></tr>
+    <tr><td class="paramname">dt</td><td>The elapsed time since the last update in seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if an update is needed; false otherwise. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d07/classntw_1_1TickRateManager_a3d4d50900555517787dccdb498bee4bc_icgraph.png" border="0" usemap="#ad7/d07/classntw_1_1TickRateManager_a3d4d50900555517787dccdb498bee4bc_icgraph" alt=""/></div>
 <map name="ad7/d07/classntw_1_1TickRateManager_a3d4d50900555517787dccdb498bee4bc_icgraph" id="ad7/d07/classntw_1_1TickRateManager_a3d4d50900555517787dccdb498bee4bc_icgraph">
-<area shape="rect" title=" " alt="" coords="519,23,685,63"/>
+<area shape="rect" title="Checks if an update is needed for a specified ID based on elapsed time." alt="" coords="519,23,685,63"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="279,5,471,31"/>
 <area shape="rect" href="../../d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="298,55,451,80"/>
 <area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,55,231,80"/>
@@ -227,14 +264,22 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Removes the tick rate associated with a specified ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique identifier of the tick rate to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d07/classntw_1_1TickRateManager_ad760df3ead00d0f643b1502dbf316033_icgraph.png" border="0" usemap="#ad7/d07/classntw_1_1TickRateManager_ad760df3ead00d0f643b1502dbf316033_icgraph" alt=""/></div>
 <map name="ad7/d07/classntw_1_1TickRateManager_ad760df3ead00d0f643b1502dbf316033_icgraph" id="ad7/d07/classntw_1_1TickRateManager_ad760df3ead00d0f643b1502dbf316033_icgraph">
-<area shape="rect" title=" " alt="" coords="436,5,603,45"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4" title=" " alt="" coords="212,5,388,45"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#afc1ddc930112c236569f4bf8d03928cf" title=" " alt="" coords="5,5,164,45"/>
+<area shape="rect" title="Removes the tick rate associated with a specified ID." alt="" coords="436,5,603,45"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4" title="Removes a timeout packet based on its ID." alt="" coords="212,5,388,45"/>
+<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#afc1ddc930112c236569f4bf8d03928cf" title="Removes a specific client from a specific packet." alt="" coords="5,5,164,45"/>
 </map>
 </div>
 

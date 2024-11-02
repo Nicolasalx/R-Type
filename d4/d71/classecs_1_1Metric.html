@@ -81,27 +81,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A class for managing a collection of metrics.  
+ <a href="../../d4/d71/classecs_1_1Metric.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/dd0/MetricManager_8hpp_source.html">MetricManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad14a9331245703184fc9545a9913e0b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#ad14a9331245703184fc9545a9913e0b4">Metric</a> (std::size_t historySize)</td></tr>
+<tr class="memdesc:ad14a9331245703184fc9545a9913e0b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a> with a specified history size.  <br /></td></tr>
 <tr class="separator:ad14a9331245703184fc9545a9913e0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62cc319a1575d5ed876dd5f291a50e41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#a62cc319a1575d5ed876dd5f291a50e41">addNewValue</a> (float value)</td></tr>
+<tr class="memdesc:a62cc319a1575d5ed876dd5f291a50e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new value to the metric, replacing the oldest value if necessary.  <br /></td></tr>
 <tr class="separator:a62cc319a1575d5ed876dd5f291a50e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0c76d34df767bd5933d41908571f35"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; float &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#a0a0c76d34df767bd5933d41908571f35">getArray</a> () const</td></tr>
+<tr class="memdesc:a0a0c76d34df767bd5933d41908571f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the array of stored metric values.  <br /></td></tr>
 <tr class="separator:a0a0c76d34df767bd5933d41908571f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bc39e7b735ff407a8d6cee6a98fee8b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#a8bc39e7b735ff407a8d6cee6a98fee8b">getIndex</a> () const</td></tr>
+<tr class="memdesc:a8bc39e7b735ff407a8d6cee6a98fee8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current index for new value addition.  <br /></td></tr>
 <tr class="separator:a8bc39e7b735ff407a8d6cee6a98fee8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a740eee4bbdaad7f1de084b4c6e551e65"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#a740eee4bbdaad7f1de084b4c6e551e65">getCount</a> () const</td></tr>
+<tr class="memdesc:a740eee4bbdaad7f1de084b4c6e551e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the count of values added to the metric.  <br /></td></tr>
 <tr class="separator:a740eee4bbdaad7f1de084b4c6e551e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aea1430cff8decd6b2c6804ce37ba3615"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d71/classecs_1_1Metric.html#aea1430cff8decd6b2c6804ce37ba3615">lastComputedMetric</a> = 0</td></tr>
+<tr class="memdesc:aea1430cff8decd6b2c6804ce37ba3615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the last computed metric value.  <br /></td></tr>
 <tr class="separator:aea1430cff8decd6b2c6804ce37ba3615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A class for managing a collection of metrics. </p>
+<p>The <code><a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a></code> class stores a fixed-size history of float values, allowing for the addition of new values and retrieval of the history. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad14a9331245703184fc9545a9913e0b4" name="ad14a9331245703184fc9545a9913e0b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad14a9331245703184fc9545a9913e0b4">&#9670;&#160;</a></span>Metric()</h2>
 
@@ -125,6 +137,14 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="../../d4/d71/classecs_1_1Metric.html" title="A class for managing a collection of metrics.">Metric</a> with a specified history size. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">historySize</td><td>The size of the history to maintain. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -152,12 +172,20 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Adds a new value to the metric, replacing the oldest value if necessary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The new value to add. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d71/classecs_1_1Metric_a62cc319a1575d5ed876dd5f291a50e41_icgraph.png" border="0" usemap="#ad4/d71/classecs_1_1Metric_a62cc319a1575d5ed876dd5f291a50e41_icgraph" alt=""/></div>
 <map name="ad4/d71/classecs_1_1Metric_a62cc319a1575d5ed876dd5f291a50e41_icgraph" id="ad4/d71/classecs_1_1Metric_a62cc319a1575d5ed876dd5f291a50e41_icgraph">
-<area shape="rect" title=" " alt="" coords="468,31,659,56"/>
+<area shape="rect" title="Adds a new value to the metric, replacing the oldest value if necessary." alt="" coords="468,31,659,56"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#af3728bb5685f2c529447087210122c96" title=" " alt="" coords="247,5,418,31"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aaa9537dc6910c2f88431c064447b6904" title=" " alt="" coords="245,55,420,80"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,31,197,56"/>
@@ -188,12 +216,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the array of stored metric values. </p>
+<dl class="section return"><dt>Returns</dt><dd>const std::vector&lt;float&gt;&amp; Reference to the array of metric values. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d71/classecs_1_1Metric_a0a0c76d34df767bd5933d41908571f35_icgraph.png" border="0" usemap="#ad4/d71/classecs_1_1Metric_a0a0c76d34df767bd5933d41908571f35_icgraph" alt=""/></div>
 <map name="ad4/d71/classecs_1_1Metric_a0a0c76d34df767bd5933d41908571f35_icgraph" id="ad4/d71/classecs_1_1Metric_a0a0c76d34df767bd5933d41908571f35_icgraph">
-<area shape="rect" title=" " alt="" coords="468,31,625,56"/>
+<area shape="rect" title="Retrieves the array of stored metric values." alt="" coords="468,31,625,56"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#af3728bb5685f2c529447087210122c96" title=" " alt="" coords="247,5,418,31"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aaa9537dc6910c2f88431c064447b6904" title=" " alt="" coords="245,55,420,80"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,31,197,56"/>
@@ -224,12 +255,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the count of values added to the metric. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::size_t The count of added values. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d71/classecs_1_1Metric_a740eee4bbdaad7f1de084b4c6e551e65_icgraph.png" border="0" usemap="#ad4/d71/classecs_1_1Metric_a740eee4bbdaad7f1de084b4c6e551e65_icgraph" alt=""/></div>
 <map name="ad4/d71/classecs_1_1Metric_a740eee4bbdaad7f1de084b4c6e551e65_icgraph" id="ad4/d71/classecs_1_1Metric_a740eee4bbdaad7f1de084b4c6e551e65_icgraph">
-<area shape="rect" title=" " alt="" coords="468,31,628,56"/>
+<area shape="rect" title="Retrieves the count of values added to the metric." alt="" coords="468,31,628,56"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#af3728bb5685f2c529447087210122c96" title=" " alt="" coords="247,5,418,31"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aaa9537dc6910c2f88431c064447b6904" title=" " alt="" coords="245,55,420,80"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,31,197,56"/>
@@ -260,12 +294,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the current index for new value addition. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::size_t The current index. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d71/classecs_1_1Metric_a8bc39e7b735ff407a8d6cee6a98fee8b_icgraph.png" border="0" usemap="#ad4/d71/classecs_1_1Metric_a8bc39e7b735ff407a8d6cee6a98fee8b_icgraph" alt=""/></div>
 <map name="ad4/d71/classecs_1_1Metric_a8bc39e7b735ff407a8d6cee6a98fee8b_icgraph" id="ad4/d71/classecs_1_1Metric_a8bc39e7b735ff407a8d6cee6a98fee8b_icgraph">
-<area shape="rect" title=" " alt="" coords="468,31,627,56"/>
+<area shape="rect" title="Retrieves the current index for new value addition." alt="" coords="468,31,627,56"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#af3728bb5685f2c529447087210122c96" title=" " alt="" coords="247,5,418,31"/>
 <area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aaa9537dc6910c2f88431c064447b6904" title=" " alt="" coords="245,55,420,80"/>
 <area shape="rect" href="../../d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,31,197,56"/>
@@ -286,6 +323,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stores the last computed metric value. </p>
 
 </div>
 </div>
