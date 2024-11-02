@@ -20,124 +20,120 @@
 
 using asio::ip::udp;
 
-// NOLINTBEGIN(cppcoreguidelines-pro-type-member-init)
-
 namespace ntw {
 
+/**
+ * @brief Manages the timeout of packets in a UDP communication context.
+ *
+ * The `TimeoutHandler` class is responsible for tracking outgoing packets
+ * and ensuring that they are resent if a response is not received within
+ * a specified time frame. It utilizes a tick rate manager to manage the
+ * frequency of these checks.
+ */
 class TimeoutHandler {
     struct PacketInfos {
-        std::vector<char> packet;
-        size_t packetId = 0;
-        std::vector<UDPServer::client_id_t> clientIds;
+        std::vector<char> packet; ///< The data of the packet to be sent.
+        size_t packetId = 0; ///< Unique identifier for the packet.
+        std::vector<UDPServer::client_id_t> clientIds; ///< List of client IDs to which the packet should be sent.
     };
 
-    public:
+public:
     TimeoutHandler() = default;
 
-    ~TimeoutHandler()
-    {
-        _state = false;
-        if (_tickRateThread.joinable()) {
-            _tickRateThread.join();
-        }
-    }
+    /**
+     * @brief Destructor for the TimeoutHandler.
+     *
+     * Cleans up the thread used for checking timeouts.
+     */
+    ~TimeoutHandler();
 
-    void addTimeoutPacket(const std::vector<char> &packet, size_t packetId, UDPServer &udp)
-    {
-        std::lock_guard<std::mutex> lck(_mut);
-        std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
-        _tickRateManager.addTickRate(packetId, 1);
-        std::vector<size_t> clients;
+    /**
+     * @brief Adds a packet to be tracked for timeouts.
+     *
+     * This method stores the packet along with its ID and the client IDs
+     * to which it should be sent. The tick rate for the packet is also
+     * registered.
+     *
+     * @param packet The data of the packet to send.
+     * @param packetId The unique identifier for the packet.
+     * @param udp The UDP server instance used for sending packets.
+     */
+    void addTimeoutPacket(const std::vector<char> &packet, size_t packetId, UDPServer &udp);
 
-        const auto &ends = udp.endpoints();
+    /**
+     * @brief Removes a client ID from all tracked packets.
+     *
+     * This method removes a specified client ID from the list of clients
+     * for all packets. If a client is no longer expected to respond, they
+     * can be removed to prevent unnecessary resends.
+     *
+     * @param clientId The ID of the client to remove.
+     */
+    void killClientId(UDPServer::client_id_t clientId);
 
-        clients.reserve(ends.size());
-        for (const auto &end : ends) {
-            clients.push_back(end.first);
-        }
-        _timeoutPackets.push_back({.packet = std::move(packet), .packetId = packetId, .clientIds = std::move(clients)});
-    }
+    /**
+     * @brief Removes a packet from tracking based on its ID.
+     *
+     * This method unregisters the packet and its associated tick rate
+     * from the handler.
+     *
+     * @param packetId The unique identifier for the packet to remove.
+     */
+    void removeTimeoutPacket(size_t packetId);
 
-    void killClientId(UDPServer::client_id_t clientId)
-    {
-        std::lock_guard<std::mutex> lck(_mut);
-        for (auto &timeoutPacket : _timeoutPackets) {
-            auto itCli = std::find(timeoutPacket.clientIds.begin(), timeoutPacket.clientIds.end(), clientId);
-            if (itCli == timeoutPacket.clientIds.end()) {
-                continue;
-            }
-            timeoutPacket.clientIds.erase(itCli);
-        }
-    }
+    /**
+     * @brief Removes a specific client from a packet's tracking.
+     *
+     * This method attempts to remove a client from the list of clients
+     * associated with a specific packet. If no clients are left, the packet
+     * is also removed from tracking.
+     *
+     * @param packetId The ID of the packet.
+     * @param clientId The ID of the client to remove.
+     * @return True if the client was successfully removed; false otherwise.
+     */
+    bool removeClient(size_t packetId, UDPServer::client_id_t clientId);
 
-    void removeTimeoutPacket(size_t packetId)
-    {
-        auto it = std::find_if(_timeoutPackets.begin(), _timeoutPackets.end(), [packetId](PacketInfos &val) {
-            return val.packetId == packetId;
-        });
-        if (it != _timeoutPackets.end()) {
-            _tickRateManager.removeTickRate(packetId);
-            _timeoutPackets.erase(it);
-        }
-    }
+    /**
+     * @brief Starts the timeout checking thread.
+     *
+     * This method launches a thread that periodically checks for packet
+     * timeouts and resends packets as necessary.
+     *
+     * @param dt The elapsed time since the last update.
+     * @param udp The UDP server instance used for sending packets.
+     */
+    void runTimeoutChecker(float &dt, UDPServer &udp);
 
-    bool removeClient(size_t packetId, UDPServer::client_id_t clientId)
-    {
-        std::lock_guard<std::mutex> lck(_mut);
-        for (auto &timeoutPacket : _timeoutPackets) {
-            if (packetId == timeoutPacket.packetId) {
-                auto itCli = std::find(timeoutPacket.clientIds.begin(), timeoutPacket.clientIds.end(), clientId);
-                if (itCli == timeoutPacket.clientIds.end()) {
-                    eng::logInfo(std::format("No such client ({}) in packet ({})", clientId, packetId));
-                    return false;
-                }
-                timeoutPacket.clientIds.erase(itCli);
-                if (timeoutPacket.clientIds.empty()) {
-                    removeTimeoutPacket(packetId);
-                }
-                return true;
-            }
-        }
-        return false;
-    }
+private:
+    /**
+     * @brief Checks the tick rates of the tracked packets.
+     *
+     * This method iterates over the stored packets and resends them if
+     * their tick rate indicates that they should be resent.
+     *
+     * @param dt The elapsed time since the last update.
+     * @param udp The UDP server instance used for sending packets.
+     */
+    void _checkTickRates(float &dt, UDPServer &udp);
 
-    void runTimeoutChecker(float &dt, UDPServer &udp)
-    {
-        _tickRateThread = std::thread([this, &dt, &udp]() {
-            while (_state) {
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+    /**
+     * @brief Resends a packet to its associated clients.
+     *
+     * This method sends the packet data to all clients listed for that packet.
+     *
+     * @param packet The packet information containing the data and clients.
+     * @param udp The UDP server instance used for sending packets.
+     */
+    void _sendAgainPacket(PacketInfos &packet, UDPServer &udp);
 
-                _checkTickRates(dt, udp);
-            }
-        });
-    }
+    bool _state = true; ///< Indicates whether the timeout handler is active.
 
-    private:
-    void _checkTickRates(float &dt, UDPServer &udp)
-    {
-        std::lock_guard<std::mutex> lck(_mut);
+    std::thread _tickRateThread; ///< The thread that checks for timeouts.
+    std::mutex _mut; ///< Mutex for synchronizing access to shared resources.
 
-        for (auto &packet : _timeoutPackets) {
-            if (_tickRateManager.needUpdate(packet.packetId, dt)) {
-                _sendAgainPacket(packet, udp);
-            }
-        }
-    }
-
-    void _sendAgainPacket(PacketInfos &packet, UDPServer &udp)
-    {
-        for (auto cli : packet.clientIds) {
-            udp.send(cli, reinterpret_cast<const char *>(&packet.packet), packet.packet.size());
-        }
-    }
-
-    bool _state = true;
-
-    std::thread _tickRateThread;
-    std::mutex _mut;
-
-    std::vector<PacketInfos> _timeoutPackets;
-    TickRateManager<size_t> _tickRateManager;
+    std::vector<PacketInfos> _timeoutPackets; ///< List of packets being tracked for timeouts.
+    TickRateManager<size_t> _tickRateManager; ///< Manager for handling tick rates of packets.
 };
 
 } // namespace ntw
