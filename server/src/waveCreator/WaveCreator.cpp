@@ -38,7 +38,9 @@ void rts::WaveCreator::createStage(
     size_t stage,
     int missileSpawnRate,
     ecs::WaveManager &waveManager,
-    std::list<std::vector<char>> &datasToSend
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
 )
 {
     std::string jsonPath(std::format("{}/stage{}.json", _basePath, stage));
@@ -57,7 +59,7 @@ void rts::WaveCreator::createStage(
     for (const auto &[waveName, wave] : waveJson["waves"].items()) {
         auto waveId = waveManager.addNewWave();
         for (const auto &mobs : wave) {
-            _addJSONMobs(waveId, mobs, missileSpawnRate, waveManager, datasToSend);
+            _addJSONMobs(waveId, mobs, missileSpawnRate, waveManager, datasToSend, udpServer, timeoutHandler);
         }
     }
 }
@@ -67,7 +69,9 @@ void rts::WaveCreator::_addJSONMobs(
     const nlohmann::json &mobs,
     int missileSpawnRate,
     ecs::WaveManager &waveManager,
-    std::list<std::vector<char>> &datasToSend
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
 )
 {
     if (!mobs.contains("mobJsonPath") || !mobs.contains("pos") || !mobs.contains("vel") || !mobs.contains("type")) {
@@ -96,13 +100,15 @@ void rts::WaveCreator::_addJSONMobs(
              this,
              &datasToSend,
              missileSpawnRate,
-             &waveManager](ecs::Registry &reg) -> entity_t {
+             &waveManager,
+             &timeoutHandler,
+             &udpServer](ecs::Registry &reg) -> entity_t {
                 shared_entity_t sharedEntityId = ecs::generateSharedEntityId();
 
                 entity_t entity = ecs::ServerEntityFactory::createServerEntityFromJSON(
                     reg, mobJsonPath, x, y, sharedEntityId, vx, vy
                 );
-                _setupMobFunc[t](datasToSend, reg, entity, sharedEntityId, x, y, vx, vy);
+                _setupMobFunc[t](datasToSend, udpServer, timeoutHandler, reg, entity, sharedEntityId, x, y, vx, vy);
                 reg.getComponent<ecs::component::AiActor>(entity)->act =
                     _mobAiCreateFunc[t](datasToSend, waveManager, missileSpawnRate, x, y);
                 return entity;
@@ -186,6 +192,8 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
 
 void rts::WaveCreator::setupBydosDatas(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::Registry & /*reg*/,
     entity_t /*e*/,
     size_t sharedId,
@@ -195,14 +203,17 @@ void rts::WaveCreator::setupBydosDatas(
     float /*vy*/
 )
 {
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
-                              rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedId, {.pos = {x, y}}, true
-    )
-                              .serialize());
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
+        rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE, sharedId, {.pos = {x, y}}, true
+    );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }
 
 void rts::WaveCreator::setupRobotDatas(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::Registry & /*reg*/,
     entity_t /*e*/,
     size_t sharedId,
@@ -212,14 +223,17 @@ void rts::WaveCreator::setupRobotDatas(
     float vy
 )
 {
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
-                              rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND, sharedId, {.pos = {x, y}, .vel = {vx, vy}}, true
-    )
-                              .serialize());
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
+        rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND, sharedId, {.pos = {x, y}, .vel = {vx, vy}}, true
+    );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }
 
 void rts::WaveCreator::setupDobkeratopsDatas(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::Registry & /*reg*/,
     entity_t /*e*/,
     size_t sharedId,
@@ -229,14 +243,17 @@ void rts::WaveCreator::setupDobkeratopsDatas(
     float /*vy*/
 )
 {
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
-                              rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedId, {.pos = {x, y}, .stage = 1}, true
-    )
-                              .serialize());
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
+        rt::UDPCommand::NEW_ENTITY_DOBKERATOPS, sharedId, {.pos = {x, y}, .stage = 1}, true
+    );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }
 
 void rts::WaveCreator::setupBlobDatas(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::Registry &reg,
     entity_t e,
     size_t sharedId,
@@ -247,8 +264,9 @@ void rts::WaveCreator::setupBlobDatas(
 )
 {
     reg.addComponent(e, ecs::component::DeathSplit{.splitCount = 2, .offsets = {{-32.0f, -32.0f}, {32.0f, -32.0f}}});
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
-                              rt::UDPCommand::NEW_ENTITY_BLOB, sharedId, {.pos = {.x = x, .y = y}}, true
-    )
-                              .serialize());
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
+        rt::UDPCommand::NEW_ENTITY_BLOB, sharedId, {.pos = {.x = x, .y = y}}, true
+    );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }

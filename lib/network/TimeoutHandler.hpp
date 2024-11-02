@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <asio/ip/udp.hpp>
 #include <chrono>
+#include <cstddef>
 #include <cstdio>
 #include <mutex>
 #include <thread>
@@ -46,7 +47,7 @@ class TimeoutHandler {
     {
         std::lock_guard<std::mutex> lck(_mut);
         std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
-        _tickRateManager.addTickRate(packetId, 1);
+        _tickRateManager.addTickRate(packetId, 10);
         std::vector<size_t> clients;
 
         const auto &ends = udp.endpoints();
@@ -105,8 +106,9 @@ class TimeoutHandler {
     {
         _tickRateThread = std::thread([this, &dt, &udp]() {
             while (_state) {
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(2));
 
+                _checkNewUdpClients(udp);
                 _checkTickRates(dt, udp);
             }
         });
@@ -127,7 +129,29 @@ class TimeoutHandler {
     void _sendAgainPacket(PacketInfos &packet, UDPServer &udp)
     {
         for (auto cli : packet.clientIds) {
-            udp.send(cli, reinterpret_cast<const char *>(&packet.packet), packet.packet.size());
+            udp.send(cli, reinterpret_cast<const char *>(packet.packet.data()), packet.packet.size());
+        }
+    }
+
+    void _addClientsToPackets(UDPServer::client_id_t clientId)
+    {
+        std::lock_guard<std::mutex> lck(_mut);
+        for (auto &packet : _timeoutPackets) {
+            packet.clientIds.push_back(clientId);
+        }
+    }
+
+    void _checkNewUdpClients(UDPServer &udp)
+    {
+        std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
+
+        const auto &ends = udp.endpoints();
+        for (const auto &end : ends) {
+            if (std::find_if(_knownClients.begin(), _knownClients.end(), [&end](auto id) { return id == end.first; }) ==
+                _knownClients.end()) {
+                _knownClients.push_back(end.first);
+                _addClientsToPackets(end.first);
+            }
         }
     }
 
@@ -138,6 +162,7 @@ class TimeoutHandler {
 
     std::vector<PacketInfos> _timeoutPackets;
     TickRateManager<size_t> _tickRateManager;
+    std::vector<UDPServer::client_id_t> _knownClients;
 };
 
 } // namespace ntw
