@@ -42,8 +42,9 @@ static entity_t createNeckSegment(
     shared_entity_t sharedId = ecs::generateSharedEntityId();
 
     // error:
-    entity_t segment =
-        ecs::ServerEntityFactory::createServerEntityFromJSON(reg, "assets/enemies/dobkeratops_segment.json", x, y, sharedId);
+    entity_t segment = ecs::ServerEntityFactory::createServerEntityFromJSON(
+        reg, "assets/enemies/dobkeratops_segment.json", x, y, sharedId
+    );
 
     datasToSend.push_back(
         rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
