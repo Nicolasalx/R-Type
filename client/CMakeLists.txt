@@ -30,7 +30,7 @@ endif()
 
 target_compile_options(r-type_client PRIVATE -Wall -Wextra)
 
-target_link_libraries(r-type_client PRIVATE FACTORY NETWORK UTILS ImGui-SFML::ImGui-SFML Candle-s Particles-s)
+target_link_libraries(r-type_client PRIVATE RTYPE-ECS NETWORK UTILS ImGui-SFML::ImGui-SFML Candle-s Particles-s)
 
 target_include_directories(r-type_client PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
