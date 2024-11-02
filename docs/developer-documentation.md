@@ -14,17 +14,17 @@ This project is built around an Entity-Component-System (ECS) architecture, whic
 
 ```mermaid
 graph TD
-  A[Client Subsystem] --> |Uses| FACTORY
+  A[Client Subsystem] --> |Uses| RTYPE-ECS
   A --> |Uses| NETWORK
   A --> |Uses| UTILS
   A --> |Uses| ImGui-SFML
-  B[Server Subsystem] --> |Uses| FACTORY
+  B[Server Subsystem] --> |Uses| RTYPE-ECS
   B --> |Uses| NETWORK
   B --> |Uses| UTILS
 
-  FACTORY --> |Depends on| ECS
-  FACTORY --> |Depends on| NETWORK
-  FACTORY --> |Uses| SFML
+  RTYPE-ECS --> |Depends on| ECS
+  RTYPE-ECS --> |Depends on| NETWORK
+  RTYPE-ECS --> |Uses| SFML
   NETWORK --> |Uses| Asio
   UTILS --> |Provides| Logger
   UTILS --> |Provides| ArgParser

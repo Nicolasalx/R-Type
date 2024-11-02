@@ -28,7 +28,7 @@ elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
 endif()
 
 target_compile_options(r-type_server PRIVATE -Wall -Wextra)
-target_link_libraries(r-type_server PRIVATE FACTORY NETWORK UTILS)
+target_link_libraries(r-type_server PRIVATE RTYPE-ECS NETWORK UTILS)
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
 )

@@ -70,18 +70,18 @@ void rtc::GameManager::_setupEntities(ntw::UDPClient &udpClient, ecs::Registry &
             reg, spriteManager, "assets/obstacles/obstacle" + std::to_string(i) + ".json"
         );
     }
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bottomCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/topCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/rightCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/leftCollision.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg.json");
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/earth.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade75.json", 500, 123);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planet50.json", 1500, 303);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade50.json", 1500, 303);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/planetShade25.json", 1000, 288);
-    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/sun.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/bottomCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/topCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/rightCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/leftCollision.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/bg.json");
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/earth.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/planetShade75.json", 500, 123);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/planet50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/planetShade50.json", 1500, 303);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/planetShade25.json", 1000, 288);
+    ecs::ClientEntityFactory::createClientEntityFromJSON(reg, spriteManager, "assets/bg/sun.json");
 }
 
 void rtc::GameManager::_runGame()

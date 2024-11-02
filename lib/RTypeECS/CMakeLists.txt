@@ -1,4 +1,4 @@
-add_library(FACTORY STATIC
+add_library(RTYPE-ECS STATIC
     systems/collision.cpp
     systems/control_move.cpp
     systems/control_special.cpp
@@ -36,22 +36,22 @@ add_library(FACTORY STATIC
 )
 
 if(ENABLE_CLANG_TIDY STREQUAL "ON" AND CLANG_TIDY)
-    set_target_properties(FACTORY PROPERTIES CXX_CLANG_TIDY
+    set_target_properties(RTYPE-ECS PROPERTIES CXX_CLANG_TIDY
         "${CLANG_TIDY};--use-color"
     )
 elseif(ENABLE_CLANG_TIDY STREQUAL "FULL" AND CLANG_TIDY)
-    set_target_properties(FACTORY PROPERTIES CXX_CLANG_TIDY
+    set_target_properties(RTYPE-ECS PROPERTIES CXX_CLANG_TIDY
         "${CLANG_TIDY};--use-color;--header-filter=${CMAKE_SOURCE_DIR}/lib/factory/.*\\.hpp$"
     )
 endif()
 
-target_compile_options(FACTORY PUBLIC -Wall -Wextra)
+target_compile_options(RTYPE-ECS PUBLIC -Wall -Wextra)
 
-target_include_directories(FACTORY PUBLIC
+target_include_directories(RTYPE-ECS PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/client/src
 )
 
-target_link_libraries(FACTORY PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML Candle-s Particles-s)
+target_link_libraries(RTYPE-ECS PUBLIC nlohmann_json ECS NETWORK sfml-system sfml-window sfml-graphics sfml-audio ImGui-SFML::ImGui-SFML Candle-s Particles-s)

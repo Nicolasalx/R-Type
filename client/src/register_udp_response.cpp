@@ -19,7 +19,6 @@
 #include "SpriteManager.hpp"
 #include "Zipper.hpp"
 #include "components/controllable.hpp"
-#include "components/dobkeratops.hpp"
 #include "components/health.hpp"
 #include "components/player.hpp"
 #include "components/position.hpp"
@@ -48,7 +47,7 @@ static void handlePlayerCreation(
             reg,
             spriteManager,
 
-            "assets/player" + std::to_string(packet.body.playerIndex) + ".json",
+            "assets/players/player" + std::to_string(packet.body.playerIndex) + ".json",
             packet.body.pos.x,
             packet.body.pos.y,
             packet.sharedEntityId,
@@ -94,14 +93,6 @@ static void handleSharedCreation(
 
 void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient)
 {
-    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_STATIC>(
-        rt::UDPCommand::NEW_ENTITY_STATIC,
-        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_STATIC> &packet) {
-            handleSharedCreation<rt::UDPBody::NEW_ENTITY_STATIC>(
-                "assets/static.json", spriteManager, this->_networkCallbacks, packet, udpClient
-            );
-        }
-    );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_PLAYER>(
         rt::UDPCommand::NEW_ENTITY_PLAYER,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_PLAYER> &packet) {
@@ -130,7 +121,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-                "assets/missileBall.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                "assets/enemies/missileBall.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
@@ -138,7 +129,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         rt::UDPCommand::NEW_ENTITY_BYDOS_WAVE,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_BYDOS_WAVE>(
-                "assets/bydosWave.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                "assets/enemies/bydosWave.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
@@ -146,7 +137,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         rt::UDPCommand::NEW_ENTITY_ROBOT_GROUND,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_ROBOT_GROUND>(
-                "assets/robotGround.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                "assets/enemies/robotGround.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );
@@ -158,7 +149,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                 auto sharedEntityId = packet.sharedEntityId;
 
                 ecs::ClientEntityFactory::createClientEntityFromJSON(
-                    reg, spriteManager, "assets/dobkeratops.json", pos.x, pos.y, sharedEntityId
+                    reg, spriteManager, "assets/enemies/dobkeratops.json", pos.x, pos.y, sharedEntityId
                 );
             });
         }
@@ -172,7 +163,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                 auto sharedEntityId = packet.sharedEntityId;
 
                 ecs::ClientEntityFactory::createClientEntityFromJSON(
-                    reg, spriteManager, "assets/boss_parasite.json", pos.x, pos.y, sharedEntityId
+                    reg, spriteManager, "assets/enemies/boss_parasite.json", pos.x, pos.y, sharedEntityId
                 );
             });
         }
@@ -185,7 +176,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                 const auto &pos = packet.body.pos;
                 auto sharedEntityId = packet.sharedEntityId;
 
-                std::string partJson = "assets/dobkeratops_segment.json";
+                std::string partJson = "assets/enemies/dobkeratops_segment.json";
                 ecs::ClientEntityFactory::createClientEntityFromJSON(
                     reg, spriteManager, partJson, pos.x, pos.y, sharedEntityId
                 );
@@ -197,7 +188,7 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         rt::UDPCommand::NEW_ENTITY_BLOB,
         [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB> &packet) {
             handleSharedCreation<rt::UDPBody::NEW_ENTITY_BLOB>(
-                "assets/blob.json", spriteManager, this->_networkCallbacks, packet, udpClient
+                "assets/enemies/blob.json", spriteManager, this->_networkCallbacks, packet, udpClient
             );
         }
     );

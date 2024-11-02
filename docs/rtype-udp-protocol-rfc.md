@@ -87,7 +87,7 @@ Packets contain a `cmd` field that specifies the command being sent. The availab
 
 ### 4.1 Command Descriptions
 
-#### 4.1.1 `NEW_ENTITY_STATIC`
+#### 4.1.1 `NEW_ENTITY_PLAYER`
 - **Command ID**: 1
 - **Description**: Creates a new static entity without movement, with the specified initial position.
 - **Data**:
