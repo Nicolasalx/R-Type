@@ -51,8 +51,7 @@ class GameManager {
     std::shared_ptr<sf::RenderWindow> _window;
     sf::View _view = {
         sf::Vector2f(rt::GAME_VIEW_WIDTH / 2.0, rt::GAME_VIEW_HEIGHT / 2.0),
-        sf::Vector2f(rt::GAME_VIEW_WIDTH, rt::GAME_VIEW_HEIGHT)
-    };
+        sf::Vector2f(rt::GAME_VIEW_WIDTH, rt::GAME_VIEW_HEIGHT)};
     std::shared_ptr<ImFont> _font;
 
     ecs::MetricManager<rt::GameMetric> _metrics = {{{rt::GameMetric::FPS, 100}, {rt::GameMetric::PING, 100}}};
@@ -62,8 +61,7 @@ class GameManager {
          {rt::PlayerAction::MOVE_DOWN, sf::Keyboard::Key::Down},
          {rt::PlayerAction::MOVE_LEFT, sf::Keyboard::Key::Left},
          {rt::PlayerAction::MOVE_RIGHT, sf::Keyboard::Key::Right},
-         {rt::PlayerAction::SHOOT_MISSILE, sf::Keyboard::Key::Space}}
-    };
+         {rt::PlayerAction::SHOOT_MISSILE, sf::Keyboard::Key::Space}}};
 
     std::shared_ptr<sf::Shader> _colorBlind;
 

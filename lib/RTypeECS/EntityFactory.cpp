@@ -23,10 +23,10 @@
 #include "components/player.hpp"
 #include "components/position.hpp"
 #include "components/score.hpp"
-#include "components/health_xp.hpp"
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
+#include "components/health_xp.hpp"
 #include "components/is_a_boss.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>

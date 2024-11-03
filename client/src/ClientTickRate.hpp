@@ -21,7 +21,6 @@ enum class TickRate : std::uint8_t {
 const std::unordered_map<rtc::TickRate, float> CLIENT_TICKRATE = {
     {rtc::TickRate::ENTITY_MOVEMENT, 60.0},
     {rtc::TickRate::PING_REFRESH, 5.0},
-    {rtc::TickRate::CALL_NETWORK_CALLBACKS, 60.0}
-};
+    {rtc::TickRate::CALL_NETWORK_CALLBACKS, 60.0}};
 
 } // namespace rtc

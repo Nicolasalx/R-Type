@@ -200,8 +200,8 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getHealthXPAi(
     std::list<std::vector<char>> & /*datasToSend*/,
-    ntw::UDPServer &/*udpServer*/,
-    ntw::TimeoutHandler &/*timeoutHandler*/,
+    ntw::UDPServer & /*udpServer*/,
+    ntw::TimeoutHandler & /*timeoutHandler*/,
     ecs::WaveManager & /*waveManager*/,
     int /*missileSpawnRate*/,
     float /*x*/,
@@ -300,7 +300,7 @@ void rts::WaveCreator::setupHealthXPDatas(
     std::list<std::vector<char>> &datasToSend,
     ntw::UDPServer &udpServer,
     ntw::TimeoutHandler &timeoutHandler,
-    ecs::Registry &/*reg*/,
+    ecs::Registry & /*reg*/,
     entity_t /*e*/,
     size_t sharedId,
     float x,
