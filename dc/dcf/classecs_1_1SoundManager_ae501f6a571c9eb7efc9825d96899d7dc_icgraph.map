@@ -1,5 +1,5 @@
 <map id="ecs::SoundManager::playSoundEffect" name="ecs::SoundManager::playSoundEffect">
 <area shape="rect" id="node1" title="Plays a sound effect." alt="" coords="496,5,653,45"/>
 <area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63" title="System to handle sound effects emitted by entities." alt="" coords="245,5,448,45"/>
-<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#a708c263b7c833cf5a22f2a92261a1bec" title=" " alt="" coords="5,13,197,38"/>
+<area shape="rect" id="node3" href="$d9/d77/namespacertc.html#afaaf4554587efdc9416f7d3cc08c115b" title=" " alt="" coords="5,13,197,38"/>
 </map>
