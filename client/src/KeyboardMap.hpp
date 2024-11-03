@@ -115,6 +115,7 @@ const std::unordered_map<sf::Keyboard::Key, std::string> KEYBOARD_MAP = {
     {sf::Keyboard::Key::F13, "F13"},
     {sf::Keyboard::Key::F14, "F14"},
     {sf::Keyboard::Key::F15, "F15"},
-    {sf::Keyboard::Key::Pause, "Pause"}};
+    {sf::Keyboard::Key::Pause, "Pause"}
+};
 
 }
