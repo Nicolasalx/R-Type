@@ -87,15 +87,24 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b">healthSharedCheck</a>(Registry &amp;reg, std::list&lt;std::vector&lt;char&gt;&gt; &amp;datasToSend);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace ecs::systems</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/dca/TimeoutHandler_8hpp.html">TimeoutHandler.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a2e8af7cb496b5df5a0bdf8fbb92aaeff">healthSharedCheck</a>(</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    Registry &amp;reg,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::list&lt;std::vector&lt;char&gt;&gt; &amp;datasToSend,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="../../d8/d0c/classntw_1_1TimeoutHandler.html">ntw::TimeoutHandler</a> &amp;timeoutHandler</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <span class="comment">// namespace ecs::systems</span></div>
 <div class="ttc" id="aRegistry_8hpp_html"><div class="ttname"><a href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a></div></div>
+<div class="ttc" id="aTimeoutHandler_8hpp_html"><div class="ttname"><a href="../../d8/dca/TimeoutHandler_8hpp.html">TimeoutHandler.hpp</a></div></div>
+<div class="ttc" id="aclassntw_1_1TimeoutHandler_html"><div class="ttname"><a href="../../d8/d0c/classntw_1_1TimeoutHandler.html">ntw::TimeoutHandler</a></div><div class="ttdef"><b>Definition:</b> TimeoutHandler.hpp:27</div></div>
+<div class="ttc" id="aclassntw_1_1UDPServer_html"><div class="ttname"><a href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a></div><div class="ttdoc">UDPServer is a server that handle udp network connections from remote clients.</div><div class="ttdef"><b>Definition:</b> UDPServer.hpp:34</div></div>
 <div class="ttc" id="anamespaceecs_1_1systems_html"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a></div><div class="ttdoc">Contains system functions for managing game logic.</div><div class="ttdef"><b>Definition:</b> ai_act.hpp:12</div></div>
-<div class="ttc" id="anamespaceecs_1_1systems_html_a6fab200e11588a6f76b3ac815134c66b"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a6fab200e11588a6f76b3ac815134c66b">ecs::systems::healthSharedCheck</a></div><div class="ttdeci">void healthSharedCheck(Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</div><div class="ttdef"><b>Definition:</b> health_shared_check.cpp:14</div></div>
+<div class="ttc" id="anamespaceecs_1_1systems_html_a2e8af7cb496b5df5a0bdf8fbb92aaeff"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a2e8af7cb496b5df5a0bdf8fbb92aaeff">ecs::systems::healthSharedCheck</a></div><div class="ttdeci">void healthSharedCheck(Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, ntw::UDPServer &amp;udpServer, ntw::TimeoutHandler &amp;timeoutHandler)</div><div class="ttdef"><b>Definition:</b> health_shared_check.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

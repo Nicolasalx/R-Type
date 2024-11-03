@@ -87,16 +87,25 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691">missilesStop</a>(<a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg, std::list&lt;std::vector&lt;char&gt;&gt; &amp;datasToSend);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <span class="comment">// namespace ecs::systems</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/dca/TimeoutHandler_8hpp.html">TimeoutHandler.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d9a/namespaceecs_1_1systems.html#a58e4057b286f4bcb0dd6d66cfd45fbfe">missilesStop</a>(</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a> &amp;reg,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::list&lt;std::vector&lt;char&gt;&gt; &amp;datasToSend,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a> &amp;udpServer,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="../../d8/d0c/classntw_1_1TimeoutHandler.html">ntw::TimeoutHandler</a> &amp;timeoutHandler</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>} <span class="comment">// namespace ecs::systems</span></div>
 <div class="ttc" id="aRegistry_8hpp_html"><div class="ttname"><a href="../../db/dd1/Registry_8hpp.html">Registry.hpp</a></div></div>
+<div class="ttc" id="aTimeoutHandler_8hpp_html"><div class="ttname"><a href="../../d8/dca/TimeoutHandler_8hpp.html">TimeoutHandler.hpp</a></div></div>
 <div class="ttc" id="aclassecs_1_1Registry_html"><div class="ttname"><a href="../../df/dcd/classecs_1_1Registry.html">ecs::Registry</a></div><div class="ttdef"><b>Definition:</b> Registry.hpp:33</div></div>
+<div class="ttc" id="aclassntw_1_1TimeoutHandler_html"><div class="ttname"><a href="../../d8/d0c/classntw_1_1TimeoutHandler.html">ntw::TimeoutHandler</a></div><div class="ttdef"><b>Definition:</b> TimeoutHandler.hpp:27</div></div>
+<div class="ttc" id="aclassntw_1_1UDPServer_html"><div class="ttname"><a href="../../da/dbf/classntw_1_1UDPServer.html">ntw::UDPServer</a></div><div class="ttdoc">UDPServer is a server that handle udp network connections from remote clients.</div><div class="ttdef"><b>Definition:</b> UDPServer.hpp:34</div></div>
 <div class="ttc" id="anamespaceecs_1_1systems_html"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html">ecs::systems</a></div><div class="ttdoc">Contains system functions for managing game logic.</div><div class="ttdef"><b>Definition:</b> ai_act.hpp:12</div></div>
-<div class="ttc" id="anamespaceecs_1_1systems_html_a15f1d018bb94f80f3b1881a41d488691"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a15f1d018bb94f80f3b1881a41d488691">ecs::systems::missilesStop</a></div><div class="ttdeci">void missilesStop(ecs::Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend)</div><div class="ttdef"><b>Definition:</b> missiles_stop.cpp:20</div></div>
+<div class="ttc" id="anamespaceecs_1_1systems_html_a58e4057b286f4bcb0dd6d66cfd45fbfe"><div class="ttname"><a href="../../db/d9a/namespaceecs_1_1systems.html#a58e4057b286f4bcb0dd6d66cfd45fbfe">ecs::systems::missilesStop</a></div><div class="ttdeci">void missilesStop(ecs::Registry &amp;reg, std::list&lt; std::vector&lt; char &gt; &gt; &amp;datasToSend, ntw::UDPServer &amp;udpServer, ntw::TimeoutHandler &amp;timeoutHandler)</div><div class="ttdef"><b>Definition:</b> missiles_stop.cpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

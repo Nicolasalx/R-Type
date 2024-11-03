@@ -69,7 +69,7 @@ var searchData=
   ['spawner_66',['spawner',['../db/d05/structecs_1_1component_1_1ParticleSpawner.html#a72be9131746aee41c527df0d63b30328',1,'ecs::component::ParticleSpawner']]],
   ['spawnnextwave_67',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf',1,'ecs::WaveManager']]],
   ['spawnsharedentity_68',['spawnSharedEntity',['../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7',1,'ecs::Registry']]],
-  ['splitai_69',['splitAi',['../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd',1,'rts::ais']]],
+  ['splitai_69',['splitAi',['../da/d18/namespacerts_1_1ais.html#a67175959b29fb0b0a76970d83a86c970',1,'rts::ais']]],
   ['splitai_2ecpp_70',['splitAi.cpp',['../db/dd1/splitAi_8cpp.html',1,'']]],
   ['splitai_2ehpp_71',['splitAi.hpp',['../df/dc9/splitAi_8hpp.html',1,'']]],
   ['splitcount_72',['splitCount',['../d7/d76/structecs_1_1component_1_1DeathSplit.html#ac4d754e2b99a7f81d16baad45b77c9bd',1,'ecs::component::DeathSplit']]],

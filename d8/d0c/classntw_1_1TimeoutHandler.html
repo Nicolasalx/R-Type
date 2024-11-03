@@ -97,15 +97,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acd9d019f0c8b720eb2b0e05e684f9c39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#acd9d019f0c8b720eb2b0e05e684f9c39">killClientId</a> (<a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">UDPServer::client_id_t</a> clientId)</td></tr>
 <tr class="memdesc:acd9d019f0c8b720eb2b0e05e684f9c39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a client ID from all timeout packets.  <br /></td></tr>
 <tr class="separator:acd9d019f0c8b720eb2b0e05e684f9c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc30dc8cb00d5c6d7d426ab890b408b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4">removeTimeoutPacket</a> (size_t packetId)</td></tr>
-<tr class="memdesc:abc30dc8cb00d5c6d7d426ab890b408b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a timeout packet based on its ID.  <br /></td></tr>
-<tr class="separator:abc30dc8cb00d5c6d7d426ab890b408b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc1ddc930112c236569f4bf8d03928cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#afc1ddc930112c236569f4bf8d03928cf">removeClient</a> (size_t packetId, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html#aca3b02b31da1507a608a5401e83b97c3">UDPServer::client_id_t</a> clientId)</td></tr>
 <tr class="memdesc:afc1ddc930112c236569f4bf8d03928cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a specific client from a specific packet.  <br /></td></tr>
 <tr class="separator:afc1ddc930112c236569f4bf8d03928cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb0f334f4d5aa66e229c8f9d398a7529"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#adb0f334f4d5aa66e229c8f9d398a7529">runTimeoutChecker</a> (float &amp;dt, <a class="el" href="../../da/dbf/classntw_1_1UDPServer.html">UDPServer</a> &amp;udp)</td></tr>
 <tr class="memdesc:adb0f334f4d5aa66e229c8f9d398a7529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the timeout checker in a separate thread.  <br /></td></tr>
 <tr class="separator:adb0f334f4d5aa66e229c8f9d398a7529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f11c7a8b8b260e80324f2b6c15c2b88"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#a2f11c7a8b8b260e80324f2b6c15c2b88">mut</a> ()</td></tr>
+<tr class="separator:a2f11c7a8b8b260e80324f2b6c15c2b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae52d0b4bc182055b5d6126df04dbee66" name="ae52d0b4bc182055b5d6126df04dbee66"></a>
@@ -224,6 +223,23 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../da/dbf/classntw_1_1UDPServer.html#aa5cd4fd62980d86bf5c334edda40b53a" title="Return the mutex used for datas thread safety." alt="" coords="231,119,388,145"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d0c/classntw_1_1TimeoutHandler_ad27e84b28be6ad3c6ee3ec77bbb843e2_icgraph.png" border="0" usemap="#ad8/d0c/classntw_1_1TimeoutHandler_ad27e84b28be6ad3c6ee3ec77bbb843e2_icgraph" alt=""/></div>
+<map name="ad8/d0c/classntw_1_1TimeoutHandler_ad27e84b28be6ad3c6ee3ec77bbb843e2_icgraph" id="ad8/d0c/classntw_1_1TimeoutHandler_ad27e84b28be6ad3c6ee3ec77bbb843e2_icgraph">
+<area shape="rect" title="Adds a timeout packet to the handler." alt="" coords="736,169,895,209"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#aa3538db502dd87e9239c53b433df797c" title=" " alt="" coords="489,105,679,145"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a5776632a737b172dfa1acf219a7ae9ff" title=" " alt="" coords="501,55,667,80"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a110a4cd603ca1097772efdb349fe7f79" title=" " alt="" coords="480,233,688,259"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#a67175959b29fb0b0a76970d83a86c970" title=" " alt="" coords="298,283,413,308"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a2e8af7cb496b5df5a0bdf8fbb92aaeff" title=" " alt="" coords="483,169,685,209"/>
+<area shape="rect" href="../../da/d18/namespacerts_1_1ais.html#ae726e2f83c48f2b2f5659208c8b17b47" title=" " alt="" coords="489,283,679,308"/>
+<area shape="rect" href="../../db/d9a/namespaceecs_1_1systems.html#a58e4057b286f4bcb0dd6d66cfd45fbfe" title=" " alt="" coords="485,5,683,31"/>
+<area shape="rect" href="../../d9/dbb/namespacerts.html#adeafc18110e1cb80b7e21fc581d4790e" title=" " alt="" coords="279,112,432,137"/>
+<area shape="rect" href="../../d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,112,231,137"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -259,6 +275,31 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a2f11c7a8b8b260e80324f2b6c15c2b88" name="a2f11c7a8b8b260e80324f2b6c15c2b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f11c7a8b8b260e80324f2b6c15c2b88">&#9670;&#160;</a></span>mut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex &amp; ntw::TimeoutHandler::mut </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -306,70 +347,6 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the client was successfully removed; false otherwise. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d8/d0c/classntw_1_1TimeoutHandler_afc1ddc930112c236569f4bf8d03928cf_cgraph.png" border="0" usemap="#ad8/d0c/classntw_1_1TimeoutHandler_afc1ddc930112c236569f4bf8d03928cf_cgraph" alt=""/></div>
-<map name="ad8/d0c/classntw_1_1TimeoutHandler_afc1ddc930112c236569f4bf8d03928cf_cgraph" id="ad8/d0c/classntw_1_1TimeoutHandler_afc1ddc930112c236569f4bf8d03928cf_cgraph">
-<area shape="rect" title="Removes a specific client from a specific packet." alt="" coords="5,27,164,67"/>
-<area shape="rect" href="../../d5/d87/namespaceeng.html#ab2dc4fc9a09ce4b297290df403bbfe47" title="Logs an informational message with source location." alt="" coords="251,5,349,31"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#abc30dc8cb00d5c6d7d426ab890b408b4" title="Removes a timeout packet based on its ID." alt="" coords="212,55,388,95"/>
-<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033" title="Removes the tick rate associated with a specified ID." alt="" coords="436,55,603,95"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="abc30dc8cb00d5c6d7d426ab890b408b4" name="abc30dc8cb00d5c6d7d426ab890b408b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc30dc8cb00d5c6d7d426ab890b408b4">&#9670;&#160;</a></span>removeTimeoutPacket()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ntw::TimeoutHandler::removeTimeoutPacket </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>packetId</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Removes a timeout packet based on its ID. </p>
-<p>This is used to clean up packets that are no longer needed.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">packetId</td><td>The ID of the packet to be removed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_cgraph.png" border="0" usemap="#ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_cgraph" alt=""/></div>
-<map name="ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_cgraph" id="ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_cgraph">
-<area shape="rect" title="Removes a timeout packet based on its ID." alt="" coords="5,5,181,45"/>
-<area shape="rect" href="../../d7/d07/classntw_1_1TickRateManager.html#ad760df3ead00d0f643b1502dbf316033" title="Removes the tick rate associated with a specified ID." alt="" coords="229,5,396,45"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_icgraph.png" border="0" usemap="#ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_icgraph" alt=""/></div>
-<map name="ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_icgraph" id="ad8/d0c/classntw_1_1TimeoutHandler_abc30dc8cb00d5c6d7d426ab890b408b4_icgraph">
-<area shape="rect" title="Removes a timeout packet based on its ID." alt="" coords="212,5,388,45"/>
-<area shape="rect" href="../../d8/d0c/classntw_1_1TimeoutHandler.html#afc1ddc930112c236569f4bf8d03928cf" title="Removes a specific client from a specific packet." alt="" coords="5,5,164,45"/>
-</map>
-</div>
 
 </div>
 </div>

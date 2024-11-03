@@ -1,0 +1,13 @@
+<map id="ecs::systems::checkOutOfRange" name="ecs::systems::checkOutOfRange">
+<area shape="rect" id="node1" title=" " alt="" coords="5,199,196,239"/>
+<area shape="rect" id="node2" href="$d8/d0c/classntw_1_1TimeoutHandler.html#ad27e84b28be6ad3c6ee3ec77bbb843e2" title="Adds a timeout packet to the handler." alt="" coords="273,63,431,103"/>
+<area shape="rect" id="node6" href="$df/dcd/classecs_1_1Registry.html#aa00d974334f625d6ef9325a3a3d826af" title="Retrieves the sparse_array for a specific component type." alt="" coords="244,127,460,153"/>
+<area shape="rect" id="node7" href="$d5/d35/classecs_1_1WaveManager.html#a71e1ed58364c4d551d8865a6b56887bf" title="Checks if a given entity is a mob." alt="" coords="256,177,448,202"/>
+<area shape="rect" id="node8" href="$d5/d35/classecs_1_1WaveManager.html#a61d4a9b26a18a8aedf29021d4f13ea8a" title="Checks some mobs are out of range, if there are it remove it from registry and send it to the clients..." alt="" coords="251,227,453,267"/>
+<area shape="rect" id="node10" href="$df/dcd/classecs_1_1Registry.html#a118c1b424eda0b544a02318fcd4045bf" title="Marks an entity for destruction." alt="" coords="267,291,437,317"/>
+<area shape="rect" id="node11" href="$d5/d35/classecs_1_1WaveManager.html#a92aa216c4ec0da10b203d5db1df4050c" title="Removes an entity from the WaveManager." alt="" coords="251,341,453,381"/>
+<area shape="rect" id="node3" href="$d7/d07/classntw_1_1TickRateManager.html#ae65e6d21337b885c6b310bbcdc98ac32" title="Adds a tick rate for a specified ID." alt="" coords="529,5,696,45"/>
+<area shape="rect" id="node4" href="$da/dbf/classntw_1_1UDPServer.html#aa8a709a676e3fef428ba7bf5944dadf6" title="Return all the clients endpoint that have connected to the udp server." alt="" coords="515,70,710,95"/>
+<area shape="rect" id="node5" href="$da/dbf/classntw_1_1UDPServer.html#aa5cd4fd62980d86bf5c334edda40b53a" title="Return the mutex used for datas thread safety." alt="" coords="534,119,691,145"/>
+<area shape="rect" id="node9" href="$df/dcd/classecs_1_1Registry.html#a64cfaba39e4c9b94c5ae5ef60d353217" title=" " alt="" coords="508,234,717,259"/>
+</map>

@@ -1,8 +1,8 @@
 <map id="ecs::WaveManager::removeEntity" name="ecs::WaveManager::removeEntity">
 <area shape="rect" id="node1" title="Removes an entity from the WaveManager." alt="" coords="752,63,955,103"/>
-<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#ab538f5dc076de46b634a884abfc6a286" title=" " alt="" coords="497,5,687,45"/>
+<area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#aa3538db502dd87e9239c53b433df797c" title=" " alt="" coords="497,5,687,45"/>
 <area shape="rect" id="node5" href="$db/d9a/namespaceecs_1_1systems.html#acfd36d86458348922ccf72f0170eee66" title=" " alt="" coords="480,70,704,95"/>
-<area shape="rect" id="node6" href="$da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd" title=" " alt="" coords="535,143,649,169"/>
-<area shape="rect" id="node3" href="$d9/dbb/namespacerts.html#a27093062d8e9feaadb9e31c6eeba2581" title=" " alt="" coords="279,42,432,67"/>
+<area shape="rect" id="node6" href="$da/d18/namespacerts_1_1ais.html#a67175959b29fb0b0a76970d83a86c970" title=" " alt="" coords="535,143,649,169"/>
+<area shape="rect" id="node3" href="$d9/dbb/namespacerts.html#adeafc18110e1cb80b7e21fc581d4790e" title=" " alt="" coords="279,42,432,67"/>
 <area shape="rect" id="node4" href="$d7/d18/classrts_1_1GameRunner.html#a0baf316198e475aca2e28e627e0f0067" title=" " alt="" coords="5,42,231,67"/>
 </map>

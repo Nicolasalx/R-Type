@@ -24,7 +24,7 @@ var searchData=
   ['spawnentity_21',['spawnEntity',['../df/dcd/classecs_1_1Registry.html#abfeca70b1370b3f10b6e87b192bcc125',1,'ecs::Registry']]],
   ['spawnnextwave_22',['spawnNextWave',['../d5/d35/classecs_1_1WaveManager.html#a56b30af2f8c54a40ce5189a33ef80ccf',1,'ecs::WaveManager']]],
   ['spawnsharedentity_23',['spawnSharedEntity',['../df/dcd/classecs_1_1Registry.html#adc4d2ed62858b90826a89ac3328bcda7',1,'ecs::Registry']]],
-  ['splitai_24',['splitAi',['../da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd',1,'rts::ais']]],
+  ['splitai_24',['splitAi',['../da/d18/namespacerts_1_1ais.html#a67175959b29fb0b0a76970d83a86c970',1,'rts::ais']]],
   ['spritesystem_25',['spriteSystem',['../db/d9a/namespaceecs_1_1systems.html#a8b0e40cd549e6d1f7faac8ac3fa2324c',1,'ecs::systems']]],
   ['start_26',['start',['../d1/d80/classeng_1_1FramerateManager.html#a94c5c4cb44c5a6d6970b7851a9ddd944',1,'eng::FramerateManager']]],
   ['stopallsoundeffects_27',['stopAllSoundEffects',['../dc/dcf/classecs_1_1SoundManager.html#a4e04561adaa315e757097e73324f21db',1,'ecs::SoundManager']]],

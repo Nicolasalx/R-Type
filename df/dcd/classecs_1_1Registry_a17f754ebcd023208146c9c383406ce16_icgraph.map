@@ -1,6 +1,6 @@
 <map id="ecs::Registry::removeComponent" name="ecs::Registry::removeComponent">
 <area shape="rect" id="node1" title="Removes a component from an entity." alt="" coords="496,54,735,79"/>
 <area shape="rect" id="node2" href="$db/d9a/namespaceecs_1_1systems.html#a1c4214a637f7a8344226741b424e9c63" title="System to handle sound effects emitted by entities." alt="" coords="245,5,448,45"/>
-<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a92544e531042d77f7f2cfbc9653bdcbd" title=" " alt="" coords="289,94,404,119"/>
+<area shape="rect" id="node4" href="$da/d18/namespacerts_1_1ais.html#a67175959b29fb0b0a76970d83a86c970" title=" " alt="" coords="289,94,404,119"/>
 <area shape="rect" id="node3" href="$d9/d77/namespacertc.html#afaaf4554587efdc9416f7d3cc08c115b" title=" " alt="" coords="5,13,197,38"/>
 </map>
