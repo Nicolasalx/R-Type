@@ -1,9 +1,10 @@
 <map id="lib/network/udp/UDPClient.cpp" name="lib/network/udp/UDPClient.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="353,5,573,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="427,5,647,31"/>
 <area shape="rect" id="node2" href="$d5/d33/UDPClient_8hpp.html" title=" " alt="" coords="212,79,328,104"/>
 <area shape="rect" id="node11" title=" " alt="" coords="353,79,430,104"/>
 <area shape="rect" id="node12" title=" " alt="" coords="455,79,619,104"/>
-<area shape="rect" id="node13" href="$d9/d11/Logger_8hpp.html" title=" " alt="" coords="643,79,737,104"/>
+<area shape="rect" id="node13" title=" " alt="" coords="627,152,686,177"/>
+<area shape="rect" id="node14" href="$d9/d11/Logger_8hpp.html" title=" " alt="" coords="694,79,787,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,152,127,177"/>
 <area shape="rect" id="node4" title=" " alt="" coords="151,152,215,177"/>
 <area shape="rect" id="node5" title=" " alt="" coords="240,152,300,177"/>
@@ -12,6 +13,5 @@
 <area shape="rect" id="node7" title=" " alt="" coords="351,299,421,324"/>
 <area shape="rect" id="node9" href="$d3/d69/IClient_8hpp.html" title=" " alt="" coords="404,225,496,251"/>
 <area shape="rect" id="node10" title=" " alt="" coords="521,225,670,251"/>
-<area shape="rect" id="node14" title=" " alt="" coords="603,152,662,177"/>
-<area shape="rect" id="node15" title=" " alt="" coords="687,152,811,177"/>
+<area shape="rect" id="node15" title=" " alt="" coords="711,152,835,177"/>
 </map>
