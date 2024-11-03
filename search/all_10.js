@@ -13,7 +13,7 @@ var searchData=
   ['phase_10',['phase',['../d3/da1/structDobkeratops.html#afc8b5b96f69e6e07c1d9fcdd5218578f',1,'Dobkeratops']]],
   ['ping_5frefresh_11',['PING_REFRESH',['../d9/d77/namespacertc.html#ae2f72f69b5704eb760313ba4e0de9354acee1a1a142a5433ed911cfd171c3103e',1,'rtc']]],
   ['player_12',['Player',['../dd/d3f/structecs_1_1component_1_1Player.html',1,'ecs::component']]],
-  ['player_13',['player',['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html#a967edce03f76b31f77094d371d5fb331',1,'rtc::RoomManager::RoomContent::player()'],['../d6/d2a/structplayer.html',1,'player']]],
+  ['player_13',['player',['../d6/d2a/structplayer.html',1,'player'],['../dc/dba/structrtc_1_1RoomManager_1_1RoomContent.html#a967edce03f76b31f77094d371d5fb331',1,'rtc::RoomManager::RoomContent::player()']]],
   ['player_14',['Player',['../d7/dfe/structrtc_1_1RoomManager_1_1Player.html',1,'rtc::RoomManager']]],
   ['player_2ehpp_15',['player.hpp',['../d9/d85/player_8hpp.html',1,'']]],
   ['playerdisconnected_16',['playerDisconnected',['../d1/d36/classrts_1_1RoomManager.html#a43258551715eea9393b3e58f38b788c1',1,'rts::RoomManager']]],
@@ -26,9 +26,10 @@ var searchData=
   ['position_23',['Position',['../db/d8f/structecs_1_1component_1_1Position.html',1,'ecs::component']]],
   ['position_24',['position',['../db/d9a/namespaceecs_1_1systems.html#a26eec6630c84111b72cc904780913b1a',1,'ecs::systems']]],
   ['position_2ecpp_25',['position.cpp',['../d4/d59/position_8cpp.html',1,'']]],
-  ['position_2ehpp_26',['position.hpp',['../da/d46/RTypeECS_2systems_2position_8hpp.html',1,'(Global Namespace)'],['../d2/d55/ecs_2components_2position_8hpp.html',1,'(Global Namespace)']]],
-  ['printhelp_27',['printHelp',['../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7',1,'eng::ArgParser']]],
-  ['printroomlist_28',['printRoomList',['../d1/d36/classrts_1_1RoomManager.html#ae8331d83dc1843c6b66cdbb304757a05',1,'rts::RoomManager']]],
-  ['projectilesshot_29',['projectilesShot',['../d3/da1/structDobkeratops.html#ae7d4016815ff4d3e26e0f5e85c52d7ac',1,'Dobkeratops']]],
-  ['pushback_30',['pushBack',['../df/df0/classeng_1_1SafeList.html#a3590fa834784a8925467064bbee71791',1,'eng::SafeList']]]
+  ['position_2ehpp_26',['position.hpp',['../d2/d55/ecs_2components_2position_8hpp.html',1,'(Global Namespace)'],['../da/d46/RTypeECS_2systems_2position_8hpp.html',1,'(Global Namespace)']]],
+  ['power_5fup_27',['POWER_UP',['../d8/dba/namespaceecs_1_1component.html#abefbb57a948c86c2905946c601702535a2321a328381b552bb8db5f234ca2309a',1,'ecs::component']]],
+  ['printhelp_28',['printHelp',['../dc/de1/classeng_1_1ArgParser.html#a1b2a0229dbd418f211289d2ca56c0ee7',1,'eng::ArgParser']]],
+  ['printroomlist_29',['printRoomList',['../d1/d36/classrts_1_1RoomManager.html#ae8331d83dc1843c6b66cdbb304757a05',1,'rts::RoomManager']]],
+  ['projectilesshot_30',['projectilesShot',['../d3/da1/structDobkeratops.html#ae7d4016815ff4d3e26e0f5e85c52d7ac',1,'Dobkeratops']]],
+  ['pushback_31',['pushBack',['../df/df0/classeng_1_1SafeList.html#a3590fa834784a8925467064bbee71791',1,'eng::SafeList']]]
 ];
