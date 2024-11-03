@@ -90,8 +90,8 @@ static void handleAckClient(
     std::atomic<bool> &stopGame
 )
 {
-    auto &mut = udpServer.mut();
-    std::lock_guard<std::recursive_mutex> lck(mut);
+    std::lock_guard<std::mutex> lck(timeoutHandler.mut());
+    std::lock_guard<std::recursive_mutex> lckUdp(udpServer.mut());
 
     auto &end = std::any_cast<std::reference_wrapper<udp::endpoint>>(arg.at(0)).get();
     auto &allEndpoints = udpServer.endpoints();

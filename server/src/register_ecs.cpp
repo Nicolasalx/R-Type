@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <cstdio>
 #include <functional>
+#include <memory>
 #include <vector>
 #include "components/death_split.hpp"
 #include "components/game_tag.hpp"
@@ -17,6 +18,7 @@
 
 #include "RTypeServer.hpp"
 #include "Registry.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
 #include "components/dobkeratops.hpp"
@@ -88,6 +90,7 @@ void rts::registerSystems(
     ntw::TickRateManager<rts::TickRate> &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
     bool debugMode,
@@ -108,24 +111,34 @@ void rts::registerSystems(
     });
     reg.addSystem([&reg]() { ecs::systems::parallax(reg); });
     reg.addSystem([&reg, &dt]() { ecs::systems::position(reg, dt); });
-    reg.addSystem([&reg, &datasToSend]() { ecs::systems::collision(reg, datasToSend, &collideEffect); });
-    reg.addSystem([&reg, &waveManager, &datasToSend]() {
+    reg.addSystem([&reg, &datasToSend, &udpServer, &timeoutHandler]() {
+        ecs::systems::collision(
+            reg,
+            datasToSend,
+            [&udpServer, &timeoutHandler](
+                ecs::Registry &reg, entity_t entityA, entity_t entityB, std::list<std::vector<char>> &datasToSend
+            ) { collideEffect(reg, entityA, entityB, datasToSend, udpServer, timeoutHandler); }
+        );
+    });
+    reg.addSystem([&reg, &waveManager, &datasToSend, &udpServer, &timeoutHandler]() {
         if (waveManager.hasEntity()) {
-            ecs::systems::checkOutOfRange(reg, waveManager, datasToSend);
+            ecs::systems::checkOutOfRange(reg, waveManager, datasToSend, udpServer, timeoutHandler);
         }
         ecs::systems::healthMobCheck(reg, waveManager);
-        ecs::systems::healthSharedCheck(reg, datasToSend);
+        ecs::systems::healthSharedCheck(reg, datasToSend, udpServer, timeoutHandler);
     });
     reg.addSystem([&reg, &waveManager]() {
         if (!waveManager.hasEntity() && !waveManager.isEnd()) {
             waveManager.spawnNextWave(reg);
         }
     });
-    reg.addSystem([&reg, &datasToSend]() { ecs::systems::missilesStop(reg, datasToSend); });
+    reg.addSystem([&reg, &datasToSend, &udpServer, &timeoutHandler]() {
+        ecs::systems::missilesStop(reg, datasToSend, udpServer, timeoutHandler);
+    });
     if (debugMode) {
         reg.addSystem([&reg, &window]() {
             window.clear();
-            ecs::systems::draw(reg, window);
+            ecs::systems::draw(reg, window, std::shared_ptr<sf::Shader>());
             window.display();
         });
     }

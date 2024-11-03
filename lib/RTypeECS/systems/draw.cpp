@@ -6,7 +6,9 @@
 */
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Registry.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "Zipper.hpp"
 #include "components/drawable.hpp"
 #include "components/parallax.hpp"
@@ -15,7 +17,7 @@
 
 namespace ecs::systems {
 
-void draw(Registry &reg, sf::RenderWindow &window)
+void draw(Registry &reg, sf::RenderWindow &window, const std::shared_ptr<sf::Shader> &colorBlind)
 {
     auto &sprites = reg.getComponents<component::Sprite>();
     auto &parallaxes = reg.getComponents<ecs::component::Parallax>();
@@ -32,7 +34,7 @@ void draw(Registry &reg, sf::RenderWindow &window)
     for (size_t currentLayer = 0; currentLayer <= maxLayer; ++currentLayer) {
         for (auto [parallax, sprite] : zipParallax) {
             if (parallax.layer == currentLayer) {
-                window.draw(sprite.spriteObj);
+                window.draw(sprite.spriteObj, colorBlind.get());
             }
         }
     }
@@ -41,10 +43,10 @@ void draw(Registry &reg, sf::RenderWindow &window)
         if (sprites.has(i) && sprites[i] && !reg.hasComponent<component::Parallax>(i)) {
             if (sprites[i]->subSprites.size() > 0) {
                 for (auto &subSprite : sprites[i]->subSprites) {
-                    window.draw(subSprite.spriteObj);
+                    window.draw(subSprite.spriteObj, colorBlind.get());
                 }
             }
-            window.draw(sprites[i]->spriteObj);
+            window.draw(sprites[i]->spriteObj, colorBlind.get());
         }
     }
 
@@ -55,7 +57,7 @@ void draw(Registry &reg, sf::RenderWindow &window)
 
     for (auto [pos, draw] : zipDrawables) {
         draw.shape.setPosition(pos.x, pos.y);
-        window.draw(draw.shape);
+        window.draw(draw.shape, colorBlind.get());
     }
 }
 
