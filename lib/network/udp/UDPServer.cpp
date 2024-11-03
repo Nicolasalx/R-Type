@@ -8,6 +8,7 @@
 #include "UDPServer.hpp"
 #include <asio/placeholders.hpp>
 #include <cstddef>
+#include <iostream>
 #include <mutex>
 #include <string>
 #include <utility>

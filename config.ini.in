@@ -1,0 +1,16 @@
+[Game]
+Version=@CPACK_PACKAGE_VERSION@
+Name=@CPACK_PACKAGE_NAME@
+
+[Network]
+DefaultServerPort=8080
+DefaultServerHost=127.0.0.1
+
+[Graphics]
+DefaultWidth=1280
+DefaultHeight=720
+Fullscreen=false
+
+[Audio]
+MusicVolume=100
+SoundVolume=100
