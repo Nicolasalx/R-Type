@@ -10,7 +10,6 @@
 #include <string>
 #include "FrameRateManager.hpp"
 #include "IndexedZipper.hpp"
-#include "Logger.hpp"
 #include "RTypeConst.hpp"
 #include "RTypeServer.hpp"
 #include "RTypeUDPProtol.hpp"
@@ -29,8 +28,6 @@ rts::GameRunner::GameRunner(
 )
     : _udpServer(port), _nbPlayers(nbPlayers), _waveCreator("./assets/stages"), _debugMode(debugMode), _stopGame(false)
 {
-    eng::logWarning("Selected stage: " + std::to_string(stage) + ".");
-
     _networkCallbacks.registerConsumeFunc([this](auto f) { f(_reg); });
     _timeoutHandler.runTimeoutChecker(_dt, _udpServer);
     rts::registerUdpResponse(_responseHandler, _datasToSend, _networkCallbacks, _udpServer, _timeoutHandler, _stopGame);

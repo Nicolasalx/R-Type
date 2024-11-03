@@ -57,11 +57,13 @@ class WaveCreator {
         _setupMobFunc["robot"] = &setupRobotDatas;
         _setupMobFunc["dobkeratops"] = &setupDobkeratopsDatas;
         _setupMobFunc["blob"] = &setupBlobDatas;
+        _setupMobFunc["healthXP"] = &setupHealthXPDatas;
 
         _mobAiCreateFunc["bydosWave"] = &getBydosWaveAi;
         _mobAiCreateFunc["robot"] = &getRobotAi;
         _mobAiCreateFunc["dobkeratops"] = &getDobkeratopsAi;
         _mobAiCreateFunc["blob"] = &getBlobAi;
+        _mobAiCreateFunc["healthXP"] = &getHealthXPAi;
     }
 
     void _addJSONMobs(
@@ -122,7 +124,18 @@ class WaveCreator {
         float vx,
         float vy
     );
-
+    static void setupHealthXPDatas(
+        std::list<std::vector<char>> &datasToSend,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
+        ecs::Registry &reg,
+        entity_t e,
+        size_t sharedId,
+        float x,
+        float y,
+        float vx,
+        float vy
+    );
     static std::function<void(ecs::Registry &reg, entity_t e)> getDobkeratopsAi(
         std::list<std::vector<char>> &datasToSend,
         ntw::UDPServer &udpServer,
@@ -158,6 +171,15 @@ class WaveCreator {
         int missileSpawnRate,
         float x,
         float y
+    );
+    static std::function<void(ecs::Registry &reg, entity_t e)> getHealthXPAi(
+        std::list<std::vector<char>> & /*datasToSend*/,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
+        ecs::WaveManager & /*waveManager*/,
+        int /*missileSpawnRate*/,
+        float /*x*/,
+        float /*y*/
     );
 
     std::unordered_map<std::string, setup_mob_function_t> _setupMobFunc;

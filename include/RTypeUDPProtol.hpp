@@ -29,8 +29,10 @@ enum class UDPCommand : std::uint8_t {
     NEW_ENTITY_DOBKERATOPS_PART,
     NEW_ENTITY_BOSS_PARASITE,
     NEW_ENTITY_BLOB,
+    NEW_HEALTH_PACK,
 
     TAKE_DAMAGE,
+    INCREASE_HEALTH,
 
     MOVE_ENTITY,
     CHANGE_ANIMATION_STATE,
@@ -91,8 +93,16 @@ struct NEW_ENTITY_BLOB {
     ecs::component::Position pos{};
 };
 
+struct NEW_HEALTH_PACK {
+    ecs::component::Position pos{};
+};
+
 struct TAKE_DAMAGE {
     int damage = 1;
+};
+
+struct INCREASE_HEALTH {
+    int health = 1;
 };
 
 struct MOVE_ENTITY {

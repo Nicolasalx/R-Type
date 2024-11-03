@@ -14,6 +14,7 @@
 #include "components/tag.hpp"
 #include "entity.hpp"
 #include "components/game_tag.hpp"
+#include "components/health_xp.hpp"
 
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
 
@@ -89,6 +90,67 @@ static void resolveDamage(
     tagEffectDamage(reg, ally, 1, datasToSend, udpServer, timeoutHandler);
 }
 
+static void tagEffectPowerUp(
+    ecs::Registry &reg,
+    entity_t entity,
+    int value,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
+{
+    if (!reg.hasComponent<ecs::component::Health>(entity)) {
+        tagEffectKill(reg, entity, datasToSend, udpServer, timeoutHandler);
+        return;
+    }
+    auto &health = reg.getComponents<ecs::component::Health>();
+
+    if (health[entity]->currHp + value > health[entity]->maxHp) {
+        value = health[entity]->maxHp - health[entity]->currHp;
+    }
+    health[entity]->currHp += value;
+    if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
+        auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
+
+        datasToSend.push_back(
+            rt::UDPPacket<rt::UDPBody::INCREASE_HEALTH>(
+                rt::UDPCommand::INCREASE_HEALTH, sharedId, rt::UDPBody::INCREASE_HEALTH{.health = value}
+            )
+                .serialize()
+        );
+    }
+}
+
+static void resolvePowerUp(
+    ecs::Registry &reg,
+    entity_t ally,
+    entity_t enemy,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
+{
+    auto &healthsXp = reg.getComponents<ecs::component::HealthXP>();
+
+    bool isAllyPowerUp = healthsXp.has(ally);
+    bool isEnemyPowerUp = healthsXp.has(enemy);
+
+    if (isAllyPowerUp && isEnemyPowerUp) {
+        return;
+    }
+    if (isAllyPowerUp && !isEnemyPowerUp) {
+        tagEffectPowerUp(reg, enemy, healthsXp[ally]->value, datasToSend, udpServer, timeoutHandler);
+        tagEffectDamage(reg, enemy, 1, datasToSend, udpServer, timeoutHandler);
+        return;
+    }
+    if (isEnemyPowerUp && !isAllyPowerUp) {
+        tagEffectPowerUp(reg, ally, healthsXp[enemy]->value, datasToSend, udpServer, timeoutHandler);
+        tagEffectDamage(reg, enemy, 1, datasToSend, udpServer, timeoutHandler);
+        return;
+    }
+    tagEffectDamage(reg, ally, 1, datasToSend, udpServer, timeoutHandler);
+}
+
 void rts::collideEffect(
     ecs::Registry &reg,
     entity_t entityA,
@@ -115,6 +177,12 @@ void rts::collideEffect(
     }
     if (tagB == ecs::component::EntityTag::ALLY && tagA == ecs::component::EntityTag::ENEMY) {
         resolveDamage(reg, entityB, entityA, datasToSend, udpServer, timeoutHandler);
+    }
+    if (tagA == ecs::component::EntityTag::ALLY && tagB == ecs::component::EntityTag::POWER_UP) {
+        resolvePowerUp(reg, entityA, entityB, datasToSend, udpServer, timeoutHandler);
+    }
+    if (tagB == ecs::component::EntityTag::ALLY && tagA == ecs::component::EntityTag::POWER_UP) {
+        resolvePowerUp(reg, entityB, entityA, datasToSend, udpServer, timeoutHandler);
     }
 }
 

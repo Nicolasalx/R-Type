@@ -17,7 +17,7 @@
   - [Unzip the Downloaded File](#unzip-the-downloaded-file)
   - [Run the Binaries](#run-the-binaries)
   - [Commands](#commands)
-- [Troubleshooting] (#troubleshooting)
+- [Troubleshooting](#troubleshooting)
 - [License](#license)
 - [Authors / Contacts](#authors--contacts)
 - [Useful Links / Quick-Start Information](#useful-links--quick-start-information)

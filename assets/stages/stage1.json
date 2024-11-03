@@ -95,6 +95,43 @@
                     "blob",
                     "blob"
                 ]
+            },
+            {
+                "mobJsonPath": "assets/power_up/health_pack.json",
+                "nbMob": 3,
+                "pos": [
+                    {
+                        "x": 200.0,
+                        "y": 100.0
+                    },
+                    {
+                        "x": 400.0,
+                        "y": 250.0
+                    },
+                    {
+                        "x": 200.0,
+                        "y": 200.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "healthXP",
+                    "healthXP",
+                    "healthXP"
+                ]
             }
         ],
         "wave3": [
@@ -143,6 +180,43 @@
                 "type": [
                     "bydosWave",
                     "bydosWave"
+                ]
+            },
+            {
+                "mobJsonPath": "assets/power_up/health_pack.json",
+                "nbMob": 3,
+                "pos": [
+                    {
+                        "x": 200.0,
+                        "y": 100.0
+                    },
+                    {
+                        "x": 400.0,
+                        "y": 250.0
+                    },
+                    {
+                        "x": 200.0,
+                        "y": 200.0
+                    }
+                ],
+                "vel": [
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    },
+                    {
+                        "vx": -10.0,
+                        "vy": 0.0
+                    }
+                ],
+                "type": [
+                    "healthXP",
+                    "healthXP",
+                    "healthXP"
                 ]
             }
         ]

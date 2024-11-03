@@ -42,6 +42,7 @@
 #include "components/tag.hpp"
 #include "components/velocity.hpp"
 #include "components/ai_actor.hpp"
+#include "components/health_xp.hpp"
 #include "components/is_a_boss.hpp"
 #include "components/server_share_movement.hpp"
 #include "components/shared_entity.hpp"
@@ -81,6 +82,7 @@ void rts::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::DeathSplit>();
     reg.registerComponent<ecs::component::IsABoss>();
     reg.registerComponent<ecs::component::Gravity>();
+    reg.registerComponent<ecs::component::HealthXP>();
 }
 
 void rts::registerSystems(

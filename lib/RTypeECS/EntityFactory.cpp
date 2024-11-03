@@ -26,6 +26,7 @@
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
+#include "components/health_xp.hpp"
 #include "components/is_a_boss.hpp"
 #include "shared_entity.hpp"
 #include <imgui-SFML.h>
@@ -226,6 +227,10 @@ void EntityFactory::addCommonComponents(
     if (componentsJson.contains("ennemy_type")) {
         auto typeJson = componentsJson["ennemy_type"];
         reg.addComponent(entity, ecs::component::Gravity{typeJson["type"].get<std::string>()});
+    }
+    if (componentsJson.contains("health_xp")) {
+        auto valueJson = componentsJson["health_xp"];
+        reg.addComponent(entity, ecs::component::HealthXP{valueJson["value"].get<int>()});
     }
 }
 

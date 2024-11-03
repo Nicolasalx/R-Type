@@ -177,6 +177,15 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
         }
     );
 
+    _udpResponseHandler.registerHandler<rt::UDPBody::NEW_HEALTH_PACK>(
+        rt::UDPCommand::NEW_HEALTH_PACK,
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_HEALTH_PACK> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_HEALTH_PACK>(
+                "assets/power_up/health_pack.json", spriteManager, this->_networkCallbacks, packet, udpClient
+            );
+        }
+    );
+
     _udpResponseHandler.registerHandler<rt::UDPBody::MOVE_ENTITY>(
         rt::UDPCommand::MOVE_ENTITY,
         [this](const rt::UDPPacket<rt::UDPBody::MOVE_ENTITY> &packet) {
@@ -267,7 +276,6 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                                 }
                             }
                         }
-
                         if (reg.hasComponent<ecs::component::OnDeath>(entity)) {
                             if (reg.hasComponent<ecs::component::Position>(entity)) {
                                 int x = reg.getComponent<ecs::component::Position>(entity)->x;
@@ -321,6 +329,21 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
                     reg.getComponent<ecs::component::Health>(reg.getLocalEntity().at(packet.sharedEntityId))
                         .value()
                         .currHp -= packet.body.damage;
+                } catch (const std::exception &e) {
+                    // If entity does not exist, maybe server is late or ahead.
+                    eng::logTimeWarning(e.what());
+                }
+            });
+        }
+    );
+    _udpResponseHandler.registerHandler<rt::UDPBody::INCREASE_HEALTH>(
+        rt::UDPCommand::INCREASE_HEALTH,
+        [this](const rt::UDPPacket<rt::UDPBody::INCREASE_HEALTH> &packet) {
+            _networkCallbacks.pushBack([packet](ecs::Registry &reg) {
+                try {
+                    reg.getComponent<ecs::component::Health>(reg.getLocalEntity().at(packet.sharedEntityId))
+                        .value()
+                        .currHp += packet.body.health;
                 } catch (const std::exception &e) {
                     // If entity does not exist, maybe server is late or ahead.
                     eng::logTimeWarning(e.what());

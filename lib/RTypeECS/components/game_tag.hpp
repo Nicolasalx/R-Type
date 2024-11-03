@@ -19,7 +19,8 @@ enum class EntityTag : std::uint8_t {
     NONE,
 
     ALLY,
-    ENEMY
+    ENEMY,
+    POWER_UP
 };
 
 } // namespace ecs::component

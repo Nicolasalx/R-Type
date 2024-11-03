@@ -39,6 +39,7 @@
 #include "components/ally_player.hpp"
 #include "components/client_share_movement.hpp"
 #include "components/death_timer.hpp"
+#include "components/health_xp.hpp"
 #include "components/is_a_boss.hpp"
 #include "components/light_edge.hpp"
 #include "components/music_component.hpp"
@@ -98,6 +99,7 @@ void rtc::registerComponents(ecs::Registry &reg)
     reg.registerComponent<ecs::component::IsABoss>();
     reg.registerComponent<ecs::component::ParticleSpawner>();
     reg.registerComponent<ecs::component::Gravity>();
+    reg.registerComponent<ecs::component::HealthXP>();
 }
 
 void rtc::registerEndingSystems(
