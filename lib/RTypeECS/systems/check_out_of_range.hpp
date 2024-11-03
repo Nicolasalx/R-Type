@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Registry.hpp"
+#include "TimeoutHandler.hpp"
 #include "WaveManager.hpp"
 
 #include <list>
@@ -28,7 +29,17 @@
  * @param waveManager Reference to the WaveManager that handles wave-related logic.
  * @param datasToSend A list of vectors of characters used to prepare data to send
  *                    based on the entities' status.
+ * @param udpServer UdpServer for udp communication
+ * @param timeoutHandler TimeoutHandler for acknowledge packets
  */
 namespace ecs::systems {
-void checkOutOfRange(ecs::Registry &reg, WaveManager &waveManager, std::list<std::vector<char>> &datasToSend);
+
+void checkOutOfRange(
+    ecs::Registry &reg,
+    WaveManager &waveManager,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+);
+
 } // namespace ecs::systems

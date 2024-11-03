@@ -6,7 +6,6 @@
 */
 
 #include "collideEffect.hpp"
-#include <cstddef>
 #include <cstdio>
 
 #include "RTypeUDPProtol.hpp"
@@ -19,21 +18,34 @@
 
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
 
-static void tagEffectKill(ecs::Registry &reg, entity_t entity, std::list<std::vector<char>> &datasToSend)
+static void tagEffectKill(
+    ecs::Registry &reg,
+    entity_t entity,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     if (reg.hasComponent<ecs::component::SharedEntity>(entity)) {
         auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entity)->sharedEntityId;
-        datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
-        );
+        auto newMsg = rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
+        timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+        datasToSend.push_back(std::move(newMsg).serialize());
     }
     reg.killEntity(entity);
 }
 
-static void tagEffectDamage(ecs::Registry &reg, entity_t entity, int damage, std::list<std::vector<char>> &datasToSend)
+static void tagEffectDamage(
+    ecs::Registry &reg,
+    entity_t entity,
+    int damage,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     if (!reg.hasComponent<ecs::component::Health>(entity)) {
-        tagEffectKill(reg, entity, datasToSend);
+        tagEffectKill(reg, entity, datasToSend, udpServer, timeoutHandler);
         return;
     }
     auto &health = reg.getComponents<ecs::component::Health>();
@@ -48,7 +60,14 @@ static void tagEffectDamage(ecs::Registry &reg, entity_t entity, int damage, std
     }
 }
 
-static void resolveDamage(ecs::Registry &reg, entity_t ally, entity_t enemy, std::list<std::vector<char>> &datasToSend)
+static void resolveDamage(
+    ecs::Registry &reg,
+    entity_t ally,
+    entity_t enemy,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
 
@@ -59,22 +78,29 @@ static void resolveDamage(ecs::Registry &reg, entity_t ally, entity_t enemy, std
         return;
     }
     if (isAllyMissile && !isEnemyMissile) {
-        tagEffectDamage(reg, enemy, missiles[ally]->damage, datasToSend);
-        tagEffectKill(reg, ally, datasToSend);
+        tagEffectDamage(reg, enemy, missiles[ally]->damage, datasToSend, udpServer, timeoutHandler);
+        tagEffectKill(reg, ally, datasToSend, udpServer, timeoutHandler);
         return;
     }
     if (isEnemyMissile && !isAllyMissile) {
-        tagEffectDamage(reg, ally, missiles[enemy]->damage, datasToSend);
-        tagEffectKill(reg, enemy, datasToSend);
+        tagEffectDamage(reg, ally, missiles[enemy]->damage, datasToSend, udpServer, timeoutHandler);
+        tagEffectKill(reg, enemy, datasToSend, udpServer, timeoutHandler);
         return;
     }
-    tagEffectDamage(reg, ally, 1, datasToSend);
+    tagEffectDamage(reg, ally, 1, datasToSend, udpServer, timeoutHandler);
 }
 
-static void tagEffectPowerUp(ecs::Registry &reg, entity_t entity, int value, std::list<std::vector<char>> &datasToSend)
+static void tagEffectPowerUp(
+    ecs::Registry &reg,
+    entity_t entity,
+    int value,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     if (!reg.hasComponent<ecs::component::Health>(entity)) {
-        tagEffectKill(reg, entity, datasToSend);
+        tagEffectKill(reg, entity, datasToSend, udpServer, timeoutHandler);
         return;
     }
     auto &health = reg.getComponents<ecs::component::Health>();
@@ -95,7 +121,14 @@ static void tagEffectPowerUp(ecs::Registry &reg, entity_t entity, int value, std
     }
 }
 
-static void resolvePowerUp(ecs::Registry &reg, entity_t ally, entity_t enemy, std::list<std::vector<char>> &datasToSend)
+static void resolvePowerUp(
+    ecs::Registry &reg,
+    entity_t ally,
+    entity_t enemy,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     auto &healthsXp = reg.getComponents<ecs::component::HealthXP>();
 
@@ -106,23 +139,25 @@ static void resolvePowerUp(ecs::Registry &reg, entity_t ally, entity_t enemy, st
         return;
     }
     if (isAllyPowerUp && !isEnemyPowerUp) {
-        tagEffectPowerUp(reg, enemy, healthsXp[ally]->value, datasToSend);
-        tagEffectDamage(reg, enemy, 1, datasToSend);
+        tagEffectPowerUp(reg, enemy, healthsXp[ally]->value, datasToSend, udpServer, timeoutHandler);
+        tagEffectDamage(reg, enemy, 1, datasToSend, udpServer, timeoutHandler);
         return;
     }
     if (isEnemyPowerUp && !isAllyPowerUp) {
-        tagEffectPowerUp(reg, ally, healthsXp[enemy]->value, datasToSend);
-        tagEffectDamage(reg, enemy, 1, datasToSend);
+        tagEffectPowerUp(reg, ally, healthsXp[enemy]->value, datasToSend, udpServer, timeoutHandler);
+        tagEffectDamage(reg, enemy, 1, datasToSend, udpServer, timeoutHandler);
         return;
     }
-    tagEffectPowerUp(reg, ally, 1, datasToSend);
+    tagEffectDamage(reg, ally, 1, datasToSend, udpServer, timeoutHandler);
 }
 
 void rts::collideEffect(
     ecs::Registry &reg,
     entity_t entityA,
     entity_t entityB,
-    std::list<std::vector<char>> &datasToSend
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
 )
 {
     auto &tags = reg.getComponents<ecs::component::Tag<ecs::component::EntityTag>>();
@@ -138,46 +173,16 @@ void rts::collideEffect(
         return;
     }
     if (tagA == ecs::component::EntityTag::ALLY && tagB == ecs::component::EntityTag::ENEMY) {
-        resolveDamage(reg, entityA, entityB, datasToSend);
+        resolveDamage(reg, entityA, entityB, datasToSend, udpServer, timeoutHandler);
     }
     if (tagB == ecs::component::EntityTag::ALLY && tagA == ecs::component::EntityTag::ENEMY) {
-        resolveDamage(reg, entityB, entityA, datasToSend);
+        resolveDamage(reg, entityB, entityA, datasToSend, udpServer, timeoutHandler);
     }
     if (tagA == ecs::component::EntityTag::ALLY && tagB == ecs::component::EntityTag::POWER_UP) {
-        resolvePowerUp(reg, entityA, entityB, datasToSend);
+        resolvePowerUp(reg, entityA, entityB, datasToSend, udpServer, timeoutHandler);
     }
     if (tagB == ecs::component::EntityTag::ALLY && tagA == ecs::component::EntityTag::POWER_UP) {
-        resolvePowerUp(reg, entityB, entityA, datasToSend);
-    }
-}
-
-void rts::resolveTagEffect(
-    ecs::Registry &reg,
-    size_t entityA,
-    size_t entityB,
-    std::list<std::vector<char>> &datasToSend
-) // Use tag here now !
-{
-    auto &missiles = reg.getComponents<ecs::component::Missile>();
-    auto &health = reg.getComponents<ecs::component::Health>();
-
-    if (missiles.has(entityA) && !missiles.has(entityB)) {
-        if (health.has(entityB)) {
-            tagEffectDamage(reg, entityB, missiles[entityA]->damage, datasToSend);
-            health[entityB]->currHp -= missiles[entityA]->damage;
-        } else {
-            tagEffectKill(reg, entityB, datasToSend);
-        }
-        tagEffectKill(reg, entityA, datasToSend);
-    }
-    if (missiles.has(entityB) && !missiles.has(entityA)) {
-        if (health.has(entityA)) {
-            tagEffectDamage(reg, entityA, missiles[entityB]->damage, datasToSend);
-            health[entityA]->currHp -= missiles[entityB]->damage;
-        } else {
-            tagEffectKill(reg, entityA, datasToSend);
-        }
-        tagEffectKill(reg, entityB, datasToSend);
+        resolvePowerUp(reg, entityB, entityA, datasToSend, udpServer, timeoutHandler);
     }
 }
 

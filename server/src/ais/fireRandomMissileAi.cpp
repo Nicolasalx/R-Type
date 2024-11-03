@@ -12,6 +12,7 @@
 #include "RTypeUDPProtol.hpp"
 #include "RandomGenerator.hpp"
 #include "ServerEntityFactory.hpp"
+#include "TimeoutHandler.hpp"
 #include "components/hitbox.hpp"
 #include "components/position.hpp"
 #include "components/velocity.hpp"
@@ -36,6 +37,8 @@ entity_t rts::ais::fireRandomMissileAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer,
     int missileSpawnRate,
     const std::function<bool()> &cond,
     std::array<float, 2> randXRange,
@@ -61,12 +64,13 @@ entity_t rts::ais::fireRandomMissileAi(
         reg, "assets/enemies/missileBall.json", missilePosX, missilePosY, sharedId, xFactor * 150, yFactor * 150
     );
 
-    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-                              rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
-                              sharedId,
-                              {.pos = {missilePosX, missilePosY}, .vel = generateEntityVel(xFactor, yFactor)},
-                              true
-    )
-                              .serialize());
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
+        rt::UDPCommand::NEW_ENTITY_MISSILE_BALL,
+        sharedId,
+        {.pos = {missilePosX, missilePosY}, .vel = generateEntityVel(xFactor, yFactor)},
+        true
+    );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
     return rMissile;
 }

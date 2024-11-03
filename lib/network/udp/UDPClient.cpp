@@ -8,6 +8,7 @@
 #include "UDPClient.hpp"
 #include <asio.hpp>
 #include <asio/placeholders.hpp>
+#include <string>
 #include "Logger.hpp"
 
 ntw::UDPClient::UDPClient(const std::string &host, int port) : _endpoint(asio::ip::make_address(host), port), _sock(_io)
@@ -17,6 +18,12 @@ ntw::UDPClient::UDPClient(const std::string &host, int port) : _endpoint(asio::i
 
 void ntw::UDPClient::_asioRun()
 {
+#if WIN32
+    if (!_isInit) {
+        send("", 1);
+        _isInit = true;
+    }
+#endif
     _sock.async_receive_from(asio::buffer(_buff), _endpoint, [this](asio::error_code ec, std::size_t bytes) {
         _handleRecv(std::forward<decltype(ec)>(ec), std::forward<decltype(bytes)>(bytes));
     });
@@ -25,8 +32,7 @@ void ntw::UDPClient::_asioRun()
 void ntw::UDPClient::_handleRecv(asio::error_code ec, std::size_t bytes)
 {
     if (ec) {
-        eng::logError("Receive error: " + ec.message());
-        return;
+        eng::logError("Receive error: " + ec.message() + " " + std::to_string(ec.value()));
     }
     _recvHandler(_buff.data(), bytes);
     _asioRun();

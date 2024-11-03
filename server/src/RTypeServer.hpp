@@ -31,6 +31,7 @@ void registerSystems(
     ntw::TickRateManager<rts::TickRate> &tickRateManager,
     ntw::UDPServer &udpServer,
     std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
     eng::SafeList<std::function<void(ecs::Registry &reg)>> &networkCallbacks,
     ecs::WaveManager &waveManager,
     bool debugMode,

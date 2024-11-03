@@ -133,7 +133,7 @@ void rtc::renderScoreBoard(const sf::Vector2u &windowSize, bool scoreBoardEnable
     ImGui::Separator();
 
     for (const auto &entry : scoreboard) {
-        ImGui::Text(entry.name.c_str());
+        ImGui::Text("%s", entry.name.c_str());
         ImGui::NextColumn();
         ImGui::Text("%d", entry.score);
         ImGui::NextColumn();

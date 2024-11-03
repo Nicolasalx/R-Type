@@ -14,7 +14,9 @@
 void ecs::systems::checkOutOfRange(
     ecs::Registry &reg,
     WaveManager &waveManager,
-    std::list<std::vector<char>> &datasToSend
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
 )
 {
     auto &healths = reg.getComponents<ecs::component::Health>();
@@ -25,10 +27,10 @@ void ecs::systems::checkOutOfRange(
     for (auto [entityId, health, sharedId] : zipHealth) {
         if (waveManager.isMob(entityId) && waveManager.isOutOfBonds(reg, entityId)) {
             waveManager.removeEntity(entityId);
-            datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId, true)
-                    .serialize()
-            );
+            auto newMsg =
+                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId, true);
+            timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+            datasToSend.push_back(std::move(newMsg).serialize());
             reg.killEntity(entityId);
         }
     }

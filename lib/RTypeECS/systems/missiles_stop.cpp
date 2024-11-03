@@ -17,7 +17,12 @@
 
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
 
-void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend)
+void ecs::systems::missilesStop(
+    ecs::Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     auto &missiles = reg.getComponents<ecs::component::Missile>();
     auto &positions = reg.getComponents<ecs::component::Position>();
@@ -28,9 +33,9 @@ void ecs::systems::missilesStop(ecs::Registry &reg, std::list<std::vector<char>>
         if (pos.x < 0 || pos.y < 0 || pos.x > rt::SCREEN_WIDTH || pos.y > rt::SCREEN_HEIGHT) {
             if (reg.hasComponent<component::SharedEntity>(entityId)) {
                 auto sharedId = reg.getComponent<ecs::component::SharedEntity>(entityId)->sharedEntityId;
-                datasToSend.push_back(
-                    rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
-                );
+                auto newMsg = rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
+                timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+                datasToSend.push_back(std::move(newMsg).serialize());
             }
             reg.killEntity(entityId);
         }

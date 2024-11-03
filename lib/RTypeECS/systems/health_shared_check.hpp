@@ -9,6 +9,7 @@
 
 #include <list>
 #include "Registry.hpp"
+#include "TimeoutHandler.hpp"
 
 /**
  * @brief Perform health checks on entities within the registry.
@@ -18,9 +19,16 @@
  *
  * @param reg Reference to the registry containing the entities to be checked.
  * @param datasToSend Reference of a list of data that will be sent to all the clients.
+ * @param udpServer UdpServer for udp communication
+ * @param timeoutHandler TimeoutHandler for acknowledge packets
  */
 namespace ecs::systems {
 
-void healthSharedCheck(Registry &reg, std::list<std::vector<char>> &datasToSend);
+void healthSharedCheck(
+    Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+);
 
 } // namespace ecs::systems

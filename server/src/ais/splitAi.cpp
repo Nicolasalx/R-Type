@@ -19,6 +19,8 @@ void rts::ais::splitAi(
     ecs::Registry &reg,
     entity_t e,
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::WaveManager &waveManager
 )
 {
@@ -42,12 +44,11 @@ void rts::ais::splitAi(
             float newY = pos.y + offset.second;
             shared_entity_t newSharedId = ecs::generateSharedEntityId();
 
-            datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
-                    rt::UDPCommand::NEW_ENTITY_BLOB, newSharedId, {.pos = {.x = newX, .y = newY}}, true
-                )
-                    .serialize()
+            auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
+                rt::UDPCommand::NEW_ENTITY_BLOB, newSharedId, {.pos = {.x = newX, .y = newY}}, true
             );
+            timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+            datasToSend.push_back(std::move(newMsg).serialize());
 
             auto newEntity = ecs::ServerEntityFactory::createServerEntityFromJSON(
                 reg, "assets/enemies/bydosWave.json", newX, newY, newSharedId, -10.0f
@@ -58,25 +59,25 @@ void rts::ais::splitAi(
                     newEntity, ecs::component::DeathSplit{.splitCount = split.splitCount - 1, .offsets = split.offsets}
                 );
                 reg.getComponent<ecs::component::AiActor>(e)->act =
-                    [newY, &datasToSend, &waveManager](ecs::Registry &r, entity_t ent) {
+                    [newY, &datasToSend, &waveManager, &timeoutHandler, &udpServer](ecs::Registry &r, entity_t ent) {
                         rts::ais::waveMovement(r, ent, newY);
-                        rts::ais::fireRandomMissileAi(r, ent, datasToSend, 250);
-                        rts::ais::splitAi(r, ent, datasToSend, waveManager);
+                        rts::ais::fireRandomMissileAi(r, ent, datasToSend, timeoutHandler, udpServer, 250);
+                        rts::ais::splitAi(r, ent, datasToSend, udpServer, timeoutHandler, waveManager);
                     };
             } else {
                 reg.getComponent<ecs::component::AiActor>(e)->act =
-                    [newY, &datasToSend, &waveManager](ecs::Registry &r, entity_t ent) {
+                    [newY, &datasToSend, &waveManager, &timeoutHandler, &udpServer](ecs::Registry &r, entity_t ent) {
                         rts::ais::waveMovement(r, ent, newY);
-                        rts::ais::fireRandomMissileAi(r, ent, datasToSend, 250);
-                        rts::ais::splitAi(r, ent, datasToSend, waveManager);
+                        rts::ais::fireRandomMissileAi(r, ent, datasToSend, timeoutHandler, udpServer, 250);
+                        rts::ais::splitAi(r, ent, datasToSend, udpServer, timeoutHandler, waveManager);
                     };
             }
         }
 
-        datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity.sharedEntityId, true)
-                .serialize()
-        );
+        auto newMsg =
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity.sharedEntityId, true);
+        timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+        datasToSend.push_back(std::move(newMsg).serialize());
         waveManager.removeEntity(e);
         reg.killEntity(e);
     }
