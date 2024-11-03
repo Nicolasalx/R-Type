@@ -6,7 +6,6 @@
 */
 
 #include "collideEffect.hpp"
-#include <cstddef>
 #include <cstdio>
 
 #include "RTypeUDPProtol.hpp"
@@ -94,36 +93,6 @@ void rts::collideEffect(
     }
     if (tagB == ecs::component::EntityTag::ALLY && tagA == ecs::component::EntityTag::ENEMY) {
         resolveDamage(reg, entityB, entityA, datasToSend);
-    }
-}
-
-void rts::resolveTagEffect(
-    ecs::Registry &reg,
-    size_t entityA,
-    size_t entityB,
-    std::list<std::vector<char>> &datasToSend
-) // Use tag here now !
-{
-    auto &missiles = reg.getComponents<ecs::component::Missile>();
-    auto &health = reg.getComponents<ecs::component::Health>();
-
-    if (missiles.has(entityA) && !missiles.has(entityB)) {
-        if (health.has(entityB)) {
-            tagEffectDamage(reg, entityB, missiles[entityA]->damage, datasToSend);
-            health[entityB]->currHp -= missiles[entityA]->damage;
-        } else {
-            tagEffectKill(reg, entityB, datasToSend);
-        }
-        tagEffectKill(reg, entityA, datasToSend);
-    }
-    if (missiles.has(entityB) && !missiles.has(entityA)) {
-        if (health.has(entityA)) {
-            tagEffectDamage(reg, entityA, missiles[entityB]->damage, datasToSend);
-            health[entityA]->currHp -= missiles[entityB]->damage;
-        } else {
-            tagEffectKill(reg, entityA, datasToSend);
-        }
-        tagEffectKill(reg, entityB, datasToSend);
     }
 }
 

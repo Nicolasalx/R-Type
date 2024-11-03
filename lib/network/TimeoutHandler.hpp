@@ -45,7 +45,7 @@ class TimeoutHandler {
 
     void addTimeoutPacket(const std::vector<char> &packet, size_t packetId, UDPServer &udp)
     {
-        std::lock_guard<std::mutex> lck(_mut);
+        std::scoped_lock<std::mutex> lck(_mut);
         std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
         _tickRateManager.addTickRate(packetId, 10);
         std::vector<size_t> clients;
@@ -71,20 +71,9 @@ class TimeoutHandler {
         }
     }
 
-    void removeTimeoutPacket(size_t packetId)
-    {
-        auto it = std::find_if(_timeoutPackets.begin(), _timeoutPackets.end(), [packetId](PacketInfos &val) {
-            return val.packetId == packetId;
-        });
-        if (it != _timeoutPackets.end()) {
-            _tickRateManager.removeTickRate(packetId);
-            _timeoutPackets.erase(it);
-        }
-    }
-
     bool removeClient(size_t packetId, UDPServer::client_id_t clientId)
     {
-        std::lock_guard<std::mutex> lck(_mut);
+        // The lock has to be when cailing the function
         for (auto &timeoutPacket : _timeoutPackets) {
             if (packetId == timeoutPacket.packetId) {
                 auto itCli = std::find(timeoutPacket.clientIds.begin(), timeoutPacket.clientIds.end(), clientId);
@@ -94,7 +83,7 @@ class TimeoutHandler {
                 }
                 timeoutPacket.clientIds.erase(itCli);
                 if (timeoutPacket.clientIds.empty()) {
-                    removeTimeoutPacket(packetId);
+                    _removeTimeoutPacket(packetId);
                 }
                 return true;
             }
@@ -106,13 +95,15 @@ class TimeoutHandler {
     {
         _tickRateThread = std::thread([this, &dt, &udp]() {
             while (_state) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(2));
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
                 _checkNewUdpClients(udp);
                 _checkTickRates(dt, udp);
             }
         });
     }
+
+    std::mutex &mut() { return _mut; }
 
     private:
     void _checkTickRates(float &dt, UDPServer &udp)
@@ -135,7 +126,6 @@ class TimeoutHandler {
 
     void _addClientsToPackets(UDPServer::client_id_t clientId)
     {
-        std::lock_guard<std::mutex> lck(_mut);
         for (auto &packet : _timeoutPackets) {
             packet.clientIds.push_back(clientId);
         }
@@ -143,6 +133,7 @@ class TimeoutHandler {
 
     void _checkNewUdpClients(UDPServer &udp)
     {
+        std::lock_guard<std::mutex> lck(_mut);
         std::lock_guard<std::recursive_mutex> lckEndpoints(udp.mut());
 
         const auto &ends = udp.endpoints();
@@ -152,6 +143,18 @@ class TimeoutHandler {
                 _knownClients.push_back(end.first);
                 _addClientsToPackets(end.first);
             }
+        }
+    }
+
+
+    void _removeTimeoutPacket(size_t packetId)
+    {
+        auto it = std::find_if(_timeoutPackets.begin(), _timeoutPackets.end(), [packetId](PacketInfos &val) {
+            return val.packetId == packetId;
+        });
+        if (it != _timeoutPackets.end()) {
+            _tickRateManager.removeTickRate(packetId);
+            _timeoutPackets.erase(it);
         }
     }
 

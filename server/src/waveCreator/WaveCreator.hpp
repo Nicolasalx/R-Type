@@ -125,6 +125,8 @@ class WaveCreator {
 
     static std::function<void(ecs::Registry &reg, entity_t e)> getDobkeratopsAi(
         std::list<std::vector<char>> &datasToSend,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
         ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
@@ -132,6 +134,8 @@ class WaveCreator {
     );
     static std::function<void(ecs::Registry &reg, entity_t e)> getRobotAi(
         std::list<std::vector<char>> &datasToSend,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
         ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
@@ -139,6 +143,8 @@ class WaveCreator {
     );
     static std::function<void(ecs::Registry &reg, entity_t e)> getBydosWaveAi(
         std::list<std::vector<char>> &datasToSend,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
         ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
@@ -146,6 +152,8 @@ class WaveCreator {
     );
     static std::function<void(ecs::Registry &reg, entity_t e)> getBlobAi(
         std::list<std::vector<char>> &datasToSend,
+        ntw::UDPServer &udpServer,
+        ntw::TimeoutHandler &timeoutHandler,
         ecs::WaveManager &waveManager,
         int missileSpawnRate,
         float x,
@@ -155,7 +163,15 @@ class WaveCreator {
     std::unordered_map<std::string, setup_mob_function_t> _setupMobFunc;
     std::unordered_map<
         std::string,
-        std::function<ai_function_t(std::list<std::vector<char>> &, ecs::WaveManager &, int, float, float)>>
+        std::function<ai_function_t(
+            std::list<std::vector<char>> &,
+            ntw::UDPServer &,
+            ntw::TimeoutHandler &,
+            ecs::WaveManager &,
+            int,
+            float,
+            float
+        )>>
         _mobAiCreateFunc;
     std::string _basePath;
 };

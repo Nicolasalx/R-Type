@@ -110,7 +110,7 @@ void rts::WaveCreator::_addJSONMobs(
                 );
                 _setupMobFunc[t](datasToSend, udpServer, timeoutHandler, reg, entity, sharedEntityId, x, y, vx, vy);
                 reg.getComponent<ecs::component::AiActor>(entity)->act =
-                    _mobAiCreateFunc[t](datasToSend, waveManager, missileSpawnRate, x, y);
+                    _mobAiCreateFunc[t](datasToSend, udpServer, timeoutHandler, waveManager, missileSpawnRate, x, y);
                 return entity;
             }
 
@@ -127,62 +127,72 @@ void rts::WaveCreator::_addJSONMobs(
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getDobkeratopsAi(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::WaveManager & /*waveManager*/,
     int /*missileSpawnRate*/,
     float /*x*/,
     float /*y*/
 )
 {
-    return [&datasToSend](ecs::Registry &reg, entity_t e) {
+    return [&datasToSend, &timeoutHandler, &udpServer](ecs::Registry &reg, entity_t e) {
         auto &stateComp = reg.getComponent<ecs::component::DobkeratopsState>(e);
         if (!stateComp->initialized) {
-            rts::ais::initDobkeratopsAi(reg, e, datasToSend, stateComp->state);
+            rts::ais::initDobkeratopsAi(reg, e, datasToSend, timeoutHandler, udpServer, stateComp->state);
             stateComp->initialized = true;
         }
-        rts::ais::dobkeratopsAi(reg, e, datasToSend, stateComp->state);
+        rts::ais::dobkeratopsAi(reg, e, datasToSend, timeoutHandler, udpServer, stateComp->state);
     };
 }
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getRobotAi(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::WaveManager & /*waveManager*/,
     int missileSpawnRate,
     float x,
     float /*y*/
 )
 {
-    return [x, &datasToSend, missileSpawnRate](ecs::Registry &reg, entity_t e) {
+    return [x, &datasToSend, missileSpawnRate, &udpServer, &timeoutHandler](ecs::Registry &reg, entity_t e) {
         rts::ais::horizontalMoveAi(reg, e, x - 100, x + 100);
-        rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate, nullptr, {-1, 1}, {-1, 0});
+        rts::ais::fireRandomMissileAi(
+            reg, e, datasToSend, timeoutHandler, udpServer, missileSpawnRate, nullptr, {-1, 1}, {-1, 0}
+        );
     };
 }
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBydosWaveAi(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::WaveManager & /*waveManager*/,
     int missileSpawnRate,
     float /*x*/,
     float y
 )
 {
-    return [y, &datasToSend, missileSpawnRate](ecs::Registry &reg, entity_t e) {
+    return [y, &datasToSend, missileSpawnRate, &timeoutHandler, &udpServer](ecs::Registry &reg, entity_t e) {
         rts::ais::waveMovement(reg, e, y);
-        rts::ais::fireRandomMissileAi(reg, e, datasToSend, missileSpawnRate);
+        rts::ais::fireRandomMissileAi(reg, e, datasToSend, timeoutHandler, udpServer, missileSpawnRate);
     };
 }
 
 std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
     std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler,
     ecs::WaveManager &waveManager,
     int missileSpawnRate,
     float /*x*/,
     float y
 )
 {
-    return [y, &datasToSend, missileSpawnRate, &waveManager](ecs::Registry &r, entity_t entity) {
+    return [y, &datasToSend, missileSpawnRate, &waveManager, &timeoutHandler, &udpServer](ecs::Registry &r, entity_t entity) {
         rts::ais::waveMovement(r, entity, y);
-        rts::ais::fireRandomMissileAi(r, entity, datasToSend, missileSpawnRate);
-        rts::ais::splitAi(r, entity, datasToSend, waveManager);
+        rts::ais::fireRandomMissileAi(r, entity, datasToSend, timeoutHandler, udpServer, missileSpawnRate);
+        rts::ais::splitAi(r, entity, datasToSend, udpServer, timeoutHandler, waveManager);
     };
 }
 
