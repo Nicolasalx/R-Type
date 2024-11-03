@@ -6,7 +6,7 @@
       "y": 200.0
     },
     "sprite": {
-      "texture": "assets/typesheets/r-typesheet30a.gif",
+      "texture": "assets/typesheets/powerUp.png",
       "initial_frame": {
         "x": 0,
         "y": 0,
@@ -26,32 +26,6 @@
       }
     },
     "ai_actor": {},
-    "animation": {
-      "frames": {
-        "idle": [
-          {
-            "x": 100,
-            "y": 0,
-            "width": 16,
-            "height": 16
-          },
-          {
-            "x": 116,
-            "y": 0,
-            "width": 16,
-            "height": 16
-          },
-          {
-            "x": 168,
-            "y": 0,
-            "width": 32,
-            "height": 16
-          }
-        ]
-      },
-      "frame_time": 0.2,
-      "state": "idle"
-    },
     "hitbox": {
       "width": 16.0,
       "height": 16.0
@@ -63,21 +37,20 @@
     "server_share_movement": {},
     "radial_light": {
       "offset": {
-        "x": 17,
-        "y": 17
+        "x": 8,
+        "y": 8
       },
       "color": {
-        "r": 0,
-        "g": 255,
+        "r": 255,
+        "g": 0,
         "b": 0
       },
-      "range": 20.0,
+      "range": 16.0,
       "intensity": 0.5,
       "fade": true,
       "angle": 360.0,
       "rotation": 0.0
     },
-
     "health_xp": {
       "value": 10
     },
