@@ -76,6 +76,9 @@ class UDPClient : public AsioClient {
      */
     void _handleRecv(asio::error_code ec, std::size_t bytes);
 
+#if WIN32
+    bool _isInit = false;
+#endif
     udp::endpoint _endpoint;
     udp::socket _sock;
     std::array<char, BUFF_SIZE> _buff = {0};
