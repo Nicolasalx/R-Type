@@ -47,6 +47,7 @@ rts::GameRunner::GameRunner(
         _tickRateManager,
         _udpServer,
         _datasToSend,
+        _timeoutHandler,
         _networkCallbacks,
         _waveManager,
         debugMode,

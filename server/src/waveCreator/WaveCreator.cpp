@@ -189,7 +189,9 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
     float y
 )
 {
-    return [y, &datasToSend, missileSpawnRate, &waveManager, &timeoutHandler, &udpServer](ecs::Registry &r, entity_t entity) {
+    return [y, &datasToSend, missileSpawnRate, &waveManager, &timeoutHandler, &udpServer](
+               ecs::Registry &r, entity_t entity
+           ) {
         rts::ais::waveMovement(r, entity, y);
         rts::ais::fireRandomMissileAi(r, entity, datasToSend, timeoutHandler, udpServer, missileSpawnRate);
         rts::ais::splitAi(r, entity, datasToSend, udpServer, timeoutHandler, waveManager);

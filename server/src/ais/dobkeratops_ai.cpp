@@ -152,8 +152,7 @@ static void cleanupDobkeratopsSegments(
 
             auto sharedId = reg.getComponent<ecs::component::SharedEntity>(segment)->sharedEntityId;
 
-            auto newMsg = 
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
+            auto newMsg = rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
             timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
             datasToSend.push_back(std::move(newMsg).serialize());
             reg.killEntity(segment);
@@ -264,7 +263,9 @@ void dobkeratopsAi(
                 if (state.projectilesShot < 8) {
                     float baseAngle = -0.5f;
                     float angleStep = 0.2f;
-                    spawnDobkeratopsProjectile(reg, e, datasToSend, timeoutHandler, udpServer, baseAngle + angleStep * state.projectilesShot);
+                    spawnDobkeratopsProjectile(
+                        reg, e, datasToSend, timeoutHandler, udpServer, baseAngle + angleStep * state.projectilesShot
+                    );
                     state.projectilesShot++;
                 }
                 break;

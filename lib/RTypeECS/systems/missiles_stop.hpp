@@ -9,6 +9,7 @@
 
 #include <list>
 #include "Registry.hpp"
+#include "TimeoutHandler.hpp"
 
 /**
  * @brief Stops the missiles in the ECS registry.
@@ -22,6 +23,11 @@
  */
 namespace ecs::systems {
 
-void missilesStop(ecs::Registry &reg, std::list<std::vector<char>> &datasToSend);
+void missilesStop(
+    ecs::Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+);
 
 } // namespace ecs::systems
