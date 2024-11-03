@@ -13,9 +13,6 @@
 #include "../RTypeClient.hpp"
 #include "imgui.h"
 
-// ! When player end the game call this function
-// rtc::addScore("assets/score/scoreBoard.json", playerName, score);
-
 void writeEmptyJson(const std::string &filePath)
 {
     nlohmann::json emptyJson;

@@ -19,6 +19,7 @@
 #include "components/position.hpp"
 #include "components/velocity.hpp"
 #include "systems/collision.hpp"
+#include "components/health_xp.hpp"
 
 static void resolveCollision(
     ecs::component::Position &pos,
@@ -63,6 +64,7 @@ void collision(
     auto &controllables = reg.getComponents<ecs::component::Controllable>();
     auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &players = reg.getComponents<ecs::component::Player>();
+    auto &healthXps = reg.getComponents<ecs::component::HealthXP>();
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
 
@@ -91,6 +93,9 @@ void collision(
                 const bool entityAPlayer = players.has(entityA);
                 const bool entityBPlayer = players.has(entityB);
 
+                const bool entityAHealthXP = healthXps.has(entityA);
+                const bool entityBHealthXP = healthXps.has(entityB);
+
                 if (entityAControllable && !entityBControllable) {
                     if (!entityAPlayer) {
                         resolveCollision(posA, intersection, velocities[entityA]);
@@ -102,6 +107,10 @@ void collision(
                 } else if (entityAGravity && !entityBGravity) {
                     resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAGravity && entityBGravity) {
+                    resolveCollision(posB, intersection, velocities[entityB]);
+                } else if (entityAHealthXP && !entityBHealthXP) {
+                    resolveCollision(posA, intersection, velocities[entityA]);
+                } else if (!entityAHealthXP && entityBHealthXP) {
                     resolveCollision(posB, intersection, velocities[entityB]);
                 }
                 // TODO: If both entities are controllable or both are non-controllable
@@ -120,6 +129,7 @@ void collisionPredict(Registry &reg)
     auto &gravities = reg.getComponents<ecs::component::Gravity>();
     auto &players = reg.getComponents<ecs::component::Player>();
     auto &missiles = reg.getComponents<ecs::component::Missile>();
+    auto &healthXps = reg.getComponents<ecs::component::HealthXP>();
 
     size_t maxEntity = std::max(positions.size(), hitboxes.size());
 
@@ -149,6 +159,8 @@ void collisionPredict(Registry &reg)
                 const bool entityBPlayer = players.has(entityB);
                 const bool entityAMissile = missiles.has(entityA);
                 const bool entityBMissile = missiles.has(entityB);
+                const bool entityAHealthXP = healthXps.has(entityA);
+                const bool entityBHealthXP = healthXps.has(entityB);
 
                 if (entityAControllable && !entityBControllable) {
                     if (entityAPlayer && entityBMissile) {
@@ -164,6 +176,8 @@ void collisionPredict(Registry &reg)
                     resolveCollision(posA, intersection, velocities[entityA]);
                 } else if (!entityAGravity && entityBGravity) {
                     resolveCollision(posB, intersection, velocities[entityB]);
+                } else if (entityAHealthXP || entityBHealthXP) {
+                    continue;
                 }
                 // TODO: If both entities are controllable or both are non-controllable
             }

@@ -23,6 +23,7 @@
 #include "components/player.hpp"
 #include "components/position.hpp"
 #include "components/score.hpp"
+#include "components/health_xp.hpp"
 #include "components/velocity.hpp"
 #include "entity.hpp"
 #include "imgui.h"
@@ -226,6 +227,10 @@ void EntityFactory::addCommonComponents(
     if (componentsJson.contains("ennemy_type")) {
         auto typeJson = componentsJson["ennemy_type"];
         reg.addComponent(entity, ecs::component::Gravity{typeJson["type"].get<std::string>()});
+    }
+    if (componentsJson.contains("health_xp")) {
+        auto valueJson = componentsJson["health_xp"];
+        reg.addComponent(entity, ecs::component::HealthXP{valueJson["value"].get<int>()});
     }
 }
 

@@ -180,6 +180,17 @@ std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getBlobAi(
     };
 }
 
+std::function<void(ecs::Registry &reg, entity_t e)> rts::WaveCreator::getHealthXPAi(
+    std::list<std::vector<char>> &/*datasToSend*/,
+    ecs::WaveManager &/*waveManager*/,
+    int /*missileSpawnRate*/,
+    float /*x*/,
+    float /*y*/
+)
+{
+    return [](ecs::Registry &r, entity_t entity) {};
+}
+
 /**
  * Setup mob functions
  */
@@ -249,6 +260,23 @@ void rts::WaveCreator::setupBlobDatas(
     reg.addComponent(e, ecs::component::DeathSplit{.splitCount = 2, .offsets = {{-32.0f, -32.0f}, {32.0f, -32.0f}}});
     datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BLOB>(
                               rt::UDPCommand::NEW_ENTITY_BLOB, sharedId, {.pos = {.x = x, .y = y}}, true
+    )
+                              .serialize());
+}
+
+void rts::WaveCreator::setupHealthXPDatas(
+    std::list<std::vector<char>> &datasToSend,
+    ecs::Registry &reg,
+    entity_t e,
+    size_t sharedId,
+    float x,
+    float y,
+    float /*vx*/,
+    float /*vy*/
+)
+{
+    datasToSend.push_back(rt::UDPPacket<rt::UDPBody::NEW_HEALTH_PACK>(
+                              rt::UDPCommand::NEW_HEALTH_PACK, sharedId, {.pos = {x, y}}, true
     )
                               .serialize());
 }
