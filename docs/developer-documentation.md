@@ -4,7 +4,6 @@
 
 This document provides an overview of the project to help new developers get acquainted with its structure and functionality. The focus is on practical information to understand the project broadly, rather than delving into the minutiae of the code. This documentation aims to provide a clear understanding of the project's architecture, main systems, and development guidelines.
 
-
 ## Architectural Overview
 
 This project is built around an Entity-Component-System (ECS) architecture, which separates concerns into entities (game objects), components (data associated with entities), and systems (logic that processes entities with specific components). This provides flexibility and scalability, particularly important for managing the complexity of multiplayer game logic.
@@ -12,6 +11,7 @@ This project is built around an Entity-Component-System (ECS) architecture, whic
 ## Architectural Diagrams
 
 - **Overview Diagram**:
+
 ```mermaid
 graph TD
   A[Client Subsystem] --> |Uses| RTYPE-ECS
@@ -38,7 +38,7 @@ graph TD
 
 - **Subsystem Diagrams**:
 
-![subsystems Diamgram](subSystems.png)
+![subsystems Diagram](subSystems.png)
 
 ## Deep Dive
 
@@ -48,7 +48,8 @@ Don't hesitate to check the [doxygen documentation](https://manuelr-t.github.io/
 
 ### Build the engine
 
-#### Dependencies:
+#### Dependencies
+
 To install the required dependencies on **Ubuntu** or any Debian-based system, run the following commands:
 
 ```bash
@@ -70,6 +71,7 @@ sudo apt-get install -y \
 ```
 
 #### Requirement
+
 - C++20 or higher compiler
 - CMake for build configuration (3.1 or higher)
 - Network connectivity for multiplayer mode
@@ -77,20 +79,26 @@ sudo apt-get install -y \
 #### Build
 
 - Clone the repo
+
     ```bash
     git clone git@github.com:ManuelR-T/R-Type.git
     cd R-Type
     ```
+
 - Generate build files using CMake:
+
     ```bash
     mkdir build
     cd build
     cmake ..
     ```
+
 - Build the project:
+
     ```bash
     make
     ```
+
     Alternatively, you can build with:
 
     ```bash
@@ -98,6 +106,13 @@ sudo apt-get install -y \
     ```
 
 And from now on you can follow the [Readme tutorial](../README.md#run-the-binaries) on how to use the binaries
+
+### Mod the Game
+
+- Modify a stage
+
+    There is 10 stages in R-Type that can be found here: `assets/stages/`
+    You can modify as you want to spawn other entity, at an other place etc...
 
 ### Mod the engine
 

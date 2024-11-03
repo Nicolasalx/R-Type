@@ -20,6 +20,8 @@
  *
  * @param reg Reference to the ECS registry containing the entities and components.
  * @param datasToSend Reference of a list of data that will be sent to all the clients.
+ * @param udpServer UdpServer for udp communication
+ * @param timeoutHandler TimeoutHandler for acknowledge packets
  */
 namespace ecs::systems {
 

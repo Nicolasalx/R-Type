@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <cstdio>
 #include <functional>
+#include <memory>
 #include <vector>
 #include "components/death_split.hpp"
 #include "components/game_tag.hpp"
@@ -17,6 +18,7 @@
 
 #include "RTypeServer.hpp"
 #include "Registry.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "ServerTickRate.hpp"
 #include "TickRateManager.hpp"
 #include "components/dobkeratops.hpp"
@@ -136,7 +138,7 @@ void rts::registerSystems(
     if (debugMode) {
         reg.addSystem([&reg, &window]() {
             window.clear();
-            ecs::systems::draw(reg, window);
+            ecs::systems::draw(reg, window, std::shared_ptr<sf::Shader>());
             window.display();
         });
     }

@@ -7,14 +7,22 @@
 - [3. Package Structure](#3-package-structure)
 - [4. UDP Command](#4-udp-command)
   - [4.1 Command Descriptions](#41-command-descriptions)
-    - [4.1.1 NEW_ENTITY_PLAYER](#412-new_entity_player)
-    - [4.1.2 NEW_ENTITY_MISSILE](#413-new_entity_missile)
-    - [4.1.3 NEW_ENTITY_MISSILE_BALL](#414-new_entity_missile_ball)
-    - [4.1.4 NEW_ENTITY_BYDOS_WAVE](#415-new_entity_bydos_wave)
-    - [4.1.5 NEW_ENTITY_ROBOT_GROUND](#416-new_entity_robot_ground)
-    - [4.1.6 MOVE_ENTITY](#417-move_entity)
-    - [4.1.7 MOD_ENTITIES](#419-mod_entities)
-    - [4.1.8 DEL_ENTITY](#4110-del_entity)
+    - [4.1.1 NEW_ENTITY_STATIC](#411-new_entity_static)
+    - [4.1.2 NEW_ENTITY_PLAYER](#412-new_entity_player)
+    - [4.1.3 NEW_ENTITY_MISSILE](#413-new_entity_missile)
+    - [4.1.4 NEW_ENTITY_MISSILE_BALL](#414-new_entity_missile_ball)
+    - [4.1.5 NEW_ENTITY_BYDOS_WAVE](#415-new_entity_bydos_wave)
+    - [4.1.6 NEW_ENTITY_ROBOT_GROUND](#416-new_entity_robot_ground)
+    - [4.1.7 NEW_ENTITY_DOBKERATOPS](#417-new_entity_dobkeratops)
+    - [4.1.8 NEW_ENTITY_DOBKERATOPS_PART](#418-new_entity_dobkeratops_part)
+    - [4.1.9 NEW_ENTITY_BOSS_PARASITE](#419-new_entity_boss_parasite)
+    - [4.1.10 NEW_ENTITY_BLOB](#4110-new_entity_blob)
+    - [4.1.11 TAKE_DAMAGE](#4111-take_damage)
+    - [4.1.12 MOVE_ENTITY](#4112-move_entity)
+    - [4.1.13 CHANGE_ANIMATION_STATE](#4113-change_animation_state)
+    - [4.1.14 DEL_ENTITY](#4114-del_entity)
+    - [4.1.15 PING](#4115-ping)
+    - [4.1.16 END_GAME](#4116-end_game)
 - [5. Package Integrity](#5-package-integrity)
 - [6. Packet Loss Management](#6-packet-loss-management)
 - [7. Usage Scenarios](#7-usage-scenarios)
@@ -61,21 +69,40 @@ The packet body contains data specific to the command defined in the `cmd` field
 
 Packets contain a `cmd` field that specifies the command being sent. The available command types in the UDP protocol for this game are listed below:
 
-| Command                  | Value  | Description                                               |
-| ------------------------ | ------ | --------------------------------------------------------- |
-| `NONE`                   | 0x00   | No operation, empty command, or placeholder.              |
-| `NEW_ENTITY_PLAYER`       | 0x01   | Create a new player entity.                               |
-| `NEW_ENTITY_MISSILE`      | 0x02   | Create a missile entity.                                  |
-| `NEW_ENTITY_MISSILE_BALL` | 0x03   | Create a missile entity in the form of a ball.            |
-| `NEW_ENTITY_BYDOS_WAVE`   | 0x04   | Create a Bydos wave entity.                               |
-| `NEW_ENTITY_ROBOT_GROUND` | 0x05   | Create a ground robot entity.                             |
-| `MOVE_ENTITY`             | 0x06   | Update an entity's position and velocity.                 |
-| `DEL_ENTITY`              | 0x07   | Delete an existing entity.                                |
+| Command                   | Value  | Description                                               |
+| ------------------------- | ------ | --------------------------------------------------------- |
+| `NONE`                    | 0x00   | No operation, empty command, or placeholder.              |
+| `NEW_ENTITY_STATIC`       | 0x01   | Create a new static entity.                               |
+| `NEW_ENTITY_PLAYER`       | 0x02   | Create a new player entity.                               |
+| `NEW_ENTITY_MISSILE`      | 0x03   | Create a missile entity.                                  |
+| `NEW_ENTITY_MISSILE_BALL` | 0x04   | Create a missile entity in the form of a ball.           |
+| `NEW_ENTITY_BYDOS_WAVE`   | 0x05   | Create a Bydos wave entity.                               |
+| `NEW_ENTITY_ROBOT_GROUND` | 0x06   | Create a ground robot entity.                             |
+| `MOVE_ENTITY`             | 0x07   | Update an entity's position and velocity.                 |
+| `DEL_ENTITY`              | 0x0A   | Delete an existing entity.                                |
+| `TAKE_DAMAGE`             | 0x0B   | Apply damage to an entity.                                |
+| `CHANGE_ANIMATION_STATE`  | 0x0C   | Change the animation state of an entity.                  |
+| `PING`                    | 0x0D   | Send a ping message to check the connection status.       |
+| `END_GAME`                | 0x0E   | End the game and indicate if the player has won.         |
 
 ### 4.1 Command Descriptions
 
 #### 4.1.1 `NEW_ENTITY_PLAYER`
+
 - **Command ID**: 1
+- **Description**: Creates a new static entity without movement, with the specified initial position.
+- **Data**:
+  - `pos`: Position of the static entity.
+
+```cpp
+struct NEW_ENTITY_STATIC {
+    ecs::component::Position pos{};
+};
+```
+
+#### 4.1.2 `NEW_ENTITY_PLAYER`
+
+- **Command ID**: 2
 - **Description**: Creates a player entity with a unique identifier, player name, and movement data.
 - **Data**:
   - `playerId`: Unique identifier for the player.
@@ -92,56 +119,143 @@ struct NEW_ENTITY_PLAYER {
 };
 ```
 
-#### 4.1.2 `NEW_ENTITY_MISSILE`
-- **Command ID**: 2
-- **Description**: Creates a missile entity with movement data.
+#### 4.1.3 `NEW_ENTITY_MISSILE`
+
+- **Command ID**: 3
+- **Description**: Creates a missile entity with position and velocity data.
 - **Data**:
-  - `moveData`: Movement data of the missile.
+  - `pos`: Position of the missile.
+  - `vel`: Velocity of the missile.
+  - `chargeLevel`: The charge level of the missile.
+
 ```cpp
 struct NEW_ENTITY_MISSILE {
-    MOVE_ENTITY moveData;
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
+    int chargeLevel = 0;
 };
 ```
 
-#### 4.1.3 `NEW_ENTITY_MISSILE_BALL`
-- **Command ID**: 3
-- **Description**: Creates a missile entity in the shape of a ball with movement data.
+#### 4.1.4 `NEW_ENTITY_MISSILE_BALL`
+
+- **Command ID**: 4
+- **Description**: Creates a missile entity in the shape of a ball with position and velocity data.
 - **Data**:
-  - `moveData`: Movement data of the missile ball.
+  - `pos`: Position of the missile ball.
+  - `vel`: Velocity of the missile ball.
+
 ```cpp
 struct NEW_ENTITY_MISSILE_BALL {
-    MOVE_ENTITY moveData;
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 ```
 
-#### 4.1.4 `NEW_ENTITY_BYDOS_WAVE`
-- **Command ID**: 4
-- **Description**: Creates a new Bydos wave entity with movement data.
+#### 4.1.5 `NEW_ENTITY_BYDOS_WAVE`
+
+- **Command ID**: 5
+- **Description**: Creates a new Bydos wave entity with position data.
 - **Data**:
-  - `moveData`: Movement data of the Bydos wave.
+  - `pos`: Position of the Bydos wave.
+
 ```cpp
 struct NEW_ENTITY_BYDOS_WAVE {
-    MOVE_ENTITY moveData;
+    ecs::component::Position pos{};
 };
 ```
 
-#### 4.1.5 `NEW_ENTITY_ROBOT_GROUND`
-- **Command ID**: 5
-- **Description**: Creates a new ground robot entity with movement data.
+#### 4.1.6 `NEW_ENTITY_ROBOT_GROUND`
+
+- **Command ID**: 6
+- **Description**: Creates a new ground robot entity with position and movement data.
 - **Data**:
-  - `moveData`: Movement data of the ground robot.
+  - `pos`: Position of the ground robot.
+  - `vel`: Velocity of the ground robot.
+
 ```cpp
 struct NEW_ENTITY_ROBOT_GROUND {
-    MOVE_ENTITY moveData;
+    ecs::component::Position pos{};
+    ecs::component::Velocity vel{};
 };
 ```
 
-#### 4.1.6 `MOVE_ENTITY`
-- **Command ID**: 6
+#### 4.1.7 `NEW_ENTITY_DOBKERATOPS`
+
+- **Command ID**: 7
+- **Description**: Creates a new Dobkeratops entity with position data and an initial stage.
+- **Data**:
+  - `pos`: Position of the Dobkeratops entity.
+  - `stage`: Indicates the level of development or difficulty of the entity.
+
+```cpp
+struct NEW_ENTITY_DOBKERATOPS {
+    ecs::component::Position pos{};
+    int stage = 1;
+};
+```
+
+#### 4.1.8 `NEW_ENTITY_DOBKERATOPS_PART`
+
+- **Command ID**: 8
+- **Description**: Creates a new part of the Dobkeratops entity with position data and a part index.
+- **Data**:
+  - `pos`: Position of the Dobkeratops part.
+  - `partIndex`: Indicates the specific index of the part.
+
+```cpp
+struct NEW_ENTITY_DOBKERATOPS_PART {
+    ecs::component::Position pos{};
+    int partIndex = 0;
+};
+```
+
+#### 4.1.9 `NEW_ENTITY_BOSS_PARASITE`
+
+- **Command ID**: 9
+- **Description**: Creates a new Boss Parasite entity with position data.
+- **Data**:
+  - `pos`: Position of the Boss Parasite entity.
+
+```cpp
+struct NEW_ENTITY_BOSS_PARASITE {
+    ecs::component::Position pos{};
+};
+```
+
+#### 4.1.10 `NEW_ENTITY_BLOB`
+
+- **Command ID**: 10
+- **Description**: Creates a new Blob entity with position data.
+- **Data**:
+  - `pos`: Position of the Blob entity.
+
+```cpp
+struct NEW_ENTITY_BLOB {
+    ecs::component::Position pos{};
+};
+```
+
+#### 4.1.11 `TAKE_DAMAGE`
+
+- **Command ID**: 11
+- **Description**: Applies damage to an entity.
+- **Data**:
+  - `damage`: The amount of damage to apply.
+
+```cpp
+struct TAKE_DAMAGE {
+    int damage = 1;
+};
+```
+
+#### 4.1.12 `MOVE_ENTITY`
+
+- **Command ID**: 7
 - **Description**: Updates the position and velocity of an existing entity.
 - **Data**:
   - `pos`: Position of the entity.
   - `vel`: Velocity of the entity.
+
 ```cpp
 struct MOVE_ENTITY {
     ecs::component::Position pos;
@@ -149,14 +263,55 @@ struct MOVE_ENTITY {
 };
 ```
 
-#### 4.1.7 `DEL_ENTITY`
-- **Command ID**: 7
+#### 4.1.13 `CHANGE_ANIMATION_STATE`
+
+- **Command ID**: 13
+- **Description**: Changes the animation state of an entity.
+- **Data**:
+  - `newState`: The new animation state to set for the entity.
+
+```cpp
+struct CHANGE_ANIMATION_STATE {
+    char newState[32] = {0};
+};
+```
+
+#### 4.1.14 `DEL_ENTITY`
+
+- **Command ID**: 10
 - **Description**: Deletes a specific entity from the game.
 - **Data**:
   - `sharedEntityId`: Unique ID of the entity to delete.
+
 ```cpp
 struct DEL_ENTITY {
-    shared_entity_t sharedEntityId;  // Unique ID of the entity to delete
+    shared_entity_t sharedEntityId; // Unique ID of the entity to delete
+};
+```
+
+#### 4.1.15 `PING`
+
+- **Command ID**: 15
+- **Description**: Sends a ping message to check the connection status.
+- **Data**:
+  - `sendTime`: The time the ping was sent, typically used for latency measurement.
+
+```cpp
+struct PING {
+    long sendTime = 0;
+};
+```
+
+#### 4.1.16 `END_GAME`
+
+- **Command ID**: 16
+- **Description**: Ends the game and indicates whether the player has won or lost.
+- **Data**:
+  - `win`: A boolean value indicating if the player won the game.
+
+```cpp
+struct END_GAME {
+    bool win = false;
 };
 ```
 
@@ -187,6 +342,7 @@ The server sends a DEL_ENTITY command to indicate that an entity has been remove
 In the event of receiving an invalid packet (e.g., wrong magic number or size), the protocol must log the error and discard the packet. Additionally, the system should be able to handle exceptions when processing packets without crashing the game.
 
 Example Error Handling
+
 ```cpp
 if (header->magic != rt::UDP_MAGIC) {
     eng::logWarning("Invalid UDP magic received !");

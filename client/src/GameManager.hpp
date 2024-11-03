@@ -18,6 +18,7 @@
 #include "RTypeConst.hpp"
 #include "Registry.hpp"
 #include "RoomManager.hpp"
+#include "SFML/Graphics/Shader.hpp"
 #include "SafeList.hpp"
 #include "SpriteManager.hpp"
 #include "TCPResponseHandler.hpp"
@@ -35,7 +36,7 @@ class GameManager {
     private:
     std::string _ip;
     std::string _playerName;
-    int _score;
+    int _score{};
 
     std::shared_ptr<ntw::TCPClient> _tcpClient;
     std::atomic<GameState> _gameState = GameState::LOBBY;
@@ -63,6 +64,8 @@ class GameManager {
          {rt::PlayerAction::MOVE_RIGHT, sf::Keyboard::Key::Right},
          {rt::PlayerAction::SHOOT_MISSILE, sf::Keyboard::Key::Space}}
     };
+
+    std::shared_ptr<sf::Shader> _colorBlind;
 
     void _registerTcpResponse();
     void _registerUdpResponse(ecs::SpriteManager &spriteManager, ntw::UDPClient &udpClient);

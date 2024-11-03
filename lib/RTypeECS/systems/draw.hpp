@@ -8,7 +8,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Registry.hpp"
+#include "SFML/Graphics/Shader.hpp"
 
 namespace ecs::systems {
 
@@ -21,6 +23,6 @@ namespace ecs::systems {
  * @param reg Reference to the registry managing entities and their components.
  * @param window Reference to the SFML render window where entities are drawn.
  */
-void draw(Registry &reg, sf::RenderWindow &window);
+void draw(Registry &reg, sf::RenderWindow &window, const std::shared_ptr<sf::Shader> &colorBlind);
 
 } // namespace ecs::systems
