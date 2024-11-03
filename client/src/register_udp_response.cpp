@@ -143,44 +143,28 @@ void rtc::GameManager::_registerUdpResponse(ecs::SpriteManager &spriteManager, n
     );
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
         rt::UDPCommand::NEW_ENTITY_DOBKERATOPS,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS> &packet) {
-            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
-                const auto &pos = packet.body.pos;
-                auto sharedEntityId = packet.sharedEntityId;
-
-                ecs::ClientEntityFactory::createClientEntityFromJSON(
-                    reg, spriteManager, "assets/enemies/dobkeratops.json", pos.x, pos.y, sharedEntityId
-                );
-            });
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_DOBKERATOPS>(
+                "assets/enemies/dobkeratops.json", spriteManager, _networkCallbacks, packet, udpClient
+            );
         }
     );
 
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
         rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE> &packet) {
-            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
-                const auto &pos = packet.body.pos;
-                auto sharedEntityId = packet.sharedEntityId;
-
-                ecs::ClientEntityFactory::createClientEntityFromJSON(
-                    reg, spriteManager, "assets/enemies/boss_parasite.json", pos.x, pos.y, sharedEntityId
-                );
-            });
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+                "assets/enemies/boss_parasite.json", spriteManager, _networkCallbacks, packet, udpClient
+            );
         }
     );
 
     _udpResponseHandler.registerHandler<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
         rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART,
-        [this, &spriteManager](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART> &packet) {
-            _networkCallbacks.pushBack([packet, &spriteManager](ecs::Registry &reg) {
-                const auto &pos = packet.body.pos;
-                auto sharedEntityId = packet.sharedEntityId;
-
-                std::string partJson = "assets/enemies/dobkeratops_segment.json";
-                ecs::ClientEntityFactory::createClientEntityFromJSON(
-                    reg, spriteManager, partJson, pos.x, pos.y, sharedEntityId
-                );
-            });
+        [this, &spriteManager, &udpClient](const rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART> &packet) {
+            handleSharedCreation<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
+                "assets/enemies/dobkeratops_segment.json", spriteManager, this->_networkCallbacks, packet, udpClient
+            );
         }
     );
 

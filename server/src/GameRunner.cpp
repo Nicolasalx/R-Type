@@ -47,12 +47,13 @@ rts::GameRunner::GameRunner(
         _tickRateManager,
         _udpServer,
         _datasToSend,
+        _timeoutHandler,
         _networkCallbacks,
         _waveManager,
         debugMode,
         _nbPlayers
     );
-    _waveCreator.createStage(stage, missileSpawnRate, _waveManager, _datasToSend);
+    _waveCreator.createStage(stage, missileSpawnRate, _waveManager, _datasToSend, _udpServer, _timeoutHandler);
 
     for (std::size_t i = 1; i <= 11; ++i) {
         ecs::ServerEntityFactory::createServerEntityFromJSON(

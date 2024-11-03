@@ -11,7 +11,12 @@
 #include "components/health.hpp"
 #include "components/shared_entity.hpp"
 
-void ecs::systems::healthSharedCheck(Registry &reg, std::list<std::vector<char>> &datasToSend)
+void ecs::systems::healthSharedCheck(
+    Registry &reg,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::UDPServer &udpServer,
+    ntw::TimeoutHandler &timeoutHandler
+)
 {
     auto &healths = reg.getComponents<ecs::component::Health>();
     auto &shared = reg.getComponents<ecs::component::SharedEntity>();
@@ -20,10 +25,10 @@ void ecs::systems::healthSharedCheck(Registry &reg, std::list<std::vector<char>>
 
     for (auto [entityId, health, sharedId] : zip) {
         if (health.currHp <= 0) {
-            datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId, true)
-                    .serialize()
-            );
+            auto newMsg =
+                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId.sharedEntityId, true);
+            timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+            datasToSend.push_back(std::move(newMsg).serialize());
             reg.killEntity(entityId);
         }
     }

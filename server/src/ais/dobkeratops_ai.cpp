@@ -36,7 +36,9 @@ static entity_t createNeckSegment(
     float x,
     float y,
     int partIndex,
-    std::list<std::vector<char>> &datasToSend
+    std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer
 )
 {
     shared_entity_t sharedId = ecs::generateSharedEntityId();
@@ -46,17 +48,23 @@ static entity_t createNeckSegment(
         reg, "assets/enemies/dobkeratops_segment.json", x, y, sharedId
     );
 
-    datasToSend.push_back(
-        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
-            rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART, sharedId, {.pos = {x, y}, .partIndex = partIndex}, true
-        )
-            .serialize()
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_DOBKERATOPS_PART>(
+        rt::UDPCommand::NEW_ENTITY_DOBKERATOPS_PART, sharedId, {.pos = {x, y}, .partIndex = partIndex}, true
     );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 
     return segment;
 }
 
-void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend, Dobkeratops &state)
+void initDobkeratopsAi(
+    ecs::Registry &reg,
+    entity_t e,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer,
+    Dobkeratops &state
+)
 {
     auto pos = reg.getComponent<ecs::component::Position>(e);
     if (!pos) {
@@ -71,7 +79,7 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
         float segX = pos->x - (i + 1) * segmentSpacing + 60.0f;
         float segY = pos->y + std::sin(i * 0.5f) * 20.0f + 180.0f;
 
-        entity_t segment = createNeckSegment(reg, segX, segY, i, datasToSend);
+        entity_t segment = createNeckSegment(reg, segX, segY, i, datasToSend, timeoutHandler, udpServer);
         state.neckSegments.push_back(segment);
     }
     state.targetY = pos->y;
@@ -81,18 +89,19 @@ void initDobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<cha
         reg, "assets/enemies/boss_parasite.json", pos->x + 76, pos->y + 96, sharedId
     );
 
-    datasToSend.push_back(
-        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
-            rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE, sharedId, {.pos = {pos->x + 80, pos->y + 96}}, true
-        )
-            .serialize()
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_BOSS_PARASITE>(
+        rt::UDPCommand::NEW_ENTITY_BOSS_PARASITE, sharedId, {.pos = {pos->x + 80, pos->y + 96}}, true
     );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }
 
 static void spawnDobkeratopsProjectile(
     ecs::Registry &reg,
     entity_t bossEntity,
     std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer,
     float angle
 )
 {
@@ -114,17 +123,18 @@ static void spawnDobkeratopsProjectile(
         reg, "assets/enemies/missileBall.json", spawnX, spawnY, sharedId, vx, vy
     );
 
-    datasToSend.push_back(
-        rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
-            rt::UDPCommand::NEW_ENTITY_MISSILE_BALL, sharedId, {.pos = {spawnX, spawnY}, .vel = {vx, vy}}, true
-        )
-            .serialize()
+    auto newMsg = rt::UDPPacket<rt::UDPBody::NEW_ENTITY_MISSILE_BALL>(
+        rt::UDPCommand::NEW_ENTITY_MISSILE_BALL, sharedId, {.pos = {spawnX, spawnY}, .vel = {vx, vy}}, true
     );
+    timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+    datasToSend.push_back(std::move(newMsg).serialize());
 }
 
 static void cleanupDobkeratopsSegments(
     ecs::Registry &reg,
     std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer,
     Dobkeratops &state
 )
 {
@@ -142,9 +152,9 @@ static void cleanupDobkeratopsSegments(
 
             auto sharedId = reg.getComponent<ecs::component::SharedEntity>(segment)->sharedEntityId;
 
-            datasToSend.push_back(
-                rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
-            );
+            auto newMsg = rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
+            timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+            datasToSend.push_back(std::move(newMsg).serialize());
             reg.killEntity(segment);
 
         } catch (const std::exception &e) {
@@ -153,16 +163,23 @@ static void cleanupDobkeratopsSegments(
     }
     try {
         auto sharedId = reg.getComponent<ecs::component::SharedEntity>(state.bossParasite)->sharedEntityId;
-        datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true).serialize()
-        );
+        auto newMsg = rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedId, true);
+        timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+        datasToSend.push_back(std::move(newMsg).serialize());
         reg.killEntity(state.bossParasite);
     } catch (const std::exception &e) {
         eng::logError("Failed to cleanup boss parasite: " + std::string(e.what()));
     }
 }
 
-void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> &datasToSend, Dobkeratops &state)
+void dobkeratopsAi(
+    ecs::Registry &reg,
+    entity_t e,
+    std::list<std::vector<char>> &datasToSend,
+    ntw::TimeoutHandler &timeoutHandler,
+    ntw::UDPServer &udpServer,
+    Dobkeratops &state
+)
 {
     auto bossPos = reg.getComponent<ecs::component::Position>(e);
     auto vel = reg.getComponent<ecs::component::Velocity>(e);
@@ -237,7 +254,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
             case 0:
                 if (state.projectilesShot < 1) {
                     float angle = eng::RandomGenerator::generate(-0.5f, 0.5f);
-                    spawnDobkeratopsProjectile(reg, e, datasToSend, angle);
+                    spawnDobkeratopsProjectile(reg, e, datasToSend, timeoutHandler, udpServer, angle);
                     state.projectilesShot++;
                 }
                 break;
@@ -246,7 +263,9 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
                 if (state.projectilesShot < 8) {
                     float baseAngle = -0.5f;
                     float angleStep = 0.2f;
-                    spawnDobkeratopsProjectile(reg, e, datasToSend, baseAngle + angleStep * state.projectilesShot);
+                    spawnDobkeratopsProjectile(
+                        reg, e, datasToSend, timeoutHandler, udpServer, baseAngle + angleStep * state.projectilesShot
+                    );
                     state.projectilesShot++;
                 }
                 break;
@@ -254,7 +273,7 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
             case 2:
                 if (state.projectilesShot < 20 && (state.attackTicks % 3 == 0)) {
                     float angle = eng::RandomGenerator::generate(-0.7f, 0.7f);
-                    spawnDobkeratopsProjectile(reg, e, datasToSend, angle);
+                    spawnDobkeratopsProjectile(reg, e, datasToSend, timeoutHandler, udpServer, angle);
                     state.projectilesShot++;
                 }
                 break;
@@ -282,11 +301,11 @@ void dobkeratopsAi(ecs::Registry &reg, entity_t e, std::list<std::vector<char>> 
     }
 
     if (health->currHp <= 10) {
-        cleanupDobkeratopsSegments(reg, datasToSend, state);
-        datasToSend.push_back(
-            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId, true)
-                .serialize()
-        );
+        cleanupDobkeratopsSegments(reg, datasToSend, timeoutHandler, udpServer, state);
+        auto newMsg =
+            rt::UDPPacket<rt::UDPBody::DEL_ENTITY>(rt::UDPCommand::DEL_ENTITY, sharedEntity->sharedEntityId, true);
+        timeoutHandler.addTimeoutPacket(newMsg.serialize(), newMsg.packetId, udpServer);
+        datasToSend.push_back(std::move(newMsg).serialize());
         reg.killEntity(e);
         return;
     }
