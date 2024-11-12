@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [Project Purpose](#project-purpose)
+- [Epitech Warning](#epitech-warning)
 - [Requirements / Supported Platforms](#requirements--supported-platforms)
   - [Requirements](#requirements)
   - [Supported Platforms](#supported-platforms)
@@ -26,6 +27,11 @@
 ## Project Purpose
 
 This project is a game engine built using an Entity-Component-System (ECS) architecture, offering scalability and flexibility for managing game objects and systems. Included around this engine is an existing implementation of the classic R-Type arcade game with a focus on multiplayer gameplay.
+
+## Epitech Warning
+
+This is a warning to all epitech students:
+We recall you that being a copycat at EPITECH will not bring you any good. Copying is totally banned at EPITECH and by not respecting this rule you can be scolded.
 
 ## Requirements / Supported Platforms
 
