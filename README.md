@@ -1,10 +1,8 @@
 # R-Type Multiplayer Game Engine (ECS-based)
 
-[![Linux/Windows](https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml/badge.svg)](https://github.com/ManuelR-T/R-Type/actions/workflows/my_cppaction.yml)
-[![Documentation](https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml/badge.svg)](https://github.com/ManuelR-T/R-Type/actions/workflows/doxygen-gh-pages.yml)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-![Game Image](docs/main.png)
+![Game Image](https://github.com/user-attachments/assets/fe4a6b53-6fa3-49f5-9c32-60aaf7f7a7e1)
 
 ## Table of Contents
 
